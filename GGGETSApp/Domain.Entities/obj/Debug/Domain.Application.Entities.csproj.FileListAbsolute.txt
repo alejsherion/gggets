@@ -1,0 +1,13 @@
+E:\快递软件\source\GGGETSApp\Domain.Entities\bin\Debug\GGGETSApp.Domain.Application.Entities.dll
+E:\快递软件\source\GGGETSApp\Domain.Entities\bin\Debug\GGGETSApp.Domain.Application.Entities.pdb
+E:\快递软件\source\GGGETSApp\Domain.Entities\bin\Debug\GGGETSApp.Domain.Application.Entities.dll.CodeAnalysisLog.xml
+E:\快递软件\source\GGGETSApp\Domain.Entities\bin\Debug\GGGETSApp.Domain.Application.Entities.dll.lastcodeanalysissucceeded
+E:\快递软件\source\GGGETSApp\Domain.Entities\bin\Debug\GGGETSApp.Domain.Core.Entities.dll
+E:\快递软件\source\GGGETSApp\Domain.Entities\bin\Debug\GGGETSApp.Domain.Core.Entities.pdb
+E:\快递软件\source\GGGETSApp\Domain.Entities\bin\Debug\GGGETSApp.Domain.Core.Entities.xml
+E:\快递软件\source\GGGETSApp\Domain.Entities\obj\Debug\ResolveAssemblyReference.cache
+E:\快递软件\source\GGGETSApp\Domain.Entities\obj\Debug\ETS.GGGETSApp.Domain.Application.Entities.Resources.Messages.resources
+E:\快递软件\source\GGGETSApp\Domain.Entities\obj\Debug\GenerateResource.read.1.tlog
+E:\快递软件\source\GGGETSApp\Domain.Entities\obj\Debug\GenerateResource.write.1.tlog
+E:\快递软件\source\GGGETSApp\Domain.Entities\obj\Debug\GGGETSApp.Domain.Application.Entities.dll
+E:\快递软件\source\GGGETSApp\Domain.Entities\obj\Debug\GGGETSApp.Domain.Application.Entities.pdb

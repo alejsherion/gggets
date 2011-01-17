@@ -1,0 +1,536 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>GGGETS.Infrastructure.Data.Core</name>
+    </assembly>
+    <members>
+        <member name="T:ETS.GGGETSApp.Infrastructure.Data.Core.IQueryableUnitOfWork">
+            <summary>
+            This is the minimun contract for all unit of work, one unit of work per module, that extend
+            base IUnitOfWork contract with specific features of ADO .NET EF and STE. 
+            Creation of this and base contract add isolation feature from specific contract for
+            testing purposed and delete innecesary dependencies
+            </summary>
+        </member>
+        <member name="M:ETS.GGGETSApp.Infrastructure.Data.Core.IQueryableUnitOfWork.CreateSet``1">
+            <summary>
+            Create a object set for a type TEntity
+            </summary>
+            <typeparam name="TEntity">Type of elements in object set</typeparam>
+            <returns>Object set of type {TEntity}</returns>
+        </member>
+        <member name="T:ETS.GGGETSApp.Infrastructure.Data.Core.Extensions.ListExtensions">
+            <summary>
+            Define extension methods in List class
+            </summary>
+        </member>
+        <member name="M:ETS.GGGETSApp.Infrastructure.Data.Core.Extensions.ListExtensions.ToMemorySet``1(System.Collections.Generic.List{``0})">
+            <summary>
+            Extensor Method for translate a list into a InMemoryObjectSet.
+            This extension method is only for testing purposed.
+            </summary>
+            <typeparam name="T">Typeof elements</typeparam>
+            <param name="list">List to translate into a IObjectSet</param>
+            <returns>InMemoryObjectSet</returns>
+        </member>
+        <member name="T:ETS.GGGETSApp.Infrastructure.Data.Core.Resources.Messages">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:ETS.GGGETSApp.Infrastructure.Data.Core.Resources.Messages.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:ETS.GGGETSApp.Infrastructure.Data.Core.Resources.Messages.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:ETS.GGGETSApp.Infrastructure.Data.Core.Resources.Messages.exception_ChangeTrackerIsNullOrStateIsNOK">
+            <summary>
+              Looks up a localized string similar to Cannot perform this operation.ChangeTracker is null or ObjectState is invalid for this operation.
+            </summary>
+        </member>
+        <member name="P:ETS.GGGETSApp.Infrastructure.Data.Core.Resources.Messages.exception_ContainerCannotBeNull">
+            <summary>
+              Looks up a localized string similar to Container cannot be null.
+            </summary>
+        </member>
+        <member name="P:ETS.GGGETSApp.Infrastructure.Data.Core.Resources.Messages.exception_ExpressionPathNotValid">
+            <summary>
+              Looks up a localized string similar to Expression path is null or not a valid expression function.
+            </summary>
+        </member>
+        <member name="P:ETS.GGGETSApp.Infrastructure.Data.Core.Resources.Messages.exception_FilterCannotBeNull">
+            <summary>
+              Looks up a localized string similar to FilterExpression cannot be null.
+            </summary>
+        </member>
+        <member name="P:ETS.GGGETSApp.Infrastructure.Data.Core.Resources.Messages.exception_IncludePathCannotBeNullOrEmpty">
+            <summary>
+              Looks up a localized string similar to Include path cannot be null or empty string.
+            </summary>
+        </member>
+        <member name="P:ETS.GGGETSApp.Infrastructure.Data.Core.Resources.Messages.exception_InvalidElementsInPage">
+            <summary>
+              Looks up a localized string similar to PageIndex*PageCount produce overflow exception.
+            </summary>
+        </member>
+        <member name="P:ETS.GGGETSApp.Infrastructure.Data.Core.Resources.Messages.exception_InvalidPageCount">
+            <summary>
+              Looks up a localized string similar to PageCount is less than zero.
+            </summary>
+        </member>
+        <member name="P:ETS.GGGETSApp.Infrastructure.Data.Core.Resources.Messages.exception_InvalidPageIndex">
+            <summary>
+              Looks up a localized string similar to PageIndex is less than zero.
+            </summary>
+        </member>
+        <member name="P:ETS.GGGETSApp.Infrastructure.Data.Core.Resources.Messages.exception_ItemArgumentIsNull">
+            <summary>
+              Looks up a localized string similar to Item is null.
+            </summary>
+        </member>
+        <member name="P:ETS.GGGETSApp.Infrastructure.Data.Core.Resources.Messages.exception_OrderByExpressionCannotBeNull">
+            <summary>
+              Looks up a localized string similar to OrderByExpression cannot be null.
+            </summary>
+        </member>
+        <member name="P:ETS.GGGETSApp.Infrastructure.Data.Core.Resources.Messages.exception_SpecificationIsNull">
+            <summary>
+              Looks up a localized string similar to Specification cannot be null.
+            </summary>
+        </member>
+        <member name="P:ETS.GGGETSApp.Infrastructure.Data.Core.Resources.Messages.exception_TraceManagerCannotBeNull">
+            <summary>
+              Looks up a localized string similar to Trace manager cannot be null.
+            </summary>
+        </member>
+        <member name="P:ETS.GGGETSApp.Infrastructure.Data.Core.Resources.Messages.trace_AddedItemRepository">
+            <summary>
+              Looks up a localized string similar to Added object of type {0} in repository.
+            </summary>
+        </member>
+        <member name="P:ETS.GGGETSApp.Infrastructure.Data.Core.Resources.Messages.trace_AppliedChangedItemRepository">
+            <summary>
+              Looks up a localized string similar to Applied changes of type {0} in repository.
+            </summary>
+        </member>
+        <member name="P:ETS.GGGETSApp.Infrastructure.Data.Core.Resources.Messages.trace_AttachedItemToRepository">
+            <summary>
+              Looks up a localized string similar to Attached item in repository of type {0}.
+            </summary>
+        </member>
+        <member name="P:ETS.GGGETSApp.Infrastructure.Data.Core.Resources.Messages.trace_ConstructRepository">
+            <summary>
+              Looks up a localized string similar to Created repository for type {0}.
+            </summary>
+        </member>
+        <member name="P:ETS.GGGETSApp.Infrastructure.Data.Core.Resources.Messages.trace_DeletedItemRepository">
+            <summary>
+              Looks up a localized string similar to Deleted object of type {0} in repository.
+            </summary>
+        </member>
+        <member name="P:ETS.GGGETSApp.Infrastructure.Data.Core.Resources.Messages.trace_GetAllRepository">
+            <summary>
+              Looks up a localized string similar to GetAll called in repository of type {0}.
+            </summary>
+        </member>
+        <member name="P:ETS.GGGETSApp.Infrastructure.Data.Core.Resources.Messages.trace_GetBySpec">
+            <summary>
+              Looks up a localized string similar to Get items by specification in repository of type {0}.
+            </summary>
+        </member>
+        <member name="P:ETS.GGGETSApp.Infrastructure.Data.Core.Resources.Messages.trace_GetFilteredElementsRepository">
+            <summary>
+              Looks up a localized string similar to GetFilteredElements called in repository of type {0} with Filter:{1}.
+            </summary>
+        </member>
+        <member name="P:ETS.GGGETSApp.Infrastructure.Data.Core.Resources.Messages.trace_GetFilteredPagedElementsRepository">
+            <summary>
+              Looks up a localized string similar to GetFilteredElements called in repository of type {0} with Filter:{1} PageIndex:{2} PageCount:{3} OrderBy:{4}.
+            </summary>
+        </member>
+        <member name="P:ETS.GGGETSApp.Infrastructure.Data.Core.Resources.Messages.trace_GetPagedElementsRepository">
+            <summary>
+              Looks up a localized string similar to GetPagedElements called in repository of type {0} with PageIndex:{1},PageCount:{2},OrderBy:{3}.
+            </summary>
+        </member>
+        <member name="T:ETS.GGGETSApp.Infrastructure.Data.Core.MemorySet`1">
+            <summary>
+            In memory IObjectSet. This class is intended only
+            for testing purposes.
+            </summary>
+            <typeparam name="TEntity">Type of elements in objectSet</typeparam>
+        </member>
+        <member name="M:ETS.GGGETSApp.Infrastructure.Data.Core.MemorySet`1.#ctor(System.Collections.Generic.List{`0})">
+            <summary>
+            Default constructor 
+            </summary>
+            <param name="innerList">A List{T} with inner values of this IObjectSet</param>
+        </member>
+        <member name="M:ETS.GGGETSApp.Infrastructure.Data.Core.MemorySet`1.Include(System.String)">
+            <summary>
+            Include path in query objects
+            </summary>
+            <param name="path">Path to include</param>
+            <returns>IObjectSet with include path</returns>
+        </member>
+        <member name="M:ETS.GGGETSApp.Infrastructure.Data.Core.MemorySet`1.AddObject(`0)">
+            <summary>
+            <see cref="T:System.Data.Objects.IObjectSet`1"/>
+            </summary>
+            <param name="entity"><see cref="T:System.Data.Objects.IObjectSet`1"/></param>
+        </member>
+        <member name="M:ETS.GGGETSApp.Infrastructure.Data.Core.MemorySet`1.Attach(`0)">
+            <summary>
+            <see cref="T:System.Data.Objects.IObjectSet`1"/>
+            </summary>
+            <param name="entity"><see cref="T:System.Data.Objects.IObjectSet`1"/></param>
+        </member>
+        <member name="M:ETS.GGGETSApp.Infrastructure.Data.Core.MemorySet`1.Detach(`0)">
+            <summary>
+            <see cref="T:System.Data.Objects.IObjectSet`1"/>
+            </summary>
+            <param name="entity"><see cref="T:System.Data.Objects.IObjectSet`1"/></param>
+        </member>
+        <member name="M:ETS.GGGETSApp.Infrastructure.Data.Core.MemorySet`1.DeleteObject(`0)">
+            <summary>
+            <see cref="T:System.Data.Objects.IObjectSet`1"/>
+            </summary>
+            <param name="entity"><see cref="T:System.Data.Objects.IObjectSet`1"/></param>
+        </member>
+        <member name="M:ETS.GGGETSApp.Infrastructure.Data.Core.MemorySet`1.GetEnumerator">
+            <summary>
+            <see cref="M:System.Collections.IEnumerable.GetEnumerator"/>
+            </summary>
+            <returns><see cref="M:System.Collections.IEnumerable.GetEnumerator"/></returns>
+        </member>
+        <member name="M:ETS.GGGETSApp.Infrastructure.Data.Core.MemorySet`1.System#Collections#IEnumerable#GetEnumerator">
+            <summary>
+            <see cref="M:System.Collections.IEnumerable.GetEnumerator"/>
+            </summary>
+            <returns><see cref="M:System.Collections.IEnumerable.GetEnumerator"/></returns>
+        </member>
+        <member name="P:ETS.GGGETSApp.Infrastructure.Data.Core.MemorySet`1.ElementType">
+            <summary>
+            <see cref="T:System.Linq.IQueryable`1"/>
+            </summary>
+        </member>
+        <member name="P:ETS.GGGETSApp.Infrastructure.Data.Core.MemorySet`1.Expression">
+            <summary>
+            <see cref="T:System.Linq.IQueryable`1"/>
+            </summary>
+        </member>
+        <member name="P:ETS.GGGETSApp.Infrastructure.Data.Core.MemorySet`1.Provider">
+            <summary>
+            <see cref="T:System.Linq.IQueryable`1"/>
+            </summary>
+        </member>
+        <member name="T:ETS.GGGETSApp.Infrastructure.Data.Core.Repository`1">
+            <summary>
+            Default base class for repostories. This generic repository 
+            is a default implementation of <see cref="T:ETS.GGGETSApp.Domain.Core.IRepository`1"/>
+            and your specific repositories can inherit from this base class so automatically will get default implementation.
+            IMPORTANT: Using this Base Repository class IS NOT mandatory. It is just a useful base class:
+            You could also decide that you do not want to use this base Repository class, because sometimes you don't want a 
+            specific Repository getting all these features and it might be wrong for a specific Repository. 
+            For instance, you could want just read-only data methods for your Repository, etc. 
+            in that case, just simply do not use this base class on your Repository.
+            </summary>
+            <typeparam name="TEntity">Type of elements in repostory</typeparam>
+        </member>
+        <member name="M:ETS.GGGETSApp.Infrastructure.Data.Core.Repository`1.#ctor(ETS.GGGETSApp.Infrastructure.Data.Core.IQueryableUnitOfWork,ETS.GGGETSApp.Infrastructure.CrossCutting.Logging.ITraceManager)">
+            <summary>
+            Create a new instance of Repository
+            </summary>
+            <param name="traceManager">Trace Manager dependency</param>
+            <param name="unitOfWork">A unit of work for this repository</param>
+        </member>
+        <member name="M:ETS.GGGETSApp.Infrastructure.Data.Core.Repository`1.Add(`0)">
+            <summary>
+            <see cref="!:Microsoft.Samples.NLayerApp.Domain.Core.IRepository&lt;TEntity&gt;"/>
+            </summary>
+            <param name="item"><see cref="!:Microsoft.Samples.NLayerApp.Domain.Core.IRepository&lt;TEntity&gt;"/></param>
+        </member>
+        <member name="M:ETS.GGGETSApp.Infrastructure.Data.Core.Repository`1.Remove(`0)">
+            <summary>
+            <see cref="!:Microsoft.Samples.NLayerApp.Domain.Core.IRepository&lt;TEntity&gt;"/>
+            </summary>
+            <param name="item"><see cref="!:Microsoft.Samples.NLayerApp.Domain.Core.IRepository&lt;TEntity&gt;"/></param>
+        </member>
+        <member name="M:ETS.GGGETSApp.Infrastructure.Data.Core.Repository`1.RegisterItem(`0)">
+            <summary>
+            <see cref="!:Microsoft.Samples.NLayerApp.Domain.Core.IRepository&lt;TEntity&gt;"/>
+            </summary>
+            <param name="item"><see cref="!:Microsoft.Samples.NLayerApp.Domain.Core.IRepository&lt;TEntity&gt;"/></param>
+        </member>
+        <member name="M:ETS.GGGETSApp.Infrastructure.Data.Core.Repository`1.Modify(`0)">
+            <summary>
+            <see cref="!:Microsoft.Samples.NLayerApp.Domain.Core.IRepository&lt;TEntity&gt;"/>
+            </summary>
+            <param name="item"><see cref="!:Microsoft.Samples.NLayerApp.Domain.Core.IRepository&lt;TEntity&gt;"/></param>
+        </member>
+        <member name="M:ETS.GGGETSApp.Infrastructure.Data.Core.Repository`1.GetAll">
+            <summary>
+            <see cref="!:Microsoft.Samples.NLayerApp.Domain.Core.IRepository&lt;TEntity&gt;"/>
+            </summary>
+            <returns><see cref="!:Microsoft.Samples.NLayerApp.Domain.Core.IRepository&lt;TEntity&gt;"/></returns>
+        </member>
+        <member name="M:ETS.GGGETSApp.Infrastructure.Data.Core.Repository`1.GetBySpec(ETS.GGGETSApp.Domain.Core.Specification.ISpecification{`0})">
+            <summary>
+            <see cref="!:Microsoft.Samples.NLayerApp.Domain.Core.IRepository&lt;TEntity&gt;"/>
+            </summary>
+            <param name="specification"><see cref="!:Microsoft.Samples.NLayerApp.Domain.Core.IRepository&lt;TEntity&gt;"/></param>
+            <returns><see cref="!:Microsoft.Samples.NLayerApp.Domain.Core.IRepository&lt;TEntity&gt;"/></returns>
+        </member>
+        <member name="M:ETS.GGGETSApp.Infrastructure.Data.Core.Repository`1.GetPagedElements``1(System.Int32,System.Int32,System.Linq.Expressions.Expression{System.Func{`0,``0}},System.Boolean)">
+            <summary>
+            <see cref="!:Microsoft.Samples.NLayerApp.Domain.Core.IRepository&lt;TEntity&gt;"/>
+            </summary>
+            <param name="pageIndex"><see cref="!:Microsoft.Samples.NLayerApp.Domain.Core.IRepository&lt;TEntity&gt;"/></param>
+            <param name="pageCount"><see cref="!:Microsoft.Samples.NLayerApp.Domain.Core.IRepository&lt;TEntity&gt;"/></param>
+            <param name="orderByExpression"><see cref="!:Microsoft.Samples.NLayerApp.Domain.Core.IRepository&lt;TEntity&gt;"/></param>
+            <param name="ascending"><see cref="!:Microsoft.Samples.NLayerApp.Domain.Core.IRepository&lt;TEntity&gt;"/></param>
+            <returns><see cref="!:Microsoft.Samples.NLayerApp.Domain.Core.IRepository&lt;TEntity&gt;"/></returns>
+        </member>
+        <member name="M:ETS.GGGETSApp.Infrastructure.Data.Core.Repository`1.GetPagedElements``1(System.Int32,System.Int32,System.Linq.Expressions.Expression{System.Func{`0,``0}},ETS.GGGETSApp.Domain.Core.Specification.ISpecification{`0},System.Boolean)">
+            <summary>
+            <see cref="!:Microsoft.Samples.NLayerApp.Domain.Core.IRepository&lt;TEntity&gt;"/>
+            </summary>
+            <typeparam name="S"><see cref="!:Microsoft.Samples.NLayerApp.Domain.Core.IRepository&lt;TEntity&gt;"/></typeparam>
+            <param name="pageIndex"><see cref="!:Microsoft.Samples.NLayerApp.Domain.Core.IRepository&lt;TEntity&gt;"/></param>
+            <param name="pageCount"><see cref="!:Microsoft.Samples.NLayerApp.Domain.Core.IRepository&lt;TEntity&gt;"/></param>
+            <param name="orderByExpression"><see cref="!:Microsoft.Samples.NLayerApp.Domain.Core.IRepository&lt;TEntity&gt;"/></param>
+            <param name="specification"><see cref="!:Microsoft.Samples.NLayerApp.Domain.Core.IRepository&lt;TEntity&gt;"/></param>
+            <param name="ascending"><see cref="!:Microsoft.Samples.NLayerApp.Domain.Core.IRepository&lt;TEntity&gt;"/></param>
+            <returns><see cref="!:Microsoft.Samples.NLayerApp.Domain.Core.IRepository&lt;TEntity&gt;"/></returns>
+        </member>
+        <member name="M:ETS.GGGETSApp.Infrastructure.Data.Core.Repository`1.GetFilteredElements(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
+            <summary>
+            <see cref="!:Microsoft.Samples.NLayerApp.Domain.Core.IRepository&lt;TEntity&gt;"/>
+            </summary>
+            <param name="filter"><see cref="!:Microsoft.Samples.NLayerApp.Domain.Core.IRepository&lt;TEntity&gt;"/></param>
+            <returns><see cref="!:Microsoft.Samples.NLayerApp.Domain.Core.IRepository&lt;TEntity&gt;"/></returns>
+        </member>
+        <member name="M:ETS.GGGETSApp.Infrastructure.Data.Core.Repository`1.GetFilteredElements``1(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Linq.Expressions.Expression{System.Func{`0,``0}},System.Boolean)">
+            <summary>
+            <see cref="!:Microsoft.Samples.NLayerApp.Domain.Core.IRepository&lt;TEntity&gt;"/>
+            </summary>
+            <param name="filter"><see cref="!:Microsoft.Samples.NLayerApp.Domain.Core.IRepository&lt;TEntity&gt;"/></param>
+            <param name="orderByExpression"><see cref="!:Microsoft.Samples.NLayerApp.Domain.Core.IRepository&lt;TEntity&gt;"/></param>
+            <param name="ascending"><see cref="!:Microsoft.Samples.NLayerApp.Domain.Core.IRepository&lt;TEntity&gt;"/></param>
+            <returns><see cref="!:Microsoft.Samples.NLayerApp.Domain.Core.IRepository&lt;TEntity&gt;"/></returns>
+        </member>
+        <member name="M:ETS.GGGETSApp.Infrastructure.Data.Core.Repository`1.GetFilteredElements``1(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Int32,System.Int32,System.Linq.Expressions.Expression{System.Func{`0,``0}},System.Boolean)">
+            <summary>
+            <see cref="!:Microsoft.Samples.NLayerApp.Domain.Core.IRepository&lt;TEntity&gt;"/>
+            </summary>
+            <param name="filter"><see cref="!:Microsoft.Samples.NLayerApp.Domain.Core.IRepository&lt;TEntity&gt;"/></param>
+            <param name="pageIndex"><see cref="!:Microsoft.Samples.NLayerApp.Domain.Core.IRepository&lt;TEntity&gt;"/></param>
+            <param name="pageCount"><see cref="!:Microsoft.Samples.NLayerApp.Domain.Core.IRepository&lt;TEntity&gt;"/></param>
+            <param name="orderByExpression"><see cref="!:Microsoft.Samples.NLayerApp.Domain.Core.IRepository&lt;TEntity&gt;"/></param>
+            <param name="ascending"><see cref="!:Microsoft.Samples.NLayerApp.Domain.Core.IRepository&lt;TEntity&gt;"/></param>
+            <returns><see cref="!:Microsoft.Samples.NLayerApp.Domain.Core.IRepository&lt;TEntity&gt;"/></returns>
+        </member>
+        <member name="P:ETS.GGGETSApp.Infrastructure.Data.Core.Repository`1.UnitOfWork">
+            <summary>
+            Return a unit of work in this repository
+            </summary>
+        </member>
+        <member name="T:ETS.GGGETSApp.Infrastructure.Data.Core.Extensions.IQueryableExtensions">
+            <summary>
+            Class for IQuerable extensions methods
+            <remarks>
+            Include method in IQueryable ( base contract for IObjectSet ) is 
+            intended for mock Include method in ObjectQuery{T}.
+            Paginate solve not parametrized queries issues with skip and take L2E methods
+            </remarks>
+            </summary>
+        </member>
+        <member name="M:ETS.GGGETSApp.Infrastructure.Data.Core.Extensions.IQueryableExtensions.Include``1(System.Linq.IQueryable{``0},System.String)">
+            <summary>
+            Include method for IQueryable
+            </summary>
+            <typeparam name="TEntity">Type of elements</typeparam>
+            <param name="queryable">Queryable object</param>
+            <param name="path">Path to include</param>
+            <returns>Queryable object with include path information</returns>
+        </member>
+        <member name="M:ETS.GGGETSApp.Infrastructure.Data.Core.Extensions.IQueryableExtensions.Include``1(System.Linq.IQueryable{``0},System.Linq.Expressions.Expression{System.Func{``0,System.Object}})">
+            <summary>
+            Include extension method for IQueryable
+            </summary>
+            <typeparam name="TEntity">Type of elements in IQueryable</typeparam>
+            <param name="queryable">Queryable object</param>
+            <param name="path">Expression with path to include</param>
+            <returns>Queryable object with include path information</returns>
+        </member>
+        <member name="M:ETS.GGGETSApp.Infrastructure.Data.Core.Extensions.IQueryableExtensions.Paginate``2(System.Linq.IQueryable{``0},System.Linq.Expressions.Expression{System.Func{``0,``1}},System.Int32,System.Int32,System.Boolean)">
+            <summary>
+            Paginate query in a specific page range
+            </summary>
+            <typeparam name="TEntity">Typeof entity in underlying query</typeparam>
+            <typeparam name="S">Typeof ordered data value</typeparam>
+            <param name="queryable">Query to paginate</param>
+            <param name="orderBy">Order by expression used in paginate method
+            <remarks>
+            At this moment Order by expression only support simple order by c=>c.CustomerCode. If you need
+            add more complex order functionality don't use this extension method
+            </remarks>
+            </param>
+            <param name="pageIndex">Page index</param>
+            <param name="pageCount">Page count</param>
+            <param name="ascending">order direction</param>
+            <returns>A paged queryable</returns>
+        </member>
+        <member name="T:ETS.GGGETSApp.Infrastructure.Data.Core.ExtendedRepository`1">
+            <summary>
+            Default base class for extended repostories. This generic repository 
+            is a default implementation of <see cref="T:ETS.GGGETSApp.Domain.Core.IExtendedRepository`1"/>
+            and your specific repositories can inherit from this base class so automatically will get default implementation.
+            IMPORTANT: Using this Base Repository class IS NOT mandatory. It is just a useful base class:
+            You could also decide that you do not want to use this base Repository class, because sometimes you don't want a 
+            specific Repository getting all these features and it might be wrong for a specific Repository. 
+            For instance, you could want just read-only data methods for your Repository, etc. 
+            in that case, just simply do not use this base class on your Repository.
+            </summary>
+            <typeparam name="TEntity">Type of elements in repostory</typeparam>
+        </member>
+        <member name="M:ETS.GGGETSApp.Infrastructure.Data.Core.ExtendedRepository`1.#ctor(ETS.GGGETSApp.Infrastructure.Data.Core.IQueryableUnitOfWork,ETS.GGGETSApp.Infrastructure.CrossCutting.Logging.ITraceManager)">
+            <summary>
+            Default constructor for GenericRepository
+            </summary>
+            <param name="unitOfWork">A unit of work  for this repository</param>
+            <param name="traceManager">TraceManager dependency</param>
+        </member>
+        <member name="M:ETS.GGGETSApp.Infrastructure.Data.Core.ExtendedRepository`1.Modify(System.Collections.Generic.ICollection{`0})">
+            <summary>
+            <see cref="!:Microsoft.Samples.NLayerApp.Domain.Core.IRepository&lt;TEntity&gt;"/>
+            </summary>
+            <param name="items"><see cref="!:Microsoft.Samples.NLayerApp.Domain.Core.IRepository&lt;TEntity&gt;"/></param>
+        </member>
+        <member name="M:ETS.GGGETSApp.Infrastructure.Data.Core.ExtendedRepository`1.GetBySpec``1(ETS.GGGETSApp.Domain.Core.Specification.ISpecification{``0})">
+            <summary>
+            <see cref="!:Microsoft.Samples.NLayerApp.Domain.Core.IRepository&lt;TEntity&gt;"/>
+            </summary>
+            <typeparam name="KEntity"><see cref="!:Microsoft.Samples.NLayerApp.Domain.Core.IRepository&lt;TEntity&gt;"/></typeparam>
+            <param name="specification"><see cref="!:Microsoft.Samples.NLayerApp.Domain.Core.IRepository&lt;TEntity&gt;"/></param>
+            <returns><see cref="!:Microsoft.Samples.NLayerApp.Domain.Core.IRepository&lt;TEntity&gt;"/></returns>
+        </member>
+        <member name="M:ETS.GGGETSApp.Infrastructure.Data.Core.ExtendedRepository`1.GetAll``1">
+            <summary>
+            <see cref="!:Microsoft.Samples.NLayerApp.Domain.Core.IRepository&lt;TEntity&gt;"/>
+            </summary>
+            <typeparam name="K"><see cref="!:Microsoft.Samples.NLayerApp.Domain.Core.IRepository&lt;TEntity&gt;"/></typeparam>
+            <returns><see cref="!:Microsoft.Samples.NLayerApp.Domain.Core.IRepository&lt;TEntity&gt;"/></returns>
+        </member>
+        <member name="M:ETS.GGGETSApp.Infrastructure.Data.Core.ExtendedRepository`1.GetPagedElements``2(System.Int32,System.Int32,System.Linq.Expressions.Expression{System.Func{``0,``1}},System.Boolean)">
+            <summary>
+            <see cref="!:Microsoft.Samples.NLayerApp.Domain.Core.IRepository&lt;TEntity&gt;"/>
+            </summary>
+            <typeparam name="K"><see cref="!:Microsoft.Samples.NLayerApp.Domain.Core.IRepository&lt;TEntity&gt;"/></typeparam>
+            <typeparam name="S"><see cref="!:Microsoft.Samples.NLayerApp.Domain.Core.IRepository&lt;TEntity&gt;"/></typeparam>
+            <param name="pageIndex"><see cref="!:Microsoft.Samples.NLayerApp.Domain.Core.IRepository&lt;TEntity&gt;"/></param>
+            <param name="pageCount"><see cref="!:Microsoft.Samples.NLayerApp.Domain.Core.IRepository&lt;TEntity&gt;"/></param>
+            <param name="orderByExpression"><see cref="!:Microsoft.Samples.NLayerApp.Domain.Core.IRepository&lt;TEntity&gt;"/></param>
+            <param name="ascending"><see cref="!:Microsoft.Samples.NLayerApp.Domain.Core.IRepository&lt;TEntity&gt;"/></param>
+            <returns><see cref="!:Microsoft.Samples.NLayerApp.Domain.Core.IRepository&lt;TEntity&gt;"/></returns>
+        </member>
+        <member name="M:ETS.GGGETSApp.Infrastructure.Data.Core.ExtendedRepository`1.GetFilteredElements``1(System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}})">
+            <summary>
+            <see cref="!:Microsoft.Samples.NLayerApp.Domain.Core.IRepository&lt;TEntity&gt;"/>
+            </summary>
+            <typeparam name="K"><see cref="!:Microsoft.Samples.NLayerApp.Domain.Core.IRepository&lt;TEntity&gt;"/></typeparam>
+            <param name="filter"><see cref="!:Microsoft.Samples.NLayerApp.Domain.Core.IRepository&lt;TEntity&gt;"/></param>
+            <returns><see cref="!:Microsoft.Samples.NLayerApp.Domain.Core.IRepository&lt;TEntity&gt;"/></returns>
+        </member>
+        <member name="M:ETS.GGGETSApp.Infrastructure.Data.Core.ExtendedRepository`1.GetFilteredElements``2(System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}},System.Linq.Expressions.Expression{System.Func{``0,``1}},System.Boolean)">
+            <summary>
+            <see cref="!:Microsoft.Samples.NLayerApp.Domain.Core.IRepository&lt;TEntity&gt;"/>
+            </summary>
+            <typeparam name="K"><see cref="!:Microsoft.Samples.NLayerApp.Domain.Core.IRepository&lt;TEntity&gt;"/></typeparam>
+            <typeparam name="S"><see cref="!:Microsoft.Samples.NLayerApp.Domain.Core.IRepository&lt;TEntity&gt;"/></typeparam>
+            <param name="filter"><see cref="!:Microsoft.Samples.NLayerApp.Domain.Core.IRepository&lt;TEntity&gt;"/></param>
+            <param name="orderByExpression"><see cref="!:Microsoft.Samples.NLayerApp.Domain.Core.IRepository&lt;TEntity&gt;"/></param>
+            <param name="ascending"><see cref="!:Microsoft.Samples.NLayerApp.Domain.Core.IRepository&lt;TEntity&gt;"/></param>
+            <returns></returns>
+        </member>
+        <member name="T:ETS.GGGETSApp.Infrastructure.Data.Core.Extensions.ObjectStateManagerExtensions">
+            <summary>
+            A collection of ObjectStateManager Dump methods, only intended for debugging
+            </summary>
+        </member>
+        <member name="M:ETS.GGGETSApp.Infrastructure.Data.Core.Extensions.ObjectStateManagerExtensions.Dump(System.Data.Objects.ObjectStateManager,System.Collections.Generic.IEnumerable{System.Data.Objects.ObjectStateEntry},System.Data.EntityKey,System.Boolean)">
+            <summary>
+            Private extension method for ObjectStateManager class
+            Dump all tracking info to a string 
+            </summary>
+            <param name="manager">ObjectStateManager</param>
+            <param name="objectStateEntries">Collection of ObjectStateEntries. If null, then all entities will be displayed</param>
+            <param name="entityKey">EntityKey of given entity. If null, then all entities will be displayed</param>
+            <param name="asHtml">Output string as HTML</param>
+            <returns>String with tracking info about entries</returns>
+        </member>
+        <member name="M:ETS.GGGETSApp.Infrastructure.Data.Core.Extensions.ObjectStateManagerExtensions.ObjectToString(System.Object)">
+            <summary>
+            Convert an object to a string representation
+            </summary>
+            <param name="obj">The given object</param>
+            <returns>The string representation</returns>
+        </member>
+        <member name="M:ETS.GGGETSApp.Infrastructure.Data.Core.Extensions.ObjectStateManagerExtensions.ObjectStateEntryToString(System.Data.Objects.ObjectStateEntry)">
+            <summary>
+            Convert an ObjectStateEntry object to a string representation
+            </summary>
+            <param name="entry">The given ObjectStateEntry</param>
+            <returns>The string representation</returns>
+        </member>
+        <member name="M:ETS.GGGETSApp.Infrastructure.Data.Core.Extensions.ObjectStateManagerExtensions.Dump(System.Data.Objects.ObjectStateManager)">
+            <summary>
+            Extension method for ObjectStateManager class
+            Dump all tracking info about the entries in the ObjectStateManager to a string 
+            </summary>
+            <param name="manager">ObjectStateManager</param>
+            <returns>String with tracking info about entries</returns>
+        </member>
+        <member name="M:ETS.GGGETSApp.Infrastructure.Data.Core.Extensions.ObjectStateManagerExtensions.Dump(System.Data.Objects.ObjectStateManager,System.Collections.Generic.IEnumerable{System.Data.Objects.ObjectStateEntry})">
+            <summary>
+            Extension method for ObjectStateManager class
+            Dump all tracking info about the given ObjectStateEntries to a string 
+            </summary>
+            <param name="manager">ObjectStateManager</param>
+            <param name="objectStateEntries">Collection of ObjectStateEntries. If null, then all entities will be displayed</param>
+            <returns>String with tracking info about entries</returns>
+        </member>
+        <member name="M:ETS.GGGETSApp.Infrastructure.Data.Core.Extensions.ObjectStateManagerExtensions.Dump(System.Data.Objects.ObjectStateManager,System.Data.EntityKey)">
+            <summary>
+            Extension method for ObjectStateManager class
+            Dump all tracking info about the given Entity in the ObjectStateManager to a string 
+            </summary>
+            <param name="manager">ObjectStateManager</param>
+            <param name="entityKey">Entity key of given entity. If null, then all entities will be displayed</param>
+            <returns>String with tracking info about entry</returns>
+        </member>
+        <member name="M:ETS.GGGETSApp.Infrastructure.Data.Core.Extensions.ObjectStateManagerExtensions.DumpAsHtml(System.Data.Objects.ObjectStateManager,System.Data.EntityKey)">
+            <summary>
+            Extension method for ObjectStateManager class
+            Dump all tracking info about the given Entity in the ObjectStateManager to a string 
+            </summary>
+            <param name="manager">ObjectStateManager</param>
+            <param name="entityKey">Entity key of given entity. If null, then all entities will be displayed</param>
+            <returns>String with tracking info about entry</returns>
+        </member>
+        <member name="M:ETS.GGGETSApp.Infrastructure.Data.Core.Extensions.ObjectStateManagerExtensions.DumpAsHtml(System.Data.Objects.ObjectStateManager)">
+            <summary>
+            Extension method for ObjectStateManager class
+            Dump all tracking info about the entries in the ObjectStateManager to a HTML string 
+            </summary>
+            <param name="manager">ObjectStateManager</param>
+            <returns>HTML string with tracking info about entries</returns>
+        </member>
+    </members>
+</doc>
