@@ -1,4 +1,0 @@
-E:\快递软件\source\GGGETSApp\Infrastructure.Data.MainModule\obj\Debug\ResolveAssemblyReference.cache
-E:\快递软件\source\GGGETSApp\Infrastructure.Data.MainModule\obj\Debug\ETS.GGGETSApp.Infrastructure.Data.MainModule.Resources.Messages.resources
-E:\快递软件\source\GGGETSApp\Infrastructure.Data.MainModule\obj\Debug\GenerateResource.read.1.tlog
-E:\快递软件\source\GGGETSApp\Infrastructure.Data.MainModule\obj\Debug\GenerateResource.write.1.tlog

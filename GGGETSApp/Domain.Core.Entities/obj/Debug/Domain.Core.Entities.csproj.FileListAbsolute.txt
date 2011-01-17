@@ -1,5 +1,0 @@
-E:\快递软件\source\GGGETSApp\Domain.Core.Entities\obj\Debug\ResolveAssemblyReference.cache
-E:\快递软件\source\GGGETSApp\Domain.Core.Entities\bin\Debug\GGGETSApp.Domain.Core.Entities.dll
-E:\快递软件\source\GGGETSApp\Domain.Core.Entities\bin\Debug\GGGETSApp.Domain.Core.Entities.pdb
-E:\快递软件\source\GGGETSApp\Domain.Core.Entities\obj\Debug\GGGETSApp.Domain.Core.Entities.dll
-E:\快递软件\source\GGGETSApp\Domain.Core.Entities\obj\Debug\GGGETSApp.Domain.Core.Entities.pdb
