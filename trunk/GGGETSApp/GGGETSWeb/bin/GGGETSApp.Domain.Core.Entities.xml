@@ -1,0 +1,101 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>GGGETSApp.Domain.Core.Entities</name>
+    </assembly>
+    <members>
+        <member name="T:ETS.GGGETSApp.Domain.Core.Entities.ChangeTrackerIterator">
+            <summary>
+            Selft Tracking Entities graph iterator
+            </summary>
+        </member>
+        <member name="M:ETS.GGGETSApp.Domain.Core.Entities.ChangeTrackerIterator.#ctor">
+            <summary>
+            Default private constructor
+            </summary>
+        </member>
+        <member name="M:ETS.GGGETSApp.Domain.Core.Entities.ChangeTrackerIterator.Create``1(``0)">
+            <summary>
+            Create new Tracking Iterator for root entity of type {TEntity}
+            </summary>
+            <typeparam name="TEntity">Type of root entity</typeparam>
+            <param name="entity">Root entity</param>
+            <returns>STE Graph Iterator</returns>
+        </member>
+        <member name="M:ETS.GGGETSApp.Domain.Core.Entities.ChangeTrackerIterator.Execute(System.Action{ETS.GGGETSApp.Domain.Core.Entities.IObjectWithChangeTracker})">
+            <summary>
+            Execute action for each elements in graph
+            </summary>
+            <param name="action">Action to execute</param>
+        </member>
+        <member name="M:ETS.GGGETSApp.Domain.Core.Entities.ChangeTrackerIterator.Visit(ETS.GGGETSApp.Domain.Core.Entities.IObjectWithChangeTracker)">
+            <summary>
+            Visti entity and traverse it
+            </summary>
+            <param name="entity">Entity to visit</param>
+        </member>
+        <member name="M:ETS.GGGETSApp.Domain.Core.Entities.ChangeTrackerIterator.Traverse(ETS.GGGETSApp.Domain.Core.Entities.IObjectWithChangeTracker)">
+            <summary>
+            Traverse entity graph
+            </summary>
+            <param name="entity">Entity to traverse</param>
+        </member>
+        <member name="M:ETS.GGGETSApp.Domain.Core.Entities.ChangeTrackerIterator.Dispose">
+            <summary>
+            Dispose all resources
+            </summary>
+        </member>
+        <member name="M:ETS.GGGETSApp.Domain.Core.Entities.ChangeTrackerIterator.GetEnumerator">
+            <summary>
+            Iterator enumerator
+            </summary>
+            <returns>Get the enumerator</returns>
+        </member>
+        <member name="M:ETS.GGGETSApp.Domain.Core.Entities.ChangeTrackerIterator.System#Collections#IEnumerable#GetEnumerator">
+            <summary>
+            Iterator enumerator
+            </summary>
+            <returns>Get the enumerator</returns>
+        </member>
+        <member name="T:ETS.GGGETSApp.Domain.Core.Entities.ChangeTrackerExtensions">
+            <summary>
+            Custom extensions methods for STE entities
+            </summary>
+        </member>
+        <member name="M:ETS.GGGETSApp.Domain.Core.Entities.ChangeTrackerExtensions.StartTrackingAll(ETS.GGGETSApp.Domain.Core.Entities.IObjectWithChangeTracker)">
+            <summary>
+            Start tracking in all entities associated with <paramref name="entity"/>
+            </summary>
+            <param name="entity">Root entity</param>
+        </member>
+        <member name="M:ETS.GGGETSApp.Domain.Core.Entities.ChangeTrackerExtensions.StopTrackingAll(ETS.GGGETSApp.Domain.Core.Entities.IObjectWithChangeTracker)">
+            <summary>
+            Stop tracking in all entities associated with <paramref name="entity"/>
+            </summary>
+            <param name="entity">Root entity</param>
+        </member>
+        <member name="M:ETS.GGGETSApp.Domain.Core.Entities.ChangeTrackerExtensions.AcceptAllChanges(ETS.GGGETSApp.Domain.Core.Entities.IObjectWithChangeTracker)">
+            <summary>
+            Accept all changes in all entities associated with <paramref name="entity"/>
+            </summary>
+            <param name="entity">Root entity</param>
+        </member>
+        <member name="M:ETS.GGGETSApp.Domain.Core.Entities.ChangeTrackerExtensions.MergeWith``2(``0,``1,System.Func{``0,``0,System.Boolean})">
+            <summary>
+            This method remove duplications in object graph on the client.
+            <remarks>For more information about duplications problems in Selft Tracking Entities
+            see http://blogs.msdn.com/b/diego/archive/2010/10/06/self-tracking-entities-applychanges-and-duplicate-entities.aspx
+            </remarks>
+            <example>
+            customer.MergeWith(graphWithCustomer,(c1,c2)=>c1.IdCustomer == c2.IdCustomer);
+            </example>
+            </summary>
+            <typeparam name="TEntity">Entity</typeparam>
+            <typeparam name="TGraph">Grago</typeparam>
+            <param name="entity">Type of entity</param>
+            <param name="graph">Type of root graph</param>
+            <param name="keyComparer">the key compararer</param>
+            <returns>returns an instance from the graph with the same key or the original entity </returns>
+        </member>
+    </members>
+</doc>

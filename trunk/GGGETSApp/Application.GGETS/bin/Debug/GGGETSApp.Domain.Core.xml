@@ -1,0 +1,528 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>GGGETSApp.Domain.Core</name>
+    </assembly>
+    <members>
+        <member name="T:ETS.GGGETSApp.Domain.Core.Specification.TrueSpecification`1">
+            <summary>
+            True specification
+            </summary>
+            <typeparam name="TEntity">Type of entity in this specification</typeparam>
+        </member>
+        <member name="T:ETS.GGGETSApp.Domain.Core.Specification.Specification`1">
+            <summary>
+            Represent a Expression Specification
+            <remarks>
+            Specification overload operators for create AND,OR or NOT specifications.
+            Additionally overload AND and OR operators with the same sense of ( binary And and binary Or ).
+            C# couldn’t overload the AND and OR operators directly since the framework doesn’t allow such craziness. But
+            with overloading false and true operators this is posible. For explain this behavior please read
+            http://msdn.microsoft.com/en-us/library/aa691312(VS.71).aspx
+            </remarks>
+            </summary>
+            <typeparam name="TEntity">Type of item in the criteria</typeparam>
+        </member>
+        <member name="T:ETS.GGGETSApp.Domain.Core.Specification.ISpecification`1">
+            <summary>
+            Base contract for Specification pattern, for more information
+            about this pattern see http://martinfowler.com/apsupp/spec.pdf
+            or http://en.wikipedia.org/wiki/Specification_pattern.
+            This is really a variant implementation where we have added Linq and
+            lambda expression into this pattern.
+            </summary>
+            <typeparam name="TEntity">Type of entity</typeparam>
+        </member>
+        <member name="M:ETS.GGGETSApp.Domain.Core.Specification.ISpecification`1.SatisfiedBy">
+            <summary>
+            Check if this specification is satisfied by a 
+            specific expression lambda
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ETS.GGGETSApp.Domain.Core.Specification.Specification`1.SatisfiedBy">
+            <summary>
+            IsSatisFied Specification pattern method,
+            </summary>
+            <returns>Expression that satisfy this specification</returns>
+        </member>
+        <member name="M:ETS.GGGETSApp.Domain.Core.Specification.Specification`1.op_BitwiseAnd(ETS.GGGETSApp.Domain.Core.Specification.Specification{`0},ETS.GGGETSApp.Domain.Core.Specification.Specification{`0})">
+            <summary>
+             And operator
+            </summary>
+            <param name="leftSideSpecification">left operand in this AND operation</param>
+            <param name="rightSideSpecification">right operand in this AND operation</param>
+            <returns>New specification</returns>
+        </member>
+        <member name="M:ETS.GGGETSApp.Domain.Core.Specification.Specification`1.op_BitwiseOr(ETS.GGGETSApp.Domain.Core.Specification.Specification{`0},ETS.GGGETSApp.Domain.Core.Specification.Specification{`0})">
+            <summary>
+            Or operator
+            </summary>
+            <param name="leftSideSpecification">left operand in this OR operation</param>
+            <param name="rightSideSpecification">left operand in this OR operation</param>
+            <returns>New specification </returns>
+        </member>
+        <member name="M:ETS.GGGETSApp.Domain.Core.Specification.Specification`1.op_LogicalNot(ETS.GGGETSApp.Domain.Core.Specification.Specification{`0})">
+            <summary>
+            Not specification
+            </summary>
+            <param name="specification">Specification to negate</param>
+            <returns>New specification</returns>
+        </member>
+        <member name="M:ETS.GGGETSApp.Domain.Core.Specification.Specification`1.op_False(ETS.GGGETSApp.Domain.Core.Specification.Specification{`0})">
+            <summary>
+            Override operator false, only for support AND OR operators
+            </summary>
+            <param name="specification">Specification instance</param>
+            <returns>See False operator in C#</returns>
+        </member>
+        <member name="M:ETS.GGGETSApp.Domain.Core.Specification.Specification`1.op_True(ETS.GGGETSApp.Domain.Core.Specification.Specification{`0})">
+            <summary>
+            Override operator True, only for support AND OR operators
+            </summary>
+            <param name="specification">Specification instance</param>
+            <returns>See True operator in C#</returns>
+        </member>
+        <member name="M:ETS.GGGETSApp.Domain.Core.Specification.TrueSpecification`1.SatisfiedBy">
+            <summary>
+            <see cref="T:ETS.GGGETSApp.Domain.Core.Specification.Specification`1"/>
+            </summary>
+            <returns><see cref="T:ETS.GGGETSApp.Domain.Core.Specification.Specification`1"/></returns>
+        </member>
+        <member name="T:ETS.GGGETSApp.Domain.Core.Specification.ExpressionBuilder">
+            <summary>
+            Extension methods for add And and Or with parameters rebinder
+            </summary>
+        </member>
+        <member name="M:ETS.GGGETSApp.Domain.Core.Specification.ExpressionBuilder.Compose``1(System.Linq.Expressions.Expression{``0},System.Linq.Expressions.Expression{``0},System.Func{System.Linq.Expressions.Expression,System.Linq.Expressions.Expression,System.Linq.Expressions.Expression})">
+            <summary>
+            Compose two expression and merge all in a new expression
+            </summary>
+            <typeparam name="T">Type of params in expression</typeparam>
+            <param name="first">Expression instance</param>
+            <param name="second">Expression to merge</param>
+            <param name="merge">Function to merge</param>
+            <returns>New merged expressions</returns>
+        </member>
+        <member name="M:ETS.GGGETSApp.Domain.Core.Specification.ExpressionBuilder.And``1(System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}},System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}})">
+            <summary>
+            And operator
+            </summary>
+            <typeparam name="T">Type of params in expression</typeparam>
+            <param name="first">Right Expression in AND operation</param>
+            <param name="second">Left Expression in And operation</param>
+            <returns>New AND expression</returns>
+        </member>
+        <member name="M:ETS.GGGETSApp.Domain.Core.Specification.ExpressionBuilder.Or``1(System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}},System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}})">
+            <summary>
+            Or operator
+            </summary>
+            <typeparam name="T">Type of param in expression</typeparam>
+            <param name="first">Right expression in OR operation</param>
+            <param name="second">Left expression in OR operation</param>
+            <returns>New Or expressions</returns>
+        </member>
+        <member name="T:ETS.GGGETSApp.Domain.Core.Specification.AndSpecification`1">
+            <summary>
+            A logic AND Specification
+            </summary>
+            <typeparam name="T">Type of entity that check this specification</typeparam>
+        </member>
+        <member name="T:ETS.GGGETSApp.Domain.Core.Specification.CompositeSpecification`1">
+            <summary>
+            Base class for composite specifications
+            </summary>
+            <typeparam name="TEntity">Type of entity that check this specification</typeparam>
+        </member>
+        <member name="P:ETS.GGGETSApp.Domain.Core.Specification.CompositeSpecification`1.LeftSideSpecification">
+            <summary>
+            Left side specification for this composite element
+            </summary>
+        </member>
+        <member name="P:ETS.GGGETSApp.Domain.Core.Specification.CompositeSpecification`1.RightSideSpecification">
+            <summary>
+            Right side specification for this composite element
+            </summary>
+        </member>
+        <member name="M:ETS.GGGETSApp.Domain.Core.Specification.AndSpecification`1.#ctor(ETS.GGGETSApp.Domain.Core.Specification.ISpecification{`0},ETS.GGGETSApp.Domain.Core.Specification.ISpecification{`0})">
+            <summary>
+            Default constructor for AndSpecification
+            </summary>
+            <param name="leftSide">Left side specification</param>
+            <param name="rightSide">Right side specification</param>
+        </member>
+        <member name="M:ETS.GGGETSApp.Domain.Core.Specification.AndSpecification`1.SatisfiedBy">
+            <summary>
+            <see cref="!:Microsoft.Samples.NLayerApp.Domain.Core.Specification.ISpecification&lt;T&gt;"/>
+            </summary>
+            <returns><see cref="!:Microsoft.Samples.NLayerApp.Domain.Core.Specification.ISpecification&lt;T&gt;"/></returns>
+        </member>
+        <member name="P:ETS.GGGETSApp.Domain.Core.Specification.AndSpecification`1.LeftSideSpecification">
+            <summary>
+            Left side specification
+            </summary>
+        </member>
+        <member name="P:ETS.GGGETSApp.Domain.Core.Specification.AndSpecification`1.RightSideSpecification">
+            <summary>
+            Right side specification
+            </summary>
+        </member>
+        <member name="T:ETS.GGGETSApp.Domain.Core.IRepository`1">
+            <summary>
+            Base interface for implement a "Repository Pattern", for
+            more information about this pattern see http://martinfowler.com/eaaCatalog/repository.html
+            or http://blogs.msdn.com/adonet/archive/2009/06/16/using-repository-and-unit-of-work-patterns-with-entity-framework-4-0.aspx
+            </summary>
+            <remarks>
+            Indeed, one might think that IObjectSet is already a generic repository and therefore
+            would not need this item. Using this interface allows us to ensure PI principle
+            within our domain model
+            </remarks>
+            <typeparam name="TEntity">Type of entity for this repository </typeparam>
+        </member>
+        <member name="M:ETS.GGGETSApp.Domain.Core.IRepository`1.Add(`0)">
+            <summary>
+            Add item into repository
+            </summary>
+            <param name="item">Item to add to repository</param>
+        </member>
+        <member name="M:ETS.GGGETSApp.Domain.Core.IRepository`1.Remove(`0)">
+            <summary>
+            Delete item 
+            </summary>
+            <param name="item">Item to delete</param>
+        </member>
+        <member name="M:ETS.GGGETSApp.Domain.Core.IRepository`1.RegisterItem(`0)">
+             <summary>
+            Register entity into this repository, really in UnitOfWork. 
+            In EF this can be done with Attach and with Update in NH
+             </summary>
+             <param name="item">Item to attach</param>
+        </member>
+        <member name="M:ETS.GGGETSApp.Domain.Core.IRepository`1.Modify(`0)">
+            <summary>
+            Sets modified entity into the repository. 
+            When calling Commit() method in UnitOfWork 
+            these changes will be saved into the storage
+            <remarks>
+            Internally this method always calls Repository.Attach() and Context.SetChanges() 
+            </remarks>
+            </summary>
+            <param name="item">Item with changes</param>
+        </member>
+        <member name="M:ETS.GGGETSApp.Domain.Core.IRepository`1.GetAll">
+            <summary>
+            Get all elements of type {T} in repository
+            </summary>
+            <returns>List of selected elements</returns>
+        </member>
+        <member name="M:ETS.GGGETSApp.Domain.Core.IRepository`1.GetBySpec(ETS.GGGETSApp.Domain.Core.Specification.ISpecification{`0})">
+            <summary>
+            Get all elements of type {T} that matching a
+            Specification <paramref name="specification"/>
+            </summary>
+            <param name="specification">Specification that result meet</param>
+            <returns></returns>
+        </member>
+        <member name="M:ETS.GGGETSApp.Domain.Core.IRepository`1.GetPagedElements``1(System.Int32,System.Int32,System.Linq.Expressions.Expression{System.Func{`0,``0}},System.Boolean)">
+            <summary>
+            Get all elements of type {T} in repository
+            </summary>
+            <param name="pageIndex">Page index</param>
+            <param name="pageCount">Number of elements in each page</param>
+            <param name="orderByExpression">Order by expression for this query</param>
+            <param name="ascending">Specify if order is ascending</param>
+            <returns>List of selected elements</returns>
+        </member>
+        <member name="M:ETS.GGGETSApp.Domain.Core.IRepository`1.GetFilteredElements(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
+            <summary>
+            Get  elements of type {T} in repository
+            </summary>
+            <param name="filter">Filter that each element do match</param>
+            <returns>List of selected elements</returns>
+        </member>
+        <member name="M:ETS.GGGETSApp.Domain.Core.IRepository`1.GetFilteredElements``1(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Int32,System.Int32,System.Linq.Expressions.Expression{System.Func{`0,``0}},System.Boolean)">
+            <summary>
+            Get all elements of type {T} in repository
+            </summary>
+            <param name="filter">Filter that each element do match</param>
+            <param name="pageIndex">Index of page</param>
+            <param name="pageCount">Number of elements in each page</param>
+            <param name="orderByExpression">Order by expression</param>
+            <param name="ascending">Specify if order is ascending</param>
+            <returns>List of selected elements</returns>
+        </member>
+        <member name="M:ETS.GGGETSApp.Domain.Core.IRepository`1.GetPagedElements``1(System.Int32,System.Int32,System.Linq.Expressions.Expression{System.Func{`0,``0}},ETS.GGGETSApp.Domain.Core.Specification.ISpecification{`0},System.Boolean)">
+            <summary>
+            Get all elements of type {T} in repository
+            </summary>
+            <param name="pageIndex">Page index</param>
+            <param name="pageCount">Number of elements in each page</param>
+            <param name="orderByExpression">Order by expression for this query</param>
+            <param name="ascending">Specify if order is ascending</param>
+            <param name="specification">Specification that result meet</param>
+            <returns>List of selected elements</returns>
+        </member>
+        <member name="P:ETS.GGGETSApp.Domain.Core.IRepository`1.UnitOfWork">
+            <summary>
+            Get the unit of work in this repository
+            </summary>
+        </member>
+        <member name="T:ETS.GGGETSApp.Domain.Core.IUnitOfWork">
+            <summary>
+            Contract for UnitOfWork pattern. For more
+            references see http://martinfowler.com/eaaCatalog/unitOfWork.html or
+            http://msdn.microsoft.com/en-us/magazine/dd882510.aspx
+            In this solution sample Unit Of Work is implemented out-of-box in 
+            ADO.NET Entity Framework persistence engine. But for academic
+            purposed and for mantein PI ( Persistence Ignorant ) in Domain 
+            this pattern is implemented.
+            </summary>
+        </member>
+        <member name="T:ETS.GGGETSApp.Domain.Core.ISQL">
+            <summary>
+            Base contract for support 'dialect specific queries'.
+            </summary>
+        </member>
+        <member name="M:ETS.GGGETSApp.Domain.Core.ISQL.ExecuteQuery``1(System.String,System.Object[])">
+            <summary>
+            Execute specific query with underliying persistence store
+            </summary>
+            <typeparam name="TEntity">Entity type to map query results</typeparam>
+            <param name="sqlQuery">
+            Dialect Query 
+            <example>
+            SELECT idCustomer,Name FROM dbo.[Customers] WHERE idCustomer > {0}
+            </example>
+            </param>
+            <param name="parameters">A vector of parameters values</param>
+            <returns>
+            Enumerable results 
+            </returns>
+        </member>
+        <member name="M:ETS.GGGETSApp.Domain.Core.ISQL.ExecuteCommand(System.String,System.Object[])">
+             <summary>
+             Execute arbitrary command into underliying persistence store
+             </summary>
+             <param name="sqlCommand">
+             Command to execute
+             <example>
+             SELECT idCustomer,Name FROM dbo.[Customers] WHERE idCustomer > {0}
+             </example>
+            </param>
+             <param name="parameters">A vector of parameters values</param>
+             <returns>The number of affected records</returns>
+        </member>
+        <member name="M:ETS.GGGETSApp.Domain.Core.IUnitOfWork.Commit">
+             <summary>
+             Commit all changes made in  a container.
+             </summary>
+            <remarks>
+             If entity have fixed properties and optimistic concurrency problem exists 
+             exception is thrown
+            </remarks>
+        </member>
+        <member name="M:ETS.GGGETSApp.Domain.Core.IUnitOfWork.CommitAndRefreshChanges">
+             <summary>
+             Commit all changes made in  a container.
+             </summary>
+            <remarks>
+             If entity have fixed properties and optimistic concurrency problem exists 
+             client changes are refereshed
+            </remarks>
+        </member>
+        <member name="M:ETS.GGGETSApp.Domain.Core.IUnitOfWork.RollbackChanges">
+            <summary>
+            Rollback changes not stored in databse at 
+            this moment. See references of UnitOfWork pattern
+            </summary>
+        </member>
+        <member name="M:ETS.GGGETSApp.Domain.Core.IUnitOfWork.RegisterChanges``1(``0)">
+            <summary>
+            Apply changes made in item or related items in your graph. Really this one method
+            for specify ( registerNew,registerDirty,registerDelete 
+            and registerClean in traditional UoW docs )
+            <remarks>
+            Yeap, indeed IObjectWithChangeTracker may be a moot point...but.....
+            For our example we have chosen to use for  productivity. In a future brach
+            you can view more teorical aproach with POCO Entities
+            You can view this method  ApplyChanges in EF or as a SaveOrUpdate/Merge in NH
+            </remarks>
+            </summary>
+            <typeparam name="TEntity">Type of item</typeparam>
+            <param name="item">Item with changes</param>
+        </member>
+        <member name="T:ETS.GGGETSApp.Domain.Core.Specification.OrSpecification`1">
+            <summary>
+            A Logic OR Specification
+            </summary>
+            <typeparam name="T">Type of entity that check this specification</typeparam>
+        </member>
+        <member name="M:ETS.GGGETSApp.Domain.Core.Specification.OrSpecification`1.#ctor(ETS.GGGETSApp.Domain.Core.Specification.ISpecification{`0},ETS.GGGETSApp.Domain.Core.Specification.ISpecification{`0})">
+            <summary>
+            Default constructor for AndSpecification
+            </summary>
+            <param name="leftSide">Left side specification</param>
+            <param name="rightSide">Right side specification</param>
+        </member>
+        <member name="M:ETS.GGGETSApp.Domain.Core.Specification.OrSpecification`1.SatisfiedBy">
+            <summary>
+            <see cref="!:Microsoft.Samples.NLayerApp.Domain.Core.Specification.ISpecification&lt;T&gt;"/>
+            </summary>
+            <returns><see cref="!:Microsoft.Samples.NLayerApp.Domain.Core.Specification.ISpecification&lt;T&gt;"/></returns>
+        </member>
+        <member name="P:ETS.GGGETSApp.Domain.Core.Specification.OrSpecification`1.LeftSideSpecification">
+            <summary>
+            Left side specification
+            </summary>
+        </member>
+        <member name="P:ETS.GGGETSApp.Domain.Core.Specification.OrSpecification`1.RightSideSpecification">
+            <summary>
+            Righ side specification
+            </summary>
+        </member>
+        <member name="T:ETS.GGGETSApp.Domain.Core.Specification.NotSpecification`1">
+            <summary>
+            NotEspecification convert a original
+            specification with NOT logic operator
+            </summary>
+            <typeparam name="TEntity">Type of element for this specificaiton</typeparam>
+        </member>
+        <member name="M:ETS.GGGETSApp.Domain.Core.Specification.NotSpecification`1.#ctor(ETS.GGGETSApp.Domain.Core.Specification.ISpecification{`0})">
+            <summary>
+            Constructor for NotSpecificaiton
+            </summary>
+            <param name="originalSpecification">Original specification</param>
+        </member>
+        <member name="M:ETS.GGGETSApp.Domain.Core.Specification.NotSpecification`1.#ctor(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
+            <summary>
+            Constructor for NotSpecification
+            </summary>
+            <param name="originalSpecification">Original specificaiton</param>
+        </member>
+        <member name="M:ETS.GGGETSApp.Domain.Core.Specification.NotSpecification`1.SatisfiedBy">
+            <summary>
+            <see cref="!:Microsoft.Samples.NLayerApp.Domain.Core.Specification.ISpecification&lt;TEntity&gt;"/>
+            </summary>
+            <returns><see cref="!:Microsoft.Samples.NLayerApp.Domain.Core.Specification.ISpecification&lt;TEntity&gt;"/></returns>
+        </member>
+        <member name="T:ETS.GGGETSApp.Domain.Core.Specification.DirectSpecification`1">
+            <summary>
+            A Direct Specification is a simple implementation
+            of specification that acquire this from a lambda expression
+            in  constructor
+            </summary>
+            <typeparam name="TEntity">Type of entity that check this specification</typeparam>
+        </member>
+        <member name="M:ETS.GGGETSApp.Domain.Core.Specification.DirectSpecification`1.#ctor(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
+            <summary>
+            Default constructor for Direct Specification
+            </summary>
+            <param name="matchingCriteria">A Matching Criteria</param>
+        </member>
+        <member name="M:ETS.GGGETSApp.Domain.Core.Specification.DirectSpecification`1.SatisfiedBy">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:ETS.GGGETSApp.Domain.Core.IExtendedRepository`1">
+            <summary>
+            Extended repository contract with bit tricky methods
+            <see cref="!:Microsoft.Samples.NLayerApp.Domain.Core.IRepository&lt;TEntity&gt;"/>
+            </summary>
+            <typeparam name="TEntity">Type of entity for this repository</typeparam>
+        </member>
+        <member name="M:ETS.GGGETSApp.Domain.Core.IExtendedRepository`1.Modify(System.Collections.Generic.ICollection{`0})">
+            <summary>
+            Sets modified entities into the repository. 
+            When calling Commit() method in UnitOfWork 
+            these changes will be saved into the storage
+            </summary>
+            <param name="items">Collection of items with changes</param>
+        </member>
+        <member name="M:ETS.GGGETSApp.Domain.Core.IExtendedRepository`1.GetAll``1">
+            <summary>
+            Get all elements of type {K} in repository
+            </summary>
+            <typeparam name="KEntity">Subtype of {T}</typeparam>
+            <returns>List of selected elements</returns>
+        </member>
+        <member name="M:ETS.GGGETSApp.Domain.Core.IExtendedRepository`1.GetBySpec``1(ETS.GGGETSApp.Domain.Core.Specification.ISpecification{``0})">
+            <summary>
+            Get all elements of type {T} that matching a
+            Specification <paramref name="specification"/>
+            </summary>
+            <param name="specification">Specification that result meet</param>
+            <returns></returns>
+        </member>
+        <member name="M:ETS.GGGETSApp.Domain.Core.IExtendedRepository`1.GetPagedElements``2(System.Int32,System.Int32,System.Linq.Expressions.Expression{System.Func{``0,``1}},System.Boolean)">
+            <summary>
+            Get all elements of type {K} in repository
+            </summary>
+            <typeparam name="K">Subtype of {T}</typeparam>
+            <typeparam name="S">Type of result in order expression</typeparam>
+            <param name="pageIndex">Page index</param>
+            <param name="pageCount">Number of elements in each page</param>
+            <param name="orderByExpression">Order by expression for this query</param>
+            <param name="ascending">Specify if order is ascending</param>
+            <returns>List of selected elements</returns>
+        </member>
+        <member name="M:ETS.GGGETSApp.Domain.Core.IExtendedRepository`1.GetFilteredElements``1(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Linq.Expressions.Expression{System.Func{`0,``0}},System.Boolean)">
+            <summary>
+            Get  elements of type {K} in repository
+            </summary>
+            <param name="filter">Filter that each element do match</param>
+            <param name="orderByExpression">Order by expression for this query</param>
+            <param name="ascending">Specify if order is ascending</param>
+            <returns>List of selected elements</returns>
+        </member>
+        <member name="M:ETS.GGGETSApp.Domain.Core.IExtendedRepository`1.GetFilteredElements``1(System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}})">
+            <summary>
+            Get all elements of type {K} in repository
+            </summary>
+            <typeparam name="K">Subtype of {T}</typeparam>
+            <param name="filter">Filter that each element do match</param>
+            <returns>List of selected elements</returns>
+        </member>
+        <member name="M:ETS.GGGETSApp.Domain.Core.IExtendedRepository`1.GetFilteredElements``2(System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}},System.Linq.Expressions.Expression{System.Func{``0,``1}},System.Boolean)">
+             <summary>
+             Get all elements of type {K} in repository
+             </summary>
+             <typeparam name="K">Subtype of {T}</typeparam>
+             <typeparam name="S">Type of result in order expression</typeparam>
+             <param name="filter">Filter that each element do match</param>
+            <param name="orderbyExpression">Order by expression for this query</param>
+             <param name="ascending">Specify if order is ascending</param>
+             <returns>List of selected elements</returns>
+        </member>
+        <member name="T:ETS.GGGETSApp.Domain.Core.Specification.ParameterRebinder">
+            <summary>
+            Helper for rebinder parameters without use Invoke method in expressions 
+            ( this methods is not supported in all linq query providers, 
+            for example in Linq2Entities is not supported)
+            </summary>
+        </member>
+        <member name="M:ETS.GGGETSApp.Domain.Core.Specification.ParameterRebinder.#ctor(System.Collections.Generic.Dictionary{System.Linq.Expressions.ParameterExpression,System.Linq.Expressions.ParameterExpression})">
+            <summary>
+            Default construcotr
+            </summary>
+            <param name="map">Map specification</param>
+        </member>
+        <member name="M:ETS.GGGETSApp.Domain.Core.Specification.ParameterRebinder.ReplaceParameters(System.Collections.Generic.Dictionary{System.Linq.Expressions.ParameterExpression,System.Linq.Expressions.ParameterExpression},System.Linq.Expressions.Expression)">
+            <summary>
+            Replate parameters in expression with a Map information
+            </summary>
+            <param name="map">Map information</param>
+            <param name="exp">Expression to replace parameters</param>
+            <returns>Expression with parameters replaced</returns>
+        </member>
+        <member name="M:ETS.GGGETSApp.Domain.Core.Specification.ParameterRebinder.VisitParameter(System.Linq.Expressions.ParameterExpression)">
+            <summary>
+            Visit pattern method
+            </summary>
+            <param name="p">A Parameter expression</param>
+            <returns>New visited expression</returns>
+        </member>
+    </members>
+</doc>

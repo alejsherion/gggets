@@ -1,0 +1,129 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="GGGETSModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+  <EntityContainer Name="GGGETSUnitOfWork" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="HAWB" EntityType="GGGETSModel.HAWB" />
+    <EntitySet Name="Trans" EntityType="GGGETSModel.Trans" />
+    <EntitySet Name="TransItem" EntityType="GGGETSModel.TransItem" />
+    <EntitySet Name="TransLog" EntityType="GGGETSModel.TransLog" />
+    <AssociationSet Name="FK_TRANSITE_REFERENCE_TRANS" Association="GGGETSModel.FK_TRANSITE_REFERENCE_TRANS">
+      <End Role="Trans" EntitySet="Trans" />
+      <End Role="TransItem" EntitySet="TransItem" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TRANSLOG_REFERENCE_TRANS" Association="GGGETSModel.FK_TRANSLOG_REFERENCE_TRANS">
+      <End Role="Trans" EntitySet="Trans" />
+      <End Role="TransLog" EntitySet="TransLog" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="HAWB">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Type="Guid" Name="ID" Nullable="false" />
+    <Property Type="String" Name="BarCode" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Carrier" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="Guid" Name="CarrierHAWBID" />
+    <Property Type="Guid" Name="Account" />
+    <Property Type="String" Name="SettleType" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="ServiceType" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="DateTime" Name="CreateTime" />
+    <Property Type="DateTime" Name="UpdateTime" />
+    <Property Type="DateTime" Name="DeadlienTime" />
+    <Property Type="Int32" Name="State" />
+    <Property Type="Guid" Name="Owner" />
+    <Property Type="String" Name="Remark" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Description" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="Guid" Name="ShipperID" />
+    <Property Type="String" Name="ShipperContactor" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="ShipperCountry" MaxLength="2" FixedLength="true" Unicode="false" />
+    <Property Type="String" Name="ShipperRegion" MaxLength="3" FixedLength="true" Unicode="false" />
+    <Property Type="String" Name="ShipperAddress" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="ShipperZipCode" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="ShipperTel" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Type="Guid" Name="ConsigneeID" />
+    <Property Type="String" Name="ConsigneeContactor" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="ConsigneeCountry" MaxLength="2" FixedLength="true" Unicode="false" />
+    <Property Type="String" Name="ConsigneeRegion" MaxLength="3" FixedLength="true" Unicode="false" />
+    <Property Type="String" Name="ConsigneeAddress" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="ConsigneeZipCode" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="ConsigneeTel" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Type="Byte" Name="WeightType" />
+    <Property Type="Double" Name="WeightValue" />
+    <Property Type="Int32" Name="Piece" />
+    <Property Type="Boolean" Name="IsInternational" />
+    <Property Type="String" Name="SpecialInstruction" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Taxes" MaxLength="500" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Trans">
+    <Key>
+      <PropertyRef Name="TransId" />
+    </Key>
+    <Property Type="Guid" Name="TransId" Nullable="false" />
+    <Property Type="String" Name="Sender" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="SenderAddress" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="SenderAreaCode" />
+    <Property Type="String" Name="SenderPostCode" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="SenderPhone" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Receiver" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="ReceiverAddress" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="ReceiverAreaCode" />
+    <Property Type="String" Name="ReceiverPhone" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="ItemsType" />
+    <Property Type="Int32" Name="ItemsWeight" />
+    <Property Type="Int32" Name="ItemsVolumn" />
+    <Property Type="Int32" Name="IsCustom" />
+    <Property Type="Int32" Name="CustomFee" />
+    <Property Type="Int32" Name="Fee" />
+    <Property Type="Int32" Name="Status" />
+    <Property Type="DateTime" Name="UpdateTime" />
+    <Property Type="String" Name="Remark" MaxLength="255" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="TransItem" Relationship="GGGETSModel.FK_TRANSITE_REFERENCE_TRANS" FromRole="Trans" ToRole="TransItem" />
+    <NavigationProperty Name="TransLog" Relationship="GGGETSModel.FK_TRANSLOG_REFERENCE_TRANS" FromRole="Trans" ToRole="TransLog" />
+  </EntityType>
+  <EntityType Name="TransItem">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Guid" Name="Id" Nullable="false" />
+    <Property Type="Guid" Name="TransId" />
+    <Property Type="Decimal" Name="ItemLength" Precision="18" Scale="0" />
+    <Property Type="Decimal" Name="ItemWidth" Precision="18" Scale="0" />
+    <Property Type="Decimal" Name="ItemHeight" Precision="18" Scale="0" />
+    <Property Type="Decimal" Name="ItemTransPays" Precision="18" Scale="0" />
+    <Property Type="Int32" Name="ItemTransCurrency" />
+    <NavigationProperty Name="Trans" Relationship="GGGETSModel.FK_TRANSITE_REFERENCE_TRANS" FromRole="TransItem" ToRole="Trans" />
+  </EntityType>
+  <EntityType Name="TransLog">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Guid" Name="Id" Nullable="false" />
+    <Property Type="Guid" Name="TransId" />
+    <Property Type="String" Name="Log" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="DateTime" Name="CreateTime" />
+    <NavigationProperty Name="Trans" Relationship="GGGETSModel.FK_TRANSLOG_REFERENCE_TRANS" FromRole="TransLog" ToRole="Trans" />
+  </EntityType>
+  <Association Name="FK_TRANSITE_REFERENCE_TRANS">
+    <End Type="GGGETSModel.Trans" Role="Trans" Multiplicity="0..1" />
+    <End Type="GGGETSModel.TransItem" Role="TransItem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Trans">
+        <PropertyRef Name="TransId" />
+      </Principal>
+      <Dependent Role="TransItem">
+        <PropertyRef Name="TransId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TRANSLOG_REFERENCE_TRANS">
+    <End Type="GGGETSModel.Trans" Role="Trans" Multiplicity="0..1" />
+    <End Type="GGGETSModel.TransLog" Role="TransLog" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Trans">
+        <PropertyRef Name="TransId" />
+      </Principal>
+      <Dependent Role="TransLog">
+        <PropertyRef Name="TransId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

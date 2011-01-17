@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="GGGETSModelStoreContainer" CdmEntityContainer="GGGETSUnitOfWork">
+    <EntitySetMapping Name="HAWB">
+      <EntityTypeMapping TypeName="GGGETSModel.HAWB">
+        <MappingFragment StoreEntitySet="HAWB">
+          <ScalarProperty Name="Taxes" ColumnName="Taxes" />
+          <ScalarProperty Name="SpecialInstruction" ColumnName="SpecialInstruction" />
+          <ScalarProperty Name="IsInternational" ColumnName="IsInternational" />
+          <ScalarProperty Name="Piece" ColumnName="Piece" />
+          <ScalarProperty Name="WeightValue" ColumnName="WeightValue" />
+          <ScalarProperty Name="WeightType" ColumnName="WeightType" />
+          <ScalarProperty Name="ConsigneeTel" ColumnName="ConsigneeTel" />
+          <ScalarProperty Name="ConsigneeZipCode" ColumnName="ConsigneeZipCode" />
+          <ScalarProperty Name="ConsigneeAddress" ColumnName="ConsigneeAddress" />
+          <ScalarProperty Name="ConsigneeRegion" ColumnName="ConsigneeRegion" />
+          <ScalarProperty Name="ConsigneeCountry" ColumnName="ConsigneeCountry" />
+          <ScalarProperty Name="ConsigneeContactor" ColumnName="ConsigneeContactor" />
+          <ScalarProperty Name="ConsigneeID" ColumnName="ConsigneeID" />
+          <ScalarProperty Name="ShipperTel" ColumnName="ShipperTel" />
+          <ScalarProperty Name="ShipperZipCode" ColumnName="ShipperZipCode" />
+          <ScalarProperty Name="ShipperAddress" ColumnName="ShipperAddress" />
+          <ScalarProperty Name="ShipperRegion" ColumnName="ShipperRegion" />
+          <ScalarProperty Name="ShipperCountry" ColumnName="ShipperCountry" />
+          <ScalarProperty Name="ShipperContactor" ColumnName="ShipperContactor" />
+          <ScalarProperty Name="ShipperID" ColumnName="ShipperID" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="Owner" ColumnName="Owner" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="DeadlienTime" ColumnName="DeadlienTime" />
+          <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="ServiceType" ColumnName="ServiceType" />
+          <ScalarProperty Name="SettleType" ColumnName="SettleType" />
+          <ScalarProperty Name="Account" ColumnName="Account" />
+          <ScalarProperty Name="CarrierHAWBID" ColumnName="CarrierHAWBID" />
+          <ScalarProperty Name="Carrier" ColumnName="Carrier" />
+          <ScalarProperty Name="BarCode" ColumnName="BarCode" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Trans">
+      <EntityTypeMapping TypeName="GGGETSModel.Trans">
+        <MappingFragment StoreEntitySet="Trans">
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Fee" ColumnName="Fee" />
+          <ScalarProperty Name="CustomFee" ColumnName="CustomFee" />
+          <ScalarProperty Name="IsCustom" ColumnName="IsCustom" />
+          <ScalarProperty Name="ItemsVolumn" ColumnName="ItemsVolumn" />
+          <ScalarProperty Name="ItemsWeight" ColumnName="ItemsWeight" />
+          <ScalarProperty Name="ItemsType" ColumnName="ItemsType" />
+          <ScalarProperty Name="ReceiverPhone" ColumnName="ReceiverPhone" />
+          <ScalarProperty Name="ReceiverAreaCode" ColumnName="ReceiverAreaCode" />
+          <ScalarProperty Name="ReceiverAddress" ColumnName="ReceiverAddress" />
+          <ScalarProperty Name="Receiver" ColumnName="Receiver" />
+          <ScalarProperty Name="SenderPhone" ColumnName="SenderPhone" />
+          <ScalarProperty Name="SenderPostCode" ColumnName="SenderPostCode" />
+          <ScalarProperty Name="SenderAreaCode" ColumnName="SenderAreaCode" />
+          <ScalarProperty Name="SenderAddress" ColumnName="SenderAddress" />
+          <ScalarProperty Name="Sender" ColumnName="Sender" />
+          <ScalarProperty Name="TransId" ColumnName="TransId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TransItem">
+      <EntityTypeMapping TypeName="GGGETSModel.TransItem">
+        <MappingFragment StoreEntitySet="TransItem">
+          <ScalarProperty Name="ItemTransCurrency" ColumnName="ItemTransCurrency" />
+          <ScalarProperty Name="ItemTransPays" ColumnName="ItemTransPays" />
+          <ScalarProperty Name="ItemHeight" ColumnName="ItemHeight" />
+          <ScalarProperty Name="ItemWidth" ColumnName="ItemWidth" />
+          <ScalarProperty Name="ItemLength" ColumnName="ItemLength" />
+          <ScalarProperty Name="TransId" ColumnName="TransId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TransLog">
+      <EntityTypeMapping TypeName="GGGETSModel.TransLog">
+        <MappingFragment StoreEntitySet="TransLog">
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="Log" ColumnName="Log" />
+          <ScalarProperty Name="TransId" ColumnName="TransId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

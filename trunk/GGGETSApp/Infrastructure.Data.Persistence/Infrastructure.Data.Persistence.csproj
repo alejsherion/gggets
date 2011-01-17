@@ -1,0 +1,146 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{F0CA02B9-6921-427D-85CB-A164C4939E82}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ETS.GGGETSApp.Infrastructure.Data.Persistence</RootNamespace>
+    <AssemblyName>GGGETSApp.Infrastructure.Data.Persistence</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>..\NLayer.CodeAnaysisRules.ruleset</CodeAnalysisRuleSet>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
+    <DocumentationFile>bin\Debug\GGGETSApp.Infrastructure.Data.Persistence.xml</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>
+    </DocumentationFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="GlobalSuppressions.cs" />
+    <Compile Include="Model\GGGETSAppDataModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GGGETSAppDataModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\TransRepository.cs" />
+    <Compile Include="UnitOfWork\GGGETSAppUnitOfWork.Context.Extensions.cs">
+      <DependentUpon>GGGETSAppUnitOfWork.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UnitOfWork\IGGGETSAppUnitOfWork.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>IGGGETSAppUnitOfWork.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\GlobalSuppressions.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resources\Messages.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Messages.resx</DependentUpon>
+    </Compile>
+    <Compile Include="UnitOfWork\GGGETSAppUnitOfWork.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GGGETSAppUnitOfWork.Context.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config" />
+    <EntityDeploy Include="Model\GGGETSAppDataModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>GGGETSAppDataModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="UnitOfWork\IGGGETSAppUnitOfWork.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>IGGGETSAppUnitOfWork.cs</LastGenOutput>
+    </None>
+    <None Include="UnitOfWork\GGGETSAppUnitOfWork.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GGGETSAppUnitOfWork.Context.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Domain.Core.Entities\Domain.Core.Entities.csproj">
+      <Project>{5A3A2291-4220-4BDC-94C0-F48AB18ED0BD}</Project>
+      <Name>Domain.Core.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Domain.Core\Domain.Core.csproj">
+      <Project>{D7E981BB-19E7-4D85-A24B-D4295BAF87CD}</Project>
+      <Name>Domain.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Domain.Entities\Domain.GGGETS.Entities.csproj">
+      <Project>{6F82F34C-72F8-4C1F-9B41-2EE88C54AB01}</Project>
+      <Name>Domain.GGGETS.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Domain.GGGETS\Domain.GGGETS.csproj">
+      <Project>{D97E400C-5C18-4414-9E53-6A660ED3395F}</Project>
+      <Name>Domain.GGGETS</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Infrastructure.CrossCutting\Infrastructure.CrossCutting.csproj">
+      <Project>{74F0E6EA-1810-4088-B4C5-3941A739D640}</Project>
+      <Name>Infrastructure.CrossCutting</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Infrastructure.Data.Core\Infrastructure.Data.Core.csproj">
+      <Project>{98150D03-B191-476D-B192-B5B755E26E8E}</Project>
+      <Name>Infrastructure.Data.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Messages.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Messages.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
