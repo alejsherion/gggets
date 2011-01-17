@@ -1,5 +1,0 @@
-E:\快递软件\source\GGGETSApp\GGGETSAdmin\bin\GGGETSAdmin.dll
-E:\快递软件\source\GGGETSApp\GGGETSAdmin\bin\GGGETSAdmin.pdb
-E:\快递软件\source\GGGETSApp\GGGETSAdmin\obj\Debug\ResolveAssemblyReference.cache
-E:\快递软件\source\GGGETSApp\GGGETSAdmin\obj\Debug\GGGETSAdmin.dll
-E:\快递软件\source\GGGETSApp\GGGETSAdmin\obj\Debug\GGGETSAdmin.pdb
