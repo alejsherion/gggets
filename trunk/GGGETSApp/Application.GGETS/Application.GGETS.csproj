@@ -56,8 +56,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="TransManagement\ITransManagementService.cs" />
-    <Compile Include="TransManagement\TransManagementService.cs" />
+    <Compile Include="HAWBManagement\IHAWBManagementService.cs" />
+    <Compile Include="HAWBManagement\HAWBManagementService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />

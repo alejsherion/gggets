@@ -7,23 +7,17 @@
     <Schema Namespace="GGGETSModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
         <EntityContainer Name="GGGETSModelStoreContainer">
           <EntitySet Name="HAWB" EntityType="GGGETSModel.Store.HAWB" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="Trans" EntityType="GGGETSModel.Store.Trans" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="TransItem" EntityType="GGGETSModel.Store.TransItem" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="TransLog" EntityType="GGGETSModel.Store.TransLog" store:Type="Tables" Schema="dbo" />
-          <AssociationSet Name="FK_TRANSITE_REFERENCE_TRANS" Association="GGGETSModel.Store.FK_TRANSITE_REFERENCE_TRANS">
-            <End Role="Trans" EntitySet="Trans" />
-            <End Role="TransItem" EntitySet="TransItem" />
-          </AssociationSet>
-          <AssociationSet Name="FK_TRANSLOG_REFERENCE_TRANS" Association="GGGETSModel.Store.FK_TRANSLOG_REFERENCE_TRANS">
-            <End Role="Trans" EntitySet="Trans" />
-            <End Role="TransLog" EntitySet="TransLog" />
+          <EntitySet Name="Item" EntityType="GGGETSModel.Store.Item" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_ITEM_REFERENCE_HAWB" Association="GGGETSModel.Store.FK_ITEM_REFERENCE_HAWB">
+            <End Role="HAWB" EntitySet="HAWB" />
+            <End Role="Item" EntitySet="Item" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="HAWB">
           <Key>
-            <PropertyRef Name="ID" />
+            <PropertyRef Name="HID" />
           </Key>
-          <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="HID" Type="uniqueidentifier" Nullable="false" />
           <Property Name="BarCode" Type="nvarchar" MaxLength="20" />
           <Property Name="Carrier" Type="nvarchar" MaxLength="50" />
           <Property Name="CarrierHAWBID" Type="uniqueidentifier" />
@@ -57,73 +51,32 @@
           <Property Name="IsInternational" Type="bit" />
           <Property Name="SpecialInstruction" Type="nvarchar" MaxLength="500" />
           <Property Name="Taxes" Type="nvarchar" MaxLength="500" />
+          <Property Name="PickupTime" Type="datetime" />
         </EntityType>
-        <EntityType Name="Trans">
-          <Key>
-            <PropertyRef Name="TransId" />
-          </Key>
-          <Property Name="TransId" Type="uniqueidentifier" Nullable="false" />
-          <Property Name="Sender" Type="nvarchar" MaxLength="50" />
-          <Property Name="SenderAddress" Type="nvarchar" MaxLength="255" />
-          <Property Name="SenderAreaCode" Type="int" />
-          <Property Name="SenderPostCode" Type="nvarchar" MaxLength="50" />
-          <Property Name="SenderPhone" Type="nvarchar" MaxLength="50" />
-          <Property Name="Receiver" Type="nvarchar" MaxLength="50" />
-          <Property Name="ReceiverAddress" Type="nvarchar" MaxLength="255" />
-          <Property Name="ReceiverAreaCode" Type="int" />
-          <Property Name="ReceiverPhone" Type="nvarchar" MaxLength="255" />
-          <Property Name="ItemsType" Type="int" />
-          <Property Name="ItemsWeight" Type="int" />
-          <Property Name="ItemsVolumn" Type="int" />
-          <Property Name="IsCustom" Type="int" />
-          <Property Name="CustomFee" Type="int" />
-          <Property Name="Fee" Type="int" />
-          <Property Name="Status" Type="int" />
-          <Property Name="UpdateTime" Type="datetime" />
-          <Property Name="Remark" Type="nvarchar" MaxLength="255" />
-        </EntityType>
-        <EntityType Name="TransItem">
+        <EntityType Name="Item">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
+          <Property Name="Weight" Type="decimal" Nullable="false" />
           <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
-          <Property Name="TransId" Type="uniqueidentifier" />
-          <Property Name="ItemLength" Type="decimal" />
-          <Property Name="ItemWidth" Type="decimal" />
-          <Property Name="ItemHeight" Type="decimal" />
-          <Property Name="ItemTransPays" Type="decimal" />
-          <Property Name="ItemTransCurrency" Type="int" />
+          <Property Name="HID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Length" Type="decimal" />
+          <Property Name="Width" Type="decimal" />
+          <Property Name="Height" Type="decimal" />
+          <Property Name="TransPays" Type="decimal" />
+          <Property Name="TransCurrency" Type="int" />
         </EntityType>
-        <EntityType Name="TransLog">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
-          <Property Name="TransId" Type="uniqueidentifier" />
-          <Property Name="Log" Type="nvarchar" MaxLength="255" />
-          <Property Name="CreateTime" Type="datetime" />
-        </EntityType>
-        <Association Name="FK_TRANSITE_REFERENCE_TRANS">
-          <End Role="Trans" Type="GGGETSModel.Store.Trans" Multiplicity="0..1" />
-          <End Role="TransItem" Type="GGGETSModel.Store.TransItem" Multiplicity="*" />
+        <Association Name="FK_ITEM_REFERENCE_HAWB">
+          <End Role="HAWB" Type="GGGETSModel.Store.HAWB" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Item" Type="GGGETSModel.Store.Item" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Trans">
-              <PropertyRef Name="TransId" />
+            <Principal Role="HAWB">
+              <PropertyRef Name="HID" />
             </Principal>
-            <Dependent Role="TransItem">
-              <PropertyRef Name="TransId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_TRANSLOG_REFERENCE_TRANS">
-          <End Role="Trans" Type="GGGETSModel.Store.Trans" Multiplicity="0..1" />
-          <End Role="TransLog" Type="GGGETSModel.Store.TransLog" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Trans">
-              <PropertyRef Name="TransId" />
-            </Principal>
-            <Dependent Role="TransLog">
-              <PropertyRef Name="TransId" />
+            <Dependent Role="Item">
+              <PropertyRef Name="HID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -133,23 +86,17 @@
       <Schema Namespace="GGGETSModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
         <EntityContainer Name="GGGETSUnitOfWork" annotation:LazyLoadingEnabled="true" >
           <EntitySet Name="HAWB" EntityType="GGGETSModel.HAWB" />
-          <EntitySet Name="Trans" EntityType="GGGETSModel.Trans" />
-          <EntitySet Name="TransItem" EntityType="GGGETSModel.TransItem" />
-          <EntitySet Name="TransLog" EntityType="GGGETSModel.TransLog" />
-          <AssociationSet Name="FK_TRANSITE_REFERENCE_TRANS" Association="GGGETSModel.FK_TRANSITE_REFERENCE_TRANS">
-            <End Role="Trans" EntitySet="Trans" />
-            <End Role="TransItem" EntitySet="TransItem" />
-          </AssociationSet>
-          <AssociationSet Name="FK_TRANSLOG_REFERENCE_TRANS" Association="GGGETSModel.FK_TRANSLOG_REFERENCE_TRANS">
-            <End Role="Trans" EntitySet="Trans" />
-            <End Role="TransLog" EntitySet="TransLog" />
+          <EntitySet Name="Item" EntityType="GGGETSModel.Item" />
+          <AssociationSet Name="FK_ITEM_REFERENCE_HAWB" Association="GGGETSModel.FK_ITEM_REFERENCE_HAWB">
+            <End Role="HAWB" EntitySet="HAWB" />
+            <End Role="Item" EntitySet="Item" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="HAWB">
           <Key>
-            <PropertyRef Name="ID" />
+            <PropertyRef Name="HID" />
           </Key>
-          <Property Type="Guid" Name="ID" Nullable="false" />
+          <Property Type="Guid" Name="HID" Nullable="false" />
           <Property Type="String" Name="BarCode" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="Carrier" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Type="Guid" Name="CarrierHAWBID" />
@@ -183,77 +130,35 @@
           <Property Type="Boolean" Name="IsInternational" />
           <Property Type="String" Name="SpecialInstruction" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="Taxes" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="PickupTime" />
+          <NavigationProperty Name="Item" Relationship="GGGETSModel.FK_ITEM_REFERENCE_HAWB" FromRole="HAWB" ToRole="Item" />
         </EntityType>
-        <EntityType Name="Trans">
-          <Key>
-            <PropertyRef Name="TransId" />
-          </Key>
-          <Property Type="Guid" Name="TransId" Nullable="false" />
-          <Property Type="String" Name="Sender" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="SenderAddress" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Type="Int32" Name="SenderAreaCode" />
-          <Property Type="String" Name="SenderPostCode" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="SenderPhone" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="Receiver" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="ReceiverAddress" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Type="Int32" Name="ReceiverAreaCode" />
-          <Property Type="String" Name="ReceiverPhone" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Type="Int32" Name="ItemsType" />
-          <Property Type="Int32" Name="ItemsWeight" />
-          <Property Type="Int32" Name="ItemsVolumn" />
-          <Property Type="Int32" Name="IsCustom" />
-          <Property Type="Int32" Name="CustomFee" />
-          <Property Type="Int32" Name="Fee" />
-          <Property Type="Int32" Name="Status" />
-          <Property Type="DateTime" Name="UpdateTime" />
-          <Property Type="String" Name="Remark" MaxLength="255" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="TransItem" Relationship="GGGETSModel.FK_TRANSITE_REFERENCE_TRANS" FromRole="Trans" ToRole="TransItem" />
-          <NavigationProperty Name="TransLog" Relationship="GGGETSModel.FK_TRANSLOG_REFERENCE_TRANS" FromRole="Trans" ToRole="TransLog" />
-        </EntityType>
-        <EntityType Name="TransItem">
+        <EntityType Name="Item">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
+          <Property Type="Decimal" Name="Weight" Nullable="false" Precision="18" Scale="0" />
           <Property Type="Guid" Name="Id" Nullable="false" />
-          <Property Type="Guid" Name="TransId" />
-          <Property Type="Decimal" Name="ItemLength" Precision="18" Scale="0" />
-          <Property Type="Decimal" Name="ItemWidth" Precision="18" Scale="0" />
-          <Property Type="Decimal" Name="ItemHeight" Precision="18" Scale="0" />
-          <Property Type="Decimal" Name="ItemTransPays" Precision="18" Scale="0" />
-          <Property Type="Int32" Name="ItemTransCurrency" />
-          <NavigationProperty Name="Trans" Relationship="GGGETSModel.FK_TRANSITE_REFERENCE_TRANS" FromRole="TransItem" ToRole="Trans" />
+          <Property Type="Guid" Name="HID" Nullable="false" />
+          <Property Type="Decimal" Name="Length" Precision="18" Scale="0" />
+          <Property Type="Decimal" Name="Width" Precision="18" Scale="0" />
+          <Property Type="Decimal" Name="Height" Precision="18" Scale="0" />
+          <Property Type="Decimal" Name="TransPays" Precision="18" Scale="0" />
+          <Property Type="Int32" Name="TransCurrency" />
+          <NavigationProperty Name="HAWB" Relationship="GGGETSModel.FK_ITEM_REFERENCE_HAWB" FromRole="Item" ToRole="HAWB" />
         </EntityType>
-        <EntityType Name="TransLog">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Type="Guid" Name="Id" Nullable="false" />
-          <Property Type="Guid" Name="TransId" />
-          <Property Type="String" Name="Log" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Type="DateTime" Name="CreateTime" />
-          <NavigationProperty Name="Trans" Relationship="GGGETSModel.FK_TRANSLOG_REFERENCE_TRANS" FromRole="TransLog" ToRole="Trans" />
-        </EntityType>
-        <Association Name="FK_TRANSITE_REFERENCE_TRANS">
-          <End Type="GGGETSModel.Trans" Role="Trans" Multiplicity="0..1" />
-          <End Type="GGGETSModel.TransItem" Role="TransItem" Multiplicity="*" />
+        <Association Name="FK_ITEM_REFERENCE_HAWB">
+          <End Type="GGGETSModel.HAWB" Role="HAWB" Multiplicity="1" >
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="GGGETSModel.Item" Role="Item" Multiplicity="*" >
+          </End>
           <ReferentialConstraint>
-            <Principal Role="Trans">
-              <PropertyRef Name="TransId" />
+            <Principal Role="HAWB">
+              <PropertyRef Name="HID" />
             </Principal>
-            <Dependent Role="TransItem">
-              <PropertyRef Name="TransId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_TRANSLOG_REFERENCE_TRANS">
-          <End Type="GGGETSModel.Trans" Role="Trans" Multiplicity="0..1" />
-          <End Type="GGGETSModel.TransLog" Role="TransLog" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Trans">
-              <PropertyRef Name="TransId" />
-            </Principal>
-            <Dependent Role="TransLog">
-              <PropertyRef Name="TransId" />
+            <Dependent Role="Item">
+              <PropertyRef Name="HID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -266,6 +171,7 @@
           <EntitySetMapping Name="HAWB">
             <EntityTypeMapping TypeName="GGGETSModel.HAWB">
               <MappingFragment StoreEntitySet="HAWB">
+                <ScalarProperty Name="PickupTime" ColumnName="PickupTime" />
                 <ScalarProperty Name="Taxes" ColumnName="Taxes" />
                 <ScalarProperty Name="SpecialInstruction" ColumnName="SpecialInstruction" />
                 <ScalarProperty Name="IsInternational" ColumnName="IsInternational" />
@@ -299,55 +205,21 @@
                 <ScalarProperty Name="CarrierHAWBID" ColumnName="CarrierHAWBID" />
                 <ScalarProperty Name="Carrier" ColumnName="Carrier" />
                 <ScalarProperty Name="BarCode" ColumnName="BarCode" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="HID" ColumnName="HID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Trans">
-            <EntityTypeMapping TypeName="GGGETSModel.Trans">
-              <MappingFragment StoreEntitySet="Trans">
-                <ScalarProperty Name="Remark" ColumnName="Remark" />
-                <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
-                <ScalarProperty Name="Status" ColumnName="Status" />
-                <ScalarProperty Name="Fee" ColumnName="Fee" />
-                <ScalarProperty Name="CustomFee" ColumnName="CustomFee" />
-                <ScalarProperty Name="IsCustom" ColumnName="IsCustom" />
-                <ScalarProperty Name="ItemsVolumn" ColumnName="ItemsVolumn" />
-                <ScalarProperty Name="ItemsWeight" ColumnName="ItemsWeight" />
-                <ScalarProperty Name="ItemsType" ColumnName="ItemsType" />
-                <ScalarProperty Name="ReceiverPhone" ColumnName="ReceiverPhone" />
-                <ScalarProperty Name="ReceiverAreaCode" ColumnName="ReceiverAreaCode" />
-                <ScalarProperty Name="ReceiverAddress" ColumnName="ReceiverAddress" />
-                <ScalarProperty Name="Receiver" ColumnName="Receiver" />
-                <ScalarProperty Name="SenderPhone" ColumnName="SenderPhone" />
-                <ScalarProperty Name="SenderPostCode" ColumnName="SenderPostCode" />
-                <ScalarProperty Name="SenderAreaCode" ColumnName="SenderAreaCode" />
-                <ScalarProperty Name="SenderAddress" ColumnName="SenderAddress" />
-                <ScalarProperty Name="Sender" ColumnName="Sender" />
-                <ScalarProperty Name="TransId" ColumnName="TransId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="TransItem">
-            <EntityTypeMapping TypeName="GGGETSModel.TransItem">
-              <MappingFragment StoreEntitySet="TransItem">
-                <ScalarProperty Name="ItemTransCurrency" ColumnName="ItemTransCurrency" />
-                <ScalarProperty Name="ItemTransPays" ColumnName="ItemTransPays" />
-                <ScalarProperty Name="ItemHeight" ColumnName="ItemHeight" />
-                <ScalarProperty Name="ItemWidth" ColumnName="ItemWidth" />
-                <ScalarProperty Name="ItemLength" ColumnName="ItemLength" />
-                <ScalarProperty Name="TransId" ColumnName="TransId" />
+          <EntitySetMapping Name="Item">
+            <EntityTypeMapping TypeName="GGGETSModel.Item">
+              <MappingFragment StoreEntitySet="Item">
+                <ScalarProperty Name="TransCurrency" ColumnName="TransCurrency" />
+                <ScalarProperty Name="TransPays" ColumnName="TransPays" />
+                <ScalarProperty Name="Height" ColumnName="Height" />
+                <ScalarProperty Name="Width" ColumnName="Width" />
+                <ScalarProperty Name="Length" ColumnName="Length" />
+                <ScalarProperty Name="HID" ColumnName="HID" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="TransLog">
-            <EntityTypeMapping TypeName="GGGETSModel.TransLog">
-              <MappingFragment StoreEntitySet="TransLog">
-                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
-                <ScalarProperty Name="Log" ColumnName="Log" />
-                <ScalarProperty Name="TransId" ColumnName="TransId" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Weight" ColumnName="Weight" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -372,18 +244,12 @@
     </Options>
     <!-- Diagram content (shape and connector positions) -->
     <Diagrams>
-      <Diagram Name="GGGETSApp" ZoomLevel="78" >
-        <EntityTypeShape EntityType="GGGETSModel.HAWB" Width="2" PointX="7.5" PointY="0.625" Height="7.5096036783854174" />
-        <EntityTypeShape EntityType="GGGETSModel.Trans" Width="2" PointX="0.75" PointY="1.25" Height="5.026347656249996" />
-        <EntityTypeShape EntityType="GGGETSModel.TransItem" Width="2" PointX="4.375" PointY="0.625" Height="2.5430916341145817" />
-        <EntityTypeShape EntityType="GGGETSModel.TransLog" Width="2" PointX="3.75" PointY="4.125" Height="1.9700325520833317" />
-        <AssociationConnector Association="GGGETSModel.FK_TRANSITE_REFERENCE_TRANS" >
-          <ConnectorPoint PointX="2.75" PointY="2.2090458170572909" />
-          <ConnectorPoint PointX="4.375" PointY="2.2090458170572909" />
-        </AssociationConnector>
-        <AssociationConnector Association="GGGETSModel.FK_TRANSLOG_REFERENCE_TRANS" >
-          <ConnectorPoint PointX="2.75" PointY="5.1100162760416659" />
-          <ConnectorPoint PointX="3.75" PointY="5.1100162760416659" />
+      <Diagram Name="GGGETSApp" ZoomLevel="56" >
+        <EntityTypeShape EntityType="GGGETSModel.HAWB" Width="2.625" PointX="1.25" PointY="0.5" Height="7.8916430664062514" />
+        <EntityTypeShape EntityType="GGGETSModel.Item" Width="2.125" PointX="5.75" PointY="2" Height="2.7341113281249996" />
+        <AssociationConnector Association="GGGETSModel.FK_ITEM_REFERENCE_HAWB" >
+          <ConnectorPoint PointX="3.875" PointY="3.3670556640625" />
+          <ConnectorPoint PointX="5.75" PointY="3.3670556640625" />
         </AssociationConnector>
       </Diagram>
     </Diagrams>

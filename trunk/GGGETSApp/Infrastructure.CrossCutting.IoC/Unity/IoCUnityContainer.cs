@@ -11,7 +11,7 @@ using ETS.GGGETSApp.Infrastructure.CrossCutting.NetFramework.Logging;
 using ETS.GGGETSApp.Infrastructure.CrossCutting.Logging;
 using Domain.GGGETS;
 using ETS.GGGETSApp.Infrastructure.Data.Persistence.Repositories;
-using Application.GGETS.TransManagement;
+using Application.GGETS;
 
 
 
@@ -72,15 +72,15 @@ namespace ETS.GGGETSApp.Infrastructure.CrossCutting.IoC.Unity
             //if any type has been written wrong.
 
             //Register Repositories mappings
-            container.RegisterType<ITransRepository, TransRepository>(new TransientLifetimeManager());
-            //container.RegisterType<IOrderRepository, OrderRepository>(new TransientLifetimeManager());
+            container.RegisterType<IHAWBRepository, HAWBRepository>(new TransientLifetimeManager());
+            container.RegisterType<IItemRepository, ItemRepository>(new TransientLifetimeManager());
             //container.RegisterType<IBankAccountRepository, BankAccountRepository>(new TransientLifetimeManager());
             //container.RegisterType<ICustomerRepository, CustomerRepository>(new TransientLifetimeManager());
             //container.RegisterType<ICountryRepository, CountryRepository>(new TransientLifetimeManager());
 
             //Register application services mappings
 
-            container.RegisterType<ITransManagementService, TransManagementService>(new TransientLifetimeManager());
+            container.RegisterType<IHAWBManagementService,HAWBManagementService>(new TransientLifetimeManager());
             //container.RegisterType<ICustomerManagementService, CustomerManagementService>(new TransientLifetimeManager());
             //container.RegisterType<IBankingManagementService, BankingManagementService>(new TransientLifetimeManager());
             

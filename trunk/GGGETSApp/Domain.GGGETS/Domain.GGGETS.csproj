@@ -39,7 +39,9 @@
   </PropertyGroup>
   <ItemGroup />
   <ItemGroup>
-    <Compile Include="Trans\ITransRepository.cs" />
+    <Compile Include="HAWB\HAWBBarCodeSpecification.cs" />
+    <Compile Include="HAWB\IHAWBRepository.cs" />
+    <Compile Include="HAWB\IItemRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
