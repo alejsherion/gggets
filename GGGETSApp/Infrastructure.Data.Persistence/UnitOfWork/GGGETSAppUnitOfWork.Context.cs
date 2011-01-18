@@ -184,23 +184,11 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.UnitOfWork
         }
         private ObjectSet<HAWB> _hAWB;
     
-        public IObjectSet<Trans> Trans
+        public IObjectSet<Item> Item
         {
-            get { return _trans  ?? (_trans = CreateObjectSet<Trans>("Trans")); }
+            get { return _item  ?? (_item = CreateObjectSet<Item>("Item")); }
         }
-        private ObjectSet<Trans> _trans;
-    
-        public IObjectSet<TransItem> TransItem
-        {
-            get { return _transItem  ?? (_transItem = CreateObjectSet<TransItem>("TransItem")); }
-        }
-        private ObjectSet<TransItem> _transItem;
-    
-        public IObjectSet<TransLog> TransLog
-        {
-            get { return _transLog  ?? (_transLog = CreateObjectSet<TransLog>("TransLog")); }
-        }
-        private ObjectSet<TransLog> _transLog;
+        private ObjectSet<Item> _item;
 
         #endregion
     }

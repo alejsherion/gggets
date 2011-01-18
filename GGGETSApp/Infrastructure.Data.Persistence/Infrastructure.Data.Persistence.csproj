@@ -62,7 +62,8 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>GGGETSAppDataModel.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Repositories\TransRepository.cs" />
+    <Compile Include="Repositories\HAWBRepository.cs" />
+    <Compile Include="Repositories\ItemRepository.cs" />
     <Compile Include="UnitOfWork\GGGETSAppUnitOfWork.Context.Extensions.cs">
       <DependentUpon>GGGETSAppUnitOfWork.Context.tt</DependentUpon>
     </Compile>

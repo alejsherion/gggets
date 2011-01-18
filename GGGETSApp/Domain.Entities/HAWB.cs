@@ -22,6 +22,7 @@ using ETS.GGGETSApp.Domain.Core.Entities;
 namespace ETS.GGGETSApp.Domain.Application.Entities
 {
     [DataContract(IsReference = true)]
+    [KnownType(typeof(Item))]
     [System.CodeDom.Compiler.GeneratedCode("STE-EF",".NET 4.0")]
     #if !SILVERLIGHT
     [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage()]
@@ -31,23 +32,23 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
         #region Primitive Properties
     
         [DataMember]
-        public System.Guid ID
+        public System.Guid HID
         {
-            get { return _iD; }
+            get { return _hID; }
             set
             {
-                if (_iD != value)
+                if (_hID != value)
                 {
                     if (ChangeTracker.ChangeTrackingEnabled && ChangeTracker.State != ObjectState.Added)
                     {
-                        throw new InvalidOperationException("The property 'ID' is part of the object's key and cannot be changed. Changes to key properties can only be made when the object is not being tracked or is in the Added state.");
+                        throw new InvalidOperationException("The property 'HID' is part of the object's key and cannot be changed. Changes to key properties can only be made when the object is not being tracked or is in the Added state.");
                     }
-                    _iD = value;
-                    OnPropertyChanged("ID");
+                    _hID = value;
+                    OnPropertyChanged("HID");
                 }
             }
         }
-        private System.Guid _iD;
+        private System.Guid _hID;
     
         [DataMember]
         public string BarCode
@@ -543,6 +544,59 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
             }
         }
         private string _taxes;
+    
+        [DataMember]
+        public Nullable<System.DateTime> PickupTime
+        {
+            get { return _pickupTime; }
+            set
+            {
+                if (_pickupTime != value)
+                {
+                    _pickupTime = value;
+                    OnPropertyChanged("PickupTime");
+                }
+            }
+        }
+        private Nullable<System.DateTime> _pickupTime;
+
+        #endregion
+        #region Navigation Properties
+    
+        [DataMember]
+        public TrackableCollection<Item> Item
+        {
+            get
+            {
+                if (_item == null)
+                {
+                    _item = new TrackableCollection<Item>();
+                    _item.CollectionChanged += FixupItem;
+                }
+                return _item;
+            }
+            set
+            {
+                if (!ReferenceEquals(_item, value))
+                {
+                    if (ChangeTracker.ChangeTrackingEnabled)
+                    {
+                        throw new InvalidOperationException("Cannot set the FixupChangeTrackingCollection when ChangeTracking is enabled");
+                    }
+                    if (_item != null)
+                    {
+                        _item.CollectionChanged -= FixupItem;
+                    }
+                    _item = value;
+                    if (_item != null)
+                    {
+                        _item.CollectionChanged += FixupItem;
+                    }
+                    OnNavigationPropertyChanged("Item");
+                }
+            }
+        }
+        private TrackableCollection<Item> _item;
 
         #endregion
         #region ChangeTracking
@@ -622,6 +676,49 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
     
         protected virtual void ClearNavigationProperties()
         {
+            Item.Clear();
+        }
+
+        #endregion
+        #region Association Fixup
+    
+        private void FixupItem(object sender, NotifyCollectionChangedEventArgs e)
+        {
+            if (IsDeserializing)
+            {
+                return;
+            }
+    
+            if (e.NewItems != null)
+            {
+                foreach (Item item in e.NewItems)
+                {
+                    item.HAWB = this;
+                    if (ChangeTracker.ChangeTrackingEnabled)
+                    {
+                        if (!item.ChangeTracker.ChangeTrackingEnabled)
+                        {
+                            item.StartTracking();
+                        }
+                        ChangeTracker.RecordAdditionToCollectionProperties("Item", item);
+                    }
+                }
+            }
+    
+            if (e.OldItems != null)
+            {
+                foreach (Item item in e.OldItems)
+                {
+                    if (ReferenceEquals(item.HAWB, this))
+                    {
+                        item.HAWB = null;
+                    }
+                    if (ChangeTracker.ChangeTrackingEnabled)
+                    {
+                        ChangeTracker.RecordRemovalFromCollectionProperties("Item", item);
+                    }
+                }
+            }
         }
 
         #endregion

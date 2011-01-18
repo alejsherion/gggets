@@ -41,13 +41,7 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.UnitOfWork
         IObjectSet<HAWB> HAWB{get;}
         
     
-        IObjectSet<Trans> Trans{get;}
-        
-    
-        IObjectSet<TransItem> TransItem{get;}
-        
-    
-        IObjectSet<TransLog> TransLog{get;}
+        IObjectSet<Item> Item{get;}
         
 
         #endregion
