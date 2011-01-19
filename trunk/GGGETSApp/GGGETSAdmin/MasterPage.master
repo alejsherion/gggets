@@ -1,0 +1,107 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MasterPage" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div>
+        <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
+            <asp:Label ID="lbl" runat="server" Text="wasd;lk"></asp:Label>
+        </asp:ContentPlaceHolder>
+    </div>
+    <div>
+        <asp:ContentPlaceHolder id="ContentPlaceHolder3" runat="server">
+            
+        </asp:ContentPlaceHolder>
+    </div>
+    <div>
+        <asp:ContentPlaceHolder ID="CPH_UserControl" runat="server">
+            <div style="width:64%; float:left">
+            </div>
+        </asp:ContentPlaceHolder>
+        <asp:ContentPlaceHolder id="ContentPlaceHolder2" runat="server">
+            <div style="width:35%; float:right">
+                <div>
+                    <asp:Label ID="lbl_GrXinXi" runat="server" Text="个人信息"></asp:Label>
+                </div>
+                <div>
+                    <div style="width:35%; float:left; margin-top:15px">
+                        <asp:Image ID="Image1" runat="server"  Height="118px" Width="83px"/>
+                    </div>
+                    <div style="width:65%; float:right; margin-top:15px">
+                        <table>
+                            <tr>
+                                <td align="center" colspan="2">
+                                    <asp:Label ID="Lbl_Name" runat="server" Text="张三"></asp:Label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="center" colspan="2">
+                                    <asp:Label ID="Lbl_CompanyName" runat="server" Text="公司名称"></asp:Label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <a href="Default.aspx">修改密码</a></td>
+                                <td>
+                                    <a href="Default.aspx">查看信息</a></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <a href="Default.aspx">系统消息</a></td>
+                                <td>
+                                    <a href="Default.aspx">退出系统</a></td>
+                            </tr>
+                            <tr>
+                                <td align="center" style="font-size:small">
+                                    登陆时间</td>
+                                <td style="font-size:small">
+                                    <asp:Label ID="Lbl_LandTime" runat="server" Text="2001-11-4"></asp:Label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="center" style="font-size:small">
+                                    上次访问时间</td>
+                                <td style="font-size:small">
+                                    <asp:Label ID="Lbl_ScCallTime" runat="server" Text="2001-11-4"></asp:Label>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <table>
+                        <tr>
+                            <td>
+                                <asp:Button ID="But_OrderFromSter" runat="server" Text="订单管理" Height="63px" />
+                            </td>
+                            <td>
+                                <asp:Button ID="But_WlSter" runat="server" Text="物流管理" Height="63px" />
+                            </td>
+                            <td>
+                                <asp:Button ID="But_BGSter" runat="server" Text="报关管理" Height="63px" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <asp:Button ID="But_SataSter" runat="server" Text="统计管理" Height="63px" />
+                            </td>
+                            <td>
+                                <asp:Button ID="But_Bankroll" runat="server" Text="资金管理" Height="63px" />
+                            </td>
+                            <td>
+                                <asp:Button ID="But_EconomySter" runat="server" Text="系统管理" Height="63px"/>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </asp:ContentPlaceHolder>
+    </div>
+    </form>
+</body>
+</html>
