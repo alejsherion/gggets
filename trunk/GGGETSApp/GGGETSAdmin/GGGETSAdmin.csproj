@@ -56,9 +56,9 @@
     <Content Include="Account\Login.aspx" />
     <Content Include="Account\Register.aspx" />
     <Content Include="HAWB\AddItem.aspx" />
-    <Content Include="HAWB\HAWBdemand.aspx" />
-    <Content Include="HAWB\HAWBSetAndEit.aspx" />
-    <Content Include="HAWB\NewHAWB.aspx" />
+    <Content Include="HAWB\HAWBManagement.aspx" />
+    <Content Include="HAWB\HAWBDetails.aspx" />
+    <Content Include="HAWB\AddHAWB.aspx" />
     <Content Include="Scripts\calendar.js" />
     <Content Include="Styles\Site.css" />
     <Content Include="Default.aspx" />
@@ -128,30 +128,30 @@
     <Compile Include="HAWB\AddItem.aspx.designer.cs">
       <DependentUpon>AddItem.aspx</DependentUpon>
     </Compile>
-    <Compile Include="HAWB\HAWBdemand.aspx.cs">
-      <DependentUpon>HAWBdemand.aspx</DependentUpon>
+    <Compile Include="HAWB\HAWBManagement.aspx.cs">
+      <DependentUpon>HAWBManagement.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="HAWB\HAWBdemand.aspx.designer.cs">
-      <DependentUpon>HAWBdemand.aspx</DependentUpon>
+    <Compile Include="HAWB\HAWBManagement.aspx.designer.cs">
+      <DependentUpon>HAWBManagement.aspx</DependentUpon>
     </Compile>
-    <Compile Include="HAWB\HAWBSetAndEit.aspx.cs">
-      <DependentUpon>HAWBSetAndEit.aspx</DependentUpon>
+    <Compile Include="HAWB\HAWBDetails.aspx.cs">
+      <DependentUpon>HAWBDetails.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="HAWB\HAWBSetAndEit.aspx.designer.cs">
-      <DependentUpon>HAWBSetAndEit.aspx</DependentUpon>
+    <Compile Include="HAWB\HAWBDetails.aspx.designer.cs">
+      <DependentUpon>HAWBDetails.aspx</DependentUpon>
     </Compile>
     <Compile Include="MasterPage.master.cs">
       <DependentUpon>MasterPage.master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="HAWB\NewHAWB.aspx.cs">
-      <DependentUpon>NewHAWB.aspx</DependentUpon>
+    <Compile Include="HAWB\AddHAWB.aspx.cs">
+      <DependentUpon>AddHAWB.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="HAWB\NewHAWB.aspx.designer.cs">
-      <DependentUpon>NewHAWB.aspx</DependentUpon>
+    <Compile Include="HAWB\AddHAWB.aspx.designer.cs">
+      <DependentUpon>AddHAWB.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Site.Master.cs">

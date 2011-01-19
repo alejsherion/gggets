@@ -586,11 +586,23 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
                     if (_item != null)
                     {
                         _item.CollectionChanged -= FixupItem;
+                        // This is the principal end in an association that performs cascade deletes.
+                        // Remove the cascade delete event handler for any entities in the current collection.
+                        foreach (Item item in _item)
+                        {
+                            ChangeTracker.ObjectStateChanging -= item.HandleCascadeDelete;
+                        }
                     }
                     _item = value;
                     if (_item != null)
                     {
                         _item.CollectionChanged += FixupItem;
+                        // This is the principal end in an association that performs cascade deletes.
+                        // Add the cascade delete event handler for any entities that are already in the new collection.
+                        foreach (Item item in _item)
+                        {
+                            ChangeTracker.ObjectStateChanging += item.HandleCascadeDelete;
+                        }
                     }
                     OnNavigationPropertyChanged("Item");
                 }
@@ -702,6 +714,9 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
                         }
                         ChangeTracker.RecordAdditionToCollectionProperties("Item", item);
                     }
+                    // This is the principal end in an association that performs cascade deletes.
+                    // Update the event listener to refer to the new dependent.
+                    ChangeTracker.ObjectStateChanging += item.HandleCascadeDelete;
                 }
             }
     
@@ -717,6 +732,9 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
                     {
                         ChangeTracker.RecordRemovalFromCollectionProperties("Item", item);
                     }
+                    // This is the principal end in an association that performs cascade deletes.
+                    // Remove the previous dependent from the event listener.
+                    ChangeTracker.ObjectStateChanging -= item.HandleCascadeDelete;
                 }
             }
         }
