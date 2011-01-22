@@ -50,7 +50,7 @@ namespace GGGETSAdmin.HAWB1
         protected void But_AddItme_Click(object sender, EventArgs e)
         {
             CunZhi(); 
-            Response.Redirect("AddItem1.aspx");
+            Response.Redirect("AddItem.aspx");
         }
 
         protected void But_AddHAWB_Click(object sender, EventArgs e)
