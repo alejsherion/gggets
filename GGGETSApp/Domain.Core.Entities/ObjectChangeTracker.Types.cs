@@ -24,6 +24,7 @@ namespace ETS.GGGETSApp.Domain.Core.Entities
 {
     // Helper class that captures most of the change tracking work that needs to be done
     // for self tracking entities.
+    [Serializable]
     [DataContract(IsReference = true)]
     [DebuggerNonUserCode()]
     [GeneratedCode("STE-EF",".NET 4.0")]
@@ -250,7 +251,7 @@ namespace ETS.GGGETSApp.Domain.Core.Entities
     }
     #endregion
     
-    
+    [Serializable]
     [CollectionDataContract (Name = "ObjectsAddedToCollectionProperties",
         ItemName = "AddedObjectsForProperty", KeyName = "CollectionPropertyName", ValueName = "AddedObjects")]
     [DebuggerNonUserCode()]
@@ -260,7 +261,7 @@ namespace ETS.GGGETSApp.Domain.Core.Entities
     #endif
     public class ObjectsAddedToCollectionProperties : Dictionary<string, ObjectList> { }
     
-    
+    [Serializable]
     [CollectionDataContract (Name = "ObjectsRemovedFromCollectionProperties",
         ItemName = "DeletedObjectsForProperty", KeyName = "CollectionPropertyName",ValueName = "DeletedObjects")]
     [DebuggerNonUserCode()]
@@ -290,7 +291,7 @@ namespace ETS.GGGETSApp.Domain.Core.Entities
     #endif
     public class ExtendedPropertiesDictionary : Dictionary<string, Object> { }
     
-    
+    [Serializable]
     [CollectionDataContract(ItemName = "ObjectValue")]
     [DebuggerNonUserCode()]
     [GeneratedCode("STE-EF",".NET 4.0")]
@@ -405,6 +406,7 @@ namespace ETS.GGGETSApp.Domain.Core.Entities
     
     // An System.Collections.ObjectModel.ObservableCollection that raises
     // individual item removal notifications on clear and prevents adding duplicates.
+    [Serializable]
     [DebuggerNonUserCode()]
     [GeneratedCode("STE-EF",".NET 4.0")]
     [CollectionDataContractAttribute()]

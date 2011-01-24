@@ -40,9 +40,10 @@ namespace Application.GGETS
 
         public HAWB FindHAWBByBarCode(string barCode)
         {
-            HAWBBarCodeSpecification specification = new HAWBBarCodeSpecification(barCode);
-           //query repository
-            return this._hawbRepository.GetBySpec(specification as ISpecification<HAWB>).SingleOrDefault();
+           // HAWBBarCodeSpecification specification = new HAWBBarCodeSpecification(barCode);
+           ////query repository
+            return this._hawbRepository.FindHAWBByBarCode(barCode); ;
+
         }
 
         public List<HAWB> FindPagedHAWBs(int pageIndex, int pageCount)

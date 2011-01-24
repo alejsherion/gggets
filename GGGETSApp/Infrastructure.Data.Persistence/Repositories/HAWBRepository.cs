@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using ETS.GGGETSApp.Infrastructure.Data.Core;
+using ETS.GGGETSApp.Infrastructure.Data.Core.Extensions;
 using ETS.GGGETSApp.Infrastructure.Data.Persistence.UnitOfWork;
 using ETS.GGGETSApp.Infrastructure.CrossCutting.Logging;
 using ETS.GGGETSApp.Domain.Application.Entities;
@@ -36,6 +37,23 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Repositories
                                                                 Messages.exception_InvalidStoreContext,
                                                                 this.GetType().Name));
         }
-       
+
+
+
+        public HAWB FindHAWBByBarCode(string barCode)
+        {
+
+            IGGGETSAppUnitOfWork context = this.UnitOfWork as IGGGETSAppUnitOfWork;
+
+            if (context != null)
+            {
+                return context.HAWB.Include(ba => ba.Item).Where(it=>it.BarCode==barCode).SingleOrDefault();                                         
+            }
+            else
+                throw new InvalidOperationException(string.Format(
+                                                                CultureInfo.InvariantCulture,
+                                                                Messages.exception_InvalidStoreContext,
+                                                                this.GetType().Name));
+        }
     }
 }
