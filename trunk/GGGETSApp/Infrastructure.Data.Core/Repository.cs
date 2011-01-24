@@ -81,9 +81,9 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Core
         }
 
         /// <summary>
-        /// <see cref="Microsoft.Samples.NLayerApp.Domain.Core.IRepository{TEntity}"/>
+        /// <see cref="GGGETS.GGGETSApp.Domain.Core.IRepository{TEntity}"/>
         /// </summary>
-        /// <param name="item"><see cref="Microsoft.Samples.NLayerApp.Domain.Core.IRepository{TEntity}"/></param>
+        /// <param name="item"><see cref="GGGETS.GGGETSApp.Domain.Core.IRepository{TEntity}"/></param>
         public virtual void Add(TEntity item)
         {
             //check item
@@ -113,9 +113,9 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Core
                 throw new InvalidOperationException(Resources.Messages.exception_ChangeTrackerIsNullOrStateIsNOK);
         }
         /// <summary>
-        /// <see cref="Microsoft.Samples.NLayerApp.Domain.Core.IRepository{TEntity}"/>
+        /// <see cref="GGGETS.GGGETSApp.Domain.Core.IRepository{TEntity}"/>
         /// </summary>
-        /// <param name="item"><see cref="Microsoft.Samples.NLayerApp.Domain.Core.IRepository{TEntity}"/></param>
+        /// <param name="item"><see cref="GGGETS.GGGETSApp.Domain.Core.IRepository{TEntity}"/></param>
         public virtual void Remove(TEntity item)
         {
             //check item
@@ -139,9 +139,9 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Core
         }
 
         /// <summary>
-        /// <see cref="Microsoft.Samples.NLayerApp.Domain.Core.IRepository{TEntity}"/>
+        /// <see cref="GGGETS.GGGETSApp.Domain.Core.IRepository{TEntity}"/>
         /// </summary>
-        /// <param name="item"><see cref="Microsoft.Samples.NLayerApp.Domain.Core.IRepository{TEntity}"/></param>
+        /// <param name="item"><see cref="GGGETS.GGGETSApp.Domain.Core.IRepository{TEntity}"/></param>
         public virtual void RegisterItem(TEntity item)
         {
             if (item == (TEntity)null)
@@ -155,9 +155,9 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Core
                             typeof(TEntity).Name));
         }
         /// <summary>
-        /// <see cref="Microsoft.Samples.NLayerApp.Domain.Core.IRepository{TEntity}"/>
+        /// <see cref="GGGETS.GGGETSApp.Domain.Core.IRepository{TEntity}"/>
         /// </summary>
-        /// <param name="item"><see cref="Microsoft.Samples.NLayerApp.Domain.Core.IRepository{TEntity}"/></param>
+        /// <param name="item"><see cref="GGGETS.GGGETSApp.Domain.Core.IRepository{TEntity}"/></param>
         public virtual void Modify(TEntity item)
         {
             //check arguments
@@ -181,9 +181,9 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Core
                                         typeof(TEntity).Name));
         }
         /// <summary>
-        /// <see cref="Microsoft.Samples.NLayerApp.Domain.Core.IRepository{TEntity}"/>
+        /// <see cref="GGGETS.GGGETSApp.Domain.Core.IRepository{TEntity}"/>
         /// </summary>
-        /// <returns><see cref="Microsoft.Samples.NLayerApp.Domain.Core.IRepository{TEntity}"/></returns>
+        /// <returns><see cref="GGGETS.GGGETSApp.Domain.Core.IRepository{TEntity}"/></returns>
         public virtual IEnumerable<TEntity> GetAll()
         {
 
@@ -196,10 +196,10 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Core
             return (CreateSet()).AsEnumerable<TEntity>();
         }
         /// <summary>
-        /// <see cref="Microsoft.Samples.NLayerApp.Domain.Core.IRepository{TEntity}"/>
+        /// <see cref="GGGETS.GGGETSApp.Domain.Core.IRepository{TEntity}"/>
         /// </summary>
-        /// <param name="specification"><see cref="Microsoft.Samples.NLayerApp.Domain.Core.IRepository{TEntity}"/></param>
-        /// <returns><see cref="Microsoft.Samples.NLayerApp.Domain.Core.IRepository{TEntity}"/></returns>
+        /// <param name="specification"><see cref="GGGETS.GGGETSApp.Domain.Core.IRepository{TEntity}"/></param>
+        /// <returns><see cref="GGGETS.GGGETSApp.Domain.Core.IRepository{TEntity}"/></returns>
         public virtual IEnumerable<TEntity> GetBySpec(ISpecification<TEntity> specification)
         {
             if (specification == (ISpecification<TEntity>)null)
@@ -216,13 +216,13 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Core
         }
 
         /// <summary>
-        /// <see cref="Microsoft.Samples.NLayerApp.Domain.Core.IRepository{TEntity}"/>
+        /// <see cref="GGGETS.GGGETSApp.Domain.Core.IRepository{TEntity}"/>
         /// </summary>
-        /// <param name="pageIndex"><see cref="Microsoft.Samples.NLayerApp.Domain.Core.IRepository{TEntity}"/></param>
-        /// <param name="pageCount"><see cref="Microsoft.Samples.NLayerApp.Domain.Core.IRepository{TEntity}"/></param>
-        /// <param name="orderByExpression"><see cref="Microsoft.Samples.NLayerApp.Domain.Core.IRepository{TEntity}"/></param>
-        /// <param name="ascending"><see cref="Microsoft.Samples.NLayerApp.Domain.Core.IRepository{TEntity}"/></param>
-        /// <returns><see cref="Microsoft.Samples.NLayerApp.Domain.Core.IRepository{TEntity}"/></returns>
+        /// <param name="pageIndex"><see cref="GGGETS.GGGETSApp.Domain.Core.IRepository{TEntity}"/></param>
+        /// <param name="pageCount"><see cref="GGGETS.GGGETSApp.Domain.Core.IRepository{TEntity}"/></param>
+        /// <param name="orderByExpression"><see cref="GGGETS.GGGETSApp.Domain.Core.IRepository{TEntity}"/></param>
+        /// <param name="ascending"><see cref="GGGETS.GGGETSApp.Domain.Core.IRepository{TEntity}"/></param>
+        /// <returns><see cref="GGGETS.GGGETSApp.Domain.Core.IRepository{TEntity}"/></returns>
         public virtual IEnumerable<TEntity> GetPagedElements<S>(int pageIndex, int pageCount, System.Linq.Expressions.Expression<Func<TEntity, S>> orderByExpression, bool ascending)
         {
             //checking arguments for this query 
@@ -249,15 +249,15 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Core
 
 
         /// <summary>
-        /// <see cref="Microsoft.Samples.NLayerApp.Domain.Core.IRepository{TEntity}"/>
+        /// <see cref="GGGETS.GGGETSApp.Domain.Core.IRepository{TEntity}"/>
         /// </summary>
-        /// <typeparam name="S"><see cref="Microsoft.Samples.NLayerApp.Domain.Core.IRepository{TEntity}"/></typeparam>
-        /// <param name="pageIndex"><see cref="Microsoft.Samples.NLayerApp.Domain.Core.IRepository{TEntity}"/></param>
-        /// <param name="pageCount"><see cref="Microsoft.Samples.NLayerApp.Domain.Core.IRepository{TEntity}"/></param>
-        /// <param name="orderByExpression"><see cref="Microsoft.Samples.NLayerApp.Domain.Core.IRepository{TEntity}"/></param>
-        /// <param name="specification"><see cref="Microsoft.Samples.NLayerApp.Domain.Core.IRepository{TEntity}"/></param>
-        /// <param name="ascending"><see cref="Microsoft.Samples.NLayerApp.Domain.Core.IRepository{TEntity}"/></param>
-        /// <returns><see cref="Microsoft.Samples.NLayerApp.Domain.Core.IRepository{TEntity}"/></returns>
+        /// <typeparam name="S"><see cref="GGGETS.GGGETSApp.Domain.Core.IRepository{TEntity}"/></typeparam>
+        /// <param name="pageIndex"><see cref="GGGETS.GGGETSApp.Domain.Core.IRepository{TEntity}"/></param>
+        /// <param name="pageCount"><see cref="GGGETS.GGGETSApp.Domain.Core.IRepository{TEntity}"/></param>
+        /// <param name="orderByExpression"><see cref="GGGETS.GGGETSApp.Domain.Core.IRepository{TEntity}"/></param>
+        /// <param name="specification"><see cref="GGGETS.GGGETSApp.Domain.Core.IRepository{TEntity}"/></param>
+        /// <param name="ascending"><see cref="GGGETS.GGGETSApp.Domain.Core.IRepository{TEntity}"/></param>
+        /// <returns><see cref="GGGETS.GGGETSApp.Domain.Core.IRepository{TEntity}"/></returns>
         public virtual IEnumerable<TEntity> GetPagedElements<S>(int pageIndex, int pageCount, Expression<Func<TEntity, S>> orderByExpression, ISpecification<TEntity> specification, bool ascending)
         {
             //checking arguments for this query 
@@ -304,10 +304,10 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Core
 
 
         /// <summary>
-        /// <see cref="Microsoft.Samples.NLayerApp.Domain.Core.IRepository{TEntity}"/>
+        /// <see cref="GGGETS.GGGETSApp.Domain.Core.IRepository{TEntity}"/>
         /// </summary>
-        /// <param name="filter"><see cref="Microsoft.Samples.NLayerApp.Domain.Core.IRepository{TEntity}"/></param>
-        /// <returns><see cref="Microsoft.Samples.NLayerApp.Domain.Core.IRepository{TEntity}"/></returns>
+        /// <param name="filter"><see cref="GGGETS.GGGETSApp.Domain.Core.IRepository{TEntity}"/></param>
+        /// <returns><see cref="GGGETS.GGGETSApp.Domain.Core.IRepository{TEntity}"/></returns>
         public virtual IEnumerable<TEntity> GetFilteredElements(Expression<Func<TEntity, bool>> filter)
         {
             //checking query arguments
@@ -325,12 +325,12 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Core
         }
 
         /// <summary>
-        /// <see cref="Microsoft.Samples.NLayerApp.Domain.Core.IRepository{TEntity}"/>
+        /// <see cref="GGGETS.GGGETSApp.Domain.Core.IRepository{TEntity}"/>
         /// </summary>
-        /// <param name="filter"><see cref="Microsoft.Samples.NLayerApp.Domain.Core.IRepository{TEntity}"/></param>
-        /// <param name="orderByExpression"><see cref="Microsoft.Samples.NLayerApp.Domain.Core.IRepository{TEntity}"/></param>
-        /// <param name="ascending"><see cref="Microsoft.Samples.NLayerApp.Domain.Core.IRepository{TEntity}"/></param>
-        /// <returns><see cref="Microsoft.Samples.NLayerApp.Domain.Core.IRepository{TEntity}"/></returns>
+        /// <param name="filter"><see cref="GGGETS.GGGETSApp.Domain.Core.IRepository{TEntity}"/></param>
+        /// <param name="orderByExpression"><see cref="GGGETS.GGGETSApp.Domain.Core.IRepository{TEntity}"/></param>
+        /// <param name="ascending"><see cref="GGGETS.GGGETSApp.Domain.Core.IRepository{TEntity}"/></param>
+        /// <returns><see cref="GGGETS.GGGETSApp.Domain.Core.IRepository{TEntity}"/></returns>
         public virtual IEnumerable<TEntity> GetFilteredElements<S>(Expression<Func<TEntity, bool>> filter, Expression<Func<TEntity, S>> orderByExpression, bool ascending)
         {
             //Checking query arguments
@@ -362,14 +362,14 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Core
         }
 
         /// <summary>
-        /// <see cref="Microsoft.Samples.NLayerApp.Domain.Core.IRepository{TEntity}"/>
+        /// <see cref="GGGETS.GGGETSApp.Domain.Core.IRepository{TEntity}"/>
         /// </summary>
-        /// <param name="filter"><see cref="Microsoft.Samples.NLayerApp.Domain.Core.IRepository{TEntity}"/></param>
-        /// <param name="pageIndex"><see cref="Microsoft.Samples.NLayerApp.Domain.Core.IRepository{TEntity}"/></param>
-        /// <param name="pageCount"><see cref="Microsoft.Samples.NLayerApp.Domain.Core.IRepository{TEntity}"/></param>
-        /// <param name="orderByExpression"><see cref="Microsoft.Samples.NLayerApp.Domain.Core.IRepository{TEntity}"/></param>
-        /// <param name="ascending"><see cref="Microsoft.Samples.NLayerApp.Domain.Core.IRepository{TEntity}"/></param>
-        /// <returns><see cref="Microsoft.Samples.NLayerApp.Domain.Core.IRepository{TEntity}"/></returns>
+        /// <param name="filter"><see cref="GGGETS.GGGETSApp.Domain.Core.IRepository{TEntity}"/></param>
+        /// <param name="pageIndex"><see cref="GGGETS.GGGETSApp.Domain.Core.IRepository{TEntity}"/></param>
+        /// <param name="pageCount"><see cref="GGGETS.GGGETSApp.Domain.Core.IRepository{TEntity}"/></param>
+        /// <param name="orderByExpression"><see cref="GGGETS.GGGETSApp.Domain.Core.IRepository{TEntity}"/></param>
+        /// <param name="ascending"><see cref="GGGETS.GGGETSApp.Domain.Core.IRepository{TEntity}"/></param>
+        /// <returns><see cref="GGGETS.GGGETSApp.Domain.Core.IRepository{TEntity}"/></returns>
         public virtual IEnumerable<TEntity> GetFilteredElements<S>(Expression<Func<TEntity, bool>> filter, int pageIndex, int pageCount, Expression<Func<TEntity, S>> orderByExpression, bool ascending)
         {
 

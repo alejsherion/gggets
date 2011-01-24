@@ -10,5 +10,6 @@ namespace Domain.GGGETS
     public interface IHAWBRepository : IRepository<HAWB>
     {
         IEnumerable<HAWB> FindPagedHAWBs(int pageIndex, int pageCount);
+        HAWB FindHAWBByBarCode(string barCode);
     }
 }

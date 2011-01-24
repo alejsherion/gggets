@@ -244,12 +244,12 @@
     </Options>
     <!-- Diagram content (shape and connector positions) -->
     <Diagrams>
-      <Diagram Name="GGGETSApp" ZoomLevel="56" >
+      <Diagram Name="GGGETSApp" ZoomLevel="43" >
         <EntityTypeShape EntityType="GGGETSModel.HAWB" Width="2.625" PointX="1.25" PointY="0.5" Height="7.8916430664062514" />
-        <EntityTypeShape EntityType="GGGETSModel.Item" Width="2.125" PointX="5.75" PointY="2" Height="2.7341113281249996" />
+        <EntityTypeShape EntityType="GGGETSModel.Item" Width="2.125" PointX="9.625" PointY="1.875" Height="2.7341113281249996" />
         <AssociationConnector Association="GGGETSModel.FK_ITEM_REFERENCE_HAWB" >
-          <ConnectorPoint PointX="3.875" PointY="3.3670556640625" />
-          <ConnectorPoint PointX="5.75" PointY="3.3670556640625" />
+          <ConnectorPoint PointX="3.875" PointY="3.2420556640625" />
+          <ConnectorPoint PointX="9.625" PointY="3.2420556640625" />
         </AssociationConnector>
       </Diagram>
     </Diagrams>
