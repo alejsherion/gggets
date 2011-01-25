@@ -8,5 +8,9 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
     [Serializable]
     public partial class Item
     {
+        public Item()
+        {
+            ChangeTracker.ChangeTrackingEnabled = true;
+        }
     }
 }
