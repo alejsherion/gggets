@@ -5,7 +5,7 @@ using System.Text;
 
 namespace ETS.GGGETSApp.Domain.Application.Entities
 {
-    [Serializable]
+    //[Serializable]
     public partial class Item
     {
         public Item()

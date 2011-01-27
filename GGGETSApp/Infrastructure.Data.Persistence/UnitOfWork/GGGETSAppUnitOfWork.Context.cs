@@ -189,6 +189,30 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.UnitOfWork
             get { return _item  ?? (_item = CreateObjectSet<Item>("Item")); }
         }
         private ObjectSet<Item> _item;
+    
+        public IObjectSet<AddressBook> AddressBook
+        {
+            get { return _addressBook  ?? (_addressBook = CreateObjectSet<AddressBook>("AddressBook")); }
+        }
+        private ObjectSet<AddressBook> _addressBook;
+    
+        public IObjectSet<Company> Company
+        {
+            get { return _company  ?? (_company = CreateObjectSet<Company>("Company")); }
+        }
+        private ObjectSet<Company> _company;
+    
+        public IObjectSet<CompanyUser> CompanyUser
+        {
+            get { return _companyUser  ?? (_companyUser = CreateObjectSet<CompanyUser>("CompanyUser")); }
+        }
+        private ObjectSet<CompanyUser> _companyUser;
+    
+        public IObjectSet<IndividualUser> IndividualUser
+        {
+            get { return _individualUser  ?? (_individualUser = CreateObjectSet<IndividualUser>("IndividualUser")); }
+        }
+        private ObjectSet<IndividualUser> _individualUser;
 
         #endregion
     }
