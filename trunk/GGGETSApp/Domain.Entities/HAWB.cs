@@ -23,6 +23,7 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
 {
     [DataContract(IsReference = true)]
     [KnownType(typeof(Item))]
+    [Serializable]
     [System.CodeDom.Compiler.GeneratedCode("STE-EF",".NET 4.0")]
     #if !SILVERLIGHT
     [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage()]

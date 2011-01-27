@@ -52,12 +52,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddressBook.cs">
+      <DependentUpon>GGGETSAppContext.Types.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Company.cs">
+      <DependentUpon>GGGETSAppContext.Types.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CompanyUser.cs">
+      <DependentUpon>GGGETSAppContext.Types.tt</DependentUpon>
+    </Compile>
     <Compile Include="GGGETSAppContext.Types.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>GGGETSAppContext.Types.tt</DependentUpon>
     </Compile>
     <Compile Include="HAWB.cs">
+      <DependentUpon>GGGETSAppContext.Types.tt</DependentUpon>
+    </Compile>
+    <Compile Include="IndividualUser.cs">
       <DependentUpon>GGGETSAppContext.Types.tt</DependentUpon>
     </Compile>
     <Compile Include="Item.cs">

@@ -43,6 +43,18 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.UnitOfWork
     
         IObjectSet<Item> Item{get;}
         
+    
+        IObjectSet<AddressBook> AddressBook{get;}
+        
+    
+        IObjectSet<Company> Company{get;}
+        
+    
+        IObjectSet<CompanyUser> CompanyUser{get;}
+        
+    
+        IObjectSet<IndividualUser> IndividualUser{get;}
+        
 
         #endregion
     

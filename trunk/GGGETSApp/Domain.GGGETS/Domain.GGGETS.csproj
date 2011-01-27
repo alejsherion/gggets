@@ -37,7 +37,9 @@
   <PropertyGroup>
     <StartupObject />
   </PropertyGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="CRM\" />
+  </ItemGroup>
   <ItemGroup>
     <Compile Include="HAWB\HAWBBarCodeSpecification.cs" />
     <Compile Include="HAWB\IHAWBRepository.cs" />

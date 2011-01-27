@@ -29,6 +29,7 @@ foreach (EntityType entity in ItemCollection.GetItems<EntityType>().OrderBy(e =>
     BeginNamespace(namespaceName, code);
     WriteEntityTypeSerializationInfo(entity, ItemCollection, code, ef);
 #>
+[Serializable]
 [System.CodeDom.Compiler.GeneratedCode("STE-EF",".NET 4.0")]
 #if !SILVERLIGHT
 [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage()]
