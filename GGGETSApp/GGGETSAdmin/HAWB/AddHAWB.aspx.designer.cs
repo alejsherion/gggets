@@ -7,10 +7,28 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace GGGETSAdmin.HAWB1 {
+namespace GGGETSAdmin.HAWB {
     
     
-    public partial class NewHAWB {
+    public partial class AddHAWB {
+        
+        /// <summary>
+        /// form1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
+        
+        /// <summary>
+        /// phHAWB_Info control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.PlaceHolder phHAWB_Info;
         
         /// <summary>
         /// Txt_BarCode control.
@@ -22,6 +40,24 @@ namespace GGGETSAdmin.HAWB1 {
         protected global::System.Web.UI.WebControls.TextBox Txt_BarCode;
         
         /// <summary>
+        /// Rfv_BarCode control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator Rfv_BarCode;
+        
+        /// <summary>
+        /// btnScan control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton btnScan;
+        
+        /// <summary>
         /// Txt_Carrier control.
         /// </summary>
         /// <remarks>
@@ -29,6 +65,15 @@ namespace GGGETSAdmin.HAWB1 {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox Txt_Carrier;
+        
+        /// <summary>
+        /// Rfv_Carrier control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator Rfv_Carrier;
         
         /// <summary>
         /// Txt_CarrierHAWBID control.
@@ -40,6 +85,15 @@ namespace GGGETSAdmin.HAWB1 {
         protected global::System.Web.UI.WebControls.TextBox Txt_CarrierHAWBID;
         
         /// <summary>
+        /// Rfv_Account control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator Rfv_Account;
+        
+        /// <summary>
         /// Txt_Account control.
         /// </summary>
         /// <remarks>
@@ -47,6 +101,24 @@ namespace GGGETSAdmin.HAWB1 {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox Txt_Account;
+        
+        /// <summary>
+        /// RequiredFieldValidator1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator1;
+        
+        /// <summary>
+        /// Txt_Owner control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox Txt_Owner;
         
         /// <summary>
         /// DDl_SettleType control.
@@ -67,40 +139,13 @@ namespace GGGETSAdmin.HAWB1 {
         protected global::System.Web.UI.WebControls.DropDownList DDl_ServiceType;
         
         /// <summary>
-        /// Txt_DeadlineTime control.
+        /// Txt_ShipperID control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox Txt_DeadlineTime;
-        
-        /// <summary>
-        /// Txt_Owner control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox Txt_Owner;
-        
-        /// <summary>
-        /// DDl_ShipperID control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DDl_ShipperID;
-        
-        /// <summary>
-        /// Txt_ShipperContactor control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox Txt_ShipperContactor;
+        protected global::System.Web.UI.WebControls.TextBox Txt_ShipperID;
         
         /// <summary>
         /// Txt_ShipperCountry control.
@@ -112,6 +157,15 @@ namespace GGGETSAdmin.HAWB1 {
         protected global::System.Web.UI.WebControls.TextBox Txt_ShipperCountry;
         
         /// <summary>
+        /// Rev_ShipperCountry control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator Rev_ShipperCountry;
+        
+        /// <summary>
         /// Txt_ShipperRegion control.
         /// </summary>
         /// <remarks>
@@ -121,13 +175,31 @@ namespace GGGETSAdmin.HAWB1 {
         protected global::System.Web.UI.WebControls.TextBox Txt_ShipperRegion;
         
         /// <summary>
-        /// Txt_ShipperAddress control.
+        /// Rev_ShipperRegion control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox Txt_ShipperAddress;
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator Rev_ShipperRegion;
+        
+        /// <summary>
+        /// Txt_ShipperContactor control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox Txt_ShipperContactor;
+        
+        /// <summary>
+        /// Rfv_ShipperContacto control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator Rfv_ShipperContacto;
         
         /// <summary>
         /// Txt_ShipperTel control.
@@ -139,6 +211,24 @@ namespace GGGETSAdmin.HAWB1 {
         protected global::System.Web.UI.WebControls.TextBox Txt_ShipperTel;
         
         /// <summary>
+        /// Rfv_ShipperTel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator Rfv_ShipperTel;
+        
+        /// <summary>
+        /// Rev_ShipperTel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator Rev_ShipperTel;
+        
+        /// <summary>
         /// Txt_ShipperZipCode control.
         /// </summary>
         /// <remarks>
@@ -148,22 +238,40 @@ namespace GGGETSAdmin.HAWB1 {
         protected global::System.Web.UI.WebControls.TextBox Txt_ShipperZipCode;
         
         /// <summary>
-        /// DDl_ConsigneeID control.
+        /// Rev_ShipperZipCode control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DDl_ConsigneeID;
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator Rev_ShipperZipCode;
         
         /// <summary>
-        /// Txt_ConsigneeContactor control.
+        /// Txt_ShipperAddress control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox Txt_ConsigneeContactor;
+        protected global::System.Web.UI.WebControls.TextBox Txt_ShipperAddress;
+        
+        /// <summary>
+        /// Rfv_ShipperAddress control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator Rfv_ShipperAddress;
+        
+        /// <summary>
+        /// Txt_ConsigneeID control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox Txt_ConsigneeID;
         
         /// <summary>
         /// Txt_ConsigneeCountry control.
@@ -175,6 +283,15 @@ namespace GGGETSAdmin.HAWB1 {
         protected global::System.Web.UI.WebControls.TextBox Txt_ConsigneeCountry;
         
         /// <summary>
+        /// Rev_ConsigneeCountry control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator Rev_ConsigneeCountry;
+        
+        /// <summary>
         /// Txt_ConsigneeRegion control.
         /// </summary>
         /// <remarks>
@@ -184,13 +301,31 @@ namespace GGGETSAdmin.HAWB1 {
         protected global::System.Web.UI.WebControls.TextBox Txt_ConsigneeRegion;
         
         /// <summary>
-        /// Txt_ConsigneeAddress control.
+        /// Rev_ConsigneeRegion control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox Txt_ConsigneeAddress;
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator Rev_ConsigneeRegion;
+        
+        /// <summary>
+        /// Txt_ConsigneeContactor control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox Txt_ConsigneeContactor;
+        
+        /// <summary>
+        /// Rfv_ConsigneeContactor control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator Rfv_ConsigneeContactor;
         
         /// <summary>
         /// Txt_ConsigneeTel control.
@@ -202,6 +337,24 @@ namespace GGGETSAdmin.HAWB1 {
         protected global::System.Web.UI.WebControls.TextBox Txt_ConsigneeTel;
         
         /// <summary>
+        /// Rfv_ConsigneeTel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator Rfv_ConsigneeTel;
+        
+        /// <summary>
+        /// Rev_ConsigneeTel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator Rev_ConsigneeTel;
+        
+        /// <summary>
         /// Txt_ConsigneeZipCode control.
         /// </summary>
         /// <remarks>
@@ -211,13 +364,58 @@ namespace GGGETSAdmin.HAWB1 {
         protected global::System.Web.UI.WebControls.TextBox Txt_ConsigneeZipCode;
         
         /// <summary>
-        /// But_AddItme control.
+        /// Rev_ConsigneeZipCode control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button But_AddItme;
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator Rev_ConsigneeZipCode;
+        
+        /// <summary>
+        /// Txt_ConsigneeAddress control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox Txt_ConsigneeAddress;
+        
+        /// <summary>
+        /// Rfv_ConsigneeAddress control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator Rfv_ConsigneeAddress;
+        
+        /// <summary>
+        /// phHAWB_Item control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.PlaceHolder phHAWB_Item;
+        
+        /// <summary>
+        /// But_AddItem control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button But_AddItem;
+        
+        /// <summary>
+        /// Gv_BaleXinXi control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView Gv_BaleXinXi;
         
         /// <summary>
         /// DDl_WeightType control.
@@ -247,22 +445,13 @@ namespace GGGETSAdmin.HAWB1 {
         protected global::System.Web.UI.WebControls.TextBox Txt_Piece;
         
         /// <summary>
-        /// DDL_IsInternational control.
+        /// Rbl_ control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DDL_IsInternational;
-        
-        /// <summary>
-        /// Txt_SpecialInstruction control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox Txt_SpecialInstruction;
+        protected global::System.Web.UI.WebControls.RadioButtonList Rbl_;
         
         /// <summary>
         /// Txt_Taxes control.
@@ -272,6 +461,24 @@ namespace GGGETSAdmin.HAWB1 {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox Txt_Taxes;
+        
+        /// <summary>
+        /// Txt_DeadlineTime control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox Txt_DeadlineTime;
+        
+        /// <summary>
+        /// Rev_DeadlineTime control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator Rev_DeadlineTime;
         
         /// <summary>
         /// Txt_Description control.
@@ -299,5 +506,14 @@ namespace GGGETSAdmin.HAWB1 {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button But_AddHAWB;
+        
+        /// <summary>
+        /// But_Rurnet control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button But_Rurnet;
     }
 }

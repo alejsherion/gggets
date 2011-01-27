@@ -4,16 +4,18 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Data;
 using Application.GGETS;
 using ETS.GGGETSApp.Domain.Application.Entities;
 using System.Text.RegularExpressions;
 
+
 namespace GGGETSAdmin.HAWB
 {
-    public partial class AddHAWB : System.Web.UI.Page
+    public partial class AddHAWBInernal : System.Web.UI.Page
     {
         private IHAWBManagementService _hawbService;
-        protected AddHAWB()
+        protected AddHAWBInernal()
         {
         }
         ETS.GGGETSApp.Domain.Application.Entities.HAWB hawb = new ETS.GGGETSApp.Domain.Application.Entities.HAWB();
@@ -24,7 +26,7 @@ namespace GGGETSAdmin.HAWB
         public int n=1;
         private int i=0;
         private int a = 0;
-        public AddHAWB(IHAWBManagementService hawbService)
+        public AddHAWBInernal(IHAWBManagementService hawbService)
         {
             _hawbService = hawbService;
         }
@@ -70,7 +72,6 @@ namespace GGGETSAdmin.HAWB
         protected void But_AddItme_Click(object sender, EventArgs e)
         {
             Storage();
-            //DataTabel dt = (DataTabel)Session["hawb"];
             Response.Redirect("AddItem.aspx");
         }
 
@@ -78,13 +79,14 @@ namespace GGGETSAdmin.HAWB
         {
             Storage();
             ETS.GGGETSApp.Domain.Application.Entities.HAWB hawb = (ETS.GGGETSApp.Domain.Application.Entities.HAWB)Session["hawb"];
-
             Item item = (Item)Session["item"];
             hawb.Item.Add(item);
             _hawbService.AddHAWB(hawb);
             Session["jilu"] = "0";
             Session["item"] = null;
             Response.Write("<script>alert('添加成功！');location='HAWBManagement.aspx'</script>");
+
+
         }
         private void Storage()
         {
@@ -101,20 +103,21 @@ namespace GGGETSAdmin.HAWB
             hawb.Owner = Guid.NewGuid();
             hawb.ShipperID = Guid.NewGuid();
             hawb.ShipperContactor = Txt_ShipperContactor.Text;
-            hawb.ShipperCountry = Txt_ShipperCountry.Text;
+            hawb.ShipperCountry = "国内";
             hawb.ShipperRegion = Txt_ShipperRegion.Text;
             hawb.ShipperAddress = Txt_ShipperAddress.Text;
             hawb.ShipperTel = Txt_ShipperTel.Text;
             hawb.ShipperZipCode = Txt_ShipperZipCode.Text;
             hawb.ConsigneeID = Guid.NewGuid();
             hawb.ConsigneeContactor = Txt_ConsigneeContactor.Text;
-            hawb.ConsigneeCountry = Txt_ConsigneeCountry.Text;
+            hawb.ConsigneeCountry = "国内";
             hawb.ConsigneeRegion = Txt_ConsigneeRegion.Text;
             hawb.ConsigneeAddress = Txt_ConsigneeAddress.Text;
             hawb.ConsigneeTel = Txt_ConsigneeTel.Text;
             hawb.ConsigneeZipCode = Txt_ConsigneeZipCode.Text;
             //hawbUpdate.WeightType =  DDl_WeightType.Text;
-            hawb.Piece = int.Parse(Txt_Piece.Text);
+            if (Txt_Piece.Text != "" && Txt_Piece.Text != null)
+                hawb.Piece = int.Parse(Txt_Piece.Text);
             //if (DDL_IsInternational.SelectedValue == "false")
             //hawb.IsInternational = false;
             //else
@@ -146,12 +149,9 @@ namespace GGGETSAdmin.HAWB
             if (hawbUpdate.DeadlienTime.ToString() != "")
                 Txt_DeadlineTime.Text = hawbUpdate.DeadlienTime.ToString();
             //hawb.Owner = Guid.NewGuid();
-            Txt_Owner.Text = hawbUpdate.Owner.ToString();
             //hawb.ShipperID = Guid.NewGuid();
             if (hawbUpdate.ShipperContactor != "")
                 Txt_ShipperContactor.Text = hawbUpdate.ShipperContactor;
-            if (hawbUpdate.ShipperCountry != "")
-                Txt_ShipperCountry.Text = hawbUpdate.ShipperCountry;
             if (hawbUpdate.ShipperRegion != "")
                 Txt_ShipperRegion.Text = hawbUpdate.ShipperRegion;
             if (hawbUpdate.ShipperAddress != "")
@@ -163,8 +163,6 @@ namespace GGGETSAdmin.HAWB
             //hawb.ConsigneeID = Guid.NewGuid();
             if (hawbUpdate.ConsigneeContactor != "")
                 Txt_ConsigneeContactor.Text = hawbUpdate.ConsigneeContactor;
-            if (hawbUpdate.ConsigneeCountry != "")
-                Txt_ConsigneeCountry.Text = hawbUpdate.ConsigneeCountry;
             if (hawbUpdate.ConsigneeRegion != "")
                 Txt_ConsigneeRegion.Text = hawbUpdate.ConsigneeRegion;
             if (hawbUpdate.ConsigneeAddress != "")
@@ -217,7 +215,7 @@ namespace GGGETSAdmin.HAWB
         {
             Item item = (Item)Session["item"];
             string decimalPattern = @"^[0]{1}\.?[0-9]{0,2}|[1-9]+\.?[0-9]{0,2}$";
-            string intPattern = @"^[1-9]*$";
+            string intPattern = @"^[1-9]+";
             bool Ok = true;
             if (!Regex.IsMatch(((TextBox)Gv_BaleXinXi.Rows[e.RowIndex].Cells[2].Controls[0]).Text.Trim(), decimalPattern))
             {
