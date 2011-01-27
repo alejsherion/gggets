@@ -1,0 +1,373 @@
+﻿/* CSS Version Logistic for zh-cn */
+/* Version: 1.4 || Date: 2010-12-26 || Author: Cyrano */
+/* Cascading Style Sheets Level 2 Revision 1 */
+
+/*** Template Style ***/
+*
+{
+    margin: 0;
+    padding: 0;
+}
+body
+{
+}
+select option
+{
+    padding-left: 4px;
+}
+ul, li
+{
+    list-style: none;
+}
+a
+{
+    color: #00853e;
+    text-decoration: none;
+}
+a:hover
+{
+    color: #0033ff;
+    text-decoration: underline;
+}
+#Wrapper
+{
+    width: 960px;
+    overflow: hidden;
+    margin: auto;
+}
+span.new
+{
+    background: url(images/new.gif) no-repeat;
+    display: inline-block;
+    width: 30px;
+    height: 12px;
+}
+
+/*** PlaceHolder ***/
+.ContentPlaceHolder
+{
+    clear: both;
+}
+fieldset
+{
+    margin: 5px;
+    border: none;
+}
+.LeftPlaceHolder
+{
+    float: left;
+    width: 220px;
+    display: inline;
+}
+.RightPlaceHolder
+{
+    float: right;
+    width: 220px;
+    display: inline;
+}
+
+.MainPlaceHolder
+{
+    float: left;
+    overflow: hidden;
+}
+.MainLeftPlaceHolder
+{
+    float: left;
+    width: 530px;
+    overflow: hidden;
+}
+.MainRightPlaceHolder
+{
+    float: right;
+    width: 210px;
+    overflow: hidden;
+}
+
+
+/*** Part ***/
+.Part
+{
+    background: #fff;
+    margin: 5px;
+    position: relative;
+}
+.Part .TitleBar
+{
+    background: #598fb4;
+    height: 25px;
+    overflow: hidden;
+}
+.Part .TitleBar a
+{
+    font-family: Verdana;
+    font-weight: bold;
+    font-size: 12px;
+    color: #eee;
+    display: block;
+    margin: 5px 0px 5px 12px;
+    text-decoration: none;
+}
+.Part .TitleBar a:hover
+{
+    color: #fff;
+    text-decoration: underline;
+}
+.Part .Block
+{
+    padding: 10px;
+}
+.Part .Block ul li
+{
+    margin: 4px;
+    background: url(images/libg.gif) no-repeat 2px 8px;
+}
+.Part .Block ul li a
+{
+    line-height: 1.5;
+    text-align: left;
+    padding-left: 10px;
+}
+.Part .Block .date
+{
+    font-size: 10px;
+    color: #666;
+    font-family: Tahoma;
+}
+.Part .More
+{
+    position: absolute;
+    top: 5px;
+    right: 5px;
+}
+.Part .More a
+{
+    font-size: 12px;
+    font-weight: bold;
+    text-decoration: underline;
+    color: #fff;
+    font-family: Arial;
+}
+.Part .More a:hover
+{
+    color: #333;
+}
+
+/** Part UserPanel **/
+.UserPanel
+{
+    border: 1px solid #003399;
+    background: #e9e9e9;
+}
+.UserPanel .Block 
+{
+    padding: 5px;
+}
+.UserPanel .Block ul li.UP_name
+{
+    font-size: 18pt;
+    font-weight: bold;
+    color: #003399;
+}
+.UserPanel .Block .UP_img
+{
+     float: left;
+      width: 100px;
+    margin: 8px;     
+}
+.UserPanel .Block .UP_img img
+{
+      width: 100px;
+      height: 150px;
+}
+
+/** DataPager **/
+.DataPager
+{
+    width: 100%;
+    height: 30px;
+}
+.DataPager .DivFloatLeft
+{
+    float: left;
+    margin: 3px;
+    color: #666;
+}
+.DataPager .DivFloatRight
+{
+    float: right;
+    color: #666;
+}
+.DataPager a
+{
+    cursor: pointer;
+    text-decoration: underline;
+    color: #f7911e;
+}
+.DataPager a:hover
+{
+    color: #333;
+}
+.DataPager .GotoTxt
+{
+    background: #fff;
+    border: 1px solid #ccc;
+    font-size: 10px;
+    color: #666;
+}
+.DataPager .GotoBtn
+{
+    font-size: 12px;
+    background: #eee;
+    border: 1px solid #ccc;
+    color: #333;
+}
+/*** DetailPlaceHolder ***/
+.DetailPlaceHolder
+{
+    padding: 10px;
+    background: #f9f7f8 url(images/DetailBg.gif) no-repeat left top;
+}
+.DetailPlaceHolder .DetailTitle
+{
+    text-align: center;
+    margin: 10px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #f7911e;
+}
+.DetailPlaceHolder .DetailShowTime
+{
+    color: #2fa201;
+    text-align: center;
+    margin: 10px;
+    font-size: 14px;
+    font-weight: bold;
+}
+.DetailPlaceHolder .DetailDesc
+{
+    text-align: justify;
+    line-height: 1.6;
+    color: #666;
+}
+.DetailPlaceHolder .DetailContent
+{
+    border: 3px dashed #ccc;
+    padding: 15px;
+    font-size: medium;
+    background: #fff url(images/RegulationBg.gif) no-repeat right bottom;
+    line-height: 1.8;
+}
+.DetailPlaceHolder .DetailContent .MediaFile
+{
+    text-align: center;
+    margin: 5px;
+}
+.DetailPlaceHolder .DetailContent p
+{
+    line-height: 1.8;
+    font-size: medium;
+    text-indent: 32px;
+}
+.DetailPlaceHolder .DetailContent
+{
+    font-size: medium;
+    line-height: 1.8;
+}
+.DetailPlaceHolder .DetailContent a, .DetailPlaceHolder .DetailContent p a
+{
+    font-size: medium;
+    line-height: 1.8;
+    color: #00853e;
+}
+.DetailPlaceHolder .ToolBar
+{
+    text-align: center;
+    margin: 10px;
+}
+.DetailPlaceHolder .ToolBar .InputBtn
+{
+    border: 1px solid #fff;
+    background: #f7911e;
+    color: #fff;
+    font-size: 12px;
+    padding: 5px 8px;
+    font-weight: bold;
+    cursor: pointer;
+}
+.DetailPlaceHolder .TipInfo
+{
+    text-align: center;
+    margin: 5px;
+    background: #fffddb;
+    padding: 10px;
+    border: 1px dashed #f7911e;
+    font-size: 14px;
+    font-weight: bold;
+    color: #f7911e;
+}
+.DetailPlaceHolder .TipInfo a
+{
+    font-size: 14px;
+    font-weight: bold;
+    text-decoration: underline;
+}
+.DetailPlaceHolder .Attachment
+{
+    margin: 20px;
+}
+.DetailPlaceHolder .Attachment ul li
+{
+    background: url(images/IconAttach.gif) no-repeat left 7px;
+    padding-left: 18px;
+}
+.DetailPlaceHolder .Attachment ul li a
+{
+    font-size: 10.5pt;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+/* InfoList */
+.MainPlaceHolder .InfoList
+{
+    margin: 5px;
+    position: static;
+    background: #fff url(images/AffairThemeBg.gif) no-repeat right 25px;
+}
+.InfoList .TitleBar
+{
+    background: #f58b1f;
+}
+.InfoList .TitleBar a
+{
+    color: #fff;
+}
+.InfoList .Block
+{
+    background: url(images/LastNewsBlockBg.gif) no-repeat 10px 0px;
+}
+.InfoList .Block ul li
+{
+    margin: 4px;
+    border-bottom: 1px dashed #ccc;
+}
+.InfoList .Block ul li a
+{
+    line-height: 1.5;
+    text-align: left;
+    padding-left: 10px;
+    font-size: 14px;
+}
+.InfoList .Block ul li .date
+{
+    font-size: 12px;
+    color: #e77110;
+    font-family: Tahoma;
+}
+.InfoList .Block ul li p
+{
+    color: #999;
+    margin: 3px 15px;
+    line-height: 1.5;
+}

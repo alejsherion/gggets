@@ -7,10 +7,19 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace GGGETSAdmin.HAWB1 {
+namespace GGGETSAdmin.HAWB {
     
     
-    public partial class HAWBdemand {
+    public partial class HAWBManagement {
+        
+        /// <summary>
+        /// MyPanel1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::GGGETSAdmin.Control.MyPanel MyPanel1;
         
         /// <summary>
         /// Lbl_BarCode control.
@@ -47,5 +56,23 @@ namespace GGGETSAdmin.HAWB1 {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView GV_Bdemand;
+        
+        /// <summary>
+        /// But_Goup control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button But_Goup;
+        
+        /// <summary>
+        /// But_Down control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button But_Down;
     }
 }

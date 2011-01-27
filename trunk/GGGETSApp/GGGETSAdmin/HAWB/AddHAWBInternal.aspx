@@ -1,7 +1,7 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="AddHAWB.aspx.cs" Inherits="GGGETSAdmin.HAWB.AddHAWB"
-    Theme="logisitc" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="AddHAWBInternal.aspx.cs" Inherits="GGGETSAdmin.HAWB.AddHAWBInernal" Theme="logisitc" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
@@ -59,7 +59,6 @@
                         </td>
                         <td align="left">
                             <asp:TextBox ID="Txt_Owner" runat="server" Width="250px" CssClass="TextBox" Enabled="false"></asp:TextBox>
-                        </td>
                     </tr>
                     <tr class="AlternatingRow">
                         <td class="FieldHeader">
@@ -93,13 +92,10 @@
                     </tr>
                     <tr class="Row">
                         <td class="FieldHeader">
-                            发件国家/地区码：
+                            发件地区码：
                         </td>
                         <td align="left">
-                            <asp:TextBox ID="Txt_ShipperCountry" runat="server" Width="100px" CssClass="TextBox"></asp:TextBox>
-                            <asp:RegularExpressionValidator ID="Rev_ShipperCountry" runat="server" ControlToValidate="Txt_ShipperCountry"
-                                ErrorMessage="只能输入字母且只能为2位！" ValidationExpression="^[a-zA-Z]{2}$" ForeColor="Red"></asp:RegularExpressionValidator>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            <asp:TextBox ID="Txt_ShipperRegion" runat="server" Width="100px" CssClass="TextBox"></asp:TextBox>
+                            <asp:TextBox ID="Txt_ShipperRegion" runat="server" Width="250px" CssClass="TextBox"></asp:TextBox>
                             <asp:RegularExpressionValidator ID="Rev_ShipperRegion" runat="server" ControlToValidate="Txt_ShipperRegion"
                                 ErrorMessage="只能输入字母且只能为3位！" ValidationExpression="^[a-zA-Z]{3}$" ForeColor="Red"></asp:RegularExpressionValidator>
                         </td>
@@ -159,13 +155,10 @@
                     </tr>
                     <tr class="Row">
                         <td class="FieldHeader">
-                            收件国家/地区码：
+                            收件地区码：
                         </td>
                         <td align="left">
-                            <asp:TextBox ID="Txt_ConsigneeCountry" runat="server" Width="100px" CssClass="TextBox"></asp:TextBox>
-                            <asp:RegularExpressionValidator ID="Rev_ConsigneeCountry" runat="server" ControlToValidate="Txt_ConsigneeCountry"
-                                ErrorMessage="只能输入字母且只能为2位！" ValidationExpression="^[a-zA-Z]{2}$" ForeColor="Red"></asp:RegularExpressionValidator>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            <asp:TextBox ID="Txt_ConsigneeRegion" runat="server" Width="100px" CssClass="TextBox"></asp:TextBox>
+                            <asp:TextBox ID="Txt_ConsigneeRegion" runat="server" Width="250px" CssClass="TextBox"></asp:TextBox>
                             <asp:RegularExpressionValidator ID="Rev_ConsigneeRegion" runat="server" ControlToValidate="Txt_ConsigneeRegion"
                                 ErrorMessage="只能输入字母且只能为3位！" ValidationExpression="^[a-zA-Z]{3}$" ForeColor="Red"></asp:RegularExpressionValidator>
                         </td>
@@ -223,16 +216,14 @@
                     <tr class="Header">
                         <th colspan="4">
                             订单关联货物信息
-                            <asp:Button ID="But_AddItem" Text="添加货物信息" runat="server" CssClass="InputBtn" OnClick="But_AddItme_Click" />
+                            <asp:Button ID="But_AddItem" runat="server" Text="添加货物信息" CssClass="InputBtn" OnClick="But_AddItme_Click"/>
                         </th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr class="AlternatingRow">
                         <td colspan="4">
-                            <asp:GridView ID="Gv_BaleXinXi" runat="server" AutoGenerateColumns="false" DataKeyNames="HID"
-                        OnRowCancelingEdit="Gv_BaleXinXi_RowCancelingEdit" OnRowDeleting="Gv_BaleXinXi_RowDeleting"
-                        OnRowUpdating="Gv_BaleXinXi_RowUpdating" OnRowEditing="Gv_BaleXinXi_RowEditing">
+                            <asp:GridView ID="Gv_BaleXinXi" runat="server" AutoGenerateColumns="False">
                                 <Columns>
                                     <asp:TemplateField HeaderText="编号">
                                         <ItemTemplate>

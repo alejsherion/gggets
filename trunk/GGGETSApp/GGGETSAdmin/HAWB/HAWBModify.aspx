@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="AddHAWB.aspx.cs" Inherits="GGGETSAdmin.HAWB.AddHAWB"
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="HAWBModify.aspx.cs" Inherits="GGGETSAdmin.HAWB.HAWBModify"
     Theme="logisitc" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -11,6 +11,13 @@
     <div>
         <asp:PlaceHolder ID="phHAWB_Info" runat="server">
             <table class="DataView" cellspacing="1" cellpadding="3">
+                <thead>
+                    <tr class="Header">
+                        <th colspan="4">
+                            订单号：<asp:Label ID="lbl_Hid" runat="server"></asp:Label> | Owner: William
+                        </th>
+                    </tr>
+                </thead>
                 <tbody>
                     <tr class="Row">
                         <td class="FieldHeader">
@@ -89,6 +96,8 @@
                         </td>
                         <td colspan="3" align="left">
                             <asp:TextBox ID="Txt_ShipperID" runat="server" Width="250px" CssClass="TextBox"></asp:TextBox>
+                            <%--<asp:DropDownList ID="ddl1" Width="500px" runat="server">
+                            </asp:DropDownList>--%>
                         </td>
                     </tr>
                     <tr class="Row">
@@ -96,10 +105,10 @@
                             发件国家/地区码：
                         </td>
                         <td align="left">
-                            <asp:TextBox ID="Txt_ShipperCountry" runat="server" Width="100px" CssClass="TextBox"></asp:TextBox>
+                            <asp:TextBox ID="Txt_ShipperCountry" runat="server" Width="50px" CssClass="TextBox"></asp:TextBox>
                             <asp:RegularExpressionValidator ID="Rev_ShipperCountry" runat="server" ControlToValidate="Txt_ShipperCountry"
-                                ErrorMessage="只能输入字母且只能为2位！" ValidationExpression="^[a-zA-Z]{2}$" ForeColor="Red"></asp:RegularExpressionValidator>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            <asp:TextBox ID="Txt_ShipperRegion" runat="server" Width="100px" CssClass="TextBox"></asp:TextBox>
+                                ErrorMessage="只能输入字母且只能为2位！" ValidationExpression="^[a-zA-Z]{2}$" ForeColor="Red"></asp:RegularExpressionValidator>
+                            <asp:TextBox ID="Txt_ShipperRegion" runat="server" Width="50px" CssClass="TextBox"></asp:TextBox>
                             <asp:RegularExpressionValidator ID="Rev_ShipperRegion" runat="server" ControlToValidate="Txt_ShipperRegion"
                                 ErrorMessage="只能输入字母且只能为3位！" ValidationExpression="^[a-zA-Z]{3}$" ForeColor="Red"></asp:RegularExpressionValidator>
                         </td>
@@ -162,10 +171,10 @@
                             收件国家/地区码：
                         </td>
                         <td align="left">
-                            <asp:TextBox ID="Txt_ConsigneeCountry" runat="server" Width="100px" CssClass="TextBox"></asp:TextBox>
+                            <asp:TextBox ID="Txt_ConsigneeCountry" runat="server" Width="50px" CssClass="TextBox"></asp:TextBox>
                             <asp:RegularExpressionValidator ID="Rev_ConsigneeCountry" runat="server" ControlToValidate="Txt_ConsigneeCountry"
-                                ErrorMessage="只能输入字母且只能为2位！" ValidationExpression="^[a-zA-Z]{2}$" ForeColor="Red"></asp:RegularExpressionValidator>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            <asp:TextBox ID="Txt_ConsigneeRegion" runat="server" Width="100px" CssClass="TextBox"></asp:TextBox>
+                                ErrorMessage="只能输入字母且只能为2位！" ValidationExpression="^[a-zA-Z]{2}$" ForeColor="Red"></asp:RegularExpressionValidator>
+                            <asp:TextBox ID="Txt_ConsigneeRegion" runat="server" Width="50px" CssClass="TextBox"></asp:TextBox>
                             <asp:RegularExpressionValidator ID="Rev_ConsigneeRegion" runat="server" ControlToValidate="Txt_ConsigneeRegion"
                                 ErrorMessage="只能输入字母且只能为3位！" ValidationExpression="^[a-zA-Z]{3}$" ForeColor="Red"></asp:RegularExpressionValidator>
                         </td>
@@ -204,7 +213,7 @@
                     </tr>
                     <tr class="Row">
                         <td class="FieldHeader">
-                            发件人地址：
+                            收件人地址：
                         </td>
                         <td align="left" colspan="3">
                             <asp:TextBox ID="Txt_ConsigneeAddress" Width="500px" Rows="4" TextMode="MultiLine"
@@ -223,7 +232,7 @@
                     <tr class="Header">
                         <th colspan="4">
                             订单关联货物信息
-                            <asp:Button ID="But_AddItem" Text="添加货物信息" runat="server" CssClass="InputBtn" OnClick="But_AddItme_Click" />
+                            <asp:LinkButton ID="btnAddItem" runat="server" Text="添加货物信息" OnClick="lbt_AddItem_Click"></asp:LinkButton>
                         </th>
                     </tr>
                 </thead>
@@ -257,12 +266,16 @@
                                     <asp:BoundField HeaderText="长度" DataField="Length">
                                         <ControlStyle Width="80px" />
                                     </asp:BoundField>
-                                    <asp:BoundField HeaderText="支付费用" DataField="TransPays">
-                                        <ControlStyle Width="80px" />
-                                    </asp:BoundField>
-                                    <asp:BoundField HeaderText="支付货币" DataField="TransCurrency">
-                                        <ControlStyle Width="80px" />
-                                    </asp:BoundField>
+                                    <asp:TemplateField HeaderText="支付费用">
+                                        <ItemTemplate>
+                                            <asp:Label ID="lbl_TransPays" runat="server" Text='<%# Eval("TransPays") %>' Visible="false"></asp:Label>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+                                    <asp:TemplateField HeaderText="支付货币">
+                                        <ItemTemplate>
+                                            <asp:Label ID="lbl_TransCurrency" runat="server" Text='<%# Eval("TransCurrency") %>' Visible="false"></asp:Label>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
                                     <asp:TemplateField HeaderText="编辑 " ShowHeader="False">
                                         <ItemTemplate>
                                             <asp:LinkButton ID="lbt_Eit" runat="server" CausesValidation="False" CommandName="Edit"
@@ -283,8 +296,8 @@
                             </asp:GridView>
                         </td>
                     </tr>
-                    <tr class="EditRow">
-                        <td style="width: 150px">
+                    <tr class="Row">
+                        <td class="FieldHeader" style="width: 150px">
                             重量：
                         </td>
                         <td align="left">
@@ -296,7 +309,7 @@
                                 &nbsp;&nbsp;
                             <asp:TextBox ID="Txt_Weight" runat="server" Width="150px" CssClass="TextBox"></asp:TextBox>
                         </td>
-                        <td style="width: 150px">
+                        <td class="FieldHeader" style="width: 150px">
                             件数：
                         </td>
                         <td align="left">
@@ -360,8 +373,7 @@
         <div class="FooterBtnBar">
             <asp:Button ID="But_AddHAWB" runat="server" Text="提 交" OnClick="But_AddHAWB_Click"
                 ValidationGroup="1" CssClass="InputBtn" />
-            <asp:Button ID="But_Rurnet" runat="server" Text="返 回" OnClick="But_Rurnet_Click"
-                CssClass="InputBtn" />
+            <asp:Button ID="But_Retun" runat="server" Text="返 回" OnClick="But_Retun_Click" CssClass="InputBtn" />
         </div>
     </div>
     </form>

@@ -1,0 +1,77 @@
+﻿/* CSS Version Base */
+/* Version: 1.0 || Date: 2009-4-3 || Author: Cyrano */
+/* Cascading Style Sheets Level 2 Revision 1 */
+
+body
+{
+    margin: 0px;
+    padding: 0px;
+    font: 12px Verdana,Tahoma;
+    background: #fff;
+}
+form
+{
+    margin: 0px;
+    padding: 0px;
+}
+a
+{
+    font: 12px Tahoma, Verdana;
+    text-decoration: none;
+}
+a:hover
+{
+    font: 12px Tahoma, Verdana;
+    text-decoration: underline;
+}
+a:link
+{
+    text-decoration: none;
+    font: 12px Tahoma, Verdana;
+}
+a:visited
+{
+    text-decoration: none;
+    font: 12px Tahoma, Verdana;
+}
+img
+{
+    border: none;
+}
+/*** Web 2.0 ***/
+/*** Table ***/
+table
+{
+    font: 12px Tahoma, Verdana;
+    empty-cells: show;
+	border-collapse: separate;
+}
+td
+{
+    font: 12px Tahoma, Verdana;
+}
+th
+{
+    font: 12px Tahoma, Verdana;
+}
+/*** Div ***/
+div
+{
+    margin: 0px;
+    padding: 0px;
+}
+ul
+{
+    margin: auto;
+    padding: 0px;
+}
+li
+{
+    margin: auto;
+    padding: 0px;
+    list-style-position:outside;
+}
+.Clear
+{
+    clear:both;
+}
