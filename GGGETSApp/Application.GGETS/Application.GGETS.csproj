@@ -56,15 +56,15 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CRM\ICompanyUserManagementService.cs" />
+    <Compile Include="CRM\IIndividualUserManagementService.cs" />
     <Compile Include="HAWBManagement\IHAWBManagementService.cs" />
     <Compile Include="HAWBManagement\HAWBManagementService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="CRM\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

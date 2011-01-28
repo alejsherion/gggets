@@ -279,7 +279,7 @@
           <Property Type="String" Name="ConsigneeTel" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Type="Byte" Name="WeightType" />
           <Property Type="Double" Name="WeightValue" />
-          <Property Type="Int32" Name="Piece" />
+          <Property Type="Int32" Name="Piece" DefaultValue="0" />
           <Property Type="Boolean" Name="IsInternational" />
           <Property Type="String" Name="SpecialInstruction" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="Taxes" MaxLength="500" FixedLength="false" Unicode="true" />
@@ -605,7 +605,7 @@
     </Options>
     <!-- Diagram content (shape and connector positions) -->
     <Diagrams>
-      <Diagram Name="GGGETSApp" ZoomLevel="109" >
+      <Diagram Name="GGGETSApp" ZoomLevel="64" >
         <EntityTypeShape EntityType="GGGETSModel.HAWB" Width="2.625" PointX="1.25" PointY="0.5" Height="7.8916430664062514" />
         <EntityTypeShape EntityType="GGGETSModel.Item" Width="2.125" PointX="5.875" PointY="1.375" Height="2.7341113281249996" />
         <AssociationConnector Association="GGGETSModel.FK_ITEM_REFERENCE_HAWB" >

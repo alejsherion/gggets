@@ -117,7 +117,13 @@ namespace GGGETSAdmin.HAWB
             hawb.ConsigneeZipCode = Txt_ConsigneeZipCode.Text;
             //hawbUpdate.WeightType =  DDl_WeightType.Text;
             if (Txt_Piece.Text != "" && Txt_Piece.Text != null)
+            {
                 hawb.Piece = int.Parse(Txt_Piece.Text);
+            }
+            else
+            {
+                hawb.Piece = 0;
+            }
             //if (DDL_IsInternational.SelectedValue == "false")
             //hawb.IsInternational = false;
             //else

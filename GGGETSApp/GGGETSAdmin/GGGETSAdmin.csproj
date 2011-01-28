@@ -22,6 +22,17 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <PublishDatabaseSettings>
+      <Objects>
+        <ObjectGroup Name="GGGETSUnitOfWork-Deployment" Order="1">
+          <Destination Path="Data Source=.%3bInitial Catalog=GGGETS%3bUser ID=rs-developer%3bPassword=12345678" />
+          <Object Type="dbFullSql" Enabled="True">
+            <PreSource Path="Data Source=WILLIAM-PC\SQLServer2008%3bInitial Catalog=GGGETS%3bUser ID=sa%3bPassword=iloveYUN122" ScriptSchema="True" ScriptData="False" CopyAllFullTextCatalogs="False" />
+            <Source Path="obj\Debug\AutoScripts\GGGETSUnitOfWork-Deployment_SchemaOnly.sql" Transacted="True" />
+          </Object>
+        </ObjectGroup>
+      </Objects>
+    </PublishDatabaseSettings>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>

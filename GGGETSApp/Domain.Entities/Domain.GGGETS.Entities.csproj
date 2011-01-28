@@ -75,6 +75,8 @@
     <Compile Include="Item.cs">
       <DependentUpon>GGGETSAppContext.Types.tt</DependentUpon>
     </Compile>
+    <Compile Include="Partial\AddressBookPartial.cs" />
+    <Compile Include="Partial\CompanyUserPartial.cs" />
     <Compile Include="Partial\HAWBPartial.cs" />
     <Compile Include="Partial\ItemPartial.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
