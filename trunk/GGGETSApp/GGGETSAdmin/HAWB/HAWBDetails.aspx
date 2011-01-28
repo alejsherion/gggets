@@ -121,7 +121,7 @@
                         </td>
                         <td align="left" colspan="3">
                             <asp:TextBox ID="Txt_ShipperAddress" Width="500px" Rows="4" TextMode="MultiLine"
-                                CssClass="TextBox" runat="server"></asp:TextBox></asp:TextBox>
+                                CssClass="TextBox" runat="server" Enabled="false"></asp:TextBox>
                         </td>
                     </tr>
                     <tr class="EditRow">
@@ -158,14 +158,14 @@
                         </td>
                         <td align="left">
                             <asp:TextBox ID="Txt_ConsigneeTel" Width="250px" MaxLength="20" CssClass="TextBox"
-                                runat="server"></asp:TextBox>
+                                runat="server" Enabled="false"></asp:TextBox>
                         </td>
                         <td class="FieldHeader">
                             收件邮政编码：
                         </td>
                         <td align="left">
                             <asp:TextBox ID="Txt_ConsigneeZipCode" runat="server" Enabled="false" Width="250px"
-                                CssClass="TextBox"></asp:TextBox>
+                                CssClass="TextBox" MaxLength="6"></asp:TextBox>
                         </td>
                     </tr>
                     <tr class="Row">
@@ -202,22 +202,22 @@
                                             <%--<asp:Label ID="lbl_Order" runat="server" Text='<%# Eval("cTel") %>'></asp:Label>--%>
                                         </ItemTemplate>
                                     </asp:TemplateField>
-                                    <asp:TemplateField HeaderText="重量">
+                                    <asp:TemplateField HeaderText="重量(KG)">
                                         <ItemTemplate>
                                             <asp:Label ID="lbl_Weight" runat="server" Text='<%# Eval("Weight") %>'></asp:Label>
                                         </ItemTemplate>
                                     </asp:TemplateField>
-                                    <asp:TemplateField HeaderText="高度">
+                                    <asp:TemplateField HeaderText="高度(CM)">
                                         <ItemTemplate>
                                             <asp:Label ID="lbl_Hight" runat="server" Text='<%# Eval("Height") %>'></asp:Label>
                                         </ItemTemplate>
                                     </asp:TemplateField>
-                                    <asp:TemplateField HeaderText="宽度">
+                                    <asp:TemplateField HeaderText="宽度(CM)">
                                         <ItemTemplate>
                                             <asp:Label ID="lbl_Width" runat="server" Text='<%# Eval("Width") %>'></asp:Label>
                                         </ItemTemplate>                               
                                     </asp:TemplateField>
-                                    <asp:TemplateField HeaderText="长度">
+                                    <asp:TemplateField HeaderText="长度(CM)">
                                         <ItemTemplate>
                                             <asp:Label ID="lbl_Length" runat="server" Text='<%# Eval("Length") %>'></asp:Label>
                                         </ItemTemplate>
@@ -277,7 +277,7 @@
                             件数：
                         </td>
                         <td align="left">
-                            <asp:TextBox ID="Txt_Piece" Width="250" CssClass="TextBox" runat="server"></asp:TextBox>
+                            <asp:TextBox ID="Txt_Piece" Width="250" Enabled="false" CssClass="TextBox" runat="server"></asp:TextBox>
                         </td>
                     </tr>
                     <tr class="AlternatingRow">

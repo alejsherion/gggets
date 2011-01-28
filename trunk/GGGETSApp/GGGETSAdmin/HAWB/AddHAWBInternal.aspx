@@ -95,7 +95,7 @@
                             发件地区码：
                         </td>
                         <td align="left">
-                            <asp:TextBox ID="Txt_ShipperRegion" runat="server" Width="250px" CssClass="TextBox"></asp:TextBox>
+                            <asp:TextBox ID="Txt_ShipperRegion" runat="server" Width="250px" CssClass="TextBox" MaxLength="3"></asp:TextBox>
                             <asp:RegularExpressionValidator ID="Rev_ShipperRegion" runat="server" ControlToValidate="Txt_ShipperRegion"
                                 ErrorMessage="只能输入字母且只能为3位！" ValidationExpression="^[a-zA-Z]{3}$" ForeColor="Red"></asp:RegularExpressionValidator>
                         </td>
@@ -158,7 +158,7 @@
                             收件地区码：
                         </td>
                         <td align="left">
-                            <asp:TextBox ID="Txt_ConsigneeRegion" runat="server" Width="250px" CssClass="TextBox"></asp:TextBox>
+                            <asp:TextBox ID="Txt_ConsigneeRegion" runat="server" Width="250px" CssClass="TextBox" MaxLength="3"></asp:TextBox>
                             <asp:RegularExpressionValidator ID="Rev_ConsigneeRegion" runat="server" ControlToValidate="Txt_ConsigneeRegion"
                                 ErrorMessage="只能输入字母且只能为3位！" ValidationExpression="^[a-zA-Z]{3}$" ForeColor="Red"></asp:RegularExpressionValidator>
                         </td>
@@ -231,7 +231,7 @@
                                             <asp:Label ID="lbl_Order" runat="server" Text='<%# Eval("HID") %>' Visible="false"></asp:Label>
                                         </ItemTemplate>
                                     </asp:TemplateField>
-                                    <asp:TemplateField HeaderText="重量">
+                                    <asp:TemplateField HeaderText="重量(KG)">
                                         <ItemTemplate>
                                             <asp:Label ID="lbl_Weight" runat="server" Text='<%# Eval("Weight") %>'></asp:Label>
                                         </ItemTemplate>
@@ -239,13 +239,13 @@
                                             <asp:TextBox ID="Txt_Weight" runat="server" Text='<%# Eval("Weight") %>'></asp:TextBox>
                                         </EditItemTemplate>
                                     </asp:TemplateField>
-                                    <asp:BoundField HeaderText="高度" DataField="Height">
+                                    <asp:BoundField HeaderText="高度(CM)" DataField="Height">
                                         <ControlStyle Width="80px" />
                                     </asp:BoundField>
-                                    <asp:BoundField HeaderText="宽度" DataField="Width">
+                                    <asp:BoundField HeaderText="宽度(CM)" DataField="Width">
                                         <ControlStyle Width="80px" />
                                     </asp:BoundField>
-                                    <asp:BoundField HeaderText="长度" DataField="Length">
+                                    <asp:BoundField HeaderText="长度(CM)" DataField="Length">
                                         <ControlStyle Width="80px" />
                                     </asp:BoundField>
                                     <asp:BoundField HeaderText="支付费用" DataField="TransPays">
