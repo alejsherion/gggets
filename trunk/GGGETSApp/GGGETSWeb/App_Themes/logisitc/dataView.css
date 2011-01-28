@@ -1,0 +1,195 @@
+﻿/* CSS Version DataView */
+/* Version: 1.2 || Date: 2009-9-1 || Author: Cyrano */
+/* Cascading Style Sheets Level 2 Revision 1 */
+
+/* DataView */
+.DataView
+{
+    width: 100%;
+    color: #333333;
+    text-align: center;
+    background: #fff;
+    border: 1px solid #ccc;
+}
+.DataView td
+{
+    padding: 4px;
+}
+.DataView .Header th
+{
+    background: #598fb4;
+    padding: 8px;
+    font-weight: bold;
+    color: #fff;
+    white-space: nowrap;
+}
+.DataView .Header th a
+{
+    font-weight: bold;
+    color: #fff;
+    text-decoration: underline;
+}
+.DataView .Header th a:hover
+{
+    color: #eee;
+}
+.DataView .Pager td, .Footer td
+{
+    font-weight: bold;
+    text-align: right;
+    background: #cccccc;
+}
+.DataView .Pager td table
+{
+    float: right;
+}
+.DataView .Pager td table td
+{
+    border: none;
+    padding: 0px;
+}
+.DataView .Pager td table tr td span
+{
+    background: #eee;
+    padding: 5px;
+    font-weight: bold;
+    color: #333;
+}
+.DataView .Pager td table tr td a
+{
+    text-decoration: underline;
+    padding: 3px;
+}
+.DataView .Row td
+{
+    background: #f5f5f5;
+    color: #444;
+}
+.DataView .AlternatingRow td
+{
+    background: #f9f9f9;
+    color: #444;
+}
+.DataView .SelectedRow, .DataView .Row:hover td, .DataView .AlternatingRow:hover td
+{
+    background: #fef5f4;
+    color: #000;
+}
+.DataView .EditRow
+{
+    background: #dedede;
+}
+.DataView .EditRow td, .DataView .SelectedRow td
+{
+    color: #333333;
+    font-weight: bold;
+}
+.DataView td.FieldHeader
+{
+    background: #f7f7f7;
+    text-align: right;
+    font-weight: bold;
+    color: #666666;
+    padding: 5px;
+    padding-right: 10px;
+}
+.DataView .CommandRow td
+{
+    background: #E2DED6;
+    text-align: left;
+    font-weight: bold;
+    color: #666666;
+}
+.DataView a.StrongLink
+{
+    font-size: 14px;
+    font-weight: bold;
+    text-decoration: underline;
+}
+.DataView a:hover.StrongLink
+{
+    font-size: 14px;
+    font-weight: bold;
+}
+
+/* DataPager */
+.DataPager
+{
+    text-align: right;
+    margin: 2px;
+}
+.DataPager a
+{
+    color: #333333;
+    padding: 5px;
+}
+.DataPager a:hover
+{
+    text-decoration: underline;
+    background: #f2f2f2;
+}
+.DataPager a.Current
+{
+    background: #FFFFFF;
+    text-decoration: underline;
+    color: #000000;
+    font-weight: bold;
+}
+.DataPager a.Prev, .DataPager a.Next, .DataView .SortArrow
+{
+    font-family: Arial;
+    font-size: 10px;
+}
+
+/* FunctionBar */
+.FunctionBar
+{
+    margin: 1px;
+    padding: 3px;
+    background: #ccc;
+}
+.FunctionBar .DivFloatRight
+{
+    color:#444;
+    float:right;
+    font-weight:bold;
+}
+.FunctionBar .DivFloatLeft
+{
+    color:#444;
+    float:left;
+    font-weight:bold;
+}
+
+
+/* TreeView */
+.TreeView
+{
+    margin: 5px;
+}
+.TreeView td
+{
+    font-size: 12px;
+    color: #333333;
+}
+.TreeView .ParentNode
+{
+}
+.TreeView .HoverNode
+{
+    text-decoration: underline;
+}
+.TreeView .SelectedNode
+{
+    background: #f0edb9;
+    text-decoration: underline;
+    padding: 0px 2px;
+    color: #333333;
+    font-weight: bold;
+}
+
+.FooterBtnBar
+{
+    margin:5px;
+    text-align: center;
+}
