@@ -22,242 +22,197 @@ using ETS.GGGETSApp.Domain.Core.Entities;
 namespace ETS.GGGETSApp.Domain.Application.Entities
 {
     [DataContract(IsReference = true)]
-    [KnownType(typeof(User))]
+    [KnownType(typeof(HAWB))]
     [Serializable]
     [System.CodeDom.Compiler.GeneratedCode("STE-EF",".NET 4.0")]
     #if !SILVERLIGHT
     [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage()]
     #endif
-    public partial class AddressBook: IObjectWithChangeTracker, INotifyPropertyChanged
+    public partial class HAWBBox: IObjectWithChangeTracker, INotifyPropertyChanged
     {
         #region Primitive Properties
     
         [DataMember]
-        public System.Guid AID
+        public System.Guid BoxID
         {
-            get { return _aID; }
+            get { return _boxID; }
             set
             {
-                if (_aID != value)
+                if (_boxID != value)
                 {
                     if (ChangeTracker.ChangeTrackingEnabled && ChangeTracker.State != ObjectState.Added)
                     {
-                        throw new InvalidOperationException("The property 'AID' is part of the object's key and cannot be changed. Changes to key properties can only be made when the object is not being tracked or is in the Added state.");
+                        throw new InvalidOperationException("The property 'BoxID' is part of the object's key and cannot be changed. Changes to key properties can only be made when the object is not being tracked or is in the Added state.");
                     }
-                    _aID = value;
-                    OnPropertyChanged("AID");
+                    _boxID = value;
+                    OnPropertyChanged("BoxID");
                 }
             }
         }
-        private System.Guid _aID;
+        private System.Guid _boxID;
     
         [DataMember]
-        public Nullable<System.Guid> UID
+        public System.Guid HID
         {
-            get { return _uID; }
+            get { return _hID; }
             set
             {
-                if (_uID != value)
+                if (_hID != value)
                 {
-                    ChangeTracker.RecordOriginalValue("UID", _uID);
+                    ChangeTracker.RecordOriginalValue("HID", _hID);
                     if (!IsDeserializing)
                     {
-                        if (User != null && User.UID != value)
+                        if (HAWB != null && HAWB.HID != value)
                         {
-                            User = null;
+                            HAWB = null;
                         }
                     }
-                    _uID = value;
-                    OnPropertyChanged("UID");
+                    _hID = value;
+                    OnPropertyChanged("HID");
                 }
             }
         }
-        private Nullable<System.Guid> _uID;
+        private System.Guid _hID;
     
         [DataMember]
-        public string Name
+        public int BoxType
         {
-            get { return _name; }
+            get { return _boxType; }
             set
             {
-                if (_name != value)
+                if (_boxType != value)
                 {
-                    _name = value;
-                    OnPropertyChanged("Name");
+                    _boxType = value;
+                    OnPropertyChanged("BoxType");
                 }
             }
         }
-        private string _name;
+        private int _boxType;
     
         [DataMember]
-        public string ContactorName
+        public decimal Weight
         {
-            get { return _contactorName; }
+            get { return _weight; }
             set
             {
-                if (_contactorName != value)
+                if (_weight != value)
                 {
-                    _contactorName = value;
-                    OnPropertyChanged("ContactorName");
+                    _weight = value;
+                    OnPropertyChanged("Weight");
                 }
             }
         }
-        private string _contactorName;
+        private decimal _weight;
     
         [DataMember]
-        public string CountryCode
+        public Nullable<decimal> Length
         {
-            get { return _countryCode; }
+            get { return _length; }
             set
             {
-                if (_countryCode != value)
+                if (_length != value)
                 {
-                    _countryCode = value;
-                    OnPropertyChanged("CountryCode");
+                    _length = value;
+                    OnPropertyChanged("Length");
                 }
             }
         }
-        private string _countryCode;
+        private Nullable<decimal> _length;
     
         [DataMember]
-        public string RegionCode
+        public Nullable<decimal> Width
         {
-            get { return _regionCode; }
+            get { return _width; }
             set
             {
-                if (_regionCode != value)
+                if (_width != value)
                 {
-                    _regionCode = value;
-                    OnPropertyChanged("RegionCode");
+                    _width = value;
+                    OnPropertyChanged("Width");
                 }
             }
         }
-        private string _regionCode;
+        private Nullable<decimal> _width;
     
         [DataMember]
-        public string Address
+        public Nullable<decimal> Height
         {
-            get { return _address; }
+            get { return _height; }
             set
             {
-                if (_address != value)
+                if (_height != value)
                 {
-                    _address = value;
-                    OnPropertyChanged("Address");
+                    _height = value;
+                    OnPropertyChanged("Height");
                 }
             }
         }
-        private string _address;
+        private Nullable<decimal> _height;
     
         [DataMember]
-        public string Fax
+        public Nullable<decimal> TransFee
         {
-            get { return _fax; }
+            get { return _transFee; }
             set
             {
-                if (_fax != value)
+                if (_transFee != value)
                 {
-                    _fax = value;
-                    OnPropertyChanged("Fax");
+                    _transFee = value;
+                    OnPropertyChanged("TransFee");
                 }
             }
         }
-        private string _fax;
+        private Nullable<decimal> _transFee;
     
         [DataMember]
-        public string Phone
+        public int TransCurrency
         {
-            get { return _phone; }
+            get { return _transCurrency; }
             set
             {
-                if (_phone != value)
+                if (_transCurrency != value)
                 {
-                    _phone = value;
-                    OnPropertyChanged("Phone");
+                    _transCurrency = value;
+                    OnPropertyChanged("TransCurrency");
                 }
             }
         }
-        private string _phone;
+        private int _transCurrency;
     
         [DataMember]
-        public string PostCode
+        public int Piece
         {
-            get { return _postCode; }
+            get { return _piece; }
             set
             {
-                if (_postCode != value)
+                if (_piece != value)
                 {
-                    _postCode = value;
-                    OnPropertyChanged("PostCode");
+                    _piece = value;
+                    OnPropertyChanged("Piece");
                 }
             }
         }
-        private string _postCode;
-    
-        [DataMember]
-        public int AddressType
-        {
-            get { return _addressType; }
-            set
-            {
-                if (_addressType != value)
-                {
-                    _addressType = value;
-                    OnPropertyChanged("AddressType");
-                }
-            }
-        }
-        private int _addressType;
-    
-        [DataMember]
-        public System.DateTime CreateTime
-        {
-            get { return _createTime; }
-            set
-            {
-                if (_createTime != value)
-                {
-                    _createTime = value;
-                    OnPropertyChanged("CreateTime");
-                }
-            }
-        }
-        private System.DateTime _createTime;
-    
-        [DataMember]
-        public System.DateTime UpdateTime
-        {
-            get { return _updateTime; }
-            set
-            {
-                if (_updateTime != value)
-                {
-                    _updateTime = value;
-                    OnPropertyChanged("UpdateTime");
-                }
-            }
-        }
-        private System.DateTime _updateTime;
+        private int _piece;
 
         #endregion
         #region Navigation Properties
     
         [DataMember]
-        public User User
+        public HAWB HAWB
         {
-            get { return _user; }
+            get { return _hAWB; }
             set
             {
-                if (!ReferenceEquals(_user, value))
+                if (!ReferenceEquals(_hAWB, value))
                 {
-                    var previousValue = _user;
-                    _user = value;
-                    FixupUser(previousValue);
-                    OnNavigationPropertyChanged("User");
+                    var previousValue = _hAWB;
+                    _hAWB = value;
+                    FixupHAWB(previousValue);
+                    OnNavigationPropertyChanged("HAWB");
                 }
             }
         }
-        private User _user;
+        private HAWB _hAWB;
 
         #endregion
         #region ChangeTracking
@@ -337,52 +292,47 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
     
         protected virtual void ClearNavigationProperties()
         {
-            User = null;
+            HAWB = null;
         }
 
         #endregion
         #region Association Fixup
     
-        private void FixupUser(User previousValue, bool skipKeys = false)
+        private void FixupHAWB(HAWB previousValue)
         {
             if (IsDeserializing)
             {
                 return;
             }
     
-            if (previousValue != null && previousValue.AddressBook.Contains(this))
+            if (previousValue != null && previousValue.HAWBBox.Contains(this))
             {
-                previousValue.AddressBook.Remove(this);
+                previousValue.HAWBBox.Remove(this);
             }
     
-            if (User != null)
+            if (HAWB != null)
             {
-                if (!User.AddressBook.Contains(this))
+                if (!HAWB.HAWBBox.Contains(this))
                 {
-                    User.AddressBook.Add(this);
+                    HAWB.HAWBBox.Add(this);
                 }
     
-                UID = User.UID;
+                HID = HAWB.HID;
             }
-            else if (!skipKeys)
-            {
-                UID = null;
-            }
-    
             if (ChangeTracker.ChangeTrackingEnabled)
             {
-                if (ChangeTracker.OriginalValues.ContainsKey("User")
-                    && (ChangeTracker.OriginalValues["User"] == User))
+                if (ChangeTracker.OriginalValues.ContainsKey("HAWB")
+                    && (ChangeTracker.OriginalValues["HAWB"] == HAWB))
                 {
-                    ChangeTracker.OriginalValues.Remove("User");
+                    ChangeTracker.OriginalValues.Remove("HAWB");
                 }
                 else
                 {
-                    ChangeTracker.RecordOriginalValue("User", previousValue);
+                    ChangeTracker.RecordOriginalValue("HAWB", previousValue);
                 }
-                if (User != null && !User.ChangeTracker.ChangeTrackingEnabled)
+                if (HAWB != null && !HAWB.ChangeTracker.ChangeTrackingEnabled)
                 {
-                    User.StartTracking();
+                    HAWB.StartTracking();
                 }
             }
         }

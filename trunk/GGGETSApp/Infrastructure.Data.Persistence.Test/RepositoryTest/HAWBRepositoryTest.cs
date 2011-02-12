@@ -28,29 +28,7 @@ namespace Infrastructure.Data.Persistence.Test.RepositoryTest
         [TestMethod()]
         public void Test()
         {
-            //Arrange
-            IGGGETSAppUnitOfWork context = this.GetUnitOfWork();
-            
-            
-            ObjectContext obContext = (ObjectContext)context;
-            ITraceManager traceManager = this.GetTraceManager();
-            HAWBRepository repository = new HAWBRepository(context, traceManager);
-
-            HAWB hb = repository.FindHAWBByBarCode("2222");
-
-            Item item = hb.Item.First();
-            item.Height = 1000;
-
-            repository.Modify(hb);
-
-            context.CommitAndRefreshChanges();
-            //act
-            IEnumerable<HAWB> result = repository.GetAll();
-
-            //Assert
-            Assert.IsNotNull(result);
-            Assert.IsTrue(result.Count() > 0);
-
+          
         }
 
 
