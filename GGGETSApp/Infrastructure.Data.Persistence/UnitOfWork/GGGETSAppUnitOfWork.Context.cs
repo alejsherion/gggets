@@ -178,18 +178,6 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.UnitOfWork
         #endregion
         #region ObjectSet Properties
     
-        public IObjectSet<HAWB> HAWB
-        {
-            get { return _hAWB  ?? (_hAWB = CreateObjectSet<HAWB>("HAWB")); }
-        }
-        private ObjectSet<HAWB> _hAWB;
-    
-        public IObjectSet<Item> Item
-        {
-            get { return _item  ?? (_item = CreateObjectSet<Item>("Item")); }
-        }
-        private ObjectSet<Item> _item;
-    
         public IObjectSet<AddressBook> AddressBook
         {
             get { return _addressBook  ?? (_addressBook = CreateObjectSet<AddressBook>("AddressBook")); }
@@ -202,17 +190,65 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.UnitOfWork
         }
         private ObjectSet<Company> _company;
     
-        public IObjectSet<CompanyUser> CompanyUser
+        public IObjectSet<CountryCode> CountryCode
         {
-            get { return _companyUser  ?? (_companyUser = CreateObjectSet<CompanyUser>("CompanyUser")); }
+            get { return _countryCode  ?? (_countryCode = CreateObjectSet<CountryCode>("CountryCode")); }
         }
-        private ObjectSet<CompanyUser> _companyUser;
+        private ObjectSet<CountryCode> _countryCode;
     
-        public IObjectSet<IndividualUser> IndividualUser
+        public IObjectSet<Department> Department
         {
-            get { return _individualUser  ?? (_individualUser = CreateObjectSet<IndividualUser>("IndividualUser")); }
+            get { return _department  ?? (_department = CreateObjectSet<Department>("Department")); }
         }
-        private ObjectSet<IndividualUser> _individualUser;
+        private ObjectSet<Department> _department;
+    
+        public IObjectSet<Flight> Flight
+        {
+            get { return _flight  ?? (_flight = CreateObjectSet<Flight>("Flight")); }
+        }
+        private ObjectSet<Flight> _flight;
+    
+        public IObjectSet<HAWB> HAWB
+        {
+            get { return _hAWB  ?? (_hAWB = CreateObjectSet<HAWB>("HAWB")); }
+        }
+        private ObjectSet<HAWB> _hAWB;
+    
+        public IObjectSet<HAWBBox> HAWBBox
+        {
+            get { return _hAWBBox  ?? (_hAWBBox = CreateObjectSet<HAWBBox>("HAWBBox")); }
+        }
+        private ObjectSet<HAWBBox> _hAWBBox;
+    
+        public IObjectSet<HAWBItem> HAWBItem
+        {
+            get { return _hAWBItem  ?? (_hAWBItem = CreateObjectSet<HAWBItem>("HAWBItem")); }
+        }
+        private ObjectSet<HAWBItem> _hAWBItem;
+    
+        public IObjectSet<MAWB> MAWB
+        {
+            get { return _mAWB  ?? (_mAWB = CreateObjectSet<MAWB>("MAWB")); }
+        }
+        private ObjectSet<MAWB> _mAWB;
+    
+        public IObjectSet<Package> Package
+        {
+            get { return _package  ?? (_package = CreateObjectSet<Package>("Package")); }
+        }
+        private ObjectSet<Package> _package;
+    
+        public IObjectSet<RegionCode> RegionCode
+        {
+            get { return _regionCode  ?? (_regionCode = CreateObjectSet<RegionCode>("RegionCode")); }
+        }
+        private ObjectSet<RegionCode> _regionCode;
+    
+        public IObjectSet<User> User
+        {
+            get { return _user  ?? (_user = CreateObjectSet<User>("User")); }
+        }
+        private ObjectSet<User> _user;
 
         #endregion
     }

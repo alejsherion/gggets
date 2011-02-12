@@ -22,94 +22,73 @@ using ETS.GGGETSApp.Domain.Core.Entities;
 namespace ETS.GGGETSApp.Domain.Application.Entities
 {
     [DataContract(IsReference = true)]
-    [KnownType(typeof(Department))]
+    [KnownType(typeof(HAWB))]
+    [KnownType(typeof(MAWB))]
     [Serializable]
     [System.CodeDom.Compiler.GeneratedCode("STE-EF",".NET 4.0")]
     #if !SILVERLIGHT
     [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage()]
     #endif
-    public partial class Company: IObjectWithChangeTracker, INotifyPropertyChanged
+    public partial class Package: IObjectWithChangeTracker, INotifyPropertyChanged
     {
         #region Primitive Properties
     
         [DataMember]
-        public System.Guid CID
+        public System.Guid PID
         {
-            get { return _cID; }
+            get { return _pID; }
             set
             {
-                if (_cID != value)
+                if (_pID != value)
                 {
                     if (ChangeTracker.ChangeTrackingEnabled && ChangeTracker.State != ObjectState.Added)
                     {
-                        throw new InvalidOperationException("The property 'CID' is part of the object's key and cannot be changed. Changes to key properties can only be made when the object is not being tracked or is in the Added state.");
+                        throw new InvalidOperationException("The property 'PID' is part of the object's key and cannot be changed. Changes to key properties can only be made when the object is not being tracked or is in the Added state.");
                     }
-                    _cID = value;
-                    OnPropertyChanged("CID");
+                    _pID = value;
+                    OnPropertyChanged("PID");
                 }
             }
         }
-        private System.Guid _cID;
+        private System.Guid _pID;
     
         [DataMember]
-        public string FullName
+        public Nullable<System.Guid> MID
         {
-            get { return _fullName; }
+            get { return _mID; }
             set
             {
-                if (_fullName != value)
+                if (_mID != value)
                 {
-                    _fullName = value;
-                    OnPropertyChanged("FullName");
+                    ChangeTracker.RecordOriginalValue("MID", _mID);
+                    if (!IsDeserializing)
+                    {
+                        if (MAWB != null && MAWB.MID != value)
+                        {
+                            MAWB = null;
+                        }
+                    }
+                    _mID = value;
+                    OnPropertyChanged("MID");
                 }
             }
         }
-        private string _fullName;
+        private Nullable<System.Guid> _mID;
     
         [DataMember]
-        public string ShortName
+        public string BarCode
         {
-            get { return _shortName; }
+            get { return _barCode; }
             set
             {
-                if (_shortName != value)
+                if (_barCode != value)
                 {
-                    _shortName = value;
-                    OnPropertyChanged("ShortName");
+                    _barCode = value;
+                    OnPropertyChanged("BarCode");
                 }
             }
         }
-        private string _shortName;
-    
-        [DataMember]
-        public string PostCode
-        {
-            get { return _postCode; }
-            set
-            {
-                if (_postCode != value)
-                {
-                    _postCode = value;
-                    OnPropertyChanged("PostCode");
-                }
-            }
-        }
-        private string _postCode;
-    
-        [DataMember]
-        public string CountryCode
-        {
-            get { return _countryCode; }
-            set
-            {
-                if (_countryCode != value)
-                {
-                    _countryCode = value;
-                    OnPropertyChanged("CountryCode");
-                }
-            }
-        }
-        private string _countryCode;
+        private string _barCode;
     
         [DataMember]
         public string RegionCode
@@ -127,124 +106,79 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
         private string _regionCode;
     
         [DataMember]
-        public string Address
+        public int Piece
         {
-            get { return _address; }
+            get { return _piece; }
             set
             {
-                if (_address != value)
+                if (_piece != value)
                 {
-                    _address = value;
-                    OnPropertyChanged("Address");
+                    _piece = value;
+                    OnPropertyChanged("Piece");
                 }
             }
         }
-        private string _address;
+        private int _piece;
     
         [DataMember]
-        public string Contactor
+        public decimal TotalWeight
         {
-            get { return _contactor; }
+            get { return _totalWeight; }
             set
             {
-                if (_contactor != value)
+                if (_totalWeight != value)
                 {
-                    _contactor = value;
-                    OnPropertyChanged("Contactor");
+                    _totalWeight = value;
+                    OnPropertyChanged("TotalWeight");
                 }
             }
         }
-        private string _contactor;
+        private decimal _totalWeight;
     
         [DataMember]
-        public string ContactorPhone
+        public System.DateTime CreateTime
         {
-            get { return _contactorPhone; }
+            get { return _createTime; }
             set
             {
-                if (_contactorPhone != value)
+                if (_createTime != value)
                 {
-                    _contactorPhone = value;
-                    OnPropertyChanged("ContactorPhone");
+                    _createTime = value;
+                    OnPropertyChanged("CreateTime");
                 }
             }
         }
-        private string _contactorPhone;
+        private System.DateTime _createTime;
     
         [DataMember]
-        public string Phone
+        public System.DateTime UpdateTime
         {
-            get { return _phone; }
+            get { return _updateTime; }
             set
             {
-                if (_phone != value)
+                if (_updateTime != value)
                 {
-                    _phone = value;
-                    OnPropertyChanged("Phone");
+                    _updateTime = value;
+                    OnPropertyChanged("UpdateTime");
                 }
             }
         }
-        private string _phone;
+        private System.DateTime _updateTime;
     
         [DataMember]
-        public string Fax
+        public string Operator
         {
-            get { return _fax; }
+            get { return _operator; }
             set
             {
-                if (_fax != value)
+                if (_operator != value)
                 {
-                    _fax = value;
-                    OnPropertyChanged("Fax");
+                    _operator = value;
+                    OnPropertyChanged("Operator");
                 }
             }
         }
-        private string _fax;
-    
-        [DataMember]
-        public decimal ResidualAmount
-        {
-            get { return _residualAmount; }
-            set
-            {
-                if (_residualAmount != value)
-                {
-                    _residualAmount = value;
-                    OnPropertyChanged("ResidualAmount");
-                }
-            }
-        }
-        private decimal _residualAmount;
-    
-        [DataMember]
-        public string OrganizationCode
-        {
-            get { return _organizationCode; }
-            set
-            {
-                if (_organizationCode != value)
-                {
-                    _organizationCode = value;
-                    OnPropertyChanged("OrganizationCode");
-                }
-            }
-        }
-        private string _organizationCode;
-    
-        [DataMember]
-        public decimal LimitAmount
-        {
-            get { return _limitAmount; }
-            set
-            {
-                if (_limitAmount != value)
-                {
-                    _limitAmount = value;
-                    OnPropertyChanged("LimitAmount");
-                }
-            }
-        }
-        private decimal _limitAmount;
+        private string _operator;
     
         [DataMember]
         public int Status
@@ -262,57 +196,74 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
         private int _status;
     
         [DataMember]
-        public string Remark
+        public bool IsMixed
         {
-            get { return _remark; }
+            get { return _isMixed; }
             set
             {
-                if (_remark != value)
+                if (_isMixed != value)
                 {
-                    _remark = value;
-                    OnPropertyChanged("Remark");
+                    _isMixed = value;
+                    OnPropertyChanged("IsMixed");
                 }
             }
         }
-        private string _remark;
+        private bool _isMixed;
 
         #endregion
         #region Navigation Properties
     
         [DataMember]
-        public TrackableCollection<Department> Department
+        public TrackableCollection<HAWB> HAWB
         {
             get
             {
-                if (_department == null)
+                if (_hAWB == null)
                 {
-                    _department = new TrackableCollection<Department>();
-                    _department.CollectionChanged += FixupDepartment;
+                    _hAWB = new TrackableCollection<HAWB>();
+                    _hAWB.CollectionChanged += FixupHAWB;
                 }
-                return _department;
+                return _hAWB;
             }
             set
             {
-                if (!ReferenceEquals(_department, value))
+                if (!ReferenceEquals(_hAWB, value))
                 {
                     if (ChangeTracker.ChangeTrackingEnabled)
                     {
                         throw new InvalidOperationException("Cannot set the FixupChangeTrackingCollection when ChangeTracking is enabled");
                     }
-                    if (_department != null)
+                    if (_hAWB != null)
                     {
-                        _department.CollectionChanged -= FixupDepartment;
+                        _hAWB.CollectionChanged -= FixupHAWB;
                     }
-                    _department = value;
-                    if (_department != null)
+                    _hAWB = value;
+                    if (_hAWB != null)
                     {
-                        _department.CollectionChanged += FixupDepartment;
+                        _hAWB.CollectionChanged += FixupHAWB;
                     }
-                    OnNavigationPropertyChanged("Department");
+                    OnNavigationPropertyChanged("HAWB");
                 }
             }
         }
-        private TrackableCollection<Department> _department;
+        private TrackableCollection<HAWB> _hAWB;
+    
+        [DataMember]
+        public MAWB MAWB
+        {
+            get { return _mAWB; }
+            set
+            {
+                if (!ReferenceEquals(_mAWB, value))
+                {
+                    var previousValue = _mAWB;
+                    _mAWB = value;
+                    FixupMAWB(previousValue);
+                    OnNavigationPropertyChanged("MAWB");
+                }
+            }
+        }
+        private MAWB _mAWB;
 
         #endregion
         #region ChangeTracking
@@ -392,13 +343,58 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
     
         protected virtual void ClearNavigationProperties()
         {
-            Department.Clear();
+            HAWB.Clear();
+            MAWB = null;
         }
 
         #endregion
         #region Association Fixup
     
-        private void FixupDepartment(object sender, NotifyCollectionChangedEventArgs e)
+        private void FixupMAWB(MAWB previousValue, bool skipKeys = false)
+        {
+            if (IsDeserializing)
+            {
+                return;
+            }
+    
+            if (previousValue != null && previousValue.Package.Contains(this))
+            {
+                previousValue.Package.Remove(this);
+            }
+    
+            if (MAWB != null)
+            {
+                if (!MAWB.Package.Contains(this))
+                {
+                    MAWB.Package.Add(this);
+                }
+    
+                MID = MAWB.MID;
+            }
+            else if (!skipKeys)
+            {
+                MID = null;
+            }
+    
+            if (ChangeTracker.ChangeTrackingEnabled)
+            {
+                if (ChangeTracker.OriginalValues.ContainsKey("MAWB")
+                    && (ChangeTracker.OriginalValues["MAWB"] == MAWB))
+                {
+                    ChangeTracker.OriginalValues.Remove("MAWB");
+                }
+                else
+                {
+                    ChangeTracker.RecordOriginalValue("MAWB", previousValue);
+                }
+                if (MAWB != null && !MAWB.ChangeTracker.ChangeTrackingEnabled)
+                {
+                    MAWB.StartTracking();
+                }
+            }
+        }
+    
+        private void FixupHAWB(object sender, NotifyCollectionChangedEventArgs e)
         {
             if (IsDeserializing)
             {
@@ -407,31 +403,31 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
     
             if (e.NewItems != null)
             {
-                foreach (Department item in e.NewItems)
+                foreach (HAWB item in e.NewItems)
                 {
-                    item.Company = this;
+                    item.Package = this;
                     if (ChangeTracker.ChangeTrackingEnabled)
                     {
                         if (!item.ChangeTracker.ChangeTrackingEnabled)
                         {
                             item.StartTracking();
                         }
-                        ChangeTracker.RecordAdditionToCollectionProperties("Department", item);
+                        ChangeTracker.RecordAdditionToCollectionProperties("HAWB", item);
                     }
                 }
             }
     
             if (e.OldItems != null)
             {
-                foreach (Department item in e.OldItems)
+                foreach (HAWB item in e.OldItems)
                 {
-                    if (ReferenceEquals(item.Company, this))
+                    if (ReferenceEquals(item.Package, this))
                     {
-                        item.Company = null;
+                        item.Package = null;
                     }
                     if (ChangeTracker.ChangeTrackingEnabled)
                     {
-                        ChangeTracker.RecordRemovalFromCollectionProperties("Department", item);
+                        ChangeTracker.RecordRemovalFromCollectionProperties("HAWB", item);
                     }
                 }
             }

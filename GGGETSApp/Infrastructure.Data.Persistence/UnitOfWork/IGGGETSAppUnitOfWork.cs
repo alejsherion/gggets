@@ -38,22 +38,40 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.UnitOfWork
        
         #region ObjectSet Properties
     
-        IObjectSet<HAWB> HAWB{get;}
-        
-    
-        IObjectSet<Item> Item{get;}
-        
-    
         IObjectSet<AddressBook> AddressBook{get;}
         
     
         IObjectSet<Company> Company{get;}
         
     
-        IObjectSet<CompanyUser> CompanyUser{get;}
+        IObjectSet<CountryCode> CountryCode{get;}
         
     
-        IObjectSet<IndividualUser> IndividualUser{get;}
+        IObjectSet<Department> Department{get;}
+        
+    
+        IObjectSet<Flight> Flight{get;}
+        
+    
+        IObjectSet<HAWB> HAWB{get;}
+        
+    
+        IObjectSet<HAWBBox> HAWBBox{get;}
+        
+    
+        IObjectSet<HAWBItem> HAWBItem{get;}
+        
+    
+        IObjectSet<MAWB> MAWB{get;}
+        
+    
+        IObjectSet<Package> Package{get;}
+        
+    
+        IObjectSet<RegionCode> RegionCode{get;}
+        
+    
+        IObjectSet<User> User{get;}
         
 
         #endregion

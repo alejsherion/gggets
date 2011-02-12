@@ -22,297 +22,218 @@ using ETS.GGGETSApp.Domain.Core.Entities;
 namespace ETS.GGGETSApp.Domain.Application.Entities
 {
     [DataContract(IsReference = true)]
-    [KnownType(typeof(Department))]
+    [KnownType(typeof(Company))]
+    [KnownType(typeof(User))]
     [Serializable]
     [System.CodeDom.Compiler.GeneratedCode("STE-EF",".NET 4.0")]
     #if !SILVERLIGHT
     [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage()]
     #endif
-    public partial class Company: IObjectWithChangeTracker, INotifyPropertyChanged
+    public partial class Department: IObjectWithChangeTracker, INotifyPropertyChanged
     {
         #region Primitive Properties
     
         [DataMember]
-        public System.Guid CID
+        public System.Guid DID
+        {
+            get { return _dID; }
+            set
+            {
+                if (_dID != value)
+                {
+                    if (ChangeTracker.ChangeTrackingEnabled && ChangeTracker.State != ObjectState.Added)
+                    {
+                        throw new InvalidOperationException("The property 'DID' is part of the object's key and cannot be changed. Changes to key properties can only be made when the object is not being tracked or is in the Added state.");
+                    }
+                    _dID = value;
+                    OnPropertyChanged("DID");
+                }
+            }
+        }
+        private System.Guid _dID;
+    
+        [DataMember]
+        public Nullable<System.Guid> CID
         {
             get { return _cID; }
             set
             {
                 if (_cID != value)
                 {
-                    if (ChangeTracker.ChangeTrackingEnabled && ChangeTracker.State != ObjectState.Added)
+                    ChangeTracker.RecordOriginalValue("CID", _cID);
+                    if (!IsDeserializing)
                     {
-                        throw new InvalidOperationException("The property 'CID' is part of the object's key and cannot be changed. Changes to key properties can only be made when the object is not being tracked or is in the Added state.");
+                        if (Company != null && Company.CID != value)
+                        {
+                            Company = null;
+                        }
                     }
                     _cID = value;
                     OnPropertyChanged("CID");
                 }
             }
         }
-        private System.Guid _cID;
+        private Nullable<System.Guid> _cID;
     
         [DataMember]
-        public string FullName
+        public string DepName
         {
-            get { return _fullName; }
+            get { return _depName; }
             set
             {
-                if (_fullName != value)
+                if (_depName != value)
                 {
-                    _fullName = value;
-                    OnPropertyChanged("FullName");
+                    _depName = value;
+                    OnPropertyChanged("DepName");
                 }
             }
         }
-        private string _fullName;
+        private string _depName;
     
         [DataMember]
-        public string ShortName
+        public int FeeDiscountType
         {
-            get { return _shortName; }
+            get { return _feeDiscountType; }
             set
             {
-                if (_shortName != value)
+                if (_feeDiscountType != value)
                 {
-                    _shortName = value;
-                    OnPropertyChanged("ShortName");
+                    _feeDiscountType = value;
+                    OnPropertyChanged("FeeDiscountType");
                 }
             }
         }
-        private string _shortName;
+        private int _feeDiscountType;
     
         [DataMember]
-        public string PostCode
+        public decimal FeeDiscountRate
         {
-            get { return _postCode; }
+            get { return _feeDiscountRate; }
             set
             {
-                if (_postCode != value)
+                if (_feeDiscountRate != value)
                 {
-                    _postCode = value;
-                    OnPropertyChanged("PostCode");
+                    _feeDiscountRate = value;
+                    OnPropertyChanged("FeeDiscountRate");
                 }
             }
         }
-        private string _postCode;
+        private decimal _feeDiscountRate;
     
         [DataMember]
-        public string CountryCode
+        public int WeightDiscountType
         {
-            get { return _countryCode; }
+            get { return _weightDiscountType; }
             set
             {
-                if (_countryCode != value)
+                if (_weightDiscountType != value)
                 {
-                    _countryCode = value;
-                    OnPropertyChanged("CountryCode");
+                    _weightDiscountType = value;
+                    OnPropertyChanged("WeightDiscountType");
                 }
             }
         }
-        private string _countryCode;
+        private int _weightDiscountType;
     
         [DataMember]
-        public string RegionCode
+        public decimal WeightDiscountRate
         {
-            get { return _regionCode; }
+            get { return _weightDiscountRate; }
             set
             {
-                if (_regionCode != value)
+                if (_weightDiscountRate != value)
                 {
-                    _regionCode = value;
-                    OnPropertyChanged("RegionCode");
+                    _weightDiscountRate = value;
+                    OnPropertyChanged("WeightDiscountRate");
                 }
             }
         }
-        private string _regionCode;
+        private decimal _weightDiscountRate;
     
         [DataMember]
-        public string Address
+        public int SettleType
         {
-            get { return _address; }
+            get { return _settleType; }
             set
             {
-                if (_address != value)
+                if (_settleType != value)
                 {
-                    _address = value;
-                    OnPropertyChanged("Address");
+                    _settleType = value;
+                    OnPropertyChanged("SettleType");
                 }
             }
         }
-        private string _address;
+        private int _settleType;
     
         [DataMember]
-        public string Contactor
+        public int WeightCalType
         {
-            get { return _contactor; }
+            get { return _weightCalType; }
             set
             {
-                if (_contactor != value)
+                if (_weightCalType != value)
                 {
-                    _contactor = value;
-                    OnPropertyChanged("Contactor");
+                    _weightCalType = value;
+                    OnPropertyChanged("WeightCalType");
                 }
             }
         }
-        private string _contactor;
-    
-        [DataMember]
-        public string ContactorPhone
-        {
-            get { return _contactorPhone; }
-            set
-            {
-                if (_contactorPhone != value)
-                {
-                    _contactorPhone = value;
-                    OnPropertyChanged("ContactorPhone");
-                }
-            }
-        }
-        private string _contactorPhone;
-    
-        [DataMember]
-        public string Phone
-        {
-            get { return _phone; }
-            set
-            {
-                if (_phone != value)
-                {
-                    _phone = value;
-                    OnPropertyChanged("Phone");
-                }
-            }
-        }
-        private string _phone;
-    
-        [DataMember]
-        public string Fax
-        {
-            get { return _fax; }
-            set
-            {
-                if (_fax != value)
-                {
-                    _fax = value;
-                    OnPropertyChanged("Fax");
-                }
-            }
-        }
-        private string _fax;
-    
-        [DataMember]
-        public decimal ResidualAmount
-        {
-            get { return _residualAmount; }
-            set
-            {
-                if (_residualAmount != value)
-                {
-                    _residualAmount = value;
-                    OnPropertyChanged("ResidualAmount");
-                }
-            }
-        }
-        private decimal _residualAmount;
-    
-        [DataMember]
-        public string OrganizationCode
-        {
-            get { return _organizationCode; }
-            set
-            {
-                if (_organizationCode != value)
-                {
-                    _organizationCode = value;
-                    OnPropertyChanged("OrganizationCode");
-                }
-            }
-        }
-        private string _organizationCode;
-    
-        [DataMember]
-        public decimal LimitAmount
-        {
-            get { return _limitAmount; }
-            set
-            {
-                if (_limitAmount != value)
-                {
-                    _limitAmount = value;
-                    OnPropertyChanged("LimitAmount");
-                }
-            }
-        }
-        private decimal _limitAmount;
-    
-        [DataMember]
-        public int Status
-        {
-            get { return _status; }
-            set
-            {
-                if (_status != value)
-                {
-                    _status = value;
-                    OnPropertyChanged("Status");
-                }
-            }
-        }
-        private int _status;
-    
-        [DataMember]
-        public string Remark
-        {
-            get { return _remark; }
-            set
-            {
-                if (_remark != value)
-                {
-                    _remark = value;
-                    OnPropertyChanged("Remark");
-                }
-            }
-        }
-        private string _remark;
+        private int _weightCalType;
 
         #endregion
         #region Navigation Properties
     
         [DataMember]
-        public TrackableCollection<Department> Department
+        public Company Company
+        {
+            get { return _company; }
+            set
+            {
+                if (!ReferenceEquals(_company, value))
+                {
+                    var previousValue = _company;
+                    _company = value;
+                    FixupCompany(previousValue);
+                    OnNavigationPropertyChanged("Company");
+                }
+            }
+        }
+        private Company _company;
+    
+        [DataMember]
+        public TrackableCollection<User> User
         {
             get
             {
-                if (_department == null)
+                if (_user == null)
                 {
-                    _department = new TrackableCollection<Department>();
-                    _department.CollectionChanged += FixupDepartment;
+                    _user = new TrackableCollection<User>();
+                    _user.CollectionChanged += FixupUser;
                 }
-                return _department;
+                return _user;
             }
             set
             {
-                if (!ReferenceEquals(_department, value))
+                if (!ReferenceEquals(_user, value))
                 {
                     if (ChangeTracker.ChangeTrackingEnabled)
                     {
                         throw new InvalidOperationException("Cannot set the FixupChangeTrackingCollection when ChangeTracking is enabled");
                     }
-                    if (_department != null)
+                    if (_user != null)
                     {
-                        _department.CollectionChanged -= FixupDepartment;
+                        _user.CollectionChanged -= FixupUser;
                     }
-                    _department = value;
-                    if (_department != null)
+                    _user = value;
+                    if (_user != null)
                     {
-                        _department.CollectionChanged += FixupDepartment;
+                        _user.CollectionChanged += FixupUser;
                     }
-                    OnNavigationPropertyChanged("Department");
+                    OnNavigationPropertyChanged("User");
                 }
             }
         }
-        private TrackableCollection<Department> _department;
+        private TrackableCollection<User> _user;
 
         #endregion
         #region ChangeTracking
@@ -392,13 +313,58 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
     
         protected virtual void ClearNavigationProperties()
         {
-            Department.Clear();
+            Company = null;
+            User.Clear();
         }
 
         #endregion
         #region Association Fixup
     
-        private void FixupDepartment(object sender, NotifyCollectionChangedEventArgs e)
+        private void FixupCompany(Company previousValue, bool skipKeys = false)
+        {
+            if (IsDeserializing)
+            {
+                return;
+            }
+    
+            if (previousValue != null && previousValue.Department.Contains(this))
+            {
+                previousValue.Department.Remove(this);
+            }
+    
+            if (Company != null)
+            {
+                if (!Company.Department.Contains(this))
+                {
+                    Company.Department.Add(this);
+                }
+    
+                CID = Company.CID;
+            }
+            else if (!skipKeys)
+            {
+                CID = null;
+            }
+    
+            if (ChangeTracker.ChangeTrackingEnabled)
+            {
+                if (ChangeTracker.OriginalValues.ContainsKey("Company")
+                    && (ChangeTracker.OriginalValues["Company"] == Company))
+                {
+                    ChangeTracker.OriginalValues.Remove("Company");
+                }
+                else
+                {
+                    ChangeTracker.RecordOriginalValue("Company", previousValue);
+                }
+                if (Company != null && !Company.ChangeTracker.ChangeTrackingEnabled)
+                {
+                    Company.StartTracking();
+                }
+            }
+        }
+    
+        private void FixupUser(object sender, NotifyCollectionChangedEventArgs e)
         {
             if (IsDeserializing)
             {
@@ -407,31 +373,31 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
     
             if (e.NewItems != null)
             {
-                foreach (Department item in e.NewItems)
+                foreach (User item in e.NewItems)
                 {
-                    item.Company = this;
+                    item.Department1 = this;
                     if (ChangeTracker.ChangeTrackingEnabled)
                     {
                         if (!item.ChangeTracker.ChangeTrackingEnabled)
                         {
                             item.StartTracking();
                         }
-                        ChangeTracker.RecordAdditionToCollectionProperties("Department", item);
+                        ChangeTracker.RecordAdditionToCollectionProperties("User", item);
                     }
                 }
             }
     
             if (e.OldItems != null)
             {
-                foreach (Department item in e.OldItems)
+                foreach (User item in e.OldItems)
                 {
-                    if (ReferenceEquals(item.Company, this))
+                    if (ReferenceEquals(item.Department1, this))
                     {
-                        item.Company = null;
+                        item.Department1 = null;
                     }
                     if (ChangeTracker.ChangeTrackingEnabled)
                     {
-                        ChangeTracker.RecordRemovalFromCollectionProperties("Department", item);
+                        ChangeTracker.RecordRemovalFromCollectionProperties("User", item);
                     }
                 }
             }

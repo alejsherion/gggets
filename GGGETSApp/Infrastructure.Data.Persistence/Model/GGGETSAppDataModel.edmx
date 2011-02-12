@@ -8,25 +8,51 @@
         <EntityContainer Name="GGGETSModelStoreContainer">
           <EntitySet Name="AddressBook" EntityType="GGGETSModel.Store.AddressBook" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Company" EntityType="GGGETSModel.Store.Company" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="CompanyUser" EntityType="GGGETSModel.Store.CompanyUser" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="CountryCode" EntityType="GGGETSModel.Store.CountryCode" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Department" EntityType="GGGETSModel.Store.Department" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Flight" EntityType="GGGETSModel.Store.Flight" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="HAWB" EntityType="GGGETSModel.Store.HAWB" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="IndividualUser" EntityType="GGGETSModel.Store.IndividualUser" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="Item" EntityType="GGGETSModel.Store.Item" store:Type="Tables" Schema="dbo" />
-          <AssociationSet Name="FK_ADDRESSB_REFERENCE_COMPANYU" Association="GGGETSModel.Store.FK_ADDRESSB_REFERENCE_COMPANYU">
-            <End Role="CompanyUser" EntitySet="CompanyUser" />
+          <EntitySet Name="HAWBBox" EntityType="GGGETSModel.Store.HAWBBox" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="HAWBItem" EntityType="GGGETSModel.Store.HAWBItem" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="MAWB" EntityType="GGGETSModel.Store.MAWB" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Package" EntityType="GGGETSModel.Store.Package" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="RegionCode" EntityType="GGGETSModel.Store.RegionCode" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="User" EntityType="GGGETSModel.Store.User" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_ADDRESSB_REFERENCE_USER" Association="GGGETSModel.Store.FK_ADDRESSB_REFERENCE_USER">
+            <End Role="User" EntitySet="User" />
             <End Role="AddressBook" EntitySet="AddressBook" />
           </AssociationSet>
-          <AssociationSet Name="FK_ADDRESSB_REFERENCE_INDIVIDU" Association="GGGETSModel.Store.FK_ADDRESSB_REFERENCE_INDIVIDU">
-            <End Role="IndividualUser" EntitySet="IndividualUser" />
-            <End Role="AddressBook" EntitySet="AddressBook" />
-          </AssociationSet>
-          <AssociationSet Name="FK_COMPANYU_REFERENCE_COMPANY" Association="GGGETSModel.Store.FK_COMPANYU_REFERENCE_COMPANY">
+          <AssociationSet Name="FK_DEPARTME_REFERENCE_COMPANY" Association="GGGETSModel.Store.FK_DEPARTME_REFERENCE_COMPANY">
             <End Role="Company" EntitySet="Company" />
-            <End Role="CompanyUser" EntitySet="CompanyUser" />
+            <End Role="Department" EntitySet="Department" />
           </AssociationSet>
-          <AssociationSet Name="FK_ITEM_REFERENCE_HAWB" Association="GGGETSModel.Store.FK_ITEM_REFERENCE_HAWB">
+          <AssociationSet Name="FK_FLIGHT_REFERENCE_MAWB" Association="GGGETSModel.Store.FK_FLIGHT_REFERENCE_MAWB">
+            <End Role="MAWB" EntitySet="MAWB" />
+            <End Role="Flight" EntitySet="Flight" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HAWB_REFERENCE_PACKAGE" Association="GGGETSModel.Store.FK_HAWB_REFERENCE_PACKAGE">
+            <End Role="Package" EntitySet="Package" />
             <End Role="HAWB" EntitySet="HAWB" />
-            <End Role="Item" EntitySet="Item" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HAWB_REFERENCE_USER" Association="GGGETSModel.Store.FK_HAWB_REFERENCE_USER">
+            <End Role="User" EntitySet="User" />
+            <End Role="HAWB" EntitySet="HAWB" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HAWBBOX_REFERENCE_HAWB" Association="GGGETSModel.Store.FK_HAWBBOX_REFERENCE_HAWB">
+            <End Role="HAWB" EntitySet="HAWB" />
+            <End Role="HAWBBox" EntitySet="HAWBBox" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HAWBITEM_REFERENCE_HAWB" Association="GGGETSModel.Store.FK_HAWBITEM_REFERENCE_HAWB">
+            <End Role="HAWB" EntitySet="HAWB" />
+            <End Role="HAWBItem" EntitySet="HAWBItem" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PACKAGE_REFERENCE_MAWB" Association="GGGETSModel.Store.FK_PACKAGE_REFERENCE_MAWB">
+            <End Role="MAWB" EntitySet="MAWB" />
+            <End Role="Package" EntitySet="Package" />
+          </AssociationSet>
+          <AssociationSet Name="FK_USER_REFERENCE_DEPARTME" Association="GGGETSModel.Store.FK_USER_REFERENCE_DEPARTME">
+            <End Role="Department" EntitySet="Department" />
+            <End Role="User" EntitySet="User" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="AddressBook">
@@ -35,25 +61,32 @@
           </Key>
           <Property Name="AID" Type="uniqueidentifier" Nullable="false" />
           <Property Name="UID" Type="uniqueidentifier" />
-          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="200" />
+          <Property Name="ContactorName" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="CountryCode" Type="char" Nullable="false" MaxLength="2" />
+          <Property Name="RegionCode" Type="char" Nullable="false" MaxLength="3" />
           <Property Name="Address" Type="nvarchar" Nullable="false" MaxLength="200" />
-          <Property Name="Phone" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Fax" Type="nvarchar" MaxLength="50" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="50" />
           <Property Name="PostCode" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="AddressType" Type="int" Nullable="false" />
           <Property Name="CreateTime" Type="datetime" Nullable="false" />
           <Property Name="UpdateTime" Type="datetime" Nullable="false" />
-          <Property Name="LastUsedTime" Type="datetime" Nullable="false" />
         </EntityType>
         <EntityType Name="Company">
           <Key>
-            <PropertyRef Name="ID" />
+            <PropertyRef Name="CID" />
           </Key>
-          <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="CID" Type="uniqueidentifier" Nullable="false" />
           <Property Name="FullName" Type="nvarchar" Nullable="false" MaxLength="100" />
           <Property Name="ShortName" Type="nvarchar" Nullable="false" MaxLength="80" />
           <Property Name="PostCode" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="CountryCode" Type="char" Nullable="false" MaxLength="2" />
+          <Property Name="RegionCode" Type="char" Nullable="false" MaxLength="3" />
           <Property Name="Address" Type="nvarchar" Nullable="false" MaxLength="200" />
           <Property Name="Contactor" Type="nvarchar" Nullable="false" MaxLength="50" />
           <Property Name="ContactorPhone" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="50" />
           <Property Name="Fax" Type="nvarchar" MaxLength="50" />
           <Property Name="ResidualAmount" Type="decimal" Nullable="false" />
           <Property Name="OrganizationCode" Type="nvarchar" MaxLength="50" />
@@ -61,115 +94,188 @@
           <Property Name="Status" Type="int" Nullable="false" />
           <Property Name="Remark" Type="nvarchar" MaxLength="200" />
         </EntityType>
-        <EntityType Name="CompanyUser">
+        <EntityType Name="CountryCode">
           <Key>
-            <PropertyRef Name="UID" />
+            <PropertyRef Name="ID" />
           </Key>
-          <Property Name="UID" Type="uniqueidentifier" Nullable="false" />
-          <Property Name="ID" Type="uniqueidentifier" />
-          <Property Name="LoginName" Type="nvarchar" Nullable="false" MaxLength="50" />
-          <Property Name="Password" Type="nvarchar" Nullable="false" MaxLength="100" />
-          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
-          <Property Name="PostCode" Type="nvarchar" Nullable="false" MaxLength="50" />
-          <Property Name="Fax" Type="nvarchar" MaxLength="50" />
-          <Property Name="Phone" Type="nvarchar" Nullable="false" MaxLength="50" />
-          <Property Name="Address" Type="nvarchar" MaxLength="200" />
-          <Property Name="UpdateTime" Type="datetime" Nullable="false" />
-          <Property Name="UpdateUser" Type="nvarchar" Nullable="false" MaxLength="50" />
-          <Property Name="CreateTime" Type="datetime" Nullable="false" />
-          <Property Name="Remark" Type="nvarchar" MaxLength="200" />
-          <Property Name="Status" Type="int" Nullable="false" />
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="CountryCode" Type="char" Nullable="false" MaxLength="2" />
+          <Property Name="CountryName" Type="nvarchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Department">
+          <Key>
+            <PropertyRef Name="DID" />
+          </Key>
+          <Property Name="DID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="CID" Type="uniqueidentifier" />
+          <Property Name="DepName" Type="varchar" MaxLength="50" />
           <Property Name="FeeDiscountType" Type="int" Nullable="false" />
-          <Property Name="FeeDiscountRate" Type="decimal" Nullable="false" />
+          <Property Name="FeeDiscountRate" Type="decimal" Nullable="false" Precision="4" Scale="2" />
           <Property Name="WeightDiscountType" Type="int" Nullable="false" />
-          <Property Name="WeightDiscountRate" Type="decimal" Nullable="false" />
+          <Property Name="WeightDiscountRate" Type="decimal" Nullable="false" Precision="4" Scale="2" />
           <Property Name="SettleType" Type="int" Nullable="false" />
           <Property Name="WeightCalType" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Flight">
+          <Key>
+            <PropertyRef Name="FID" />
+          </Key>
+          <Property Name="FID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="MID" Type="uniqueidentifier" />
+          <Property Name="FlightNo" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="From" Type="char" Nullable="false" MaxLength="3" />
+          <Property Name="To" Type="char" Nullable="false" MaxLength="3" />
+          <Property Name="TakeOffTime" Type="datetime" />
+          <Property Name="LandTime" Type="datetime" />
         </EntityType>
         <EntityType Name="HAWB">
           <Key>
             <PropertyRef Name="HID" />
           </Key>
           <Property Name="HID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="PID" Type="uniqueidentifier" />
+          <Property Name="UID" Type="uniqueidentifier" />
           <Property Name="BarCode" Type="nvarchar" MaxLength="20" />
           <Property Name="Carrier" Type="nvarchar" MaxLength="50" />
           <Property Name="CarrierHAWBID" Type="uniqueidentifier" />
-          <Property Name="Account" Type="uniqueidentifier" />
-          <Property Name="SettleType" Type="varchar" MaxLength="50" />
-          <Property Name="ServiceType" Type="varchar" MaxLength="50" />
-          <Property Name="CreateTime" Type="datetime" />
+          <Property Name="SettleType" Type="int" Nullable="false" />
+          <Property Name="ServiceType" Type="int" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
           <Property Name="UpdateTime" Type="datetime" />
-          <Property Name="DeadlienTime" Type="datetime" />
-          <Property Name="State" Type="int" />
-          <Property Name="Owner" Type="uniqueidentifier" />
+          <Property Name="Status" Type="int" Nullable="false" />
+          <Property Name="Operator" Type="nvarchar" MaxLength="50" />
           <Property Name="Remark" Type="ntext" />
-          <Property Name="Description" Type="ntext" />
-          <Property Name="ShipperID" Type="uniqueidentifier" />
-          <Property Name="ShipperContactor" Type="nvarchar" MaxLength="50" />
-          <Property Name="ShipperCountry" Type="char" MaxLength="2" />
-          <Property Name="ShipperRegion" Type="char" MaxLength="3" />
-          <Property Name="ShipperAddress" Type="nvarchar" MaxLength="500" />
-          <Property Name="ShipperZipCode" Type="varchar" MaxLength="20" />
-          <Property Name="ShipperTel" Type="varchar" MaxLength="20" />
-          <Property Name="ConsigneeID" Type="uniqueidentifier" />
-          <Property Name="ConsigneeContactor" Type="nvarchar" MaxLength="50" />
-          <Property Name="ConsigneeCountry" Type="char" MaxLength="2" />
-          <Property Name="ConsigneeRegion" Type="char" MaxLength="3" />
-          <Property Name="ConsigneeAddress" Type="nvarchar" MaxLength="500" />
-          <Property Name="ConsigneeZipCode" Type="varchar" MaxLength="20" />
-          <Property Name="ConsigneeTel" Type="varchar" MaxLength="20" />
-          <Property Name="WeightType" Type="tinyint" />
-          <Property Name="WeightValue" Type="float" />
-          <Property Name="Piece" Type="int" />
-          <Property Name="IsInternational" Type="bit" />
+          <Property Name="ShipperName" Type="nvarchar" Nullable="false" MaxLength="200" />
+          <Property Name="ShipperContactor" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="ShipperCountry" Type="char" Nullable="false" MaxLength="2" />
+          <Property Name="ShipperRegion" Type="char" Nullable="false" MaxLength="3" />
+          <Property Name="ShipperAddress" Type="nvarchar" Nullable="false" MaxLength="500" />
+          <Property Name="ShipperZipCode" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="ShipperTel" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="ConsigneeName" Type="uniqueidentifier" />
+          <Property Name="ConsigneeContactor" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="ConsigneeCountry" Type="char" Nullable="false" MaxLength="2" />
+          <Property Name="ConsigneeRegion" Type="char" Nullable="false" MaxLength="3" />
+          <Property Name="ConsigneeAddress" Type="nvarchar" Nullable="false" MaxLength="500" />
+          <Property Name="ConsigneeZipCode" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="ConsigneeTel" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="DeliverName" Type="nvarchar" MaxLength="20" />
+          <Property Name="DeliverContactor" Type="nvarchar" MaxLength="50" />
+          <Property Name="DeliverCountry" Type="char" MaxLength="2" />
+          <Property Name="DeliverRegion" Type="char" MaxLength="3" />
+          <Property Name="DeliverAddress" Type="nvarchar" MaxLength="500" />
+          <Property Name="DeliverZipCode" Type="varchar" MaxLength="20" />
+          <Property Name="DeliverTel" Type="varchar" MaxLength="20" />
+          <Property Name="WeightType" Type="int" Nullable="false" />
+          <Property Name="VolumeWeight" Type="decimal" Precision="8" Scale="2" />
+          <Property Name="TotalVolume" Type="decimal" Nullable="false" Precision="8" Scale="2" />
+          <Property Name="TotalWeight" Type="decimal" Nullable="false" Precision="8" Scale="2" />
+          <Property Name="Piece" Type="int" Nullable="false" />
+          <Property Name="IsInternational" Type="bit" Nullable="false" />
           <Property Name="SpecialInstruction" Type="nvarchar" MaxLength="500" />
-          <Property Name="Taxes" Type="nvarchar" MaxLength="500" />
-          <Property Name="PickupTime" Type="datetime" />
+          <Property Name="BillTax" Type="int" />
         </EntityType>
-        <EntityType Name="IndividualUser">
+        <EntityType Name="HAWBBox">
+          <Key>
+            <PropertyRef Name="BoxID" />
+          </Key>
+          <Property Name="BoxID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="HID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="BoxType" Type="int" Nullable="false" />
+          <Property Name="Weight" Type="decimal" Nullable="false" Precision="8" Scale="2" />
+          <Property Name="Length" Type="decimal" Precision="8" Scale="2" />
+          <Property Name="Width" Type="decimal" Precision="8" Scale="2" />
+          <Property Name="Height" Type="decimal" Precision="8" Scale="2" />
+          <Property Name="TransFee" Type="decimal" Precision="8" Scale="2" />
+          <Property Name="TransCurrency" Type="int" Nullable="false" />
+          <Property Name="Piece" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="HAWBItem">
+          <Key>
+            <PropertyRef Name="ItemID" />
+          </Key>
+          <Property Name="ItemID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="HID" Type="uniqueidentifier" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="Piece" Type="int" Nullable="false" />
+          <Property Name="UnitAmount" Type="decimal" Nullable="false" Precision="8" Scale="2" />
+          <Property Name="TotalAmount" Type="decimal" Nullable="false" Precision="8" Scale="2" />
+          <Property Name="Remark" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="MAWB">
+          <Key>
+            <PropertyRef Name="MID" />
+          </Key>
+          <Property Name="MID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="BarCode" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+          <Property Name="LockedTime" Type="datetime" />
+          <Property Name="Operator" Type="nvarchar" Nullable="false" MaxLength="20" />
+          <Property Name="TotalWeight" Type="decimal" Nullable="false" Precision="10" Scale="2" />
+          <Property Name="TotalVolume" Type="decimal" Nullable="false" Precision="10" Scale="2" />
+          <Property Name="Status" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Package">
+          <Key>
+            <PropertyRef Name="PID" />
+          </Key>
+          <Property Name="PID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="MID" Type="uniqueidentifier" />
+          <Property Name="BarCode" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="RegionCode" Type="char" Nullable="false" MaxLength="3" />
+          <Property Name="Piece" Type="int" Nullable="false" />
+          <Property Name="TotalWeight" Type="decimal" Nullable="false" Precision="10" Scale="2" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+          <Property Name="UpdateTime" Type="datetime" Nullable="false" />
+          <Property Name="Operator" Type="nvarchar" Nullable="false" MaxLength="20" />
+          <Property Name="Status" Type="int" Nullable="false" />
+          <Property Name="IsMixed" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RegionCode">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="CountryCode" Type="char" Nullable="false" MaxLength="2" />
+          <Property Name="RegionCode" Type="char" Nullable="false" MaxLength="3" />
+          <Property Name="RegionName" Type="nvarchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="User">
           <Key>
             <PropertyRef Name="UID" />
           </Key>
           <Property Name="UID" Type="uniqueidentifier" Nullable="false" />
-          <Property Name="LoginName" Type="nvarchar" Nullable="false" MaxLength="50" />
-          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="DID" Type="uniqueidentifier" />
+          <Property Name="LoginName" Type="varchar" Nullable="false" MaxLength="20" />
           <Property Name="Password" Type="nvarchar" Nullable="false" MaxLength="100" />
-          <Property Name="Phone" Type="nvarchar" MaxLength="50" />
-          <Property Name="Address" Type="nvarchar" MaxLength="50" />
+          <Property Name="RealName" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Department" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="PostCode" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" />
           <Property Name="Fax" Type="nvarchar" MaxLength="50" />
-          <Property Name="PostCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="Phone" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="CountryCode" Type="char" Nullable="false" MaxLength="2" />
+          <Property Name="RegionCode" Type="char" Nullable="false" MaxLength="3" />
+          <Property Name="Address" Type="nvarchar" Nullable="false" MaxLength="200" />
           <Property Name="UpdateTime" Type="datetime" Nullable="false" />
-          <Property Name="UpdateUser" Type="nvarchar" Nullable="false" MaxLength="50" />
           <Property Name="CreateTime" Type="datetime" Nullable="false" />
+          <Property Name="Operator" Type="nvarchar" Nullable="false" MaxLength="50" />
           <Property Name="Remark" Type="nvarchar" MaxLength="200" />
-          <Property Name="Status" Type="int" Nullable="false" />
           <Property Name="FeeDiscountType" Type="int" Nullable="false" />
-          <Property Name="FeeDiscountRate" Type="decimal" Nullable="false" />
+          <Property Name="FeeDiscountRate" Type="decimal" Nullable="false" Precision="4" Scale="2" />
           <Property Name="WeightDiscountType" Type="int" Nullable="false" />
-          <Property Name="WeightDiscountRate" Type="decimal" Nullable="false" />
+          <Property Name="WeightDiscountRate" Type="decimal" Nullable="false" Precision="4" Scale="2" />
           <Property Name="SettleType" Type="int" Nullable="false" />
           <Property Name="WeightCalType" Type="int" Nullable="false" />
+          <Property Name="Status" Type="int" Nullable="false" />
         </EntityType>
-        <EntityType Name="Item">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Weight" Type="decimal" Nullable="false" />
-          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
-          <Property Name="HID" Type="uniqueidentifier" Nullable="false" />
-          <Property Name="Length" Type="decimal" />
-          <Property Name="Width" Type="decimal" />
-          <Property Name="Height" Type="decimal" />
-          <Property Name="TransPays" Type="decimal" />
-          <Property Name="TransCurrency" Type="int" />
-        </EntityType>
-        <Association Name="FK_ADDRESSB_REFERENCE_COMPANYU">
-          <End Role="CompanyUser" Type="GGGETSModel.Store.CompanyUser" Multiplicity="0..1">
+        <Association Name="FK_ADDRESSB_REFERENCE_USER">
+          <End Role="User" Type="GGGETSModel.Store.User" Multiplicity="0..1">
             <OnDelete Action="Cascade" />
           </End>
           <End Role="AddressBook" Type="GGGETSModel.Store.AddressBook" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="CompanyUser">
+            <Principal Role="User">
               <PropertyRef Name="UID" />
             </Principal>
             <Dependent Role="AddressBook">
@@ -177,43 +283,101 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_ADDRESSB_REFERENCE_INDIVIDU">
-          <End Role="IndividualUser" Type="GGGETSModel.Store.IndividualUser" Multiplicity="0..1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="AddressBook" Type="GGGETSModel.Store.AddressBook" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="IndividualUser">
-              <PropertyRef Name="UID" />
-            </Principal>
-            <Dependent Role="AddressBook">
-              <PropertyRef Name="UID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_COMPANYU_REFERENCE_COMPANY">
+        <Association Name="FK_DEPARTME_REFERENCE_COMPANY">
           <End Role="Company" Type="GGGETSModel.Store.Company" Multiplicity="0..1" />
-          <End Role="CompanyUser" Type="GGGETSModel.Store.CompanyUser" Multiplicity="*" />
+          <End Role="Department" Type="GGGETSModel.Store.Department" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Company">
-              <PropertyRef Name="ID" />
+              <PropertyRef Name="CID" />
             </Principal>
-            <Dependent Role="CompanyUser">
-              <PropertyRef Name="ID" />
+            <Dependent Role="Department">
+              <PropertyRef Name="CID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_ITEM_REFERENCE_HAWB">
+        <Association Name="FK_FLIGHT_REFERENCE_MAWB">
+          <End Role="MAWB" Type="GGGETSModel.Store.MAWB" Multiplicity="0..1" />
+          <End Role="Flight" Type="GGGETSModel.Store.Flight" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MAWB">
+              <PropertyRef Name="MID" />
+            </Principal>
+            <Dependent Role="Flight">
+              <PropertyRef Name="MID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HAWB_REFERENCE_PACKAGE">
+          <End Role="Package" Type="GGGETSModel.Store.Package" Multiplicity="0..1" />
+          <End Role="HAWB" Type="GGGETSModel.Store.HAWB" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Package">
+              <PropertyRef Name="PID" />
+            </Principal>
+            <Dependent Role="HAWB">
+              <PropertyRef Name="PID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HAWB_REFERENCE_USER">
+          <End Role="User" Type="GGGETSModel.Store.User" Multiplicity="0..1" />
+          <End Role="HAWB" Type="GGGETSModel.Store.HAWB" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UID" />
+            </Principal>
+            <Dependent Role="HAWB">
+              <PropertyRef Name="UID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HAWBBOX_REFERENCE_HAWB">
           <End Role="HAWB" Type="GGGETSModel.Store.HAWB" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Role="Item" Type="GGGETSModel.Store.Item" Multiplicity="*" />
+          <End Role="HAWBBox" Type="GGGETSModel.Store.HAWBBox" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="HAWB">
               <PropertyRef Name="HID" />
             </Principal>
-            <Dependent Role="Item">
+            <Dependent Role="HAWBBox">
               <PropertyRef Name="HID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HAWBITEM_REFERENCE_HAWB">
+          <End Role="HAWB" Type="GGGETSModel.Store.HAWB" Multiplicity="0..1" />
+          <End Role="HAWBItem" Type="GGGETSModel.Store.HAWBItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HAWB">
+              <PropertyRef Name="HID" />
+            </Principal>
+            <Dependent Role="HAWBItem">
+              <PropertyRef Name="HID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PACKAGE_REFERENCE_MAWB">
+          <End Role="MAWB" Type="GGGETSModel.Store.MAWB" Multiplicity="0..1" />
+          <End Role="Package" Type="GGGETSModel.Store.Package" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MAWB">
+              <PropertyRef Name="MID" />
+            </Principal>
+            <Dependent Role="Package">
+              <PropertyRef Name="MID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_USER_REFERENCE_DEPARTME">
+          <End Role="Department" Type="GGGETSModel.Store.Department" Multiplicity="0..1" />
+          <End Role="User" Type="GGGETSModel.Store.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Department">
+              <PropertyRef Name="DID" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="DID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -222,191 +386,292 @@
     <edmx:ConceptualModels>
       <Schema Namespace="GGGETSModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
         <EntityContainer Name="GGGETSUnitOfWork" annotation:LazyLoadingEnabled="true" >
-          <EntitySet Name="HAWB" EntityType="GGGETSModel.HAWB" />
-          <EntitySet Name="Item" EntityType="GGGETSModel.Item" />
-          <AssociationSet Name="FK_ITEM_REFERENCE_HAWB" Association="GGGETSModel.FK_ITEM_REFERENCE_HAWB">
-            <End Role="HAWB" EntitySet="HAWB" />
-            <End Role="Item" EntitySet="Item" />
-          </AssociationSet>
           <EntitySet Name="AddressBook" EntityType="GGGETSModel.AddressBook" />
           <EntitySet Name="Company" EntityType="GGGETSModel.Company" />
-          <EntitySet Name="CompanyUser" EntityType="GGGETSModel.CompanyUser" />
-          <EntitySet Name="IndividualUser" EntityType="GGGETSModel.IndividualUser" />
-          <AssociationSet Name="FK_ADDRESSB_REFERENCE_COMPANYU" Association="GGGETSModel.FK_ADDRESSB_REFERENCE_COMPANYU">
-            <End Role="CompanyUser" EntitySet="CompanyUser" />
+          <EntitySet Name="CountryCode" EntityType="GGGETSModel.CountryCode" />
+          <EntitySet Name="Department" EntityType="GGGETSModel.Department" />
+          <EntitySet Name="Flight" EntityType="GGGETSModel.Flight" />
+          <EntitySet Name="HAWB" EntityType="GGGETSModel.HAWB" />
+          <EntitySet Name="HAWBBox" EntityType="GGGETSModel.HAWBBox" />
+          <EntitySet Name="HAWBItem" EntityType="GGGETSModel.HAWBItem" />
+          <EntitySet Name="MAWB" EntityType="GGGETSModel.MAWB" />
+          <EntitySet Name="Package" EntityType="GGGETSModel.Package" />
+          <EntitySet Name="RegionCode" EntityType="GGGETSModel.RegionCode" />
+          <EntitySet Name="User" EntityType="GGGETSModel.User" />
+          <AssociationSet Name="FK_ADDRESSB_REFERENCE_USER" Association="GGGETSModel.FK_ADDRESSB_REFERENCE_USER">
+            <End Role="User" EntitySet="User" />
             <End Role="AddressBook" EntitySet="AddressBook" />
           </AssociationSet>
-          <AssociationSet Name="FK_ADDRESSB_REFERENCE_INDIVIDU" Association="GGGETSModel.FK_ADDRESSB_REFERENCE_INDIVIDU">
-            <End Role="IndividualUser" EntitySet="IndividualUser" />
-            <End Role="AddressBook" EntitySet="AddressBook" />
-          </AssociationSet>
-          <AssociationSet Name="FK_COMPANYU_REFERENCE_COMPANY" Association="GGGETSModel.FK_COMPANYU_REFERENCE_COMPANY">
+          <AssociationSet Name="FK_DEPARTME_REFERENCE_COMPANY" Association="GGGETSModel.FK_DEPARTME_REFERENCE_COMPANY">
             <End Role="Company" EntitySet="Company" />
-            <End Role="CompanyUser" EntitySet="CompanyUser" />
+            <End Role="Department" EntitySet="Department" />
+          </AssociationSet>
+          <AssociationSet Name="FK_USER_REFERENCE_DEPARTME" Association="GGGETSModel.FK_USER_REFERENCE_DEPARTME">
+            <End Role="Department" EntitySet="Department" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FLIGHT_REFERENCE_MAWB" Association="GGGETSModel.FK_FLIGHT_REFERENCE_MAWB">
+            <End Role="MAWB" EntitySet="MAWB" />
+            <End Role="Flight" EntitySet="Flight" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HAWB_REFERENCE_PACKAGE" Association="GGGETSModel.FK_HAWB_REFERENCE_PACKAGE">
+            <End Role="Package" EntitySet="Package" />
+            <End Role="HAWB" EntitySet="HAWB" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HAWB_REFERENCE_USER" Association="GGGETSModel.FK_HAWB_REFERENCE_USER">
+            <End Role="User" EntitySet="User" />
+            <End Role="HAWB" EntitySet="HAWB" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HAWBBOX_REFERENCE_HAWB" Association="GGGETSModel.FK_HAWBBOX_REFERENCE_HAWB">
+            <End Role="HAWB" EntitySet="HAWB" />
+            <End Role="HAWBBox" EntitySet="HAWBBox" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HAWBITEM_REFERENCE_HAWB" Association="GGGETSModel.FK_HAWBITEM_REFERENCE_HAWB">
+            <End Role="HAWB" EntitySet="HAWB" />
+            <End Role="HAWBItem" EntitySet="HAWBItem" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PACKAGE_REFERENCE_MAWB" Association="GGGETSModel.FK_PACKAGE_REFERENCE_MAWB">
+            <End Role="MAWB" EntitySet="MAWB" />
+            <End Role="Package" EntitySet="Package" />
           </AssociationSet>
         </EntityContainer>
-        <EntityType Name="HAWB">
-          <Key>
-            <PropertyRef Name="HID" />
-          </Key>
-          <Property Type="Guid" Name="HID" Nullable="false" />
-          <Property Type="String" Name="BarCode" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="Carrier" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Type="Guid" Name="CarrierHAWBID" />
-          <Property Type="Guid" Name="Account" />
-          <Property Type="String" Name="SettleType" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Type="String" Name="ServiceType" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Type="DateTime" Name="CreateTime" />
-          <Property Type="DateTime" Name="UpdateTime" />
-          <Property Type="DateTime" Name="DeadlienTime" />
-          <Property Type="Int32" Name="State" />
-          <Property Type="Guid" Name="Owner" />
-          <Property Type="String" Name="Remark" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="Description" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Type="Guid" Name="ShipperID" />
-          <Property Type="String" Name="ShipperContactor" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="ShipperCountry" MaxLength="2" FixedLength="true" Unicode="false" />
-          <Property Type="String" Name="ShipperRegion" MaxLength="3" FixedLength="true" Unicode="false" />
-          <Property Type="String" Name="ShipperAddress" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="ShipperZipCode" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Type="String" Name="ShipperTel" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Type="Guid" Name="ConsigneeID" />
-          <Property Type="String" Name="ConsigneeContactor" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="ConsigneeCountry" MaxLength="2" FixedLength="true" Unicode="false" />
-          <Property Type="String" Name="ConsigneeRegion" MaxLength="3" FixedLength="true" Unicode="false" />
-          <Property Type="String" Name="ConsigneeAddress" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="ConsigneeZipCode" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Type="String" Name="ConsigneeTel" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Type="Byte" Name="WeightType" />
-          <Property Type="Double" Name="WeightValue" />
-          <Property Type="Int32" Name="Piece" DefaultValue="0" />
-          <Property Type="Boolean" Name="IsInternational" />
-          <Property Type="String" Name="SpecialInstruction" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="Taxes" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Type="DateTime" Name="PickupTime" />
-          <NavigationProperty Name="Item" Relationship="GGGETSModel.FK_ITEM_REFERENCE_HAWB" FromRole="HAWB" ToRole="Item" />
-        </EntityType>
-        <EntityType Name="Item">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Type="Decimal" Name="Weight" Nullable="false" Precision="18" Scale="0" />
-          <Property Type="Guid" Name="Id" Nullable="false" />
-          <Property Type="Guid" Name="HID" Nullable="false" />
-          <Property Type="Decimal" Name="Length" Precision="18" Scale="0" />
-          <Property Type="Decimal" Name="Width" Precision="18" Scale="0" />
-          <Property Type="Decimal" Name="Height" Precision="18" Scale="0" />
-          <Property Type="Decimal" Name="TransPays" Precision="18" Scale="0" />
-          <Property Type="Int32" Name="TransCurrency" />
-          <NavigationProperty Name="HAWB" Relationship="GGGETSModel.FK_ITEM_REFERENCE_HAWB" FromRole="Item" ToRole="HAWB" />
-        </EntityType>
-        <Association Name="FK_ITEM_REFERENCE_HAWB">
-          <End Type="GGGETSModel.HAWB" Role="HAWB" Multiplicity="1" >
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="GGGETSModel.Item" Role="Item" Multiplicity="*" >
-          </End>
-          <ReferentialConstraint>
-            <Principal Role="HAWB">
-              <PropertyRef Name="HID" />
-            </Principal>
-            <Dependent Role="Item">
-              <PropertyRef Name="HID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityType Name="AddressBook">
           <Key>
             <PropertyRef Name="AID" />
           </Key>
           <Property Type="Guid" Name="AID" Nullable="false" />
           <Property Type="Guid" Name="UID" />
-          <Property Type="String" Name="Name" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ContactorName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="CountryCode" Nullable="false" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="RegionCode" Nullable="false" MaxLength="3" FixedLength="true" Unicode="false" />
           <Property Type="String" Name="Address" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="Phone" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Fax" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Phone" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="PostCode" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="AddressType" Nullable="false" />
           <Property Type="DateTime" Name="CreateTime" Nullable="false" />
           <Property Type="DateTime" Name="UpdateTime" Nullable="false" />
-          <Property Type="DateTime" Name="LastUsedTime" Nullable="false" />
-          <NavigationProperty Name="CompanyUser" Relationship="GGGETSModel.FK_ADDRESSB_REFERENCE_COMPANYU" FromRole="AddressBook" ToRole="CompanyUser" />
-          <NavigationProperty Name="IndividualUser" Relationship="GGGETSModel.FK_ADDRESSB_REFERENCE_INDIVIDU" FromRole="AddressBook" ToRole="IndividualUser" />
+          <NavigationProperty Name="User" Relationship="GGGETSModel.FK_ADDRESSB_REFERENCE_USER" FromRole="AddressBook" ToRole="User" />
         </EntityType>
         <EntityType Name="Company">
           <Key>
-            <PropertyRef Name="ID" />
+            <PropertyRef Name="CID" />
           </Key>
-          <Property Type="Guid" Name="ID" Nullable="false" />
+          <Property Type="Guid" Name="CID" Nullable="false" />
           <Property Type="String" Name="FullName" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="ShortName" Nullable="false" MaxLength="80" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="PostCode" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="CountryCode" Nullable="false" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="RegionCode" Nullable="false" MaxLength="3" FixedLength="true" Unicode="false" />
           <Property Type="String" Name="Address" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="Contactor" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="ContactorPhone" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Phone" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="Fax" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Type="Decimal" Name="ResidualAmount" Nullable="false" Precision="18" Scale="0" />
           <Property Type="String" Name="OrganizationCode" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Type="Decimal" Name="LimitAmount" Nullable="false" Precision="18" Scale="0" />
-          <Property Type="Int32" Name="Status" Nullable="false" DefaultValue="0" />
+          <Property Type="Int32" Name="Status" Nullable="false" />
           <Property Type="String" Name="Remark" MaxLength="200" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="CompanyUsers" Relationship="GGGETSModel.FK_COMPANYU_REFERENCE_COMPANY" FromRole="Company" ToRole="CompanyUser" />
+          <NavigationProperty Name="Department" Relationship="GGGETSModel.FK_DEPARTME_REFERENCE_COMPANY" FromRole="Company" ToRole="Department" />
         </EntityType>
-        <EntityType Name="CompanyUser">
+        <EntityType Name="CountryCode">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="CountryCode1" Nullable="false" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="CountryName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Department">
+          <Key>
+            <PropertyRef Name="DID" />
+          </Key>
+          <Property Type="Guid" Name="DID" Nullable="false" />
+          <Property Type="Guid" Name="CID" />
+          <Property Type="String" Name="DepName" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="FeeDiscountType" Nullable="false" />
+          <Property Type="Decimal" Name="FeeDiscountRate" Nullable="false" Precision="4" Scale="2" />
+          <Property Type="Int32" Name="WeightDiscountType" Nullable="false" />
+          <Property Type="Decimal" Name="WeightDiscountRate" Nullable="false" Precision="4" Scale="2" />
+          <Property Type="Int32" Name="SettleType" Nullable="false" />
+          <Property Type="Int32" Name="WeightCalType" Nullable="false" />
+          <NavigationProperty Name="Company" Relationship="GGGETSModel.FK_DEPARTME_REFERENCE_COMPANY" FromRole="Department" ToRole="Company" />
+          <NavigationProperty Name="User" Relationship="GGGETSModel.FK_USER_REFERENCE_DEPARTME" FromRole="Department" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Flight">
+          <Key>
+            <PropertyRef Name="FID" />
+          </Key>
+          <Property Type="Guid" Name="FID" Nullable="false" />
+          <Property Type="Guid" Name="MID" />
+          <Property Type="String" Name="FlightNo" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="From" Nullable="false" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="To" Nullable="false" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Type="DateTime" Name="TakeOffTime" />
+          <Property Type="DateTime" Name="LandTime" />
+          <NavigationProperty Name="MAWB" Relationship="GGGETSModel.FK_FLIGHT_REFERENCE_MAWB" FromRole="Flight" ToRole="MAWB" />
+        </EntityType>
+        <EntityType Name="HAWB">
+          <Key>
+            <PropertyRef Name="HID" />
+          </Key>
+          <Property Type="Guid" Name="HID" Nullable="false" />
+          <Property Type="Guid" Name="PID" />
+          <Property Type="Guid" Name="UID" />
+          <Property Type="String" Name="BarCode" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Carrier" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Guid" Name="CarrierHAWBID" />
+          <Property Type="Int32" Name="SettleType" Nullable="false" />
+          <Property Type="Int32" Name="ServiceType" />
+          <Property Type="DateTime" Name="CreateTime" Nullable="false" />
+          <Property Type="DateTime" Name="UpdateTime" />
+          <Property Type="Int32" Name="Status" Nullable="false" />
+          <Property Type="String" Name="Operator" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Remark" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ShipperName" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ShipperContactor" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ShipperCountry" Nullable="false" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="ShipperRegion" Nullable="false" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="ShipperAddress" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ShipperZipCode" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ShipperTel" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="Guid" Name="ConsigneeName" />
+          <Property Type="String" Name="ConsigneeContactor" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ConsigneeCountry" Nullable="false" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="ConsigneeRegion" Nullable="false" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="ConsigneeAddress" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ConsigneeZipCode" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ConsigneeTel" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="DeliverName" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="DeliverContactor" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="DeliverCountry" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="DeliverRegion" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="DeliverAddress" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="DeliverZipCode" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="DeliverTel" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="WeightType" Nullable="false" />
+          <Property Type="Decimal" Name="VolumeWeight" Precision="8" Scale="2" />
+          <Property Type="Decimal" Name="TotalVolume" Nullable="false" Precision="8" Scale="2" />
+          <Property Type="Decimal" Name="TotalWeight" Nullable="false" Precision="8" Scale="2" />
+          <Property Type="Int32" Name="Piece" Nullable="false" />
+          <Property Type="Boolean" Name="IsInternational" Nullable="false" />
+          <Property Type="String" Name="SpecialInstruction" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="BillTax" />
+          <NavigationProperty Name="Package" Relationship="GGGETSModel.FK_HAWB_REFERENCE_PACKAGE" FromRole="HAWB" ToRole="Package" />
+          <NavigationProperty Name="User" Relationship="GGGETSModel.FK_HAWB_REFERENCE_USER" FromRole="HAWB" ToRole="User" />
+          <NavigationProperty Name="HAWBBox" Relationship="GGGETSModel.FK_HAWBBOX_REFERENCE_HAWB" FromRole="HAWB" ToRole="HAWBBox" />
+          <NavigationProperty Name="HAWBItem" Relationship="GGGETSModel.FK_HAWBITEM_REFERENCE_HAWB" FromRole="HAWB" ToRole="HAWBItem" />
+        </EntityType>
+        <EntityType Name="HAWBBox">
+          <Key>
+            <PropertyRef Name="BoxID" />
+          </Key>
+          <Property Type="Guid" Name="BoxID" Nullable="false" />
+          <Property Type="Guid" Name="HID" Nullable="false" />
+          <Property Type="Int32" Name="BoxType" Nullable="false" />
+          <Property Type="Decimal" Name="Weight" Nullable="false" Precision="8" Scale="2" />
+          <Property Type="Decimal" Name="Length" Precision="8" Scale="2" />
+          <Property Type="Decimal" Name="Width" Precision="8" Scale="2" />
+          <Property Type="Decimal" Name="Height" Precision="8" Scale="2" />
+          <Property Type="Decimal" Name="TransFee" Precision="8" Scale="2" />
+          <Property Type="Int32" Name="TransCurrency" Nullable="false" />
+          <Property Type="Int32" Name="Piece" Nullable="false" />
+          <NavigationProperty Name="HAWB" Relationship="GGGETSModel.FK_HAWBBOX_REFERENCE_HAWB" FromRole="HAWBBox" ToRole="HAWB" />
+        </EntityType>
+        <EntityType Name="HAWBItem">
+          <Key>
+            <PropertyRef Name="ItemID" />
+          </Key>
+          <Property Type="Guid" Name="ItemID" Nullable="false" />
+          <Property Type="Guid" Name="HID" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="Piece" Nullable="false" />
+          <Property Type="Decimal" Name="UnitAmount" Nullable="false" Precision="8" Scale="2" />
+          <Property Type="Decimal" Name="TotalAmount" Nullable="false" Precision="8" Scale="2" />
+          <Property Type="String" Name="Remark" MaxLength="200" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="HAWB" Relationship="GGGETSModel.FK_HAWBITEM_REFERENCE_HAWB" FromRole="HAWBItem" ToRole="HAWB" />
+        </EntityType>
+        <EntityType Name="MAWB">
+          <Key>
+            <PropertyRef Name="MID" />
+          </Key>
+          <Property Type="Guid" Name="MID" Nullable="false" />
+          <Property Type="String" Name="BarCode" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="CreateTime" Nullable="false" />
+          <Property Type="DateTime" Name="LockedTime" />
+          <Property Type="String" Name="Operator" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="Decimal" Name="TotalWeight" Nullable="false" Precision="10" Scale="2" />
+          <Property Type="Decimal" Name="TotalVolume" Nullable="false" Precision="10" Scale="2" />
+          <Property Type="Int32" Name="Status" Nullable="false" />
+          <NavigationProperty Name="Flight" Relationship="GGGETSModel.FK_FLIGHT_REFERENCE_MAWB" FromRole="MAWB" ToRole="Flight" />
+          <NavigationProperty Name="Package" Relationship="GGGETSModel.FK_PACKAGE_REFERENCE_MAWB" FromRole="MAWB" ToRole="Package" />
+        </EntityType>
+        <EntityType Name="Package">
+          <Key>
+            <PropertyRef Name="PID" />
+          </Key>
+          <Property Type="Guid" Name="PID" Nullable="false" />
+          <Property Type="Guid" Name="MID" />
+          <Property Type="String" Name="BarCode" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="RegionCode" Nullable="false" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Type="Int32" Name="Piece" Nullable="false" />
+          <Property Type="Decimal" Name="TotalWeight" Nullable="false" Precision="10" Scale="2" />
+          <Property Type="DateTime" Name="CreateTime" Nullable="false" />
+          <Property Type="DateTime" Name="UpdateTime" Nullable="false" />
+          <Property Type="String" Name="Operator" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="Status" Nullable="false" />
+          <Property Type="Boolean" Name="IsMixed" Nullable="false" />
+          <NavigationProperty Name="HAWB" Relationship="GGGETSModel.FK_HAWB_REFERENCE_PACKAGE" FromRole="Package" ToRole="HAWB" />
+          <NavigationProperty Name="MAWB" Relationship="GGGETSModel.FK_PACKAGE_REFERENCE_MAWB" FromRole="Package" ToRole="MAWB" />
+        </EntityType>
+        <EntityType Name="RegionCode">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="CountryCode" Nullable="false" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="RegionCode1" Nullable="false" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="RegionName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="User">
           <Key>
             <PropertyRef Name="UID" />
           </Key>
           <Property Type="Guid" Name="UID" Nullable="false" />
-          <Property Type="Guid" Name="ID" />
-          <Property Type="String" Name="LoginName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Guid" Name="DID" />
+          <Property Type="String" Name="LoginName" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Type="String" Name="Password" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="Name" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="RealName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Department" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="PostCode" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Email" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="Fax" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="Phone" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="Address" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="CountryCode" Nullable="false" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="RegionCode" Nullable="false" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="Address" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Type="DateTime" Name="UpdateTime" Nullable="false" />
-          <Property Type="String" Name="UpdateUser" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Type="DateTime" Name="CreateTime" Nullable="false" />
+          <Property Type="String" Name="Operator" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="Remark" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Type="Int32" Name="Status" Nullable="false" DefaultValue="0" />
-          <Property Type="Int32" Name="FeeDiscountType" Nullable="false" DefaultValue="0" />
-          <Property Type="Decimal" Name="FeeDiscountRate" Nullable="false" Precision="18" Scale="0" />
-          <Property Type="Int32" Name="WeightDiscountType" Nullable="false" DefaultValue="0" />
-          <Property Type="Decimal" Name="WeightDiscountRate" Nullable="false" Precision="18" Scale="0" />
-          <Property Type="Int32" Name="SettleType" Nullable="false" DefaultValue="0" />
-          <Property Type="Int32" Name="WeightCalType" Nullable="false" DefaultValue="0" />
-          <NavigationProperty Name="AddressBooks" Relationship="GGGETSModel.FK_ADDRESSB_REFERENCE_COMPANYU" FromRole="CompanyUser" ToRole="AddressBook" />
-          <NavigationProperty Name="Company" Relationship="GGGETSModel.FK_COMPANYU_REFERENCE_COMPANY" FromRole="CompanyUser" ToRole="Company" />
-        </EntityType>
-        <EntityType Name="IndividualUser">
-          <Key>
-            <PropertyRef Name="UID" />
-          </Key>
-          <Property Type="Guid" Name="UID" Nullable="false" />
-          <Property Type="String" Name="LoginName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="Name" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="Password" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="Phone" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="Address" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="Fax" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="PostCode" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Type="DateTime" Name="UpdateTime" Nullable="false" />
-          <Property Type="String" Name="UpdateUser" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Type="DateTime" Name="CreateTime" Nullable="false" />
-          <Property Type="String" Name="Remark" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Type="Int32" Name="Status" Nullable="false" DefaultValue="0" />
-          <Property Type="Int32" Name="FeeDiscountType" Nullable="false" DefaultValue="0" />
-          <Property Type="Decimal" Name="FeeDiscountRate" Nullable="false" Precision="18" Scale="0" />
+          <Property Type="Int32" Name="FeeDiscountType" Nullable="false" />
+          <Property Type="Decimal" Name="FeeDiscountRate" Nullable="false" Precision="4" Scale="2" />
           <Property Type="Int32" Name="WeightDiscountType" Nullable="false" />
-          <Property Type="Decimal" Name="WeightDiscountRate" Nullable="false" Precision="18" Scale="0" />
-          <Property Type="Int32" Name="SettleType" Nullable="false" DefaultValue="0" />
-          <Property Type="Int32" Name="WeightCalType" Nullable="false" DefaultValue="0" />
-          <NavigationProperty Name="AddressBooks" Relationship="GGGETSModel.FK_ADDRESSB_REFERENCE_INDIVIDU" FromRole="IndividualUser" ToRole="AddressBook" />
+          <Property Type="Decimal" Name="WeightDiscountRate" Nullable="false" Precision="4" Scale="2" />
+          <Property Type="Int32" Name="SettleType" Nullable="false" />
+          <Property Type="Int32" Name="WeightCalType" Nullable="false" />
+          <Property Type="Int32" Name="Status" Nullable="false" />
+          <NavigationProperty Name="AddressBook" Relationship="GGGETSModel.FK_ADDRESSB_REFERENCE_USER" FromRole="User" ToRole="AddressBook" />
+          <NavigationProperty Name="Department1" Relationship="GGGETSModel.FK_USER_REFERENCE_DEPARTME" FromRole="User" ToRole="Department" />
+          <NavigationProperty Name="HAWB" Relationship="GGGETSModel.FK_HAWB_REFERENCE_USER" FromRole="User" ToRole="HAWB" />
         </EntityType>
-        <Association Name="FK_ADDRESSB_REFERENCE_COMPANYU">
-          <End Type="GGGETSModel.CompanyUser" Role="CompanyUser" Multiplicity="0..1" />
+        <Association Name="FK_ADDRESSB_REFERENCE_USER">
+          <End Type="GGGETSModel.User" Role="User" Multiplicity="0..1" />
           <End Type="GGGETSModel.AddressBook" Role="AddressBook" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="CompanyUser">
+            <Principal Role="User">
               <PropertyRef Name="UID" />
             </Principal>
             <Dependent Role="AddressBook">
@@ -414,27 +679,99 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_ADDRESSB_REFERENCE_INDIVIDU">
-          <End Type="GGGETSModel.IndividualUser" Role="IndividualUser" Multiplicity="0..1" />
-          <End Type="GGGETSModel.AddressBook" Role="AddressBook" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="IndividualUser">
-              <PropertyRef Name="UID" />
-            </Principal>
-            <Dependent Role="AddressBook">
-              <PropertyRef Name="UID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_COMPANYU_REFERENCE_COMPANY">
+        <Association Name="FK_DEPARTME_REFERENCE_COMPANY">
           <End Type="GGGETSModel.Company" Role="Company" Multiplicity="0..1" />
-          <End Type="GGGETSModel.CompanyUser" Role="CompanyUser" Multiplicity="*" />
+          <End Type="GGGETSModel.Department" Role="Department" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Company">
-              <PropertyRef Name="ID" />
+              <PropertyRef Name="CID" />
             </Principal>
-            <Dependent Role="CompanyUser">
-              <PropertyRef Name="ID" />
+            <Dependent Role="Department">
+              <PropertyRef Name="CID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_USER_REFERENCE_DEPARTME">
+          <End Type="GGGETSModel.Department" Role="Department" Multiplicity="0..1" />
+          <End Type="GGGETSModel.User" Role="User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Department">
+              <PropertyRef Name="DID" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="DID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FLIGHT_REFERENCE_MAWB">
+          <End Type="GGGETSModel.MAWB" Role="MAWB" Multiplicity="0..1" />
+          <End Type="GGGETSModel.Flight" Role="Flight" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MAWB">
+              <PropertyRef Name="MID" />
+            </Principal>
+            <Dependent Role="Flight">
+              <PropertyRef Name="MID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HAWB_REFERENCE_PACKAGE">
+          <End Type="GGGETSModel.Package" Role="Package" Multiplicity="0..1" />
+          <End Type="GGGETSModel.HAWB" Role="HAWB" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Package">
+              <PropertyRef Name="PID" />
+            </Principal>
+            <Dependent Role="HAWB">
+              <PropertyRef Name="PID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HAWB_REFERENCE_USER">
+          <End Type="GGGETSModel.User" Role="User" Multiplicity="0..1" />
+          <End Type="GGGETSModel.HAWB" Role="HAWB" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UID" />
+            </Principal>
+            <Dependent Role="HAWB">
+              <PropertyRef Name="UID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HAWBBOX_REFERENCE_HAWB">
+          <End Type="GGGETSModel.HAWB" Role="HAWB" Multiplicity="1" />
+          <End Type="GGGETSModel.HAWBBox" Role="HAWBBox" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HAWB">
+              <PropertyRef Name="HID" />
+            </Principal>
+            <Dependent Role="HAWBBox">
+              <PropertyRef Name="HID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HAWBITEM_REFERENCE_HAWB">
+          <End Type="GGGETSModel.HAWB" Role="HAWB" Multiplicity="0..1" />
+          <End Type="GGGETSModel.HAWBItem" Role="HAWBItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HAWB">
+              <PropertyRef Name="HID" />
+            </Principal>
+            <Dependent Role="HAWBItem">
+              <PropertyRef Name="HID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PACKAGE_REFERENCE_MAWB">
+          <End Type="GGGETSModel.MAWB" Role="MAWB" Multiplicity="0..1" />
+          <End Type="GGGETSModel.Package" Role="Package" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MAWB">
+              <PropertyRef Name="MID" />
+            </Principal>
+            <Dependent Role="Package">
+              <PropertyRef Name="MID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -444,70 +781,19 @@
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="GGGETSModelStoreContainer" CdmEntityContainer="GGGETSUnitOfWork" >
-          <EntitySetMapping Name="HAWB">
-            <EntityTypeMapping TypeName="GGGETSModel.HAWB">
-              <MappingFragment StoreEntitySet="HAWB">
-                <ScalarProperty Name="PickupTime" ColumnName="PickupTime" />
-                <ScalarProperty Name="Taxes" ColumnName="Taxes" />
-                <ScalarProperty Name="SpecialInstruction" ColumnName="SpecialInstruction" />
-                <ScalarProperty Name="IsInternational" ColumnName="IsInternational" />
-                <ScalarProperty Name="Piece" ColumnName="Piece" />
-                <ScalarProperty Name="WeightValue" ColumnName="WeightValue" />
-                <ScalarProperty Name="WeightType" ColumnName="WeightType" />
-                <ScalarProperty Name="ConsigneeTel" ColumnName="ConsigneeTel" />
-                <ScalarProperty Name="ConsigneeZipCode" ColumnName="ConsigneeZipCode" />
-                <ScalarProperty Name="ConsigneeAddress" ColumnName="ConsigneeAddress" />
-                <ScalarProperty Name="ConsigneeRegion" ColumnName="ConsigneeRegion" />
-                <ScalarProperty Name="ConsigneeCountry" ColumnName="ConsigneeCountry" />
-                <ScalarProperty Name="ConsigneeContactor" ColumnName="ConsigneeContactor" />
-                <ScalarProperty Name="ConsigneeID" ColumnName="ConsigneeID" />
-                <ScalarProperty Name="ShipperTel" ColumnName="ShipperTel" />
-                <ScalarProperty Name="ShipperZipCode" ColumnName="ShipperZipCode" />
-                <ScalarProperty Name="ShipperAddress" ColumnName="ShipperAddress" />
-                <ScalarProperty Name="ShipperRegion" ColumnName="ShipperRegion" />
-                <ScalarProperty Name="ShipperCountry" ColumnName="ShipperCountry" />
-                <ScalarProperty Name="ShipperContactor" ColumnName="ShipperContactor" />
-                <ScalarProperty Name="ShipperID" ColumnName="ShipperID" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="Remark" ColumnName="Remark" />
-                <ScalarProperty Name="Owner" ColumnName="Owner" />
-                <ScalarProperty Name="State" ColumnName="State" />
-                <ScalarProperty Name="DeadlienTime" ColumnName="DeadlienTime" />
-                <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
-                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
-                <ScalarProperty Name="ServiceType" ColumnName="ServiceType" />
-                <ScalarProperty Name="SettleType" ColumnName="SettleType" />
-                <ScalarProperty Name="Account" ColumnName="Account" />
-                <ScalarProperty Name="CarrierHAWBID" ColumnName="CarrierHAWBID" />
-                <ScalarProperty Name="Carrier" ColumnName="Carrier" />
-                <ScalarProperty Name="BarCode" ColumnName="BarCode" />
-                <ScalarProperty Name="HID" ColumnName="HID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Item">
-            <EntityTypeMapping TypeName="GGGETSModel.Item">
-              <MappingFragment StoreEntitySet="Item">
-                <ScalarProperty Name="TransCurrency" ColumnName="TransCurrency" />
-                <ScalarProperty Name="TransPays" ColumnName="TransPays" />
-                <ScalarProperty Name="Height" ColumnName="Height" />
-                <ScalarProperty Name="Width" ColumnName="Width" />
-                <ScalarProperty Name="Length" ColumnName="Length" />
-                <ScalarProperty Name="HID" ColumnName="HID" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Weight" ColumnName="Weight" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="AddressBook">
             <EntityTypeMapping TypeName="GGGETSModel.AddressBook">
               <MappingFragment StoreEntitySet="AddressBook">
-                <ScalarProperty Name="LastUsedTime" ColumnName="LastUsedTime" />
                 <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
                 <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="AddressType" ColumnName="AddressType" />
                 <ScalarProperty Name="PostCode" ColumnName="PostCode" />
                 <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Fax" ColumnName="Fax" />
                 <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="RegionCode" ColumnName="RegionCode" />
+                <ScalarProperty Name="CountryCode" ColumnName="CountryCode" />
+                <ScalarProperty Name="ContactorName" ColumnName="ContactorName" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="UID" ColumnName="UID" />
                 <ScalarProperty Name="AID" ColumnName="AID" />
@@ -523,63 +809,200 @@
                 <ScalarProperty Name="OrganizationCode" ColumnName="OrganizationCode" />
                 <ScalarProperty Name="ResidualAmount" ColumnName="ResidualAmount" />
                 <ScalarProperty Name="Fax" ColumnName="Fax" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
                 <ScalarProperty Name="ContactorPhone" ColumnName="ContactorPhone" />
                 <ScalarProperty Name="Contactor" ColumnName="Contactor" />
                 <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="RegionCode" ColumnName="RegionCode" />
+                <ScalarProperty Name="CountryCode" ColumnName="CountryCode" />
                 <ScalarProperty Name="PostCode" ColumnName="PostCode" />
                 <ScalarProperty Name="ShortName" ColumnName="ShortName" />
                 <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="CID" ColumnName="CID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CountryCode">
+            <EntityTypeMapping TypeName="GGGETSModel.CountryCode">
+              <MappingFragment StoreEntitySet="CountryCode">
+                <ScalarProperty Name="CountryName" ColumnName="CountryName" />
+                <ScalarProperty Name="CountryCode1" ColumnName="CountryCode" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="CompanyUser">
-            <EntityTypeMapping TypeName="GGGETSModel.CompanyUser">
-              <MappingFragment StoreEntitySet="CompanyUser">
+          <EntitySetMapping Name="Department">
+            <EntityTypeMapping TypeName="GGGETSModel.Department">
+              <MappingFragment StoreEntitySet="Department">
                 <ScalarProperty Name="WeightCalType" ColumnName="WeightCalType" />
                 <ScalarProperty Name="SettleType" ColumnName="SettleType" />
                 <ScalarProperty Name="WeightDiscountRate" ColumnName="WeightDiscountRate" />
                 <ScalarProperty Name="WeightDiscountType" ColumnName="WeightDiscountType" />
                 <ScalarProperty Name="FeeDiscountRate" ColumnName="FeeDiscountRate" />
                 <ScalarProperty Name="FeeDiscountType" ColumnName="FeeDiscountType" />
-                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="DepName" ColumnName="DepName" />
+                <ScalarProperty Name="CID" ColumnName="CID" />
+                <ScalarProperty Name="DID" ColumnName="DID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Flight">
+            <EntityTypeMapping TypeName="GGGETSModel.Flight">
+              <MappingFragment StoreEntitySet="Flight">
+                <ScalarProperty Name="LandTime" ColumnName="LandTime" />
+                <ScalarProperty Name="TakeOffTime" ColumnName="TakeOffTime" />
+                <ScalarProperty Name="To" ColumnName="To" />
+                <ScalarProperty Name="From" ColumnName="From" />
+                <ScalarProperty Name="FlightNo" ColumnName="FlightNo" />
+                <ScalarProperty Name="MID" ColumnName="MID" />
+                <ScalarProperty Name="FID" ColumnName="FID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HAWB">
+            <EntityTypeMapping TypeName="GGGETSModel.HAWB">
+              <MappingFragment StoreEntitySet="HAWB">
+                <ScalarProperty Name="BillTax" ColumnName="BillTax" />
+                <ScalarProperty Name="SpecialInstruction" ColumnName="SpecialInstruction" />
+                <ScalarProperty Name="IsInternational" ColumnName="IsInternational" />
+                <ScalarProperty Name="Piece" ColumnName="Piece" />
+                <ScalarProperty Name="TotalWeight" ColumnName="TotalWeight" />
+                <ScalarProperty Name="TotalVolume" ColumnName="TotalVolume" />
+                <ScalarProperty Name="VolumeWeight" ColumnName="VolumeWeight" />
+                <ScalarProperty Name="WeightType" ColumnName="WeightType" />
+                <ScalarProperty Name="DeliverTel" ColumnName="DeliverTel" />
+                <ScalarProperty Name="DeliverZipCode" ColumnName="DeliverZipCode" />
+                <ScalarProperty Name="DeliverAddress" ColumnName="DeliverAddress" />
+                <ScalarProperty Name="DeliverRegion" ColumnName="DeliverRegion" />
+                <ScalarProperty Name="DeliverCountry" ColumnName="DeliverCountry" />
+                <ScalarProperty Name="DeliverContactor" ColumnName="DeliverContactor" />
+                <ScalarProperty Name="DeliverName" ColumnName="DeliverName" />
+                <ScalarProperty Name="ConsigneeTel" ColumnName="ConsigneeTel" />
+                <ScalarProperty Name="ConsigneeZipCode" ColumnName="ConsigneeZipCode" />
+                <ScalarProperty Name="ConsigneeAddress" ColumnName="ConsigneeAddress" />
+                <ScalarProperty Name="ConsigneeRegion" ColumnName="ConsigneeRegion" />
+                <ScalarProperty Name="ConsigneeCountry" ColumnName="ConsigneeCountry" />
+                <ScalarProperty Name="ConsigneeContactor" ColumnName="ConsigneeContactor" />
+                <ScalarProperty Name="ConsigneeName" ColumnName="ConsigneeName" />
+                <ScalarProperty Name="ShipperTel" ColumnName="ShipperTel" />
+                <ScalarProperty Name="ShipperZipCode" ColumnName="ShipperZipCode" />
+                <ScalarProperty Name="ShipperAddress" ColumnName="ShipperAddress" />
+                <ScalarProperty Name="ShipperRegion" ColumnName="ShipperRegion" />
+                <ScalarProperty Name="ShipperCountry" ColumnName="ShipperCountry" />
+                <ScalarProperty Name="ShipperContactor" ColumnName="ShipperContactor" />
+                <ScalarProperty Name="ShipperName" ColumnName="ShipperName" />
                 <ScalarProperty Name="Remark" ColumnName="Remark" />
-                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
-                <ScalarProperty Name="UpdateUser" ColumnName="UpdateUser" />
+                <ScalarProperty Name="Operator" ColumnName="Operator" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
                 <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
-                <ScalarProperty Name="Address" ColumnName="Address" />
-                <ScalarProperty Name="Phone" ColumnName="Phone" />
-                <ScalarProperty Name="Fax" ColumnName="Fax" />
-                <ScalarProperty Name="PostCode" ColumnName="PostCode" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Password" ColumnName="Password" />
-                <ScalarProperty Name="LoginName" ColumnName="LoginName" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="ServiceType" ColumnName="ServiceType" />
+                <ScalarProperty Name="SettleType" ColumnName="SettleType" />
+                <ScalarProperty Name="CarrierHAWBID" ColumnName="CarrierHAWBID" />
+                <ScalarProperty Name="Carrier" ColumnName="Carrier" />
+                <ScalarProperty Name="BarCode" ColumnName="BarCode" />
                 <ScalarProperty Name="UID" ColumnName="UID" />
+                <ScalarProperty Name="PID" ColumnName="PID" />
+                <ScalarProperty Name="HID" ColumnName="HID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="IndividualUser">
-            <EntityTypeMapping TypeName="GGGETSModel.IndividualUser">
-              <MappingFragment StoreEntitySet="IndividualUser">
+          <EntitySetMapping Name="HAWBBox">
+            <EntityTypeMapping TypeName="GGGETSModel.HAWBBox">
+              <MappingFragment StoreEntitySet="HAWBBox">
+                <ScalarProperty Name="Piece" ColumnName="Piece" />
+                <ScalarProperty Name="TransCurrency" ColumnName="TransCurrency" />
+                <ScalarProperty Name="TransFee" ColumnName="TransFee" />
+                <ScalarProperty Name="Height" ColumnName="Height" />
+                <ScalarProperty Name="Width" ColumnName="Width" />
+                <ScalarProperty Name="Length" ColumnName="Length" />
+                <ScalarProperty Name="Weight" ColumnName="Weight" />
+                <ScalarProperty Name="BoxType" ColumnName="BoxType" />
+                <ScalarProperty Name="HID" ColumnName="HID" />
+                <ScalarProperty Name="BoxID" ColumnName="BoxID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HAWBItem">
+            <EntityTypeMapping TypeName="GGGETSModel.HAWBItem">
+              <MappingFragment StoreEntitySet="HAWBItem">
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
+                <ScalarProperty Name="UnitAmount" ColumnName="UnitAmount" />
+                <ScalarProperty Name="Piece" ColumnName="Piece" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="HID" ColumnName="HID" />
+                <ScalarProperty Name="ItemID" ColumnName="ItemID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MAWB">
+            <EntityTypeMapping TypeName="GGGETSModel.MAWB">
+              <MappingFragment StoreEntitySet="MAWB">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="TotalVolume" ColumnName="TotalVolume" />
+                <ScalarProperty Name="TotalWeight" ColumnName="TotalWeight" />
+                <ScalarProperty Name="Operator" ColumnName="Operator" />
+                <ScalarProperty Name="LockedTime" ColumnName="LockedTime" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="BarCode" ColumnName="BarCode" />
+                <ScalarProperty Name="MID" ColumnName="MID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Package">
+            <EntityTypeMapping TypeName="GGGETSModel.Package">
+              <MappingFragment StoreEntitySet="Package">
+                <ScalarProperty Name="IsMixed" ColumnName="IsMixed" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Operator" ColumnName="Operator" />
+                <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="TotalWeight" ColumnName="TotalWeight" />
+                <ScalarProperty Name="Piece" ColumnName="Piece" />
+                <ScalarProperty Name="RegionCode" ColumnName="RegionCode" />
+                <ScalarProperty Name="BarCode" ColumnName="BarCode" />
+                <ScalarProperty Name="MID" ColumnName="MID" />
+                <ScalarProperty Name="PID" ColumnName="PID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RegionCode">
+            <EntityTypeMapping TypeName="GGGETSModel.RegionCode">
+              <MappingFragment StoreEntitySet="RegionCode">
+                <ScalarProperty Name="RegionName" ColumnName="RegionName" />
+                <ScalarProperty Name="RegionCode1" ColumnName="RegionCode" />
+                <ScalarProperty Name="CountryCode" ColumnName="CountryCode" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="User">
+            <EntityTypeMapping TypeName="GGGETSModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="Status" ColumnName="Status" />
                 <ScalarProperty Name="WeightCalType" ColumnName="WeightCalType" />
                 <ScalarProperty Name="SettleType" ColumnName="SettleType" />
                 <ScalarProperty Name="WeightDiscountRate" ColumnName="WeightDiscountRate" />
                 <ScalarProperty Name="WeightDiscountType" ColumnName="WeightDiscountType" />
                 <ScalarProperty Name="FeeDiscountRate" ColumnName="FeeDiscountRate" />
                 <ScalarProperty Name="FeeDiscountType" ColumnName="FeeDiscountType" />
-                <ScalarProperty Name="Status" ColumnName="Status" />
                 <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="Operator" ColumnName="Operator" />
                 <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
-                <ScalarProperty Name="UpdateUser" ColumnName="UpdateUser" />
                 <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
-                <ScalarProperty Name="PostCode" ColumnName="PostCode" />
-                <ScalarProperty Name="Fax" ColumnName="Fax" />
                 <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="RegionCode" ColumnName="RegionCode" />
+                <ScalarProperty Name="CountryCode" ColumnName="CountryCode" />
                 <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Fax" ColumnName="Fax" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="PostCode" ColumnName="PostCode" />
+                <ScalarProperty Name="Department" ColumnName="Department" />
+                <ScalarProperty Name="RealName" ColumnName="RealName" />
                 <ScalarProperty Name="Password" ColumnName="Password" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="LoginName" ColumnName="LoginName" />
+                <ScalarProperty Name="DID" ColumnName="DID" />
                 <ScalarProperty Name="UID" ColumnName="UID" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -606,28 +1029,53 @@
     <!-- Diagram content (shape and connector positions) -->
     <Diagrams>
       <Diagram Name="GGGETSApp" ZoomLevel="64" >
-        <EntityTypeShape EntityType="GGGETSModel.HAWB" Width="2.625" PointX="1.25" PointY="0.5" Height="7.8916430664062514" />
-        <EntityTypeShape EntityType="GGGETSModel.Item" Width="2.125" PointX="5.875" PointY="1.375" Height="2.7341113281249996" />
-        <AssociationConnector Association="GGGETSModel.FK_ITEM_REFERENCE_HAWB" >
-          <ConnectorPoint PointX="3.875" PointY="2.7420556640625" />
-          <ConnectorPoint PointX="5.875" PointY="2.7420556640625" />
+        <EntityTypeShape EntityType="GGGETSModel.AddressBook" Width="1.5" PointX="5.25" PointY="15.875" Height="3.6892097981770817" />
+        <EntityTypeShape EntityType="GGGETSModel.Company" Width="1.5" PointX="1.5" PointY="19.5" Height="4.2622688802083317" />
+        <EntityTypeShape EntityType="GGGETSModel.CountryCode" Width="1.5" PointX="0.75" PointY="0.75" Height="1.5879931640624996" />
+        <EntityTypeShape EntityType="GGGETSModel.Department" Width="1.5" PointX="0.75" PointY="14.125" Height="3.1161507161458335" />
+        <EntityTypeShape EntityType="GGGETSModel.Flight" Width="1.5" PointX="3" PointY="4.625" Height="2.5430916341145817" />
+        <EntityTypeShape EntityType="GGGETSModel.HAWB" Width="1.5" PointX="5.25" PointY="4.75" Height="9.8018400065104174" />
+        <EntityTypeShape EntityType="GGGETSModel.HAWBBox" Width="1.5" PointX="7.5" PointY="6.5" Height="3.1161507161458388" />
+        <EntityTypeShape EntityType="GGGETSModel.HAWBItem" Width="1.5" PointX="7.5" PointY="10.375" Height="2.5430916341145888" />
+        <EntityTypeShape EntityType="GGGETSModel.MAWB" Width="1.5" PointX="0.75" PointY="6.625" Height="2.9251310221354174" />
+        <EntityTypeShape EntityType="GGGETSModel.Package" Width="1.5" PointX="3" PointY="7.875" Height="3.4981901041666674" />
+        <EntityTypeShape EntityType="GGGETSModel.RegionCode" Width="1.5" PointX="2.75" PointY="0.75" Height="1.7790128580729174" />
+        <EntityTypeShape EntityType="GGGETSModel.User" Width="1.5" PointX="3" PointY="12.625" Height="6.1724658203125031" />
+        <AssociationConnector Association="GGGETSModel.FK_ADDRESSB_REFERENCE_USER" >
+          <ConnectorPoint PointX="4.5" PointY="17.336232910156252" />
+          <ConnectorPoint PointX="5.25" PointY="17.336232910156252" />
         </AssociationConnector>
-        <EntityTypeShape EntityType="GGGETSModel.AddressBook" Width="1.5" PointX="15.75" PointY="7.625" Height="3.1161507161458335" />
-        <EntityTypeShape EntityType="GGGETSModel.Company" Width="1.5" PointX="8.875" PointY="6.625" Height="3.6892097981770817" />
-        <EntityTypeShape EntityType="GGGETSModel.CompanyUser" Width="1.5" PointX="13.25" PointY="5.875" Height="5.2173673502604174" />
-        <EntityTypeShape EntityType="GGGETSModel.IndividualUser" Width="1.5" PointX="9.125" PointY="0.75" Height="4.8353279622395817" />
-        <AssociationConnector Association="GGGETSModel.FK_ADDRESSB_REFERENCE_COMPANYU" >
-          <ConnectorPoint PointX="14.75" PointY="9.1830753580729159" />
-          <ConnectorPoint PointX="15.75" PointY="9.1830753580729159" />
+        <AssociationConnector Association="GGGETSModel.FK_DEPARTME_REFERENCE_COMPANY" >
+          <ConnectorPoint PointX="1.875" PointY="19.5" />
+          <ConnectorPoint PointX="1.875" PointY="17.241150716145832" />
         </AssociationConnector>
-        <AssociationConnector Association="GGGETSModel.FK_ADDRESSB_REFERENCE_INDIVIDU" >
-          <ConnectorPoint PointX="10.625" PointY="3.1676639811197909" />
-          <ConnectorPoint PointX="16.5" PointY="3.1676639811197909" />
-          <ConnectorPoint PointX="16.5" PointY="7.625" />
+        <AssociationConnector Association="GGGETSModel.FK_USER_REFERENCE_DEPARTME" >
+          <ConnectorPoint PointX="2.25" PointY="15.683075358072916" />
+          <ConnectorPoint PointX="3" PointY="15.683075358072916" />
         </AssociationConnector>
-        <AssociationConnector Association="GGGETSModel.FK_COMPANYU_REFERENCE_COMPANY" >
-          <ConnectorPoint PointX="10.375" PointY="8.46960489908854" />
-          <ConnectorPoint PointX="13.25" PointY="8.46960489908854" />
+        <AssociationConnector Association="GGGETSModel.FK_FLIGHT_REFERENCE_MAWB" >
+          <ConnectorPoint PointX="2.25" PointY="6.8965458170572909" />
+          <ConnectorPoint PointX="3" PointY="6.8965458170572909" />
+        </AssociationConnector>
+        <AssociationConnector Association="GGGETSModel.FK_HAWB_REFERENCE_PACKAGE" >
+          <ConnectorPoint PointX="4.5" PointY="9.6240950520833337" />
+          <ConnectorPoint PointX="5.25" PointY="9.6240950520833337" />
+        </AssociationConnector>
+        <AssociationConnector Association="GGGETSModel.FK_HAWB_REFERENCE_USER" >
+          <ConnectorPoint PointX="4.5" PointY="13.588420003255209" />
+          <ConnectorPoint PointX="5.25" PointY="13.588420003255209" />
+        </AssociationConnector>
+        <AssociationConnector Association="GGGETSModel.FK_HAWBBOX_REFERENCE_HAWB" >
+          <ConnectorPoint PointX="6.75" PointY="8.05807535807292" />
+          <ConnectorPoint PointX="7.5" PointY="8.05807535807292" />
+        </AssociationConnector>
+        <AssociationConnector Association="GGGETSModel.FK_HAWBITEM_REFERENCE_HAWB" >
+          <ConnectorPoint PointX="6.75" PointY="11.646545817057294" />
+          <ConnectorPoint PointX="7.5" PointY="11.646545817057294" />
+        </AssociationConnector>
+        <AssociationConnector Association="GGGETSModel.FK_PACKAGE_REFERENCE_MAWB" >
+          <ConnectorPoint PointX="2.25" PointY="8.7125655110677087" />
+          <ConnectorPoint PointX="3" PointY="8.7125655110677087" />
         </AssociationConnector>
       </Diagram>
     </Diagrams>

@@ -22,229 +22,125 @@ using ETS.GGGETSApp.Domain.Core.Entities;
 namespace ETS.GGGETSApp.Domain.Application.Entities
 {
     [DataContract(IsReference = true)]
-    [KnownType(typeof(Department))]
+    [KnownType(typeof(Flight))]
+    [KnownType(typeof(Package))]
     [Serializable]
     [System.CodeDom.Compiler.GeneratedCode("STE-EF",".NET 4.0")]
     #if !SILVERLIGHT
     [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage()]
     #endif
-    public partial class Company: IObjectWithChangeTracker, INotifyPropertyChanged
+    public partial class MAWB: IObjectWithChangeTracker, INotifyPropertyChanged
     {
         #region Primitive Properties
     
         [DataMember]
-        public System.Guid CID
+        public System.Guid MID
         {
-            get { return _cID; }
+            get { return _mID; }
             set
             {
-                if (_cID != value)
+                if (_mID != value)
                 {
                     if (ChangeTracker.ChangeTrackingEnabled && ChangeTracker.State != ObjectState.Added)
                     {
-                        throw new InvalidOperationException("The property 'CID' is part of the object's key and cannot be changed. Changes to key properties can only be made when the object is not being tracked or is in the Added state.");
+                        throw new InvalidOperationException("The property 'MID' is part of the object's key and cannot be changed. Changes to key properties can only be made when the object is not being tracked or is in the Added state.");
                     }
-                    _cID = value;
-                    OnPropertyChanged("CID");
+                    _mID = value;
+                    OnPropertyChanged("MID");
                 }
             }
         }
-        private System.Guid _cID;
+        private System.Guid _mID;
     
         [DataMember]
-        public string FullName
+        public string BarCode
         {
-            get { return _fullName; }
+            get { return _barCode; }
             set
             {
-                if (_fullName != value)
+                if (_barCode != value)
                 {
-                    _fullName = value;
-                    OnPropertyChanged("FullName");
+                    _barCode = value;
+                    OnPropertyChanged("BarCode");
                 }
             }
         }
-        private string _fullName;
+        private string _barCode;
     
         [DataMember]
-        public string ShortName
+        public System.DateTime CreateTime
         {
-            get { return _shortName; }
+            get { return _createTime; }
             set
             {
-                if (_shortName != value)
+                if (_createTime != value)
                 {
-                    _shortName = value;
-                    OnPropertyChanged("ShortName");
+                    _createTime = value;
+                    OnPropertyChanged("CreateTime");
                 }
             }
         }
-        private string _shortName;
+        private System.DateTime _createTime;
     
         [DataMember]
-        public string PostCode
+        public Nullable<System.DateTime> LockedTime
         {
-            get { return _postCode; }
+            get { return _lockedTime; }
             set
             {
-                if (_postCode != value)
+                if (_lockedTime != value)
                 {
-                    _postCode = value;
-                    OnPropertyChanged("PostCode");
+                    _lockedTime = value;
+                    OnPropertyChanged("LockedTime");
                 }
             }
         }
-        private string _postCode;
+        private Nullable<System.DateTime> _lockedTime;
     
         [DataMember]
-        public string CountryCode
+        public string Operator
         {
-            get { return _countryCode; }
+            get { return _operator; }
             set
             {
-                if (_countryCode != value)
+                if (_operator != value)
                 {
-                    _countryCode = value;
-                    OnPropertyChanged("CountryCode");
+                    _operator = value;
+                    OnPropertyChanged("Operator");
                 }
             }
         }
-        private string _countryCode;
+        private string _operator;
     
         [DataMember]
-        public string RegionCode
+        public decimal TotalWeight
         {
-            get { return _regionCode; }
+            get { return _totalWeight; }
             set
             {
-                if (_regionCode != value)
+                if (_totalWeight != value)
                 {
-                    _regionCode = value;
-                    OnPropertyChanged("RegionCode");
+                    _totalWeight = value;
+                    OnPropertyChanged("TotalWeight");
                 }
             }
         }
-        private string _regionCode;
+        private decimal _totalWeight;
     
         [DataMember]
-        public string Address
+        public decimal TotalVolume
         {
-            get { return _address; }
+            get { return _totalVolume; }
             set
             {
-                if (_address != value)
+                if (_totalVolume != value)
                 {
-                    _address = value;
-                    OnPropertyChanged("Address");
+                    _totalVolume = value;
+                    OnPropertyChanged("TotalVolume");
                 }
             }
         }
-        private string _address;
-    
-        [DataMember]
-        public string Contactor
-        {
-            get { return _contactor; }
-            set
-            {
-                if (_contactor != value)
-                {
-                    _contactor = value;
-                    OnPropertyChanged("Contactor");
-                }
-            }
-        }
-        private string _contactor;
-    
-        [DataMember]
-        public string ContactorPhone
-        {
-            get { return _contactorPhone; }
-            set
-            {
-                if (_contactorPhone != value)
-                {
-                    _contactorPhone = value;
-                    OnPropertyChanged("ContactorPhone");
-                }
-            }
-        }
-        private string _contactorPhone;
-    
-        [DataMember]
-        public string Phone
-        {
-            get { return _phone; }
-            set
-            {
-                if (_phone != value)
-                {
-                    _phone = value;
-                    OnPropertyChanged("Phone");
-                }
-            }
-        }
-        private string _phone;
-    
-        [DataMember]
-        public string Fax
-        {
-            get { return _fax; }
-            set
-            {
-                if (_fax != value)
-                {
-                    _fax = value;
-                    OnPropertyChanged("Fax");
-                }
-            }
-        }
-        private string _fax;
-    
-        [DataMember]
-        public decimal ResidualAmount
-        {
-            get { return _residualAmount; }
-            set
-            {
-                if (_residualAmount != value)
-                {
-                    _residualAmount = value;
-                    OnPropertyChanged("ResidualAmount");
-                }
-            }
-        }
-        private decimal _residualAmount;
-    
-        [DataMember]
-        public string OrganizationCode
-        {
-            get { return _organizationCode; }
-            set
-            {
-                if (_organizationCode != value)
-                {
-                    _organizationCode = value;
-                    OnPropertyChanged("OrganizationCode");
-                }
-            }
-        }
-        private string _organizationCode;
-    
-        [DataMember]
-        public decimal LimitAmount
-        {
-            get { return _limitAmount; }
-            set
-            {
-                if (_limitAmount != value)
-                {
-                    _limitAmount = value;
-                    OnPropertyChanged("LimitAmount");
-                }
-            }
-        }
-        private decimal _limitAmount;
+        private decimal _totalVolume;
     
         [DataMember]
         public int Status
@@ -260,59 +156,79 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
             }
         }
         private int _status;
-    
-        [DataMember]
-        public string Remark
-        {
-            get { return _remark; }
-            set
-            {
-                if (_remark != value)
-                {
-                    _remark = value;
-                    OnPropertyChanged("Remark");
-                }
-            }
-        }
-        private string _remark;
 
         #endregion
         #region Navigation Properties
     
         [DataMember]
-        public TrackableCollection<Department> Department
+        public TrackableCollection<Flight> Flight
         {
             get
             {
-                if (_department == null)
+                if (_flight == null)
                 {
-                    _department = new TrackableCollection<Department>();
-                    _department.CollectionChanged += FixupDepartment;
+                    _flight = new TrackableCollection<Flight>();
+                    _flight.CollectionChanged += FixupFlight;
                 }
-                return _department;
+                return _flight;
             }
             set
             {
-                if (!ReferenceEquals(_department, value))
+                if (!ReferenceEquals(_flight, value))
                 {
                     if (ChangeTracker.ChangeTrackingEnabled)
                     {
                         throw new InvalidOperationException("Cannot set the FixupChangeTrackingCollection when ChangeTracking is enabled");
                     }
-                    if (_department != null)
+                    if (_flight != null)
                     {
-                        _department.CollectionChanged -= FixupDepartment;
+                        _flight.CollectionChanged -= FixupFlight;
                     }
-                    _department = value;
-                    if (_department != null)
+                    _flight = value;
+                    if (_flight != null)
                     {
-                        _department.CollectionChanged += FixupDepartment;
+                        _flight.CollectionChanged += FixupFlight;
                     }
-                    OnNavigationPropertyChanged("Department");
+                    OnNavigationPropertyChanged("Flight");
                 }
             }
         }
-        private TrackableCollection<Department> _department;
+        private TrackableCollection<Flight> _flight;
+    
+        [DataMember]
+        public TrackableCollection<Package> Package
+        {
+            get
+            {
+                if (_package == null)
+                {
+                    _package = new TrackableCollection<Package>();
+                    _package.CollectionChanged += FixupPackage;
+                }
+                return _package;
+            }
+            set
+            {
+                if (!ReferenceEquals(_package, value))
+                {
+                    if (ChangeTracker.ChangeTrackingEnabled)
+                    {
+                        throw new InvalidOperationException("Cannot set the FixupChangeTrackingCollection when ChangeTracking is enabled");
+                    }
+                    if (_package != null)
+                    {
+                        _package.CollectionChanged -= FixupPackage;
+                    }
+                    _package = value;
+                    if (_package != null)
+                    {
+                        _package.CollectionChanged += FixupPackage;
+                    }
+                    OnNavigationPropertyChanged("Package");
+                }
+            }
+        }
+        private TrackableCollection<Package> _package;
 
         #endregion
         #region ChangeTracking
@@ -392,13 +308,14 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
     
         protected virtual void ClearNavigationProperties()
         {
-            Department.Clear();
+            Flight.Clear();
+            Package.Clear();
         }
 
         #endregion
         #region Association Fixup
     
-        private void FixupDepartment(object sender, NotifyCollectionChangedEventArgs e)
+        private void FixupFlight(object sender, NotifyCollectionChangedEventArgs e)
         {
             if (IsDeserializing)
             {
@@ -407,31 +324,70 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
     
             if (e.NewItems != null)
             {
-                foreach (Department item in e.NewItems)
+                foreach (Flight item in e.NewItems)
                 {
-                    item.Company = this;
+                    item.MAWB = this;
                     if (ChangeTracker.ChangeTrackingEnabled)
                     {
                         if (!item.ChangeTracker.ChangeTrackingEnabled)
                         {
                             item.StartTracking();
                         }
-                        ChangeTracker.RecordAdditionToCollectionProperties("Department", item);
+                        ChangeTracker.RecordAdditionToCollectionProperties("Flight", item);
                     }
                 }
             }
     
             if (e.OldItems != null)
             {
-                foreach (Department item in e.OldItems)
+                foreach (Flight item in e.OldItems)
                 {
-                    if (ReferenceEquals(item.Company, this))
+                    if (ReferenceEquals(item.MAWB, this))
                     {
-                        item.Company = null;
+                        item.MAWB = null;
                     }
                     if (ChangeTracker.ChangeTrackingEnabled)
                     {
-                        ChangeTracker.RecordRemovalFromCollectionProperties("Department", item);
+                        ChangeTracker.RecordRemovalFromCollectionProperties("Flight", item);
+                    }
+                }
+            }
+        }
+    
+        private void FixupPackage(object sender, NotifyCollectionChangedEventArgs e)
+        {
+            if (IsDeserializing)
+            {
+                return;
+            }
+    
+            if (e.NewItems != null)
+            {
+                foreach (Package item in e.NewItems)
+                {
+                    item.MAWB = this;
+                    if (ChangeTracker.ChangeTrackingEnabled)
+                    {
+                        if (!item.ChangeTracker.ChangeTrackingEnabled)
+                        {
+                            item.StartTracking();
+                        }
+                        ChangeTracker.RecordAdditionToCollectionProperties("Package", item);
+                    }
+                }
+            }
+    
+            if (e.OldItems != null)
+            {
+                foreach (Package item in e.OldItems)
+                {
+                    if (ReferenceEquals(item.MAWB, this))
+                    {
+                        item.MAWB = null;
+                    }
+                    if (ChangeTracker.ChangeTrackingEnabled)
+                    {
+                        ChangeTracker.RecordRemovalFromCollectionProperties("Package", item);
                     }
                 }
             }

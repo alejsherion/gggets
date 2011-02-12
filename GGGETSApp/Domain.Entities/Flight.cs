@@ -22,242 +22,152 @@ using ETS.GGGETSApp.Domain.Core.Entities;
 namespace ETS.GGGETSApp.Domain.Application.Entities
 {
     [DataContract(IsReference = true)]
-    [KnownType(typeof(User))]
+    [KnownType(typeof(MAWB))]
     [Serializable]
     [System.CodeDom.Compiler.GeneratedCode("STE-EF",".NET 4.0")]
     #if !SILVERLIGHT
     [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage()]
     #endif
-    public partial class AddressBook: IObjectWithChangeTracker, INotifyPropertyChanged
+    public partial class Flight: IObjectWithChangeTracker, INotifyPropertyChanged
     {
         #region Primitive Properties
     
         [DataMember]
-        public System.Guid AID
+        public System.Guid FID
         {
-            get { return _aID; }
+            get { return _fID; }
             set
             {
-                if (_aID != value)
+                if (_fID != value)
                 {
                     if (ChangeTracker.ChangeTrackingEnabled && ChangeTracker.State != ObjectState.Added)
                     {
-                        throw new InvalidOperationException("The property 'AID' is part of the object's key and cannot be changed. Changes to key properties can only be made when the object is not being tracked or is in the Added state.");
+                        throw new InvalidOperationException("The property 'FID' is part of the object's key and cannot be changed. Changes to key properties can only be made when the object is not being tracked or is in the Added state.");
                     }
-                    _aID = value;
-                    OnPropertyChanged("AID");
+                    _fID = value;
+                    OnPropertyChanged("FID");
                 }
             }
         }
-        private System.Guid _aID;
+        private System.Guid _fID;
     
         [DataMember]
-        public Nullable<System.Guid> UID
+        public Nullable<System.Guid> MID
         {
-            get { return _uID; }
+            get { return _mID; }
             set
             {
-                if (_uID != value)
+                if (_mID != value)
                 {
-                    ChangeTracker.RecordOriginalValue("UID", _uID);
+                    ChangeTracker.RecordOriginalValue("MID", _mID);
                     if (!IsDeserializing)
                     {
-                        if (User != null && User.UID != value)
+                        if (MAWB != null && MAWB.MID != value)
                         {
-                            User = null;
+                            MAWB = null;
                         }
                     }
-                    _uID = value;
-                    OnPropertyChanged("UID");
+                    _mID = value;
+                    OnPropertyChanged("MID");
                 }
             }
         }
-        private Nullable<System.Guid> _uID;
+        private Nullable<System.Guid> _mID;
     
         [DataMember]
-        public string Name
+        public string FlightNo
         {
-            get { return _name; }
+            get { return _flightNo; }
             set
             {
-                if (_name != value)
+                if (_flightNo != value)
                 {
-                    _name = value;
-                    OnPropertyChanged("Name");
+                    _flightNo = value;
+                    OnPropertyChanged("FlightNo");
                 }
             }
         }
-        private string _name;
+        private string _flightNo;
     
         [DataMember]
-        public string ContactorName
+        public string From
         {
-            get { return _contactorName; }
+            get { return _from; }
             set
             {
-                if (_contactorName != value)
+                if (_from != value)
                 {
-                    _contactorName = value;
-                    OnPropertyChanged("ContactorName");
+                    _from = value;
+                    OnPropertyChanged("From");
                 }
             }
         }
-        private string _contactorName;
+        private string _from;
     
         [DataMember]
-        public string CountryCode
+        public string To
         {
-            get { return _countryCode; }
+            get { return _to; }
             set
             {
-                if (_countryCode != value)
+                if (_to != value)
                 {
-                    _countryCode = value;
-                    OnPropertyChanged("CountryCode");
+                    _to = value;
+                    OnPropertyChanged("To");
                 }
             }
         }
-        private string _countryCode;
+        private string _to;
     
         [DataMember]
-        public string RegionCode
+        public Nullable<System.DateTime> TakeOffTime
         {
-            get { return _regionCode; }
+            get { return _takeOffTime; }
             set
             {
-                if (_regionCode != value)
+                if (_takeOffTime != value)
                 {
-                    _regionCode = value;
-                    OnPropertyChanged("RegionCode");
+                    _takeOffTime = value;
+                    OnPropertyChanged("TakeOffTime");
                 }
             }
         }
-        private string _regionCode;
+        private Nullable<System.DateTime> _takeOffTime;
     
         [DataMember]
-        public string Address
+        public Nullable<System.DateTime> LandTime
         {
-            get { return _address; }
+            get { return _landTime; }
             set
             {
-                if (_address != value)
+                if (_landTime != value)
                 {
-                    _address = value;
-                    OnPropertyChanged("Address");
+                    _landTime = value;
+                    OnPropertyChanged("LandTime");
                 }
             }
         }
-        private string _address;
-    
-        [DataMember]
-        public string Fax
-        {
-            get { return _fax; }
-            set
-            {
-                if (_fax != value)
-                {
-                    _fax = value;
-                    OnPropertyChanged("Fax");
-                }
-            }
-        }
-        private string _fax;
-    
-        [DataMember]
-        public string Phone
-        {
-            get { return _phone; }
-            set
-            {
-                if (_phone != value)
-                {
-                    _phone = value;
-                    OnPropertyChanged("Phone");
-                }
-            }
-        }
-        private string _phone;
-    
-        [DataMember]
-        public string PostCode
-        {
-            get { return _postCode; }
-            set
-            {
-                if (_postCode != value)
-                {
-                    _postCode = value;
-                    OnPropertyChanged("PostCode");
-                }
-            }
-        }
-        private string _postCode;
-    
-        [DataMember]
-        public int AddressType
-        {
-            get { return _addressType; }
-            set
-            {
-                if (_addressType != value)
-                {
-                    _addressType = value;
-                    OnPropertyChanged("AddressType");
-                }
-            }
-        }
-        private int _addressType;
-    
-        [DataMember]
-        public System.DateTime CreateTime
-        {
-            get { return _createTime; }
-            set
-            {
-                if (_createTime != value)
-                {
-                    _createTime = value;
-                    OnPropertyChanged("CreateTime");
-                }
-            }
-        }
-        private System.DateTime _createTime;
-    
-        [DataMember]
-        public System.DateTime UpdateTime
-        {
-            get { return _updateTime; }
-            set
-            {
-                if (_updateTime != value)
-                {
-                    _updateTime = value;
-                    OnPropertyChanged("UpdateTime");
-                }
-            }
-        }
-        private System.DateTime _updateTime;
+        private Nullable<System.DateTime> _landTime;
 
         #endregion
         #region Navigation Properties
     
         [DataMember]
-        public User User
+        public MAWB MAWB
         {
-            get { return _user; }
+            get { return _mAWB; }
             set
             {
-                if (!ReferenceEquals(_user, value))
+                if (!ReferenceEquals(_mAWB, value))
                 {
-                    var previousValue = _user;
-                    _user = value;
-                    FixupUser(previousValue);
-                    OnNavigationPropertyChanged("User");
+                    var previousValue = _mAWB;
+                    _mAWB = value;
+                    FixupMAWB(previousValue);
+                    OnNavigationPropertyChanged("MAWB");
                 }
             }
         }
-        private User _user;
+        private MAWB _mAWB;
 
         #endregion
         #region ChangeTracking
@@ -337,52 +247,52 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
     
         protected virtual void ClearNavigationProperties()
         {
-            User = null;
+            MAWB = null;
         }
 
         #endregion
         #region Association Fixup
     
-        private void FixupUser(User previousValue, bool skipKeys = false)
+        private void FixupMAWB(MAWB previousValue, bool skipKeys = false)
         {
             if (IsDeserializing)
             {
                 return;
             }
     
-            if (previousValue != null && previousValue.AddressBook.Contains(this))
+            if (previousValue != null && previousValue.Flight.Contains(this))
             {
-                previousValue.AddressBook.Remove(this);
+                previousValue.Flight.Remove(this);
             }
     
-            if (User != null)
+            if (MAWB != null)
             {
-                if (!User.AddressBook.Contains(this))
+                if (!MAWB.Flight.Contains(this))
                 {
-                    User.AddressBook.Add(this);
+                    MAWB.Flight.Add(this);
                 }
     
-                UID = User.UID;
+                MID = MAWB.MID;
             }
             else if (!skipKeys)
             {
-                UID = null;
+                MID = null;
             }
     
             if (ChangeTracker.ChangeTrackingEnabled)
             {
-                if (ChangeTracker.OriginalValues.ContainsKey("User")
-                    && (ChangeTracker.OriginalValues["User"] == User))
+                if (ChangeTracker.OriginalValues.ContainsKey("MAWB")
+                    && (ChangeTracker.OriginalValues["MAWB"] == MAWB))
                 {
-                    ChangeTracker.OriginalValues.Remove("User");
+                    ChangeTracker.OriginalValues.Remove("MAWB");
                 }
                 else
                 {
-                    ChangeTracker.RecordOriginalValue("User", previousValue);
+                    ChangeTracker.RecordOriginalValue("MAWB", previousValue);
                 }
-                if (User != null && !User.ChangeTracker.ChangeTrackingEnabled)
+                if (MAWB != null && !MAWB.ChangeTracker.ChangeTrackingEnabled)
                 {
-                    User.StartTracking();
+                    MAWB.StartTracking();
                 }
             }
         }

@@ -58,7 +58,13 @@
     <Compile Include="Company.cs">
       <DependentUpon>GGGETSAppContext.Types.tt</DependentUpon>
     </Compile>
-    <Compile Include="CompanyUser.cs">
+    <Compile Include="CountryCode.cs">
+      <DependentUpon>GGGETSAppContext.Types.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Department.cs">
+      <DependentUpon>GGGETSAppContext.Types.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Flight.cs">
       <DependentUpon>GGGETSAppContext.Types.tt</DependentUpon>
     </Compile>
     <Compile Include="GGGETSAppContext.Types.cs">
@@ -69,21 +75,30 @@
     <Compile Include="HAWB.cs">
       <DependentUpon>GGGETSAppContext.Types.tt</DependentUpon>
     </Compile>
-    <Compile Include="IndividualUser.cs">
+    <Compile Include="HAWBBox.cs">
       <DependentUpon>GGGETSAppContext.Types.tt</DependentUpon>
     </Compile>
-    <Compile Include="Item.cs">
+    <Compile Include="HAWBItem.cs">
       <DependentUpon>GGGETSAppContext.Types.tt</DependentUpon>
     </Compile>
-    <Compile Include="Partial\AddressBookPartial.cs" />
-    <Compile Include="Partial\CompanyUserPartial.cs" />
+    <Compile Include="MAWB.cs">
+      <DependentUpon>GGGETSAppContext.Types.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Package.cs">
+      <DependentUpon>GGGETSAppContext.Types.tt</DependentUpon>
+    </Compile>
     <Compile Include="Partial\HAWBPartial.cs" />
-    <Compile Include="Partial\ItemPartial.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RegionCode.cs">
+      <DependentUpon>GGGETSAppContext.Types.tt</DependentUpon>
+    </Compile>
     <Compile Include="Resources\Messages.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Messages.resx</DependentUpon>
+    </Compile>
+    <Compile Include="User.cs">
+      <DependentUpon>GGGETSAppContext.Types.tt</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

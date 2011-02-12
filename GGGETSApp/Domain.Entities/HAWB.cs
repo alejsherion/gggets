@@ -22,7 +22,10 @@ using ETS.GGGETSApp.Domain.Core.Entities;
 namespace ETS.GGGETSApp.Domain.Application.Entities
 {
     [DataContract(IsReference = true)]
-    [KnownType(typeof(Item))]
+    [KnownType(typeof(Package))]
+    [KnownType(typeof(User))]
+    [KnownType(typeof(HAWBBox))]
+    [KnownType(typeof(HAWBItem))]
     [Serializable]
     [System.CodeDom.Compiler.GeneratedCode("STE-EF",".NET 4.0")]
     #if !SILVERLIGHT
@@ -50,6 +53,52 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
             }
         }
         private System.Guid _hID;
+    
+        [DataMember]
+        public Nullable<System.Guid> PID
+        {
+            get { return _pID; }
+            set
+            {
+                if (_pID != value)
+                {
+                    ChangeTracker.RecordOriginalValue("PID", _pID);
+                    if (!IsDeserializing)
+                    {
+                        if (Package != null && Package.PID != value)
+                        {
+                            Package = null;
+                        }
+                    }
+                    _pID = value;
+                    OnPropertyChanged("PID");
+                }
+            }
+        }
+        private Nullable<System.Guid> _pID;
+    
+        [DataMember]
+        public Nullable<System.Guid> UID
+        {
+            get { return _uID; }
+            set
+            {
+                if (_uID != value)
+                {
+                    ChangeTracker.RecordOriginalValue("UID", _uID);
+                    if (!IsDeserializing)
+                    {
+                        if (User != null && User.UID != value)
+                        {
+                            User = null;
+                        }
+                    }
+                    _uID = value;
+                    OnPropertyChanged("UID");
+                }
+            }
+        }
+        private Nullable<System.Guid> _uID;
     
         [DataMember]
         public string BarCode
@@ -97,22 +146,7 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
         private Nullable<System.Guid> _carrierHAWBID;
     
         [DataMember]
-        public Nullable<System.Guid> Account
-        {
-            get { return _account; }
-            set
-            {
-                if (_account != value)
-                {
-                    _account = value;
-                    OnPropertyChanged("Account");
-                }
-            }
-        }
-        private Nullable<System.Guid> _account;
-    
-        [DataMember]
-        public string SettleType
+        public int SettleType
         {
             get { return _settleType; }
             set
@@ -124,10 +158,10 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
                 }
             }
         }
-        private string _settleType;
+        private int _settleType;
     
         [DataMember]
-        public string ServiceType
+        public Nullable<int> ServiceType
         {
             get { return _serviceType; }
             set
@@ -139,10 +173,10 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
                 }
             }
         }
-        private string _serviceType;
+        private Nullable<int> _serviceType;
     
         [DataMember]
-        public Nullable<System.DateTime> CreateTime
+        public System.DateTime CreateTime
         {
             get { return _createTime; }
             set
@@ -154,7 +188,7 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
                 }
             }
         }
-        private Nullable<System.DateTime> _createTime;
+        private System.DateTime _createTime;
     
         [DataMember]
         public Nullable<System.DateTime> UpdateTime
@@ -172,49 +206,34 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
         private Nullable<System.DateTime> _updateTime;
     
         [DataMember]
-        public Nullable<System.DateTime> DeadlienTime
+        public int Status
         {
-            get { return _deadlienTime; }
+            get { return _status; }
             set
             {
-                if (_deadlienTime != value)
+                if (_status != value)
                 {
-                    _deadlienTime = value;
-                    OnPropertyChanged("DeadlienTime");
+                    _status = value;
+                    OnPropertyChanged("Status");
                 }
             }
         }
-        private Nullable<System.DateTime> _deadlienTime;
+        private int _status;
     
         [DataMember]
-        public Nullable<int> State
+        public string Operator
         {
-            get { return _state; }
+            get { return _operator; }
             set
             {
-                if (_state != value)
+                if (_operator != value)
                 {
-                    _state = value;
-                    OnPropertyChanged("State");
+                    _operator = value;
+                    OnPropertyChanged("Operator");
                 }
             }
         }
-        private Nullable<int> _state;
-    
-        [DataMember]
-        public Nullable<System.Guid> Owner
-        {
-            get { return _owner; }
-            set
-            {
-                if (_owner != value)
-                {
-                    _owner = value;
-                    OnPropertyChanged("Owner");
-                }
-            }
-        }
-        private Nullable<System.Guid> _owner;
+        private string _operator;
     
         [DataMember]
         public string Remark
@@ -232,34 +251,19 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
         private string _remark;
     
         [DataMember]
-        public string Description
+        public string ShipperName
         {
-            get { return _description; }
+            get { return _shipperName; }
             set
             {
-                if (_description != value)
+                if (_shipperName != value)
                 {
-                    _description = value;
-                    OnPropertyChanged("Description");
+                    _shipperName = value;
+                    OnPropertyChanged("ShipperName");
                 }
             }
         }
-        private string _description;
-    
-        [DataMember]
-        public Nullable<System.Guid> ShipperID
-        {
-            get { return _shipperID; }
-            set
-            {
-                if (_shipperID != value)
-                {
-                    _shipperID = value;
-                    OnPropertyChanged("ShipperID");
-                }
-            }
-        }
-        private Nullable<System.Guid> _shipperID;
+        private string _shipperName;
     
         [DataMember]
         public string ShipperContactor
@@ -352,19 +356,19 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
         private string _shipperTel;
     
         [DataMember]
-        public Nullable<System.Guid> ConsigneeID
+        public Nullable<System.Guid> ConsigneeName
         {
-            get { return _consigneeID; }
+            get { return _consigneeName; }
             set
             {
-                if (_consigneeID != value)
+                if (_consigneeName != value)
                 {
-                    _consigneeID = value;
-                    OnPropertyChanged("ConsigneeID");
+                    _consigneeName = value;
+                    OnPropertyChanged("ConsigneeName");
                 }
             }
         }
-        private Nullable<System.Guid> _consigneeID;
+        private Nullable<System.Guid> _consigneeName;
     
         [DataMember]
         public string ConsigneeContactor
@@ -457,7 +461,112 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
         private string _consigneeTel;
     
         [DataMember]
-        public Nullable<byte> WeightType
+        public string DeliverName
+        {
+            get { return _deliverName; }
+            set
+            {
+                if (_deliverName != value)
+                {
+                    _deliverName = value;
+                    OnPropertyChanged("DeliverName");
+                }
+            }
+        }
+        private string _deliverName;
+    
+        [DataMember]
+        public string DeliverContactor
+        {
+            get { return _deliverContactor; }
+            set
+            {
+                if (_deliverContactor != value)
+                {
+                    _deliverContactor = value;
+                    OnPropertyChanged("DeliverContactor");
+                }
+            }
+        }
+        private string _deliverContactor;
+    
+        [DataMember]
+        public string DeliverCountry
+        {
+            get { return _deliverCountry; }
+            set
+            {
+                if (_deliverCountry != value)
+                {
+                    _deliverCountry = value;
+                    OnPropertyChanged("DeliverCountry");
+                }
+            }
+        }
+        private string _deliverCountry;
+    
+        [DataMember]
+        public string DeliverRegion
+        {
+            get { return _deliverRegion; }
+            set
+            {
+                if (_deliverRegion != value)
+                {
+                    _deliverRegion = value;
+                    OnPropertyChanged("DeliverRegion");
+                }
+            }
+        }
+        private string _deliverRegion;
+    
+        [DataMember]
+        public string DeliverAddress
+        {
+            get { return _deliverAddress; }
+            set
+            {
+                if (_deliverAddress != value)
+                {
+                    _deliverAddress = value;
+                    OnPropertyChanged("DeliverAddress");
+                }
+            }
+        }
+        private string _deliverAddress;
+    
+        [DataMember]
+        public string DeliverZipCode
+        {
+            get { return _deliverZipCode; }
+            set
+            {
+                if (_deliverZipCode != value)
+                {
+                    _deliverZipCode = value;
+                    OnPropertyChanged("DeliverZipCode");
+                }
+            }
+        }
+        private string _deliverZipCode;
+    
+        [DataMember]
+        public string DeliverTel
+        {
+            get { return _deliverTel; }
+            set
+            {
+                if (_deliverTel != value)
+                {
+                    _deliverTel = value;
+                    OnPropertyChanged("DeliverTel");
+                }
+            }
+        }
+        private string _deliverTel;
+    
+        [DataMember]
+        public int WeightType
         {
             get { return _weightType; }
             set
@@ -469,25 +578,55 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
                 }
             }
         }
-        private Nullable<byte> _weightType;
+        private int _weightType;
     
         [DataMember]
-        public Nullable<double> WeightValue
+        public Nullable<decimal> VolumeWeight
         {
-            get { return _weightValue; }
+            get { return _volumeWeight; }
             set
             {
-                if (_weightValue != value)
+                if (_volumeWeight != value)
                 {
-                    _weightValue = value;
-                    OnPropertyChanged("WeightValue");
+                    _volumeWeight = value;
+                    OnPropertyChanged("VolumeWeight");
                 }
             }
         }
-        private Nullable<double> _weightValue;
+        private Nullable<decimal> _volumeWeight;
     
         [DataMember]
-        public Nullable<int> Piece
+        public decimal TotalVolume
+        {
+            get { return _totalVolume; }
+            set
+            {
+                if (_totalVolume != value)
+                {
+                    _totalVolume = value;
+                    OnPropertyChanged("TotalVolume");
+                }
+            }
+        }
+        private decimal _totalVolume;
+    
+        [DataMember]
+        public decimal TotalWeight
+        {
+            get { return _totalWeight; }
+            set
+            {
+                if (_totalWeight != value)
+                {
+                    _totalWeight = value;
+                    OnPropertyChanged("TotalWeight");
+                }
+            }
+        }
+        private decimal _totalWeight;
+    
+        [DataMember]
+        public int Piece
         {
             get { return _piece; }
             set
@@ -499,10 +638,10 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
                 }
             }
         }
-        private Nullable<int> _piece;
+        private int _piece;
     
         [DataMember]
-        public Nullable<bool> IsInternational
+        public bool IsInternational
         {
             get { return _isInternational; }
             set
@@ -514,7 +653,7 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
                 }
             }
         }
-        private Nullable<bool> _isInternational;
+        private bool _isInternational;
     
         [DataMember]
         public string SpecialInstruction
@@ -532,84 +671,126 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
         private string _specialInstruction;
     
         [DataMember]
-        public string Taxes
+        public Nullable<int> BillTax
         {
-            get { return _taxes; }
+            get { return _billTax; }
             set
             {
-                if (_taxes != value)
+                if (_billTax != value)
                 {
-                    _taxes = value;
-                    OnPropertyChanged("Taxes");
+                    _billTax = value;
+                    OnPropertyChanged("BillTax");
                 }
             }
         }
-        private string _taxes;
-    
-        [DataMember]
-        public Nullable<System.DateTime> PickupTime
-        {
-            get { return _pickupTime; }
-            set
-            {
-                if (_pickupTime != value)
-                {
-                    _pickupTime = value;
-                    OnPropertyChanged("PickupTime");
-                }
-            }
-        }
-        private Nullable<System.DateTime> _pickupTime;
+        private Nullable<int> _billTax;
 
         #endregion
         #region Navigation Properties
     
         [DataMember]
-        public TrackableCollection<Item> Item
+        public Package Package
+        {
+            get { return _package; }
+            set
+            {
+                if (!ReferenceEquals(_package, value))
+                {
+                    var previousValue = _package;
+                    _package = value;
+                    FixupPackage(previousValue);
+                    OnNavigationPropertyChanged("Package");
+                }
+            }
+        }
+        private Package _package;
+    
+        [DataMember]
+        public User User
+        {
+            get { return _user; }
+            set
+            {
+                if (!ReferenceEquals(_user, value))
+                {
+                    var previousValue = _user;
+                    _user = value;
+                    FixupUser(previousValue);
+                    OnNavigationPropertyChanged("User");
+                }
+            }
+        }
+        private User _user;
+    
+        [DataMember]
+        public TrackableCollection<HAWBBox> HAWBBox
         {
             get
             {
-                if (_item == null)
+                if (_hAWBBox == null)
                 {
-                    _item = new TrackableCollection<Item>();
-                    _item.CollectionChanged += FixupItem;
+                    _hAWBBox = new TrackableCollection<HAWBBox>();
+                    _hAWBBox.CollectionChanged += FixupHAWBBox;
                 }
-                return _item;
+                return _hAWBBox;
             }
             set
             {
-                if (!ReferenceEquals(_item, value))
+                if (!ReferenceEquals(_hAWBBox, value))
                 {
                     if (ChangeTracker.ChangeTrackingEnabled)
                     {
                         throw new InvalidOperationException("Cannot set the FixupChangeTrackingCollection when ChangeTracking is enabled");
                     }
-                    if (_item != null)
+                    if (_hAWBBox != null)
                     {
-                        _item.CollectionChanged -= FixupItem;
-                        // This is the principal end in an association that performs cascade deletes.
-                        // Remove the cascade delete event handler for any entities in the current collection.
-                        foreach (Item item in _item)
-                        {
-                            ChangeTracker.ObjectStateChanging -= item.HandleCascadeDelete;
-                        }
+                        _hAWBBox.CollectionChanged -= FixupHAWBBox;
                     }
-                    _item = value;
-                    if (_item != null)
+                    _hAWBBox = value;
+                    if (_hAWBBox != null)
                     {
-                        _item.CollectionChanged += FixupItem;
-                        // This is the principal end in an association that performs cascade deletes.
-                        // Add the cascade delete event handler for any entities that are already in the new collection.
-                        foreach (Item item in _item)
-                        {
-                            ChangeTracker.ObjectStateChanging += item.HandleCascadeDelete;
-                        }
+                        _hAWBBox.CollectionChanged += FixupHAWBBox;
                     }
-                    OnNavigationPropertyChanged("Item");
+                    OnNavigationPropertyChanged("HAWBBox");
                 }
             }
         }
-        private TrackableCollection<Item> _item;
+        private TrackableCollection<HAWBBox> _hAWBBox;
+    
+        [DataMember]
+        public TrackableCollection<HAWBItem> HAWBItem
+        {
+            get
+            {
+                if (_hAWBItem == null)
+                {
+                    _hAWBItem = new TrackableCollection<HAWBItem>();
+                    _hAWBItem.CollectionChanged += FixupHAWBItem;
+                }
+                return _hAWBItem;
+            }
+            set
+            {
+                if (!ReferenceEquals(_hAWBItem, value))
+                {
+                    if (ChangeTracker.ChangeTrackingEnabled)
+                    {
+                        throw new InvalidOperationException("Cannot set the FixupChangeTrackingCollection when ChangeTracking is enabled");
+                    }
+                    if (_hAWBItem != null)
+                    {
+                        _hAWBItem.CollectionChanged -= FixupHAWBItem;
+                    }
+                    _hAWBItem = value;
+                    if (_hAWBItem != null)
+                    {
+                        _hAWBItem.CollectionChanged += FixupHAWBItem;
+                    }
+                    OnNavigationPropertyChanged("HAWBItem");
+                }
+            }
+        }
+        private TrackableCollection<HAWBItem> _hAWBItem;
 
         #endregion
         #region ChangeTracking
@@ -689,13 +870,104 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
     
         protected virtual void ClearNavigationProperties()
         {
-            Item.Clear();
+            Package = null;
+            User = null;
+            HAWBBox.Clear();
+            HAWBItem.Clear();
         }
 
         #endregion
         #region Association Fixup
     
-        private void FixupItem(object sender, NotifyCollectionChangedEventArgs e)
+        private void FixupPackage(Package previousValue, bool skipKeys = false)
+        {
+            if (IsDeserializing)
+            {
+                return;
+            }
+    
+            if (previousValue != null && previousValue.HAWB.Contains(this))
+            {
+                previousValue.HAWB.Remove(this);
+            }
+    
+            if (Package != null)
+            {
+                if (!Package.HAWB.Contains(this))
+                {
+                    Package.HAWB.Add(this);
+                }
+    
+                PID = Package.PID;
+            }
+            else if (!skipKeys)
+            {
+                PID = null;
+            }
+    
+            if (ChangeTracker.ChangeTrackingEnabled)
+            {
+                if (ChangeTracker.OriginalValues.ContainsKey("Package")
+                    && (ChangeTracker.OriginalValues["Package"] == Package))
+                {
+                    ChangeTracker.OriginalValues.Remove("Package");
+                }
+                else
+                {
+                    ChangeTracker.RecordOriginalValue("Package", previousValue);
+                }
+                if (Package != null && !Package.ChangeTracker.ChangeTrackingEnabled)
+                {
+                    Package.StartTracking();
+                }
+            }
+        }
+    
+        private void FixupUser(User previousValue, bool skipKeys = false)
+        {
+            if (IsDeserializing)
+            {
+                return;
+            }
+    
+            if (previousValue != null && previousValue.HAWB.Contains(this))
+            {
+                previousValue.HAWB.Remove(this);
+            }
+    
+            if (User != null)
+            {
+                if (!User.HAWB.Contains(this))
+                {
+                    User.HAWB.Add(this);
+                }
+    
+                UID = User.UID;
+            }
+            else if (!skipKeys)
+            {
+                UID = null;
+            }
+    
+            if (ChangeTracker.ChangeTrackingEnabled)
+            {
+                if (ChangeTracker.OriginalValues.ContainsKey("User")
+                    && (ChangeTracker.OriginalValues["User"] == User))
+                {
+                    ChangeTracker.OriginalValues.Remove("User");
+                }
+                else
+                {
+                    ChangeTracker.RecordOriginalValue("User", previousValue);
+                }
+                if (User != null && !User.ChangeTracker.ChangeTrackingEnabled)
+                {
+                    User.StartTracking();
+                }
+            }
+        }
+    
+        private void FixupHAWBBox(object sender, NotifyCollectionChangedEventArgs e)
         {
             if (IsDeserializing)
             {
@@ -704,7 +976,7 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
     
             if (e.NewItems != null)
             {
-                foreach (Item item in e.NewItems)
+                foreach (HAWBBox item in e.NewItems)
                 {
                     item.HAWB = this;
                     if (ChangeTracker.ChangeTrackingEnabled)
@@ -713,17 +985,14 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
                         {
                             item.StartTracking();
                         }
-                        ChangeTracker.RecordAdditionToCollectionProperties("Item", item);
+                        ChangeTracker.RecordAdditionToCollectionProperties("HAWBBox", item);
                     }
-                    // This is the principal end in an association that performs cascade deletes.
-                    // Update the event listener to refer to the new dependent.
-                    ChangeTracker.ObjectStateChanging += item.HandleCascadeDelete;
                 }
             }
     
             if (e.OldItems != null)
             {
-                foreach (Item item in e.OldItems)
+                foreach (HAWBBox item in e.OldItems)
                 {
                     if (ReferenceEquals(item.HAWB, this))
                     {
@@ -731,11 +1000,47 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
                     }
                     if (ChangeTracker.ChangeTrackingEnabled)
                     {
-                        ChangeTracker.RecordRemovalFromCollectionProperties("Item", item);
+                        ChangeTracker.RecordRemovalFromCollectionProperties("HAWBBox", item);
                     }
-                    // This is the principal end in an association that performs cascade deletes.
-                    // Remove the previous dependent from the event listener.
-                    ChangeTracker.ObjectStateChanging -= item.HandleCascadeDelete;
+                }
+            }
+        }
+    
+        private void FixupHAWBItem(object sender, NotifyCollectionChangedEventArgs e)
+        {
+            if (IsDeserializing)
+            {
+                return;
+            }
+    
+            if (e.NewItems != null)
+            {
+                foreach (HAWBItem item in e.NewItems)
+                {
+                    item.HAWB = this;
+                    if (ChangeTracker.ChangeTrackingEnabled)
+                    {
+                        if (!item.ChangeTracker.ChangeTrackingEnabled)
+                        {
+                            item.StartTracking();
+                        }
+                        ChangeTracker.RecordAdditionToCollectionProperties("HAWBItem", item);
+                    }
+                }
+            }
+    
+            if (e.OldItems != null)
+            {
+                foreach (HAWBItem item in e.OldItems)
+                {
+                    if (ReferenceEquals(item.HAWB, this))
+                    {
+                        item.HAWB = null;
+                    }
+                    if (ChangeTracker.ChangeTrackingEnabled)
+                    {
+                        ChangeTracker.RecordRemovalFromCollectionProperties("HAWBItem", item);
+                    }
                 }
             }
         }
