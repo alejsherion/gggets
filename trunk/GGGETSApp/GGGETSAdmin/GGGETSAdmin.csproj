@@ -99,11 +99,11 @@
     <Content Include="bin\GGGETSApp.Infrastructure.Data.Persistence.pdb" />
     <Content Include="bin\GGGETSApp.Infrastructure.Data.Persistence.xml" />
     <Content Include="bin\Microsoft.Practices.Unity.dll" />
-    <Content Include="Control\HAWB.ascx" />
+    <Content Include="Control\HAWBGuoJi.ascx" />
     <Content Include="Control\HAWBDetails.ascx" />
     <Content Include="Control\HAWBInternal.ascx" />
     <Content Include="Control\HAWBInternalItem.ascx" />
-    <Content Include="Control\HAWBItem.ascx" />
+    <Content Include="Control\HawbItem.ascx" />
     <Content Include="Control\HAWBManagement.ascx" />
     <Content Include="Control\HWABInternalDetails.ascx" />
     <Content Include="Control\logistics\BagDetails.ascx" />
@@ -118,6 +118,7 @@
     <Content Include="Control\MyPanel.ascx" />
     <Content Include="HAWBManage\DeliverAdd.aspx" />
     <Content Include="HAWBManage\HAWBAdd.aspx" />
+    <Content Include="HAWBManage\HAWBItemAdd.aspx" />
     <Content Include="obj\Debug\GGGETSAdmin.csproj.FileListAbsolute.txt" />
     <Content Include="Scripts\calendar.js" />
     <Content Include="Styles\Site.css" />
@@ -162,12 +163,12 @@
     <Compile Include="Account\Register.aspx.designer.cs">
       <DependentUpon>Register.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Control\HAWB.ascx.cs">
-      <DependentUpon>HAWB.ascx</DependentUpon>
+    <Compile Include="Control\HAWBGuoJi.ascx.cs">
+      <DependentUpon>HAWBGuoJi.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Control\HAWB.ascx.designer.cs">
-      <DependentUpon>HAWB.ascx</DependentUpon>
+    <Compile Include="Control\HAWBGuoJi.ascx.designer.cs">
+      <DependentUpon>HAWBGuoJi.ascx</DependentUpon>
     </Compile>
     <Compile Include="Control\HAWBDetails.ascx.cs">
       <DependentUpon>HAWBDetails.ascx</DependentUpon>
@@ -190,12 +191,12 @@
     <Compile Include="Control\HAWBInternalItem.ascx.designer.cs">
       <DependentUpon>HAWBInternalItem.ascx</DependentUpon>
     </Compile>
-    <Compile Include="Control\HAWBItem.ascx.cs">
-      <DependentUpon>HAWBItem.ascx</DependentUpon>
+    <Compile Include="Control\HawbItem.ascx.cs">
+      <DependentUpon>HawbItem.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Control\HAWBItem.ascx.designer.cs">
-      <DependentUpon>HAWBItem.ascx</DependentUpon>
+    <Compile Include="Control\HawbItem.ascx.designer.cs">
+      <DependentUpon>HawbItem.ascx</DependentUpon>
     </Compile>
     <Compile Include="Control\HAWBManagement.ascx.cs">
       <DependentUpon>HAWBManagement.ascx</DependentUpon>
@@ -298,6 +299,13 @@
     </Compile>
     <Compile Include="HAWBManage\HAWBAdd.aspx.designer.cs">
       <DependentUpon>HAWBAdd.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="HAWBManage\HAWBItemAdd.aspx.cs">
+      <DependentUpon>HAWBItemAdd.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="HAWBManage\HAWBItemAdd.aspx.designer.cs">
+      <DependentUpon>HAWBItemAdd.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Site1.Master.cs">
