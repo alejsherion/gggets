@@ -116,7 +116,7 @@
     <Content Include="Control\logistics\SumHAWBDetails.ascx" />
     <Content Include="Control\logistics\TotalHAWBdemand.ascx" />
     <Content Include="Control\MyPanel.ascx" />
-    <Content Include="HAWB\Deliver.aspx" />
+    <Content Include="HAWB\DeliverAdd.aspx" />
     <Content Include="HAWB\HAWBAdd.aspx" />
     <Content Include="obj\Debug\GGGETSAdmin.csproj.FileListAbsolute.txt" />
     <Content Include="Scripts\calendar.js" />
@@ -285,12 +285,12 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="HAWB\Deliver.aspx.cs">
-      <DependentUpon>Deliver.aspx</DependentUpon>
+    <Compile Include="HAWB\DeliverAdd.aspx.cs">
+      <DependentUpon>DeliverAdd.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="HAWB\Deliver.aspx.designer.cs">
-      <DependentUpon>Deliver.aspx</DependentUpon>
+    <Compile Include="HAWB\DeliverAdd.aspx.designer.cs">
+      <DependentUpon>DeliverAdd.aspx</DependentUpon>
     </Compile>
     <Compile Include="HAWB\HAWBAdd.aspx.cs">
       <DependentUpon>HAWBAdd.aspx</DependentUpon>
