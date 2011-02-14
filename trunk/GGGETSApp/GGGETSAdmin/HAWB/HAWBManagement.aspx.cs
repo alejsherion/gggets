@@ -157,7 +157,7 @@ namespace GGGETSAdmin.HAWB
                 this.GV_Bdemand.DataBind();
                 if (pageIndex - 1 < 0)
                 {
-                    But_Goup.Enabled = false; ;
+                    But_Goup.Enabled = false; 
                 }
                 Session["pageIndex"] = pageIndex;
                 Session["pageCount"] = pageCount;

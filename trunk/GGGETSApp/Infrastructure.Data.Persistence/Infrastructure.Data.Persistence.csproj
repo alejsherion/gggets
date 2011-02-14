@@ -63,7 +63,7 @@
       <DependentUpon>GGGETSAppDataModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Repositories\HAWBRepository.cs" />
-    <Compile Include="Repositories\ItemRepository.cs" />
+    <Compile Include="Repositories\HAWBItemRepository.cs" />
     <Compile Include="UnitOfWork\GGGETSAppUnitOfWork.Context.Extensions.cs">
       <DependentUpon>GGGETSAppUnitOfWork.Context.tt</DependentUpon>
     </Compile>
@@ -91,7 +91,6 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>GGGETSAppDataModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="ClassDiagram1.cd" />
     <None Include="UnitOfWork\IGGGETSAppUnitOfWork.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>IGGGETSAppUnitOfWork.cs</LastGenOutput>
@@ -130,13 +129,13 @@
       <Name>Infrastructure.Data.Core</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <EmbeddedResource Include="Resources\Messages.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Messages.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

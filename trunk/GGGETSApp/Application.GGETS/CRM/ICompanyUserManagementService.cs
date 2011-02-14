@@ -8,9 +8,9 @@ namespace Application.GGETS
 {
     public interface ICompanyUserManagementService
     {
-        //void CreateNewCompanyUser(CompanyUser companyUser);
-        //void AddCompanyUserToExistingCompany(CompanyUser companyUser);
-        //void ChangeCompanyUser(CompanyUser companyUser);
-        //void RemoveCompanyUser(CompanyUser companyUser);
+        void CreateNewCompanyUser(User companyUser);
+        void AddCompanyUserToExistingCompany(User companyUser);
+        void ChangeCompanyUser(User companyUser);
+        void RemoveCompanyUser(User companyUser);
     }
 }
