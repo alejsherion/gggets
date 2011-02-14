@@ -8,6 +8,7 @@ document.write("<iframe name=meizzCalendarIframe scrolling=no frameborder=0 widt
 
 function writeIframe()
 {
+
     var strIframe = "<html><head><meta http-equiv='Content-Type' content='text/html; charset=gb2312'><style>"+
     "*{font-size: 12px; font-family: 宋体}"+
     ".bg{  color: "+ WebCalendar.lightColor +"; cursor: default; background-color: "+ WebCalendar.darkColor +";}"+
