@@ -10,16 +10,25 @@
 namespace GGGETSAdmin.Control {
     
     
-    public partial class HawbItem {
+    public partial class HAWBGuoJi {
         
         /// <summary>
-        /// lbl_BarCodeTitle 控件。
+        /// btnAdd 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_BarCodeTitle;
+        protected global::System.Web.UI.WebControls.LinkButton btnAdd;
+        
+        /// <summary>
+        /// phHAWB 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.PlaceHolder phHAWB;
         
         /// <summary>
         /// lbl_BarCode 控件。
@@ -31,49 +40,85 @@ namespace GGGETSAdmin.Control {
         protected global::System.Web.UI.WebControls.Label lbl_BarCode;
         
         /// <summary>
-        /// lbl_ShipperCountryTitle 控件。
+        /// Txt_BarCode 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_ShipperCountryTitle;
+        protected global::System.Web.UI.WebControls.TextBox Txt_BarCode;
         
         /// <summary>
-        /// lbl_ShipperCountry 控件。
+        /// lbl_Account 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_ShipperCountry;
+        protected global::System.Web.UI.WebControls.Label lbl_Account;
         
         /// <summary>
-        /// lbl_ShipperRegionTitle 控件。
+        /// Txt_Account1 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_ShipperRegionTitle;
+        protected global::System.Web.UI.WebControls.TextBox Txt_Account1;
         
         /// <summary>
-        /// lbl_ShipperRegion 控件。
+        /// Txt_Account2 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_ShipperRegion;
+        protected global::System.Web.UI.WebControls.TextBox Txt_Account2;
         
         /// <summary>
-        /// lbl_ShipperNameTitle 控件。
+        /// lbl_SettleType 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_ShipperNameTitle;
+        protected global::System.Web.UI.WebControls.Label lbl_SettleType;
+        
+        /// <summary>
+        /// DDl_SettleType 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList DDl_SettleType;
+        
+        /// <summary>
+        /// phShipper 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.PlaceHolder phShipper;
+        
+        /// <summary>
+        /// lbl_Shipper 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_Shipper;
+        
+        /// <summary>
+        /// lbtn_Shipperhistory 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lbtn_Shipperhistory;
         
         /// <summary>
         /// lbl_ShipperName 控件。
@@ -85,13 +130,175 @@ namespace GGGETSAdmin.Control {
         protected global::System.Web.UI.WebControls.Label lbl_ShipperName;
         
         /// <summary>
-        /// lbl_ConsigneeNameTitle 控件。
+        /// Txt_ShipperName 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_ConsigneeNameTitle;
+        protected global::System.Web.UI.WebControls.TextBox Txt_ShipperName;
+        
+        /// <summary>
+        /// lbl_ShipperAddress 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_ShipperAddress;
+        
+        /// <summary>
+        /// Txt_ShipperAddress 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox Txt_ShipperAddress;
+        
+        /// <summary>
+        /// lbl_ShipperCountry 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_ShipperCountry;
+        
+        /// <summary>
+        /// Txt_ShipperCountry 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox Txt_ShipperCountry;
+        
+        /// <summary>
+        /// lbl_ShipperRegion 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_ShipperRegion;
+        
+        /// <summary>
+        /// Txt_ShipperRegion 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox Txt_ShipperRegion;
+        
+        /// <summary>
+        /// lbl_City 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_City;
+        
+        /// <summary>
+        /// Txt_City 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox Txt_City;
+        
+        /// <summary>
+        /// lbl_ShipperZipCode 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_ShipperZipCode;
+        
+        /// <summary>
+        /// Txt_ShipperZipCode 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox Txt_ShipperZipCode;
+        
+        /// <summary>
+        /// lbl_ShipperContactor 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_ShipperContactor;
+        
+        /// <summary>
+        /// Txt_ShipperContactor 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox Txt_ShipperContactor;
+        
+        /// <summary>
+        /// lbl_ShipperTel 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_ShipperTel;
+        
+        /// <summary>
+        /// Txt_ShipperTel 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox Txt_ShipperTel;
+        
+        /// <summary>
+        /// phConsignee 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.PlaceHolder phConsignee;
+        
+        /// <summary>
+        /// lbl_Consignee 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_Consignee;
+        
+        /// <summary>
+        /// lbtn_Consigneehistory 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lbtn_Consigneehistory;
+        
+        /// <summary>
+        /// lbtn_AddConsignee 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lbtn_AddConsignee;
         
         /// <summary>
         /// lbl_ConsigneeName 控件。
@@ -103,417 +310,336 @@ namespace GGGETSAdmin.Control {
         protected global::System.Web.UI.WebControls.Label lbl_ConsigneeName;
         
         /// <summary>
-        /// lbl_BoxType 控件。
+        /// Txt_ConsigneeName 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_BoxType;
+        protected global::System.Web.UI.WebControls.TextBox Txt_ConsigneeName;
         
         /// <summary>
-        /// rbt_BoxType 控件。
+        /// lbl_ConsigneeAddress 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButtonList rbt_BoxType;
+        protected global::System.Web.UI.WebControls.Label lbl_ConsigneeAddress;
         
         /// <summary>
-        /// lbl_BillTax 控件。
+        /// Txt_ConsigneeAddress 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_BillTax;
+        protected global::System.Web.UI.WebControls.TextBox Txt_ConsigneeAddress;
         
         /// <summary>
-        /// rbt_BillTax 控件。
+        /// lbl_ConsigneeCountry 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButtonList rbt_BillTax;
+        protected global::System.Web.UI.WebControls.Label lbl_ConsigneeCountry;
         
         /// <summary>
-        /// lbl_SpecialInstruction 控件。
+        /// Txt_ConsigneeCountry 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_SpecialInstruction;
+        protected global::System.Web.UI.WebControls.TextBox Txt_ConsigneeCountry;
         
         /// <summary>
-        /// Rbl_SpecialInstruction 控件。
+        /// lbl_ConsigneeRegion 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButtonList Rbl_SpecialInstruction;
+        protected global::System.Web.UI.WebControls.Label lbl_ConsigneeRegion;
         
         /// <summary>
-        /// Dvitem 控件。
+        /// Txt_ConsigneeRegion 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTable Dvitem;
+        protected global::System.Web.UI.WebControls.TextBox Txt_ConsigneeRegion;
         
         /// <summary>
-        /// lbl_ItemPiece 控件。
+        /// lbl_ConsigneeCity 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_ItemPiece;
+        protected global::System.Web.UI.WebControls.Label lbl_ConsigneeCity;
         
         /// <summary>
-        /// Txt_ItemPiece 控件。
+        /// Txt_ConsigneeCity 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox Txt_ItemPiece;
+        protected global::System.Web.UI.WebControls.TextBox Txt_ConsigneeCity;
         
         /// <summary>
-        /// lbl_ItemName 控件。
+        /// lbl_ConsigneeZipCode 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_ItemName;
+        protected global::System.Web.UI.WebControls.Label lbl_ConsigneeZipCode;
         
         /// <summary>
-        /// txt_ItemName 控件。
+        /// Txt_ConsigneeZipCode 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt_ItemName;
+        protected global::System.Web.UI.WebControls.TextBox Txt_ConsigneeZipCode;
         
         /// <summary>
-        /// lbl_ItemType 控件。
+        /// lbl_ConsigneeContactor 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_ItemType;
+        protected global::System.Web.UI.WebControls.Label lbl_ConsigneeContactor;
         
         /// <summary>
-        /// txt_ItemType 控件。
+        /// Txt_ConsigneeContactor 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt_ItemType;
+        protected global::System.Web.UI.WebControls.TextBox Txt_ConsigneeContactor;
         
         /// <summary>
-        /// lbl_ItemPice 控件。
+        /// lbl_ConsigneeTel 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_ItemPice;
+        protected global::System.Web.UI.WebControls.Label lbl_ConsigneeTel;
         
         /// <summary>
-        /// Txt_ItemPice 控件。
+        /// Txt_ConsigneeTel 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox Txt_ItemPice;
+        protected global::System.Web.UI.WebControls.TextBox Txt_ConsigneeTel;
         
         /// <summary>
-        /// but_AddItem 控件。
+        /// phDeliver 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button but_AddItem;
+        protected global::System.Web.UI.WebControls.PlaceHolder phDeliver;
         
         /// <summary>
-        /// GV_item 控件。
+        /// Deliver 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GV_item;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Deliver;
         
         /// <summary>
-        /// DvBox 控件。
+        /// lbl_Deliver 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTable DvBox;
+        protected global::System.Web.UI.WebControls.Label lbl_Deliver;
         
         /// <summary>
-        /// lbl_BoxPiece 控件。
+        /// lbl_DeliverName 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_BoxPiece;
+        protected global::System.Web.UI.WebControls.Label lbl_DeliverName;
         
         /// <summary>
-        /// txt_BoxPiece 控件。
+        /// Txt_DeliverName 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt_BoxPiece;
+        protected global::System.Web.UI.WebControls.TextBox Txt_DeliverName;
         
         /// <summary>
-        /// lbl_BoxWeight 控件。
+        /// lbl_DeliverAddress 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_BoxWeight;
+        protected global::System.Web.UI.WebControls.Label lbl_DeliverAddress;
         
         /// <summary>
-        /// Txt_BoxWeight 控件。
+        /// Txt_DeliverAddress 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox Txt_BoxWeight;
+        protected global::System.Web.UI.WebControls.TextBox Txt_DeliverAddress;
         
         /// <summary>
-        /// lbl_BoxHeight 控件。
+        /// lbl_DeliverCountry 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_BoxHeight;
+        protected global::System.Web.UI.WebControls.Label lbl_DeliverCountry;
         
         /// <summary>
-        /// Txt_BoxHeight 控件。
+        /// Txt_DeliverCountry 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox Txt_BoxHeight;
+        protected global::System.Web.UI.WebControls.TextBox Txt_DeliverCountry;
         
         /// <summary>
-        /// lbl_BoxLength 控件。
+        /// lbl_DeliverRegion 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_BoxLength;
+        protected global::System.Web.UI.WebControls.Label lbl_DeliverRegion;
         
         /// <summary>
-        /// Txt_BoxLength 控件。
+        /// Txt_DeliverRegion 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox Txt_BoxLength;
+        protected global::System.Web.UI.WebControls.TextBox Txt_DeliverRegion;
         
         /// <summary>
-        /// lbl_BoxWidth 控件。
+        /// lbl_DeliverCity 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_BoxWidth;
+        protected global::System.Web.UI.WebControls.Label lbl_DeliverCity;
         
         /// <summary>
-        /// Txt_BoxWidth 控件。
+        /// Txt_DeliverCity 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox Txt_BoxWidth;
+        protected global::System.Web.UI.WebControls.TextBox Txt_DeliverCity;
         
         /// <summary>
-        /// but_AddBox 控件。
+        /// lbl_DeliverZipCode 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button but_AddBox;
+        protected global::System.Web.UI.WebControls.Label lbl_DeliverZipCode;
         
         /// <summary>
-        /// gv_Box 控件。
+        /// Txt_DeliverZipCode 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gv_Box;
+        protected global::System.Web.UI.WebControls.TextBox Txt_DeliverZipCode;
         
         /// <summary>
-        /// lbl_WeightType 控件。
+        /// lbl_DeliverContactor 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_WeightType;
+        protected global::System.Web.UI.WebControls.Label lbl_DeliverContactor;
         
         /// <summary>
-        /// ddl_WeightType 控件。
+        /// Txt_DeliverContactor 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddl_WeightType;
+        protected global::System.Web.UI.WebControls.TextBox Txt_DeliverContactor;
         
         /// <summary>
-        /// lbl_VolumeWeight 控件。
+        /// lbl_DeliverTel 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_VolumeWeight;
+        protected global::System.Web.UI.WebControls.Label lbl_DeliverTel;
         
         /// <summary>
-        /// txt_VolumeWeight 控件。
+        /// Txt_DeliverTel 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label txt_VolumeWeight;
+        protected global::System.Web.UI.WebControls.TextBox Txt_DeliverTel;
         
         /// <summary>
-        /// lbl_PieceTile 控件。
+        /// but_cancel 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_PieceTile;
+        protected global::System.Web.UI.HtmlControls.HtmlInputButton but_cancel;
         
         /// <summary>
-        /// lbl_Piece 控件。
+        /// But_Next 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_Piece;
+        protected global::System.Web.UI.WebControls.Button But_Next;
         
         /// <summary>
-        /// lbl_TotalVolumeTile 控件。
+        /// But_Conel 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_TotalVolumeTile;
-        
-        /// <summary>
-        /// lbl_TotalVolume 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_TotalVolume;
-        
-        /// <summary>
-        /// lbl_Remark 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_Remark;
-        
-        /// <summary>
-        /// txt_Remark 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt_Remark;
-        
-        /// <summary>
-        /// lbl_Carrier 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_Carrier;
-        
-        /// <summary>
-        /// Txt_Carrier 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox Txt_Carrier;
-        
-        /// <summary>
-        /// lbl_CarrierHAWBID 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_CarrierHAWBID;
-        
-        /// <summary>
-        /// Txt_CarrierHAWBID 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox Txt_CarrierHAWBID;
-        
-        /// <summary>
-        /// But_AddHAWB 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button But_AddHAWB;
-        
-        /// <summary>
-        /// But_Rurnet 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button But_Rurnet;
+        protected global::System.Web.UI.WebControls.Button But_Conel;
     }
 }
