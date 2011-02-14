@@ -432,23 +432,11 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
                     if (_addressBook != null)
                     {
                         _addressBook.CollectionChanged -= FixupAddressBook;
-                        // This is the principal end in an association that performs cascade deletes.
-                        // Remove the cascade delete event handler for any entities in the current collection.
-                        foreach (AddressBook item in _addressBook)
-                        {
-                            ChangeTracker.ObjectStateChanging -= item.HandleCascadeDelete;
-                        }
                     }
                     _addressBook = value;
                     if (_addressBook != null)
                     {
                         _addressBook.CollectionChanged += FixupAddressBook;
-                        // This is the principal end in an association that performs cascade deletes.
-                        // Add the cascade delete event handler for any entities that are already in the new collection.
-                        foreach (AddressBook item in _addressBook)
-                        {
-                            ChangeTracker.ObjectStateChanging += item.HandleCascadeDelete;
-                        }
                     }
                     OnNavigationPropertyChanged("AddressBook");
                 }
@@ -658,9 +646,6 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
                         }
                         ChangeTracker.RecordAdditionToCollectionProperties("AddressBook", item);
                     }
-                    // This is the principal end in an association that performs cascade deletes.
-                    // Update the event listener to refer to the new dependent.
-                    ChangeTracker.ObjectStateChanging += item.HandleCascadeDelete;
                 }
             }
     
@@ -676,9 +661,6 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
                     {
                         ChangeTracker.RecordRemovalFromCollectionProperties("AddressBook", item);
                     }
-                    // This is the principal end in an association that performs cascade deletes.
-                    // Remove the previous dependent from the event listener.
-                    ChangeTracker.ObjectStateChanging -= item.HandleCascadeDelete;
                 }
             }
         }
