@@ -1,28 +1,28 @@
 ﻿/* CSS Version Component */
-/* Version: 1.2 || Date: 2010-1-4 || Author: Cyrano */
+/* Version: 1.2.1 || Date: 2011-2-1 || Author: Cyrano */
 /* Cascading Style Sheets Level 2 Revision 1 */
 
 /** ASP.NET Component **/
 .InputBtn
 {
-    padding:4px;
+    padding:5px;
     font-size:12px;
     font-weight:bold;
-    color:#666666;
-    border:1px solid #999999;
-    background:#EEEEEE;
+    color:#cc2828;
+    border:1px solid #b4ac65;
+    background:#f8f8ee;
     margin:3px;
     cursor:pointer;
 }
 a.LinkBtn
 {
     display: inline-block;
-    padding:5px;
-    font-size:12px;
+    padding: 3px 6px;
+    font-size:11px;
     font-weight:bold;
     color:#666666;
-    border:1px solid #999999;
-    background:#EEEEEE;
+    border:1px solid #e7e9ae;
+    background:#feffe1;
     text-decoration:none;
     margin:2px;
     cursor:pointer;
@@ -31,12 +31,12 @@ a.LinkBtn
 a.LinkBtn:hover
 {
      text-decoration:none;
-     color: #003399;
-     border:1px solid #333333;
+     background: #fdf6ea;
+     color: #cc2828;
+     border:1px solid #b4ac65;
      white-space: nowrap;
 }
-a.DelBtn
-{}
+
 
 /** Form Component **/
 select

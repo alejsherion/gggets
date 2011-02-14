@@ -29,5 +29,3 @@
 <asp:TextBox runat="server"></asp:TextBox>
 <asp:DropDownList runat="server"></asp:DropDownList>
 <asp:CheckBox runat="server" CssClass="CheckBox" />
-
-
