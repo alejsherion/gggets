@@ -64,7 +64,7 @@
 </div>
 <div>
     <asp:PlaceHolder ID="phShipper" runat="server">
-        <table class="DataView" width="100%">
+        <table class="DataView">
             <tbody>
                 <tr class="EditRow">
                     <td colspan="6" align="left">
@@ -77,7 +77,7 @@
                         <asp:Label ID="lbl_ShipperName" runat="server" Text="公司："></asp:Label>
                     </td>
                     <td align="left" colspan="5">
-                        <asp:TextBox ID="Txt_ShipperName" runat="server" Width="90%" TabIndex="5"></asp:TextBox><b
+                        <asp:TextBox ID="Txt_ShipperName" runat="server" Width="800" TabIndex="5"></asp:TextBox><b
                             style="color: Red">*</b>
                     </td>
                 </tr>
@@ -86,7 +86,7 @@
                         <asp:Label ID="lbl_ShipperAddress" runat="server" Text="地址："></asp:Label>
                     </td>
                     <td align="left" colspan="5">
-                        <asp:TextBox ID="Txt_ShipperAddress" runat="server" Width="90%" TabIndex="6" TextMode="MultiLine"></asp:TextBox><b
+                        <asp:TextBox ID="Txt_ShipperAddress" runat="server" Width="800" TabIndex="6" TextMode="MultiLine"></asp:TextBox><b
                             style="color: Red">*</b>
                     </td>
                 </tr>
@@ -138,7 +138,7 @@
 </div>
 <div>
     <asp:PlaceHolder ID="phConsignee" runat="server">
-        <table class="DataView" width="100%">
+        <table class="DataView">
             <tbody>
                 <tr class="EditRow">
                     <td colspan="6" align="left">
@@ -152,7 +152,7 @@
                         <asp:Label ID="lbl_ConsigneeName" runat="server" Text="公司："></asp:Label>
                     </td>
                     <td align="left" colspan="5">
-                        <asp:TextBox ID="Txt_ConsigneeName" runat="server" Width="90%" TabIndex="14"></asp:TextBox><b
+                        <asp:TextBox ID="Txt_ConsigneeName" runat="server" Width="800" TabIndex="14"></asp:TextBox><b
                             style="color: Red">*</b>
                     </td>
                 </tr>
@@ -161,7 +161,7 @@
                         <asp:Label ID="lbl_ConsigneeAddress" runat="server" Text="地址："></asp:Label>
                     </td>
                     <td align="left" colspan="5">
-                        <asp:TextBox ID="Txt_ConsigneeAddress" runat="server" Width="90%" TabIndex="15"
+                        <asp:TextBox ID="Txt_ConsigneeAddress" runat="server" Width="800" TabIndex="15"
                             TextMode="MultiLine"></asp:TextBox><b style="color: Red">*</b>
                     </td>
                 </tr>
@@ -213,8 +213,8 @@
 </div>
 <div>
     <asp:PlaceHolder ID="phDeliver" runat="server">
-        <table class="DataView" width="100%">
-            <tbody id="Deliver" runat="server">
+        <table class="DataView">
+            <tbody id="Deliver" runat="server" visible="false">
                 <tr class="EditRow">
                     <td colspan="6" align="left">
                         <asp:Label ID="lbl_Deliver" runat="server" Text="交付人信息"></asp:Label>
@@ -225,7 +225,7 @@
                         <asp:Label ID="lbl_DeliverName" runat="server" Text="公司:"></asp:Label>
                     </td>
                     <td align="left" colspan="5">
-                        <asp:TextBox ID="Txt_DeliverName" runat="server" Width="90%" TabIndex="22"></asp:TextBox>
+                        <asp:TextBox ID="Txt_DeliverName" runat="server" Width="800" TabIndex="22"></asp:TextBox>
                     </td>
                 </tr>
                 <tr class="Row">
@@ -233,7 +233,7 @@
                         <asp:Label ID="lbl_DeliverAddress" runat="server" Text="地址："></asp:Label>
                     </td>
                     <td align="left" colspan="5">
-                        <asp:TextBox ID="Txt_DeliverAddress" runat="server" Width="90%" TabIndex="23" TextMode="MultiLine"></asp:TextBox>
+                        <asp:TextBox ID="Txt_DeliverAddress" runat="server" Width="800" TabIndex="23" TextMode="MultiLine"></asp:TextBox>
                     </td>
                 </tr>
                 <tr class="Row">
@@ -294,7 +294,7 @@
 </div>
 <script type="text/javascript">
     function Open() {
-        window.open("Deliver.aspx", "NewWindow", "height=250,width=650,top=10,left=10,resizable=1,scrollbars=1,status=yes,toolbar=no,location=no,menu=no");
+        window.open("DeliverAdd.aspx", "NewWindow", "height=250,width=650,top=10,left=10,resizable=0,scrollbars=1,status=no,toolbar=no,location=no,menu=no");
     }
     function but_cancel() {
         document.getElementById("MainContent_HAWB1_Deliver").style.display = "none"; //
