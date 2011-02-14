@@ -100,7 +100,24 @@
     <Content Include="bin\GGGETSApp.Infrastructure.Data.Persistence.pdb" />
     <Content Include="bin\GGGETSApp.Infrastructure.Data.Persistence.xml" />
     <Content Include="bin\Microsoft.Practices.Unity.dll" />
+    <Content Include="Control\HAWB.ascx" />
+    <Content Include="Control\HAWBDetails.ascx" />
+    <Content Include="Control\HAWBInternal.ascx" />
+    <Content Include="Control\HAWBInternalItem.ascx" />
+    <Content Include="Control\HAWBItem.ascx" />
+    <Content Include="Control\HAWBManagement.ascx" />
+    <Content Include="Control\HWABInternalDetails.ascx" />
+    <Content Include="Control\logistics\BagDetails.ascx" />
+    <Content Include="Control\logistics\BagModifyAndDetails.ascx" />
+    <Content Include="Control\logistics\Boxdemand.ascx" />
+    <Content Include="Control\logistics\FLTNoDetails.ascx" />
+    <Content Include="Control\logistics\HAWBdemand.ascx" />
+    <Content Include="Control\logistics\NewBag.ascx" />
+    <Content Include="Control\logistics\NewFLTNo.ascx" />
+    <Content Include="Control\logistics\SumHAWBDetails.ascx" />
+    <Content Include="Control\logistics\TotalHAWBdemand.ascx" />
     <Content Include="Control\MyPanel.ascx" />
+    <Content Include="HAWB\HAWBAdd.aspx" />
     <Content Include="obj\Debug\GGGETSAdmin.csproj.FileListAbsolute.txt" />
     <Content Include="Scripts\calendar.js" />
     <Content Include="Styles\Site.css" />
@@ -153,6 +170,118 @@
     <Compile Include="Account\Register.aspx.designer.cs">
       <DependentUpon>Register.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Control\HAWB.ascx.cs">
+      <DependentUpon>HAWB.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Control\HAWB.ascx.designer.cs">
+      <DependentUpon>HAWB.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Control\HAWBDetails.ascx.cs">
+      <DependentUpon>HAWBDetails.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Control\HAWBDetails.ascx.designer.cs">
+      <DependentUpon>HAWBDetails.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Control\HAWBInternal.ascx.cs">
+      <DependentUpon>HAWBInternal.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Control\HAWBInternal.ascx.designer.cs">
+      <DependentUpon>HAWBInternal.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Control\HAWBInternalItem.ascx.cs">
+      <DependentUpon>HAWBInternalItem.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Control\HAWBInternalItem.ascx.designer.cs">
+      <DependentUpon>HAWBInternalItem.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Control\HAWBItem.ascx.cs">
+      <DependentUpon>HAWBItem.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Control\HAWBItem.ascx.designer.cs">
+      <DependentUpon>HAWBItem.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Control\HAWBManagement.ascx.cs">
+      <DependentUpon>HAWBManagement.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Control\HAWBManagement.ascx.designer.cs">
+      <DependentUpon>HAWBManagement.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Control\HWABInternalDetails.ascx.cs">
+      <DependentUpon>HWABInternalDetails.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Control\HWABInternalDetails.ascx.designer.cs">
+      <DependentUpon>HWABInternalDetails.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Control\logistics\BagDetails.ascx.cs">
+      <DependentUpon>BagDetails.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Control\logistics\BagDetails.ascx.designer.cs">
+      <DependentUpon>BagDetails.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Control\logistics\BagModifyAndDetails.ascx.cs">
+      <DependentUpon>BagModifyAndDetails.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Control\logistics\BagModifyAndDetails.ascx.designer.cs">
+      <DependentUpon>BagModifyAndDetails.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Control\logistics\Boxdemand.ascx.cs">
+      <DependentUpon>Boxdemand.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Control\logistics\Boxdemand.ascx.designer.cs">
+      <DependentUpon>Boxdemand.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Control\logistics\FLTNoDetails.ascx.cs">
+      <DependentUpon>FLTNoDetails.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Control\logistics\FLTNoDetails.ascx.designer.cs">
+      <DependentUpon>FLTNoDetails.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Control\logistics\HAWBdemand.ascx.cs">
+      <DependentUpon>HAWBdemand.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Control\logistics\HAWBdemand.ascx.designer.cs">
+      <DependentUpon>HAWBdemand.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Control\logistics\NewBag.ascx.cs">
+      <DependentUpon>NewBag.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Control\logistics\NewBag.ascx.designer.cs">
+      <DependentUpon>NewBag.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Control\logistics\NewFLTNo.ascx.cs">
+      <DependentUpon>NewFLTNo.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Control\logistics\NewFLTNo.ascx.designer.cs">
+      <DependentUpon>NewFLTNo.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Control\logistics\SumHAWBDetails.ascx.cs">
+      <DependentUpon>SumHAWBDetails.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Control\logistics\SumHAWBDetails.ascx.designer.cs">
+      <DependentUpon>SumHAWBDetails.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Control\logistics\TotalHAWBdemand.ascx.cs">
+      <DependentUpon>TotalHAWBdemand.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Control\logistics\TotalHAWBdemand.ascx.designer.cs">
+      <DependentUpon>TotalHAWBdemand.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Control\MyPanel.ascx.cs">
       <DependentUpon>MyPanel.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -170,6 +299,13 @@
     <Compile Include="Extensions\IoCPageHandlerFactory.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="HAWB\HAWBAdd.aspx.cs">
+      <DependentUpon>HAWBAdd.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="HAWB\HAWBAdd.aspx.designer.cs">
+      <DependentUpon>HAWBAdd.aspx</DependentUpon>
     </Compile>
     <Compile Include="MasterPage.master.cs">
       <DependentUpon>MasterPage.master</DependentUpon>
@@ -218,8 +354,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Themes\logisitc\logistic.skin" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
     <None Include="obj\Debug\ResolveAssemblyReference.cache" />
   </ItemGroup>
