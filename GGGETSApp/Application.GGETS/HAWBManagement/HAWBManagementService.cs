@@ -50,5 +50,24 @@ namespace Application.GGETS
         {
             return _hawbRepository.GetPagedElements(pageIndex, pageCount, b => b.BarCode, true).ToList();
         }
+
+        /// <summary>
+        /// 运单多条件查询
+        /// </summary>
+        /// <param name="HID">运单编号</param>
+        /// <param name="countryCode">国家二字码</param>
+        /// <param name="regionCode">地区三字码</param>
+        /// <param name="loginName">客户账号</param>
+        /// <param name="realName">联系人姓名</param>
+        /// <param name="phone">联系电话</param>
+        /// <param name="settleType">结算方式</param>
+        /// <param name="serviceType">包裹类型</param>
+        /// <param name="isInternational">运单类型</param>
+        /// <returns></returns>
+        public IList<HAWB> FindHAWBsByCondition(string HID, string countryCode, string regionCode, string loginName, string realName, string phone, string settleType, string serviceType, string isInternational)
+        {
+            return _hawbRepository.FindHAWBsByCondition(HID, countryCode, regionCode, loginName, realName, phone,
+                                                        settleType, serviceType, isInternational);
+        }
     }
 }

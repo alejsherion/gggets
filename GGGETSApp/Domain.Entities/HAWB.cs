@@ -745,11 +745,23 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
                     if (_hAWBBox != null)
                     {
                         _hAWBBox.CollectionChanged -= FixupHAWBBox;
+                        // This is the principal end in an association that performs cascade deletes.
+                        // Remove the cascade delete event handler for any entities in the current collection.
+                        foreach (HAWBBox item in _hAWBBox)
+                        {
+                            ChangeTracker.ObjectStateChanging -= item.HandleCascadeDelete;
+                        }
                     }
                     _hAWBBox = value;
                     if (_hAWBBox != null)
                     {
                         _hAWBBox.CollectionChanged += FixupHAWBBox;
+                        // This is the principal end in an association that performs cascade deletes.
+                        // Add the cascade delete event handler for any entities that are already in the new collection.
+                        foreach (HAWBBox item in _hAWBBox)
+                        {
+                            ChangeTracker.ObjectStateChanging += item.HandleCascadeDelete;
+                        }
                     }
                     OnNavigationPropertyChanged("HAWBBox");
                 }
@@ -987,6 +999,9 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
                         }
                         ChangeTracker.RecordAdditionToCollectionProperties("HAWBBox", item);
                     }
+                    // This is the principal end in an association that performs cascade deletes.
+                    // Update the event listener to refer to the new dependent.
+                    ChangeTracker.ObjectStateChanging += item.HandleCascadeDelete;
                 }
             }
     
@@ -1002,6 +1017,9 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
                     {
                         ChangeTracker.RecordRemovalFromCollectionProperties("HAWBBox", item);
                     }
+                    // This is the principal end in an association that performs cascade deletes.
+                    // Remove the previous dependent from the event listener.
+                    ChangeTracker.ObjectStateChanging -= item.HandleCascadeDelete;
                 }
             }
         }
