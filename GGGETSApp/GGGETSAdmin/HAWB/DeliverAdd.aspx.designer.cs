@@ -7,7 +7,7 @@
 // </自动生成>
 //------------------------------------------------------------------------------
 
-namespace GGGETSAdmin.HAWB {
+namespace GGGETSAdmin.HAWBManage {
     
     
     public partial class DeliverAdd {
