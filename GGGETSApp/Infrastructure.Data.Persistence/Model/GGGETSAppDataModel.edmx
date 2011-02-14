@@ -523,11 +523,11 @@
           <Property Type="String" Name="BarCode" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="Carrier" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Type="Guid" Name="CarrierHAWBID" />
-          <Property Type="Int32" Name="SettleType" Nullable="false" />
-          <Property Type="Int32" Name="ServiceType" />
+          <Property Type="Int32" Name="SettleType" Nullable="false" DefaultValue="0" />
+          <Property Type="Int32" Name="ServiceType" DefaultValue="0" />
           <Property Type="DateTime" Name="CreateTime" Nullable="false" />
           <Property Type="DateTime" Name="UpdateTime" />
-          <Property Type="Int32" Name="Status" Nullable="false" />
+          <Property Type="Int32" Name="Status" Nullable="false" DefaultValue="0" />
           <Property Type="String" Name="Operator" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="Remark" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="ShipperName" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
@@ -551,14 +551,14 @@
           <Property Type="String" Name="DeliverAddress" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="DeliverZipCode" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Type="String" Name="DeliverTel" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Type="Int32" Name="WeightType" Nullable="false" />
-          <Property Type="Decimal" Name="VolumeWeight" Precision="8" Scale="2" />
-          <Property Type="Decimal" Name="TotalVolume" Nullable="false" Precision="8" Scale="2" />
-          <Property Type="Decimal" Name="TotalWeight" Nullable="false" Precision="8" Scale="2" />
-          <Property Type="Int32" Name="Piece" Nullable="false" />
-          <Property Type="Boolean" Name="IsInternational" Nullable="false" />
+          <Property Type="Int32" Name="WeightType" Nullable="false" DefaultValue="0" />
+          <Property Type="Decimal" Name="VolumeWeight" Precision="8" Scale="2" DefaultValue="0.0" />
+          <Property Type="Decimal" Name="TotalVolume" Nullable="false" Precision="8" Scale="2" DefaultValue="0.0" />
+          <Property Type="Decimal" Name="TotalWeight" Nullable="false" Precision="8" Scale="2" DefaultValue="0.0" />
+          <Property Type="Int32" Name="Piece" Nullable="false" DefaultValue="0" />
+          <Property Type="Boolean" Name="IsInternational" Nullable="false" DefaultValue="True" />
           <Property Type="String" Name="SpecialInstruction" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Type="Int32" Name="BillTax" />
+          <Property Type="Int32" Name="BillTax" DefaultValue="0" />
           <NavigationProperty Name="Package" Relationship="GGGETSModel.FK_HAWB_REFERENCE_PACKAGE" FromRole="HAWB" ToRole="Package" />
           <NavigationProperty Name="User" Relationship="GGGETSModel.FK_HAWB_REFERENCE_USER" FromRole="HAWB" ToRole="User" />
           <NavigationProperty Name="HAWBBox" Relationship="GGGETSModel.FK_HAWBBOX_REFERENCE_HAWB" FromRole="HAWB" ToRole="HAWBBox" />
@@ -570,14 +570,14 @@
           </Key>
           <Property Type="Guid" Name="BoxID" Nullable="false" />
           <Property Type="Guid" Name="HID" Nullable="false" />
-          <Property Type="Int32" Name="BoxType" Nullable="false" />
-          <Property Type="Decimal" Name="Weight" Nullable="false" Precision="8" Scale="2" />
-          <Property Type="Decimal" Name="Length" Precision="8" Scale="2" />
-          <Property Type="Decimal" Name="Width" Precision="8" Scale="2" />
-          <Property Type="Decimal" Name="Height" Precision="8" Scale="2" />
+          <Property Type="Int32" Name="BoxType" Nullable="false" DefaultValue="1" />
+          <Property Type="Decimal" Name="Weight" Nullable="false" Precision="8" Scale="2" DefaultValue="0.0" />
+          <Property Type="Decimal" Name="Length" Precision="8" Scale="2" DefaultValue="0.0" />
+          <Property Type="Decimal" Name="Width" Precision="8" Scale="2" DefaultValue="0.0" />
+          <Property Type="Decimal" Name="Height" Precision="8" Scale="2" DefaultValue="0.0" />
           <Property Type="Decimal" Name="TransFee" Precision="8" Scale="2" />
-          <Property Type="Int32" Name="TransCurrency" Nullable="false" />
-          <Property Type="Int32" Name="Piece" Nullable="false" />
+          <Property Type="Int32" Name="TransCurrency" Nullable="false" DefaultValue="0" />
+          <Property Type="Int32" Name="Piece" Nullable="false" DefaultValue="0" />
           <NavigationProperty Name="HAWB" Relationship="GGGETSModel.FK_HAWBBOX_REFERENCE_HAWB" FromRole="HAWBBox" ToRole="HAWB" />
         </EntityType>
         <EntityType Name="HAWBItem">
@@ -587,9 +587,9 @@
           <Property Type="Guid" Name="ItemID" Nullable="false" />
           <Property Type="Guid" Name="HID" />
           <Property Type="String" Name="Name" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Type="Int32" Name="Piece" Nullable="false" />
-          <Property Type="Decimal" Name="UnitAmount" Nullable="false" Precision="8" Scale="2" />
-          <Property Type="Decimal" Name="TotalAmount" Nullable="false" Precision="8" Scale="2" />
+          <Property Type="Int32" Name="Piece" Nullable="false" DefaultValue="0" />
+          <Property Type="Decimal" Name="UnitAmount" Nullable="false" Precision="8" Scale="2" DefaultValue="0.0" />
+          <Property Type="Decimal" Name="TotalAmount" Nullable="false" Precision="8" Scale="2" DefaultValue="0.0" />
           <Property Type="String" Name="Remark" MaxLength="200" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="HAWB" Relationship="GGGETSModel.FK_HAWBITEM_REFERENCE_HAWB" FromRole="HAWBItem" ToRole="HAWB" />
         </EntityType>
@@ -602,9 +602,9 @@
           <Property Type="DateTime" Name="CreateTime" Nullable="false" />
           <Property Type="DateTime" Name="LockedTime" />
           <Property Type="String" Name="Operator" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Type="Decimal" Name="TotalWeight" Nullable="false" Precision="10" Scale="2" />
-          <Property Type="Decimal" Name="TotalVolume" Nullable="false" Precision="10" Scale="2" />
-          <Property Type="Int32" Name="Status" Nullable="false" />
+          <Property Type="Decimal" Name="TotalWeight" Nullable="false" Precision="10" Scale="2" DefaultValue="0.0" />
+          <Property Type="Decimal" Name="TotalVolume" Nullable="false" Precision="10" Scale="2" DefaultValue="0.0" />
+          <Property Type="Int32" Name="Status" Nullable="false" DefaultValue="0" />
           <NavigationProperty Name="Flight" Relationship="GGGETSModel.FK_FLIGHT_REFERENCE_MAWB" FromRole="MAWB" ToRole="Flight" />
           <NavigationProperty Name="Package" Relationship="GGGETSModel.FK_PACKAGE_REFERENCE_MAWB" FromRole="MAWB" ToRole="Package" />
         </EntityType>
@@ -616,13 +616,13 @@
           <Property Type="Guid" Name="MID" />
           <Property Type="String" Name="BarCode" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="RegionCode" Nullable="false" MaxLength="3" FixedLength="true" Unicode="false" />
-          <Property Type="Int32" Name="Piece" Nullable="false" />
-          <Property Type="Decimal" Name="TotalWeight" Nullable="false" Precision="10" Scale="2" />
+          <Property Type="Int32" Name="Piece" Nullable="false" DefaultValue="0" />
+          <Property Type="Decimal" Name="TotalWeight" Nullable="false" Precision="10" Scale="2" DefaultValue="0.0" />
           <Property Type="DateTime" Name="CreateTime" Nullable="false" />
           <Property Type="DateTime" Name="UpdateTime" Nullable="false" />
           <Property Type="String" Name="Operator" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Type="Int32" Name="Status" Nullable="false" />
-          <Property Type="Boolean" Name="IsMixed" Nullable="false" />
+          <Property Type="Int32" Name="Status" Nullable="false" DefaultValue="0" />
+          <Property Type="Boolean" Name="IsMixed" Nullable="false" DefaultValue="False" />
           <NavigationProperty Name="HAWB" Relationship="GGGETSModel.FK_HAWB_REFERENCE_PACKAGE" FromRole="Package" ToRole="HAWB" />
           <NavigationProperty Name="MAWB" Relationship="GGGETSModel.FK_PACKAGE_REFERENCE_MAWB" FromRole="Package" ToRole="MAWB" />
         </EntityType>
@@ -1028,7 +1028,7 @@
     </Options>
     <!-- Diagram content (shape and connector positions) -->
     <Diagrams>
-      <Diagram Name="GGGETSApp" ZoomLevel="64" >
+      <Diagram Name="GGGETSApp" ZoomLevel="82" >
         <EntityTypeShape EntityType="GGGETSModel.AddressBook" Width="1.5" PointX="5.25" PointY="15.875" Height="3.6892097981770817" />
         <EntityTypeShape EntityType="GGGETSModel.Company" Width="1.5" PointX="1.5" PointY="19.5" Height="4.2622688802083317" />
         <EntityTypeShape EntityType="GGGETSModel.CountryCode" Width="1.5" PointX="0.75" PointY="0.75" Height="1.5879931640624996" />

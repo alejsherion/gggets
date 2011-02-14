@@ -7,9 +7,9 @@ using ETS.GGGETSApp.Domain.Core;
 
 namespace Domain.GGGETS
 {
-    public interface IItemRepository:IRepository<Item>
-    {
+    //public interface IItemRepository:IRepository<Item>
+    //{
        
-    }
+    //}
    
 }

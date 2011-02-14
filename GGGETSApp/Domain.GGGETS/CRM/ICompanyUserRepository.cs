@@ -8,9 +8,9 @@ using ETS.GGGETSApp.Domain.Application.Entities;
 
 namespace Domain.GGGETS
 {
-    public interface ICompanyUserRepository:IRepository<CompanyUser>
-    {
-        CompanyUser FindCompanyUserByLoginName(string loginName);
+    //public interface ICompanyUserRepository:IRepository<CompanyUser>
+    //{
+    //    CompanyUser FindCompanyUserByLoginName(string loginName);
         
-    }
+    //}
 }

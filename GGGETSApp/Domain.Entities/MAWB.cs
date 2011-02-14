@@ -125,7 +125,7 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
                 }
             }
         }
-        private decimal _totalWeight;
+        private decimal _totalWeight = 0.0m;
     
         [DataMember]
         public decimal TotalVolume
@@ -140,7 +140,7 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
                 }
             }
         }
-        private decimal _totalVolume;
+        private decimal _totalVolume = 0.0m;
     
         [DataMember]
         public int Status
@@ -155,7 +155,7 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
                 }
             }
         }
-        private int _status;
+        private int _status = 0;
 
         #endregion
         #region Navigation Properties

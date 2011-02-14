@@ -73,7 +73,7 @@ namespace ETS.GGGETSApp.Infrastructure.CrossCutting.IoC.Unity
 
             //Register Repositories mappings
             container.RegisterType<IHAWBRepository, HAWBRepository>(new TransientLifetimeManager());
-            container.RegisterType<IItemRepository, ItemRepository>(new TransientLifetimeManager());
+            //container.RegisterType<IItemRepository, ItemRepository>(new TransientLifetimeManager());
             //container.RegisterType<IBankAccountRepository, BankAccountRepository>(new TransientLifetimeManager());
             //container.RegisterType<ICustomerRepository, CustomerRepository>(new TransientLifetimeManager());
             //container.RegisterType<ICountryRepository, CountryRepository>(new TransientLifetimeManager());

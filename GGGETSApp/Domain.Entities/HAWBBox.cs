@@ -87,7 +87,7 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
                 }
             }
         }
-        private int _boxType;
+        private int _boxType = 1;
     
         [DataMember]
         public decimal Weight
@@ -102,7 +102,7 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
                 }
             }
         }
-        private decimal _weight;
+        private decimal _weight = 0.0m;
     
         [DataMember]
         public Nullable<decimal> Length
@@ -117,7 +117,7 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
                 }
             }
         }
-        private Nullable<decimal> _length;
+        private Nullable<decimal> _length = 0.0m;
     
         [DataMember]
         public Nullable<decimal> Width
@@ -132,7 +132,7 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
                 }
             }
         }
-        private Nullable<decimal> _width;
+        private Nullable<decimal> _width = 0.0m;
     
         [DataMember]
         public Nullable<decimal> Height
@@ -147,7 +147,7 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
                 }
             }
         }
-        private Nullable<decimal> _height;
+        private Nullable<decimal> _height = 0.0m;
     
         [DataMember]
         public Nullable<decimal> TransFee
@@ -177,7 +177,7 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
                 }
             }
         }
-        private int _transCurrency;
+        private int _transCurrency = 0;
     
         [DataMember]
         public int Piece
@@ -192,7 +192,7 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
                 }
             }
         }
-        private int _piece;
+        private int _piece = 0;
 
         #endregion
         #region Navigation Properties

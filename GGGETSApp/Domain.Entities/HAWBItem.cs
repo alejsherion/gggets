@@ -102,7 +102,7 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
                 }
             }
         }
-        private int _piece;
+        private int _piece = 0;
     
         [DataMember]
         public decimal UnitAmount
@@ -117,7 +117,7 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
                 }
             }
         }
-        private decimal _unitAmount;
+        private decimal _unitAmount = 0.0m;
     
         [DataMember]
         public decimal TotalAmount
@@ -132,7 +132,7 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
                 }
             }
         }
-        private decimal _totalAmount;
+        private decimal _totalAmount = 0.0m;
     
         [DataMember]
         public string Remark
