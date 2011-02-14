@@ -1,22 +1,22 @@
-﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="HAWBItem.ascx.cs" Inherits="GGGETSAdmin.Control.HAWBItem" %>
+﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="HawbItem.ascx.cs" Inherits="GGGETSAdmin.Control.HawbItem" %>
 <div>
     <table class="DataView">
         <thead>
             <tr class="Row">
                 <th class="FieldHeader" colspan="1">
-                    <asp:Label ID="lbl_Ordertile" runat="server" Text="运单号："></asp:Label>
+                    <asp:Label ID="lbl_BarCodeTitle" runat="server" Text="运单号："></asp:Label>
                 </th>
                 <th align="left" colspan="3">
-                    <asp:Label ID="lbl_Order" runat="server" CssClass="TextBox" Width="250"></asp:Label>
+                    <asp:Label ID="lbl_BarCode" runat="server" CssClass="TextBox" Width="250"></asp:Label>
                 </th>
                 <th class="FieldHeader" colspan="2">
-                    <asp:Label ID="lbl_ShipperCountryTile" runat="server" Text="发件国家二字码："></asp:Label>
+                    <asp:Label ID="lbl_ShipperCountryTitle" runat="server" Text="发件国家二字码："></asp:Label>
                 </th>
                 <th>
                     <asp:Label ID="lbl_ShipperCountry" runat="server" CssClass="TextBox" Width="50"></asp:Label>
                 </th>
                 <th class="FieldHeader">
-                   <asp:Label ID="lbl_ShipperRegiontile" runat="server" Text="发件地区三字码："></asp:Label>
+                   <asp:Label ID="lbl_ShipperRegionTitle" runat="server" Text="发件地区三字码："></asp:Label>
                 </th>
                 <th>
                     <asp:Label ID="lbl_ShipperRegion" runat="server" CssClass="TextBox" Width="50"></asp:Label>
@@ -24,15 +24,15 @@
             </tr>
             <tr class="Row">
                 <th>
-                    <asp:Label ID="lbl_ShipperName" runat="server" Text="发件公司："></asp:Label>
+                    <asp:Label ID="lbl_ShipperNameTitle" runat="server" Text="发件公司："></asp:Label>
                 </th>
                 <th colspan="8" align="left">
-                    <asp:Label ID="lbl_Txt_ShipperName" runat="server" CssClass="TextBox" Width="350"></asp:Label>
+                    <asp:Label ID="lbl_ShipperName" runat="server" CssClass="TextBox" Width="350"></asp:Label>
                 </th>
             </tr>
             <tr class="Row">
                 <th class="FieldHeader">
-                    <asp:Label ID="lbl_ConsigneeNameTile" runat="server" Text="收件公司："></asp:Label>
+                    <asp:Label ID="lbl_ConsigneeNameTitle" runat="server" Text="收件公司："></asp:Label>
                 </th>
                 <th colspan="8" align="left">
                     <asp:Label ID="lbl_ConsigneeName" runat="server" CssClass="TextBox" Width="350"></asp:Label>
@@ -45,37 +45,39 @@
                    <asp:Label ID="lbl_BoxType" runat="server" Text="包裹类型："></asp:Label>
                 </td>
                 <td align="left">
-                    <asp:RadioButtonList ID="rbt_BoxType" runat="server" RepeatDirection="Horizontal">
-                        <asp:ListItem Value="0">文件</asp:ListItem>
-                        <asp:ListItem Value="1">小包裹</asp:ListItem>
-                        <asp:ListItem Value="2">普货</asp:ListItem>
+                    <asp:RadioButtonList ID="rbt_BoxType" runat="server" 
+                        RepeatDirection="Horizontal" AutoPostBack="True" 
+                        onselectedindexchanged="rbt_BoxType_SelectedIndexChanged">
+                        <asp:ListItem Value="0" Text="文件"></asp:ListItem>
+                        <asp:ListItem Value="1" Text="小包裹"></asp:ListItem>
+                        <asp:ListItem Value="2" Text="普货"></asp:ListItem>
                     </asp:RadioButtonList>
                 </td>
                 <td class="FieldHeader">
-                    <asp:Label ID="lbl_payer" runat="server" Text="付款人："></asp:Label>
+                    <asp:Label ID="lbl_BillTax" runat="server" Text="付款人："></asp:Label>
                 </td>
                 <td align="left">
-                    <asp:RadioButtonList runat="server" ID="rbt_payer" RepeatDirection="Horizontal" TabIndex="4"
+                    <asp:RadioButtonList runat="server" ID="rbt_BillTax" RepeatDirection="Horizontal" TabIndex="4"
                         BorderStyle="None">
-                        <asp:ListItem Value="0">发件人</asp:ListItem>
-                        <asp:ListItem Value="1">收件人</asp:ListItem>
-                        <asp:ListItem Value="2">第三方</asp:ListItem>
+                        <asp:ListItem Value="0" Text="发件人"></asp:ListItem>
+                        <asp:ListItem Value="1" Text="收件人"></asp:ListItem>
+                        <asp:ListItem Value="2" Text="第三方"></asp:ListItem>
                     </asp:RadioButtonList>
                 </td>
                 <td class="FieldHeader">
-                    <asp:Label ID="lbl_" runat="server" Text="通关指示："></asp:Label>
+                    <asp:Label ID="lbl_SpecialInstruction" runat="server" Text="通关指示："></asp:Label>
                 </td>
                 <td align="left" colspan="4">
-                    <asp:RadioButtonList ID="Rbl_" runat="server" RepeatDirection="Horizontal">
-                        <asp:ListItem Selected="True">有</asp:ListItem>
-                        <asp:ListItem>无</asp:ListItem>
-                        <asp:ListItem>其它</asp:ListItem>
+                    <asp:RadioButtonList ID="Rbl_SpecialInstruction" runat="server" RepeatDirection="Horizontal">
+                        <asp:ListItem Selected="True" Text="有"></asp:ListItem>
+                        <asp:ListItem Text="无"></asp:ListItem>
+                        <asp:ListItem Text="其它"></asp:ListItem>
                     </asp:RadioButtonList>
                 </td>
             </tr>
         </tbody>
     </table>
-    <table class="DataView">
+    <table class="DataView" id="Dvitem" runat="server">
         <tbody>
             <tr class="EditRow">
                 <td class="FieldHeader">
@@ -103,7 +105,8 @@
                     <asp:TextBox ID="Txt_ItemPice" runat="server" Width="58px"></asp:TextBox>
                 </td>
                 <td class="FieldHeader">
-                    <asp:Button ID="but_AddItem" runat="server" Text="添加物品" CssClass="InputBtn" />
+                    <asp:Button ID="but_AddItem" runat="server" Text="添加物品" CssClass="InputBtn" 
+                        onclick="but_AddItem_Click" />
                 </td>
             </tr>
             <tr>
@@ -124,13 +127,13 @@
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="物品类型">
                                 <ItemTemplate>
-                                    <asp:Label ID="lbl_ItemType" runat="server" Text='<%# Eval("type") %>'></asp:Label>
+                                    <asp:Label ID="lbl_ItemType" runat="server" Text='<%# Eval("Remark") %>'></asp:Label>
                                 </ItemTemplate>
                                 <ControlStyle Width="170px" />
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="物品价值">
                                 <ItemTemplate>
-                                    <asp:Label ID="lbl_ItemPiece" runat="server" Text='<%# Eval("Piece") %>'></asp:Label>
+                                    <asp:Label ID="lbl_ItemPiece" runat="server" Text='<%# Eval("UnitAmount") %>'></asp:Label>
                                 </ItemTemplate>
                                 <ControlStyle Width="90px" />
                             </asp:TemplateField>
@@ -142,7 +145,7 @@
             </tr>
             </tbody>
     </table>
-    <table class="DataView">
+    <table class="DataView" id="DvBox" runat="server">
         <tbody>
             <tr class="EditRow">
                 <td class="FieldHeader">
@@ -152,30 +155,31 @@
                     <asp:TextBox ID="txt_BoxPiece" runat="server" Width="80"></asp:TextBox>
                 </td>
                 <td class="FieldHeader">
-                    <asp:Label ID="lbl_BoxWeight" runat="server" Text="重量："></asp:Label>
+                    <asp:Label ID="lbl_BoxWeight" runat="server" Text="重量(kg)："></asp:Label>
                 </td>
                 <td align="left">
                     <asp:TextBox ID="Txt_BoxWeight" runat="server" Width="80"></asp:TextBox>
                 </td>
                 <td class="FieldHeader">
-                    <asp:Label ID="lbl_BoxHeight" runat="server" Text="高度："></asp:Label>
+                    <asp:Label ID="lbl_BoxHeight" runat="server" Text="高度(cm)："></asp:Label>
                 </td>
                 <td align="left">
                     <asp:TextBox ID="Txt_BoxHeight" runat="server" Width="80"></asp:TextBox>
                 </td>
                 <td class="FieldHeader">
-                    <asp:Label ID="lbl_BoxLength" runat="server" Text="长度："></asp:Label>
+                    <asp:Label ID="lbl_BoxLength" runat="server" Text="长度(cm)："></asp:Label>
                 </td>
                 <td align="left">
                     <asp:TextBox ID="Txt_BoxLength" runat="server" Width="80"></asp:TextBox>
                 </td>
                 <td class="FieldHeader">
-                    <asp:Label ID="lbl_BoxWidth" runat="server" Text="宽度："></asp:Label></td>
+                    <asp:Label ID="lbl_BoxWidth" runat="server" Text="宽度(cm)："></asp:Label></td>
                 <td align="left">
                     <asp:TextBox ID="Txt_BoxWidth" runat="server" Width="80"></asp:TextBox>
                 </td>
                 <td class="FieldHeader" colspan="3">
-                    <asp:Button ID="but_AddBox" runat="server" Text="添加包裹" CssClass="InputBtn" />
+                    <asp:Button ID="but_AddBox" runat="server" Text="添加包裹" CssClass="InputBtn" 
+                        onclick="but_AddBox_Click" />
                 </td>
             </tr>
             <tr>
@@ -188,27 +192,27 @@
                                 </ItemTemplate>
                                 <ControlStyle Width="110px" />
                             </asp:TemplateField>
-                            <asp:TemplateField HeaderText="重量">
+                            <asp:TemplateField HeaderText="重量(kg)">
                                 <ItemTemplate>
-                                    <asp:Label ID="lbl_BoxWeight" runat="server" Text='<%# Eval("Name") %>'></asp:Label>
+                                    <asp:Label ID="lbl_BoxWeight" runat="server" Text='<%# Eval("Weight") %>'></asp:Label>
                                 </ItemTemplate>
                                 <ControlStyle Width="110px" />
                             </asp:TemplateField>
-                            <asp:TemplateField HeaderText="高度">
+                            <asp:TemplateField HeaderText="高度(cm)">
                                 <ItemTemplate>
-                                    <asp:Label ID="lbl_BoxHeight" runat="server" Text='<%# Eval("type") %>'></asp:Label>
+                                    <asp:Label ID="lbl_BoxHeight" runat="server" Text='<%# Eval("Height") %>'></asp:Label>
                                 </ItemTemplate>
                                 <ControlStyle Width="110px" />
                             </asp:TemplateField>
-                            <asp:TemplateField HeaderText="长度">
+                            <asp:TemplateField HeaderText="长度(cm)">
                                 <ItemTemplate>
-                                    <asp:Label ID="lbl_BoxLength" runat="server" Text='<%# Eval("Piece") %>'></asp:Label>
+                                    <asp:Label ID="lbl_BoxLength" runat="server" Text='<%# Eval("Length") %>'></asp:Label>
                                 </ItemTemplate>
                                 <ControlStyle Width="110px" />
                             </asp:TemplateField>
-                            <asp:TemplateField HeaderText="宽度">
+                            <asp:TemplateField HeaderText="宽度(cm)">
                                 <ItemTemplate>
-                                    <asp:Label ID="lbl_BoxWidth" runat="server" Text='<%# Eval("Piece") %>'></asp:Label>
+                                    <asp:Label ID="lbl_BoxWidth" runat="server" Text='<%# Eval("Width") %>'></asp:Label>
                                 </ItemTemplate>
                                 <ControlStyle Width="110px" />
                             </asp:TemplateField>
@@ -224,12 +228,12 @@
         <tbody>
             <tr class="Row">
                 <td class="FieldHeader">
-                    <asp:Label ID="lbl_SettleType" runat="server" Text="计重类型："></asp:Label></td>
+                    <asp:Label ID="lbl_WeightType" runat="server" Text="计重类型："></asp:Label></td>
                 <td align="left">
-                    <asp:DropDownList ID="ddl_SettleType" runat="server">
-                        <asp:ListItem Value="0">实重</asp:ListItem>
-                        <asp:ListItem Value="1">泡重</asp:ListItem>
-                        <asp:ListItem Value="2">加权</asp:ListItem>
+                    <asp:DropDownList ID="ddl_WeightType" runat="server">
+                        <asp:ListItem Value="0" Text="实重"></asp:ListItem>
+                        <asp:ListItem Value="1" Text="泡重"></asp:ListItem>
+                        <asp:ListItem Value="2" Text="加权"></asp:ListItem>
                     </asp:DropDownList>
                 </td>
                 <td class="FieldHeader">
@@ -270,8 +274,8 @@
     </table>
     <div class="FooterBtnBar">
             <asp:Button ID="But_AddHAWB" runat="server" Text="创 建"
-                ValidationGroup="1" CssClass="InputBtn" />
+                ValidationGroup="1" CssClass="InputBtn" onclick="But_AddHAWB_Click" />
             <asp:Button ID="But_Rurnet" runat="server" Text="返 回"
-                CssClass="InputBtn" />
+                CssClass="InputBtn" onclick="But_Rurnet_Click" />
         </div>
 </div>
