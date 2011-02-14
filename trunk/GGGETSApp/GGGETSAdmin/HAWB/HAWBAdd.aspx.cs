@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace GGGETSAdmin.HAWB
+namespace GGGETSAdmin.HAWBManage
 {
     public partial class HAWBAdd : System.Web.UI.Page
     {

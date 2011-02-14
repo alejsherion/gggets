@@ -7,11 +7,11 @@ using System.Web.UI.WebControls;
 using System.Text.RegularExpressions;
 using ETS.GGGETSApp.Domain.Application.Entities;
 using Application.GGETS;
-namespace GGGETSAdmin.HAWB
+namespace GGGETSAdmin.HAWBManage
 {
     public partial class DeliverAdd : System.Web.UI.Page
     {
-        //ETS.GGGETSApp.Domain.Application.Entities HAWB hawb = new HAWB();
+        HAWB hawb = new HAWB();
         protected static Regex RZipCode = new Regex(@"\d{6}$");
         protected static Regex RTel = new Regex(@"\d{3,4}-\d{7,8}-[0-9]*$|^[0-9]*$|\d{3,4}-\d{7,8}$|\d{13}$");
         protected static Regex RCountry = new Regex(@"^[a-zA-Z]{2}$");
@@ -19,7 +19,8 @@ namespace GGGETSAdmin.HAWB
         protected void Page_Load(object sender, EventArgs e)
         {
         }
-        void btn_AddDeliver_Click(object sender, EventArgs e)
+
+        protected void btn_AddDeliver_Click1(object sender, EventArgs e)
         {
             if (Txt_DeliverName.Text == "")
             {
@@ -67,7 +68,7 @@ namespace GGGETSAdmin.HAWB
             }
             else
             {
- 
+
             }
         }
 
