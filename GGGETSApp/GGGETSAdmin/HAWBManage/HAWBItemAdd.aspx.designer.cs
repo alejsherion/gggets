@@ -10,15 +10,15 @@
 namespace GGGETSAdmin.HAWBManage {
     
     
-    public partial class HAWBAdd {
+    public partial class HAWBItemAdd {
         
         /// <summary>
-        /// HAWBGuoJi1 控件。
+        /// HAWBItem1 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::GGGETSAdmin.Control.HAWBGuoJi HAWBGuoJi1;
+        protected global::GGGETSAdmin.Control.HawbItem HAWBItem1;
     }
 }
