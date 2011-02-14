@@ -21,7 +21,7 @@
                             <asp:Label ID="lbl_DeliverName1" runat="server" Text="公司："></asp:Label>
                         </td>
                         <td align="left" colspan="5">
-                            <asp:TextBox ID="Txt_DeliverName1" runat="server" Width="92%" TabIndex="22"></asp:TextBox>
+                            <asp:TextBox ID="Txt_DeliverName1" runat="server" Width="630" TabIndex="22"></asp:TextBox>
                             <b style="color: Red">*</b>
                         </td>
                     </tr>
@@ -30,7 +30,7 @@
                             <asp:Label ID="lbl_DeliverAddress1" runat="server" Text="地址："></asp:Label>
                         </td>
                         <td align="left" colspan="5">
-                            <asp:TextBox ID="Txt_DeliverAddress1" runat="server" Width="92%" TabIndex="23" TextMode="MultiLine"></asp:TextBox>
+                            <asp:TextBox ID="Txt_DeliverAddress1" runat="server" Width="630" TabIndex="23" TextMode="MultiLine"></asp:TextBox>
                             <b style="color: Red">*</b>
                         </td>
                     </tr>
@@ -78,8 +78,9 @@
                     </tr>
                     <tr class="Row">
                         <td align="center" colspan="6">
-                            <asp:Button ID="btn_AddDeliver" runat="server" CssClass="InputBtn" Text="添 加" />
-                            <a href="javascript:close()" class="InputBtn">取 消</a>
+                            <asp:LinkButton ID="lbtn_AddDeliver" runat="server" CssClass="LinkBtn" Text="添 加"></asp:LinkButton>
+                            <a href="javascript:close()" class="LinkBtn" >取 消</a>
+                            
                         </td>
                     </tr>
                 </tbody>

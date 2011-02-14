@@ -20,33 +20,33 @@ namespace GGGETSAdmin.Control
         {
             this.Deliver.Visible = true;
         }
-        protected void lbtn_AddDeliver_Click(object sender, EventArgs e)
-        {
-            if (Txt_DeliverName1.Text == "")
-            {
-                Response.Write("<script>alert('公司名称不能为空！')</script>");
-                //Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('公司名称不能为空！')</script>");
-            }
-            else if (Txt_DeliverAddress1.Text == "")
-            {
-                Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('公司地址不能为空！')</script>");
-            }
-            else if (Txt_DeliverContactor1.Text == "")
-            {
-                Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('姓名不能为空！')</script>");
-            }
-            else if (Txt_DeliverTel1.Text == "")
-            {
-                Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('电话不能为空！')</script>");
-            }
-            else if (Txt_DeliverZipCode1.Text != "")
-            {
-                if (RZipCode.Equals(Txt_DeliverZipCode1.Text))
-                {
+        //protected void lbtn_AddDeliver_Click(object sender, EventArgs e)
+        //{
+        //    if (Txt_DeliverName1.Text == "")
+        //    {
+        //        Response.Write("<script>alert('公司名称不能为空！')</script>");
+        //        //Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('公司名称不能为空！')</script>");
+        //    }
+        //    else if (Txt_DeliverAddress1.Text == "")
+        //    {
+        //        Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('公司地址不能为空！')</script>");
+        //    }
+        //    else if (Txt_DeliverContactor1.Text == "")
+        //    {
+        //        Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('姓名不能为空！')</script>");
+        //    }
+        //    else if (Txt_DeliverTel1.Text == "")
+        //    {
+        //        Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('电话不能为空！')</script>");
+        //    }
+        //    else if (Txt_DeliverZipCode1.Text != "")
+        //    {
+        //        if (RZipCode.Equals(Txt_DeliverZipCode1.Text))
+        //        {
  
-                }
-            }
-        }
+        //        }
+        //    }
+        //}
         protected void But_Conel_Click(object sender, EventArgs e)
         {
             Txt_Account1.Text = string.Empty;

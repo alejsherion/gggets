@@ -1,31 +1,5 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="HAWB.ascx.cs" Inherits="GGGETSAdmin.Control.HAWB" %>
-<style>
-    .style1
-    {
-        width: 74px;
-    }
-    .style2
-    {
-        width: 90px;
-    }
-    #login
-    {
-        position: relative;
-        display: none;
-        top: 10px;
-        text-align: center;
-        border: solid 1px;
-        padding: 10px;
-        z-index: 1;
-    }
-    
-    body
-    {
-    }
-    .STYLE1
-    {
-    }
-</style>
+
 <div class="FunctionBar">
     <div class="DivFloatLeft TipTab">
         <a></a>
@@ -90,7 +64,7 @@
 </div>
 <div>
     <asp:PlaceHolder ID="phShipper" runat="server">
-        <table class="DataView">
+        <table class="DataView" width="100%">
             <tbody>
                 <tr class="EditRow">
                     <td colspan="6" align="left">
@@ -103,7 +77,7 @@
                         <asp:Label ID="lbl_ShipperName" runat="server" Text="公司："></asp:Label>
                     </td>
                     <td align="left" colspan="5">
-                        <asp:TextBox ID="Txt_ShipperName" runat="server" Width="525" TabIndex="5"></asp:TextBox><b
+                        <asp:TextBox ID="Txt_ShipperName" runat="server" Width="90%" TabIndex="5"></asp:TextBox><b
                             style="color: Red">*</b>
                     </td>
                 </tr>
@@ -112,7 +86,7 @@
                         <asp:Label ID="lbl_ShipperAddress" runat="server" Text="地址："></asp:Label>
                     </td>
                     <td align="left" colspan="5">
-                        <asp:TextBox ID="Txt_ShipperAddress" runat="server" Width="98%" TabIndex="6" TextMode="MultiLine"></asp:TextBox><b
+                        <asp:TextBox ID="Txt_ShipperAddress" runat="server" Width="90%" TabIndex="6" TextMode="MultiLine"></asp:TextBox><b
                             style="color: Red">*</b>
                     </td>
                 </tr>
@@ -164,12 +138,13 @@
 </div>
 <div>
     <asp:PlaceHolder ID="phConsignee" runat="server">
-        <table class="DataView">
+        <table class="DataView" width="100%">
             <tbody>
                 <tr class="EditRow">
                     <td colspan="6" align="left">
                         <asp:Label ID="lbl_Consignee" runat="server" Text="收件人信息"></asp:Label><a href="##">历史</a>
-                        &nbsp;&nbsp;&nbsp;&nbsp; <a href="javascript:open();" class="LinkBtn">添加交付人信息</a>
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                        <input type="button" class="LinkBtn" value=" 添加交付人信息 " id="Btn_AddDeiover" onclick="Open()" />
                     </td>
                 </tr>
                 <tr class="Row">
@@ -177,7 +152,7 @@
                         <asp:Label ID="lbl_ConsigneeName" runat="server" Text="公司："></asp:Label>
                     </td>
                     <td align="left" colspan="5">
-                        <asp:TextBox ID="Txt_ConsigneeName" runat="server" Width="525px" TabIndex="14"></asp:TextBox><b
+                        <asp:TextBox ID="Txt_ConsigneeName" runat="server" Width="90%" TabIndex="14"></asp:TextBox><b
                             style="color: Red">*</b>
                     </td>
                 </tr>
@@ -186,7 +161,7 @@
                         <asp:Label ID="lbl_ConsigneeAddress" runat="server" Text="地址："></asp:Label>
                     </td>
                     <td align="left" colspan="5">
-                        <asp:TextBox ID="Txt_ConsigneeAddress" runat="server" Width="98%" TabIndex="15"
+                        <asp:TextBox ID="Txt_ConsigneeAddress" runat="server" Width="90%" TabIndex="15"
                             TextMode="MultiLine"></asp:TextBox><b style="color: Red">*</b>
                     </td>
                 </tr>
@@ -238,8 +213,8 @@
 </div>
 <div>
     <asp:PlaceHolder ID="phDeliver" runat="server">
-        <table class="DataView">
-            <tbody id="Deliver" runat="server" visible="false">
+        <table class="DataView" width="100%">
+            <tbody id="Deliver" runat="server">
                 <tr class="EditRow">
                     <td colspan="6" align="left">
                         <asp:Label ID="lbl_Deliver" runat="server" Text="交付人信息"></asp:Label>
@@ -250,7 +225,7 @@
                         <asp:Label ID="lbl_DeliverName" runat="server" Text="公司:"></asp:Label>
                     </td>
                     <td align="left" colspan="5">
-                        <asp:TextBox ID="Txt_DeliverName" runat="server" Width="525px" TabIndex="22"></asp:TextBox>
+                        <asp:TextBox ID="Txt_DeliverName" runat="server" Width="90%" TabIndex="22"></asp:TextBox>
                     </td>
                 </tr>
                 <tr class="Row">
@@ -258,7 +233,7 @@
                         <asp:Label ID="lbl_DeliverAddress" runat="server" Text="地址："></asp:Label>
                     </td>
                     <td align="left" colspan="5">
-                        <asp:TextBox ID="Txt_DeliverAddress" runat="server" Width="98%" TabIndex="23" TextMode="MultiLine"></asp:TextBox>
+                        <asp:TextBox ID="Txt_DeliverAddress" runat="server" Width="90%" TabIndex="23" TextMode="MultiLine"></asp:TextBox>
                     </td>
                 </tr>
                 <tr class="Row">
@@ -312,96 +287,15 @@
         </table>
     </asp:PlaceHolder>
 </div>
-<dl>
-        <asp:PlaceHolder ID="phDeliver1" runat="server">
-            <table class="DataView">
-                <tbody>
-                    <tr class="EditRow">
-                        <td colspan="6" align="left">
-                            <asp:Label ID="lbl_Deliver1" runat="server" Text="交付人信息"></asp:Label>
-                        </td>
-                    </tr>
-                    <tr class="Row">
-                        <td class="FieldHeader">
-                            <asp:Label ID="lbl_DeliverName1" runat="server" Text="公司:"></asp:Label>
-                        </td>
-                        <td align="left" colspan="5">
-                            <asp:TextBox ID="Txt_DeliverName1" runat="server" Width="525px" TabIndex="22"></asp:TextBox>
-                            <b style="color: Red">*</b>
-                        </td>
-                    </tr>
-                    <tr class="Row">
-                        <td class="FieldHeader">
-                            <asp:Label ID="lbl_DeliverAddress1" runat="server" Text="地址："></asp:Label>
-                        </td>
-                        <td align="left" colspan="5">
-                            <asp:TextBox ID="Txt_DeliverAddress1" runat="server" Width="97%" TabIndex="23"
-                                TextMode="MultiLine"></asp:TextBox>
-                                <b style="color: Red">*</b>
-                        </td>
-                    </tr>
-                    <tr class="Row">
-                        <td class="FieldHeader">
-                            <asp:Label ID="lbl_DeliverCountry1" runat="server" Text="国家："></asp:Label>
-                        </td>
-                        <td align="left" class="style2">
-                            <asp:TextBox ID="Txt_DeliverCountry1" runat="server" Width="80" TabIndex="24"></asp:TextBox>
-                        </td>
-                        <td class="FieldHeader">
-                            <asp:Label ID="lbl_DeliverRegion1" runat="server" Text="省份："></asp:Label>
-                        </td>
-                        <td align="left" class="style1">
-                            <asp:TextBox ID="Txt_DeliverRegion1" runat="server" Width="80" TabIndex="25"></asp:TextBox>
-                        </td>
-                        <td class="FieldHeader">
-                            <asp:Label ID="lbl_DeliverCity1" runat="server" Text="城市："></asp:Label>
-                        </td>
-                        <td align="left">
-                            <asp:TextBox ID="Txt_DeliverCity1" runat="server" Width="80" TabIndex="26"></asp:TextBox>
-                        </td>
-                    </tr>
-                    <tr class="Row">
-                        <td class="FieldHeader">
-                            <asp:Label ID="lbl_DeliverZipCode1" runat="server" Text="邮编："></asp:Label>
-                        </td>
-                        <td align="left" class="style2">
-                            <asp:TextBox ID="Txt_DeliverZipCode1" runat="server" Width="80" TabIndex="27"></asp:TextBox>
-                        </td>
-                        <td class="FieldHeader">
-                            <asp:Label ID="lbl_DeliverContactor1" runat="server" Text="姓名："></asp:Label>
-                        </td>
-                        <td align="left" class="style1">
-                            <asp:TextBox ID="Txt_DeliverContactor1" runat="server" Width="80" TabIndex="28"></asp:TextBox>
-                            <b style="color: Red">*</b>
-                        </td>
-                        <td class="FieldHeader">
-                            <asp:Label ID="lbl_DeliverTel1" runat="server" Text="电话："></asp:Label>
-                        </td>
-                        <td align="left">
-                            <asp:TextBox ID="Txt_DeliverTel1" runat="server" Width="80" TabIndex="29"></asp:TextBox>
-                            <b style="color: Red">*</b>
-                        </td>
-                    </tr>
-                    <tr class="Row">
-                        <td align="center" colspan="6">
-                            <%--<asp:Button ID="btn_AddDeliver" runat="server" CssClass="InputBtn" Text="添 加" />--%>
-                            <a class="LinkBtn" style="text-decoration:none"></a>
-                            <asp:LinkButton ID="lbtn_AddDeliver" runat="server" Text="添 加" CssClass="LinkBtn" OnClick="lbtn_AddDeliver_Click" style="text-decoration:none"></asp:LinkButton>
-                            <a href="javascript:close()" class="LinkBtn" style="text-decoration:none">取 消</a>
-                            <%--<input id="btn_Cancel" runat="server" type="button" class="InputBtn" value="取 消" onclick="close()" />--%>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </asp:PlaceHolder>
-</dl>
 <div class="FooterBtnBar">
     <asp:Button ID="But_Next" runat="server" Text="下一页" CssClass="InputBtn" TabIndex="30" />
     <asp:Button ID="But_Conel" runat="server" Text="重  填" CssClass="InputBtn" TabIndex="31"
         OnClick="But_Conel_Click" />
 </div>
 <script type="text/javascript">
- 
+    function Open() {
+        window.open("Deliver.aspx", "NewWindow", "height=250,width=650,top=10,left=10,resizable=1,scrollbars=1,status=yes,toolbar=no,location=no,menu=no");
+    }
     function but_cancel() {
         document.getElementById("MainContent_HAWB1_Deliver").style.display = "none"; //
     }
