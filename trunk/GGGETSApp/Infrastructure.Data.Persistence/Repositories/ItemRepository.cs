@@ -12,8 +12,8 @@ using ETS.GGGETSApp.Infrastructure.Data.Persistence.Resources;
 
 namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Repositories
 {
-    public class ItemRepository:Repository<Item>, IItemRepository
-    {
-        public ItemRepository(IGGGETSAppUnitOfWork unitOfWork, ITraceManager traceManager) : base(unitOfWork, traceManager) { }
-    }
+    //public class ItemRepository:Repository<Item>, IItemRepository
+    //{
+    //    public ItemRepository(IGGGETSAppUnitOfWork unitOfWork, ITraceManager traceManager) : base(unitOfWork, traceManager) { }
+    //}
 }

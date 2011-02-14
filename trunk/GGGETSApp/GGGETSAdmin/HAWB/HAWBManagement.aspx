@@ -169,7 +169,7 @@
                                 <td height="80">
                                     <p align="left">
                                         <b>尊敬的用户：</b><br>
-                                        请选择: <a href="AddHAWB.aspx" class="LinkBtn">国际快递业务 </a>/<a href="AddHAWBInernal.aspx" class="LinkBtn">国内快递业务</a>
+                                        请选择: <a href="AddHAWB.aspx" class="LinkBtn">国际快递业务 </a>/<a href="AddHAWBInternal.aspx" class="LinkBtn">国内快递业务</a>
                                     </p>
                                 </td>
                                 
