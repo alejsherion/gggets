@@ -1,5 +1,5 @@
 ﻿/* CSS Version DataView */
-/* Version: 1.2 || Date: 2009-9-1 || Author: Cyrano */
+/* Version: 1.2.1 || Date: 2011-2-1 || Author: Cyrano */
 /* Cascading Style Sheets Level 2 Revision 1 */
 
 /* DataView */
@@ -7,27 +7,31 @@
 {
     width: 100%;
     color: #333333;
-    text-align: center;
+    text-align:left;
     background: #fff;
-    border: 1px solid #ccc;
+    border: 1px solid #c9c7b1;
+    margin-top: 5px;
 }
 .DataView td
 {
-    padding: 4px;
+    width:300px;
+    padding: 1px;
+    border-top: 1px solid #c9c7b1;
 }
 .DataView .Header th
 {
-    background: #598fb4;
-    padding: 8px;
-    font-weight: bold;
-    color: #fff;
+    background: #787878 url(images/bar.png) repeat-x;
+    padding: 1px;
+    font-weight:100;
+    color: #eee;
     white-space: nowrap;
 }
 .DataView .Header th a
 {
     font-weight: bold;
-    color: #fff;
+    color: #fffe9d;
     text-decoration: underline;
+    white-space: nowrap;
 }
 .DataView .Header th a:hover
 {
@@ -62,22 +66,22 @@
 }
 .DataView .Row td
 {
-    background: #f5f5f5;
+    background: #f5f5f5 url(images/listbg.jpg) no-repeat top left;
     color: #444;
 }
 .DataView .AlternatingRow td
 {
-    background: #f9f9f9;
+    background: #f9f9f9 url(images/listbg.jpg) no-repeat top left;
     color: #444;
 }
 .DataView .SelectedRow, .DataView .Row:hover td, .DataView .AlternatingRow:hover td
 {
-    background: #fef5f4;
-    color: #000;
+    background: #fbefee;
+    color: #cc2828;
 }
 .DataView .EditRow
 {
-    background: #dedede;
+    background: #f7f2d0;
 }
 .DataView .EditRow td, .DataView .SelectedRow td
 {
@@ -86,12 +90,13 @@
 }
 .DataView td.FieldHeader
 {
-    background: #f7f7f7;
-    text-align: right;
-    font-weight: bold;
+    background: #f7f7f7 url(images/listbg.jpg) no-repeat top left;
+    text-align:right;
+    font-weight:bold;
     color: #666666;
-    padding: 5px;
-    padding-right: 10px;
+    padding: 2px;
+    padding-right: 5px;
+    width:110px;
 }
 .DataView .CommandRow td
 {
@@ -144,15 +149,17 @@
 /* FunctionBar */
 .FunctionBar
 {
-    margin: 1px;
-    padding: 3px;
-    background: #ccc;
+    background: url(images/fbarbg.gif) repeat-x top left;
+    height: 32px;
+    overflow: hidden;
+    border-right: 1px solid #cdcdcd;
 }
 .FunctionBar .DivFloatRight
 {
     color:#444;
     float:right;
     font-weight:bold;
+    padding: 1px;
 }
 .FunctionBar .DivFloatLeft
 {
@@ -160,7 +167,55 @@
     float:left;
     font-weight:bold;
 }
+.FunctionBar .TipTab
+{
+    background: url(images/fbar.gif) no-repeat top left;
+    height: 32px;
+    width: 45px;
+}
+.FunctionBar .DivFloatLeft select
+{
+    margin: 5px;
+}
 
+/* TipBar */
+.TipBar
+{
+    padding: 3px;
+    background: #fffde5;
+    margin: 0px 3px;
+    border: 1px solid #cdcdcd;
+    border-top: none;
+}
+.TipBar p
+{
+    font-size: 10.5pt;
+    color: #999;
+    line-height: 1.5;
+    display: block;
+    text-indent: 21pt;
+    margin: 5px;
+    clear: both;
+}
+.TipBar ul
+{
+    display: block;
+    padding: 5px 10px;
+}
+.TipBar ul li
+{
+    color: #666;
+    font-weight: bold;
+    float: left;
+    display: inline;
+    margin: 0px 5px;
+    white-space: nowrap;
+}
+.TipBar .Clear
+{
+    border-bottom: 1px dashed #ccc;
+    margin: 5px;
+}
 
 /* TreeView */
 .TreeView

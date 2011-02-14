@@ -13,7 +13,7 @@ body
 }
 select option
 {
-    padding-left: 4px;
+    padding-left: 2px;
 }
 ul, li
 {
@@ -21,19 +21,16 @@ ul, li
 }
 a
 {
-    color: #00853e;
+    color: #850000;
     text-decoration: none;
 }
 a:hover
 {
-    color: #0033ff;
+    color: #cc2828;
     text-decoration: underline;
 }
 #Wrapper
 {
-    width: 960px;
-    overflow: hidden;
-    margin: auto;
 }
 span.new
 {
@@ -50,8 +47,8 @@ span.new
 }
 fieldset
 {
-    margin: 5px;
     border: none;
+    margin: 10px;
 }
 .LeftPlaceHolder
 {
@@ -159,7 +156,7 @@ fieldset
     border: 1px solid #003399;
     background: #e9e9e9;
 }
-.UserPanel .Block 
+.UserPanel .Block
 {
     padding: 5px;
 }
@@ -171,14 +168,14 @@ fieldset
 }
 .UserPanel .Block .UP_img
 {
-     float: left;
-      width: 100px;
-    margin: 8px;     
+    float: left;
+    width: 100px;
+    margin: 8px;
 }
 .UserPanel .Block .UP_img img
 {
-      width: 100px;
-      height: 150px;
+    width: 100px;
+    height: 150px;
 }
 
 /** DataPager **/
@@ -370,4 +367,20 @@ fieldset
     color: #999;
     margin: 3px 15px;
     line-height: 1.5;
+}
+
+/*** Temp ***/
+div#MasterHeader
+{
+    background: #c8d9ed url(temp/header.png) no-repeat left top;
+    height: 105px;
+    overflow: hidden;
+    display: block;
+}
+div#MasterFooter
+{
+    background: #c8d9ed url(temp/footer.png) no-repeat left top;
+    height: 35px;
+    overflow: hidden;
+    display: block;
 }
