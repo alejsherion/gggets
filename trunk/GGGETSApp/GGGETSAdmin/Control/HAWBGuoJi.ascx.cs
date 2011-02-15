@@ -12,13 +12,14 @@ namespace GGGETSAdmin.Control
 {
     public partial class HAWBGuoJi : System.Web.UI.UserControl
     {
-        protected static Regex RZipCode = new Regex(@"^\d{6}$");
+        protected static Regex RZipCode = new Regex(@"^\d{6}");
         protected static Regex RTel = new Regex(@"^(\d{3,4}-)?\d{7,8}$");
         protected static Regex RTel1 = new Regex(@"^1[35]\d{9}$");
-        protected static Regex RCountry = new Regex(@"^[A-Za-z]{2}$");
-        protected static Regex RRegion = new Regex(@"^[A-Za-z]{3}$");
+        protected static Regex RCountry = new Regex(@"^[A-Za-z]{2}");
+        protected static Regex RRegion = new Regex(@"^[A-Za-z]{3}");
         protected static HAWB hawb;
         protected static string BarCode=string.Empty;
+        protected static string type = string.Empty;
         protected IHAWBManagementService _hawbService;
         protected HAWBGuoJi()
         { }
@@ -79,6 +80,7 @@ namespace GGGETSAdmin.Control
                 hawb.ShipperZipCode = Txt_ShipperZipCode.Text;
 
                 //hawb.ConsigneeName = Txt_ConsigneeName.Text;
+                hawb.ConsigneeName = Guid.NewGuid();
                 hawb.ConsigneeContactor = Txt_ConsigneeContactor.Text;
                 hawb.ConsigneeCountry = Txt_ConsigneeCountry.Text;
                 hawb.ConsigneeRegion = Txt_ConsigneeRegion.Text;
@@ -110,6 +112,7 @@ namespace GGGETSAdmin.Control
                 hawb.ShipperZipCode = Txt_ShipperZipCode.Text;
 
                 //hawb.ConsigneeName = Txt_ConsigneeName.Text;
+                hawb.ConsigneeName = Guid.NewGuid();
                 hawb.ConsigneeContactor = Txt_ConsigneeContactor.Text;
                 hawb.ConsigneeCountry = Txt_ConsigneeCountry.Text;
                 hawb.ConsigneeRegion = Txt_ConsigneeRegion.Text;
@@ -126,6 +129,7 @@ namespace GGGETSAdmin.Control
                 hawb.DeliverZipCode = Txt_DeliverZipCode.Text;
                 hawb.DeliverTel = Txt_DeliverTel.Text;
                 Session["HAWB"] = hawb;
+                type = "Amend";
             }
         }
         protected void Evaluate()
@@ -187,62 +191,95 @@ namespace GGGETSAdmin.Control
             {
                 if (Txt_BarCode.Text == "")
                 {
-                    Script(Txt_BarCode.Text);
-                    Txt_BarCode.Focus();
+                    judge(Txt_BarCode);
                 }
                 else if (Txt_Account1.Text == "")
                 {
-                    Script(Txt_Account1.Text);
-                    Txt_Account1.Focus();
+                    judge(Txt_Account1);
                 }
                 else if (Txt_ShipperName.Text == "")
                 {
-                    Namejudge(Txt_ShipperName);
+                    judge(Txt_ShipperName);
+                }
+                else if (Txt_ShipperCountry.Text == "")
+                {
+                    judge(Txt_ShipperCountry);
+                }
+                else if (Txt_ShipperRegion.Text == "")
+                {
+                    judge(Txt_ShipperRegion);
+                }
+                else if (Txt_ShipperZipCode.Text == "")
+                {
+                    judge(Txt_ShipperZipCode);
                 }
                 else if (Txt_ShipperAddress.Text == "")
                 {
-                    Addressjudge(Txt_ShipperAddress);
+                    judge(Txt_ShipperAddress);
                 }
                 else if (Txt_ShipperContactor.Text == "")
                 {
-                    Contactorjudge(Txt_ShipperContactor);
+                    judge(Txt_ShipperContactor);
                 }
                 else if (Txt_ShipperTel.Text == "")
                 {
-                    Teljudge(Txt_ShipperTel);
+                    judge(Txt_ShipperTel);
                 }
-                //else if (Txt_ShipperName.Text == "")
-                //{
-                //    Script(Txt_ShipperName.Text);
-                //    Txt_ConsigneeName.Focus();
-                //}
+                else if (Txt_ShipperName.Text == "")
+                {
+                    judge(Txt_ShipperName);
+                }
+                else if (Txt_ConsigneeCountry.Text == "")
+                {
+                    judge(Txt_ConsigneeCountry);
+                }
+                else if (Txt_ConsigneeRegion.Text == "")
+                {
+                    judge(Txt_ConsigneeRegion);
+                }
+                else if (Txt_ConsigneeZipCode.Text == "")
+                {
+                    judge(Txt_ConsigneeZipCode);
+                }
                 else if (Txt_ConsigneeAddress.Text == "")
                 {
-                    Addressjudge(Txt_ConsigneeAddress);
+                    judge(Txt_ConsigneeAddress);
                 }
                 else if (Txt_ConsigneeContactor.Text == "")
                 {
-                    Contactorjudge(Txt_ConsigneeContactor);
+                    judge(Txt_ConsigneeContactor);
                 }
                 else if (Txt_ConsigneeTel.Text == "")
                 {
-                    Teljudge(Txt_ConsigneeTel);
+                    judge(Txt_ConsigneeTel);
                 }
                 else if (Txt_DeliverName.Text == "")
                 {
-                    Namejudge(Txt_DeliverName);
+                    judge(Txt_DeliverName);
+                }
+                else if (Txt_DeliverCountry.Text == "")
+                {
+                    judge(Txt_DeliverCountry);
+                }
+                else if (Txt_DeliverRegion.Text == "")
+                {
+                    judge(Txt_DeliverRegion);
+                }
+                else if (Txt_DeliverZipCode.Text == "")
+                {
+                    judge(Txt_DeliverZipCode);
                 }
                 else if (Txt_DeliverAddress.Text == "")
                 {
-                    Addressjudge(Txt_DeliverAddress);
+                    judge(Txt_DeliverAddress);
                 }
                 else if (Txt_DeliverContactor.Text == "")
                 {
-                    Contactorjudge(Txt_DeliverContactor);
+                    judge(Txt_DeliverContactor);
                 }
                 else if (Txt_DeliverTel.Text == "")
                 {
-                    Teljudge(Txt_DeliverTel);
+                    judge(Txt_DeliverTel);
                 }
                 else
                 {
@@ -262,46 +299,62 @@ namespace GGGETSAdmin.Control
                         Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('电话号码格式不正确！')</script>");
                         Txt_DeliverTel.Focus();
                     }
-                    else if (Txt_ShipperZipCode.Text != "")
+                    else if (!ZipCodechecking(Txt_ShipperZipCode))
                     {
-                        ZipCodechecking(Txt_ShipperZipCode);
+                        Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('邮编格式不正确,只能输入数字且为6位！')</script>");
+                        Txt_ShipperZipCode.Focus();
                     }
-                    else if (Txt_ConsigneeZipCode.Text != "")
+                    else if (!ZipCodechecking(Txt_ConsigneeZipCode))
                     {
-                        ZipCodechecking(Txt_ConsigneeZipCode);
+                        Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('邮编格式不正确,只能输入数字且为6位！')</script>");
+                        Txt_ConsigneeZipCode.Focus();
                     }
-                    else if (Txt_DeliverZipCode.Text != "")
+                    else if (!ZipCodechecking(Txt_DeliverZipCode))
                     {
-                        ZipCodechecking(Txt_DeliverZipCode);
+                        Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('邮编格式不正确,只能输入数字且为6位！')</script>");
+                        Txt_DeliverZipCode.Focus();
                     }
-                    else if (Txt_ShipperCountry.Text != "")
+                    else if (!Countrychecking(Txt_ShipperCountry))
                     {
-                        Countrychecking(Txt_ShipperCountry);
+                        Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('只能输入字母并为2位！')</script>");
+                        Txt_ShipperCountry.Focus();
                     }
-                    else if (Txt_ConsigneeCountry.Text != "")
+                    else if (!Countrychecking(Txt_ConsigneeCountry))
                     {
-                        Countrychecking(Txt_ConsigneeCountry);
+                        Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('只能输入字母并为2位！')</script>");
+                        Txt_ConsigneeCountry.Focus();
                     }
-                    else if (Txt_DeliverCountry.Text != "")
+                    else if (!Countrychecking(Txt_DeliverCountry))
                     {
-                        Countrychecking(Txt_DeliverCountry);
+                        Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('只能输入字母并为2位！')</script>");
+                        Txt_DeliverCountry.Focus();
                     }
-                    else if (Txt_ShipperRegion.Text != "")
+                    else if (!Regionchecking(Txt_ShipperRegion))
                     {
-                        Regionchecking(Txt_ShipperRegion);
+                        Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('只能输入字母并为3位！！')</script>");
+                        Txt_ShipperRegion.Focus();
                     }
-                    else if (Txt_ConsigneeRegion.Text != "")
+                    else if (!Regionchecking(Txt_ConsigneeRegion))
                     {
-                        Regionchecking(Txt_ConsigneeCountry);
+                        Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('只能输入字母并为3位！！')</script>");
+                        Txt_ConsigneeRegion.Focus();
                     }
-                    else if (Txt_DeliverRegion.Text != "")
+                    else if (!Regionchecking(Txt_DeliverCountry))
                     {
-                        Regionchecking(Txt_DeliverCountry);
+                        Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('只能输入字母并为3位！！')</script>");
+                        Txt_DeliverCountry.Focus();
                     }
                     else
                     {
                         Storage();
-                        Response.Write("<script>location='HAWBItemAdd.aspx'</script>");
+                        if (type != string.Empty)
+                        {
+                            Response.Redirect("HAWBItemAdd.aspx?type=" + type + "");
+                        }
+                        else
+                        {
+                            Response.Redirect("HAWBItemAdd.aspx");
+                        }
                     }
                 }
             }
@@ -309,47 +362,68 @@ namespace GGGETSAdmin.Control
             {
                 if (Txt_BarCode.Text == "")
                 {
-                    Script(Txt_BarCode.Text);
-                    Txt_BarCode.Focus();
+                    judge(Txt_BarCode);
                 }
                 else if (Txt_Account1.Text == "")
                 {
-                    Script(Txt_Account1.Text);
-                    Txt_Account1.Focus();
+                    judge(Txt_Account1);
                 }
                 else if (Txt_ShipperName.Text == "")
                 {
-                    Namejudge(Txt_ShipperName);
+                    judge(Txt_ShipperName);
+                }
+                else if (Txt_ShipperCountry.Text == "")
+                {
+                    judge(Txt_ShipperCountry);
+                }
+                else if (Txt_ShipperRegion.Text == "")
+                {
+                    judge(Txt_ShipperRegion);
+                }
+                else if (Txt_ShipperZipCode.Text == "")
+                {
+                    judge(Txt_ShipperZipCode);
                 }
                 else if (Txt_ShipperAddress.Text == "")
                 {
-                    Addressjudge(Txt_ShipperAddress);
+                    judge(Txt_ShipperAddress);
                 }
                 else if (Txt_ShipperContactor.Text == "")
                 {
-                    Contactorjudge(Txt_ShipperContactor);
+                    judge(Txt_ShipperContactor);
                 }
                 else if (Txt_ShipperTel.Text == "")
                 {
-                    Teljudge(Txt_ShipperTel);
+                    judge(Txt_ShipperTel);
                 }
-                //else if (Txt_ShipperName.Text == "")
-                //{
-                //    Script(Txt_ShipperName.Text);
-                //    Txt_ConsigneeName.Focus();
-                //}
+                else if (Txt_ShipperName.Text == "")
+                {
+                    judge(Txt_ShipperName);
+                }
+                else if (Txt_ConsigneeCountry.Text == "")
+                {
+                    judge(Txt_ConsigneeCountry);
+                }
+                else if (Txt_ConsigneeRegion.Text == "")
+                {
+                    judge(Txt_ConsigneeRegion);
+                }
+                else if (Txt_ConsigneeZipCode.Text == "")
+                {
+                    judge(Txt_ConsigneeZipCode);
+                }
                 else if (Txt_ConsigneeAddress.Text == "")
                 {
-                    Addressjudge(Txt_ConsigneeAddress);
+                    judge(Txt_ConsigneeAddress);
                 }
                 else if (Txt_ConsigneeContactor.Text == "")
                 {
-                    Contactorjudge(Txt_ConsigneeContactor);
+                    judge(Txt_ConsigneeContactor);
                 }
                 else if (Txt_ConsigneeTel.Text == "")
                 {
-                    Teljudge(Txt_ConsigneeTel);
-                }                
+                    judge(Txt_ConsigneeTel);
+                }
                 else
                 {
 
@@ -363,34 +437,48 @@ namespace GGGETSAdmin.Control
                         Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('电话号码格式不正确！')</script>");
                         Txt_ConsigneeTel.Focus();
                     }
-                    else if (Txt_ShipperZipCode.Text != "")
+                    else if (!ZipCodechecking(Txt_ShipperZipCode))
                     {
-                        ZipCodechecking(Txt_ShipperZipCode);
+                        Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('邮编格式不正确,只能输入数字且为6位！')</script>");
+                        Txt_ShipperZipCode.Focus();
                     }
-                    else if (Txt_ConsigneeZipCode.Text != "")
+                    else if (!ZipCodechecking(Txt_ConsigneeZipCode))
                     {
-                        ZipCodechecking(Txt_ConsigneeZipCode);
+                        Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('邮编格式不正确,只能输入数字且为6位！')</script>");
+                        Txt_ConsigneeZipCode.Focus();
                     }
-                    else if (Txt_ShipperCountry.Text != "")
+                    else if (!Countrychecking(Txt_ShipperCountry))
                     {
-                        Countrychecking(Txt_ShipperCountry);
+                        Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('只能输入字母并为2位！')</script>");
+                        Txt_ShipperCountry.Focus();
                     }
-                    else if (Txt_ConsigneeCountry.Text != "")
+                    else if (!Countrychecking(Txt_ConsigneeCountry))
                     {
-                        Countrychecking(Txt_ConsigneeCountry);
+                        Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('只能输入字母并为2位！')</script>");
+                        Txt_ConsigneeCountry.Focus();
                     }
-                    else if (Txt_ShipperRegion.Text != "")
+                    else if (!Regionchecking(Txt_ShipperRegion))
                     {
-                        Regionchecking(Txt_ShipperRegion);
+                        Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('只能输入字母并为3位！！')</script>");
+                        Txt_ShipperRegion.Focus();
                     }
-                    else if (Txt_ConsigneeRegion.Text != "")
+                    else if (!Regionchecking(Txt_ConsigneeRegion))
                     {
-                        Regionchecking(Txt_ConsigneeCountry);
+                        Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('只能输入字母并为3位！！')</script>");
+                        Txt_ConsigneeRegion.Focus();
                     }
                     else
                     {
                         Storage();
-                        Response.Write("<script>location='HAWBItemAdd.aspx'</script>");
+                        if (type != string.Empty)
+                        {
+                            Response.Redirect("HAWBItemAdd.aspx?type=" + type + "");
+                        }
+                        else
+                        {
+                            Response.Redirect("HAWBItemAdd.aspx");
+                        }
+                        
                     }
                 }
             }
@@ -400,53 +488,37 @@ namespace GGGETSAdmin.Control
             InitialControl(this.Controls);
             Session["HAWB"] = null;
         }
-        protected void Namejudge(TextBox tb)
+        protected void judge(TextBox tb)
         {
-            Script(tb.Text);
+            Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('不能为空！')</script>");
             tb.Focus(); 
         }
-        protected void Addressjudge(TextBox tb)
+        protected bool ZipCodechecking(TextBox tb)
         {
-            Script(tb.Text);
-            tb.Focus();
-        }
-        protected void Contactorjudge(TextBox tb)
-        {
-            Script(tb.Text);
-            tb.Focus();
-        }
-        protected void Teljudge(TextBox tb)
-        {
-            Script(tb.Text);
-            tb.Focus();
-        }
-        protected void Script(string text)
-        {
-            Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('"+text+"不能为空！')</script>");
-        }
-        protected void ZipCodechecking(TextBox tb)
-        {
+            bool num = true;
             if (!RZipCode.IsMatch(tb.Text))
             {
-                Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('邮编格式不正确,只能输入数字且为6位！')</script>");
-                tb.Focus();
+                num = false;                
             }
+            return num;
         }
-        protected void Countrychecking(TextBox tb)
+        protected bool Countrychecking(TextBox tb)
         {
+            bool num = true;
             if (!RCountry.IsMatch(tb.Text))
             {
-                Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('只能输入字母并为2位！！')</script>");
-                tb.Focus();
+                num = false;
             }
+            return num;
         }
-        protected void Regionchecking(TextBox tb)
+        protected bool Regionchecking(TextBox tb)
         {
+            bool num = true;
             if (!RRegion.IsMatch(tb.Text))
             {
-                Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('只能输入字母并为3位！！')</script>");
-                tb.Focus();
+                num = false;
             }
+            return num;
         }
     }
 }
