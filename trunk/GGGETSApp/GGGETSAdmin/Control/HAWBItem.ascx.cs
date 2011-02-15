@@ -12,12 +12,13 @@ namespace GGGETSAdmin.Control
 {
     public partial class HawbItem : System.Web.UI.UserControl
     {
-        protected static HAWB hawb;
-        protected static HAWBItem item;
-        protected static HAWBBox box;
-        protected static string intPattern = @"^[1-9]*$";
-        protected static string decimalPattern = @"^[0]{1}\.?[0-9]{0,2}|[1-9]+\.?[0-9]{0,2}$";
-        protected IHAWBManagementService _hawbService;
+        private static HAWB hawb = new HAWB();
+        private static HAWBItem item;
+        private static HAWBBox box;
+        private static string type = string.Empty;
+        private static string intPattern = @"^[1-9]*$";
+        private static string decimalPattern = @"^[0]{1}\.?[0-9]{0,2}|[1-9]+\.?[0-9]{0,2}$";
+        private IHAWBManagementService _hawbService;
         protected HawbItem()
         { }
         public HawbItem(IHAWBManagementService hawbService)
@@ -31,8 +32,9 @@ namespace GGGETSAdmin.Control
                 if (Session["HAWB"] != null)
                 {
                     hawb = (HAWB)Session["HAWB"];
-                    if (hawb.HAWBBox.Count != 0 || hawb.HAWBItem.Count != 0)
+                    if (Request.QueryString["type"] != "" && Request.QueryString["type"]!=null)
                     {
+                        type = Request.QueryString["type"];
                         gv_Box.DataSource = hawb.HAWBBox;
                         gv_Box.DataBind();
                         GV_item.DataSource = hawb.HAWBItem;
@@ -46,6 +48,7 @@ namespace GGGETSAdmin.Control
                         gv_box();
                     }
                     Evaluate();
+                    ViewState["UrlReferrer"] = Request.UrlReferrer.ToString();
                 }
                 
             }
@@ -66,7 +69,7 @@ namespace GGGETSAdmin.Control
         }
         protected void but_AddItem_Click(object sender, EventArgs e)
         {
-            if (hawb.HAWBItem.Count != 0)
+            if (type != "")
             {
                 foreach (HAWBItem it in hawb.HAWBItem)
                 {
@@ -84,7 +87,6 @@ namespace GGGETSAdmin.Control
         protected void AddItem()
         {
             item.HID = hawb.HID;
-
             if (Txt_ItemPiece.Text == "")
             {
                 Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('不能为空！')</script>");
@@ -119,7 +121,6 @@ namespace GGGETSAdmin.Control
                     item.Remark = txt_ItemType.Text;
                     item.UnitAmount = decimal.Parse(Txt_ItemPice.Text);
                     item.TotalAmount += item.UnitAmount;
-                    hawb.Piece += 1;
                     lbl_Piece.Text = hawb.Piece.ToString();
                     hawb.HAWBItem.Add(item);
                     GV_item.DataSource = hawb.HAWBItem;
@@ -129,7 +130,7 @@ namespace GGGETSAdmin.Control
         }
         protected void but_AddBox_Click(object sender, EventArgs e)
         {
-            if (hawb.HAWBBox.Count != 0)
+            if (type != "")
             {
                 foreach (HAWBBox bx in hawb.HAWBBox)
                 {
@@ -139,6 +140,7 @@ namespace GGGETSAdmin.Control
             }
             else
             {
+                box = new HAWBBox();
                 box.BoxID = Guid.NewGuid();
                 AddBox();
             }
@@ -193,7 +195,7 @@ namespace GGGETSAdmin.Control
                     box.Width = decimal.Parse(Txt_BoxWidth.Text);
                     hawb.TotalWeight += box.Weight;
                     txt_VolumeWeight.Text = hawb.TotalWeight.ToString();
-                    lbl_TotalVolume.Text = (hawb.TotalWeight / 166).ToString();
+                    lbl_TotalVolume.Text = decimal.ToDouble(hawb.TotalWeight/166).ToString();
                     hawb.Piece += 1;
                     lbl_Piece.Text = hawb.Piece.ToString();
                     hawb.HAWBBox.Add(box);
@@ -204,11 +206,7 @@ namespace GGGETSAdmin.Control
         }
         protected void But_Rurnet_Click(object sender, EventArgs e)
         {
-            if (Request.UrlReferrer != null)
-            {
-                ViewState["URl"]= Request.UrlReferrer;
-                Response.Redirect((string)ViewState["URL"]);
-            }
+            Response.Redirect((string)ViewState["UrlReferrer"]);
             
         }
         protected void Evaluate()
@@ -217,8 +215,8 @@ namespace GGGETSAdmin.Control
             lbl_ShipperCountry.Text = hawb.ShipperCountry;
             lbl_ShipperRegion.Text = hawb.ShipperRegion;
             lbl_ShipperName.Text = hawb.ShipperName;
-            //lbl_ConsigneeName.Text = hawb.ConsigneeName;
-            if (hawb.HAWBBox.Count != 0||hawb.HAWBItem.Count!=0)
+            lbl_ConsigneeName.Text = hawb.ConsigneeName.ToString(); ;
+            if (type != "")
             {
                 rbt_BoxType.SelectedValue = box.BoxType.ToString();
                 BoxType();
@@ -251,6 +249,7 @@ namespace GGGETSAdmin.Control
             hawb.Remark = txt_Remark.Text;
             hawb.Carrier = Txt_Carrier.Text;
             //hawb.CarrierHAWBID = Txt_CarrierHAWBID.Text;
+            hawb.CarrierHAWBID = Guid.NewGuid();
             _hawbService.AddHAWB(hawb);
         }
 
