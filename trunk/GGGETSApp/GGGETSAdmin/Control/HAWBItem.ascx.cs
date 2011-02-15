@@ -35,9 +35,9 @@ namespace GGGETSAdmin.Control
                     if (Request.QueryString["type"] != "" && Request.QueryString["type"]!=null)
                     {
                         type = Request.QueryString["type"];
-                        gv_Box.DataSource = hawb.HAWBBox;
+                        gv_Box.DataSource = hawb.HAWBBoxes;
                         gv_Box.DataBind();
-                        GV_item.DataSource = hawb.HAWBItem;
+                        GV_item.DataSource = hawb.HAWBItems;
                         GV_item.DataBind();
                     }
                     else
@@ -71,7 +71,7 @@ namespace GGGETSAdmin.Control
         {
             if (type != "")
             {
-                foreach (HAWBItem it in hawb.HAWBItem)
+                foreach (HAWBItem it in hawb.HAWBItems)
                 {
                     item.ItemID = it.ItemID;
                     AddItem();
@@ -122,8 +122,8 @@ namespace GGGETSAdmin.Control
                     item.UnitAmount = decimal.Parse(Txt_ItemPice.Text);
                     item.TotalAmount += item.UnitAmount;
                     lbl_Piece.Text = hawb.Piece.ToString();
-                    hawb.HAWBItem.Add(item);
-                    GV_item.DataSource = hawb.HAWBItem;
+                    hawb.HAWBItems.Add(item);
+                    GV_item.DataSource = hawb.HAWBItems;
                     GV_item.DataBind();
                 }
             }
@@ -132,7 +132,7 @@ namespace GGGETSAdmin.Control
         {
             if (type != "")
             {
-                foreach (HAWBBox bx in hawb.HAWBBox)
+                foreach (HAWBBox bx in hawb.HAWBBoxes)
                 {
                     box.BoxID = bx.BoxID;
                     AddBox();
@@ -198,8 +198,8 @@ namespace GGGETSAdmin.Control
                     lbl_TotalVolume.Text = decimal.ToDouble(hawb.TotalWeight/166).ToString();
                     hawb.Piece += 1;
                     lbl_Piece.Text = hawb.Piece.ToString();
-                    hawb.HAWBBox.Add(box);
-                    gv_Box.DataSource = hawb.HAWBBox;
+                    hawb.HAWBBoxes.Add(box);
+                    gv_Box.DataSource = hawb.HAWBBoxes;
                     gv_Box.DataBind();
                 }
             }

@@ -13,7 +13,8 @@ namespace Application.GGETS.HAWBManagement
 {
     public interface IPackageManagementService
     {
-        IList<Package> GetAllHAWBsByPID(string PID);
         void AddPackage(Package package);
+        Package FindPackageByBarcode(string barcode);
+        void ModifyPackage(Package package);
     }
 }

@@ -169,6 +169,28 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Repositories
         }
         #endregion
 
+        #region 运单包裹操作
+        /// <summary>
+        /// 通过条形码获取包裹
+        /// </summary>
+        /// <param name="barcode">包裹</param>
+        /// <returns></returns>
+        public Package FindPackageByBarcode(string barcode)
+        {
+            if (string.IsNullOrEmpty(barcode)) throw new ArgumentException("barcode is null!");
+            IGGGETSAppUnitOfWork context = UnitOfWork as IGGGETSAppUnitOfWork;
+            if (context != null)
+            {
+                return context.Package.Include(it=>it.HAWBs).Where(it => it.BarCode == barcode).Single();
+            }
+            else
+                throw new InvalidOperationException(string.Format(
+                                                                CultureInfo.InvariantCulture,
+                                                                Messages.exception_InvalidStoreContext,
+                                                                GetType().Name));
+        }
+        #endregion
+
         #region 运单用户操作
         /// <summary>
         /// 通过运单中的用户编号获取运单用户

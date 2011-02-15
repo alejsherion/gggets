@@ -20,5 +20,6 @@ namespace Domain.GGGETS
         IList<HAWBItem> FindHAWBItemByHID(string HID);
         IList<HAWBBox> FindHAWBBoxByHID(string HID);
         User FindUserByUID(string UID);
+        Package FindPackageByBarcode(string barcode);
     }
 }
