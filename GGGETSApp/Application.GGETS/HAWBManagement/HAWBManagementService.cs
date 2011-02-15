@@ -121,5 +121,15 @@ namespace Application.GGETS
             userUnitOfWork.Commit();
             unitOfWork.Commit();
         }
+
+        /// <summary>
+        /// 延迟加载ALL
+        /// </summary>
+        /// <param name="barCode">条形码</param>
+        /// <returns></returns>
+        public HAWB LoadHAWBByBarCode(string barCode)
+        {
+            return _hawbRepository.LoadHAWBByBarCode(barCode);
+        }
     }
 }

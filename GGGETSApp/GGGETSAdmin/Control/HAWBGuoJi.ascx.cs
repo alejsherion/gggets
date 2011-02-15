@@ -80,7 +80,7 @@ namespace GGGETSAdmin.Control
                 hawb.ShipperZipCode = Txt_ShipperZipCode.Text;
 
                 //hawb.ConsigneeName = Txt_ConsigneeName.Text;
-                hawb.ConsigneeName = Guid.NewGuid();
+                hawb.ConsigneeName = "test";
                 hawb.ConsigneeContactor = Txt_ConsigneeContactor.Text;
                 hawb.ConsigneeCountry = Txt_ConsigneeCountry.Text;
                 hawb.ConsigneeRegion = Txt_ConsigneeRegion.Text;
@@ -112,7 +112,7 @@ namespace GGGETSAdmin.Control
                 hawb.ShipperZipCode = Txt_ShipperZipCode.Text;
 
                 //hawb.ConsigneeName = Txt_ConsigneeName.Text;
-                hawb.ConsigneeName = Guid.NewGuid();
+                hawb.ConsigneeName = "test";
                 hawb.ConsigneeContactor = Txt_ConsigneeContactor.Text;
                 hawb.ConsigneeCountry = Txt_ConsigneeCountry.Text;
                 hawb.ConsigneeRegion = Txt_ConsigneeRegion.Text;

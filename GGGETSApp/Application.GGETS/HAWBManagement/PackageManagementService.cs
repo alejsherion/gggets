@@ -31,18 +31,6 @@ namespace Application.GGETS.HAWBManagement
             _packageRepository = packageRepository;
             _hawbRepository = hawbRepository;
         }
-        /// <summary>
-        /// 通过包裹编号获取该包裹下所有运单
-        /// </summary>
-        /// <param name="PID">包裹编号</param>
-        /// <returns></returns>
-        public IList<Package> GetAllHAWBsByPID(string PID)
-        {
-            if (string.IsNullOrEmpty(PID)) throw new ArgumentNullException("PID is null");
-            //open HAWB's load
-            Package package = _packageRepository.GetSinglePackageByPid(PID);
-            return null;
-        }
 
         /// <summary>
         /// 新增包裹
@@ -56,6 +44,30 @@ namespace Application.GGETS.HAWBManagement
             _packageRepository.Add(package);
             //complete changes in this unit of work
             unitOfWork.Commit();
+        }
+
+        /// <summary>
+        /// 通过条形码获取包裹
+        /// </summary>
+        /// <param name="barcode">条形码</param>
+        /// <returns></returns>
+        public Package FindPackageByBarcode(string barcode)
+        {
+            return _hawbRepository.FindPackageByBarcode(barcode);
+        }
+
+        /// <summary>
+        /// 修改包裹
+        /// </summary>
+        /// <param name="package">包裹</param>
+        public void ModifyPackage(Package package)
+        {
+            if (package == null)
+                throw new ArgumentNullException("Package is null");
+            IUnitOfWork unitOfWork = _packageRepository.UnitOfWork;
+            _packageRepository.Modify(package);
+            //complete changes in this unit of work
+            unitOfWork.CommitAndRefreshChanges();
         }
     }
 }

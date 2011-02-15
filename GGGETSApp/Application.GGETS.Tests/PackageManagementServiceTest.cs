@@ -120,6 +120,37 @@ namespace Application.GGETS.Tests
         }
         #endregion
 
+        #region 通过条形码查询包裹
+        /// <summary>
+        ///FindPackageByBarcode 的测试
+        ///</summary>
+        [TestMethod()]
+        public void FindPackageByBarcodeTest()
+        {
+            string barcode = "p1";
+            //Package expected = null; 
+            Package actual;
+            actual = _packageManagementService.FindPackageByBarcode(barcode);
+            //Assert.AreEqual(expected, actual);
+            //Assert.Inconclusive("验证此测试方法的正确性。");
+        }
+        #endregion
+
+        #region 修改包裹
+        /// <summary>
+        ///ModifyPackage 的测试
+        ///</summary>
+        [TestMethod()]
+        public void ModifyPackageTest()
+        {
+            Package package = _packageManagementService.FindPackageByBarcode("p1");
+            HAWB hawb = _HAWBManagementService.FindHAWBByBarCode("2011");
+            package.HAWBs.Add(hawb);
+            _packageManagementService.ModifyPackage(package);
+            //Assert.Inconclusive("无法验证不返回值的方法。");
+        }
+        #endregion
+
         public override Expression<Func<Package, bool>> FilterExpression
         {
             get { throw new NotImplementedException(); }

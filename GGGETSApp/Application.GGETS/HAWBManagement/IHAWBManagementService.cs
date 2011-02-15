@@ -17,5 +17,6 @@ namespace Application.GGETS
                                                string isInternational);
 
         void RemoveHAWB(string barCode);
+        HAWB LoadHAWBByBarCode(string barCode);
     }
 }
