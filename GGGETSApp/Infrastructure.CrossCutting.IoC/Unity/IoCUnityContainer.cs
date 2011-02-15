@@ -73,16 +73,15 @@ namespace ETS.GGGETSApp.Infrastructure.CrossCutting.IoC.Unity
 
             //Register Repositories mappings
             container.RegisterType<IHAWBRepository, HAWBRepository>(new TransientLifetimeManager());
-            //container.RegisterType<IItemRepository, ItemRepository>(new TransientLifetimeManager());
-            //container.RegisterType<IBankAccountRepository, BankAccountRepository>(new TransientLifetimeManager());
-            //container.RegisterType<ICustomerRepository, CustomerRepository>(new TransientLifetimeManager());
-            //container.RegisterType<ICountryRepository, CountryRepository>(new TransientLifetimeManager());
+            container.RegisterType<IHAWBItemRepository, HAWBItemRepository>(new TransientLifetimeManager());
+            container.RegisterType<IHAWBBoxRepository, HAWBBoxRepository>(new TransientLifetimeManager());
+            container.RegisterType<IPackageRepository, PackageRepository>(new TransientLifetimeManager());
+            container.RegisterType<IUserRepository, UserRepository>(new TransientLifetimeManager());
 
             //Register application services mappings
 
-            container.RegisterType<IHAWBManagementService,HAWBManagementService>(new TransientLifetimeManager());
-            //container.RegisterType<ICustomerManagementService, CustomerManagementService>(new TransientLifetimeManager());
-            //container.RegisterType<IBankingManagementService, BankingManagementService>(new TransientLifetimeManager());
+            container.RegisterType<IHAWBManagementService, HAWBManagementService>(new TransientLifetimeManager());
+            container.RegisterType<IPackageManagementService, PackageManagementService>(new TransientLifetimeManager());
             
             //Register domain services mappings
             //container.RegisterType<IBankTransferDomainService, BankTransferDomainService>(new TransientLifetimeManager());
