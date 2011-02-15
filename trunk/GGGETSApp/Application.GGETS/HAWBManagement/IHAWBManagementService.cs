@@ -15,5 +15,7 @@ namespace Application.GGETS
         IList<HAWB> FindHAWBsByCondition(string HID, string countryCode, string regionCode, string loginName,
                                                string realName, string phone, string settleType, string serviceType,
                                                string isInternational);
+
+        void RemoveHAWB(string barCode);
     }
 }

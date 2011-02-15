@@ -127,7 +127,7 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Core
 
             //Attach object to unit of work and delete this
             // this is valid only if T is a type in model
-            objectSet.Attach(item);
+            //objectSet.Attach(item);
 
             //delete object to IObjectSet for this type
             objectSet.DeleteObject(item);

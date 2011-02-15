@@ -15,5 +15,10 @@ namespace Domain.GGGETS
         IList<HAWB> FindHAWBsByCondition(string HID, string countryCode, string regionCode, string loginName,
                                                string realName, string phone, string settleType, string serviceType,
                                                string isInternational);
+
+        HAWB LoadHAWBByBarCode(string barCode);
+        IList<HAWBItem> FindHAWBItemByHID(string HID);
+        IList<HAWBBox> FindHAWBBoxByHID(string HID);
+        User FindUserByUID(string UID);
     }
 }

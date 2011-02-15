@@ -14,7 +14,6 @@ using ETS.GGGETSApp.Infrastructure.Data.Persistence.Repositories;
 using ETS.GGGETSApp.Infrastructure.Data.Persistence.UnitOfWork;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
-using Domain.GGGETS;
 
 namespace Application.GGETS.Tests
 {
@@ -30,8 +29,11 @@ namespace Application.GGETS.Tests
             IGGGETSAppUnitOfWork context = GetUnitOfWork();//上下文
             ITraceManager traceManager = GetTraceManager();//跟踪管理器
             HAWBRepository HAWBRepository = new HAWBRepository(context, traceManager);//创建DAL操作对象
+            HAWBItemRepository HAWBItemRepository = new HAWBItemRepository(context, traceManager);
+            HAWBBoxRepository HAWBBoxRepository = new HAWBBoxRepository(context, traceManager);
+            UserRepository UserRepository = new UserRepository(context, traceManager);
 
-            _HAWBManagementService = new HAWBManagementService(HAWBRepository);
+            _HAWBManagementService = new HAWBManagementService(HAWBRepository, HAWBItemRepository, HAWBBoxRepository, UserRepository);
         }
 
         private TestContext testContextInstance;
@@ -280,6 +282,18 @@ namespace Application.GGETS.Tests
             actual = _HAWBManagementService.FindHAWBsByCondition(HID, countryCode, regionCode, loginName, realName, phone, settleType, serviceType, isInternational);
             //Assert.AreEqual(expected, actual);
             //Assert.Inconclusive("验证此测试方法的正确性。");
+        }
+        #endregion
+
+        #region 删除运单单元测试
+        /// <summary>
+        ///RemoveHAWB 的测试
+        ///</summary>
+        [TestMethod()]
+        public void RemoveHAWBTest()
+        {
+            _HAWBManagementService.RemoveHAWB("2010");
+            //Assert.Inconclusive("无法验证不返回值的方法。");
         }
         #endregion
 

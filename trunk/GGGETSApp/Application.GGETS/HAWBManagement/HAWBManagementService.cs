@@ -11,11 +11,21 @@ namespace Application.GGETS
 {
     public class HAWBManagementService:IHAWBManagementService
     {
+        //运单
         IHAWBRepository _hawbRepository;
+        //运单货物
+        IHAWBItemRepository _hawbItemRepository;
+        //运单盒子
+        IHAWBBoxRepository _hawbBoxRepository;
+        //运单用户
+        IUserRepository _userRepository;
 
-        public HAWBManagementService(IHAWBRepository hawbRepository)
+        public HAWBManagementService(IHAWBRepository hawbRepository, IHAWBItemRepository hawbItemRepository, IHAWBBoxRepository hawbBoxRepository, IUserRepository userRepository)
         {
             _hawbRepository = hawbRepository;
+            _hawbItemRepository = hawbItemRepository;
+            _hawbBoxRepository = hawbBoxRepository;
+            _userRepository = userRepository;
         }
 
         public void AddHAWB(HAWB newHAWB)
@@ -68,6 +78,48 @@ namespace Application.GGETS
         {
             return _hawbRepository.FindHAWBsByCondition(HID, countryCode, regionCode, loginName, realName, phone,
                                                         settleType, serviceType, isInternational);
+        }
+
+        /// <summary>
+        /// 通过条形码移除运单
+        /// </summary>
+        /// <param name="barCode">条形码</param>
+        public void RemoveHAWB(string barCode)
+        {
+            if (barCode == null)
+                throw new ArgumentNullException("barCode is null");
+            //open all hawb's load
+            HAWB hawb = _hawbRepository.FindHAWBByBarCode(barCode);
+            IUnitOfWork unitOfWork = _hawbRepository.UnitOfWork;
+            IUnitOfWork itemUnitOfWork = _hawbItemRepository.UnitOfWork;
+            IUnitOfWork boxUnitOfWork = _hawbBoxRepository.UnitOfWork;
+            IUnitOfWork userUnitOfWork = _userRepository.UnitOfWork;
+            if (hawb == null)
+                throw new ArgumentNullException("hawb is null");
+            IList<HAWBBox> HAWBBoxList = _hawbRepository.FindHAWBBoxByHID(hawb.HID.ToString());
+            if (HAWBBoxList.Count != 0)//运单盒子
+            {
+                foreach (HAWBBox hawbBox in HAWBBoxList)
+                {
+                    _hawbBoxRepository.Remove(hawbBox);
+                }
+            }
+            IList<HAWBItem> HAWBItemList = _hawbRepository.FindHAWBItemByHID(hawb.HID.ToString());
+            if (HAWBItemList.Count != 0)//运单货物
+            {
+                foreach (HAWBItem hawbItem in HAWBItemList)
+                {
+                    _hawbItemRepository.Remove(hawbItem);
+                }
+            }
+            User userObj = _hawbRepository.FindUserByUID(hawb.UID.ToString());
+            if (userObj != null) _userRepository.Remove(hawb.User);//运单用户
+            _hawbRepository.Remove(hawb);//整个运单
+            //complete changes in this unit of work
+            boxUnitOfWork.Commit();
+            itemUnitOfWork.Commit();
+            userUnitOfWork.Commit();
+            unitOfWork.Commit();
         }
     }
 }

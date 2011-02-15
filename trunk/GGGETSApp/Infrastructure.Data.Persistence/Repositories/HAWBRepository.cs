@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using ETS.GGGETSApp.Infrastructure.Data.Core;
 using ETS.GGGETSApp.Infrastructure.Data.Core.Extensions;
 using ETS.GGGETSApp.Infrastructure.Data.Persistence.UnitOfWork;
@@ -47,7 +46,27 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Repositories
 
             if (context != null)
             {
-                return context.HAWB.Include(ba => ba.HAWBItem).Where(it=>it.BarCode==barCode).SingleOrDefault();                                         
+                return context.HAWB.Include(ba => ba.HAWBItem).Where(it => it.BarCode == barCode).SingleOrDefault();
+            }
+            else
+                throw new InvalidOperationException(string.Format(
+                                                                CultureInfo.InvariantCulture,
+                                                                Messages.exception_InvalidStoreContext,
+                                                                this.GetType().Name));
+        }
+
+        /// <summary>
+        /// 加载运单
+        /// </summary>
+        /// <param name="barCode">条形码</param>
+        /// <returns></returns>
+        public HAWB LoadHAWBByBarCode(string barCode)
+        {
+            IGGGETSAppUnitOfWork context = this.UnitOfWork as IGGGETSAppUnitOfWork;
+
+            if (context != null)
+            {
+                return context.HAWB.Include(ba => ba.HAWBItem).Include(ba=>ba.HAWBBox).Include(ba=>ba.User).Where(it => it.BarCode == barCode).SingleOrDefault();
             }
             else
                 throw new InvalidOperationException(string.Format(
@@ -103,5 +122,74 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Repositories
                 return HAWBs.OrderByDescending(a=>a.CreateTime).ToList();
             }
         }
+
+        #region 运单货物操作
+        /// <summary>
+        /// 通过运单编号获取运单货物
+        /// </summary>
+        /// <param name="HID">运单编号</param>
+        /// <returns></returns>
+        public IList<HAWBItem> FindHAWBItemByHID(string HID)
+        {
+            IGGGETSAppUnitOfWork context = UnitOfWork as IGGGETSAppUnitOfWork;
+
+            if (context != null)
+            {
+                Guid guidHID = new Guid(HID);
+                return context.HAWBItem.Where(it => it.HID == guidHID).Select(h => h).ToList();
+            }
+            else
+                throw new InvalidOperationException(string.Format(
+                                                                CultureInfo.InvariantCulture,
+                                                                Messages.exception_InvalidStoreContext,
+                                                                GetType().Name));
+        }
+        #endregion
+
+        #region 运单盒子操作
+        /// <summary>
+        /// 通过运单编号获取运单盒子
+        /// </summary>
+        /// <param name="HID">运单编号</param>
+        /// <returns></returns>
+        public IList<HAWBBox> FindHAWBBoxByHID(string HID)
+        {
+            IGGGETSAppUnitOfWork context = UnitOfWork as IGGGETSAppUnitOfWork;
+
+            if (context != null)
+            {
+                Guid guidHID = new Guid(HID);
+                return context.HAWBBox.Where(it => it.HID == guidHID).Select(h => h).ToList();
+            }
+            else
+                throw new InvalidOperationException(string.Format(
+                                                                CultureInfo.InvariantCulture,
+                                                                Messages.exception_InvalidStoreContext,
+                                                                GetType().Name));
+        }
+        #endregion
+
+        #region 运单用户操作
+        /// <summary>
+        /// 通过运单中的用户编号获取运单用户
+        /// </summary>
+        /// <param name="UID">用户编号</param>
+        /// <returns></returns>
+        public User FindUserByUID(string UID)
+        {
+            IGGGETSAppUnitOfWork context = UnitOfWork as IGGGETSAppUnitOfWork;
+
+            if (context != null)
+            {
+                Guid guidHID = new Guid(UID);
+                return context.User.Where(it => it.UID == guidHID).Single();
+            }
+            else
+                throw new InvalidOperationException(string.Format(
+                                                                CultureInfo.InvariantCulture,
+                                                                Messages.exception_InvalidStoreContext,
+                                                                GetType().Name));
+        }
+        #endregion
     }
 }

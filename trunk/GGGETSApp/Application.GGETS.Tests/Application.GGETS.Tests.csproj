@@ -55,6 +55,7 @@
   <ItemGroup>
     <Compile Include="GenericRepositoryTestsBase.cs" />
     <Compile Include="HAWBManagementServiceTest.cs" />
+    <Compile Include="PackageManagementServiceTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
