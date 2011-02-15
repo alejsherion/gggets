@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="MYGGGETSModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2005" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+    <Schema Namespace="MYGGGETSModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
         <EntityContainer Name="MYGGGETSModelStoreContainer">
           <EntitySet Name="AddressBook" EntityType="MYGGGETSModel.Store.AddressBook" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Company" EntityType="MYGGGETSModel.Store.Company" store:Type="Tables" Schema="dbo" />
@@ -152,7 +152,7 @@
           <Property Name="ShipperAddress" Type="nvarchar" Nullable="false" MaxLength="500" />
           <Property Name="ShipperZipCode" Type="varchar" Nullable="false" MaxLength="20" />
           <Property Name="ShipperTel" Type="varchar" Nullable="false" MaxLength="20" />
-          <Property Name="ConsigneeName" Type="uniqueidentifier" />
+          <Property Name="ConsigneeName" Type="nvarchar" MaxLength="200" />
           <Property Name="ConsigneeContactor" Type="nvarchar" Nullable="false" MaxLength="50" />
           <Property Name="ConsigneeCountry" Type="char" Nullable="false" MaxLength="2" />
           <Property Name="ConsigneeRegion" Type="char" Nullable="false" MaxLength="3" />
@@ -381,8 +381,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="MYGGGETSModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
@@ -538,7 +537,7 @@
           <Property Name="ShipperAddress" Type="String" Nullable="false" MaxLength="500" Unicode="true" FixedLength="false" />
           <Property Name="ShipperZipCode" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
           <Property Name="ShipperTel" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
-          <Property Name="ConsigneeName" Type="Guid" />
+          <Property Name="ConsigneeName" Type="String" />
           <Property Name="ConsigneeContactor" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
           <Property Name="ConsigneeCountry" Type="String" Nullable="false" MaxLength="2" Unicode="false" FixedLength="true" />
           <Property Name="ConsigneeRegion" Type="String" Nullable="false" MaxLength="3" Unicode="false" FixedLength="true" />

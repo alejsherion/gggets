@@ -751,23 +751,11 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
                         {
                             ChangeTracker.ObjectStateChanging -= item.HandleCascadeDelete;
                         }
-                        // This is the principal end in an association that performs cascade deletes.
-                        // Remove the cascade delete event handler for any entities in the current collection.
-                        foreach (HAWBBox item in _hAWBBoxes)
-                        {
-                            ChangeTracker.ObjectStateChanging -= item.HandleCascadeDelete;
-                        }
                     }
                     _hAWBBoxes = value;
                     if (_hAWBBoxes != null)
                     {
                         _hAWBBoxes.CollectionChanged += FixupHAWBBoxes;
-                        // This is the principal end in an association that performs cascade deletes.
-                        // Add the cascade delete event handler for any entities that are already in the new collection.
-                        foreach (HAWBBox item in _hAWBBoxes)
-                        {
-                            ChangeTracker.ObjectStateChanging += item.HandleCascadeDelete;
-                        }
                         // This is the principal end in an association that performs cascade deletes.
                         // Add the cascade delete event handler for any entities that are already in the new collection.
                         foreach (HAWBBox item in _hAWBBoxes)
