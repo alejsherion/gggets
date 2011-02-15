@@ -118,7 +118,7 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
                 }
             }
         }
-        private int _piece = 0;
+        private int _piece;
     
         [DataMember]
         public decimal TotalWeight
@@ -133,7 +133,7 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
                 }
             }
         }
-        private decimal _totalWeight = 0.0m;
+        private decimal _totalWeight;
     
         [DataMember]
         public System.DateTime CreateTime
@@ -193,7 +193,7 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
                 }
             }
         }
-        private int _status = 0;
+        private int _status;
     
         [DataMember]
         public bool IsMixed
@@ -208,45 +208,45 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
                 }
             }
         }
-        private bool _isMixed = false;
+        private bool _isMixed;
 
         #endregion
         #region Navigation Properties
     
         [DataMember]
-        public TrackableCollection<HAWB> HAWB
+        public TrackableCollection<HAWB> HAWBs
         {
             get
             {
-                if (_hAWB == null)
+                if (_hAWBs == null)
                 {
-                    _hAWB = new TrackableCollection<HAWB>();
-                    _hAWB.CollectionChanged += FixupHAWB;
+                    _hAWBs = new TrackableCollection<HAWB>();
+                    _hAWBs.CollectionChanged += FixupHAWBs;
                 }
-                return _hAWB;
+                return _hAWBs;
             }
             set
             {
-                if (!ReferenceEquals(_hAWB, value))
+                if (!ReferenceEquals(_hAWBs, value))
                 {
                     if (ChangeTracker.ChangeTrackingEnabled)
                     {
                         throw new InvalidOperationException("Cannot set the FixupChangeTrackingCollection when ChangeTracking is enabled");
                     }
-                    if (_hAWB != null)
+                    if (_hAWBs != null)
                     {
-                        _hAWB.CollectionChanged -= FixupHAWB;
+                        _hAWBs.CollectionChanged -= FixupHAWBs;
                     }
-                    _hAWB = value;
-                    if (_hAWB != null)
+                    _hAWBs = value;
+                    if (_hAWBs != null)
                     {
-                        _hAWB.CollectionChanged += FixupHAWB;
+                        _hAWBs.CollectionChanged += FixupHAWBs;
                     }
-                    OnNavigationPropertyChanged("HAWB");
+                    OnNavigationPropertyChanged("HAWBs");
                 }
             }
         }
-        private TrackableCollection<HAWB> _hAWB;
+        private TrackableCollection<HAWB> _hAWBs;
     
         [DataMember]
         public MAWB MAWB
@@ -343,7 +343,7 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
     
         protected virtual void ClearNavigationProperties()
         {
-            HAWB.Clear();
+            HAWBs.Clear();
             MAWB = null;
         }
 
@@ -357,16 +357,16 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
                 return;
             }
     
-            if (previousValue != null && previousValue.Package.Contains(this))
+            if (previousValue != null && previousValue.Packages.Contains(this))
             {
-                previousValue.Package.Remove(this);
+                previousValue.Packages.Remove(this);
             }
     
             if (MAWB != null)
             {
-                if (!MAWB.Package.Contains(this))
+                if (!MAWB.Packages.Contains(this))
                 {
-                    MAWB.Package.Add(this);
+                    MAWB.Packages.Add(this);
                 }
     
                 MID = MAWB.MID;
@@ -394,7 +394,7 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
             }
         }
     
-        private void FixupHAWB(object sender, NotifyCollectionChangedEventArgs e)
+        private void FixupHAWBs(object sender, NotifyCollectionChangedEventArgs e)
         {
             if (IsDeserializing)
             {
@@ -412,7 +412,7 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
                         {
                             item.StartTracking();
                         }
-                        ChangeTracker.RecordAdditionToCollectionProperties("HAWB", item);
+                        ChangeTracker.RecordAdditionToCollectionProperties("HAWBs", item);
                     }
                 }
             }
@@ -427,7 +427,7 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
                     }
                     if (ChangeTracker.ChangeTrackingEnabled)
                     {
-                        ChangeTracker.RecordRemovalFromCollectionProperties("HAWB", item);
+                        ChangeTracker.RecordRemovalFromCollectionProperties("HAWBs", item);
                     }
                 }
             }

@@ -125,7 +125,7 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
                 }
             }
         }
-        private decimal _totalWeight = 0.0m;
+        private decimal _totalWeight;
     
         [DataMember]
         public decimal TotalVolume
@@ -140,7 +140,7 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
                 }
             }
         }
-        private decimal _totalVolume = 0.0m;
+        private decimal _totalVolume;
     
         [DataMember]
         public int Status
@@ -155,7 +155,7 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
                 }
             }
         }
-        private int _status = 0;
+        private int _status;
 
         #endregion
         #region Navigation Properties
@@ -196,39 +196,39 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
         private TrackableCollection<Flight> _flight;
     
         [DataMember]
-        public TrackableCollection<Package> Package
+        public TrackableCollection<Package> Packages
         {
             get
             {
-                if (_package == null)
+                if (_packages == null)
                 {
-                    _package = new TrackableCollection<Package>();
-                    _package.CollectionChanged += FixupPackage;
+                    _packages = new TrackableCollection<Package>();
+                    _packages.CollectionChanged += FixupPackages;
                 }
-                return _package;
+                return _packages;
             }
             set
             {
-                if (!ReferenceEquals(_package, value))
+                if (!ReferenceEquals(_packages, value))
                 {
                     if (ChangeTracker.ChangeTrackingEnabled)
                     {
                         throw new InvalidOperationException("Cannot set the FixupChangeTrackingCollection when ChangeTracking is enabled");
                     }
-                    if (_package != null)
+                    if (_packages != null)
                     {
-                        _package.CollectionChanged -= FixupPackage;
+                        _packages.CollectionChanged -= FixupPackages;
                     }
-                    _package = value;
-                    if (_package != null)
+                    _packages = value;
+                    if (_packages != null)
                     {
-                        _package.CollectionChanged += FixupPackage;
+                        _packages.CollectionChanged += FixupPackages;
                     }
-                    OnNavigationPropertyChanged("Package");
+                    OnNavigationPropertyChanged("Packages");
                 }
             }
         }
-        private TrackableCollection<Package> _package;
+        private TrackableCollection<Package> _packages;
 
         #endregion
         #region ChangeTracking
@@ -309,7 +309,7 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
         protected virtual void ClearNavigationProperties()
         {
             Flight.Clear();
-            Package.Clear();
+            Packages.Clear();
         }
 
         #endregion
@@ -326,7 +326,7 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
             {
                 foreach (Flight item in e.NewItems)
                 {
-                    item.MAWB = this;
+                    item.MAWBs = this;
                     if (ChangeTracker.ChangeTrackingEnabled)
                     {
                         if (!item.ChangeTracker.ChangeTrackingEnabled)
@@ -342,9 +342,9 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
             {
                 foreach (Flight item in e.OldItems)
                 {
-                    if (ReferenceEquals(item.MAWB, this))
+                    if (ReferenceEquals(item.MAWBs, this))
                     {
-                        item.MAWB = null;
+                        item.MAWBs = null;
                     }
                     if (ChangeTracker.ChangeTrackingEnabled)
                     {
@@ -354,7 +354,7 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
             }
         }
     
-        private void FixupPackage(object sender, NotifyCollectionChangedEventArgs e)
+        private void FixupPackages(object sender, NotifyCollectionChangedEventArgs e)
         {
             if (IsDeserializing)
             {
@@ -372,7 +372,7 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
                         {
                             item.StartTracking();
                         }
-                        ChangeTracker.RecordAdditionToCollectionProperties("Package", item);
+                        ChangeTracker.RecordAdditionToCollectionProperties("Packages", item);
                     }
                 }
             }
@@ -387,7 +387,7 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
                     }
                     if (ChangeTracker.ChangeTrackingEnabled)
                     {
-                        ChangeTracker.RecordRemovalFromCollectionProperties("Package", item);
+                        ChangeTracker.RecordRemovalFromCollectionProperties("Packages", item);
                     }
                 }
             }

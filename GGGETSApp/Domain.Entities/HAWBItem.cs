@@ -102,7 +102,7 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
                 }
             }
         }
-        private int _piece = 0;
+        private int _piece;
     
         [DataMember]
         public decimal UnitAmount
@@ -117,7 +117,7 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
                 }
             }
         }
-        private decimal _unitAmount = 0.0m;
+        private decimal _unitAmount;
     
         [DataMember]
         public decimal TotalAmount
@@ -132,7 +132,7 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
                 }
             }
         }
-        private decimal _totalAmount = 0.0m;
+        private decimal _totalAmount;
     
         [DataMember]
         public string Remark
@@ -260,16 +260,16 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
                 return;
             }
     
-            if (previousValue != null && previousValue.HAWBItem.Contains(this))
+            if (previousValue != null && previousValue.HAWBItems.Contains(this))
             {
-                previousValue.HAWBItem.Remove(this);
+                previousValue.HAWBItems.Remove(this);
             }
     
             if (HAWB != null)
             {
-                if (!HAWB.HAWBItem.Contains(this))
+                if (!HAWB.HAWBItems.Contains(this))
                 {
-                    HAWB.HAWBItem.Add(this);
+                    HAWB.HAWBItems.Add(this);
                 }
     
                 HID = HAWB.HID;

@@ -158,7 +158,7 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
                 }
             }
         }
-        private int _settleType = 0;
+        private int _settleType;
     
         [DataMember]
         public Nullable<int> ServiceType
@@ -173,7 +173,7 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
                 }
             }
         }
-        private Nullable<int> _serviceType = 0;
+        private Nullable<int> _serviceType;
     
         [DataMember]
         public System.DateTime CreateTime
@@ -218,7 +218,7 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
                 }
             }
         }
-        private int _status = 0;
+        private int _status;
     
         [DataMember]
         public string Operator
@@ -578,7 +578,7 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
                 }
             }
         }
-        private int _weightType = 0;
+        private int _weightType;
     
         [DataMember]
         public Nullable<decimal> VolumeWeight
@@ -593,7 +593,7 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
                 }
             }
         }
-        private Nullable<decimal> _volumeWeight = 0.0m;
+        private Nullable<decimal> _volumeWeight;
     
         [DataMember]
         public decimal TotalVolume
@@ -608,7 +608,7 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
                 }
             }
         }
-        private decimal _totalVolume = 0.0m;
+        private decimal _totalVolume;
     
         [DataMember]
         public decimal TotalWeight
@@ -623,7 +623,7 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
                 }
             }
         }
-        private decimal _totalWeight = 0.0m;
+        private decimal _totalWeight;
     
         [DataMember]
         public int Piece
@@ -638,7 +638,7 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
                 }
             }
         }
-        private int _piece = 0;
+        private int _piece;
     
         [DataMember]
         public bool IsInternational
@@ -653,7 +653,7 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
                 }
             }
         }
-        private bool _isInternational = true;
+        private bool _isInternational;
     
         [DataMember]
         public string SpecialInstruction
@@ -683,7 +683,7 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
                 }
             }
         }
-        private Nullable<int> _billTax = 0;
+        private Nullable<int> _billTax;
 
         #endregion
         #region Navigation Properties
@@ -723,74 +723,86 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
         private User _user;
     
         [DataMember]
-        public TrackableCollection<HAWBBox> HAWBBox
+        public TrackableCollection<HAWBBox> HAWBBoxes
         {
             get
             {
-                if (_hAWBBox == null)
+                if (_hAWBBoxes == null)
                 {
-                    _hAWBBox = new TrackableCollection<HAWBBox>();
-                    _hAWBBox.CollectionChanged += FixupHAWBBox;
+                    _hAWBBoxes = new TrackableCollection<HAWBBox>();
+                    _hAWBBoxes.CollectionChanged += FixupHAWBBoxes;
                 }
-                return _hAWBBox;
+                return _hAWBBoxes;
             }
             set
             {
-                if (!ReferenceEquals(_hAWBBox, value))
+                if (!ReferenceEquals(_hAWBBoxes, value))
                 {
                     if (ChangeTracker.ChangeTrackingEnabled)
                     {
                         throw new InvalidOperationException("Cannot set the FixupChangeTrackingCollection when ChangeTracking is enabled");
                     }
-                    if (_hAWBBox != null)
+                    if (_hAWBBoxes != null)
                     {
-                        _hAWBBox.CollectionChanged -= FixupHAWBBox;
+                        _hAWBBoxes.CollectionChanged -= FixupHAWBBoxes;
+                        // This is the principal end in an association that performs cascade deletes.
+                        // Remove the cascade delete event handler for any entities in the current collection.
+                        foreach (HAWBBox item in _hAWBBoxes)
+                        {
+                            ChangeTracker.ObjectStateChanging -= item.HandleCascadeDelete;
+                        }
                     }
-                    _hAWBBox = value;
-                    if (_hAWBBox != null)
+                    _hAWBBoxes = value;
+                    if (_hAWBBoxes != null)
                     {
-                        _hAWBBox.CollectionChanged += FixupHAWBBox;
+                        _hAWBBoxes.CollectionChanged += FixupHAWBBoxes;
+                        // This is the principal end in an association that performs cascade deletes.
+                        // Add the cascade delete event handler for any entities that are already in the new collection.
+                        foreach (HAWBBox item in _hAWBBoxes)
+                        {
+                            ChangeTracker.ObjectStateChanging += item.HandleCascadeDelete;
+                        }
                     }
-                    OnNavigationPropertyChanged("HAWBBox");
+                    OnNavigationPropertyChanged("HAWBBoxes");
                 }
             }
         }
-        private TrackableCollection<HAWBBox> _hAWBBox;
+        private TrackableCollection<HAWBBox> _hAWBBoxes;
     
         [DataMember]
-        public TrackableCollection<HAWBItem> HAWBItem
+        public TrackableCollection<HAWBItem> HAWBItems
         {
             get
             {
-                if (_hAWBItem == null)
+                if (_hAWBItems == null)
                 {
-                    _hAWBItem = new TrackableCollection<HAWBItem>();
-                    _hAWBItem.CollectionChanged += FixupHAWBItem;
+                    _hAWBItems = new TrackableCollection<HAWBItem>();
+                    _hAWBItems.CollectionChanged += FixupHAWBItems;
                 }
-                return _hAWBItem;
+                return _hAWBItems;
             }
             set
             {
-                if (!ReferenceEquals(_hAWBItem, value))
+                if (!ReferenceEquals(_hAWBItems, value))
                 {
                     if (ChangeTracker.ChangeTrackingEnabled)
                     {
                         throw new InvalidOperationException("Cannot set the FixupChangeTrackingCollection when ChangeTracking is enabled");
                     }
-                    if (_hAWBItem != null)
+                    if (_hAWBItems != null)
                     {
-                        _hAWBItem.CollectionChanged -= FixupHAWBItem;
+                        _hAWBItems.CollectionChanged -= FixupHAWBItems;
                     }
-                    _hAWBItem = value;
-                    if (_hAWBItem != null)
+                    _hAWBItems = value;
+                    if (_hAWBItems != null)
                     {
-                        _hAWBItem.CollectionChanged += FixupHAWBItem;
+                        _hAWBItems.CollectionChanged += FixupHAWBItems;
                     }
-                    OnNavigationPropertyChanged("HAWBItem");
+                    OnNavigationPropertyChanged("HAWBItems");
                 }
             }
         }
-        private TrackableCollection<HAWBItem> _hAWBItem;
+        private TrackableCollection<HAWBItem> _hAWBItems;
 
         #endregion
         #region ChangeTracking
@@ -872,8 +884,8 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
         {
             Package = null;
             User = null;
-            HAWBBox.Clear();
-            HAWBItem.Clear();
+            HAWBBoxes.Clear();
+            HAWBItems.Clear();
         }
 
         #endregion
@@ -886,16 +898,16 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
                 return;
             }
     
-            if (previousValue != null && previousValue.HAWB.Contains(this))
+            if (previousValue != null && previousValue.HAWBs.Contains(this))
             {
-                previousValue.HAWB.Remove(this);
+                previousValue.HAWBs.Remove(this);
             }
     
             if (Package != null)
             {
-                if (!Package.HAWB.Contains(this))
+                if (!Package.HAWBs.Contains(this))
                 {
-                    Package.HAWB.Add(this);
+                    Package.HAWBs.Add(this);
                 }
     
                 PID = Package.PID;
@@ -967,7 +979,7 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
             }
         }
     
-        private void FixupHAWBBox(object sender, NotifyCollectionChangedEventArgs e)
+        private void FixupHAWBBoxes(object sender, NotifyCollectionChangedEventArgs e)
         {
             if (IsDeserializing)
             {
@@ -985,8 +997,11 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
                         {
                             item.StartTracking();
                         }
-                        ChangeTracker.RecordAdditionToCollectionProperties("HAWBBox", item);
+                        ChangeTracker.RecordAdditionToCollectionProperties("HAWBBoxes", item);
                     }
+                    // This is the principal end in an association that performs cascade deletes.
+                    // Update the event listener to refer to the new dependent.
+                    ChangeTracker.ObjectStateChanging += item.HandleCascadeDelete;
                 }
             }
     
@@ -1000,13 +1015,16 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
                     }
                     if (ChangeTracker.ChangeTrackingEnabled)
                     {
-                        ChangeTracker.RecordRemovalFromCollectionProperties("HAWBBox", item);
+                        ChangeTracker.RecordRemovalFromCollectionProperties("HAWBBoxes", item);
                     }
+                    // This is the principal end in an association that performs cascade deletes.
+                    // Remove the previous dependent from the event listener.
+                    ChangeTracker.ObjectStateChanging -= item.HandleCascadeDelete;
                 }
             }
         }
     
-        private void FixupHAWBItem(object sender, NotifyCollectionChangedEventArgs e)
+        private void FixupHAWBItems(object sender, NotifyCollectionChangedEventArgs e)
         {
             if (IsDeserializing)
             {
@@ -1024,7 +1042,7 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
                         {
                             item.StartTracking();
                         }
-                        ChangeTracker.RecordAdditionToCollectionProperties("HAWBItem", item);
+                        ChangeTracker.RecordAdditionToCollectionProperties("HAWBItems", item);
                     }
                 }
             }
@@ -1039,7 +1057,7 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
                     }
                     if (ChangeTracker.ChangeTrackingEnabled)
                     {
-                        ChangeTracker.RecordRemovalFromCollectionProperties("HAWBItem", item);
+                        ChangeTracker.RecordRemovalFromCollectionProperties("HAWBItems", item);
                     }
                 }
             }

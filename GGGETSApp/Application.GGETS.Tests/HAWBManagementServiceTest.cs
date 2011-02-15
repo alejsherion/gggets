@@ -216,9 +216,9 @@ namespace Application.GGETS.Tests
                               };
 
             //in
-            HAWBObj.HAWBBox.Add(HAWBBox01);
+            HAWBObj.HAWBBoxes.Add(HAWBBox01);
             //HAWBObj.HAWBBox.Add(HAWBBox02);
-            HAWBObj.HAWBItem.Add(HAWBItem01);
+            HAWBObj.HAWBItems.Add(HAWBItem01);
             //HAWBObj.HAWBItem.Add(HAWBItem02);
             HAWBObj.User = user01;
 

@@ -114,7 +114,7 @@ namespace Application.GGETS.Tests
                 IsMixed = true,//是否是混包
             };
             //授权于HAWB对象
-            package.HAWB.Add(hawbTest);
+            package.HAWBs.Add(hawbTest);
             _packageManagementService.AddPackage(package);
             //Assert.Inconclusive("无法验证不返回值的方法。");
         }
