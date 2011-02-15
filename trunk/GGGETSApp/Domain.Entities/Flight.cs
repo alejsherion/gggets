@@ -62,9 +62,9 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
                     ChangeTracker.RecordOriginalValue("MID", _mID);
                     if (!IsDeserializing)
                     {
-                        if (MAWB != null && MAWB.MID != value)
+                        if (MAWBs != null && MAWBs.MID != value)
                         {
-                            MAWB = null;
+                            MAWBs = null;
                         }
                     }
                     _mID = value;
@@ -153,21 +153,21 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
         #region Navigation Properties
     
         [DataMember]
-        public MAWB MAWB
+        public MAWB MAWBs
         {
-            get { return _mAWB; }
+            get { return _mAWBs; }
             set
             {
-                if (!ReferenceEquals(_mAWB, value))
+                if (!ReferenceEquals(_mAWBs, value))
                 {
-                    var previousValue = _mAWB;
-                    _mAWB = value;
-                    FixupMAWB(previousValue);
-                    OnNavigationPropertyChanged("MAWB");
+                    var previousValue = _mAWBs;
+                    _mAWBs = value;
+                    FixupMAWBs(previousValue);
+                    OnNavigationPropertyChanged("MAWBs");
                 }
             }
         }
-        private MAWB _mAWB;
+        private MAWB _mAWBs;
 
         #endregion
         #region ChangeTracking
@@ -247,13 +247,13 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
     
         protected virtual void ClearNavigationProperties()
         {
-            MAWB = null;
+            MAWBs = null;
         }
 
         #endregion
         #region Association Fixup
     
-        private void FixupMAWB(MAWB previousValue, bool skipKeys = false)
+        private void FixupMAWBs(MAWB previousValue, bool skipKeys = false)
         {
             if (IsDeserializing)
             {
@@ -265,14 +265,14 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
                 previousValue.Flight.Remove(this);
             }
     
-            if (MAWB != null)
+            if (MAWBs != null)
             {
-                if (!MAWB.Flight.Contains(this))
+                if (!MAWBs.Flight.Contains(this))
                 {
-                    MAWB.Flight.Add(this);
+                    MAWBs.Flight.Add(this);
                 }
     
-                MID = MAWB.MID;
+                MID = MAWBs.MID;
             }
             else if (!skipKeys)
             {
@@ -281,18 +281,18 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
     
             if (ChangeTracker.ChangeTrackingEnabled)
             {
-                if (ChangeTracker.OriginalValues.ContainsKey("MAWB")
-                    && (ChangeTracker.OriginalValues["MAWB"] == MAWB))
+                if (ChangeTracker.OriginalValues.ContainsKey("MAWBs")
+                    && (ChangeTracker.OriginalValues["MAWBs"] == MAWBs))
                 {
-                    ChangeTracker.OriginalValues.Remove("MAWB");
+                    ChangeTracker.OriginalValues.Remove("MAWBs");
                 }
                 else
                 {
-                    ChangeTracker.RecordOriginalValue("MAWB", previousValue);
+                    ChangeTracker.RecordOriginalValue("MAWBs", previousValue);
                 }
-                if (MAWB != null && !MAWB.ChangeTracker.ChangeTrackingEnabled)
+                if (MAWBs != null && !MAWBs.ChangeTracker.ChangeTrackingEnabled)
                 {
-                    MAWB.StartTracking();
+                    MAWBs.StartTracking();
                 }
             }
         }

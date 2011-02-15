@@ -87,7 +87,7 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
                 }
             }
         }
-        private int _boxType = 1;
+        private int _boxType;
     
         [DataMember]
         public decimal Weight
@@ -102,7 +102,7 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
                 }
             }
         }
-        private decimal _weight = 0.0m;
+        private decimal _weight;
     
         [DataMember]
         public Nullable<decimal> Length
@@ -117,7 +117,7 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
                 }
             }
         }
-        private Nullable<decimal> _length = 0.0m;
+        private Nullable<decimal> _length;
     
         [DataMember]
         public Nullable<decimal> Width
@@ -132,7 +132,7 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
                 }
             }
         }
-        private Nullable<decimal> _width = 0.0m;
+        private Nullable<decimal> _width;
     
         [DataMember]
         public Nullable<decimal> Height
@@ -147,7 +147,7 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
                 }
             }
         }
-        private Nullable<decimal> _height = 0.0m;
+        private Nullable<decimal> _height;
     
         [DataMember]
         public Nullable<decimal> TransFee
@@ -177,7 +177,7 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
                 }
             }
         }
-        private int _transCurrency = 0;
+        private int _transCurrency;
     
         [DataMember]
         public int Piece
@@ -192,7 +192,7 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
                 }
             }
         }
-        private int _piece = 0;
+        private int _piece;
 
         #endregion
         #region Navigation Properties
@@ -275,6 +275,16 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
             }
         }
     
+        // This entity type is the dependent end in at least one association that performs cascade deletes.
+        // This event handler will process notifications that occur when the principal end is deleted.
+        internal void HandleCascadeDelete(object sender, ObjectStateChangingEventArgs e)
+        {
+            if (e.NewState == ObjectState.Deleted)
+            {
+                this.MarkAsDeleted();
+            }
+        }
+    
         protected bool IsDeserializing { get; private set; }
     
         [OnDeserializing]
@@ -305,16 +315,16 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
                 return;
             }
     
-            if (previousValue != null && previousValue.HAWBBox.Contains(this))
+            if (previousValue != null && previousValue.HAWBBoxes.Contains(this))
             {
-                previousValue.HAWBBox.Remove(this);
+                previousValue.HAWBBoxes.Remove(this);
             }
     
             if (HAWB != null)
             {
-                if (!HAWB.HAWBBox.Contains(this))
+                if (!HAWB.HAWBBoxes.Contains(this))
                 {
-                    HAWB.HAWBBox.Add(this);
+                    HAWB.HAWBBoxes.Add(this);
                 }
     
                 HID = HAWB.HID;

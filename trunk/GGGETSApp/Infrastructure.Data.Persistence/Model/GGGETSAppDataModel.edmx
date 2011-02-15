@@ -512,7 +512,7 @@
           <Property Name="To" Type="String" Nullable="false" MaxLength="3" Unicode="false" FixedLength="true" />
           <Property Name="TakeOffTime" Type="DateTime" />
           <Property Name="LandTime" Type="DateTime" />
-          <NavigationProperty Name="MAWB" Relationship="MYGGGETSModel.FK_FLIGHT_REFERENCE_MAWB" FromRole="Flight" ToRole="MAWB" />
+          <NavigationProperty Name="MAWBs" Relationship="MYGGGETSModel.FK_FLIGHT_REFERENCE_MAWB" FromRole="Flight" ToRole="MAWB" />
         </EntityType>
         <EntityType Name="HAWB">
           <Key>
@@ -562,8 +562,8 @@
           <Property Name="BillTax" Type="Int32" />
           <NavigationProperty Name="Package" Relationship="MYGGGETSModel.FK_HAWB_REFERENCE_PACKAGE" FromRole="HAWB" ToRole="Package" />
           <NavigationProperty Name="User" Relationship="MYGGGETSModel.FK_HAWB_REFERENCE_USER" FromRole="HAWB" ToRole="User" />
-          <NavigationProperty Name="HAWBBox" Relationship="MYGGGETSModel.FK_HAWBBOX_REFERENCE_HAWB" FromRole="HAWB" ToRole="HAWBBox" />
-          <NavigationProperty Name="HAWBItem" Relationship="MYGGGETSModel.FK_HAWBITEM_REFERENCE_HAWB" FromRole="HAWB" ToRole="HAWBItem" />
+          <NavigationProperty Name="HAWBBoxes" Relationship="MYGGGETSModel.FK_HAWBBOX_REFERENCE_HAWB" FromRole="HAWB" ToRole="HAWBBox" />
+          <NavigationProperty Name="HAWBItems" Relationship="MYGGGETSModel.FK_HAWBITEM_REFERENCE_HAWB" FromRole="HAWB" ToRole="HAWBItem" />
         </EntityType>
         <EntityType Name="HAWBBox">
           <Key>
@@ -607,7 +607,7 @@
           <Property Name="TotalVolume" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
           <Property Name="Status" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Flight" Relationship="MYGGGETSModel.FK_FLIGHT_REFERENCE_MAWB" FromRole="MAWB" ToRole="Flight" />
-          <NavigationProperty Name="Package" Relationship="MYGGGETSModel.FK_PACKAGE_REFERENCE_MAWB" FromRole="MAWB" ToRole="Package" />
+          <NavigationProperty Name="Packages" Relationship="MYGGGETSModel.FK_PACKAGE_REFERENCE_MAWB" FromRole="MAWB" ToRole="Package" />
         </EntityType>
         <EntityType Name="Package">
           <Key>
@@ -624,7 +624,7 @@
           <Property Name="Operator" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false" />
           <Property Name="Status" Type="Int32" Nullable="false" />
           <Property Name="IsMixed" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="HAWB" Relationship="MYGGGETSModel.FK_HAWB_REFERENCE_PACKAGE" FromRole="Package" ToRole="HAWB" />
+          <NavigationProperty Name="HAWBs" Relationship="MYGGGETSModel.FK_HAWB_REFERENCE_PACKAGE" FromRole="Package" ToRole="HAWB" />
           <NavigationProperty Name="MAWB" Relationship="MYGGGETSModel.FK_PACKAGE_REFERENCE_MAWB" FromRole="Package" ToRole="MAWB" />
         </EntityType>
         <EntityType Name="RegionCode">
