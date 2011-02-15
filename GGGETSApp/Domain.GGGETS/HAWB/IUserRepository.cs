@@ -1,7 +1,7 @@
 ﻿//************************************************************************
 // 用户名				GGGETS国际综合快递
 // 系统名				管理后台
-// 子系统名		        运单货物IDAL
+// 子系统名		        运单用户IDAL
 // 作成者				ZhiWei.Shen
 // 改版日				2011.02.12
 // 改版内容				创建并且修改
@@ -12,8 +12,7 @@ using ETS.GGGETSApp.Domain.Core;
 
 namespace Domain.GGGETS
 {
-    public interface IHAWBItemRepository : IRepository<HAWBItem>
+    public interface IUserRepository : IRepository<User>
     {
     }
-   
 }

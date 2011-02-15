@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using ETS.GGGETSApp.Infrastructure.Data.Core;
+using ETS.GGGETSApp.Infrastructure.Data.Core.Extensions;
 using ETS.GGGETSApp.Infrastructure.Data.Persistence.UnitOfWork;
 using ETS.GGGETSApp.Infrastructure.CrossCutting.Logging;
 using ETS.GGGETSApp.Domain.Application.Entities;
