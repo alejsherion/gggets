@@ -9,7 +9,7 @@
 using System.Collections.Generic;
 using ETS.GGGETSApp.Domain.Application.Entities;
 
-namespace Application.GGETS.HAWBManagement
+namespace Application.GGETS
 {
     public interface IPackageManagementService
     {

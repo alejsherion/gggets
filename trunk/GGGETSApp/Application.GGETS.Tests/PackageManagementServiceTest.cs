@@ -8,7 +8,6 @@
 //************************************************************************
 using System;
 using System.Linq.Expressions;
-using Application.GGETS.HAWBManagement;
 using Domain.GGGETS;
 using ETS.GGGETSApp.Domain.Application.Entities;
 using ETS.GGGETSApp.Infrastructure.CrossCutting.Logging;

@@ -15,7 +15,7 @@ using ETS.GGGETSApp.Domain.Core;
 using ETS.GGGETSApp.Domain.Application.Entities;
 using ETS.GGGETSApp.Domain.Core.Specification;
 
-namespace Application.GGETS.HAWBManagement
+namespace Application.GGETS
 {
     public class PackageManagementService : IPackageManagementService
     {
