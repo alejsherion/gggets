@@ -213,5 +213,27 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Repositories
                                                                 GetType().Name));
         }
         #endregion
+
+        #region 总运单操作
+        /// <summary>
+        /// 通过运单中的用户编号获取运单用户
+        /// </summary>
+        /// <param name="UID">用户编号</param>
+        /// <returns></returns>
+        public MAWB FindMAWBByBarcode(string barcode)
+        {
+            IGGGETSAppUnitOfWork context = UnitOfWork as IGGGETSAppUnitOfWork;
+
+            if (context != null)
+            {
+                return context.MAWB.Include(it=>it.Package).Where(it => it.BarCode == barcode).Single();
+            }
+            else
+                throw new InvalidOperationException(string.Format(
+                                                                CultureInfo.InvariantCulture,
+                                                                Messages.exception_InvalidStoreContext,
+                                                                GetType().Name));
+        }
+        #endregion
     }
 }

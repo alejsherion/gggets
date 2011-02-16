@@ -21,5 +21,6 @@ namespace Domain.GGGETS
         IList<HAWBBox> FindHAWBBoxByHID(string HID);
         User FindUserByUID(string UID);
         Package FindPackageByBarcode(string barcode);
+        MAWB FindMAWBByBarcode(string barcode);
     }
 }

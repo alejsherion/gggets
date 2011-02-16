@@ -1,9 +1,9 @@
 ﻿//************************************************************************
 // 用户名				GGGETS国际综合快递
 // 系统名				管理后台
-// 子系统名		        运单包裹单元测试
+// 子系统名		        总运单单元测试
 // 作成者				ZhiWei.Shen
-// 改版日				2011.02.13
+// 改版日				2011.02.15
 // 改版内容				创建并且修改
 //************************************************************************
 using System;
@@ -15,21 +15,21 @@ using ETS.GGGETSApp.Infrastructure.Data.Persistence.Repositories;
 using ETS.GGGETSApp.Infrastructure.Data.Persistence.UnitOfWork;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
+using Application.GGETS;
 
 namespace Application.GGETS.Tests
 {
-    
-    
     /// <summary>
-    ///这是 PackageManagementServiceTest 的测试类，旨在
-    ///包含所有 PackageManagementServiceTest 单元测试
+    ///这是 MAWBManagementServiceTest 的测试类，旨在
+    ///包含所有 MAWBManagementServiceTest 单元测试
     ///</summary>
     [TestClass()]
-    public class PackageManagementServiceTest : RepositoryTestsBase<Package>
+    public class MAWBManagementServiceTest: RepositoryTestsBase<MAWB>
     {
         static IPackageManagementService _packageManagementService;//BLL操作类返回
+        static IMAWBManagementService _MAWBManagementService;//BLL操作类返回
         static IHAWBManagementService _HAWBManagementService;//BLL操作类返回
-        public PackageManagementServiceTest()
+        public MAWBManagementServiceTest()
         {
             IGGGETSAppUnitOfWork context = GetUnitOfWork();//上下文
             ITraceManager traceManager = GetTraceManager();//跟踪管理器
@@ -37,9 +37,11 @@ namespace Application.GGETS.Tests
             HAWBItemRepository HAWBItemRepository = new HAWBItemRepository(context, traceManager);
             HAWBBoxRepository HAWBBoxRepository = new HAWBBoxRepository(context, traceManager);
             UserRepository UserRepository = new UserRepository(context, traceManager);
+            MAWBRepository MAWBRepository = new MAWBRepository(context, traceManager);
             PackageRepository packageRepository = new PackageRepository(context, traceManager);
 
-            _packageManagementService = new PackageManagementService(packageRepository,HAWBRepository);
+            _packageManagementService = new PackageManagementService(packageRepository, HAWBRepository);
+            _MAWBManagementService = new MAWBManagementService(MAWBRepository, HAWBRepository);
             _HAWBManagementService = new HAWBManagementService(HAWBRepository, HAWBItemRepository, HAWBBoxRepository,
                                                                UserRepository);
         }
@@ -92,70 +94,49 @@ namespace Application.GGETS.Tests
         //
         #endregion
 
-        #region 新增包裹(包括其子运单)
+        #region 通过条形码查询MAWB测试 
         /// <summary>
-        ///AddPackage 的测试
+        ///FindMAWBByBarcode 的测试
         ///</summary>
         [TestMethod()]
-        public void AddPackageTest()
+        public void FindMAWBByBarcodeTest()
         {
-            HAWB hawbTest = _HAWBManagementService.FindHAWBByBarCode("2010");
-            Package package = new Package
+            string barcode = "2012"; 
+            MAWB actual;
+            actual = _MAWBManagementService.FindMAWBByBarcode(barcode);
+        }
+        #endregion
+
+        #region 新增总运单测试
+        /// <summary>
+        ///AddMAWB 的测试
+        ///</summary>
+        [TestMethod()]
+        public void AddMAWBTest()
+        {
+            //new a MAWB
+            MAWB mawb = new MAWB
             {
-                BarCode = "p1",//条形码
-                RegionCode = "001",//地区三字码
-                Piece = 10,//件数
-                TotalWeight = 10,//总重量
-                CreateTime = DateTime.Now,//创建日期
-                UpdateTime = DateTime.Now,//更新日期
-                Operator = "沈志伟",//操作人员
-                Status = 0,//包状态
-                IsMixed = true,//是否是混包
+                MID = new Guid("00000000-0000-0000-0000-000000000001"),
+                BarCode="2013",
+                CreateTime=DateTime.Now,
+                Operator="tester",
+                TotalWeight=20,
+                TotalVolume=20,
+                Status=0
             };
-            //授权于HAWB对象
-            package.HAWBs.Add(hawbTest);
-            _packageManagementService.AddPackage(package);
-            //Assert.Inconclusive("无法验证不返回值的方法。");
+            Package package = _packageManagementService.FindPackageByBarcode("p2");
+            mawb.Package.Add(package);
+            _MAWBManagementService.AddMAWB(mawb);
         }
         #endregion
 
-        #region 通过条形码查询包裹
-        /// <summary>
-        ///FindPackageByBarcode 的测试
-        ///</summary>
-        [TestMethod()]
-        public void FindPackageByBarcodeTest()
-        {
-            string barcode = "p1";
-            //Package expected = null; 
-            Package actual;
-            actual = _packageManagementService.FindPackageByBarcode(barcode);
-            //Assert.AreEqual(expected, actual);
-            //Assert.Inconclusive("验证此测试方法的正确性。");
-        }
-        #endregion
-
-        #region 修改包裹
-        /// <summary>
-        ///ModifyPackage 的测试
-        ///</summary>
-        [TestMethod()]
-        public void ModifyPackageTest()
-        {
-            Package package = _packageManagementService.FindPackageByBarcode("p1");
-            HAWB hawb = _HAWBManagementService.FindHAWBByBarCode("2011");
-            package.HAWBs.Add(hawb);
-            _packageManagementService.ModifyPackage(package);
-            //Assert.Inconclusive("无法验证不返回值的方法。");
-        }
-        #endregion
-
-        public override Expression<Func<Package, bool>> FilterExpression
+        public override Expression<Func<MAWB, bool>> FilterExpression
         {
             get { throw new NotImplementedException(); }
         }
 
-        public override Expression<Func<Package, int>> OrderByExpression
+        public override Expression<Func<MAWB, int>> OrderByExpression
         {
             get { throw new NotImplementedException(); }
         }

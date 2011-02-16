@@ -60,7 +60,9 @@
     <Compile Include="CRM\IIndividualUserManagementService.cs" />
     <Compile Include="HAWBManagement\HAWBManagementService.cs" />
     <Compile Include="HAWBManagement\IHAWBManagementService.cs" />
+    <Compile Include="HAWBManagement\IMAWBManagementService.cs" />
     <Compile Include="HAWBManagement\IPackageManagementService.cs" />
+    <Compile Include="HAWBManagement\MAWBManagementService.cs" />
     <Compile Include="HAWBManagement\PackageManagementService.cs" />
   </ItemGroup>
   <ItemGroup>
