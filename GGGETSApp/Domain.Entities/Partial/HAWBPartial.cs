@@ -20,6 +20,7 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
         {
             ChangeTracker.ChangeTrackingEnabled = true;
             this.HAWBBoxes.CollectionChanged += new System.Collections.Specialized.NotifyCollectionChangedEventHandler(HAWBBoxes_CollectionChanged);
+            this._propertyChanged += new System.ComponentModel.PropertyChangedEventHandler(HAWB_propertyChanged);
         }
 
         /// <summary>
@@ -28,7 +29,7 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void HAWBBoxes_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
-        {          
+        {
             CalculateTotalWeight();
             CalculateVolumeWeight();
             CalculateTotalVolume();
@@ -36,7 +37,19 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
         }
 
         /// <summary>
-        /// 计算运单总重量，运单总重量=个运单包裹重量之和。 
+        /// 当运单属性发生变化时，都要重新计算包裹的总重量，件数可以不用考虑
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void HAWB_propertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            HAWB hawb = sender as HAWB;
+            //当重量发生变化时更新包裹的总重量，注意此时的hawb中必须有包裹实例
+            if (e.PropertyName == "TotalWeight" && hawb.Package != null) hawb.Package.CalculateHAWBSTotalWeight();
+        }
+
+        /// <summary>
+        /// 计算运单总重量，运单总重量=1个运单包裹重量之和。 
         /// </summary>
         public void  CalculateTotalWeight()
         {

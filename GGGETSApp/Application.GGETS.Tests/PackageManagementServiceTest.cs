@@ -150,6 +150,22 @@ namespace Application.GGETS.Tests
         }
         #endregion
 
+        #region 测试包裹总重量和总件数动态变化情况
+        /// <summary>
+        ///TestPackageTotalWeightAndPiece 的测试
+        ///</summary>
+        [TestMethod()]
+        public void TestPackageTotalWeightAndPiece()
+        {
+            string barcode = "p1";
+            //Package expected = null; 
+            Package actual;
+            actual = _packageManagementService.FindPackageByBarcode(barcode);
+            //Assert.AreEqual(expected, actual);
+            //Assert.Inconclusive("验证此测试方法的正确性。");
+        }
+        #endregion
+
         public override Expression<Func<Package, bool>> FilterExpression
         {
             get { throw new NotImplementedException(); }
