@@ -192,7 +192,7 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Repositories
             IGGGETSAppUnitOfWork context = UnitOfWork as IGGGETSAppUnitOfWork;
             if (context != null)
             {
-                return context.Package.Include(it=>it.HAWBs).Where(it => it.BarCode == barcode).Single();
+                return context.Package.Include(it=>it.HAWBs).Where(it => it.BarCode == barcode).SingleOrDefault();
             }
             else
                 throw new InvalidOperationException(string.Format(
@@ -215,7 +215,7 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Repositories
             if (context != null)
             {
                 Guid guidHID = new Guid(UID);
-                return context.User.Where(it => it.UID == guidHID).Single();
+                return context.User.Where(it => it.UID == guidHID).SingleOrDefault();
             }
             else
                 throw new InvalidOperationException(string.Format(
@@ -237,7 +237,7 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Repositories
 
             if (context != null)
             {
-                return context.MAWB.Include(it=>it.Packages).Where(it => it.BarCode == barcode).Single();
+                return context.MAWB.Include(it=>it.Packages).Where(it => it.BarCode == barcode).SingleOrDefault();
             }
             else
                 throw new InvalidOperationException(string.Format(

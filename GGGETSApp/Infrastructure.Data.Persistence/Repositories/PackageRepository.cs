@@ -33,7 +33,7 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Repositories
             //transfer GUID
             Guid guidObj = new Guid(PID);
             //don't forget open package's load:HAWBs
-            return context.Package.Where(p => p.PID == guidObj).Single();
+            return context.Package.Where(p => p.PID == guidObj).SingleOrDefault();
         }
     }
 }
