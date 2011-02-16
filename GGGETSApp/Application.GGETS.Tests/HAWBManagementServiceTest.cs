@@ -273,7 +273,8 @@ namespace Application.GGETS.Tests
             string barCode = string.Empty; 
             string countryCode = string.Empty; 
             string regionCode = string.Empty; 
-            string loginName = string.Empty; 
+            string loginName = string.Empty;
+            string companyName = string.Empty;
             string realName = string.Empty; 
             string phone = string.Empty;
             string departmentCode = string.Empty;
@@ -284,7 +285,7 @@ namespace Application.GGETS.Tests
             bool isInternational = true; 
             //IEnumerable<HAWB> expected = null; 
             IList<HAWB> actual;
-            actual = _HAWBManagementService.FindHAWBsByCondition(barCode, countryCode, regionCode, loginName, departmentCode,
+            actual = _HAWBManagementService.FindHAWBsByCondition(barCode, countryCode, regionCode, loginName, departmentCode, companyName,
                                                 realName, phone, beginTime, endTime, settleType, serviceType, isInternational);
             //Assert.AreEqual(expected, actual);
             //Assert.Inconclusive("验证此测试方法的正确性。");

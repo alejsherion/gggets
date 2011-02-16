@@ -78,17 +78,21 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Repositories
         /// <summary>
         /// 运单多条件查询
         /// </summary>
-        /// <param name="HID">运单编号</param>
+        /// <param name="barCode">运单编号</param>
         /// <param name="countryCode">国家二字码</param>
         /// <param name="regionCode">地区三字码</param>
         /// <param name="loginName">客户账号</param>
+        /// <param name="companyName">公司名称</param>
         /// <param name="realName">联系人姓名</param>
         /// <param name="phone">联系电话</param>
+        /// <param name="endTime">结束日期</param>
         /// <param name="settleType">结算方式</param>
         /// <param name="serviceType">包裹类型</param>
         /// <param name="isInternational">运单类型</param>
+        /// <param name="beginTime">开始日期</param>
+        /// <param name="departmentCode">部门编号</param>
         /// <returns></returns>
-        public IList<HAWB> FindHAWBsByCondition(string barCode, string countryCode, string regionCode, string loginName, string departmentCode,
+        public IList<HAWB> FindHAWBsByCondition(string barCode, string countryCode, string regionCode, string loginName, string departmentCode, string companyName,
                                                string realName, string phone, DateTime? beginTime, DateTime? endTime, int settleType, int serviceType,
                                                bool isInternational)
         {
@@ -102,6 +106,7 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Repositories
                     if (!string.IsNullOrEmpty(countryCode)) HAWBs = HAWBs.Where(a => a.User.CountryCode == countryCode);
                     if (!string.IsNullOrEmpty(regionCode)) HAWBs = HAWBs.Where(a => a.User.RegionCode == regionCode);
                     if (!string.IsNullOrEmpty(loginName)) HAWBs = HAWBs.Where(a => a.User.LoginName == loginName);
+                    if (!string.IsNullOrEmpty(companyName)) HAWBs = HAWBs.Where(a => a.Carrier == companyName);
                     if (!string.IsNullOrEmpty(realName)) HAWBs = HAWBs.Where(a => a.User.RealName == realName);
                     if (!string.IsNullOrEmpty(phone)) HAWBs = HAWBs.Where(a => a.User.Phone == phone);
                     if(beginTime.HasValue)
