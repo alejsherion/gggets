@@ -226,7 +226,7 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Repositories
 
             if (context != null)
             {
-                return context.MAWB.Include(it=>it.Package).Where(it => it.BarCode == barcode).Single();
+                return context.MAWB.Include(it=>it.Packages).Where(it => it.BarCode == barcode).Single();
             }
             else
                 throw new InvalidOperationException(string.Format(
