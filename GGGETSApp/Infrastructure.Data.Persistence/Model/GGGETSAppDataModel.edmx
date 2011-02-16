@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="MYGGGETSModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2005" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+    <Schema Namespace="MYGGGETSModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
         <EntityContainer Name="MYGGGETSModelStoreContainer">
           <EntitySet Name="AddressBook" EntityType="MYGGGETSModel.Store.AddressBook" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Company" EntityType="MYGGGETSModel.Store.Company" store:Type="Tables" Schema="dbo" />
@@ -152,7 +152,7 @@
           <Property Name="ShipperAddress" Type="nvarchar" Nullable="false" MaxLength="500" />
           <Property Name="ShipperZipCode" Type="varchar" Nullable="false" MaxLength="20" />
           <Property Name="ShipperTel" Type="varchar" Nullable="false" MaxLength="20" />
-          <Property Name="ConsigneeName" Type="nvarchar" MaxLength="50" />
+          <Property Name="ConsigneeName" Type="nvarchar" MaxLength="200" />
           <Property Name="ConsigneeContactor" Type="nvarchar" Nullable="false" MaxLength="50" />
           <Property Name="ConsigneeCountry" Type="char" Nullable="false" MaxLength="2" />
           <Property Name="ConsigneeRegion" Type="char" Nullable="false" MaxLength="3" />
@@ -381,57 +381,56 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="MYGGGETSModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+      <Schema Namespace="GGGETSModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
         <EntityContainer Name="GGGETSUnitOfWork" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="AddressBook" EntityType="MYGGGETSModel.AddressBook" />
-          <EntitySet Name="Company" EntityType="MYGGGETSModel.Company" />
-          <EntitySet Name="CountryCode" EntityType="MYGGGETSModel.CountryCode" />
-          <EntitySet Name="Department" EntityType="MYGGGETSModel.Department" />
-          <EntitySet Name="Flight" EntityType="MYGGGETSModel.Flight" />
-          <EntitySet Name="HAWB" EntityType="MYGGGETSModel.HAWB" />
-          <EntitySet Name="HAWBBox" EntityType="MYGGGETSModel.HAWBBox" />
-          <EntitySet Name="HAWBItem" EntityType="MYGGGETSModel.HAWBItem" />
-          <EntitySet Name="MAWB" EntityType="MYGGGETSModel.MAWB" />
-          <EntitySet Name="Package" EntityType="MYGGGETSModel.Package" />
-          <EntitySet Name="RegionCode" EntityType="MYGGGETSModel.RegionCode" />
-          <EntitySet Name="User" EntityType="MYGGGETSModel.User" />
-          <AssociationSet Name="FK_ADDRESSB_REFERENCE_USER" Association="MYGGGETSModel.FK_ADDRESSB_REFERENCE_USER">
+          <EntitySet Name="AddressBook" EntityType="GGGETSModel.AddressBook" />
+          <EntitySet Name="Company" EntityType="GGGETSModel.Company" />
+          <EntitySet Name="CountryCode" EntityType="GGGETSModel.CountryCode" />
+          <EntitySet Name="Department" EntityType="GGGETSModel.Department" />
+          <EntitySet Name="Flight" EntityType="GGGETSModel.Flight" />
+          <EntitySet Name="HAWB" EntityType="GGGETSModel.HAWB" />
+          <EntitySet Name="HAWBBox" EntityType="GGGETSModel.HAWBBox" />
+          <EntitySet Name="HAWBItem" EntityType="GGGETSModel.HAWBItem" />
+          <EntitySet Name="MAWB" EntityType="GGGETSModel.MAWB" />
+          <EntitySet Name="Package" EntityType="GGGETSModel.Package" />
+          <EntitySet Name="RegionCode" EntityType="GGGETSModel.RegionCode" />
+          <EntitySet Name="User" EntityType="GGGETSModel.User" />
+          <AssociationSet Name="FK_ADDRESSB_REFERENCE_USER" Association="GGGETSModel.FK_ADDRESSB_REFERENCE_USER">
             <End Role="User" EntitySet="User" />
             <End Role="AddressBook" EntitySet="AddressBook" />
           </AssociationSet>
-          <AssociationSet Name="FK_DEPARTME_REFERENCE_COMPANY" Association="MYGGGETSModel.FK_DEPARTME_REFERENCE_COMPANY">
+          <AssociationSet Name="FK_DEPARTME_REFERENCE_COMPANY" Association="GGGETSModel.FK_DEPARTME_REFERENCE_COMPANY">
             <End Role="Company" EntitySet="Company" />
             <End Role="Department" EntitySet="Department" />
           </AssociationSet>
-          <AssociationSet Name="FK_USER_REFERENCE_DEPARTME" Association="MYGGGETSModel.FK_USER_REFERENCE_DEPARTME">
+          <AssociationSet Name="FK_USER_REFERENCE_DEPARTME" Association="GGGETSModel.FK_USER_REFERENCE_DEPARTME">
             <End Role="Department" EntitySet="Department" />
             <End Role="User" EntitySet="User" />
           </AssociationSet>
-          <AssociationSet Name="FK_FLIGHT_REFERENCE_MAWB" Association="MYGGGETSModel.FK_FLIGHT_REFERENCE_MAWB">
+          <AssociationSet Name="FK_FLIGHT_REFERENCE_MAWB" Association="GGGETSModel.FK_FLIGHT_REFERENCE_MAWB">
             <End Role="MAWB" EntitySet="MAWB" />
             <End Role="Flight" EntitySet="Flight" />
           </AssociationSet>
-          <AssociationSet Name="FK_HAWB_REFERENCE_PACKAGE" Association="MYGGGETSModel.FK_HAWB_REFERENCE_PACKAGE">
+          <AssociationSet Name="FK_HAWB_REFERENCE_PACKAGE" Association="GGGETSModel.FK_HAWB_REFERENCE_PACKAGE">
             <End Role="Package" EntitySet="Package" />
             <End Role="HAWB" EntitySet="HAWB" />
           </AssociationSet>
-          <AssociationSet Name="FK_HAWB_REFERENCE_USER" Association="MYGGGETSModel.FK_HAWB_REFERENCE_USER">
+          <AssociationSet Name="FK_HAWB_REFERENCE_USER" Association="GGGETSModel.FK_HAWB_REFERENCE_USER">
             <End Role="User" EntitySet="User" />
             <End Role="HAWB" EntitySet="HAWB" />
           </AssociationSet>
-          <AssociationSet Name="FK_HAWBBOX_REFERENCE_HAWB" Association="MYGGGETSModel.FK_HAWBBOX_REFERENCE_HAWB">
+          <AssociationSet Name="FK_HAWBBOX_REFERENCE_HAWB" Association="GGGETSModel.FK_HAWBBOX_REFERENCE_HAWB">
             <End Role="HAWB" EntitySet="HAWB" />
             <End Role="HAWBBox" EntitySet="HAWBBox" />
           </AssociationSet>
-          <AssociationSet Name="FK_HAWBITEM_REFERENCE_HAWB" Association="MYGGGETSModel.FK_HAWBITEM_REFERENCE_HAWB">
+          <AssociationSet Name="FK_HAWBITEM_REFERENCE_HAWB" Association="GGGETSModel.FK_HAWBITEM_REFERENCE_HAWB">
             <End Role="HAWB" EntitySet="HAWB" />
             <End Role="HAWBItem" EntitySet="HAWBItem" />
           </AssociationSet>
-          <AssociationSet Name="FK_PACKAGE_REFERENCE_MAWB" Association="MYGGGETSModel.FK_PACKAGE_REFERENCE_MAWB">
+          <AssociationSet Name="FK_PACKAGE_REFERENCE_MAWB" Association="GGGETSModel.FK_PACKAGE_REFERENCE_MAWB">
             <End Role="MAWB" EntitySet="MAWB" />
             <End Role="Package" EntitySet="Package" />
           </AssociationSet>
@@ -453,7 +452,7 @@
           <Property Name="AddressType" Type="Int32" Nullable="false" />
           <Property Name="CreateTime" Type="DateTime" Nullable="false" />
           <Property Name="UpdateTime" Type="DateTime" Nullable="false" />
-          <NavigationProperty Name="User" Relationship="MYGGGETSModel.FK_ADDRESSB_REFERENCE_USER" FromRole="AddressBook" ToRole="User" />
+          <NavigationProperty Name="User" Relationship="GGGETSModel.FK_ADDRESSB_REFERENCE_USER" FromRole="AddressBook" ToRole="User" />
         </EntityType>
         <EntityType Name="Company">
           <Key>
@@ -475,7 +474,7 @@
           <Property Name="LimitAmount" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
           <Property Name="Status" Type="Int32" Nullable="false" />
           <Property Name="Remark" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
-          <NavigationProperty Name="Department" Relationship="MYGGGETSModel.FK_DEPARTME_REFERENCE_COMPANY" FromRole="Company" ToRole="Department" />
+          <NavigationProperty Name="Department" Relationship="GGGETSModel.FK_DEPARTME_REFERENCE_COMPANY" FromRole="Company" ToRole="Department" />
         </EntityType>
         <EntityType Name="CountryCode">
           <Key>
@@ -498,8 +497,8 @@
           <Property Name="WeightDiscountRate" Type="Decimal" Nullable="false" Precision="4" Scale="2" />
           <Property Name="SettleType" Type="Int32" Nullable="false" />
           <Property Name="WeightCalType" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Company" Relationship="MYGGGETSModel.FK_DEPARTME_REFERENCE_COMPANY" FromRole="Department" ToRole="Company" />
-          <NavigationProperty Name="User" Relationship="MYGGGETSModel.FK_USER_REFERENCE_DEPARTME" FromRole="Department" ToRole="User" />
+          <NavigationProperty Name="Company" Relationship="GGGETSModel.FK_DEPARTME_REFERENCE_COMPANY" FromRole="Department" ToRole="Company" />
+          <NavigationProperty Name="User" Relationship="GGGETSModel.FK_USER_REFERENCE_DEPARTME" FromRole="Department" ToRole="User" />
         </EntityType>
         <EntityType Name="Flight">
           <Key>
@@ -512,7 +511,7 @@
           <Property Name="To" Type="String" Nullable="false" MaxLength="3" Unicode="false" FixedLength="true" />
           <Property Name="TakeOffTime" Type="DateTime" />
           <Property Name="LandTime" Type="DateTime" />
-          <NavigationProperty Name="MAWB" Relationship="MYGGGETSModel.FK_FLIGHT_REFERENCE_MAWB" FromRole="Flight" ToRole="MAWB" />
+          <NavigationProperty Name="MAWBs" Relationship="GGGETSModel.FK_FLIGHT_REFERENCE_MAWB" FromRole="Flight" ToRole="MAWB" />
         </EntityType>
         <EntityType Name="HAWB">
           <Key>
@@ -524,11 +523,11 @@
           <Property Name="BarCode" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
           <Property Name="Carrier" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
           <Property Name="CarrierHAWBID" Type="Guid" />
-          <Property Name="SettleType" Type="Int32" Nullable="false" />
-          <Property Name="ServiceType" Type="Int32" />
+          <Property Name="SettleType" Type="Int32" Nullable="false" DefaultValue="0" />
+          <Property Name="ServiceType" Type="Int32" DefaultValue="0" />
           <Property Name="CreateTime" Type="DateTime" Nullable="false" />
           <Property Name="UpdateTime" Type="DateTime" />
-          <Property Name="Status" Type="Int32" Nullable="false" />
+          <Property Name="Status" Type="Int32" Nullable="false" DefaultValue="0" />
           <Property Name="Operator" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
           <Property Name="Remark" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Name="ShipperName" Type="String" Nullable="false" MaxLength="200" Unicode="true" FixedLength="false" />
@@ -538,7 +537,7 @@
           <Property Name="ShipperAddress" Type="String" Nullable="false" MaxLength="500" Unicode="true" FixedLength="false" />
           <Property Name="ShipperZipCode" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
           <Property Name="ShipperTel" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
-          <Property Name="ConsigneeName" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="ConsigneeName" Type="String" />
           <Property Name="ConsigneeContactor" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
           <Property Name="ConsigneeCountry" Type="String" Nullable="false" MaxLength="2" Unicode="false" FixedLength="true" />
           <Property Name="ConsigneeRegion" Type="String" Nullable="false" MaxLength="3" Unicode="false" FixedLength="true" />
@@ -552,18 +551,18 @@
           <Property Name="DeliverAddress" Type="String" MaxLength="500" Unicode="true" FixedLength="false" />
           <Property Name="DeliverZipCode" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
           <Property Name="DeliverTel" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
-          <Property Name="WeightType" Type="Int32" Nullable="false" />
-          <Property Name="VolumeWeight" Type="Decimal" Precision="8" Scale="2" />
-          <Property Name="TotalVolume" Type="Decimal" Nullable="false" Precision="8" Scale="2" />
-          <Property Name="TotalWeight" Type="Decimal" Nullable="false" Precision="8" Scale="2" />
-          <Property Name="Piece" Type="Int32" Nullable="false" />
-          <Property Name="IsInternational" Type="Boolean" Nullable="false" />
+          <Property Name="WeightType" Type="Int32" Nullable="false" DefaultValue="0" />
+          <Property Name="VolumeWeight" Type="Decimal" Precision="8" Scale="2" DefaultValue="0" />
+          <Property Name="TotalVolume" Type="Decimal" Nullable="false" Precision="8" Scale="2" DefaultValue="0" />
+          <Property Name="TotalWeight" Type="Decimal" Nullable="false" Precision="8" Scale="2" DefaultValue="0" />
+          <Property Name="Piece" Type="Int32" Nullable="false" DefaultValue="0" />
+          <Property Name="IsInternational" Type="Boolean" Nullable="false" DefaultValue="True" />
           <Property Name="SpecialInstruction" Type="String" MaxLength="500" Unicode="true" FixedLength="false" />
-          <Property Name="BillTax" Type="Int32" />
-          <NavigationProperty Name="Package" Relationship="MYGGGETSModel.FK_HAWB_REFERENCE_PACKAGE" FromRole="HAWB" ToRole="Package" />
-          <NavigationProperty Name="User" Relationship="MYGGGETSModel.FK_HAWB_REFERENCE_USER" FromRole="HAWB" ToRole="User" />
-          <NavigationProperty Name="HAWBBoxes" Relationship="MYGGGETSModel.FK_HAWBBOX_REFERENCE_HAWB" FromRole="HAWB" ToRole="HAWBBox" />
-          <NavigationProperty Name="HAWBItems" Relationship="MYGGGETSModel.FK_HAWBITEM_REFERENCE_HAWB" FromRole="HAWB" ToRole="HAWBItem" />
+          <Property Name="BillTax" Type="Int32" DefaultValue="0" />
+          <NavigationProperty Name="Package" Relationship="GGGETSModel.FK_HAWB_REFERENCE_PACKAGE" FromRole="HAWB" ToRole="Package" />
+          <NavigationProperty Name="User" Relationship="GGGETSModel.FK_HAWB_REFERENCE_USER" FromRole="HAWB" ToRole="User" />
+          <NavigationProperty Name="HAWBBoxes" Relationship="GGGETSModel.FK_HAWBBOX_REFERENCE_HAWB" FromRole="HAWB" ToRole="HAWBBox" />
+          <NavigationProperty Name="HAWBItems" Relationship="GGGETSModel.FK_HAWBITEM_REFERENCE_HAWB" FromRole="HAWB" ToRole="HAWBItem" />
         </EntityType>
         <EntityType Name="HAWBBox">
           <Key>
@@ -572,14 +571,14 @@
           <Property Name="BoxID" Type="Guid" Nullable="false" />
           <Property Name="HID" Type="Guid" Nullable="false" />
           <Property Name="BoxType" Type="Int32" Nullable="false" />
-          <Property Name="Weight" Type="Decimal" Nullable="false" Precision="8" Scale="2" />
-          <Property Name="Length" Type="Decimal" Precision="8" Scale="2" />
-          <Property Name="Width" Type="Decimal" Precision="8" Scale="2" />
-          <Property Name="Height" Type="Decimal" Precision="8" Scale="2" />
+          <Property Name="Weight" Type="Decimal" Nullable="false" Precision="8" Scale="2" DefaultValue="0" />
+          <Property Name="Length" Type="Decimal" Precision="8" Scale="2" DefaultValue="0" />
+          <Property Name="Width" Type="Decimal" Precision="8" Scale="2" DefaultValue="0" />
+          <Property Name="Height" Type="Decimal" Precision="8" Scale="2" DefaultValue="0" />
           <Property Name="TransFee" Type="Decimal" Precision="8" Scale="2" />
           <Property Name="TransCurrency" Type="Int32" Nullable="false" />
-          <Property Name="Piece" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="HAWB" Relationship="MYGGGETSModel.FK_HAWBBOX_REFERENCE_HAWB" FromRole="HAWBBox" ToRole="HAWB" />
+          <Property Name="Piece" Type="Int32" Nullable="false" DefaultValue="0" />
+          <NavigationProperty Name="HAWB" Relationship="GGGETSModel.FK_HAWBBOX_REFERENCE_HAWB" FromRole="HAWBBox" ToRole="HAWB" />
         </EntityType>
         <EntityType Name="HAWBItem">
           <Key>
@@ -588,11 +587,11 @@
           <Property Name="ItemID" Type="Guid" Nullable="false" />
           <Property Name="HID" Type="Guid" />
           <Property Name="Name" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
-          <Property Name="Piece" Type="Int32" Nullable="false" />
-          <Property Name="UnitAmount" Type="Decimal" Nullable="false" Precision="8" Scale="2" />
-          <Property Name="TotalAmount" Type="Decimal" Nullable="false" Precision="8" Scale="2" />
+          <Property Name="Piece" Type="Int32" Nullable="false" DefaultValue="0" />
+          <Property Name="UnitAmount" Type="Decimal" Nullable="false" Precision="8" Scale="2" DefaultValue="0" />
+          <Property Name="TotalAmount" Type="Decimal" Nullable="false" Precision="8" Scale="2" DefaultValue="0" />
           <Property Name="Remark" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
-          <NavigationProperty Name="HAWB" Relationship="MYGGGETSModel.FK_HAWBITEM_REFERENCE_HAWB" FromRole="HAWBItem" ToRole="HAWB" />
+          <NavigationProperty Name="HAWB" Relationship="GGGETSModel.FK_HAWBITEM_REFERENCE_HAWB" FromRole="HAWBItem" ToRole="HAWB" />
         </EntityType>
         <EntityType Name="MAWB">
           <Key>
@@ -603,11 +602,11 @@
           <Property Name="CreateTime" Type="DateTime" Nullable="false" />
           <Property Name="LockedTime" Type="DateTime" />
           <Property Name="Operator" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false" />
-          <Property Name="TotalWeight" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
-          <Property Name="TotalVolume" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
-          <Property Name="Status" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Flight" Relationship="MYGGGETSModel.FK_FLIGHT_REFERENCE_MAWB" FromRole="MAWB" ToRole="Flight" />
-          <NavigationProperty Name="Packages" Relationship="MYGGGETSModel.FK_PACKAGE_REFERENCE_MAWB" FromRole="MAWB" ToRole="Package" />
+          <Property Name="TotalWeight" Type="Decimal" Nullable="false" Precision="10" Scale="2" DefaultValue="0" />
+          <Property Name="TotalVolume" Type="Decimal" Nullable="false" Precision="10" Scale="2" DefaultValue="0" />
+          <Property Name="Status" Type="Int32" Nullable="false" DefaultValue="0" />
+          <NavigationProperty Name="Flight" Relationship="GGGETSModel.FK_FLIGHT_REFERENCE_MAWB" FromRole="MAWB" ToRole="Flight" />
+          <NavigationProperty Name="Packages" Relationship="GGGETSModel.FK_PACKAGE_REFERENCE_MAWB" FromRole="MAWB" ToRole="Package" />
         </EntityType>
         <EntityType Name="Package">
           <Key>
@@ -617,15 +616,15 @@
           <Property Name="MID" Type="Guid" />
           <Property Name="BarCode" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
           <Property Name="RegionCode" Type="String" Nullable="false" MaxLength="3" Unicode="false" FixedLength="true" />
-          <Property Name="Piece" Type="Int32" Nullable="false" />
-          <Property Name="TotalWeight" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
+          <Property Name="Piece" Type="Int32" Nullable="false" DefaultValue="0" />
+          <Property Name="TotalWeight" Type="Decimal" Nullable="false" Precision="10" Scale="2" DefaultValue="0" />
           <Property Name="CreateTime" Type="DateTime" Nullable="false" />
           <Property Name="UpdateTime" Type="DateTime" Nullable="false" />
           <Property Name="Operator" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false" />
-          <Property Name="Status" Type="Int32" Nullable="false" />
-          <Property Name="IsMixed" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="HAWBs" Relationship="MYGGGETSModel.FK_HAWB_REFERENCE_PACKAGE" FromRole="Package" ToRole="HAWB" />
-          <NavigationProperty Name="MAWB" Relationship="MYGGGETSModel.FK_PACKAGE_REFERENCE_MAWB" FromRole="Package" ToRole="MAWB" />
+          <Property Name="Status" Type="Int32" Nullable="false" DefaultValue="0" />
+          <Property Name="IsMixed" Type="Boolean" Nullable="false" DefaultValue="False" />
+          <NavigationProperty Name="HAWBs" Relationship="GGGETSModel.FK_HAWB_REFERENCE_PACKAGE" FromRole="Package" ToRole="HAWB" />
+          <NavigationProperty Name="MAWB" Relationship="GGGETSModel.FK_PACKAGE_REFERENCE_MAWB" FromRole="Package" ToRole="MAWB" />
         </EntityType>
         <EntityType Name="RegionCode">
           <Key>
@@ -664,15 +663,15 @@
           <Property Name="SettleType" Type="Int32" Nullable="false" />
           <Property Name="WeightCalType" Type="Int32" Nullable="false" />
           <Property Name="Status" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="AddressBook" Relationship="MYGGGETSModel.FK_ADDRESSB_REFERENCE_USER" FromRole="User" ToRole="AddressBook" />
-          <NavigationProperty Name="Department1" Relationship="MYGGGETSModel.FK_USER_REFERENCE_DEPARTME" FromRole="User" ToRole="Department" />
-          <NavigationProperty Name="HAWB" Relationship="MYGGGETSModel.FK_HAWB_REFERENCE_USER" FromRole="User" ToRole="HAWB" />
+          <NavigationProperty Name="AddressBook" Relationship="GGGETSModel.FK_ADDRESSB_REFERENCE_USER" FromRole="User" ToRole="AddressBook" />
+          <NavigationProperty Name="Department1" Relationship="GGGETSModel.FK_USER_REFERENCE_DEPARTME" FromRole="User" ToRole="Department" />
+          <NavigationProperty Name="HAWB" Relationship="GGGETSModel.FK_HAWB_REFERENCE_USER" FromRole="User" ToRole="HAWB" />
         </EntityType>
         <Association Name="FK_ADDRESSB_REFERENCE_USER">
-          <End Role="User" Type="MYGGGETSModel.User" Multiplicity="0..1">
+          <End Role="User" Type="GGGETSModel.User" Multiplicity="0..1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Role="AddressBook" Type="MYGGGETSModel.AddressBook" Multiplicity="*" />
+          <End Role="AddressBook" Type="GGGETSModel.AddressBook" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="User">
               <PropertyRef Name="UID" />
@@ -683,8 +682,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_DEPARTME_REFERENCE_COMPANY">
-          <End Role="Company" Type="MYGGGETSModel.Company" Multiplicity="0..1" />
-          <End Role="Department" Type="MYGGGETSModel.Department" Multiplicity="*" />
+          <End Role="Company" Type="GGGETSModel.Company" Multiplicity="0..1" />
+          <End Role="Department" Type="GGGETSModel.Department" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Company">
               <PropertyRef Name="CID" />
@@ -695,8 +694,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_USER_REFERENCE_DEPARTME">
-          <End Role="Department" Type="MYGGGETSModel.Department" Multiplicity="0..1" />
-          <End Role="User" Type="MYGGGETSModel.User" Multiplicity="*" />
+          <End Role="Department" Type="GGGETSModel.Department" Multiplicity="0..1" />
+          <End Role="User" Type="GGGETSModel.User" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Department">
               <PropertyRef Name="DID" />
@@ -707,8 +706,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_FLIGHT_REFERENCE_MAWB">
-          <End Role="MAWB" Type="MYGGGETSModel.MAWB" Multiplicity="0..1" />
-          <End Role="Flight" Type="MYGGGETSModel.Flight" Multiplicity="*" />
+          <End Role="MAWB" Type="GGGETSModel.MAWB" Multiplicity="0..1" />
+          <End Role="Flight" Type="GGGETSModel.Flight" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="MAWB">
               <PropertyRef Name="MID" />
@@ -719,8 +718,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_HAWB_REFERENCE_PACKAGE">
-          <End Role="Package" Type="MYGGGETSModel.Package" Multiplicity="0..1" />
-          <End Role="HAWB" Type="MYGGGETSModel.HAWB" Multiplicity="*" />
+          <End Role="Package" Type="GGGETSModel.Package" Multiplicity="0..1" />
+          <End Role="HAWB" Type="GGGETSModel.HAWB" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Package">
               <PropertyRef Name="PID" />
@@ -731,8 +730,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_HAWB_REFERENCE_USER">
-          <End Role="User" Type="MYGGGETSModel.User" Multiplicity="0..1" />
-          <End Role="HAWB" Type="MYGGGETSModel.HAWB" Multiplicity="*" />
+          <End Role="User" Type="GGGETSModel.User" Multiplicity="0..1" />
+          <End Role="HAWB" Type="GGGETSModel.HAWB" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="User">
               <PropertyRef Name="UID" />
@@ -743,10 +742,10 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_HAWBBOX_REFERENCE_HAWB">
-          <End Role="HAWB" Type="MYGGGETSModel.HAWB" Multiplicity="1">
+          <End Role="HAWB" Type="GGGETSModel.HAWB" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Role="HAWBBox" Type="MYGGGETSModel.HAWBBox" Multiplicity="*" />
+          <End Role="HAWBBox" Type="GGGETSModel.HAWBBox" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="HAWB">
               <PropertyRef Name="HID" />
@@ -757,8 +756,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_HAWBITEM_REFERENCE_HAWB">
-          <End Role="HAWB" Type="MYGGGETSModel.HAWB" Multiplicity="0..1" />
-          <End Role="HAWBItem" Type="MYGGGETSModel.HAWBItem" Multiplicity="*" />
+          <End Role="HAWB" Type="GGGETSModel.HAWB" Multiplicity="0..1" />
+          <End Role="HAWBItem" Type="GGGETSModel.HAWBItem" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="HAWB">
               <PropertyRef Name="HID" />
@@ -769,8 +768,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_PACKAGE_REFERENCE_MAWB">
-          <End Role="MAWB" Type="MYGGGETSModel.MAWB" Multiplicity="0..1" />
-          <End Role="Package" Type="MYGGGETSModel.Package" Multiplicity="*" />
+          <End Role="MAWB" Type="GGGETSModel.MAWB" Multiplicity="0..1" />
+          <End Role="Package" Type="GGGETSModel.Package" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="MAWB">
               <PropertyRef Name="MID" />
@@ -786,7 +785,7 @@
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="MYGGGETSModelStoreContainer" CdmEntityContainer="GGGETSUnitOfWork">
-          <EntitySetMapping Name="AddressBook"><EntityTypeMapping TypeName="MYGGGETSModel.AddressBook"><MappingFragment StoreEntitySet="AddressBook">
+          <EntitySetMapping Name="AddressBook"><EntityTypeMapping TypeName="GGGETSModel.AddressBook"><MappingFragment StoreEntitySet="AddressBook">
             <ScalarProperty Name="AID" ColumnName="AID" />
             <ScalarProperty Name="UID" ColumnName="UID" />
             <ScalarProperty Name="Name" ColumnName="Name" />
@@ -801,7 +800,7 @@
             <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
             <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
           </MappingFragment></EntityTypeMapping></EntitySetMapping>
-          <EntitySetMapping Name="Company"><EntityTypeMapping TypeName="MYGGGETSModel.Company"><MappingFragment StoreEntitySet="Company">
+          <EntitySetMapping Name="Company"><EntityTypeMapping TypeName="GGGETSModel.Company"><MappingFragment StoreEntitySet="Company">
             <ScalarProperty Name="CID" ColumnName="CID" />
             <ScalarProperty Name="FullName" ColumnName="FullName" />
             <ScalarProperty Name="ShortName" ColumnName="ShortName" />
@@ -819,12 +818,12 @@
             <ScalarProperty Name="Status" ColumnName="Status" />
             <ScalarProperty Name="Remark" ColumnName="Remark" />
           </MappingFragment></EntityTypeMapping></EntitySetMapping>
-          <EntitySetMapping Name="CountryCode"><EntityTypeMapping TypeName="MYGGGETSModel.CountryCode"><MappingFragment StoreEntitySet="CountryCode">
+          <EntitySetMapping Name="CountryCode"><EntityTypeMapping TypeName="GGGETSModel.CountryCode"><MappingFragment StoreEntitySet="CountryCode">
             <ScalarProperty Name="ID" ColumnName="ID" />
             <ScalarProperty Name="CountryCode1" ColumnName="CountryCode" />
             <ScalarProperty Name="CountryName" ColumnName="CountryName" />
           </MappingFragment></EntityTypeMapping></EntitySetMapping>
-          <EntitySetMapping Name="Department"><EntityTypeMapping TypeName="MYGGGETSModel.Department"><MappingFragment StoreEntitySet="Department">
+          <EntitySetMapping Name="Department"><EntityTypeMapping TypeName="GGGETSModel.Department"><MappingFragment StoreEntitySet="Department">
             <ScalarProperty Name="DID" ColumnName="DID" />
             <ScalarProperty Name="CID" ColumnName="CID" />
             <ScalarProperty Name="DepName" ColumnName="DepName" />
@@ -835,7 +834,7 @@
             <ScalarProperty Name="SettleType" ColumnName="SettleType" />
             <ScalarProperty Name="WeightCalType" ColumnName="WeightCalType" />
           </MappingFragment></EntityTypeMapping></EntitySetMapping>
-          <EntitySetMapping Name="Flight"><EntityTypeMapping TypeName="MYGGGETSModel.Flight"><MappingFragment StoreEntitySet="Flight">
+          <EntitySetMapping Name="Flight"><EntityTypeMapping TypeName="GGGETSModel.Flight"><MappingFragment StoreEntitySet="Flight">
             <ScalarProperty Name="FID" ColumnName="FID" />
             <ScalarProperty Name="MID" ColumnName="MID" />
             <ScalarProperty Name="FlightNo" ColumnName="FlightNo" />
@@ -844,7 +843,7 @@
             <ScalarProperty Name="TakeOffTime" ColumnName="TakeOffTime" />
             <ScalarProperty Name="LandTime" ColumnName="LandTime" />
           </MappingFragment></EntityTypeMapping></EntitySetMapping>
-          <EntitySetMapping Name="HAWB"><EntityTypeMapping TypeName="MYGGGETSModel.HAWB"><MappingFragment StoreEntitySet="HAWB">
+          <EntitySetMapping Name="HAWB"><EntityTypeMapping TypeName="GGGETSModel.HAWB"><MappingFragment StoreEntitySet="HAWB">
             <ScalarProperty Name="HID" ColumnName="HID" />
             <ScalarProperty Name="PID" ColumnName="PID" />
             <ScalarProperty Name="UID" ColumnName="UID" />
@@ -888,7 +887,7 @@
             <ScalarProperty Name="SpecialInstruction" ColumnName="SpecialInstruction" />
             <ScalarProperty Name="BillTax" ColumnName="BillTax" />
           </MappingFragment></EntityTypeMapping></EntitySetMapping>
-          <EntitySetMapping Name="HAWBBox"><EntityTypeMapping TypeName="MYGGGETSModel.HAWBBox"><MappingFragment StoreEntitySet="HAWBBox">
+          <EntitySetMapping Name="HAWBBox"><EntityTypeMapping TypeName="GGGETSModel.HAWBBox"><MappingFragment StoreEntitySet="HAWBBox">
             <ScalarProperty Name="BoxID" ColumnName="BoxID" />
             <ScalarProperty Name="HID" ColumnName="HID" />
             <ScalarProperty Name="BoxType" ColumnName="BoxType" />
@@ -900,7 +899,7 @@
             <ScalarProperty Name="TransCurrency" ColumnName="TransCurrency" />
             <ScalarProperty Name="Piece" ColumnName="Piece" />
           </MappingFragment></EntityTypeMapping></EntitySetMapping>
-          <EntitySetMapping Name="HAWBItem"><EntityTypeMapping TypeName="MYGGGETSModel.HAWBItem"><MappingFragment StoreEntitySet="HAWBItem">
+          <EntitySetMapping Name="HAWBItem"><EntityTypeMapping TypeName="GGGETSModel.HAWBItem"><MappingFragment StoreEntitySet="HAWBItem">
             <ScalarProperty Name="ItemID" ColumnName="ItemID" />
             <ScalarProperty Name="HID" ColumnName="HID" />
             <ScalarProperty Name="Name" ColumnName="Name" />
@@ -909,7 +908,7 @@
             <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
             <ScalarProperty Name="Remark" ColumnName="Remark" />
           </MappingFragment></EntityTypeMapping></EntitySetMapping>
-          <EntitySetMapping Name="MAWB"><EntityTypeMapping TypeName="MYGGGETSModel.MAWB"><MappingFragment StoreEntitySet="MAWB">
+          <EntitySetMapping Name="MAWB"><EntityTypeMapping TypeName="GGGETSModel.MAWB"><MappingFragment StoreEntitySet="MAWB">
             <ScalarProperty Name="MID" ColumnName="MID" />
             <ScalarProperty Name="BarCode" ColumnName="BarCode" />
             <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
@@ -919,7 +918,7 @@
             <ScalarProperty Name="TotalVolume" ColumnName="TotalVolume" />
             <ScalarProperty Name="Status" ColumnName="Status" />
           </MappingFragment></EntityTypeMapping></EntitySetMapping>
-          <EntitySetMapping Name="Package"><EntityTypeMapping TypeName="MYGGGETSModel.Package"><MappingFragment StoreEntitySet="Package">
+          <EntitySetMapping Name="Package"><EntityTypeMapping TypeName="GGGETSModel.Package"><MappingFragment StoreEntitySet="Package">
             <ScalarProperty Name="PID" ColumnName="PID" />
             <ScalarProperty Name="MID" ColumnName="MID" />
             <ScalarProperty Name="BarCode" ColumnName="BarCode" />
@@ -932,13 +931,13 @@
             <ScalarProperty Name="Status" ColumnName="Status" />
             <ScalarProperty Name="IsMixed" ColumnName="IsMixed" />
           </MappingFragment></EntityTypeMapping></EntitySetMapping>
-          <EntitySetMapping Name="RegionCode"><EntityTypeMapping TypeName="MYGGGETSModel.RegionCode"><MappingFragment StoreEntitySet="RegionCode">
+          <EntitySetMapping Name="RegionCode"><EntityTypeMapping TypeName="GGGETSModel.RegionCode"><MappingFragment StoreEntitySet="RegionCode">
             <ScalarProperty Name="ID" ColumnName="ID" />
             <ScalarProperty Name="CountryCode" ColumnName="CountryCode" />
             <ScalarProperty Name="RegionCode1" ColumnName="RegionCode" />
             <ScalarProperty Name="RegionName" ColumnName="RegionName" />
           </MappingFragment></EntityTypeMapping></EntitySetMapping>
-          <EntitySetMapping Name="User"><EntityTypeMapping TypeName="MYGGGETSModel.User"><MappingFragment StoreEntitySet="User">
+          <EntitySetMapping Name="User"><EntityTypeMapping TypeName="GGGETSModel.User"><MappingFragment StoreEntitySet="User">
             <ScalarProperty Name="UID" ColumnName="UID" />
             <ScalarProperty Name="DID" ColumnName="DID" />
             <ScalarProperty Name="LoginName" ColumnName="LoginName" />
@@ -985,51 +984,51 @@
     <!-- Diagram content (shape and connector positions) -->
     <Diagrams>
       <Diagram Name="GGGETSAppDataModel">
-        <EntityTypeShape EntityType="MYGGGETSModel.AddressBook" Width="1.5" PointX="5.25" PointY="14.125" Height="3.3084114583333317" IsExpanded="true" />
-        <EntityTypeShape EntityType="MYGGGETSModel.Company" Width="1.5" PointX="1.5" PointY="18.875" Height="3.8142708333333317" IsExpanded="true" />
-        <EntityTypeShape EntityType="MYGGGETSModel.CountryCode" Width="1.5" PointX="0.75" PointY="0.75" Height="1.4535937499999996" IsExpanded="true" />
-        <EntityTypeShape EntityType="MYGGGETSModel.Department" Width="1.5" PointX="0.75" PointY="13.375" Height="2.8025520833333317" IsExpanded="true" />
-        <EntityTypeShape EntityType="MYGGGETSModel.Flight" Width="1.5" PointX="3" PointY="4.25" Height="2.2966927083333335" IsExpanded="true" />
-        <EntityTypeShape EntityType="MYGGGETSModel.HAWB" Width="1.5" PointX="5.25" PointY="4.5" Height="8.7042447916666674" IsExpanded="true" />
-        <EntityTypeShape EntityType="MYGGGETSModel.HAWBBox" Width="1.5" PointX="7.5" PointY="5.875" Height="2.8025520833333317" IsExpanded="true" />
-        <EntityTypeShape EntityType="MYGGGETSModel.HAWBItem" Width="1.5" PointX="7.5" PointY="9.5" Height="2.2966927083333317" IsExpanded="true" />
-        <EntityTypeShape EntityType="MYGGGETSModel.MAWB" Width="1.5" PointX="0.75" PointY="6" Height="2.6339322916666665" IsExpanded="true" />
-        <EntityTypeShape EntityType="MYGGGETSModel.Package" Width="1.5" PointX="3" PointY="7.25" Height="3.1397916666666674" IsExpanded="true" />
-        <EntityTypeShape EntityType="MYGGGETSModel.RegionCode" Width="1.5" PointX="2.75" PointY="0.75" Height="1.6222135416666674" IsExpanded="true" />
-        <EntityTypeShape EntityType="MYGGGETSModel.User" Width="1.5" PointX="3" PointY="12" Height="5.5004687500000031" IsExpanded="true" />
-        <AssociationConnector Association="MYGGGETSModel.FK_ADDRESSB_REFERENCE_USER" ManuallyRouted="false">
+        <EntityTypeShape EntityType="GGGETSModel.AddressBook" Width="1.5" PointX="5.25" PointY="14.125" Height="3.3084114583333317" IsExpanded="true" />
+        <EntityTypeShape EntityType="GGGETSModel.Company" Width="1.5" PointX="1.5" PointY="18.875" Height="3.8142708333333317" IsExpanded="true" />
+        <EntityTypeShape EntityType="GGGETSModel.CountryCode" Width="1.5" PointX="0.75" PointY="0.75" Height="1.4535937499999996" IsExpanded="true" />
+        <EntityTypeShape EntityType="GGGETSModel.Department" Width="1.5" PointX="0.75" PointY="13.375" Height="2.8025520833333317" IsExpanded="true" />
+        <EntityTypeShape EntityType="GGGETSModel.Flight" Width="1.5" PointX="3" PointY="4.25" Height="2.2966927083333335" IsExpanded="true" />
+        <EntityTypeShape EntityType="GGGETSModel.HAWB" Width="1.5" PointX="5.25" PointY="4.5" Height="8.7042447916666674" IsExpanded="true" />
+        <EntityTypeShape EntityType="GGGETSModel.HAWBBox" Width="1.5" PointX="7.5" PointY="5.875" Height="2.8025520833333317" IsExpanded="true" />
+        <EntityTypeShape EntityType="GGGETSModel.HAWBItem" Width="1.5" PointX="7.5" PointY="9.5" Height="2.2966927083333317" IsExpanded="true" />
+        <EntityTypeShape EntityType="GGGETSModel.MAWB" Width="1.5" PointX="0.75" PointY="6" Height="2.6339322916666665" IsExpanded="true" />
+        <EntityTypeShape EntityType="GGGETSModel.Package" Width="1.5" PointX="3" PointY="7.25" Height="3.1397916666666674" IsExpanded="true" />
+        <EntityTypeShape EntityType="GGGETSModel.RegionCode" Width="1.5" PointX="2.75" PointY="0.75" Height="1.6222135416666674" IsExpanded="true" />
+        <EntityTypeShape EntityType="GGGETSModel.User" Width="1.5" PointX="3" PointY="12" Height="5.5004687500000031" IsExpanded="true" />
+        <AssociationConnector Association="GGGETSModel.FK_ADDRESSB_REFERENCE_USER" ManuallyRouted="false">
           <ConnectorPoint PointX="4.5" PointY="15.779205729166666" />
           <ConnectorPoint PointX="5.25" PointY="15.779205729166666" />
         </AssociationConnector>
-        <AssociationConnector Association="MYGGGETSModel.FK_DEPARTME_REFERENCE_COMPANY" ManuallyRouted="false">
+        <AssociationConnector Association="GGGETSModel.FK_DEPARTME_REFERENCE_COMPANY" ManuallyRouted="false">
           <ConnectorPoint PointX="1.875" PointY="18.875" />
           <ConnectorPoint PointX="1.875" PointY="16.177552083333332" />
         </AssociationConnector>
-        <AssociationConnector Association="MYGGGETSModel.FK_USER_REFERENCE_DEPARTME" ManuallyRouted="false">
+        <AssociationConnector Association="GGGETSModel.FK_USER_REFERENCE_DEPARTME" ManuallyRouted="false">
           <ConnectorPoint PointX="2.25" PointY="14.776276041666666" />
           <ConnectorPoint PointX="3" PointY="14.776276041666666" />
         </AssociationConnector>
-        <AssociationConnector Association="MYGGGETSModel.FK_FLIGHT_REFERENCE_MAWB" ManuallyRouted="false">
+        <AssociationConnector Association="GGGETSModel.FK_FLIGHT_REFERENCE_MAWB" ManuallyRouted="false">
           <ConnectorPoint PointX="2.25" PointY="6.2733463541666667" />
           <ConnectorPoint PointX="3" PointY="6.2733463541666667" />
         </AssociationConnector>
-        <AssociationConnector Association="MYGGGETSModel.FK_HAWB_REFERENCE_PACKAGE" ManuallyRouted="false">
+        <AssociationConnector Association="GGGETSModel.FK_HAWB_REFERENCE_PACKAGE" ManuallyRouted="false">
           <ConnectorPoint PointX="4.5" PointY="8.8198958333333337" />
           <ConnectorPoint PointX="5.25" PointY="8.8198958333333337" />
         </AssociationConnector>
-        <AssociationConnector Association="MYGGGETSModel.FK_HAWB_REFERENCE_USER" ManuallyRouted="false">
+        <AssociationConnector Association="GGGETSModel.FK_HAWB_REFERENCE_USER" ManuallyRouted="false">
           <ConnectorPoint PointX="4.5" PointY="12.602122395833334" />
           <ConnectorPoint PointX="5.25" PointY="12.602122395833334" />
         </AssociationConnector>
-        <AssociationConnector Association="MYGGGETSModel.FK_HAWBBOX_REFERENCE_HAWB" ManuallyRouted="false">
+        <AssociationConnector Association="GGGETSModel.FK_HAWBBOX_REFERENCE_HAWB" ManuallyRouted="false">
           <ConnectorPoint PointX="6.75" PointY="7.2762760416666659" />
           <ConnectorPoint PointX="7.5" PointY="7.2762760416666659" />
         </AssociationConnector>
-        <AssociationConnector Association="MYGGGETSModel.FK_HAWBITEM_REFERENCE_HAWB" ManuallyRouted="false">
+        <AssociationConnector Association="GGGETSModel.FK_HAWBITEM_REFERENCE_HAWB" ManuallyRouted="false">
           <ConnectorPoint PointX="6.75" PointY="10.648346354166666" />
           <ConnectorPoint PointX="7.5" PointY="10.648346354166666" />
         </AssociationConnector>
-        <AssociationConnector Association="MYGGGETSModel.FK_PACKAGE_REFERENCE_MAWB" ManuallyRouted="false">
+        <AssociationConnector Association="GGGETSModel.FK_PACKAGE_REFERENCE_MAWB" ManuallyRouted="false">
           <ConnectorPoint PointX="2.25" PointY="7.9419661458333337" />
           <ConnectorPoint PointX="3" PointY="7.9419661458333337" />
         </AssociationConnector>

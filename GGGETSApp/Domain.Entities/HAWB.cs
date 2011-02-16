@@ -158,7 +158,7 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
                 }
             }
         }
-        private int _settleType;
+        private int _settleType = 0;
     
         [DataMember]
         public Nullable<int> ServiceType
@@ -173,7 +173,7 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
                 }
             }
         }
-        private Nullable<int> _serviceType;
+        private Nullable<int> _serviceType = 0;
     
         [DataMember]
         public System.DateTime CreateTime
@@ -218,7 +218,7 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
                 }
             }
         }
-        private int _status;
+        private int _status = 0;
     
         [DataMember]
         public string Operator
@@ -578,7 +578,7 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
                 }
             }
         }
-        private int _weightType;
+        private int _weightType = 0;
     
         [DataMember]
         public Nullable<decimal> VolumeWeight
@@ -593,7 +593,7 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
                 }
             }
         }
-        private Nullable<decimal> _volumeWeight;
+        private Nullable<decimal> _volumeWeight = 0m;
     
         [DataMember]
         public decimal TotalVolume
@@ -608,7 +608,7 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
                 }
             }
         }
-        private decimal _totalVolume;
+        private decimal _totalVolume = 0m;
     
         [DataMember]
         public decimal TotalWeight
@@ -623,7 +623,7 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
                 }
             }
         }
-        private decimal _totalWeight;
+        private decimal _totalWeight = 0m;
     
         [DataMember]
         public int Piece
@@ -638,7 +638,7 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
                 }
             }
         }
-        private int _piece;
+        private int _piece = 0;
     
         [DataMember]
         public bool IsInternational
@@ -653,7 +653,7 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
                 }
             }
         }
-        private bool _isInternational;
+        private bool _isInternational = true;
     
         [DataMember]
         public string SpecialInstruction
@@ -683,7 +683,7 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
                 }
             }
         }
-        private Nullable<int> _billTax;
+        private Nullable<int> _billTax = 0;
 
         #endregion
         #region Navigation Properties
