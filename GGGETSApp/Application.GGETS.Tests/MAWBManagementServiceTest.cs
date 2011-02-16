@@ -126,7 +126,7 @@ namespace Application.GGETS.Tests
                 Status=0
             };
             Package package = _packageManagementService.FindPackageByBarcode("p2");
-            mawb.Package.Add(package);
+            mawb.Packages.Add(package);
             _MAWBManagementService.AddMAWB(mawb);
         }
         #endregion
