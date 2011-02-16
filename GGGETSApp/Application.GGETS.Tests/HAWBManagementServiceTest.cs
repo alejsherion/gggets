@@ -297,6 +297,36 @@ namespace Application.GGETS.Tests
         }
         #endregion
 
+        #region 测试运单总重量，总体积，总件数和体积重量
+        /// <summary>
+        ///RemoveHAWBTotalCal 的测试
+        ///</summary>
+        [TestMethod()]
+        public void RemoveHAWBTotalCal()
+        {
+            HAWB hawb = _HAWBManagementService.LoadHAWBByBarCode("2010");
+            decimal actualTotalWeight = 0;
+            decimal actualVolumeWeight = 0;
+            int actualTotalPiece = 0;
+            decimal? actualTotalVolume = 0;
+            foreach(HAWBBox box in hawb.HAWBBoxes)
+            {
+                actualTotalWeight += box.Weight;
+                actualTotalPiece += box.Piece;
+                actualTotalVolume += box.Length*box.Width*box.Height;
+                
+            }
+            if (actualTotalWeight != 0)
+                actualVolumeWeight = Math.Round(actualTotalWeight / 166, 2);
+            //test
+            Assert.AreEqual(actualTotalWeight, hawb.TotalWeight);
+            Assert.AreEqual(actualVolumeWeight, hawb.VolumeWeight);
+            Assert.AreEqual(actualTotalPiece, hawb.Piece);
+            Assert.AreEqual(actualTotalVolume, hawb.TotalVolume);
+            //Assert.Inconclusive("验证此测试方法的正确性。");
+        }
+        #endregion
+
         public override Expression<Func<HAWB, bool>> FilterExpression
         {
             get { throw new NotImplementedException(); }

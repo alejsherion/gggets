@@ -1,4 +1,12 @@
-﻿using System;
+﻿//************************************************************************
+// 用户名				GGGETS国际综合快递
+// 系统名				管理后台
+// 子系统名		        运单总重量，总体积，总件数和体积重量
+// 作成者				ZhiWei.Shen
+// 改版日				2011.02.16
+// 改版内容				创建并且修改
+//************************************************************************
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,6 +30,9 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
         private void HAWBBoxes_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
         {          
             CalculateTotalWeight();
+            CalculateVolumeWeight();
+            CalculateTotalVolume();
+            CalculateTotalPiece();
         }
 
         /// <summary>
@@ -36,6 +47,39 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
             }
         }
 
+        /// <summary>
+        /// 计算运单总体积重量，运单总体积重量=一个运单包裹重量之和除以166，保留2位小数点
+        /// </summary>
+        public void CalculateVolumeWeight()
+        {
+            this.TotalVolume = 0;
+            if (this.TotalWeight != 0) this.VolumeWeight = Math.Round(this.TotalWeight/166, 2);
+        }
+
+        /// <summary>
+        /// 计算运单总件数，运单总件数=运单中盒子的总件数
+        /// </summary>
+        public void CalculateTotalPiece()
+        {
+            this.Piece = 0;
+            foreach(HAWBBox box in this.HAWBBoxes)
+            {
+                this.Piece += box.Piece;
+            }
+        }
+
+        /// <summary>
+        /// 计算运单总体积，总体积=该运单内所有单个盒子的体积之和
+        /// </summary>
+        public void CalculateTotalVolume()
+        {
+            decimal? volume = 0;
+            foreach(HAWBBox box in this.HAWBBoxes)
+            {
+                volume += box.Length*box.Width*box.Height;
+            }
+            this.TotalVolume = Convert.ToDecimal(volume);
+        }
     }
 
 }
