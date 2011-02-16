@@ -236,7 +236,9 @@ namespace Application.GGETS.Tests
         public void ChangeHAWBTest()
         {
             HAWB HAWBObj = _HAWBManagementService.FindHAWBByBarCode("2010");//根据条形码获取对应运单对象
-            HAWBObj.Carrier = "航空公司03";
+            //HAWBObj.Carrier = "航空公司03";
+            HAWBBox HAWBBox = _HAWBManagementService.FindHAWBBoxByHID(HAWBObj.HID.ToString());
+            HAWBObj.HAWBBoxes.Remove(HAWBBox);
             _HAWBManagementService.ChangeHAWB(HAWBObj);//修改
             //Assert.Inconclusive("无法验证不返回值的方法。");
         }

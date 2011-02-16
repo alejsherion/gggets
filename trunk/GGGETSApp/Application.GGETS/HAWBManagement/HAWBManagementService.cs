@@ -133,5 +133,15 @@ namespace Application.GGETS
         {
             return _hawbRepository.LoadHAWBByBarCode(barCode);
         }
+
+        /// <summary>
+        /// 通过HID获取运单盒子
+        /// </summary>
+        /// <param name="HID"></param>
+        /// <returns></returns>
+        public HAWBBox FindHAWBBoxByHID(string HID)
+        {
+            return _hawbRepository.FindHAWBBoxByHID(HID)[0];
+        }
     }
 }
