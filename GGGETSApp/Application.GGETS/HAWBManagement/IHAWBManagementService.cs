@@ -18,5 +18,6 @@ namespace Application.GGETS
 
         void RemoveHAWB(string barCode);
         HAWB LoadHAWBByBarCode(string barCode);
+        HAWBBox FindHAWBBoxByHID(string HID);
     }
 }
