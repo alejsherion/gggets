@@ -106,10 +106,12 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Repositories
                     if (!string.IsNullOrEmpty(phone)) HAWBs = HAWBs.Where(a => a.User.Phone == phone);
                     if(beginTime.HasValue)
                     {
+                        if(beginTime.Value!=DateTime.MinValue)
                         HAWBs = HAWBs.Where(a => a.CreateTime >= beginTime.Value);
                     }
                     if (endTime.HasValue)
                     {
+                        if (endTime.Value != DateTime.MinValue)
                         HAWBs = HAWBs.Where(a => a.CreateTime <= endTime.Value);
                     }
                     if (settleType != -1) HAWBs = HAWBs.Where(a => a.SettleType == Convert.ToInt16(settleType));
