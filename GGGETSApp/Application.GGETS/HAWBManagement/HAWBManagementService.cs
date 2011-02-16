@@ -74,10 +74,12 @@ namespace Application.GGETS
         /// <param name="serviceType">包裹类型</param>
         /// <param name="isInternational">运单类型</param>
         /// <returns></returns>
-        public IList<HAWB> FindHAWBsByCondition(string HID, string countryCode, string regionCode, string loginName, string realName, string phone, string settleType, string serviceType, string isInternational)
+        public IList<HAWB> FindHAWBsByCondition(string barCode, string countryCode, string regionCode, string loginName, string departmentCode,
+                                               string realName, string phone, DateTime? beginTime, DateTime? endTime, int settleType, int serviceType,
+                                               bool isInternational)
         {
-            return _hawbRepository.FindHAWBsByCondition(HID, countryCode, regionCode, loginName, realName, phone,
-                                                        settleType, serviceType, isInternational);
+            return _hawbRepository.FindHAWBsByCondition(barCode, countryCode, regionCode, loginName, departmentCode, 
+                                                realName, phone, beginTime, endTime, settleType, serviceType, isInternational);
         }
 
         /// <summary>

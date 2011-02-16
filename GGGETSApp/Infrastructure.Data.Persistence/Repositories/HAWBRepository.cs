@@ -88,7 +88,9 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Repositories
         /// <param name="serviceType">包裹类型</param>
         /// <param name="isInternational">运单类型</param>
         /// <returns></returns>
-        public IList<HAWB> FindHAWBsByCondition(string HID, string countryCode, string regionCode, string loginName, string realName, string phone, string settleType, string serviceType, string isInternational)
+        public IList<HAWB> FindHAWBsByCondition(string barCode, string countryCode, string regionCode, string loginName, string departmentCode,
+                                               string realName, string phone, DateTime? beginTime, DateTime? endTime, int settleType, int serviceType,
+                                               bool isInternational)
         {
             IEnumerable<HAWB> HAWBs=null;
             using(IGGGETSAppUnitOfWork context = UnitOfWork as IGGGETSAppUnitOfWork)
@@ -96,21 +98,23 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Repositories
                 if (context != null)
                 {
                     HAWBs = context.HAWB.Include(h => h.User).Select(h => h);
-                    if (!string.IsNullOrEmpty(HID)) HAWBs = HAWBs.Where(a => a.HID == new Guid(HID));
+                    if (!string.IsNullOrEmpty(barCode)) HAWBs = HAWBs.Where(a => a.BarCode == barCode);
                     if (!string.IsNullOrEmpty(countryCode)) HAWBs = HAWBs.Where(a => a.User.CountryCode == countryCode);
                     if (!string.IsNullOrEmpty(regionCode)) HAWBs = HAWBs.Where(a => a.User.RegionCode == regionCode);
                     if (!string.IsNullOrEmpty(loginName)) HAWBs = HAWBs.Where(a => a.User.LoginName == loginName);
                     if (!string.IsNullOrEmpty(realName)) HAWBs = HAWBs.Where(a => a.User.RealName == realName);
                     if (!string.IsNullOrEmpty(phone)) HAWBs = HAWBs.Where(a => a.User.Phone == phone);
-                    if (!string.IsNullOrEmpty(settleType)) HAWBs = HAWBs.Where(a => a.SettleType == Convert.ToInt16(settleType));
-                    if (!string.IsNullOrEmpty(serviceType)) HAWBs = HAWBs.Where(a => a.ServiceType == Convert.ToInt16(serviceType));
-                    if (!string.IsNullOrEmpty(isInternational))
+                    if(beginTime.HasValue)
                     {
-                        bool judge = true;
-                        if (isInternational == "0") judge = false;
-                        if (isInternational == "1") judge = true;
-                        HAWBs = HAWBs.Where(a => a.IsInternational == judge);
+                        HAWBs = HAWBs.Where(a => a.CreateTime >= beginTime.Value);
                     }
+                    if (endTime.HasValue)
+                    {
+                        HAWBs = HAWBs.Where(a => a.CreateTime <= endTime.Value);
+                    }
+                    if (settleType != -1) HAWBs = HAWBs.Where(a => a.SettleType == Convert.ToInt16(settleType));
+                    if (serviceType != -1) HAWBs = HAWBs.Where(a => a.ServiceType == Convert.ToInt16(serviceType));
+                    HAWBs = HAWBs.Where(a => a.IsInternational == isInternational);
                 }
                 else
                 {

@@ -268,18 +268,22 @@ namespace Application.GGETS.Tests
         [TestMethod()]
         public void FindHAWBsByConditionTest()
         {
-            string HID = string.Empty; 
+            string barCode = string.Empty; 
             string countryCode = string.Empty; 
             string regionCode = string.Empty; 
             string loginName = string.Empty; 
             string realName = string.Empty; 
-            string phone = string.Empty; 
-            string settleType = "0"; 
-            string serviceType = string.Empty; 
-            string isInternational = string.Empty; 
+            string phone = string.Empty;
+            string departmentCode = string.Empty;
+            DateTime? beginTime = new DateTime(2011,2,1);
+            DateTime? endTime = null;
+            int settleType = -1;
+            int serviceType = -1;
+            bool isInternational = true; 
             //IEnumerable<HAWB> expected = null; 
             IList<HAWB> actual;
-            actual = _HAWBManagementService.FindHAWBsByCondition(HID, countryCode, regionCode, loginName, realName, phone, settleType, serviceType, isInternational);
+            actual = _HAWBManagementService.FindHAWBsByCondition(barCode, countryCode, regionCode, loginName, departmentCode,
+                                                realName, phone, beginTime, endTime, settleType, serviceType, isInternational);
             //Assert.AreEqual(expected, actual);
             //Assert.Inconclusive("验证此测试方法的正确性。");
         }
