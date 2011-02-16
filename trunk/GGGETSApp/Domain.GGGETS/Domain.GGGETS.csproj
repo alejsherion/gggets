@@ -45,6 +45,7 @@
     <Compile Include="HAWB\IHAWBItemRepository.cs" />
     <Compile Include="HAWB\IHAWBRepository.cs" />
     <Compile Include="HAWB\IItemRepository.cs" />
+    <Compile Include="HAWB\IMAWBRepository.cs" />
     <Compile Include="HAWB\IPackageRepository.cs" />
     <Compile Include="HAWB\IUserRepository.cs" />
   </ItemGroup>

@@ -65,6 +65,7 @@
     <Compile Include="Repositories\HAWBBoxRepository.cs" />
     <Compile Include="Repositories\HAWBItemRepository.cs" />
     <Compile Include="Repositories\HAWBRepository.cs" />
+    <Compile Include="Repositories\MAWBRepository.cs" />
     <Compile Include="Repositories\PackageRepository.cs" />
     <Compile Include="Repositories\UserRepository.cs" />
     <Compile Include="UnitOfWork\GGGETSAppUnitOfWork.Context.Extensions.cs">
