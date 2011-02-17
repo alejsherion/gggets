@@ -73,6 +73,12 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.UnitOfWork
     
         IObjectSet<User> User{get;}
         
+    
+        IObjectSet<Privilege> Privilege{get;}
+        
+    
+        IObjectSet<AppModule> AppModule{get;}
+        
 
         #endregion
     
