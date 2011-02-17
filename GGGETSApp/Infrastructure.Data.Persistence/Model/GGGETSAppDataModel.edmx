@@ -7,6 +7,7 @@
     <Schema Namespace="MYGGGETSModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
         <EntityContainer Name="MYGGGETSModelStoreContainer">
           <EntitySet Name="AddressBook" EntityType="MYGGGETSModel.Store.AddressBook" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="AppModule" EntityType="MYGGGETSModel.Store.AppModule" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Company" EntityType="MYGGGETSModel.Store.Company" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="CountryCode" EntityType="MYGGGETSModel.Store.CountryCode" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Department" EntityType="MYGGGETSModel.Store.Department" store:Type="Tables" Schema="dbo" />
@@ -16,6 +17,7 @@
           <EntitySet Name="HAWBItem" EntityType="MYGGGETSModel.Store.HAWBItem" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="MAWB" EntityType="MYGGGETSModel.Store.MAWB" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Package" EntityType="MYGGGETSModel.Store.Package" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Privilege" EntityType="MYGGGETSModel.Store.Privilege" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="RegionCode" EntityType="MYGGGETSModel.Store.RegionCode" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="User" EntityType="MYGGGETSModel.Store.User" store:Type="Tables" Schema="dbo" />
           <AssociationSet Name="FK_ADDRESSB_REFERENCE_USER" Association="MYGGGETSModel.Store.FK_ADDRESSB_REFERENCE_USER">
@@ -50,6 +52,10 @@
             <End Role="MAWB" EntitySet="MAWB" />
             <End Role="Package" EntitySet="Package" />
           </AssociationSet>
+          <AssociationSet Name="FK_PRIVILEG_REFERENCE_APPMODUL" Association="MYGGGETSModel.Store.FK_PRIVILEG_REFERENCE_APPMODUL">
+            <End Role="AppModule" EntitySet="AppModule" />
+            <End Role="Privilege" EntitySet="Privilege" />
+          </AssociationSet>
           <AssociationSet Name="FK_USER_REFERENCE_DEPARTME" Association="MYGGGETSModel.Store.FK_USER_REFERENCE_DEPARTME">
             <End Role="Department" EntitySet="Department" />
             <End Role="User" EntitySet="User" />
@@ -72,6 +78,15 @@
           <Property Name="AddressType" Type="int" Nullable="false" />
           <Property Name="CreateTime" Type="datetime" Nullable="false" />
           <Property Name="UpdateTime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AppModule">
+          <Key>
+            <PropertyRef Name="ModuleID" />
+          </Key>
+          <Property Name="ModuleID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="200" />
+          <Property Name="CreateTime" Type="datetime" />
+          <Property Name="Remark" Type="nvarchar" MaxLength="200" />
         </EntityType>
         <EntityType Name="Company">
           <Key>
@@ -231,6 +246,19 @@
           <Property Name="Status" Type="int" Nullable="false" />
           <Property Name="IsMixed" Type="bit" Nullable="false" />
         </EntityType>
+        <EntityType Name="Privilege">
+          <Key>
+            <PropertyRef Name="PrivilegeID" />
+          </Key>
+          <Property Name="PrivilegeID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="DisplayName" Type="nvarchar" MaxLength="20" />
+          <Property Name="Name" Type="nvarchar" MaxLength="20" />
+          <Property Name="ModuleID" Type="uniqueidentifier" />
+          <Property Name="UrlAdress" Type="nvarchar" MaxLength="200" />
+          <Property Name="PrivilegeDesc" Type="char" MaxLength="6" />
+          <Property Name="CreateTime" Type="datetime" />
+          <Property Name="Remark" Type="nvarchar" MaxLength="200" />
+        </EntityType>
         <EntityType Name="RegionCode">
           <Key>
             <PropertyRef Name="ID" />
@@ -369,6 +397,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_PRIVILEG_REFERENCE_APPMODUL">
+          <End Role="AppModule" Type="MYGGGETSModel.Store.AppModule" Multiplicity="0..1" />
+          <End Role="Privilege" Type="MYGGGETSModel.Store.Privilege" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AppModule">
+              <PropertyRef Name="ModuleID" />
+            </Principal>
+            <Dependent Role="Privilege">
+              <PropertyRef Name="ModuleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_USER_REFERENCE_DEPARTME">
           <End Role="Department" Type="MYGGGETSModel.Store.Department" Multiplicity="0..1" />
           <End Role="User" Type="MYGGGETSModel.Store.User" Multiplicity="*" />
@@ -433,6 +473,12 @@
           <AssociationSet Name="FK_PACKAGE_REFERENCE_MAWB" Association="GGGETSModel.FK_PACKAGE_REFERENCE_MAWB">
             <End Role="MAWB" EntitySet="MAWB" />
             <End Role="Package" EntitySet="Package" />
+          </AssociationSet>
+          <EntitySet Name="Privilege" EntityType="GGGETSModel.Privilege" />
+          <EntitySet Name="AppModule" EntityType="GGGETSModel.AppModule" />
+          <AssociationSet Name="FK_PRIVILEG_REFERENCE_APPMODUL" Association="GGGETSModel.FK_PRIVILEG_REFERENCE_APPMODUL">
+            <End Role="AppModule" EntitySet="AppModule" />
+            <End Role="Privilege" EntitySet="Privilege" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="AddressBook">
@@ -779,6 +825,42 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Privilege">
+          <Key>
+            <PropertyRef Name="PrivilegeID" />
+          </Key>
+          <Property Type="Guid" Name="PrivilegeID" Nullable="false" />
+          <Property Type="String" Name="DisplayName" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Name" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="Guid" Name="ModuleID" />
+          <Property Type="String" Name="UrlAdress" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="PrivilegeDesc" MaxLength="6" FixedLength="true" Unicode="false" />
+          <Property Type="DateTime" Name="CreateTime" />
+          <Property Type="String" Name="Remark" MaxLength="200" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AppModule" Relationship="GGGETSModel.FK_PRIVILEG_REFERENCE_APPMODUL" FromRole="Privilege" ToRole="AppModule" />
+        </EntityType>
+        <EntityType Name="AppModule">
+          <Key>
+            <PropertyRef Name="ModuleID" />
+          </Key>
+          <Property Type="Guid" Name="ModuleID" Nullable="false" />
+          <Property Type="String" Name="Description" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="CreateTime" />
+          <Property Type="String" Name="Remark" MaxLength="200" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Privileges" Relationship="GGGETSModel.FK_PRIVILEG_REFERENCE_APPMODUL" FromRole="AppModule" ToRole="Privilege" />
+        </EntityType>
+        <Association Name="FK_PRIVILEG_REFERENCE_APPMODUL">
+          <End Type="GGGETSModel.AppModule" Role="AppModule" Multiplicity="0..1" />
+          <End Type="GGGETSModel.Privilege" Role="Privilege" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AppModule">
+              <PropertyRef Name="ModuleID" />
+            </Principal>
+            <Dependent Role="Privilege">
+              <PropertyRef Name="ModuleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -963,6 +1045,30 @@
             <ScalarProperty Name="WeightCalType" ColumnName="WeightCalType" />
             <ScalarProperty Name="Status" ColumnName="Status" />
           </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Privilege">
+            <EntityTypeMapping TypeName="GGGETSModel.Privilege">
+              <MappingFragment StoreEntitySet="Privilege">
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="PrivilegeDesc" ColumnName="PrivilegeDesc" />
+                <ScalarProperty Name="UrlAdress" ColumnName="UrlAdress" />
+                <ScalarProperty Name="ModuleID" ColumnName="ModuleID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
+                <ScalarProperty Name="PrivilegeID" ColumnName="PrivilegeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AppModule">
+            <EntityTypeMapping TypeName="GGGETSModel.AppModule">
+              <MappingFragment StoreEntitySet="AppModule">
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="ModuleID" ColumnName="ModuleID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -1031,6 +1137,12 @@
         <AssociationConnector Association="GGGETSModel.FK_PACKAGE_REFERENCE_MAWB" ManuallyRouted="false">
           <ConnectorPoint PointX="2.25" PointY="7.9419661458333337" />
           <ConnectorPoint PointX="3" PointY="7.9419661458333337" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="GGGETSModel.Privilege" Width="1.5" PointX="9.625" PointY="1" Height="2.7341113281250031" />
+        <EntityTypeShape EntityType="GGGETSModel.AppModule" Width="1.5" PointX="10.375" PointY="4.875" Height="1.9700325520833388" />
+        <AssociationConnector Association="GGGETSModel.FK_PRIVILEG_REFERENCE_APPMODUL" >
+          <ConnectorPoint PointX="10.75" PointY="4.875" />
+          <ConnectorPoint PointX="10.75" PointY="3.9251310221354161" />
         </AssociationConnector>
       </Diagram>
     </Diagrams>
