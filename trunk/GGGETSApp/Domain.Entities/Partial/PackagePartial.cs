@@ -10,6 +10,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using ETS.GGGETSApp.Domain.Core.Entities;
 
 namespace ETS.GGGETSApp.Domain.Application.Entities
 {
@@ -17,7 +18,7 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
     {
         public Package()
         {
-            ChangeTracker.ChangeTrackingEnabled = true;
+            ChangeTracker.ChangeTrackingEnabled = false;
             this.HAWBs.CollectionChanged += new System.Collections.Specialized.NotifyCollectionChangedEventHandler(HAWBs_CollectionChanged);
         }
 
@@ -51,6 +52,30 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
         {
             this.Piece = 0;
             this.Piece += this.HAWBs.Count;
+        }
+
+        /// <summary>
+        /// 为包裹新增运单
+        /// true：判断运单重复并且插入
+        /// false:未插入
+        /// </summary>
+        /// <param name="hawb">运单</param>
+        /// <returns></returns>
+        public bool JudgeHAWB(HAWB hawb)
+        {
+            bool judge = true;
+            if(this.HAWBs.Count!=0)
+            {
+                foreach(HAWB hawbObj in this.HAWBs)
+                {
+                    if(hawb.BarCode.Equals(hawbObj.BarCode))
+                    {
+                        judge = false;
+                        break;
+                    }
+                }
+            }
+            return judge;
         }
     }
 }
