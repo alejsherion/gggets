@@ -7,28 +7,28 @@
 // </自动生成>
 //------------------------------------------------------------------------------
 
-namespace GGGETSAdmin.Control.logistics {
+namespace GGGETSAdmin.PackageManage {
     
     
-    public partial class BagDetails {
+    public partial class PackageDetails {
         
         /// <summary>
-        /// lbl_BagNumber1 控件。
+        /// lbl_BagBarCode 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_BagNumber1;
+        protected global::System.Web.UI.WebControls.Label lbl_BagBarCode;
         
         /// <summary>
-        /// lbl_BagNumber 控件。
+        /// txt_BagBarCode 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_BagNumber;
+        protected global::System.Web.UI.WebControls.Label txt_BagBarCode;
         
         /// <summary>
         /// lbl_CreateTime 控件。
@@ -67,13 +67,13 @@ namespace GGGETSAdmin.Control.logistics {
         protected global::System.Web.UI.WebControls.Label txt_UpdateTime;
         
         /// <summary>
-        /// lbl_Destination 控件。
+        /// lbl_Region 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_Destination;
+        protected global::System.Web.UI.WebControls.Label lbl_Region;
         
         /// <summary>
         /// txt_Destination 控件。
@@ -85,22 +85,22 @@ namespace GGGETSAdmin.Control.logistics {
         protected global::System.Web.UI.WebControls.Label txt_Destination;
         
         /// <summary>
-        /// lbl_SumHAWBNo 控件。
+        /// lbl_MHAWb 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_SumHAWBNo;
+        protected global::System.Web.UI.WebControls.Label lbl_MHAWb;
         
         /// <summary>
-        /// Txt_SumHAWBNo 控件。
+        /// lbtn_MHAWb 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Txt_SumHAWBNo;
+        protected global::System.Web.UI.WebControls.LinkButton lbtn_MHAWb;
         
         /// <summary>
         /// lbl_Pice 控件。
@@ -166,21 +166,21 @@ namespace GGGETSAdmin.Control.logistics {
         protected global::System.Web.UI.WebControls.GridView gv_HAWB;
         
         /// <summary>
-        /// btn_Add 控件。
+        /// But_Next 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btn_Add;
+        protected global::System.Web.UI.WebControls.Button But_Next;
         
         /// <summary>
-        /// btn_Return 控件。
+        /// But_Conel 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btn_Return;
+        protected global::System.Web.UI.WebControls.Button But_Conel;
     }
 }

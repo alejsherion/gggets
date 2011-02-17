@@ -12,11 +12,11 @@ namespace GGGETSAdmin.HAWBManage
     public partial class DeliverAdd : System.Web.UI.Page
     {
         
-        protected static Regex RZipCode = new Regex(@"^\d{6}$");
+        protected static Regex RZipCode = new Regex(@"^\d{6}");
         protected static Regex RTel = new Regex(@"^(\d{3,4}-)?\d{7,8}$");
         protected static Regex RTel1 = new Regex(@"^1[35]\d{9}$");
-        protected static Regex RCountry = new Regex(@"^[A-Za-z]{2}$");
-        protected static Regex RRegion = new Regex(@"^[A-Za-z]{3}$");
+        protected static Regex RCountry = new Regex(@"^[A-Za-z]{2}");
+        protected static Regex RRegion = new Regex(@"^[A-Za-z]{3}");
         protected static HAWB hawb;
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -37,22 +37,38 @@ namespace GGGETSAdmin.HAWBManage
         {
             if (Txt_DeliverName.Text == "")
             {
-                Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('公司名称不能为空！')</script>");
+                Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('不能为空！')</script>");
                 Txt_DeliverName.Focus();
             }
             else if (Txt_DeliverAddress.Text == "")
             {
-                Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('公司地址不能为空！')</script>");
+                Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('不能为空！')</script>");
                 Txt_DeliverAddress.Focus();
             }
+            else if (Txt_DeliverCountry.Text == "")
+            {
+                Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('不能为空！')</script>");
+                Txt_DeliverCountry.Focus();
+            }
+            else if (Txt_DeliverRegion.Text == "")
+            {
+                Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('不能为空!')</script>");
+                Txt_DeliverRegion.Focus();
+            }
+            else if (Txt_DeliverZipCode.Text == "")
+            {
+                Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('不能为空！')</script>");
+                Txt_DeliverZipCode.Focus();
+            }
+
             else if (Txt_DeliverContactor.Text == "")
             {
-                Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('姓名不能为空！')</script>");
+                Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('不能为空！')</script>");
                 Txt_DeliverContactor.Focus();
             }
             else if (Txt_DeliverTel.Text == "")
             {
-                Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('电话不能为空！')</script>");
+                Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('不能为空！')</script>");
                 Txt_DeliverTel.Focus();
             }
             else
@@ -62,29 +78,21 @@ namespace GGGETSAdmin.HAWBManage
                     Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('电话号码格式不正确！')</script>");
                     Txt_DeliverTel.Focus();
                 }
-                else if (Txt_DeliverZipCode.Text != "")
+                else if (!RZipCode.IsMatch(Txt_DeliverZipCode.Text))
                 {
-                    if (!RZipCode.IsMatch(Txt_DeliverZipCode.Text))
-                    {
-                        Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('邮编格式不正确！')</script>");
-                        Txt_DeliverZipCode.Focus();
-                    }
+                    Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('邮编格式不正确！')</script>");
+                    Txt_DeliverZipCode.Focus();
                 }
-                else if (Txt_DeliverCountry.Text != "")
+                else if (!RCountry.IsMatch(Txt_DeliverContactor.Text))
                 {
-                    if (!RCountry.IsMatch(Txt_DeliverContactor.Text))
-                    {
-                        Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('只能输入字母并为2位！')</script>");
-                        Txt_DeliverCountry.Focus();
-                    }
+                    Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('只能输入字母并为2位！')</script>");
+                    Txt_DeliverCountry.Focus();
                 }
-                else if (Txt_DeliverRegion.Text != "")
+
+                else if (!RRegion.IsMatch(Txt_DeliverRegion.Text))
                 {
-                    if (!RRegion.IsMatch(Txt_DeliverRegion.Text))
-                    {
-                        Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('只能输入字母并为3位！')</script>");
-                        Txt_DeliverRegion.Focus();
-                    }
+                    Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('只能输入字母并为3位！')</script>");
+                    Txt_DeliverRegion.Focus();
                 }
                 else
                 {
@@ -96,9 +104,12 @@ namespace GGGETSAdmin.HAWBManage
                     hawb.DeliverZipCode = Txt_DeliverZipCode.Text;
                     hawb.DeliverTel = Txt_DeliverTel.Text;
                     Session["HAWB"] = hawb;
-                    Response.Write("<script>opener.location.href=opener.location.href;window.close();</script>");
+                    //Response.Write("<script>alert('添加成功');window.close()");
+                    Response.Write("<script>opener.location.href=opener.location.href;window.close()</script>");
+                    //Response.Redirect("HAWBAdd.aspx");
+                    //ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('添加成功！'); window.document.location.href='HAWBAdd.aspx';</script>");
                 }
-                
+
             }
             
         }

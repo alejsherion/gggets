@@ -140,7 +140,7 @@
             </tr>
             <tr class="Row">
                 <td class="FieldHeader" align="right" colspan="5">
-                    <asp:Button ID="btn_Close" runat="server" Text="删 除" CssClass="InputBtn" /></td>
+                    
             </tr>
         </tbody>
     </table>

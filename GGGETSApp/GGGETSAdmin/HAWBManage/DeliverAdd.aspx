@@ -59,7 +59,8 @@
                         <asp:Label ID="lbl_DeliverZipCode" runat="server" Text="邮编:"></asp:Label>
                     </td>
                     <td align="left" class="style2">
-                        <asp:TextBox ID="Txt_DeliverZipCode" runat="server" Width="80" TabIndex="27"></asp:TextBox>
+                        <asp:TextBox ID="Txt_DeliverZipCode" runat="server" Width="80" TabIndex="27" 
+                            MaxLength="6"></asp:TextBox>
                     </td>
                     <td class="FieldHeader">
                         <asp:Label ID="lbl_DeliverContactor" runat="server" Text="姓名:"></asp:Label>
