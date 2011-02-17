@@ -100,12 +100,14 @@ namespace Application.GGETS.Tests
         public void AddPackageTest()
         {
             HAWB hawbTest = _HAWBManagementService.FindHAWBByBarCode("2010");
+            HAWB hawbTest2 = _HAWBManagementService.FindHAWBByBarCode("2011");
             Package package = new Package
             {
-                BarCode = "p1",//条形码
-                RegionCode = "001",//地区三字码
-                Piece = 10,//件数
-                TotalWeight = 10,//总重量
+                PID = Guid.NewGuid(),//包裹编号
+                BarCode = "p3",//条形码
+                RegionCode = "077",//地区三字码
+                Piece = 15,//件数
+                TotalWeight = 15,//总重量
                 CreateTime = DateTime.Now,//创建日期
                 UpdateTime = DateTime.Now,//更新日期
                 Operator = "沈志伟",//操作人员
@@ -113,9 +115,11 @@ namespace Application.GGETS.Tests
                 IsMixed = true,//是否是混包
             };
             //授权于HAWB对象
+            if (package.HAWBs.Count == 0 || package.HAWBs != null)
+                package.HAWBs = new ETS.GGGETSApp.Domain.Core.Entities.TrackableCollection<HAWB>();
             package.HAWBs.Add(hawbTest);
+            package.HAWBs.Add(hawbTest2);
             _packageManagementService.AddPackage(package);
-            //Assert.Inconclusive("无法验证不返回值的方法。");
         }
         #endregion
 
@@ -142,11 +146,28 @@ namespace Application.GGETS.Tests
         [TestMethod()]
         public void ModifyPackageTest()
         {
+            #region 包裹添加运单测试
+            //Package package = _packageManagementService.FindPackageByBarcode("p1");
+            //HAWB hawb = _HAWBManagementService.FindHAWBByBarCode("2011");
+            //package.HAWBs.Add(hawb);
+            //_packageManagementService.ModifyPackage(package);
+            ////Assert.Inconclusive("无法验证不返回值的方法。");
+            #endregion
+
+            #region 包裹移除运单测试
+            //Package package = _packageManagementService.FindPackageByBarcode("p1");
+            //HAWB hawb = _HAWBManagementService.FindHAWBByBarCode("2011");
+            //package.HAWBs.Remove(hawb);
+            //_packageManagementService.ModifyPackage(package);
+            ////Assert.Inconclusive("无法验证不返回值的方法。");
+            #endregion
+
+            #region 直接修改包裹属性
             Package package = _packageManagementService.FindPackageByBarcode("p1");
-            HAWB hawb = _HAWBManagementService.FindHAWBByBarCode("2011");
-            package.HAWBs.Add(hawb);
+            package.Piece = 111;
             _packageManagementService.ModifyPackage(package);
             //Assert.Inconclusive("无法验证不返回值的方法。");
+            #endregion
         }
         #endregion
 
