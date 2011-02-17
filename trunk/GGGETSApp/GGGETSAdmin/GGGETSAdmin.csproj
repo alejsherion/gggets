@@ -116,17 +116,26 @@
     <Content Include="Control\logistics\SumHAWBDetails.ascx" />
     <Content Include="Control\logistics\TotalHAWBdemand.ascx" />
     <Content Include="Control\MyPanel.ascx" />
+    <Content Include="Control\navigationControl.ascx" />
     <Content Include="HAWBManage\DeliverAdd.aspx" />
     <Content Include="HAWBManage\HAWBAdd.aspx" />
+    <Content Include="HAWBManage\HAWBDetails.aspx" />
     <Content Include="HAWBManage\HAWBItemAdd.aspx" />
+    <Content Include="HAWBManage\HAWBManagement.aspx" />
     <Content Include="obj\Debug\GGGETSAdmin.csproj.FileListAbsolute.txt" />
+    <Content Include="PackageManage\packageAdd.aspx" />
+    <Content Include="PackageManage\PackageDetails.aspx" />
+    <Content Include="PackageManage\packageManagement.aspx" />
+    <Content Include="PackageManage\packageModify.aspx" />
     <Content Include="Scripts\calendar.js" />
     <Content Include="Styles\Site.css" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\jquery-1.4.1-vsdoc.js" />
     <Content Include="Scripts\jquery-1.4.1.js" />
     <Content Include="Scripts\jquery-1.4.1.min.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -282,6 +291,13 @@
     <Compile Include="Control\MyPanel.ascx.designer.cs">
       <DependentUpon>MyPanel.ascx</DependentUpon>
     </Compile>
+    <Compile Include="Control\navigationControl.ascx.cs">
+      <DependentUpon>navigationControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Control\navigationControl.ascx.designer.cs">
+      <DependentUpon>navigationControl.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Extensions\IoCPageHandlerFactory.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -300,12 +316,54 @@
     <Compile Include="HAWBManage\HAWBAdd.aspx.designer.cs">
       <DependentUpon>HAWBAdd.aspx</DependentUpon>
     </Compile>
+    <Compile Include="HAWBManage\HAWBDetails.aspx.cs">
+      <DependentUpon>HAWBDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="HAWBManage\HAWBDetails.aspx.designer.cs">
+      <DependentUpon>HAWBDetails.aspx</DependentUpon>
+    </Compile>
     <Compile Include="HAWBManage\HAWBItemAdd.aspx.cs">
       <DependentUpon>HAWBItemAdd.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="HAWBManage\HAWBItemAdd.aspx.designer.cs">
       <DependentUpon>HAWBItemAdd.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="HAWBManage\HAWBManagement.aspx.cs">
+      <DependentUpon>HAWBManagement.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="HAWBManage\HAWBManagement.aspx.designer.cs">
+      <DependentUpon>HAWBManagement.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PackageManage\packageAdd.aspx.cs">
+      <DependentUpon>packageAdd.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PackageManage\packageAdd.aspx.designer.cs">
+      <DependentUpon>packageAdd.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PackageManage\PackageDetails.aspx.cs">
+      <DependentUpon>PackageDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PackageManage\PackageDetails.aspx.designer.cs">
+      <DependentUpon>PackageDetails.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PackageManage\packageManagement.aspx.cs">
+      <DependentUpon>packageManagement.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PackageManage\packageManagement.aspx.designer.cs">
+      <DependentUpon>packageManagement.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PackageManage\packageModify.aspx.cs">
+      <DependentUpon>packageModify.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PackageManage\packageModify.aspx.designer.cs">
+      <DependentUpon>packageModify.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Site1.Master.cs">
@@ -343,6 +401,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Themes\logisitc\logistic.skin" />
+    <None Include="ClassDiagram1.cd" />
     <None Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
     <None Include="obj\Debug\ResolveAssemblyReference.cache" />
     <Content Include="Site1.Master" />

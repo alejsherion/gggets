@@ -26,13 +26,19 @@
                     <asp:GridView ID="gv_HAWB" runat="server" CssClass="DataView" 
                         AutoGenerateColumns="False">
                         <Columns>
+                            <asp:TemplateField HeaderText="航班号">
+                                <ItemTemplate>
+                                    <asp:LinkButton ID="lbtn_FLTNo" runat="server" Text='<%# Eval("aaa") %>'>'></asp:LinkButton>
+                                </ItemTemplate>
+                                <ControlStyle Width="220px" />
+                            </asp:TemplateField>
                             <asp:TemplateField HeaderText="包号">
                                 <ItemTemplate>
                                     <asp:LinkButton ID="lbtn_BagNumber" runat="server" Text='<%# Eval("aaa") %>'>'></asp:LinkButton>
                                 </ItemTemplate>
                                 <ControlStyle Width="220px" />
                             </asp:TemplateField>
-                            <asp:TemplateField HeaderText="包裹重量">
+                            <asp:TemplateField HeaderText="包重量">
                                 <ItemTemplate>
                                     <asp:Label ID="lbl_BarCoder" runat="server" Text='<%# Eval("BarCode") %>'></asp:Label>
                                 </ItemTemplate>
