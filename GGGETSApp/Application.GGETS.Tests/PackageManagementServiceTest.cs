@@ -166,6 +166,73 @@ namespace Application.GGETS.Tests
         }
         #endregion
 
+        #region 判断运单重复的测试
+        /// <summary>
+        ///TestHAWBInPackage 的测试
+        ///</summary>
+        [TestMethod()]
+        public void TestHAWBInPackage()
+        {
+            //实力化一个虚假运单对象
+            HAWB HAWBObj = new HAWB
+            {
+                //ID
+                HID=new Guid("00000000-0000-0000-0000-000000000002"),
+                //条形码
+                BarCode = "2013",
+                //条形码
+                Carrier = "中国航空8",
+                //承运单位
+                SettleType = 0,
+                //预算方式
+                ServiceType = 0,
+                //快件或包裹
+                CreateTime = DateTime.Now,
+                //创建日期
+                Status = 0,
+                //运单状态
+                ShipperName = "沈志伟",
+                //发件人姓名或者公司
+                ShipperContactor = "沈志伟",
+                //发件人姓名
+                ShipperCountry = "01",
+                //发件人国家
+                ShipperRegion = "021",
+                //发件人区号
+                ShipperAddress = "test address",
+                //发件人地址
+                ShipperZipCode = "200435",
+                //发件人邮编
+                ShipperTel = "13817011234",
+                //发件人联系电话
+                ConsigneeContactor = "李宏",
+                //收件人姓名
+                ConsigneeCountry = "02",
+                //收件人国家
+                ConsigneeRegion = "022",
+                //收件人区号
+                ConsigneeAddress = "Japan address",
+                //收件人地址
+                ConsigneeZipCode = "201011",
+                //收件人邮编
+                ConsigneeTel = "120120",
+                //收件人联系电话
+                WeightType = 2,
+                //计重方式
+                TotalVolume = 10,
+                //总体积
+                TotalWeight = 10,
+                //总重量
+                Piece = 10,
+                //件数
+                IsInternational = true //是否是国际运单
+            };
+            //获取P1包裹
+            Package package = _packageManagementService.FindPackageByBarcode("p1");
+            package.JudgeHAWB(HAWBObj);
+        }
+        #endregion
+
         public override Expression<Func<Package, bool>> FilterExpression
         {
             get { throw new NotImplementedException(); }
