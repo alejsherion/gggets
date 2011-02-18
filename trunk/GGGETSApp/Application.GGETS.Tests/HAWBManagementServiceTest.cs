@@ -218,7 +218,7 @@ namespace Application.GGETS.Tests
             //in
             HAWBObj.HAWBBoxes.Add(HAWBBox01);
             //HAWBObj.HAWBBox.Add(HAWBBox02);
-            HAWBObj.HAWBItems.Add(HAWBItem01);
+            //HAWBObj.HAWBItems.Add(HAWBItem01);
             //HAWBObj.HAWBItem.Add(HAWBItem02);
             HAWBObj.User = user01;
 
@@ -238,7 +238,7 @@ namespace Application.GGETS.Tests
             HAWB HAWBObj = _HAWBManagementService.FindHAWBByBarCode("2010");//根据条形码获取对应运单对象
             //HAWBObj.Carrier = "航空公司03";
             HAWBBox HAWBBox = _HAWBManagementService.FindHAWBBoxByHID(HAWBObj.HID.ToString());
-            HAWBObj.HAWBBoxes.Remove(HAWBBox);
+            HAWBObj.RemoveHAWBBox(HAWBBox);
             _HAWBManagementService.ChangeHAWB(HAWBObj);//修改
             //Assert.Inconclusive("无法验证不返回值的方法。");
         }

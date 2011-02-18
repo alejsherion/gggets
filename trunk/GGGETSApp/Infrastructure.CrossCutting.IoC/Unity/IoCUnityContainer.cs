@@ -77,7 +77,7 @@ namespace ETS.GGGETSApp.Infrastructure.CrossCutting.IoC.Unity
             container.RegisterType<IHAWBBoxRepository, HAWBBoxRepository>(new TransientLifetimeManager());
             container.RegisterType<IPackageRepository, PackageRepository>(new TransientLifetimeManager());
             container.RegisterType<IUserRepository, UserRepository>(new TransientLifetimeManager());
-
+            container.RegisterType<IMAWBRepository, MAWBRepository>(new TransientLifetimeManager());
             //Register application services mappings
 
             container.RegisterType<IHAWBManagementService, HAWBManagementService>(new TransientLifetimeManager());
