@@ -13,11 +13,11 @@ namespace GGGETSAdmin.HAWBManage
 {
     public partial class HAWBItemAdd : System.Web.UI.Page
     {
-        private static HAWB hawb;
-        private static HAWBItem item;
-        private static HAWBBox box;
+        private HAWB hawb;
+        private HAWBItem item;
+        private HAWBBox box;
         private string type = string.Empty;
-        private static string intPattern = @"^[1-9]*$";
+        private static string intPattern = @"^[1-9][0-9]*$";
         private static string decimalPattern = @"^[0]{1}\.?[0-9]{0,2}|[1-9]+\.?[0-9]{0,2}$";
         private IHAWBManagementService _hawbService;
         protected HAWBItemAdd()
@@ -100,7 +100,7 @@ namespace GGGETSAdmin.HAWBManage
             {
                 if (!Regex.IsMatch(Txt_ItemPiece.Text, intPattern))
                 {
-                    Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('只能输入整数！')</script>");
+                    Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('只能输入非零的整数！')</script>");
                     Txt_ItemPiece.Focus();
                 }
                 else if (!Regex.IsMatch(Txt_ItemPice.Text, decimalPattern))
@@ -247,7 +247,6 @@ namespace GGGETSAdmin.HAWBManage
                 }
                 if (type == "Amend")
                 {
-                    ViewState["type"] = null;
                     _hawbService.ChangeHAWB(hawb);
                     Response.Write("<script>alert('修改成功！');location='HAWBManagement.aspx'</script>");
                     Session.Clear();

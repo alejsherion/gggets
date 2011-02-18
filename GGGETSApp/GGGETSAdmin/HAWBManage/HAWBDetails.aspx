@@ -20,8 +20,8 @@
                         <asp:Label ID="lbl_Account" runat="server" Text="客户帐号：" Width="80"></asp:Label>
                     </td>
                     <td align="left">
-                        <asp:Label ID="Txt_Account1" runat="server" Width="80" TabIndex="2" CssClass="TextBox"></asp:Label>-
-                        <asp:Label ID="Txt_Account2" runat="server" Width="50" TabIndex="3" CssClass="TextBox"></asp:Label>
+                        <asp:Label ID="Txt_Account1" runat="server" Width="80" TabIndex="2"></asp:Label>-
+                        <asp:Label ID="Txt_Account2" runat="server" Width="50" TabIndex="3"></asp:Label>
                     </td>
                     <td class="FieldHeader">
                         <asp:Label ID="lbl_SettleType" runat="server" Text="结算方式：" Width="80"></asp:Label>
@@ -59,7 +59,7 @@
                         <asp:Label ID="lbl_ShipperName" runat="server" Text="公司："></asp:Label>
                     </td>
                     <td align="left" colspan="5">
-                        <asp:Label ID="Txt_ShipperName" runat="server" Width="525" TabIndex="5" CssClass="TextBox"></asp:Label>
+                        <asp:Label ID="Txt_ShipperName" runat="server" Width="525" TabIndex="5"></asp:Label>
                     </td>
                 </tr>
                 <tr class="Row">
@@ -67,7 +67,7 @@
                         <asp:Label ID="lbl_ShipperAddress" runat="server" Text="地址："></asp:Label>
                     </td>
                     <td align="left" colspan="5">
-                        <asp:Label ID="Txt_ShipperAddress" runat="server" Width="525" TabIndex="6" TextMode="MultiLine" CssClass="TextBox"></asp:Label>
+                        <asp:Label ID="Txt_ShipperAddress" runat="server" Width="525" TabIndex="6" TextMode="MultiLine"></asp:Label>
                     </td>
                 </tr>
                 <tr class="Row">
@@ -75,19 +75,19 @@
                         <asp:Label ID="lbl_ShipperCountry" runat="server" Text="国家："></asp:Label>
                     </td>
                     <td align="left" class="style2">
-                        <asp:Label ID="Txt_ShipperCountry" runat="server" Width="80" CssClass="TextBox"></asp:Label>
+                        <asp:Label ID="Txt_ShipperCountry" runat="server" Width="80" ></asp:Label>
                     </td>
                     <td class="FieldHeader">
                         <asp:Label ID="lbl_ShipperRegion" runat="server" Text="省份："></asp:Label>
                     </td>
                     <td align="left" class="style1">
-                        <asp:Label ID="Txt_ShipperRegion" runat="server" Width="80" CssClass="TextBox"></asp:Label>
+                        <asp:Label ID="Txt_ShipperRegion" runat="server" Width="80" ></asp:Label>
                     </td>
                     <td class="FieldHeader">
                         <asp:Label ID="lbl_City" runat="server" Text="城市："></asp:Label>
                     </td>
                     <td align="left">
-                        <asp:Label ID="Txt_City" runat="server" Width="80" CssClass="TextBox"></asp:Label>
+                        <asp:Label ID="Txt_City" runat="server" Width="80" ></asp:Label>
                     </td>
                 </tr>
                 <tr class="Row">
@@ -95,19 +95,19 @@
                         <asp:Label ID="lbl_ShipperZipCode" runat="server" Text="邮编："></asp:Label>
                     </td>
                     <td align="left" class="style2">
-                        <asp:Label ID="Txt_ShipperZipCode" runat="server" Width="80" CssClass="TextBox"></asp:Label>
+                        <asp:Label ID="Txt_ShipperZipCode" runat="server" Width="80" ></asp:Label>
                     </td>
                     <td class="FieldHeader">
                         <asp:Label ID="lbl_ShipperContactor" runat="server" Text="姓名："></asp:Label>
                     </td>
                     <td align="left" class="style1">
-                        <asp:Label ID="Txt_ShipperContactor" runat="server" Width="80" CssClass="TextBox"></asp:Label>
+                        <asp:Label ID="Txt_ShipperContactor" runat="server" Width="80" ></asp:Label>
                     </td>
                     <td class="FieldHeader">
                         <asp:Label ID="lbl_ShipperTel" runat="server" Text="电话："></asp:Label>
                     </td>
                     <td align="left">
-                        <asp:Label ID="Txt_ShipperTel" runat="server" Width="80" TabIndex="12" CssClass="TextBox"></asp:Label>
+                        <asp:Label ID="Txt_ShipperTel" runat="server" Width="80" TabIndex="12" ></asp:Label>
                     </td>
                 </tr>
             </tbody>
@@ -128,7 +128,7 @@
                         <asp:Label ID="lbl_ConsigneeName" runat="server" Text="公司："></asp:Label>
                     </td>
                     <td align="left" colspan="5">
-                        <asp:Label ID="Txt_ConsigneeName" runat="server" Width="525px" CssClass="TextBox"></asp:Label>
+                        <asp:Label ID="Txt_ConsigneeName" runat="server" Width="525px" ></asp:Label>
                     </td>
                 </tr>
                 <tr class="Row">
@@ -137,7 +137,7 @@
                     </td>
                     <td align="left" colspan="5">
                         <asp:Label ID="Txt_ConsigneeAddress" runat="server" Width="525px" TabIndex="15"
-                            TextMode="MultiLine" CssClass="TextBox"></asp:Label>
+                            TextMode="MultiLine" ></asp:Label>
                     </td>
                 </tr>
                 <tr class="Row">
@@ -145,19 +145,19 @@
                         <asp:Label ID="lbl_ConsigneeCountry" runat="server" Text="国家："></asp:Label>
                     </td>
                     <td align="left" class="style2">
-                        <asp:Label ID="Txt_ConsigneeCountry" runat="server" Width="80" TabIndex="16" CssClass="TextBox"></asp:Label>
+                        <asp:Label ID="Txt_ConsigneeCountry" runat="server" Width="80" TabIndex="16" ></asp:Label>
                     </td>
                     <td class="FieldHeader">
                         <asp:Label ID="lbl_ConsigneeRegion" runat="server" Text="省份："></asp:Label>
                     </td>
                     <td align="left" class="style1">
-                        <asp:Label ID="Txt_ConsigneeRegion" runat="server" Width="80" TabIndex="17" CssClass="TextBox"></asp:Label>
+                        <asp:Label ID="Txt_ConsigneeRegion" runat="server" Width="80" TabIndex="17" ></asp:Label>
                     </td>
                     <td class="FieldHeader">
                         <asp:Label ID="lbl_ConsigneeCity" runat="server" Text="城市："></asp:Label>
                     </td>
                     <td align="left">
-                        <asp:Label ID="Txt_ConsigneeCity" runat="server" Width="80" TabIndex="18" CssClass="TextBox"></asp:Label>
+                        <asp:Label ID="Txt_ConsigneeCity" runat="server" Width="80" TabIndex="18" ></asp:Label>
                     </td>
                 </tr>
                 <tr class="Row">
@@ -165,19 +165,19 @@
                         <asp:Label ID="lbl_ConsigneeZipCode" runat="server" Text="邮编："></asp:Label>
                     </td>
                     <td align="left" class="style2">
-                        <asp:Label ID="Txt_ConsigneeZipCode" runat="server" Width="80" TabIndex="19" CssClass="TextBox"></asp:Label>
+                        <asp:Label ID="Txt_ConsigneeZipCode" runat="server" Width="80" TabIndex="19" ></asp:Label>
                     </td>
                     <td class="FieldHeader">
                         <asp:Label ID="lbl_ConsigneeContactor" runat="server" Text="姓名："></asp:Label>
                     </td>
                     <td align="left" class="style1">
-                        <asp:Label ID="Txt_ConsigneeContactor" runat="server" Width="80" TabIndex="20" CssClass="TextBox"></asp:Label>
+                        <asp:Label ID="Txt_ConsigneeContactor" runat="server" Width="80" TabIndex="20" ></asp:Label>
                     </td>
                     <td class="FieldHeader">
                         <asp:Label ID="lbl_ConsigneeTel" runat="server" Text="电话："></asp:Label>
                     </td>
                     <td align="left">
-                        <asp:Label ID="Txt_ConsigneeTel" runat="server" Width="80" TabIndex="21" CssClass="TextBox"></asp:Label>
+                        <asp:Label ID="Txt_ConsigneeTel" runat="server" Width="80" TabIndex="21" ></asp:Label>
                     </td>
                 </tr>
             </tbody>
@@ -190,63 +190,63 @@
             <tbody id="Deliver" runat="server" visible="false">
                 <tr class="EditRow">
                     <td colspan="6" align="left">
-                        <asp:Label ID="lbl_Deliver" runat="server" Text="交付人信息" CssClass="TextBox"></asp:Label>
+                        <asp:Label ID="lbl_Deliver" runat="server" Text="交付人信息" ></asp:Label>
                     </td>
                 </tr>
                 <tr class="Row">
                     <td class="FieldHeader">
-                        <asp:Label ID="lbl_DeliverName" runat="server" Text="公司:" CssClass="TextBox"></asp:Label>
+                        <asp:Label ID="lbl_DeliverName" runat="server" Text="公司:" ></asp:Label>
                     </td>
                     <td align="left" colspan="5">
-                        <asp:Label ID="Txt_DeliverName" runat="server" Width="525px" TabIndex="22" CssClass="TextBox"></asp:Label>
+                        <asp:Label ID="Txt_DeliverName" runat="server" Width="525px" TabIndex="22" ></asp:Label>
                     </td>
                 </tr>
                 <tr class="Row">
                     <td class="FieldHeader">
-                        <asp:Label ID="lbl_DeliverAddress" runat="server" Text="地址：" CssClass="TextBox"></asp:Label>
+                        <asp:Label ID="lbl_DeliverAddress" runat="server" Text="地址：" ></asp:Label>
                     </td>
                     <td align="left" colspan="5">
-                        <asp:Label ID="Txt_DeliverAddress" runat="server" Width="525px" TabIndex="23" TextMode="MultiLine" CssClass="TextBox"></asp:Label>
+                        <asp:Label ID="Txt_DeliverAddress" runat="server" Width="525px" TabIndex="23" TextMode="MultiLine" ></asp:Label>
                     </td>
                 </tr>
                 <tr class="Row">
                     <td class="FieldHeader">
-                        <asp:Label ID="lbl_DeliverCountry" runat="server" Text="国家：" CssClass="TextBox"></asp:Label>
+                        <asp:Label ID="lbl_DeliverCountry" runat="server" Text="国家：" ></asp:Label>
                     </td>
                     <td align="left" class="style2">
-                        <asp:Label ID="Txt_DeliverCountry" runat="server" Width="80" TabIndex="24" CssClass="TextBox"></asp:Label>
+                        <asp:Label ID="Txt_DeliverCountry" runat="server" Width="80" TabIndex="24" ></asp:Label>
                     </td>
                     <td class="FieldHeader">
-                        <asp:Label ID="lbl_DeliverRegion" runat="server" Text="省份：" CssClass="TextBox"></asp:Label>
+                        <asp:Label ID="lbl_DeliverRegion" runat="server" Text="省份：" ></asp:Label>
                     </td>
                     <td align="left" class="style1">
-                        <asp:Label ID="Txt_DeliverRegion" runat="server" Width="80" TabIndex="25" CssClass="TextBox"></asp:Label>
+                        <asp:Label ID="Txt_DeliverRegion" runat="server" Width="80" TabIndex="25" ></asp:Label>
                     </td>
                     <td class="FieldHeader">
-                        <asp:Label ID="lbl_DeliverCity" runat="server" Text="城市：" CssClass="TextBox"></asp:Label>
+                        <asp:Label ID="lbl_DeliverCity" runat="server" Text="城市：" ></asp:Label>
                     </td>
                     <td align="left">
-                        <asp:Label ID="Txt_DeliverCity" runat="server" Width="80" TabIndex="26" CssClass="TextBox"></asp:Label>
+                        <asp:Label ID="Txt_DeliverCity" runat="server" Width="80" TabIndex="26" ></asp:Label>
                     </td>
                 </tr>
                 <tr class="Row">
                     <td class="FieldHeader">
-                        <asp:Label ID="lbl_DeliverZipCode" runat="server" Text="邮编：" CssClass="TextBox"></asp:Label>
+                        <asp:Label ID="lbl_DeliverZipCode" runat="server" Text="邮编：" ></asp:Label>
                     </td>
                     <td align="left" class="style2">
-                        <asp:Label ID="Txt_DeliverZipCode" runat="server" Width="80" TabIndex="27" CssClass="TextBox"></asp:Label>
+                        <asp:Label ID="Txt_DeliverZipCode" runat="server" Width="80" TabIndex="27" ></asp:Label>
                     </td>
                     <td class="FieldHeader">
-                        <asp:Label ID="lbl_DeliverContactor" runat="server" Text="姓名：" CssClass="TextBox"></asp:Label>
+                        <asp:Label ID="lbl_DeliverContactor" runat="server" Text="姓名：" ></asp:Label>
                     </td>
                     <td align="left" class="style1">
-                        <asp:Label ID="Txt_DeliverContactor" runat="server" Width="80" TabIndex="28" CssClass="TextBox"></asp:Label>
+                        <asp:Label ID="Txt_DeliverContactor" runat="server" Width="80" TabIndex="28" ></asp:Label>
                     </td>
                     <td class="FieldHeader">
-                        <asp:Label ID="lbl_DeliverTel" runat="server" Text="电话：" CssClass="TextBox"></asp:Label>
+                        <asp:Label ID="lbl_DeliverTel" runat="server" Text="电话：" ></asp:Label>
                     </td>
                     <td align="left">
-                        <asp:Label ID="Txt_DeliverTel" runat="server" Width="80" TabIndex="29" CssClass="TextBox"></asp:Label>
+                        <asp:Label ID="Txt_DeliverTel" runat="server" Width="80" TabIndex="29" ></asp:Label>
                     </td>
                 </tr>
             </tbody>
@@ -390,36 +390,36 @@
                 <td class="FieldHeader">
                     <asp:Label ID="lbl_VolumeWeight" runat="server" Text="总重量："></asp:Label></td>
                 <td align="left">
-                    <asp:Label ID="txt_TotalWeight" runat="server" CssClass="TextBox"></asp:Label>
+                    <asp:Label ID="txt_TotalWeight" runat="server" ></asp:Label>
                 </td>
                 <td class="FieldHeader">
                     <asp:Label ID="lbl_PieceTile" runat="server" Text="包裹件数："></asp:Label></td>
                 <td align="left">
-                    <asp:Label ID="lbl_Piece" runat="server" CssClass="TextBox"></asp:Label>
+                    <asp:Label ID="lbl_Piece" runat="server" ></asp:Label>
                 </td>
                 <td class="FieldHeader">
                     <asp:Label ID="lbl_TotalVolumeTile" runat="server" Text="总容积："></asp:Label></td>
                 <td align="left">
-                    <asp:Label ID="lbl_TotalVolume" runat="server" CssClass="TextBox"></asp:Label>
+                    <asp:Label ID="lbl_TotalVolume" runat="server" ></asp:Label>
                 </td>
             </tr>
             <tr class="Row">
                 <td class="FieldHeader">
                     <asp:Label ID="lbl_Remark" runat="server" Text="备注："></asp:Label></td>
                 <td align="left" colspan="7">
-                    <asp:Label ID="txt_Remark" runat="server" Width="500" Height="100" TextMode="MultiLine" CssClass="TextBox"></asp:Label></td>
+                    <asp:Label ID="txt_Remark" runat="server" Width="500" Height="100" TextMode="MultiLine" ></asp:Label></td>
             </tr>
             <tr class="Row">
                 <td class="FieldHeader">
                     <asp:Label ID="lbl_Carrier" runat="server" Text="承运公司名称："></asp:Label></td>
                 <td align="left" colspan="7">
-                    <asp:Label ID="Txt_Carrier" runat="server" Width="422px" CssClass="TextBox"></asp:Label></td>
+                    <asp:Label ID="Txt_Carrier" runat="server" Width="422px" ></asp:Label></td>
             </tr>
             <tr class="Row">
                 <td class="FieldHeader">
                     <asp:Label ID="lbl_CarrierHAWBID" runat="server" Text="承运公司运单号："></asp:Label></td>
                 <td align="left" colspan="7">
-                    <asp:Label ID="Txt_CarrierHAWBID" runat="server" Width="422px" CssClass="TextBox"></asp:Label></td>
+                    <asp:Label ID="Txt_CarrierHAWBID" runat="server" Width="422px" ></asp:Label></td>
             </tr>
         </tbody>
     </table>
