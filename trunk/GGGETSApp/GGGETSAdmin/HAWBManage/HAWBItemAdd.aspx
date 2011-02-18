@@ -12,19 +12,19 @@
                         <asp:Label ID="lbl_BarCodeTitle" runat="server" Text="运单号："></asp:Label>
                     </th>
                     <th align="left" colspan="3">
-                        <asp:Label ID="lbl_BarCode" runat="server" CssClass="TextBox" Width="250"></asp:Label>
+                        <asp:Label ID="lbl_BarCode" runat="server" Width="250"></asp:Label>
                     </th>
                     <th class="FieldHeader" colspan="2">
                         <asp:Label ID="lbl_ShipperCountryTitle" runat="server" Text="发件国家二字码："></asp:Label>
                     </th>
                     <th>
-                        <asp:Label ID="lbl_ShipperCountry" runat="server" CssClass="TextBox" Width="50"></asp:Label>
+                        <asp:Label ID="lbl_ShipperCountry" runat="server" Width="50"></asp:Label>
                     </th>
                     <th class="FieldHeader">
                         <asp:Label ID="lbl_ShipperRegionTitle" runat="server" Text="发件地区三字码："></asp:Label>
                     </th>
                     <th>
-                        <asp:Label ID="lbl_ShipperRegion" runat="server" CssClass="TextBox" Width="50"></asp:Label>
+                        <asp:Label ID="lbl_ShipperRegion" runat="server" Width="50"></asp:Label>
                     </th>
                 </tr>
                 <tr class="Row">
@@ -32,7 +32,7 @@
                         <asp:Label ID="lbl_ShipperNameTitle" runat="server" Text="发件公司："></asp:Label>
                     </th>
                     <th colspan="8" align="left">
-                        <asp:Label ID="lbl_ShipperName" runat="server" CssClass="TextBox" Width="350"></asp:Label>
+                        <asp:Label ID="lbl_ShipperName" runat="server" Width="350"></asp:Label>
                     </th>
                 </tr>
                 <tr class="Row">
@@ -40,7 +40,7 @@
                         <asp:Label ID="lbl_ConsigneeNameTitle" runat="server" Text="收件公司："></asp:Label>
                     </th>
                     <th colspan="8" align="left">
-                        <asp:Label ID="lbl_ConsigneeName" runat="server" CssClass="TextBox" Width="350"></asp:Label>
+                        <asp:Label ID="lbl_ConsigneeName" runat="server" Width="350"></asp:Label>
                     </th>
                 </tr>
             </thead>

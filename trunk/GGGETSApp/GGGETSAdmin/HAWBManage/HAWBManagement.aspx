@@ -135,7 +135,7 @@
                 </asp:TemplateField>
                 <asp:TemplateField HeaderText="发件时间">
                     <ItemTemplate>
-                        <asp:Label ID="lbl_CreateTime" runat="server" Text='<%# Eval("CreateTime","{0:yyyy-MM-dd} ")) %>'></asp:Label>
+                        <asp:Label ID="lbl_CreateTime" runat="server" Text='<%# Eval("CreateTime","{0:yyyy-MM-dd} ") %>'></asp:Label>
                     </ItemTemplate>
                     <ControlStyle Width="80px" />
                 </asp:TemplateField>
