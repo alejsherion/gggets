@@ -82,6 +82,7 @@ namespace ETS.GGGETSApp.Infrastructure.CrossCutting.IoC.Unity
 
             container.RegisterType<IHAWBManagementService, HAWBManagementService>(new TransientLifetimeManager());
             container.RegisterType<IPackageManagementService, PackageManagementService>(new TransientLifetimeManager());
+            container.RegisterType<IMAWBManagementService, MAWBManagementService>(new TransientLifetimeManager());
             
             //Register domain services mappings
             //container.RegisterType<IBankTransferDomainService, BankTransferDomainService>(new TransientLifetimeManager());
