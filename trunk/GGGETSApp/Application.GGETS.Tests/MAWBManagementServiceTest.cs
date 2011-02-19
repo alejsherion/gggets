@@ -199,6 +199,26 @@ namespace Application.GGETS.Tests
         }
         #endregion
 
+        #region 总运单总重量总体积测试
+         /// <summary>
+        ///TestMAWBCommonProperty 的测试
+        ///</summary>
+        [TestMethod()]
+        public void TestMAWBCommonProperty()
+        {
+            //首先获取原来的对象
+            MAWB previousMAWB = _MAWBManagementService.FindMAWBByBarcode("2013");
+            //对该对象的包裹集合进行移除，证明集合发生变化，触发条件
+            Package package = _packageManagementService.FindPackageByBarcode("p2");
+            previousMAWB.Packages.Remove(package);
+            //接下去在为该包裹添加一个运单看看输出效果
+            HAWB addedHAWB = _HAWBManagementService.FindHAWBByBarCode("2011");
+            previousMAWB.Packages[0].HAWBs.Add(addedHAWB);
+
+            Assert.AreEqual(40, previousMAWB.TotalWeight);
+        }
+        #endregion
+
         public override Expression<Func<MAWB, bool>> FilterExpression
         {
             get { throw new NotImplementedException(); }
