@@ -68,5 +68,17 @@ namespace Application.GGETS
             //complete changes in this unit of work
             unitOfWork.CommitAndRefreshChanges();
         }
+
+        /// <summary>
+        /// 多条件查询总运单
+        /// </summary>
+        /// <param name="barCode">总运单编号</param>
+        /// <param name="beginDate">开始日期</param>
+        /// <param name="endDate">结束日期</param>
+        /// <returns></returns>
+        public IList<MAWB> FindMAWBByCondition(string barCode, DateTime? beginDate, DateTime? endDate)
+        {
+            return _mawbRepository.FindMAWBByCondition(barCode, beginDate, endDate);
+        }
     }
 }

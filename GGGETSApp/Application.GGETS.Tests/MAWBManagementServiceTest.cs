@@ -184,6 +184,21 @@ namespace Application.GGETS.Tests
         }
         #endregion
 
+        #region 总运单多条件查询测试
+        /// <summary>
+        ///FindMAWBByCondition 的测试
+        ///</summary>
+        [TestMethod()]
+        public void FindMAWBByConditionTest()
+        {
+            string barCode = string.Empty; // 总运单编号
+            Nullable<DateTime> beginDate = new DateTime(2011,2,18); // 开始日期
+            Nullable<DateTime> endDate = new DateTime(2011, 2, 19); // 结束日期
+            IList<MAWB> actual;
+            actual = _MAWBManagementService.FindMAWBByCondition(barCode, beginDate, endDate);
+        }
+        #endregion
+
         public override Expression<Func<MAWB, bool>> FilterExpression
         {
             get { throw new NotImplementedException(); }
