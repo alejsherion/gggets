@@ -8,6 +8,7 @@
 //************************************************************************
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using ETS.GGGETSApp.Domain.Core.Entities;
@@ -20,6 +21,7 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
         {
             ChangeTracker.ChangeTrackingEnabled = false;
             this.HAWBs.CollectionChanged += new System.Collections.Specialized.NotifyCollectionChangedEventHandler(HAWBs_CollectionChanged);
+            this._propertyChanged += new System.ComponentModel.PropertyChangedEventHandler(Package_propertyChanged);
         }
 
         /// <summary>
@@ -31,6 +33,19 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
         {
             CalculateHAWBSTotalWeight();
             CalculateHAWBSTotalPiece();
+        }
+
+        /// <summary>
+        /// 当包裹中的总重量属性发生变化时，需要重新计算总运单的总重量
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Package_propertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            Package package = sender as Package;
+            //当重量发生变化时更新总运单的总重量，注意此时的包裹中必须有总重量实例
+            if (e.PropertyName == "TotalWeight" && package.MAWB != null)
+            package.MAWB.CalculateMAWBTotalWeight();
         }
 
         /// <summary>

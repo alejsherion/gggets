@@ -45,7 +45,11 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
         {
             HAWB hawb = sender as HAWB;
             //当重量发生变化时更新包裹的总重量，注意此时的hawb中必须有包裹实例
-            if (e.PropertyName == "TotalWeight" && hawb.Package != null) hawb.Package.CalculateHAWBSTotalWeight();
+            if (e.PropertyName == "TotalWeight" && hawb.Package != null)
+            {
+                hawb.Package.CalculateHAWBSTotalWeight();//包裹会变化
+                //hawb.Package.MAWB.CalculateMAWBTotalWeight();//总运单重量也会变化
+            }
         }
 
         /// <summary>

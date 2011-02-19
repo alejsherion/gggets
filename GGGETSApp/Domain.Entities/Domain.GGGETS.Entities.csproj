@@ -93,6 +93,7 @@
     <Compile Include="Partial\HAWBBoxPartial.cs" />
     <Compile Include="Partial\HAWBItemPartial.cs" />
     <Compile Include="Partial\HAWBPartial.cs" />
+    <Compile Include="Partial\MAWBPartial.cs" />
     <Compile Include="Partial\PackagePartial.cs" />
     <Compile Include="Privilege.cs">
       <DependentUpon>GGGETSAppContext.Types.tt</DependentUpon>
