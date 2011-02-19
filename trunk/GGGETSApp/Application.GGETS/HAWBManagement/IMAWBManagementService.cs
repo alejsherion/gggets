@@ -19,5 +19,6 @@ namespace Application.GGETS
         void AddMAWB(MAWB mawb);
         MAWB FindMAWBByBarcode(string barcode);
         void ModifyMAWB(MAWB mawb);
+        IList<MAWB> FindMAWBByCondition(string barCode, DateTime? beginDate, DateTime? endDate);
     }
 }
