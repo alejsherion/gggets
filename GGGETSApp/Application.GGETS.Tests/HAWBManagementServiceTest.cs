@@ -14,6 +14,8 @@ using ETS.GGGETSApp.Infrastructure.Data.Persistence.Repositories;
 using ETS.GGGETSApp.Infrastructure.Data.Persistence.UnitOfWork;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
+using Application.GGETS;
+using Domain.GGGETS;
 
 namespace Application.GGETS.Tests
 {
@@ -331,6 +333,22 @@ namespace Application.GGETS.Tests
             Assert.AreEqual(actualTotalPiece, hawb.Piece);
             Assert.AreEqual(actualTotalVolume, hawb.TotalVolume);
             //Assert.Inconclusive("验证此测试方法的正确性。");
+        }
+        #endregion
+
+        #region 测试多条件查询，通过运单间接查询包裹和总运单
+        /// <summary>
+        ///FindHAWBsOfPackageByCondition 的测试
+        ///</summary>
+        [TestMethod()]
+        public void FindHAWBsOfPackageByConditionTest()
+        {
+            string barCode = string.Empty; // 包裹编号
+            Nullable<DateTime> beginDate = new DateTime(2011,2,16); // 开始日期
+            Nullable<DateTime> endDate = new DateTime(2011, 2, 17); // 结束日期
+            string destinationCode = string.Empty; // 目的地三字码
+            IList<HAWB> actual;
+            actual = _HAWBManagementService.FindHAWBsOfPackageByCondition(barCode, beginDate, endDate, destinationCode);
         }
         #endregion
 
