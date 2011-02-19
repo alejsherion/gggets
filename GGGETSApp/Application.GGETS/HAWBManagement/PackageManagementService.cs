@@ -69,5 +69,18 @@ namespace Application.GGETS
             //complete changes in this unit of work
             unitOfWork.CommitAndRefreshChanges();
         }
+
+        /// <summary>
+        /// 包裹多条件查询
+        /// </summary>
+        /// <param name="barCode">包裹编号</param>
+        /// <param name="beginDate">开始日期</param>
+        /// <param name="endDate">结束日期</param>
+        /// <param name="destinationCode">目标地三字码</param>
+        /// <returns></returns>
+        public IList<Package> FindPackageByCondition(string barCode, DateTime? beginDate, DateTime? endDate, string destinationCode)
+        {
+            return _packageRepository.FindPackageByCondition(barCode, beginDate, endDate, destinationCode);
+        }
     }
 }

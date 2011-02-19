@@ -117,7 +117,7 @@ namespace Application.GGETS.Tests
             //new a MAWB
             MAWB mawb = new MAWB
             {
-                MID = new Guid("00000000-0000-0000-0000-000000000001"),
+                MID = Guid.NewGuid(),
                 BarCode="2013",
                 CreateTime=DateTime.Now,
                 Operator="tester",
@@ -125,9 +125,62 @@ namespace Application.GGETS.Tests
                 TotalVolume=20,
                 Status=0
             };
-            Package package = _packageManagementService.FindPackageByBarcode("p2");
+            //new a fight
+            Flight flight = new Flight
+            {
+                FID=Guid.NewGuid(),
+                FlightNo="T565",
+                From="abc",
+                To="cba",
+                TakeOffTime=DateTime.Now,
+                LandTime=DateTime.Now
+            };
+            Package package = _packageManagementService.FindPackageByBarcode("p1");//获取该总运单需要添加的包裹，可能有多个
+            Package package2 = _packageManagementService.FindPackageByBarcode("p2");
+            
             mawb.Packages.Add(package);
+            mawb.Packages.Add(package2);
+            mawb.Flight.Add(flight);
             _MAWBManagementService.AddMAWB(mawb);
+        }
+        #endregion
+
+        #region 修改总运单测试
+        /// <summary>
+        ///ModifyMAWB 的测试
+        ///</summary>
+        [TestMethod()]
+        public void ModifyMAWBTest()
+        {
+            #region 总运单中移除包裹，飞机航班测试
+            //MAWB mawb = _MAWBManagementService.FindMAWBByBarcode("2013");
+            //Package package = _packageManagementService.FindPackageByBarcode("p1");
+            //Package package2 = _packageManagementService.FindPackageByBarcode("p2");
+            //Flight flight = _HAWBManagementService.FindFlightByFID("554c6c50-db8b-4e33-84ec-fb77a133e69f");
+            //mawb.Packages.Remove(package);
+            //mawb.Packages.Remove(package2);
+            //mawb.Flight.Remove(flight);
+            //_MAWBManagementService.ModifyMAWB(mawb);
+            #endregion
+
+            #region 总运单中移除包裹，飞机航班测试
+            //MAWB mawb = _MAWBManagementService.FindMAWBByBarcode("2013");
+            //Package package = _packageManagementService.FindPackageByBarcode("p1");
+            //Package package2 = _packageManagementService.FindPackageByBarcode("p2");
+            //Flight flight = _HAWBManagementService.FindFlightByFID("554c6c50-db8b-4e33-84ec-fb77a133e69f");
+            //mawb.Packages.Add(package);
+            //mawb.Packages.Add(package2);
+            //mawb.Flight.Add(flight);
+            //_MAWBManagementService.ModifyMAWB(mawb);
+            #endregion
+
+            #region 总运单中移除包裹，飞机航班测试
+            MAWB mawb = _MAWBManagementService.FindMAWBByBarcode("2013");
+            mawb.Packages[0].Piece = 999;//修改总运单中第一个包裹的件数
+            mawb.Flight[0].From = "zzz";//修改总运单中航班的起始地
+            mawb.TotalWeight = 999;//修改总运单总重量
+            _MAWBManagementService.ModifyMAWB(mawb);//if three condition is all success,then this test is go out
+            #endregion
         }
         #endregion
 

@@ -15,6 +15,7 @@ using ETS.GGGETSApp.Infrastructure.Data.Persistence.Repositories;
 using ETS.GGGETSApp.Infrastructure.Data.Persistence.UnitOfWork;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
+using Application.GGETS;
 
 namespace Application.GGETS.Tests
 {
@@ -251,6 +252,24 @@ namespace Application.GGETS.Tests
             //获取P1包裹
             Package package = _packageManagementService.FindPackageByBarcode("p1");
             package.JudgeHAWB(HAWBObj);
+        }
+        #endregion
+
+        #region 包裹多条件查询测试
+        /// <summary>
+        ///FindPackageByCondition 的测试
+        /// 包裹编号测试通过
+        /// 日期测试通过
+        ///</summary>
+        [TestMethod()]
+        public void FindPackageByConditionTest()
+        {
+            //string barCode = "p1"; // 包裹编号
+            string barCode = string.Empty; // 包裹编号
+            Nullable<DateTime> beginDate = new Nullable<DateTime>(new DateTime(2011,2,11)); // 开始日期
+            Nullable<DateTime> endDate = new Nullable<DateTime>(); // 结束日期
+            string destinationCode = string.Empty; // 目的地三字码
+            IList<Package> actual = _packageManagementService.FindPackageByCondition(barCode, beginDate, endDate, destinationCode);
         }
         #endregion
 

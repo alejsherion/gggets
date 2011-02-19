@@ -141,11 +141,22 @@ namespace Application.GGETS
         /// <summary>
         /// 通过HID获取运单盒子
         /// </summary>
-        /// <param name="HID"></param>
+        /// <param name="HID">运单编号</param>
         /// <returns></returns>
         public HAWBBox FindHAWBBoxByHID(string HID)
         {
             return _hawbRepository.FindHAWBBoxByHID(HID)[0];
+        }
+
+        /// <summary>
+        /// 通过航班编号获取航班
+        /// 由于这里没有barcode,所以使用默认的主键作为查询条件
+        /// </summary>
+        /// <param name="FID">航班</param>
+        /// <returns></returns>
+        public Flight FindFlightByFID(string FID)
+        {
+            return _hawbRepository.FindFlightByFID(FID);
         }
     }
 }

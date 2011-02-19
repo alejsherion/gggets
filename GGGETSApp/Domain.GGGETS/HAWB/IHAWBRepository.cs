@@ -22,5 +22,6 @@ namespace Domain.GGGETS
         User FindUserByUID(string UID);
         Package FindPackageByBarcode(string barcode);
         MAWB FindMAWBByBarcode(string barcode);
+        Flight FindFlightByFID(string FID);
     }
 }

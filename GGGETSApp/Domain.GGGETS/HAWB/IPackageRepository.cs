@@ -6,6 +6,7 @@
 // 改版日				2011.02.12
 // 改版内容				创建并且修改
 //************************************************************************
+using System;
 using System.Collections.Generic;
 using ETS.GGGETSApp.Domain.Application.Entities;
 using ETS.GGGETSApp.Domain.Core;
@@ -15,5 +16,6 @@ namespace Domain.GGGETS
     public interface IPackageRepository:IRepository<Package>
     {
         Package GetSinglePackageByPid(string PID);
+        IList<Package> FindPackageByCondition(string barCode, DateTime? beginDate, DateTime? endDate, string destinationCode);
     }
 }
