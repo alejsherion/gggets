@@ -54,18 +54,28 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Repositories
             {
                 if (context != null)
                 {
-                    packages = context.Package.Include(p => p.HAWBs).Include(p => p.MAWB).Select(p => p);
+                    //packages = context.Package.Include(p => p.HAWBs).Include(p => p.MAWB).Select(p => p);
+                    packages = context.Package.Select(p => p);
                     if (!string.IsNullOrEmpty(barCode)) packages = packages.Where(p => p.BarCode == barCode);
                     if (!string.IsNullOrEmpty(destinationCode)) packages = packages.Where(p => p.RegionCode == destinationCode);
                     if (beginDate.HasValue)
                     {
                         if (beginDate.Value != DateTime.MinValue)
-                            packages = packages.Where(p => p.CreateTime >= beginDate.Value);
+                            packages =
+                                packages.Where(
+                                    p =>
+                                    p.CreateTime >=
+                                    new DateTime(beginDate.Value.Year, beginDate.Value.Month, beginDate.Value.Day, 0, 0,
+                                                 0));
                     }
                     if (endDate.HasValue)
                     {
                         if (endDate.Value != DateTime.MinValue)
-                            packages = packages.Where(p => p.CreateTime <= endDate.Value);
+                            packages =
+                                packages.Where(
+                                    p =>
+                                    p.CreateTime <=
+                                    new DateTime(endDate.Value.Year, endDate.Value.Month, endDate.Value.Day, 23, 59, 59));
                     }
                 }
                 else

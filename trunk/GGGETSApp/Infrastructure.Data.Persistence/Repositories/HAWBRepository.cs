@@ -195,7 +195,7 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Repositories
             IGGGETSAppUnitOfWork context = UnitOfWork as IGGGETSAppUnitOfWork;
             if (context != null)
             {
-                return context.Package.Include(it=>it.HAWBs).Where(it => it.BarCode == barcode).SingleOrDefault();
+                return context.Package.Include(it=>it.HAWBs).Include(it=>it.MAWB).Where(it => it.BarCode == barcode).SingleOrDefault();
             }
             else
                 throw new InvalidOperationException(string.Format(
@@ -249,6 +249,58 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Repositories
                                                                 Messages.exception_InvalidStoreContext,
                                                                 GetType().Name));
         }
+
+        /// <summary>
+        /// 通过运单间接查询包裹信息
+        /// 主要用于方便绑定GRID
+        /// </summary>
+        /// <param name="barCode">包裹编号</param>
+        /// <param name="beginDate">开始日期</param>
+        /// <param name="endDate">结束日期</param>
+        /// <param name="destinationCode">目的地三字码</param>
+        /// <returns></returns>
+        public IList<HAWB> FindHAWBsOfPackageByCondition(string barCode, DateTime? beginDate, DateTime? endDate, string destinationCode)
+        {
+            IEnumerable<HAWB> hawbs = null;
+            using (IGGGETSAppUnitOfWork context = UnitOfWork as IGGGETSAppUnitOfWork)
+            {
+                if (context != null)
+                {
+                    hawbs = (from he in context.HAWB.Include(h => h.Package) where he.Package!=null select he).ToList();
+                    //hawbs = context.HAWB.Include(h => h.Package).Select(h => h).ToList().SkipWhile(h => h.Package == null);
+                    if (!string.IsNullOrEmpty(barCode)) hawbs = hawbs.Where(h => h.Package.BarCode == barCode);
+                    if (!string.IsNullOrEmpty(destinationCode)) hawbs = hawbs.Where(h => h.Package.RegionCode == destinationCode);
+                    if (beginDate.HasValue)
+                    {
+                        if (beginDate.Value != DateTime.MinValue)
+                            hawbs =
+                                hawbs.Where(
+                                    h =>
+                                    h.Package.CreateTime >=
+                                    new DateTime(beginDate.Value.Year, beginDate.Value.Month, beginDate.Value.Day, 0, 0,
+                                                 0));
+                    }
+                    if (endDate.HasValue)
+                    {
+                        if (endDate.Value != DateTime.MinValue)
+                            hawbs =
+                                hawbs.Where(
+                                    h =>
+                                    h.Package.CreateTime <=
+                                    new DateTime(endDate.Value.Year, endDate.Value.Month, endDate.Value.Day, 23, 59, 59));
+                    }
+                }
+                else
+                {
+                    throw new InvalidOperationException(string.Format(
+                                                                CultureInfo.InvariantCulture,
+                                                                Messages.exception_InvalidStoreContext,
+                                                                GetType().Name));
+                }
+                return hawbs.ToList();
+            }
+        }
+
         #endregion
 
         #region 总运单操作
