@@ -54,5 +54,19 @@ namespace Application.GGETS
         {
             return _hawbRepository.FindMAWBByBarcode(barcode);
         }
+
+        /// <summary>
+        /// 修改总运单
+        /// </summary>
+        /// <param name="mawb">总运单</param>
+        public void ModifyMAWB(MAWB mawb)
+        {
+            if (mawb == null)
+                throw new ArgumentNullException("MAWB is null");
+            IUnitOfWork unitOfWork = _mawbRepository.UnitOfWork;
+            _mawbRepository.Modify(mawb);
+            //complete changes in this unit of work
+            unitOfWork.CommitAndRefreshChanges();
+        }
     }
 }

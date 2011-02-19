@@ -228,6 +228,29 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Repositories
         }
         #endregion
 
+        #region 飞机航班操作
+        /// <summary>
+        /// 通过航班号获取航班
+        /// </summary>
+        /// <param name="FID">航班号</param>
+        /// <returns></returns>
+        public Flight FindFlightByFID(string FID)
+        {
+            IGGGETSAppUnitOfWork context = UnitOfWork as IGGGETSAppUnitOfWork;
+
+            if (context != null)
+            {
+                Guid guidHID = new Guid(FID);
+                return context.Flight.Where(it => it.FID == new Guid(FID)).SingleOrDefault();
+            }
+            else
+                throw new InvalidOperationException(string.Format(
+                                                                CultureInfo.InvariantCulture,
+                                                                Messages.exception_InvalidStoreContext,
+                                                                GetType().Name));
+        }
+        #endregion
+
         #region 总运单操作
         /// <summary>
         /// 通过运单中的用户编号获取运单用户
@@ -240,7 +263,7 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Repositories
 
             if (context != null)
             {
-                return context.MAWB.Include(it=>it.Packages).Where(it => it.BarCode == barcode).SingleOrDefault();
+                return context.MAWB.Include(it=>it.Packages).Include(it=>it.Flight).Where(it => it.BarCode == barcode).SingleOrDefault();
             }
             else
                 throw new InvalidOperationException(string.Format(
