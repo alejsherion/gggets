@@ -22,9 +22,7 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Repositories
 {
     public class FlightRepository : Repository<Flight>, IFlightRepository
     {
-        public FlightRepository(IQueryableUnitOfWork unitOfWork, ITraceManager traceManager) : base(unitOfWork, traceManager)
-        {
-        }
+        public FlightRepository(IGGGETSAppUnitOfWork unitOfWork, ITraceManager traceManager) : base(unitOfWork, traceManager) { }
 
         /// <summary>
         /// 航班多条件查询
