@@ -22,7 +22,7 @@ namespace Domain.GGGETS
         User FindUserByUID(string UID);
         Package FindPackageByBarcode(string barcode);
         MAWB FindMAWBByBarcode(string barcode);
-        Flight FindFlightByFID(string FID);
+        Flight FindFlightByFlightNo(string flightNo);
         IList<HAWB> FindHAWBsOfPackageByCondition(string barCode, DateTime? beginDate, DateTime? endDate,
                                                   string destinationCode);
     }

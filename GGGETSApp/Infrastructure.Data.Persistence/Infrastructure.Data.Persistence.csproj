@@ -62,6 +62,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>GGGETSAppDataModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Repositories\FlightRepository.cs" />
     <Compile Include="Repositories\HAWBBoxRepository.cs" />
     <Compile Include="Repositories\HAWBItemRepository.cs" />
     <Compile Include="Repositories\HAWBRepository.cs" />

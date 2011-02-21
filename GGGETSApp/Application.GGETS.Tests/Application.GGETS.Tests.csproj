@@ -53,6 +53,7 @@
     </CodeAnalysisDependentAssemblyPaths>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FlightManagementServiceTest.cs" />
     <Compile Include="GenericRepositoryTestsBase.cs" />
     <Compile Include="HAWBManagementServiceTest.cs" />
     <Compile Include="MAWBManagementServiceTest.cs" />
