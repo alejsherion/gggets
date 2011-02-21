@@ -251,6 +251,25 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Repositories
         }
 
         /// <summary>
+        /// 查询所有航班
+        /// </summary>
+        /// <returns></returns>
+        public IList<Flight> FindAllFlights()
+        {
+            IGGGETSAppUnitOfWork context = UnitOfWork as IGGGETSAppUnitOfWork;
+
+            if (context != null)
+            {
+                return context.Flight.ToList();
+            }
+            else
+                throw new InvalidOperationException(string.Format(
+                                                                CultureInfo.InvariantCulture,
+                                                                Messages.exception_InvalidStoreContext,
+                                                                GetType().Name));
+        }
+
+        /// <summary>
         /// 通过运单间接查询包裹信息
         /// 主要用于方便绑定GRID
         /// </summary>

@@ -140,6 +140,42 @@ namespace Application.GGETS.Tests
         }
         #endregion
 
+        #region 添加航班测试
+        /// <summary>
+        ///AddFlight 的测试
+        ///</summary>
+        [TestMethod()]
+        public void AddFlightTest()
+        {
+            Flight flightObj = new Flight
+            {
+                FID = Guid.NewGuid(),//序号
+                FlightNo="T202",//航班号
+                From="001",//起始地
+                To="002",//目的地
+                TakeOffTime=DateTime.Now,//起飞日期
+                LandTime=DateTime.Now.AddDays(1)//降落日期
+            };
+            _flightManagementService.AddFlight(flightObj);
+            //Assert.Inconclusive("无法验证不返回值的方法。");
+        }
+        #endregion
+
+        #region 查询所有的航班
+        /// <summary>
+        ///FindAllFlights 的测试
+        ///</summary>
+        [TestMethod()]
+        public void FindAllFlightsTest()
+        {
+            IList<Flight> actual = _flightManagementService.FindAllFlights();
+            int count = 0;
+            if(actual!=null)
+                count = actual.Count;
+            Assert.AreNotEqual(0, count);
+        }
+        #endregion
+
         public override Expression<Func<Flight, bool>> FilterExpression
         {
             get { throw new NotImplementedException(); }
