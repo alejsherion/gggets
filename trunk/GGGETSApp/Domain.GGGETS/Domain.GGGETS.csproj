@@ -41,6 +41,7 @@
   <ItemGroup>
     <Compile Include="CRM\ICompanyUserRepository.cs" />
     <Compile Include="HAWB\HAWBBarCodeSpecification.cs" />
+    <Compile Include="HAWB\IFlightRepository.cs" />
     <Compile Include="HAWB\IHAWBBoxRepository.cs" />
     <Compile Include="HAWB\IHAWBItemRepository.cs" />
     <Compile Include="HAWB\IHAWBRepository.cs" />

@@ -234,14 +234,14 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Repositories
         /// </summary>
         /// <param name="FID">航班号</param>
         /// <returns></returns>
-        public Flight FindFlightByFID(string FID)
+        public Flight FindFlightByFlightNo(string flightNo)
         {
+            if (flightNo == null) throw new ArgumentNullException("flightNo is not null!");
             IGGGETSAppUnitOfWork context = UnitOfWork as IGGGETSAppUnitOfWork;
 
             if (context != null)
             {
-                Guid guidHID = new Guid(FID);
-                return context.Flight.Where(it => it.FID == new Guid(FID)).SingleOrDefault();
+                return context.Flight.Where(it => it.FlightNo == flightNo).SingleOrDefault();
             }
             else
                 throw new InvalidOperationException(string.Format(

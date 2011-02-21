@@ -19,7 +19,7 @@ namespace Application.GGETS
         void RemoveHAWB(string barCode);
         HAWB LoadHAWBByBarCode(string barCode);
         HAWBBox FindHAWBBoxByHID(string HID);
-        Flight FindFlightByFID(string FID);
+        //Flight FindFlightByFID(string FID);
         IList<HAWB> FindHAWBsOfPackageByCondition(string barCode, DateTime? beginDate, DateTime? endDate,
                                                   string destinationCode);
     }

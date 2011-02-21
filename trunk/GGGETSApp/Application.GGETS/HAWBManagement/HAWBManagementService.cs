@@ -148,16 +148,16 @@ namespace Application.GGETS
             return _hawbRepository.FindHAWBBoxByHID(HID)[0];
         }
 
-        /// <summary>
-        /// 通过航班编号获取航班
-        /// 由于这里没有barcode,所以使用默认的主键作为查询条件
-        /// </summary>
-        /// <param name="FID">航班</param>
-        /// <returns></returns>
-        public Flight FindFlightByFID(string FID)
-        {
-            return _hawbRepository.FindFlightByFID(FID);
-        }
+        ///// <summary>
+        ///// 通过航班编号获取航班
+        ///// 由于这里没有barcode,所以使用默认的主键作为查询条件
+        ///// </summary>
+        ///// <param name="FID">航班</param>
+        ///// <returns></returns>
+        //public Flight FindFlightByFID(string FID)
+        //{
+        //    return _hawbRepository.FindFlightByFID(FID);
+        //}
 
         /// <summary>
         /// 通过运单间接查询包裹信息
