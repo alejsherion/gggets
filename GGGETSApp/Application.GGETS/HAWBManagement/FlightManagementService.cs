@@ -69,5 +69,28 @@ namespace Application.GGETS
             //complete changes in this unit of work
             unitOfWork.CommitAndRefreshChanges();
         }
+
+        /// <summary>
+        /// 添加航班
+        /// </summary>
+        /// <param name="flight">航班</param>
+        public void AddFlight(Flight flight)
+        {
+            if (flight == null)
+                throw new ArgumentNullException("Flight is null");
+            IUnitOfWork unitOfWork = _flightRepository.UnitOfWork;
+            _flightRepository.Add(flight);
+            //complete changes in this unit of work
+            unitOfWork.Commit();
+        }
+
+        /// <summary>
+        /// 获取所有的航班信息
+        /// </summary>
+        /// <returns></returns>
+        public IList<Flight> FindAllFlights()
+        {
+            return _hawbRepository.FindAllFlights();
+        }
     }
 }

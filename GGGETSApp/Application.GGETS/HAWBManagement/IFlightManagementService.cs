@@ -19,5 +19,7 @@ namespace Application.GGETS
 
         Flight FindFlightByFlightNo(string flightNo);
         void ModifyFlight(Flight flight);
+        void AddFlight(Flight flight);
+        IList<Flight> FindAllFlights();
     }
 }

@@ -23,6 +23,7 @@ namespace Domain.GGGETS
         Package FindPackageByBarcode(string barcode);
         MAWB FindMAWBByBarcode(string barcode);
         Flight FindFlightByFlightNo(string flightNo);
+        IList<Flight> FindAllFlights();
         IList<HAWB> FindHAWBsOfPackageByCondition(string barCode, DateTime? beginDate, DateTime? endDate,
                                                   string destinationCode);
     }
