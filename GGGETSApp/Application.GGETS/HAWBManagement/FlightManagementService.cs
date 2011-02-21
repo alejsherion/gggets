@@ -31,7 +31,6 @@ namespace Application.GGETS
             _flightRepository = flightRepository;
             _hawbRepository = hawbRepository;
         }
-
         /// <summary>
         /// 航班多条件查询
         /// </summary>
