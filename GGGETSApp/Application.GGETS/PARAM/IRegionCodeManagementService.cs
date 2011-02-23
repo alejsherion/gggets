@@ -15,5 +15,7 @@ namespace Application.GGETS
     public interface IRegionCodeManagementService
     {
         IList<RegionCode> FindRegionsByCountryCode(string countryCode);
+        IList<RegionCode> FindRegionsByCountryCodeAndRegionName(string regionName, string countryCode);
+
     }
 }

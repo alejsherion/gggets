@@ -39,5 +39,23 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Repositories
                                                             Messages.exception_InvalidStoreContext,
                                                             GetType().Name)); 
         }
+
+        /// <summary>
+        /// 通过国家编号模糊查询地区
+        /// </summary>
+        /// <param name="regionName">地区名称</param>
+        /// <param name="countryCode">国家编号</param>
+        /// <returns></returns>
+        public IList<RegionCode> FindRegionsByCountryCodeAndRegionName(string regionName, string countryCode)
+        {
+            IGGGETSAppUnitOfWork context = UnitOfWork as IGGGETSAppUnitOfWork;
+            if (context != null)
+                return context.RegionCode.Where(it => it.CountryCode == countryCode).Where(it => it.RegionName.StartsWith(regionName)).ToList();
+            else
+                throw new InvalidOperationException(string.Format(
+                                                            CultureInfo.InvariantCulture,
+                                                            Messages.exception_InvalidStoreContext,
+                                                            GetType().Name));
+        }
     }
 }

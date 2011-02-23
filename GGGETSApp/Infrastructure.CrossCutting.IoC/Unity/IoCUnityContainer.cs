@@ -79,12 +79,16 @@ namespace ETS.GGGETSApp.Infrastructure.CrossCutting.IoC.Unity
             container.RegisterType<IUserRepository, UserRepository>(new TransientLifetimeManager());
             container.RegisterType<IMAWBRepository, MAWBRepository>(new TransientLifetimeManager());
             container.RegisterType<IFlightRepository, FlightRepository>(new TransientLifetimeManager());
+            container.RegisterType<ICountryCodeRepository, CountryCodeRepository>(new TransientLifetimeManager());
+            container.RegisterType<IRegionCodeRepository, RegionCodeRepository>(new TransientLifetimeManager());
             //Register application services mappings
 
             container.RegisterType<IHAWBManagementService, HAWBManagementService>(new TransientLifetimeManager());
             container.RegisterType<IPackageManagementService, PackageManagementService>(new TransientLifetimeManager());
             container.RegisterType<IMAWBManagementService, MAWBManagementService>(new TransientLifetimeManager());
             container.RegisterType<IFlightManagementService, FlightManagementService>(new TransientLifetimeManager());
+            container.RegisterType<ICountryCodeManagementService, CountryCodeManagementService>(new TransientLifetimeManager());
+            container.RegisterType<IRegionCodeManagementService, RegionCodeManagementService>(new TransientLifetimeManager());
             //Register domain services mappings
             //container.RegisterType<IBankTransferDomainService, BankTransferDomainService>(new TransientLifetimeManager());
             

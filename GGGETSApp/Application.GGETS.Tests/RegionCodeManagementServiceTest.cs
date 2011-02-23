@@ -99,6 +99,20 @@ namespace Application.GGETS.Tests
         }
         #endregion
 
+        #region 模糊查询地区通过国家编号测试
+        /// <summary>
+        ///FindRegionsByCountryCodeAndRegionName 的测试
+        ///</summary>
+        [TestMethod()]
+        public void FindRegionsByCountryCodeAndRegionNameTest()
+        {
+            string regionName = "a"; // 地区名称
+            string countryCode = "12"; // 国家编号
+            IList<RegionCode> actual;
+            actual = _regionCodeManagementService.FindRegionsByCountryCodeAndRegionName(regionName, countryCode);
+        }
+        #endregion
+
         public override Expression<Func<RegionCode, bool>> FilterExpression
         {
             get { throw new NotImplementedException(); }
