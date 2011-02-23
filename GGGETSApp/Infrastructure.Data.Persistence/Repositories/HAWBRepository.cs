@@ -106,8 +106,8 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Repositories
                 {
                     HAWBs = context.HAWB.Include(h => h.User).Select(h => h);
                     if (!string.IsNullOrEmpty(barCode)) HAWBs = HAWBs.Where(a => a.BarCode == barCode);
-                    if (!string.IsNullOrEmpty(countryCode)) HAWBs = HAWBs.Where(a => a.User.CountryCode == countryCode);
-                    if (!string.IsNullOrEmpty(regionCode)) HAWBs = HAWBs.Where(a => a.User.RegionCode == regionCode);
+                    //if (!string.IsNullOrEmpty(countryCode)) HAWBs = HAWBs.Where(a => a.User.CountryCode == countryCode);
+                    //if (!string.IsNullOrEmpty(regionCode)) HAWBs = HAWBs.Where(a => a.User.RegionCode == regionCode);
                     if (!string.IsNullOrEmpty(loginName)) HAWBs = HAWBs.Where(a => a.User.LoginName == loginName);
                     if (!string.IsNullOrEmpty(companyName)) HAWBs = HAWBs.Where(a => a.Carrier == companyName);
                     if (!string.IsNullOrEmpty(realName)) HAWBs = HAWBs.Where(a => a.User.RealName == realName);
@@ -241,7 +241,7 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Repositories
 
             if (context != null)
             {
-                return context.Flight.Where(it => it.FlightNo == flightNo).SingleOrDefault();
+                return context.Flight.Include(it=>it.MAWBs).Where(it => it.FlightNo == flightNo).SingleOrDefault();
             }
             else
                 throw new InvalidOperationException(string.Format(

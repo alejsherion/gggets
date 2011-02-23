@@ -249,18 +249,6 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.UnitOfWork
             get { return _user  ?? (_user = CreateObjectSet<User>("User")); }
         }
         private ObjectSet<User> _user;
-    
-        public IObjectSet<Privilege> Privilege
-        {
-            get { return _privilege  ?? (_privilege = CreateObjectSet<Privilege>("Privilege")); }
-        }
-        private ObjectSet<Privilege> _privilege;
-    
-        public IObjectSet<AppModule> AppModule
-        {
-            get { return _appModule  ?? (_appModule = CreateObjectSet<AppModule>("AppModule")); }
-        }
-        private ObjectSet<AppModule> _appModule;
 
         #endregion
     }
