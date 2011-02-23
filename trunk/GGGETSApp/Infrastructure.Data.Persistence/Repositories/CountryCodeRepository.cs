@@ -39,5 +39,22 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Repositories
                                                             Messages.exception_InvalidStoreContext,
                                                             GetType().Name));
         }
+
+        /// <summary>
+        /// 通过国家名字模糊查询国家信息
+        /// </summary>
+        /// <param name="countryName">国家名称</param>
+        /// <returns></returns>
+        public IList<CountryCode> FindCountriedByCountryName(string countryName)
+        {
+            IGGGETSAppUnitOfWork context = UnitOfWork as IGGGETSAppUnitOfWork;
+            if (context != null)
+                return context.CountryCode.Where(c=>c.CountryName.StartsWith(countryName)).ToList();
+            else
+                throw new InvalidOperationException(string.Format(
+                                                            CultureInfo.InvariantCulture,
+                                                            Messages.exception_InvalidStoreContext,
+                                                            GetType().Name));
+        }
     }
 }

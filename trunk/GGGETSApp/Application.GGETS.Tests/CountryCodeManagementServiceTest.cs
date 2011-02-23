@@ -97,6 +97,19 @@ namespace Application.GGETS.Tests
         }
         #endregion
 
+        #region 模糊查询国家三字码
+        /// <summary>
+        ///FindCountriedByCountryName 的测试
+        ///</summary>
+        [TestMethod()]
+        public void FindCountriedByCountryNameTest()
+        {
+            string countryName = "j"; // 国家模糊名称 n%
+            IList<CountryCode> actual;
+            actual = _countryCodeManagementService.FindCountriedByCountryName(countryName);
+        }
+        #endregion
+
         public override Expression<Func<CountryCode, bool>> FilterExpression
         {
             get { throw new NotImplementedException(); }

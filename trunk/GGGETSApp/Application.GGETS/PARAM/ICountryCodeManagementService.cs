@@ -15,5 +15,6 @@ namespace Application.GGETS
     public interface ICountryCodeManagementService
     {
         IList<CountryCode> FindAllCountries();
+        IList<CountryCode> FindCountriedByCountryName(string countryName);
     }
 }

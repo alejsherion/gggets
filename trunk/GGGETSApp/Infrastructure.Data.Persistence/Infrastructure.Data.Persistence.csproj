@@ -93,7 +93,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.Config" />
+    <None Include="App.Config">
+      <SubType>Designer</SubType>
+    </None>
     <EntityDeploy Include="Model\GGGETSAppDataModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>GGGETSAppDataModel.Designer.cs</LastGenOutput>

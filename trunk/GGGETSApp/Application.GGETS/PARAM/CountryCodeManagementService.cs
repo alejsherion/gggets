@@ -36,5 +36,15 @@ namespace Application.GGETS
         {
             return _countryCodeRepository.FindAllCountries();
         }
+
+        /// <summary>
+        /// 通过国家名字模糊查询国家信息
+        /// </summary>
+        /// <param name="countryName">国家名称</param>
+        /// <returns></returns>
+        public IList<CountryCode> FindCountriedByCountryName(string countryName)
+        {
+            return _countryCodeRepository.FindCountriedByCountryName(countryName);
+        }
     }
 }

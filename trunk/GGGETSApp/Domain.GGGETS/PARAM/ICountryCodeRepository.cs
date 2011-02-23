@@ -16,5 +16,6 @@ namespace Domain.GGGETS
     public interface ICountryCodeRepository : IRepository<CountryCode>
     {
         IList<CountryCode> FindAllCountries();
+        IList<CountryCode> FindCountriedByCountryName(string countryName);
     }
 }

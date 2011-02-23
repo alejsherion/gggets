@@ -37,5 +37,16 @@ namespace Application.GGETS
         {
             return _regionCodeRepository.FindRegionsByCountryCode(countryCode);
         }
+
+        /// <summary>
+        /// 通过国家编号模糊查询地区
+        /// </summary>
+        /// <param name="regionName">地区名称</param>
+        /// <param name="countryCode">国家编号</param>
+        /// <returns></returns>
+        public IList<RegionCode> FindRegionsByCountryCodeAndRegionName(string regionName, string countryCode)
+        {
+            return _regionCodeRepository.FindRegionsByCountryCodeAndRegionName(regionName, countryCode);
+        }
     }
 }
