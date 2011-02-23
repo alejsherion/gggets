@@ -49,6 +49,8 @@
     <Compile Include="HAWB\IMAWBRepository.cs" />
     <Compile Include="HAWB\IPackageRepository.cs" />
     <Compile Include="HAWB\IUserRepository.cs" />
+    <Compile Include="PARAM\ICountryCodeRepository.cs" />
+    <Compile Include="PARAM\IRegionCodeRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />

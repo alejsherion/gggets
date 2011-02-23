@@ -66,6 +66,10 @@
     <Compile Include="HAWBManagement\IPackageManagementService.cs" />
     <Compile Include="HAWBManagement\MAWBManagementService.cs" />
     <Compile Include="HAWBManagement\PackageManagementService.cs" />
+    <Compile Include="PARAM\CountryCodeManagementService.cs" />
+    <Compile Include="PARAM\ICountryCodeManagementService.cs" />
+    <Compile Include="PARAM\IRegionCodeManagementService.cs" />
+    <Compile Include="PARAM\RegionCodeManagementService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />

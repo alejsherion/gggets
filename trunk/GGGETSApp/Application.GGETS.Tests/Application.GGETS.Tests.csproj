@@ -53,12 +53,14 @@
     </CodeAnalysisDependentAssemblyPaths>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CountryCodeManagementServiceTest.cs" />
     <Compile Include="FlightManagementServiceTest.cs" />
     <Compile Include="GenericRepositoryTestsBase.cs" />
     <Compile Include="HAWBManagementServiceTest.cs" />
     <Compile Include="MAWBManagementServiceTest.cs" />
     <Compile Include="PackageManagementServiceTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RegionCodeManagementServiceTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Application.GGETS\Application.GGETS.csproj">

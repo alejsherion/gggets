@@ -184,17 +184,17 @@ namespace Application.GGETS.Tests
                                   //密码
                                   RealName = "张三",
                                   //真实姓名
-                                  Department = "研发部",
+                                  //Department = "研发部",
                                   //部门名称
-                                  PostCode = "200435",
+                                  //PostCode = "200435",
                                   //邮政编码
                                   Phone = "110",
                                   //电话
-                                  CountryCode = "01",
+                                  //CountryCode = "01",
                                   //国家编号
-                                  RegionCode = "01",
+                                  //RegionCode = "01",
                                   //区域编号
-                                  Address = "XXX路XXX号",
+                                  //Address = "XXX路XXX号",
                                   //地址
                                   UpdateTime = DateTime.Now,
                                   //更新日期
