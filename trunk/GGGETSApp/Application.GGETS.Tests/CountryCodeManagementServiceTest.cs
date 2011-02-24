@@ -97,7 +97,7 @@ namespace Application.GGETS.Tests
         }
         #endregion
 
-        #region 模糊查询国家三字码
+        #region 模糊查询国家二字码
         /// <summary>
         ///FindCountriedByCountryName 的测试
         ///</summary>
@@ -107,6 +107,66 @@ namespace Application.GGETS.Tests
             string countryName = "j"; // 国家模糊名称 n%
             IList<CountryCode> actual;
             actual = _countryCodeManagementService.FindCountriedByCountryName(countryName);
+        }
+        #endregion
+
+        #region 新增国家二字码
+        /// <summary>
+        ///AddCountryCode 的测试
+        ///</summary>
+        [TestMethod()]
+        public void AddCountryCodeTest()
+        {
+            CountryCode countryCode = null; // 创建一个新的国家
+            countryCode = new CountryCode
+            {
+                ID=215,
+                CountryCode1="TT",
+                CountryName="TEST"
+            };
+            _countryCodeManagementService.AddCountryCode(countryCode);
+            //Assert.Inconclusive("无法验证不返回值的方法。");
+        }
+        #endregion
+
+        #region 修改国家二字码
+        /// <summary>
+        ///ModifyCountryCode 的测试
+        ///</summary>
+        [TestMethod()]
+        public void ModifyCountryCodeTest()
+        {
+            CountryCode countryCode = null; // 国家对象
+            countryCode = _countryCodeManagementService.FindCountriedByCountryName("TEST")[0];
+            countryCode.CountryName = "TEST007";
+            _countryCodeManagementService.ModifyCountryCode(countryCode);
+            //Assert.Inconclusive("无法验证不返回值的方法。");
+        }
+        #endregion
+
+        #region 通过国家二字码获取国家
+        /// <summary>
+        ///FindCountriedByCountryCode 的测试
+        ///</summary>
+        [TestMethod()]
+        public void FindCountriedByCountryCodeTest()
+        {
+            string countryCode = "TP"; // 国家二字码
+            CountryCode actual;
+            actual = _countryCodeManagementService.FindCountriedByCountryCode(countryCode);
+        }
+        #endregion
+
+        #region 删除国家二字码
+        /// <summary>
+        ///RemoveCountryCode 的测试
+        ///</summary>
+        [TestMethod()]
+        public void RemoveCountryCodeTest()
+        {
+            CountryCode countryCode = _countryCodeManagementService.FindCountriedByCountryCode("TP"); // 国家二字码
+            _countryCodeManagementService.RemoveCountryCode(countryCode);
+            //Assert.Inconclusive("无法验证不返回值的方法。");
         }
         #endregion
 

@@ -16,5 +16,9 @@ namespace Application.GGETS
     {
         IList<CountryCode> FindAllCountries();
         IList<CountryCode> FindCountriedByCountryName(string countryName);
+        void AddCountryCode(CountryCode countryCode);
+        void ModifyCountryCode(CountryCode countryCode);
+        CountryCode FindCountriedByCountryCode(string countryCode);
+        void RemoveCountryCode(CountryCode countryCode);
     }
 }

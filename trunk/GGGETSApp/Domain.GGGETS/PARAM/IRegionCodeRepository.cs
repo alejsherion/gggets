@@ -17,5 +17,6 @@ namespace Domain.GGGETS
     {
         IList<RegionCode> FindRegionsByCountryCode(string countryCode);
         IList<RegionCode> FindRegionsByCountryCodeAndRegionName(string regionName, string countryCode);
+        RegionCode FindRegionByRegionCode(string regionCode);
     }
 }

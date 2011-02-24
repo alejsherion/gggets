@@ -56,5 +56,22 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Repositories
                                                             Messages.exception_InvalidStoreContext,
                                                             GetType().Name));
         }
+
+        /// <summary>
+        /// 通过国家二字码获取国家信息
+        /// </summary>
+        /// <param name="countryCode">国家二字码</param>
+        /// <returns></returns>
+        public CountryCode FindCountriedByCountryCode(string countryCode)
+        {
+            IGGGETSAppUnitOfWork context = UnitOfWork as IGGGETSAppUnitOfWork;
+            if (context != null)
+                return context.CountryCode.Where(c => c.CountryCode1 == countryCode).SingleOrDefault();
+            else
+                throw new InvalidOperationException(string.Format(
+                                                            CultureInfo.InvariantCulture,
+                                                            Messages.exception_InvalidStoreContext,
+                                                            GetType().Name));
+        }
     }
 }

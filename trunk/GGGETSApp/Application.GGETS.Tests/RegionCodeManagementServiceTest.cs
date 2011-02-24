@@ -113,6 +113,68 @@ namespace Application.GGETS.Tests
         }
         #endregion
 
+        #region 新增地区三字码
+        /// <summary>
+        ///AddRegionCode 的测试
+        ///</summary>
+        [TestMethod()]
+        public void AddRegionCodeTest()
+        {
+            RegionCode regionCode = null; // 地区三字码
+            regionCode = new RegionCode
+            {
+                ID=988,
+                CountryCode="99",
+                RegionCode1="TTT",
+                RegionName="TEST"
+            };
+            _regionCodeManagementService.AddRegionCode(regionCode);
+            //Assert.Inconclusive("无法验证不返回值的方法。");
+        }
+        #endregion
+
+        #region 修改地区三字码
+        /// <summary>
+        ///ModifyRegionCode 的测试
+        ///</summary>
+        [TestMethod()]
+        public void ModifyRegionCodeTest()
+        {
+            RegionCode regionCode = null; // 地区
+            regionCode = _regionCodeManagementService.FindRegionsByCountryCode("99")[0];
+            regionCode.RegionName = "TEST007";
+            _regionCodeManagementService.ModifyRegionCode(regionCode);
+            //Assert.Inconclusive("无法验证不返回值的方法。");
+        }
+        #endregion
+
+        #region 通过地区三字码获取地区
+        /// <summary>
+        ///FindRegionByRegionCode 的测试
+        ///</summary>
+        [TestMethod()]
+        public void FindRegionByRegionCodeTest()
+        {
+            string regionCode = "TTT"; // 地区三字码
+            RegionCode actual;
+            actual = _regionCodeManagementService.FindRegionByRegionCode(regionCode);
+        }
+        #endregion
+
+        #region 删除地区三字码
+        /// <summary>
+        ///RemoveRegionCode 的测试
+        ///</summary>
+        [TestMethod()]
+        public void RemoveRegionCodeTest()
+        {
+            RegionCode regionCode = null; // 地区三字码
+            regionCode = _regionCodeManagementService.FindRegionByRegionCode("TTT");
+            _regionCodeManagementService.RemoveRegionCode(regionCode);
+            //Assert.Inconclusive("无法验证不返回值的方法。");
+        }
+        #endregion
+
         public override Expression<Func<RegionCode, bool>> FilterExpression
         {
             get { throw new NotImplementedException(); }
