@@ -16,6 +16,9 @@ namespace Application.GGETS
     {
         IList<RegionCode> FindRegionsByCountryCode(string countryCode);
         IList<RegionCode> FindRegionsByCountryCodeAndRegionName(string regionName, string countryCode);
-
+        void AddRegionCode(RegionCode regionCode);
+        void ModifyRegionCode(RegionCode regionCode);
+        RegionCode FindRegionByRegionCode(string regionCode);
+        void RemoveRegionCode(RegionCode regionCode);
     }
 }

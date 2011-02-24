@@ -57,5 +57,22 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Repositories
                                                             Messages.exception_InvalidStoreContext,
                                                             GetType().Name));
         }
+
+        /// <summary>
+        /// 根据地区三字码获取地区信息
+        /// </summary>
+        /// <param name="regionCode">地区三字码</param>
+        /// <returns></returns>
+        public RegionCode FindRegionByRegionCode(string regionCode)
+        {
+            IGGGETSAppUnitOfWork context = UnitOfWork as IGGGETSAppUnitOfWork;
+            if (context != null)
+                return context.RegionCode.Where(it => it.RegionCode1 == regionCode).SingleOrDefault();
+            else
+                throw new InvalidOperationException(string.Format(
+                                                            CultureInfo.InvariantCulture,
+                                                            Messages.exception_InvalidStoreContext,
+                                                            GetType().Name));
+        }
     }
 }

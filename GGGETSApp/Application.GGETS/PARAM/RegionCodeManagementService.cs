@@ -48,5 +48,57 @@ namespace Application.GGETS
         {
             return _regionCodeRepository.FindRegionsByCountryCodeAndRegionName(regionName, countryCode);
         }
+
+        /// <summary>
+        /// 新增地区三字码
+        /// </summary>
+        /// <param name="regionCode">地区三字码</param>
+        public void AddRegionCode(RegionCode regionCode)
+        {
+            if (regionCode == null)
+                throw new ArgumentNullException("Region is null");
+            IUnitOfWork unitOfWork = _regionCodeRepository.UnitOfWork;
+            _regionCodeRepository.Add(regionCode);
+            //complete changes in this unit of work
+            unitOfWork.Commit();
+        }
+
+        /// <summary>
+        /// 修改地区三字码
+        /// </summary>
+        /// <param name="regionCode">地区三字码</param>
+        public void ModifyRegionCode(RegionCode regionCode)
+        {
+            if (regionCode == null)
+                throw new ArgumentNullException("Region is null");
+            IUnitOfWork unitOfWork = _regionCodeRepository.UnitOfWork;
+            _regionCodeRepository.Modify(regionCode);
+            //complete changes in this unit of work
+            unitOfWork.CommitAndRefreshChanges();
+        }
+
+        /// <summary>
+        /// 根据地区三字码获取地区信息
+        /// </summary>
+        /// <param name="regionCode">地区三字码</param>
+        /// <returns></returns>
+        public RegionCode FindRegionByRegionCode(string regionCode)
+        {
+            return _regionCodeRepository.FindRegionByRegionCode(regionCode);
+        }
+
+        /// <summary>
+        /// 删除地区三字码
+        /// </summary>
+        /// <param name="regionCode">地区三字码</param>
+        public void RemoveRegionCode(RegionCode regionCode)
+        {
+            if (regionCode == null)
+                throw new ArgumentNullException("Region is null");
+            IUnitOfWork unitOfWork = _regionCodeRepository.UnitOfWork;
+            _regionCodeRepository.Remove(regionCode);
+            //complete changes in this unit of work
+            unitOfWork.Commit();
+        }
     }
 }
