@@ -99,6 +99,21 @@ namespace Application.GGETS.Tests
         }
         #endregion
 
+        #region 修改地址本,不存在数据库产生僵尸地址本，所以这里只会修改地址本属性
+        /// <summary>
+        ///ModifyAddressBook 的测试
+        ///</summary>
+        [TestMethod()]
+        public void ModifyAddressBookTest()
+        {
+            AddressBook addressBook = null; // 地址本
+            addressBook = _addressBookManagementService.FindAddressBookByAID("c976f88c-565f-41e4-bca9-1d80c06291b9");
+            addressBook.Name = "TEST";
+            _addressBookManagementService.ModifyAddressBook(addressBook);
+            //Assert.Inconclusive("无法验证不返回值的方法。");
+        }
+        #endregion
+
         public override Expression<Func<AddressBook, bool>> FilterExpression
         {
             get { throw new NotImplementedException(); }

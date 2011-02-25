@@ -70,5 +70,19 @@ namespace Application.GGETS
             //complete changes in this unit of work
             unitOfWork.Commit();
         }
+
+        /// <summary>
+        /// 修改地址本
+        /// </summary>
+        /// <param name="addressBook">地址本</param>
+        public void ModifyAddressBook(AddressBook addressBook)
+        {
+            if (addressBook == null)
+                throw new ArgumentNullException("AddressBook is null");
+            IUnitOfWork unitOfWork = _addressBookRepository.UnitOfWork;
+            _addressBookRepository.Modify(addressBook);
+            //complete changes in this unit of work
+            unitOfWork.CommitAndRefreshChanges();
+        }
     }
 }
