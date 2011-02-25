@@ -56,8 +56,16 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CRM\AddressBookManagementService.cs" />
+    <Compile Include="CRM\CompanyManagementService.cs" />
+    <Compile Include="CRM\DepartmentManagementService.cs" />
+    <Compile Include="CRM\IAddressBookManagementService.cs" />
+    <Compile Include="CRM\ICompanyManagementService.cs" />
     <Compile Include="CRM\ICompanyUserManagementService.cs" />
+    <Compile Include="CRM\IDepartmentManagementService.cs" />
     <Compile Include="CRM\IIndividualUserManagementService.cs" />
+    <Compile Include="CRM\IUserManagementService.cs" />
+    <Compile Include="CRM\UserManagementService.cs" />
     <Compile Include="HAWBManagement\FlightManagementService.cs" />
     <Compile Include="HAWBManagement\HAWBManagementService.cs" />
     <Compile Include="HAWBManagement\IFlightManagementService.cs" />
