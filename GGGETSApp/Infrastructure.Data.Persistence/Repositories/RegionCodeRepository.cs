@@ -74,5 +74,38 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Repositories
                                                             Messages.exception_InvalidStoreContext,
                                                             GetType().Name));
         }
+
+        /// <summary>
+        /// 地区多条件查询
+        /// </summary>
+        /// <param name="countryCode">国家二字码</param>
+        /// <param name="regioncode">地区三字码</param>
+        /// <param name="regionName">地区全称</param>
+        /// <returns></returns>
+        public IList<RegionCode> FindRegionCodesByCondition(string countryCode, string regioncode, string regionName)
+        {
+            IEnumerable<RegionCode> regions = null;
+            using (IGGGETSAppUnitOfWork context = UnitOfWork as IGGGETSAppUnitOfWork)
+            {
+                if (context != null)
+                {
+                    regions = context.RegionCode.Select(r => r);
+                    if (!string.IsNullOrEmpty(countryCode))
+                        regions = regions.Where(r => r.CountryCode == countryCode);
+                    if (!string.IsNullOrEmpty(regioncode))
+                        regions = regions.Where(r => r.RegionCode1 == regioncode);
+                    if (!string.IsNullOrEmpty(regionName))
+                        regions = regions.Where(r => r.RegionName.StartsWith(regionName));
+                }
+                else
+                {
+                    throw new InvalidOperationException(string.Format(
+                        CultureInfo.InvariantCulture,
+                        Messages.exception_InvalidStoreContext,
+                        GetType().Name));
+                }
+                return regions.ToList();
+            }
+        }
     }
 }

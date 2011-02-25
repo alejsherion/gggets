@@ -20,5 +20,7 @@ namespace Application.GGETS
         void ModifyRegionCode(RegionCode regionCode);
         RegionCode FindRegionByRegionCode(string regionCode);
         void RemoveRegionCode(RegionCode regionCode);
+        IList<RegionCode> FindRegionCodesByCondition(string countryCode, string regioncode, string regionName);
+        IList<RegionCode> FindAllRegionCodes();
     }
 }

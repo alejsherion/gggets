@@ -20,5 +20,6 @@ namespace Application.GGETS
         void ModifyCountryCode(CountryCode countryCode);
         CountryCode FindCountriedByCountryCode(string countryCode);
         void RemoveCountryCode(CountryCode countryCode);
+        IList<CountryCode> FindCountriesByCondition(string countrycode, string countryName);
     }
 }

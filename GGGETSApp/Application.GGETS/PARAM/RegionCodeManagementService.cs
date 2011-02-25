@@ -100,5 +100,26 @@ namespace Application.GGETS
             //complete changes in this unit of work
             unitOfWork.Commit();
         }
+
+        /// <summary>
+        /// 地区多条件查询
+        /// </summary>
+        /// <param name="countryCode">国家二字码</param>
+        /// <param name="regioncode">地区三字码</param>
+        /// <param name="regionName">地区名称</param>
+        /// <returns></returns>
+        public IList<RegionCode> FindRegionCodesByCondition(string countryCode, string regioncode, string regionName)
+        {
+            return _regionCodeRepository.FindRegionCodesByCondition(countryCode, regioncode, regionName);
+        }
+
+        /// <summary>
+        /// 获取所有的地区
+        /// </summary>
+        /// <returns></returns>
+        public IList<RegionCode> FindAllRegionCodes()
+        {
+            return _regionCodeRepository.GetAll().ToList();
+        }
     }
 }

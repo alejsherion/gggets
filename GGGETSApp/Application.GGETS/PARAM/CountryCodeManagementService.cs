@@ -98,5 +98,16 @@ namespace Application.GGETS
             //complete changes in this unit of work
             unitOfWork.Commit();
         }
+
+        /// <summary>
+        /// 多条件查询
+        /// </summary>
+        /// <param name="countryCode">国家二字码</param>
+        /// <param name="countryName">国家名称</param>
+        /// <returns></returns>
+        public IList<CountryCode> FindCountriesByCondition(string countryCode, string countryName)
+        {
+            return _countryCodeRepository.FindCountriesByCondition(countryCode, countryName);
+        }
     }
 }
