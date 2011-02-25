@@ -18,5 +18,6 @@ namespace Application.GGETS
         void AddDepartment(Department department);
         void ModifyDepartment(Department department);
         Department FindDepartmentByDepCode(string depCode);
+        IList<Department> FindDepartmentsByCompanyCode(string companyCode);
     }
 }
