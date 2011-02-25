@@ -123,5 +123,25 @@ namespace Application.GGETS
         {
             return _departmentRepository.FindAllAddressBooksByCondition(depCode, 2);
         }
+
+        /// <summary>
+        /// 判断地址本重复问题 返回ture-是重复；false-不重复
+        /// </summary>
+        /// <param name="AID">地址本序号</param>
+        /// <param name="contactorName">联系人姓名</param>
+        /// <returns></returns>
+        public bool JudgeAddressBookWhetherRepeat(string AID,string contactorName)
+        {
+            bool judge = false;
+            AddressBook addressBook = _departmentRepository.FindAddressBookByAID(AID);
+            if(addressBook!=null)
+            {
+                if(!string.IsNullOrEmpty(contactorName))
+                {
+                    if (addressBook.ContactorName.Equals(contactorName)) judge = true;
+                }
+            }
+            return judge;
+        }
     }
 }

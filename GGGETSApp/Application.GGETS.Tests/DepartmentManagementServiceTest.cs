@@ -715,6 +715,23 @@ namespace Application.GGETS.Tests
         }
         #endregion
 
+        #region 判断地址本重复问题 返回ture-是重复；false-不重复
+        /// <summary>
+        ///JudgeAddressBookWhetherRepeat 的测试
+        ///</summary>
+        [TestMethod()]
+        public void JudgeAddressBookWhetherRepeatTest()
+        {
+            string AID = "c976f88c-565f-41e4-bca9-1d80c06291b9"; // 地址本序号
+            string contactorName = "明智光秀"; // 联系人姓名
+            bool expected = true; 
+            bool actual;
+            actual = _departmentManagementService.JudgeAddressBookWhetherRepeat(AID, contactorName);
+            Assert.AreEqual(expected, actual);
+            Assert.Inconclusive("验证此测试方法的正确性。");
+        }
+        #endregion
+
         public override Expression<Func<Department, bool>> FilterExpression
         {
             get { throw new NotImplementedException(); }

@@ -22,5 +22,6 @@ namespace Application.GGETS
         IList<AddressBook> FindAllShipAddressesByDepCode(string depCode);
         IList<AddressBook> FindAllDeliveryAddressesByDepCode(string depCode);
         IList<AddressBook> FindAllForwarderAddressesByDepCode(string depCode);
+        bool JudgeAddressBookWhetherRepeat(string AID,string contactorName);
     }
 }
