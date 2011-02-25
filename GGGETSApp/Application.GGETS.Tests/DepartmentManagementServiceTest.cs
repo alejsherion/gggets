@@ -109,8 +109,9 @@ namespace Application.GGETS.Tests
         [TestMethod()]
         public void AddDepartmentTest()
         {
-            Department departmentA = null; // 部门
-            Department departmentB = null; // 部门
+            Department departmentA = null; // 部门A
+            Department departmentB = null; // 部门B
+            #region 部门
             departmentA = new Department
             {
                 DID=Guid.NewGuid(),//部门序号
@@ -135,6 +136,8 @@ namespace Application.GGETS.Tests
                 SettleType = 0,//结算方式
                 WeightCalType = 0//计量方式
             };
+            #endregion
+            #region 公司
             //公司实体实例化
             Company company = new Company
             {
@@ -150,6 +153,8 @@ namespace Application.GGETS.Tests
                 Fax = "64950500-8999",//传真
                 OrganizationCode="SH000001"//组织代码
             };
+            #endregion 
+            #region 用户
             //用户实例化
             User user01 = new User
             {
@@ -185,6 +190,8 @@ namespace Application.GGETS.Tests
                 WeightCalType = 0,//计重方式
                 Status = 0//可用与不可用
             };
+            #endregion
+            #region 发货地址本
             //发货地址本
             AddressBook addressBookA1 = new AddressBook
             {
@@ -276,6 +283,8 @@ namespace Application.GGETS.Tests
                 UpdateTime = DateTime.Now,//修改日期
                 Operator = "沈志伟"//操作人姓名
             };
+            #endregion
+            #region 收货人地址本
             //收货人地址本
             AddressBook addressBookA4 = new AddressBook
             {
@@ -367,6 +376,8 @@ namespace Application.GGETS.Tests
                 UpdateTime = DateTime.Now,//修改日期
                 Operator = "沈志伟"//操作人姓名
             };
+            #endregion
+            #region 交付人地址本
             //交付人地址本
              AddressBook addressBookA7 = new AddressBook
             {
@@ -464,18 +475,142 @@ namespace Application.GGETS.Tests
                  UpdateTime = DateTime.Now,//修改日期
                  Operator = "沈志伟"//操作人姓名
              };
-            //运单
-            HAWB hawbObj = _HAWBManagementService.FindHAWBByBarCode("2010");
+            #endregion
+            #region 运单
+             //运单
+             //实力化一个虚假运单对象
+             HAWB HAWB01 = new HAWB
+             {
+                 BarCode = "2010",
+                 //条形码
+                 Carrier = "中国航空",
+                 //承运单位
+                 SettleType = 0,
+                 //预算方式
+                 ServiceType = 0,
+                 //快件或包裹
+                 CreateTime = DateTime.Now,
+                 //创建日期
+                 Status = 0,
+                 //运单状态
+                 ShipperName = "沈志伟",
+                 //发件人姓名或者公司
+                 ShipperContactor = "沈志伟",
+                 //发件人姓名
+                 ShipperCountry = "01",
+                 //发件人国家
+                 ShipperRegion = "021",
+                 //发件人区号
+                 ShipperAddress = "test address",
+                 //发件人地址
+                 ShipperZipCode = "200435",
+                 //发件人邮编
+                 ShipperTel = "13817011234",
+                 //发件人联系电话
+                 ConsigneeContactor = "李宏",
+                 //收件人姓名
+                 ConsigneeCountry = "02",
+                 //收件人国家
+                 ConsigneeRegion = "022",
+                 //收件人区号
+                 ConsigneeAddress = "Japan address",
+                 //收件人地址
+                 ConsigneeZipCode = "201011",
+                 //收件人邮编
+                 ConsigneeTel = "120120",
+                 //收件人联系电话
+                 WeightType = 2,
+                 //计重方式
+                 TotalVolume = 10,
+                 //总体积
+                 TotalWeight = 10,
+                 //总重量
+                 Piece = 10,
+                 //件数
+                 IsInternational = true //是否是国际运单
+             };
+             HAWB HAWB02 = new HAWB
+             {
+                 BarCode = "2011",
+                 //条形码
+                 Carrier = "吉祥航空",
+                 //承运单位
+                 SettleType = 0,
+                 //预算方式
+                 ServiceType = 0,
+                 //快件或包裹
+                 CreateTime = DateTime.Now,
+                 //创建日期
+                 Status = 0,
+                 //运单状态
+                 ShipperName = "沈志伟",
+                 //发件人姓名或者公司
+                 ShipperContactor = "沈志伟",
+                 //发件人姓名
+                 ShipperCountry = "01",
+                 //发件人国家
+                 ShipperRegion = "021",
+                 //发件人区号
+                 ShipperAddress = "test address",
+                 //发件人地址
+                 ShipperZipCode = "200435",
+                 //发件人邮编
+                 ShipperTel = "13817011234",
+                 //发件人联系电话
+                 ConsigneeContactor = "李宏",
+                 //收件人姓名
+                 ConsigneeCountry = "02",
+                 //收件人国家
+                 ConsigneeRegion = "022",
+                 //收件人区号
+                 ConsigneeAddress = "Japan address",
+                 //收件人地址
+                 ConsigneeZipCode = "201011",
+                 //收件人邮编
+                 ConsigneeTel = "120120",
+                 //收件人联系电话
+                 WeightType = 2,
+                 //计重方式
+                 TotalVolume = 10,
+                 //总体积
+                 TotalWeight = 10,
+                 //总重量
+                 Piece = 10,
+                 //件数
+                 IsInternational = true //是否是国际运单
+             };
+             #endregion
             //relation
-            //department.HAWBs.Add(hawbObj);//运单关联
-            //department.CompanyCode = company.CID.ToString();//冗余数据
-            //department.Company = company;//公司关联
-            //department.Users.Add(user01);//用户关联
-            //department.Users.Add(user02);//用户关联
-            //department.AddressBooks.Add(addressBook01);//地址本关联
-            //department.AddressBooks.Add(addressBook02);
-            //department.AddressBooks.Add(addressBook03);
+            departmentA.HAWBs.Add(HAWB01);//运单关联
+            departmentA.CompanyCode = company.CID.ToString();//冗余数据
+            departmentA.Company = company;//公司关联
+            departmentA.Users.Add(user01);//用户关联
+            departmentA.AddressBooks.Add(addressBookA1);//地址本关联
+            departmentA.AddressBooks.Add(addressBookA2);
+            departmentA.AddressBooks.Add(addressBookA3);
+            departmentA.AddressBooks.Add(addressBookA4);
+            departmentA.AddressBooks.Add(addressBookA5);
+            departmentA.AddressBooks.Add(addressBookA6);
+            departmentA.AddressBooks.Add(addressBookA7);
+            departmentA.AddressBooks.Add(addressBookA8);
+            departmentA.AddressBooks.Add(addressBookA9);
 
+            departmentB.HAWBs.Add(HAWB02);//运单关联
+            departmentB.CompanyCode = company.CID.ToString();//冗余数据
+            departmentB.Company = company;//公司关联
+            departmentB.Users.Add(user02);//用户关联
+            departmentB.AddressBooks.Add(addressBookB1);//地址本关联
+            departmentB.AddressBooks.Add(addressBookB2);
+            departmentB.AddressBooks.Add(addressBookB3);
+            departmentB.AddressBooks.Add(addressBookB4);
+            departmentB.AddressBooks.Add(addressBookB5);
+            departmentB.AddressBooks.Add(addressBookB6);
+            departmentB.AddressBooks.Add(addressBookB7);
+            departmentB.AddressBooks.Add(addressBookB8);
+            departmentB.AddressBooks.Add(addressBookB9);
+
+            _departmentManagementService.AddDepartment(departmentA);
+            _departmentManagementService.AddDepartment(departmentB);
             //_departmentManagementService.AddDepartment(department);
             //Assert.Inconclusive("无法验证不返回值的方法。");
         }
