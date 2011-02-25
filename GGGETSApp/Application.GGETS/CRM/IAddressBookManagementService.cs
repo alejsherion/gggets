@@ -18,5 +18,6 @@ namespace Application.GGETS
         void RemoveAddressBook(AddressBook addressBook);
         void RemoveBadAddressBook();
         void ModifyAddressBook(AddressBook addressBook);
+        void AddAddressBook(AddressBook addressBook);
     }
 }

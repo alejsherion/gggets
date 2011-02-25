@@ -27,15 +27,20 @@ namespace Application.GGETS.Tests
     [TestClass()]
     public class AddressBookManagementServiceTest : RepositoryTestsBase<AddressBook>
     {
-        static IAddressBookManagementService _addressBookManagementService;//BLL操作类返回
+        private static IAddressBookManagementService _addressBookManagementService;//BLL操作类返回
+        private static IDepartmentManagementService _departmentManagementService;
         public AddressBookManagementServiceTest()
         {
             IGGGETSAppUnitOfWork context = GetUnitOfWork();//上下文
             ITraceManager traceManager = GetTraceManager();//跟踪管理器
             DepartmentRepository departmentRepository = new DepartmentRepository(context, traceManager);//创建DAL操作对象
             AddressBookRepository addressBookRepository = new AddressBookRepository(context, traceManager);
+            HAWBRepository HAWBRepository = new HAWBRepository(context, traceManager);
+            IUserRepository userRepository = new UserRepository(context, traceManager);
+            CompanyRepository companyRepository = new CompanyRepository(context, traceManager);
 
             _addressBookManagementService = new AddressBookManagementService(departmentRepository, addressBookRepository);
+            _departmentManagementService = new DepartmentManagementService(departmentRepository, HAWBRepository, userRepository, companyRepository, addressBookRepository);
         }
 
         private TestContext testContextInstance;
@@ -110,6 +115,37 @@ namespace Application.GGETS.Tests
             addressBook = _addressBookManagementService.FindAddressBookByAID("c976f88c-565f-41e4-bca9-1d80c06291b9");
             addressBook.Name = "TEST";
             _addressBookManagementService.ModifyAddressBook(addressBook);
+            //Assert.Inconclusive("无法验证不返回值的方法。");
+        }
+        #endregion
+
+        #region 新增地址本
+        /// <summary>
+        ///AddAddressBook 的测试
+        ///</summary>
+        [TestMethod()]
+        public void AddAddressBookTest()
+        {
+            AddressBook addressBook = null; // 获取新的地址本
+            addressBook = new AddressBook
+            {
+                AID = Guid.NewGuid(),//地址本序号
+                Name = "TEST",//公司名称
+                ContactorName = "TEST",//联系人真名
+                Provience = "TEST",//省份
+                CountryCode = "TT",//国家二字码
+                RegionCode = "TTT",//地区三字码
+                Address = "TEST",//地址
+                PostCode = "200435",//邮政编码
+                AddressType = 0,//地址类型-发件人地址
+                CreateTime = DateTime.Now,//创建日期
+                UpdateTime = DateTime.Now,//修改日期
+                Operator = "沈志伟"//操作人姓名
+            };
+            //获取现有部门对象
+            Department department = _departmentManagementService.FindDepartmentByDepCode("01");
+            addressBook.Department = department;
+            _addressBookManagementService.AddAddressBook(addressBook);
             //Assert.Inconclusive("无法验证不返回值的方法。");
         }
         #endregion
