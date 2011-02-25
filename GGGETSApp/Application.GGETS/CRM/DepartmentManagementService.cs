@@ -93,5 +93,35 @@ namespace Application.GGETS
         {
             return _departmentRepository.FindDepartmentsByCompanyCode(companyCode);
         }
+
+        /// <summary>
+        /// 获取所有的发货人地址本通过部门账号
+        /// </summary>
+        /// <param name="depCode">部门账号</param>
+        /// <returns></returns>
+        public IList<AddressBook> FindAllShipAddressesByDepCode(string depCode)
+        {
+            return _departmentRepository.FindAllAddressBooksByCondition(depCode, 0);
+        }
+
+        /// <summary>
+        /// 获取所有的收货人地址本通过部门账号
+        /// </summary>
+        /// <param name="depCode">部门账号</param>
+        /// <returns></returns>
+        public IList<AddressBook> FindAllDeliveryAddressesByDepCode(string depCode)
+        {
+            return _departmentRepository.FindAllAddressBooksByCondition(depCode, 1);
+        }
+
+        /// <summary>
+        /// 获取所有的交付人地址本通过部门账号
+        /// </summary>
+        /// <param name="depCode">部门账号</param>
+        /// <returns></returns>
+        public IList<AddressBook> FindAllForwarderAddressesByDepCode(string depCode)
+        {
+            return _departmentRepository.FindAllAddressBooksByCondition(depCode, 2);
+        }
     }
 }

@@ -19,5 +19,8 @@ namespace Application.GGETS
         void ModifyDepartment(Department department);
         Department FindDepartmentByDepCode(string depCode);
         IList<Department> FindDepartmentsByCompanyCode(string companyCode);
+        IList<AddressBook> FindAllShipAddressesByDepCode(string depCode);
+        IList<AddressBook> FindAllDeliveryAddressesByDepCode(string depCode);
+        IList<AddressBook> FindAllForwarderAddressesByDepCode(string depCode);
     }
 }
