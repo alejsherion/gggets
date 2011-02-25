@@ -17,5 +17,6 @@ namespace Application.GGETS
         AddressBook FindAddressBookByAID(string AID);
         void RemoveAddressBook(AddressBook addressBook);
         void RemoveBadAddressBook();
+        void ModifyAddressBook(AddressBook addressBook);
     }
 }
