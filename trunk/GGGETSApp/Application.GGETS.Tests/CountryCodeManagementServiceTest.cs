@@ -170,6 +170,20 @@ namespace Application.GGETS.Tests
         }
         #endregion
 
+        #region 国家二字码多条件查询
+        /// <summary>
+        ///FindCountriesByCondition 的测试
+        ///</summary>
+        [TestMethod()]
+        public void FindCountriesByConditionTest()
+        {
+            string counrtyCode = "AL"; // 国家二字码
+            string countryName = "A"; // 国家名称
+            IList<CountryCode> actual;
+            actual = _countryCodeManagementService.FindCountriesByCondition(counrtyCode, countryName);
+        }
+        #endregion
+
         public override Expression<Func<CountryCode, bool>> FilterExpression
         {
             get { throw new NotImplementedException(); }

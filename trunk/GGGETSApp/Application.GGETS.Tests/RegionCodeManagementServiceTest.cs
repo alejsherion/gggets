@@ -175,6 +175,32 @@ namespace Application.GGETS.Tests
         }
         #endregion
 
+        #region 地区三字码多条件查询
+        /// <summary>
+        ///FindRegionCodesByCondition 的测试
+        ///</summary>
+        [TestMethod()]
+        public void FindRegionCodesByConditionTest()
+        {
+            string countryCode = string.Empty; // 国家二字码
+            string regioncode = string.Empty; // 地区三字码
+            string regionName = "B"; // 地区名称
+            IList<RegionCode> actual;
+            actual = _regionCodeManagementService.FindRegionCodesByCondition(countryCode, regioncode, regionName);
+        }
+        #endregion
+
+        #region 获取所有的地区
+        /// <summary>
+        ///FindAllRegionCodes 的测试
+        ///</summary>
+        [TestMethod()]
+        public void FindAllRegionCodesTest()
+        {
+            IList<RegionCode>  actual = _regionCodeManagementService.FindAllRegionCodes();
+        }
+        #endregion
+
         public override Expression<Func<RegionCode, bool>> FilterExpression
         {
             get { throw new NotImplementedException(); }
