@@ -98,6 +98,37 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Repositories
                 context.Department.Where(it => it.CompanyCode == companyCode).ToList();
         }
 
+        /// <summary>
+        /// 通过部门编号
+        /// </summary>
+        /// <param name="depCode">部门账号</param>
+        /// <param name="addressType">地址本类型 0=发货地址,1=送货地址,2=交付地址</param>
+        /// <returns></returns>
+        public IList<AddressBook> FindAllAddressBooksByCondition(string depCode, int addressType)
+        {
+            IEnumerable<AddressBook> addressBooks = null;
+            Department departmentObj = FindDepartmentByDepCode(depCode);
+            string DID = string.Empty;
+            if (departmentObj != null) DID = Convert.ToString(departmentObj.DID);
+            using (IGGGETSAppUnitOfWork context = UnitOfWork as IGGGETSAppUnitOfWork)
+            {
+                if (context != null)
+                {
+                    //packages = context.Package.Include(p => p.HAWBs).Include(p => p.MAWB).Select(p => p);
+                    addressBooks = context.AddressBook.Select(a => a);
+                    if (!string.IsNullOrEmpty(DID)) addressBooks = addressBooks.Where(a => a.DID == new Guid(DID));
+                    if (addressType == 0 || addressType == 1 || addressType == 2) addressBooks = addressBooks.Where(a => a.AddressType == addressType);
+                }
+                else
+                {
+                    throw new InvalidOperationException(string.Format(
+                                                                CultureInfo.InvariantCulture,
+                                                                Messages.exception_InvalidStoreContext,
+                                                                GetType().Name));
+                }
+                return addressBooks.OrderByDescending(p => p.CreateTime).ToList();
+            }
+        }
         #endregion
     }
 }

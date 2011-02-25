@@ -676,6 +676,45 @@ namespace Application.GGETS.Tests
         }
         #endregion
 
+        #region 通过部门账号获取发件人地址本
+        /// <summary>
+        ///FindAllShipAddressesByDepCode 的测试
+        ///</summary>
+        [TestMethod()]
+        public void FindAllShipAddressesByDepCodeTest()
+        {
+            string depCode = "00"; // 部门账号
+            IList<AddressBook> actual;
+            actual = _departmentManagementService.FindAllShipAddressesByDepCode(depCode);
+        }
+        #endregion
+
+        #region 通过部门账号获取收件人地址本
+        /// <summary>
+        ///FindAllShipAddressesByDepCode 的测试
+        ///</summary>
+        [TestMethod()]
+        public void FindAllDeliveryAddressesByDepCodeTest()
+        {
+            string depCode = "00"; // 部门账号
+            IList<AddressBook> actual;
+            actual = _departmentManagementService.FindAllDeliveryAddressesByDepCode(depCode);
+        }
+        #endregion
+
+        #region 通过部门账号获取交付人地址本
+        /// <summary>
+        ///FindAllShipAddressesByDepCode 的测试
+        ///</summary>
+        [TestMethod()]
+        public void FindAllForwarderAddressesByDepCodeTest()
+        {
+            string depCode = "00"; // 部门账号
+            IList<AddressBook> actual;
+            actual = _departmentManagementService.FindAllForwarderAddressesByDepCode(depCode);
+        }
+        #endregion
+
         public override Expression<Func<Department, bool>> FilterExpression
         {
             get { throw new NotImplementedException(); }
