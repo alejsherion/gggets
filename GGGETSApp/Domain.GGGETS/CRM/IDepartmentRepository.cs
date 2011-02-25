@@ -19,5 +19,6 @@ namespace Domain.GGGETS
         Company FindCompanyByCompanyCode(string companyCode);
         User FindUserByLoginName(string loginName);
         AddressBook FindAddressBookByAID(string AID);
+        IList<Department> FindDepartmentsByCompanyCode(string companyCode);
     }
 }

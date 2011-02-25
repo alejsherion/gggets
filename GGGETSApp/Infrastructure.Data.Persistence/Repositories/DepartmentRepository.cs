@@ -83,6 +83,21 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Repositories
                 context.AddressBook.Where(it => it.AID == guidObj).Include(it => it.User).Include(it=>it.Department).SingleOrDefault();
         }
 
+        /// <summary>
+        /// 通过公司账号获取部门信息
+        /// </summary>
+        /// <param name="companyCode">公司账号</param>
+        /// <returns></returns>
+        public IList<Department> FindDepartmentsByCompanyCode(string companyCode)
+        {
+            if (string.IsNullOrEmpty(companyCode)) throw new ArgumentException("CompanyCode is null!");
+            //Get Assemble's Context
+            IGGGETSAppUnitOfWork context = UnitOfWork as IGGGETSAppUnitOfWork;
+            //don't forget open package's load:HAWBs
+            return
+                context.Department.Where(it => it.CompanyCode == companyCode).ToList();
+        }
+
         #endregion
     }
 }

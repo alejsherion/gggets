@@ -589,7 +589,7 @@ namespace Application.GGETS.Tests
             
             //relation
             departmentA.HAWBs.Add(_HAWBManagementService.FindHAWBByBarCode("2010"));//运单关联
-            departmentA.CompanyCode = company.CID.ToString();//冗余数据
+            departmentA.CompanyCode = company.CompanyCode.ToString();//冗余数据
             departmentA.Company = company;//公司关联
             departmentA.Users.Add(user01);//用户关联
             departmentA.AddressBooks.Add(addressBookA1);//地址本关联
@@ -603,7 +603,7 @@ namespace Application.GGETS.Tests
             departmentA.AddressBooks.Add(addressBookA9);
 
             departmentB.HAWBs.Add(_HAWBManagementService.FindHAWBByBarCode("2011"));//运单关联
-            departmentB.CompanyCode = company.CID.ToString();//冗余数据
+            departmentB.CompanyCode = company.CompanyCode.ToString();//冗余数据
             departmentB.Company = company;//公司关联
             departmentB.Users.Add(user02);//用户关联
             departmentB.AddressBooks.Add(addressBookB1);//地址本关联
@@ -660,6 +660,19 @@ namespace Application.GGETS.Tests
             string depCode = "D1"; // 部门账号
             Department actual;
             actual = _departmentManagementService.FindDepartmentByDepCode(depCode);
+        }
+        #endregion
+
+        #region 通过公司账号获取部门信息测试
+        /// <summary>
+        ///FindDepartmentsByCompanyCode 的测试
+        ///</summary>
+        [TestMethod()]
+        public void FindDepartmentsByCompanyCodeTest()
+        {
+            string companyCode = "M18"; // 公司账号
+            IList<Department> actual;
+            actual = _departmentManagementService.FindDepartmentsByCompanyCode(companyCode);
         }
         #endregion
 

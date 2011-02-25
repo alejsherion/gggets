@@ -83,5 +83,15 @@ namespace Application.GGETS
         {
             return _departmentRepository.FindDepartmentByDepCode(depCode);
         }
+
+        /// <summary>
+        /// 通过公司账号获取部门信息
+        /// </summary>
+        /// <param name="companyCode">公司账号</param>
+        /// <returns></returns>
+        public IList<Department> FindDepartmentsByCompanyCode(string companyCode)
+        {
+            return _departmentRepository.FindDepartmentsByCompanyCode(companyCode);
+        }
     }
 }
