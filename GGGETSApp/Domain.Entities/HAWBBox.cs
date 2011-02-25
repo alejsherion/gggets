@@ -102,7 +102,7 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
                 }
             }
         }
-        private decimal _weight = 0m;
+        private decimal _weight;
     
         [DataMember]
         public Nullable<decimal> Length
@@ -117,7 +117,7 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
                 }
             }
         }
-        private Nullable<decimal> _length = 0m;
+        private Nullable<decimal> _length;
     
         [DataMember]
         public Nullable<decimal> Width
@@ -132,7 +132,7 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
                 }
             }
         }
-        private Nullable<decimal> _width = 0m;
+        private Nullable<decimal> _width;
     
         [DataMember]
         public Nullable<decimal> Height
@@ -147,7 +147,7 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
                 }
             }
         }
-        private Nullable<decimal> _height = 0m;
+        private Nullable<decimal> _height;
     
         [DataMember]
         public Nullable<decimal> TransFee
@@ -192,7 +192,7 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
                 }
             }
         }
-        private int _piece = 0;
+        private int _piece;
 
         #endregion
         #region Navigation Properties

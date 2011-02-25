@@ -64,9 +64,9 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
                     ChangeTracker.RecordOriginalValue("DID", _dID);
                     if (!IsDeserializing)
                     {
-                        if (Department1 != null && Department1.DID != value)
+                        if (Department != null && Department.DID != value)
                         {
-                            Department1 = null;
+                            Department = null;
                         }
                     }
                     _dID = value;
@@ -122,36 +122,6 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
         private string _realName;
     
         [DataMember]
-        public string Department
-        {
-            get { return _department; }
-            set
-            {
-                if (_department != value)
-                {
-                    _department = value;
-                    OnPropertyChanged("Department");
-                }
-            }
-        }
-        private string _department;
-    
-        [DataMember]
-        public string PostCode
-        {
-            get { return _postCode; }
-            set
-            {
-                if (_postCode != value)
-                {
-                    _postCode = value;
-                    OnPropertyChanged("PostCode");
-                }
-            }
-        }
-        private string _postCode;
-    
-        [DataMember]
         public string Email
         {
             get { return _email; }
@@ -167,21 +137,6 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
         private string _email;
     
         [DataMember]
-        public string Fax
-        {
-            get { return _fax; }
-            set
-            {
-                if (_fax != value)
-                {
-                    _fax = value;
-                    OnPropertyChanged("Fax");
-                }
-            }
-        }
-        private string _fax;
-    
-        [DataMember]
         public string Phone
         {
             get { return _phone; }
@@ -195,51 +150,6 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
             }
         }
         private string _phone;
-    
-        [DataMember]
-        public string CountryCode
-        {
-            get { return _countryCode; }
-            set
-            {
-                if (_countryCode != value)
-                {
-                    _countryCode = value;
-                    OnPropertyChanged("CountryCode");
-                }
-            }
-        }
-        private string _countryCode;
-    
-        [DataMember]
-        public string RegionCode
-        {
-            get { return _regionCode; }
-            set
-            {
-                if (_regionCode != value)
-                {
-                    _regionCode = value;
-                    OnPropertyChanged("RegionCode");
-                }
-            }
-        }
-        private string _regionCode;
-    
-        [DataMember]
-        public string Address
-        {
-            get { return _address; }
-            set
-            {
-                if (_address != value)
-                {
-                    _address = value;
-                    OnPropertyChanged("Address");
-                }
-            }
-        }
-        private string _address;
     
         [DataMember]
         public System.DateTime UpdateTime
@@ -410,103 +320,91 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
         #region Navigation Properties
     
         [DataMember]
-        public TrackableCollection<AddressBook> AddressBook
+        public TrackableCollection<AddressBook> AddressBooks
         {
             get
             {
-                if (_addressBook == null)
+                if (_addressBooks == null)
                 {
-                    _addressBook = new TrackableCollection<AddressBook>();
-                    _addressBook.CollectionChanged += FixupAddressBook;
+                    _addressBooks = new TrackableCollection<AddressBook>();
+                    _addressBooks.CollectionChanged += FixupAddressBooks;
                 }
-                return _addressBook;
+                return _addressBooks;
             }
             set
             {
-                if (!ReferenceEquals(_addressBook, value))
+                if (!ReferenceEquals(_addressBooks, value))
                 {
                     if (ChangeTracker.ChangeTrackingEnabled)
                     {
                         throw new InvalidOperationException("Cannot set the FixupChangeTrackingCollection when ChangeTracking is enabled");
                     }
-                    if (_addressBook != null)
+                    if (_addressBooks != null)
                     {
-                        _addressBook.CollectionChanged -= FixupAddressBook;
-                        // This is the principal end in an association that performs cascade deletes.
-                        // Remove the cascade delete event handler for any entities in the current collection.
-                        foreach (AddressBook item in _addressBook)
-                        {
-                            ChangeTracker.ObjectStateChanging -= item.HandleCascadeDelete;
-                        }
+                        _addressBooks.CollectionChanged -= FixupAddressBooks;
                     }
-                    _addressBook = value;
-                    if (_addressBook != null)
+                    _addressBooks = value;
+                    if (_addressBooks != null)
                     {
-                        _addressBook.CollectionChanged += FixupAddressBook;
-                        // This is the principal end in an association that performs cascade deletes.
-                        // Add the cascade delete event handler for any entities that are already in the new collection.
-                        foreach (AddressBook item in _addressBook)
-                        {
-                            ChangeTracker.ObjectStateChanging += item.HandleCascadeDelete;
-                        }
+                        _addressBooks.CollectionChanged += FixupAddressBooks;
                     }
-                    OnNavigationPropertyChanged("AddressBook");
+                    OnNavigationPropertyChanged("AddressBooks");
                 }
             }
         }
-        private TrackableCollection<AddressBook> _addressBook;
+        private TrackableCollection<AddressBook> _addressBooks;
     
         [DataMember]
-        public Department Department1
+        public Department Department
         {
-            get { return _department1; }
+            get { return _department; }
             set
             {
-                if (!ReferenceEquals(_department1, value))
+                if (!ReferenceEquals(_department, value))
                 {
-                    var previousValue = _department1;
-                    _department1 = value;
-                    FixupDepartment1(previousValue);
-                    OnNavigationPropertyChanged("Department1");
+                    var previousValue = _department;
+                    _department = value;
+                    FixupDepartment(previousValue);
+                    OnNavigationPropertyChanged("Department");
                 }
             }
         }
-        private Department _department1;
+        private Department _department;
     
         [DataMember]
-        public TrackableCollection<HAWB> HAWB
+        public TrackableCollection<HAWB> HAWBs
         {
             get
             {
-                if (_hAWB == null)
+                if (_hAWBs == null)
                 {
-                    _hAWB = new TrackableCollection<HAWB>();
-                    _hAWB.CollectionChanged += FixupHAWB;
+                    _hAWBs = new TrackableCollection<HAWB>();
+                    _hAWBs.CollectionChanged += FixupHAWBs;
                 }
-                return _hAWB;
+                return _hAWBs;
             }
             set
             {
-                if (!ReferenceEquals(_hAWB, value))
+                if (!ReferenceEquals(_hAWBs, value))
                 {
                     if (ChangeTracker.ChangeTrackingEnabled)
                     {
                         throw new InvalidOperationException("Cannot set the FixupChangeTrackingCollection when ChangeTracking is enabled");
                     }
-                    if (_hAWB != null)
+                    if (_hAWBs != null)
                     {
-                        _hAWB.CollectionChanged -= FixupHAWB;
+                        _hAWBs.CollectionChanged -= FixupHAWBs;
                     }
-                    _hAWB = value;
-                    if (_hAWB != null)
+                    _hAWBs = value;
+                    if (_hAWBs != null)
                     {
-                        _hAWB.CollectionChanged += FixupHAWB;
+                        _hAWBs.CollectionChanged += FixupHAWBs;
                     }
-                    OnNavigationPropertyChanged("HAWB");
+                    OnNavigationPropertyChanged("HAWBs");
                 }
             }
         }
-        private TrackableCollection<HAWB> _hAWB;
+        private TrackableCollection<HAWB> _hAWBs;
 
         #endregion
         #region ChangeTracking
@@ -586,34 +484,34 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
     
         protected virtual void ClearNavigationProperties()
         {
-            AddressBook.Clear();
-            Department1 = null;
-            HAWB.Clear();
+            AddressBooks.Clear();
+            Department = null;
+            HAWBs.Clear();
         }
 
         #endregion
         #region Association Fixup
     
-        private void FixupDepartment1(Department previousValue, bool skipKeys = false)
+        private void FixupDepartment(Department previousValue, bool skipKeys = false)
         {
             if (IsDeserializing)
             {
                 return;
             }
     
-            if (previousValue != null && previousValue.User.Contains(this))
+            if (previousValue != null && previousValue.Users.Contains(this))
             {
-                previousValue.User.Remove(this);
+                previousValue.Users.Remove(this);
             }
     
-            if (Department1 != null)
+            if (Department != null)
             {
-                if (!Department1.User.Contains(this))
+                if (!Department.Users.Contains(this))
                 {
-                    Department1.User.Add(this);
+                    Department.Users.Add(this);
                 }
     
-                DID = Department1.DID;
+                DID = Department.DID;
             }
             else if (!skipKeys)
             {
@@ -622,23 +520,23 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
     
             if (ChangeTracker.ChangeTrackingEnabled)
             {
-                if (ChangeTracker.OriginalValues.ContainsKey("Department1")
-                    && (ChangeTracker.OriginalValues["Department1"] == Department1))
+                if (ChangeTracker.OriginalValues.ContainsKey("Department")
+                    && (ChangeTracker.OriginalValues["Department"] == Department))
                 {
-                    ChangeTracker.OriginalValues.Remove("Department1");
+                    ChangeTracker.OriginalValues.Remove("Department");
                 }
                 else
                 {
-                    ChangeTracker.RecordOriginalValue("Department1", previousValue);
+                    ChangeTracker.RecordOriginalValue("Department", previousValue);
                 }
-                if (Department1 != null && !Department1.ChangeTracker.ChangeTrackingEnabled)
+                if (Department != null && !Department.ChangeTracker.ChangeTrackingEnabled)
                 {
-                    Department1.StartTracking();
+                    Department.StartTracking();
                 }
             }
         }
     
-        private void FixupAddressBook(object sender, NotifyCollectionChangedEventArgs e)
+        private void FixupAddressBooks(object sender, NotifyCollectionChangedEventArgs e)
         {
             if (IsDeserializing)
             {
@@ -656,11 +554,8 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
                         {
                             item.StartTracking();
                         }
-                        ChangeTracker.RecordAdditionToCollectionProperties("AddressBook", item);
+                        ChangeTracker.RecordAdditionToCollectionProperties("AddressBooks", item);
                     }
-                    // This is the principal end in an association that performs cascade deletes.
-                    // Update the event listener to refer to the new dependent.
-                    ChangeTracker.ObjectStateChanging += item.HandleCascadeDelete;
                 }
             }
     
@@ -674,16 +569,13 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
                     }
                     if (ChangeTracker.ChangeTrackingEnabled)
                     {
-                        ChangeTracker.RecordRemovalFromCollectionProperties("AddressBook", item);
+                        ChangeTracker.RecordRemovalFromCollectionProperties("AddressBooks", item);
                     }
-                    // This is the principal end in an association that performs cascade deletes.
-                    // Remove the previous dependent from the event listener.
-                    ChangeTracker.ObjectStateChanging -= item.HandleCascadeDelete;
                 }
             }
         }
     
-        private void FixupHAWB(object sender, NotifyCollectionChangedEventArgs e)
+        private void FixupHAWBs(object sender, NotifyCollectionChangedEventArgs e)
         {
             if (IsDeserializing)
             {
@@ -701,7 +593,7 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
                         {
                             item.StartTracking();
                         }
-                        ChangeTracker.RecordAdditionToCollectionProperties("HAWB", item);
+                        ChangeTracker.RecordAdditionToCollectionProperties("HAWBs", item);
                     }
                 }
             }
@@ -716,7 +608,7 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
                     }
                     if (ChangeTracker.ChangeTrackingEnabled)
                     {
-                        ChangeTracker.RecordRemovalFromCollectionProperties("HAWB", item);
+                        ChangeTracker.RecordRemovalFromCollectionProperties("HAWBs", item);
                     }
                 }
             }

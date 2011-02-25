@@ -55,9 +55,6 @@
     <Compile Include="AddressBook.cs">
       <DependentUpon>GGGETSAppContext.Types.tt</DependentUpon>
     </Compile>
-    <Compile Include="AppModule.cs">
-      <DependentUpon>GGGETSAppContext.Types.tt</DependentUpon>
-    </Compile>
     <Compile Include="Company.cs">
       <DependentUpon>GGGETSAppContext.Types.tt</DependentUpon>
     </Compile>
@@ -95,9 +92,6 @@
     <Compile Include="Partial\HAWBPartial.cs" />
     <Compile Include="Partial\MAWBPartial.cs" />
     <Compile Include="Partial\PackagePartial.cs" />
-    <Compile Include="Privilege.cs">
-      <DependentUpon>GGGETSAppContext.Types.tt</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RegionCode.cs">
       <DependentUpon>GGGETSAppContext.Types.tt</DependentUpon>

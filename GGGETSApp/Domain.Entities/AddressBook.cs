@@ -22,6 +22,7 @@ using ETS.GGGETSApp.Domain.Core.Entities;
 namespace ETS.GGGETSApp.Domain.Application.Entities
 {
     [DataContract(IsReference = true)]
+    [KnownType(typeof(Department))]
     [KnownType(typeof(User))]
     [Serializable]
     [System.CodeDom.Compiler.GeneratedCode("STE-EF",".NET 4.0")]
@@ -52,6 +53,29 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
         private System.Guid _aID;
     
         [DataMember]
+        public Nullable<System.Guid> DID
+        {
+            get { return _dID; }
+            set
+            {
+                if (_dID != value)
+                {
+                    ChangeTracker.RecordOriginalValue("DID", _dID);
+                    if (!IsDeserializing)
+                    {
+                        if (Department != null && Department.DID != value)
+                        {
+                            Department = null;
+                        }
+                    }
+                    _dID = value;
+                    OnPropertyChanged("DID");
+                }
+            }
+        }
+        private Nullable<System.Guid> _dID;
+    
+        [DataMember]
         public Nullable<System.Guid> UID
         {
             get { return _uID; }
@@ -73,6 +97,21 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
             }
         }
         private Nullable<System.Guid> _uID;
+    
+        [DataMember]
+        public Nullable<System.Guid> ReceiveAID
+        {
+            get { return _receiveAID; }
+            set
+            {
+                if (_receiveAID != value)
+                {
+                    _receiveAID = value;
+                    OnPropertyChanged("ReceiveAID");
+                }
+            }
+        }
+        private Nullable<System.Guid> _receiveAID;
     
         [DataMember]
         public string Name
@@ -118,6 +157,21 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
             }
         }
         private string _countryCode;
+    
+        [DataMember]
+        public string Provience
+        {
+            get { return _provience; }
+            set
+            {
+                if (_provience != value)
+                {
+                    _provience = value;
+                    OnPropertyChanged("Provience");
+                }
+            }
+        }
+        private string _provience;
     
         [DataMember]
         public string RegionCode
@@ -238,9 +292,41 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
             }
         }
         private System.DateTime _updateTime;
+    
+        [DataMember]
+        public string Operator
+        {
+            get { return _operator; }
+            set
+            {
+                if (_operator != value)
+                {
+                    _operator = value;
+                    OnPropertyChanged("Operator");
+                }
+            }
+        }
+        private string _operator;
 
         #endregion
         #region Navigation Properties
+    
+        [DataMember]
+        public Department Department
+        {
+            get { return _department; }
+            set
+            {
+                if (!ReferenceEquals(_department, value))
+                {
+                    var previousValue = _department;
+                    _department = value;
+                    FixupDepartment(previousValue);
+                    OnNavigationPropertyChanged("Department");
+                }
+            }
+        }
+        private Department _department;
     
         [DataMember]
         public User User
@@ -320,16 +406,6 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
             }
         }
     
-        // This entity type is the dependent end in at least one association that performs cascade deletes.
-        // This event handler will process notifications that occur when the principal end is deleted.
-        internal void HandleCascadeDelete(object sender, ObjectStateChangingEventArgs e)
-        {
-            if (e.NewState == ObjectState.Deleted)
-            {
-                this.MarkAsDeleted();
-            }
-        }
-    
         protected bool IsDeserializing { get; private set; }
     
         [OnDeserializing]
@@ -347,11 +423,56 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
     
         protected virtual void ClearNavigationProperties()
         {
+            Department = null;
             User = null;
         }
 
         #endregion
         #region Association Fixup
+    
+        private void FixupDepartment(Department previousValue, bool skipKeys = false)
+        {
+            if (IsDeserializing)
+            {
+                return;
+            }
+    
+            if (previousValue != null && previousValue.AddressBooks.Contains(this))
+            {
+                previousValue.AddressBooks.Remove(this);
+            }
+    
+            if (Department != null)
+            {
+                if (!Department.AddressBooks.Contains(this))
+                {
+                    Department.AddressBooks.Add(this);
+                }
+    
+                DID = Department.DID;
+            }
+            else if (!skipKeys)
+            {
+                DID = null;
+            }
+    
+            if (ChangeTracker.ChangeTrackingEnabled)
+            {
+                if (ChangeTracker.OriginalValues.ContainsKey("Department")
+                    && (ChangeTracker.OriginalValues["Department"] == Department))
+                {
+                    ChangeTracker.OriginalValues.Remove("Department");
+                }
+                else
+                {
+                    ChangeTracker.RecordOriginalValue("Department", previousValue);
+                }
+                if (Department != null && !Department.ChangeTracker.ChangeTrackingEnabled)
+                {
+                    Department.StartTracking();
+                }
+            }
+        }
     
         private void FixupUser(User previousValue, bool skipKeys = false)
         {
@@ -360,16 +481,16 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
                 return;
             }
     
-            if (previousValue != null && previousValue.AddressBook.Contains(this))
+            if (previousValue != null && previousValue.AddressBooks.Contains(this))
             {
-                previousValue.AddressBook.Remove(this);
+                previousValue.AddressBooks.Remove(this);
             }
     
             if (User != null)
             {
-                if (!User.AddressBook.Contains(this))
+                if (!User.AddressBooks.Contains(this))
                 {
-                    User.AddressBook.Add(this);
+                    User.AddressBooks.Add(this);
                 }
     
                 UID = User.UID;

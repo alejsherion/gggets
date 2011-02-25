@@ -118,7 +118,7 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
                 }
             }
         }
-        private int _piece = 0;
+        private int _piece;
     
         [DataMember]
         public decimal TotalWeight
@@ -133,7 +133,7 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
                 }
             }
         }
-        private decimal _totalWeight = 0m;
+        private decimal _totalWeight;
     
         [DataMember]
         public System.DateTime CreateTime
@@ -193,7 +193,7 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
                 }
             }
         }
-        private int _status = 0;
+        private int _status;
     
         [DataMember]
         public bool IsMixed
@@ -208,7 +208,7 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
                 }
             }
         }
-        private bool _isMixed = false;
+        private bool _isMixed;
 
         #endregion
         #region Navigation Properties

@@ -22,8 +22,10 @@ using ETS.GGGETSApp.Domain.Core.Entities;
 namespace ETS.GGGETSApp.Domain.Application.Entities
 {
     [DataContract(IsReference = true)]
+    [KnownType(typeof(AddressBook))]
     [KnownType(typeof(Company))]
     [KnownType(typeof(User))]
+    [KnownType(typeof(HAWB))]
     [Serializable]
     [System.CodeDom.Compiler.GeneratedCode("STE-EF",".NET 4.0")]
     #if !SILVERLIGHT
@@ -74,6 +76,21 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
             }
         }
         private Nullable<System.Guid> _cID;
+    
+        [DataMember]
+        public string DepCode
+        {
+            get { return _depCode; }
+            set
+            {
+                if (_depCode != value)
+                {
+                    _depCode = value;
+                    OnPropertyChanged("DepCode");
+                }
+            }
+        }
+        private string _depCode;
     
         [DataMember]
         public string DepName
@@ -179,9 +196,59 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
             }
         }
         private int _weightCalType;
+    
+        [DataMember]
+        public string CompanyCode
+        {
+            get { return _companyCode; }
+            set
+            {
+                if (_companyCode != value)
+                {
+                    _companyCode = value;
+                    OnPropertyChanged("CompanyCode");
+                }
+            }
+        }
+        private string _companyCode;
 
         #endregion
         #region Navigation Properties
+    
+        [DataMember]
+        public TrackableCollection<AddressBook> AddressBooks
+        {
+            get
+            {
+                if (_addressBooks == null)
+                {
+                    _addressBooks = new TrackableCollection<AddressBook>();
+                    _addressBooks.CollectionChanged += FixupAddressBooks;
+                }
+                return _addressBooks;
+            }
+            set
+            {
+                if (!ReferenceEquals(_addressBooks, value))
+                {
+                    if (ChangeTracker.ChangeTrackingEnabled)
+                    {
+                        throw new InvalidOperationException("Cannot set the FixupChangeTrackingCollection when ChangeTracking is enabled");
+                    }
+                    if (_addressBooks != null)
+                    {
+                        _addressBooks.CollectionChanged -= FixupAddressBooks;
+                    }
+                    _addressBooks = value;
+                    if (_addressBooks != null)
+                    {
+                        _addressBooks.CollectionChanged += FixupAddressBooks;
+                    }
+                    OnNavigationPropertyChanged("AddressBooks");
+                }
+            }
+        }
+        private TrackableCollection<AddressBook> _addressBooks;
     
         [DataMember]
         public Company Company
@@ -201,39 +268,74 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
         private Company _company;
     
         [DataMember]
-        public TrackableCollection<User> User
+        public TrackableCollection<User> Users
         {
             get
             {
-                if (_user == null)
+                if (_users == null)
                 {
-                    _user = new TrackableCollection<User>();
-                    _user.CollectionChanged += FixupUser;
+                    _users = new TrackableCollection<User>();
+                    _users.CollectionChanged += FixupUsers;
                 }
-                return _user;
+                return _users;
             }
             set
             {
-                if (!ReferenceEquals(_user, value))
+                if (!ReferenceEquals(_users, value))
                 {
                     if (ChangeTracker.ChangeTrackingEnabled)
                     {
                         throw new InvalidOperationException("Cannot set the FixupChangeTrackingCollection when ChangeTracking is enabled");
                     }
-                    if (_user != null)
+                    if (_users != null)
                     {
-                        _user.CollectionChanged -= FixupUser;
+                        _users.CollectionChanged -= FixupUsers;
                     }
-                    _user = value;
-                    if (_user != null)
+                    _users = value;
+                    if (_users != null)
                     {
-                        _user.CollectionChanged += FixupUser;
+                        _users.CollectionChanged += FixupUsers;
                     }
-                    OnNavigationPropertyChanged("User");
+                    OnNavigationPropertyChanged("Users");
                 }
             }
         }
-        private TrackableCollection<User> _user;
+        private TrackableCollection<User> _users;
+    
+        [DataMember]
+        public TrackableCollection<HAWB> HAWBs
+        {
+            get
+            {
+                if (_hAWBs == null)
+                {
+                    _hAWBs = new TrackableCollection<HAWB>();
+                    _hAWBs.CollectionChanged += FixupHAWBs;
+                }
+                return _hAWBs;
+            }
+            set
+            {
+                if (!ReferenceEquals(_hAWBs, value))
+                {
+                    if (ChangeTracker.ChangeTrackingEnabled)
+                    {
+                        throw new InvalidOperationException("Cannot set the FixupChangeTrackingCollection when ChangeTracking is enabled");
+                    }
+                    if (_hAWBs != null)
+                    {
+                        _hAWBs.CollectionChanged -= FixupHAWBs;
+                    }
+                    _hAWBs = value;
+                    if (_hAWBs != null)
+                    {
+                        _hAWBs.CollectionChanged += FixupHAWBs;
+                    }
+                    OnNavigationPropertyChanged("HAWBs");
+                }
+            }
+        }
+        private TrackableCollection<HAWB> _hAWBs;
 
         #endregion
         #region ChangeTracking
@@ -313,8 +415,10 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
     
         protected virtual void ClearNavigationProperties()
         {
+            AddressBooks.Clear();
             Company = null;
-            User.Clear();
+            Users.Clear();
+            HAWBs.Clear();
         }
 
         #endregion
@@ -327,16 +431,16 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
                 return;
             }
     
-            if (previousValue != null && previousValue.Department.Contains(this))
+            if (previousValue != null && previousValue.Departments.Contains(this))
             {
-                previousValue.Department.Remove(this);
+                previousValue.Departments.Remove(this);
             }
     
             if (Company != null)
             {
-                if (!Company.Department.Contains(this))
+                if (!Company.Departments.Contains(this))
                 {
-                    Company.Department.Add(this);
+                    Company.Departments.Add(this);
                 }
     
                 CID = Company.CID;
@@ -364,7 +468,46 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
             }
         }
     
-        private void FixupUser(object sender, NotifyCollectionChangedEventArgs e)
+        private void FixupAddressBooks(object sender, NotifyCollectionChangedEventArgs e)
+        {
+            if (IsDeserializing)
+            {
+                return;
+            }
+    
+            if (e.NewItems != null)
+            {
+                foreach (AddressBook item in e.NewItems)
+                {
+                    item.Department = this;
+                    if (ChangeTracker.ChangeTrackingEnabled)
+                    {
+                        if (!item.ChangeTracker.ChangeTrackingEnabled)
+                        {
+                            item.StartTracking();
+                        }
+                        ChangeTracker.RecordAdditionToCollectionProperties("AddressBooks", item);
+                    }
+                }
+            }
+    
+            if (e.OldItems != null)
+            {
+                foreach (AddressBook item in e.OldItems)
+                {
+                    if (ReferenceEquals(item.Department, this))
+                    {
+                        item.Department = null;
+                    }
+                    if (ChangeTracker.ChangeTrackingEnabled)
+                    {
+                        ChangeTracker.RecordRemovalFromCollectionProperties("AddressBooks", item);
+                    }
+                }
+            }
+        }
+    
+        private void FixupUsers(object sender, NotifyCollectionChangedEventArgs e)
         {
             if (IsDeserializing)
             {
@@ -375,14 +518,14 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
             {
                 foreach (User item in e.NewItems)
                 {
-                    item.Department1 = this;
+                    item.Department = this;
                     if (ChangeTracker.ChangeTrackingEnabled)
                     {
                         if (!item.ChangeTracker.ChangeTrackingEnabled)
                         {
                             item.StartTracking();
                         }
-                        ChangeTracker.RecordAdditionToCollectionProperties("User", item);
+                        ChangeTracker.RecordAdditionToCollectionProperties("Users", item);
                     }
                 }
             }
@@ -391,13 +534,52 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
             {
                 foreach (User item in e.OldItems)
                 {
-                    if (ReferenceEquals(item.Department1, this))
+                    if (ReferenceEquals(item.Department, this))
                     {
-                        item.Department1 = null;
+                        item.Department = null;
                     }
                     if (ChangeTracker.ChangeTrackingEnabled)
                     {
-                        ChangeTracker.RecordRemovalFromCollectionProperties("User", item);
+                        ChangeTracker.RecordRemovalFromCollectionProperties("Users", item);
+                    }
+                }
+            }
+        }
+    
+        private void FixupHAWBs(object sender, NotifyCollectionChangedEventArgs e)
+        {
+            if (IsDeserializing)
+            {
+                return;
+            }
+    
+            if (e.NewItems != null)
+            {
+                foreach (HAWB item in e.NewItems)
+                {
+                    item.Department = this;
+                    if (ChangeTracker.ChangeTrackingEnabled)
+                    {
+                        if (!item.ChangeTracker.ChangeTrackingEnabled)
+                        {
+                            item.StartTracking();
+                        }
+                        ChangeTracker.RecordAdditionToCollectionProperties("HAWBs", item);
+                    }
+                }
+            }
+    
+            if (e.OldItems != null)
+            {
+                foreach (HAWB item in e.OldItems)
+                {
+                    if (ReferenceEquals(item.Department, this))
+                    {
+                        item.Department = null;
+                    }
+                    if (ChangeTracker.ChangeTrackingEnabled)
+                    {
+                        ChangeTracker.RecordRemovalFromCollectionProperties("HAWBs", item);
                     }
                 }
             }

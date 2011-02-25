@@ -26,6 +26,7 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
     [KnownType(typeof(User))]
     [KnownType(typeof(HAWBBox))]
     [KnownType(typeof(HAWBItem))]
+    [KnownType(typeof(Department))]
     [Serializable]
     [System.CodeDom.Compiler.GeneratedCode("STE-EF",".NET 4.0")]
     #if !SILVERLIGHT
@@ -158,7 +159,7 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
                 }
             }
         }
-        private int _settleType = 0;
+        private int _settleType;
     
         [DataMember]
         public Nullable<int> ServiceType
@@ -173,7 +174,7 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
                 }
             }
         }
-        private Nullable<int> _serviceType = 0;
+        private Nullable<int> _serviceType;
     
         [DataMember]
         public System.DateTime CreateTime
@@ -218,7 +219,7 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
                 }
             }
         }
-        private int _status = 0;
+        private int _status;
     
         [DataMember]
         public string Operator
@@ -356,7 +357,7 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
         private string _shipperTel;
     
         [DataMember]
-        public string ConsigneeName
+        public Nullable<System.Guid> ConsigneeName
         {
             get { return _consigneeName; }
             set
@@ -368,7 +369,7 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
                 }
             }
         }
-        private string _consigneeName;
+        private Nullable<System.Guid> _consigneeName;
     
         [DataMember]
         public string ConsigneeContactor
@@ -578,7 +579,7 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
                 }
             }
         }
-        private int _weightType = 0;
+        private int _weightType;
     
         [DataMember]
         public Nullable<decimal> VolumeWeight
@@ -593,7 +594,7 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
                 }
             }
         }
-        private Nullable<decimal> _volumeWeight = 0m;
+        private Nullable<decimal> _volumeWeight;
     
         [DataMember]
         public decimal TotalVolume
@@ -608,7 +609,7 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
                 }
             }
         }
-        private decimal _totalVolume = 0m;
+        private decimal _totalVolume;
     
         [DataMember]
         public decimal TotalWeight
@@ -623,7 +624,7 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
                 }
             }
         }
-        private decimal _totalWeight = 0m;
+        private decimal _totalWeight;
     
         [DataMember]
         public int Piece
@@ -638,7 +639,7 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
                 }
             }
         }
-        private int _piece = 0;
+        private int _piece;
     
         [DataMember]
         public bool IsInternational
@@ -653,7 +654,7 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
                 }
             }
         }
-        private bool _isInternational = true;
+        private bool _isInternational;
     
         [DataMember]
         public string SpecialInstruction
@@ -683,7 +684,30 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
                 }
             }
         }
-        private Nullable<int> _billTax = 0;
+        private Nullable<int> _billTax;
+    
+        [DataMember]
+        public Nullable<System.Guid> DID
+        {
+            get { return _dID; }
+            set
+            {
+                if (_dID != value)
+                {
+                    ChangeTracker.RecordOriginalValue("DID", _dID);
+                    if (!IsDeserializing)
+                    {
+                        if (Department != null && Department.DID != value)
+                        {
+                            Department = null;
+                        }
+                    }
+                    _dID = value;
+                    OnPropertyChanged("DID");
+                }
+            }
+        }
+        private Nullable<System.Guid> _dID;
 
         #endregion
         #region Navigation Properties
@@ -803,6 +827,23 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
             }
         }
         private TrackableCollection<HAWBItem> _hAWBItems;
+    
+        [DataMember]
+        public Department Department
+        {
+            get { return _department; }
+            set
+            {
+                if (!ReferenceEquals(_department, value))
+                {
+                    var previousValue = _department;
+                    _department = value;
+                    FixupDepartment(previousValue);
+                    OnNavigationPropertyChanged("Department");
+                }
+            }
+        }
+        private Department _department;
 
         #endregion
         #region ChangeTracking
@@ -886,6 +927,7 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
             User = null;
             HAWBBoxes.Clear();
             HAWBItems.Clear();
+            Department = null;
         }
 
         #endregion
@@ -942,16 +984,16 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
                 return;
             }
     
-            if (previousValue != null && previousValue.HAWB.Contains(this))
+            if (previousValue != null && previousValue.HAWBs.Contains(this))
             {
-                previousValue.HAWB.Remove(this);
+                previousValue.HAWBs.Remove(this);
             }
     
             if (User != null)
             {
-                if (!User.HAWB.Contains(this))
+                if (!User.HAWBs.Contains(this))
                 {
-                    User.HAWB.Add(this);
+                    User.HAWBs.Add(this);
                 }
     
                 UID = User.UID;
@@ -975,6 +1017,50 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
                 if (User != null && !User.ChangeTracker.ChangeTrackingEnabled)
                 {
                     User.StartTracking();
+                }
+            }
+        }
+    
+        private void FixupDepartment(Department previousValue, bool skipKeys = false)
+        {
+            if (IsDeserializing)
+            {
+                return;
+            }
+    
+            if (previousValue != null && previousValue.HAWBs.Contains(this))
+            {
+                previousValue.HAWBs.Remove(this);
+            }
+    
+            if (Department != null)
+            {
+                if (!Department.HAWBs.Contains(this))
+                {
+                    Department.HAWBs.Add(this);
+                }
+    
+                DID = Department.DID;
+            }
+            else if (!skipKeys)
+            {
+                DID = null;
+            }
+    
+            if (ChangeTracker.ChangeTrackingEnabled)
+            {
+                if (ChangeTracker.OriginalValues.ContainsKey("Department")
+                    && (ChangeTracker.OriginalValues["Department"] == Department))
+                {
+                    ChangeTracker.OriginalValues.Remove("Department");
+                }
+                else
+                {
+                    ChangeTracker.RecordOriginalValue("Department", previousValue);
+                }
+                if (Department != null && !Department.ChangeTracker.ChangeTrackingEnabled)
+                {
+                    Department.StartTracking();
                 }
             }
         }

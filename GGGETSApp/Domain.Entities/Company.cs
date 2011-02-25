@@ -52,6 +52,21 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
         private System.Guid _cID;
     
         [DataMember]
+        public string CompanyCode
+        {
+            get { return _companyCode; }
+            set
+            {
+                if (_companyCode != value)
+                {
+                    _companyCode = value;
+                    OnPropertyChanged("CompanyCode");
+                }
+            }
+        }
+        private string _companyCode;
+    
+        [DataMember]
         public string FullName
         {
             get { return _fullName; }
@@ -95,36 +110,6 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
             }
         }
         private string _postCode;
-    
-        [DataMember]
-        public string CountryCode
-        {
-            get { return _countryCode; }
-            set
-            {
-                if (_countryCode != value)
-                {
-                    _countryCode = value;
-                    OnPropertyChanged("CountryCode");
-                }
-            }
-        }
-        private string _countryCode;
-    
-        [DataMember]
-        public string RegionCode
-        {
-            get { return _regionCode; }
-            set
-            {
-                if (_regionCode != value)
-                {
-                    _regionCode = value;
-                    OnPropertyChanged("RegionCode");
-                }
-            }
-        }
-        private string _regionCode;
     
         [DataMember]
         public string Address
@@ -202,21 +187,6 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
         private string _fax;
     
         [DataMember]
-        public decimal ResidualAmount
-        {
-            get { return _residualAmount; }
-            set
-            {
-                if (_residualAmount != value)
-                {
-                    _residualAmount = value;
-                    OnPropertyChanged("ResidualAmount");
-                }
-            }
-        }
-        private decimal _residualAmount;
-    
-        [DataMember]
         public string OrganizationCode
         {
             get { return _organizationCode; }
@@ -230,21 +200,6 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
             }
         }
         private string _organizationCode;
-    
-        [DataMember]
-        public decimal LimitAmount
-        {
-            get { return _limitAmount; }
-            set
-            {
-                if (_limitAmount != value)
-                {
-                    _limitAmount = value;
-                    OnPropertyChanged("LimitAmount");
-                }
-            }
-        }
-        private decimal _limitAmount;
     
         [DataMember]
         public int Status
@@ -280,39 +235,39 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
         #region Navigation Properties
     
         [DataMember]
-        public TrackableCollection<Department> Department
+        public TrackableCollection<Department> Departments
         {
             get
             {
-                if (_department == null)
+                if (_departments == null)
                 {
-                    _department = new TrackableCollection<Department>();
-                    _department.CollectionChanged += FixupDepartment;
+                    _departments = new TrackableCollection<Department>();
+                    _departments.CollectionChanged += FixupDepartments;
                 }
-                return _department;
+                return _departments;
             }
             set
             {
-                if (!ReferenceEquals(_department, value))
+                if (!ReferenceEquals(_departments, value))
                 {
                     if (ChangeTracker.ChangeTrackingEnabled)
                     {
                         throw new InvalidOperationException("Cannot set the FixupChangeTrackingCollection when ChangeTracking is enabled");
                     }
-                    if (_department != null)
+                    if (_departments != null)
                     {
-                        _department.CollectionChanged -= FixupDepartment;
+                        _departments.CollectionChanged -= FixupDepartments;
                     }
-                    _department = value;
-                    if (_department != null)
+                    _departments = value;
+                    if (_departments != null)
                     {
-                        _department.CollectionChanged += FixupDepartment;
+                        _departments.CollectionChanged += FixupDepartments;
                     }
-                    OnNavigationPropertyChanged("Department");
+                    OnNavigationPropertyChanged("Departments");
                 }
             }
         }
-        private TrackableCollection<Department> _department;
+        private TrackableCollection<Department> _departments;
 
         #endregion
         #region ChangeTracking
@@ -392,13 +347,13 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
     
         protected virtual void ClearNavigationProperties()
         {
-            Department.Clear();
+            Departments.Clear();
         }
 
         #endregion
         #region Association Fixup
     
-        private void FixupDepartment(object sender, NotifyCollectionChangedEventArgs e)
+        private void FixupDepartments(object sender, NotifyCollectionChangedEventArgs e)
         {
             if (IsDeserializing)
             {
@@ -416,7 +371,7 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
                         {
                             item.StartTracking();
                         }
-                        ChangeTracker.RecordAdditionToCollectionProperties("Department", item);
+                        ChangeTracker.RecordAdditionToCollectionProperties("Departments", item);
                     }
                 }
             }
@@ -431,7 +386,7 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
                     }
                     if (ChangeTracker.ChangeTrackingEnabled)
                     {
-                        ChangeTracker.RecordRemovalFromCollectionProperties("Department", item);
+                        ChangeTracker.RecordRemovalFromCollectionProperties("Departments", item);
                     }
                 }
             }
