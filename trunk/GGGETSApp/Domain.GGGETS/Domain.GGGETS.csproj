@@ -39,7 +39,10 @@
   </PropertyGroup>
   <ItemGroup />
   <ItemGroup>
+    <Compile Include="CRM\IAddressBookRepository.cs" />
+    <Compile Include="CRM\ICompanyRepository.cs" />
     <Compile Include="CRM\ICompanyUserRepository.cs" />
+    <Compile Include="CRM\IDepartmentRepository.cs" />
     <Compile Include="HAWB\HAWBBarCodeSpecification.cs" />
     <Compile Include="HAWB\IFlightRepository.cs" />
     <Compile Include="HAWB\IHAWBBoxRepository.cs" />
@@ -48,7 +51,7 @@
     <Compile Include="HAWB\IItemRepository.cs" />
     <Compile Include="HAWB\IMAWBRepository.cs" />
     <Compile Include="HAWB\IPackageRepository.cs" />
-    <Compile Include="HAWB\IUserRepository.cs" />
+    <Compile Include="CRM\IUserRepository.cs" />
     <Compile Include="PARAM\ICountryCodeRepository.cs" />
     <Compile Include="PARAM\IRegionCodeRepository.cs" />
   </ItemGroup>
