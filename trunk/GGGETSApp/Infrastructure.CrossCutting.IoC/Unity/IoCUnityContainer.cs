@@ -81,6 +81,10 @@ namespace ETS.GGGETSApp.Infrastructure.CrossCutting.IoC.Unity
             container.RegisterType<IFlightRepository, FlightRepository>(new TransientLifetimeManager());
             container.RegisterType<ICountryCodeRepository, CountryCodeRepository>(new TransientLifetimeManager());
             container.RegisterType<IRegionCodeRepository, RegionCodeRepository>(new TransientLifetimeManager());
+            container.RegisterType<IDepartmentRepository, DepartmentRepository>(new TransientLifetimeManager());
+            container.RegisterType<ICompanyRepository, CompanyRepository>(new TransientLifetimeManager());
+            container.RegisterType<IUserRepository, UserRepository>(new TransientLifetimeManager());
+            container.RegisterType<IAddressBookRepository, AddressBookRepository>(new TransientLifetimeManager());
             //Register application services mappings
 
             container.RegisterType<IHAWBManagementService, HAWBManagementService>(new TransientLifetimeManager());
@@ -89,6 +93,10 @@ namespace ETS.GGGETSApp.Infrastructure.CrossCutting.IoC.Unity
             container.RegisterType<IFlightManagementService, FlightManagementService>(new TransientLifetimeManager());
             container.RegisterType<ICountryCodeManagementService, CountryCodeManagementService>(new TransientLifetimeManager());
             container.RegisterType<IRegionCodeManagementService, RegionCodeManagementService>(new TransientLifetimeManager());
+            container.RegisterType<IDepartmentManagementService, DepartmentManagementService>(new TransientLifetimeManager());
+            container.RegisterType<ICompanyManagementService, CompanyManagementService>(new TransientLifetimeManager());
+            container.RegisterType<IUserManagementService, UserManagementService>(new TransientLifetimeManager());
+            container.RegisterType<IAddressBookManagementService, AddressBookManagementService>(new TransientLifetimeManager());
             //Register domain services mappings
             //container.RegisterType<IBankTransferDomainService, BankTransferDomainService>(new TransientLifetimeManager());
             
