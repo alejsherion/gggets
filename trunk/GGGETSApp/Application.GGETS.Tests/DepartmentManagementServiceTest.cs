@@ -109,6 +109,116 @@ namespace Application.GGETS.Tests
         [TestMethod()]
         public void AddDepartmentTest()
         {
+            #region 首先创建2个测试运单
+            //运单
+            //实力化一个虚假运单对象
+            HAWB HAWB01 = new HAWB
+            {
+                HID = Guid.NewGuid(),
+                BarCode = "2010",
+                //条形码
+                Carrier = "中国航空",
+                //承运单位
+                SettleType = 0,
+                //预算方式
+                ServiceType = 0,
+                //快件或包裹
+                CreateTime = DateTime.Now,
+                //创建日期
+                Status = 0,
+                //运单状态
+                ShipperName = "沈志伟",
+                //发件人姓名或者公司
+                ShipperContactor = "沈志伟",
+                //发件人姓名
+                ShipperCountry = "01",
+                //发件人国家
+                ShipperRegion = "021",
+                //发件人区号
+                ShipperAddress = "test address",
+                //发件人地址
+                ShipperZipCode = "200435",
+                //发件人邮编
+                ShipperTel = "13817011234",
+                //发件人联系电话
+                ConsigneeContactor = "李宏",
+                //收件人姓名
+                ConsigneeCountry = "02",
+                //收件人国家
+                ConsigneeRegion = "022",
+                //收件人区号
+                ConsigneeAddress = "Japan address",
+                //收件人地址
+                ConsigneeZipCode = "201011",
+                //收件人邮编
+                ConsigneeTel = "120120",
+                //收件人联系电话
+                WeightType = 2,
+                //计重方式
+                TotalVolume = 10,
+                //总体积
+                TotalWeight = 10,
+                //总重量
+                Piece = 10,
+                //件数
+                IsInternational = true //是否是国际运单
+            };
+            HAWB HAWB02 = new HAWB
+            {
+                HID = Guid.NewGuid(),
+                BarCode = "2011",
+                //条形码
+                Carrier = "吉祥航空",
+                //承运单位
+                SettleType = 0,
+                //预算方式
+                ServiceType = 0,
+                //快件或包裹
+                CreateTime = DateTime.Now,
+                //创建日期
+                Status = 0,
+                //运单状态
+                ShipperName = "沈志伟",
+                //发件人姓名或者公司
+                ShipperContactor = "沈志伟",
+                //发件人姓名
+                ShipperCountry = "01",
+                //发件人国家
+                ShipperRegion = "021",
+                //发件人区号
+                ShipperAddress = "test address",
+                //发件人地址
+                ShipperZipCode = "200435",
+                //发件人邮编
+                ShipperTel = "13817011234",
+                //发件人联系电话
+                ConsigneeContactor = "李宏",
+                //收件人姓名
+                ConsigneeCountry = "02",
+                //收件人国家
+                ConsigneeRegion = "022",
+                //收件人区号
+                ConsigneeAddress = "Japan address",
+                //收件人地址
+                ConsigneeZipCode = "201011",
+                //收件人邮编
+                ConsigneeTel = "120120",
+                //收件人联系电话
+                WeightType = 2,
+                //计重方式
+                TotalVolume = 10,
+                //总体积
+                TotalWeight = 10,
+                //总重量
+                Piece = 10,
+                //件数
+                IsInternational = true //是否是国际运单
+            };
+
+
+            _HAWBManagementService.AddHAWB(HAWB01);
+            _HAWBManagementService.AddHAWB(HAWB02);
+            #endregion
             Department departmentA = null; // 部门A
             Department departmentB = null; // 部门B
             #region 部门
@@ -476,112 +586,9 @@ namespace Application.GGETS.Tests
                  Operator = "沈志伟"//操作人姓名
              };
             #endregion
-            #region 运单
-             //运单
-             //实力化一个虚假运单对象
-             HAWB HAWB01 = new HAWB
-             {
-                 BarCode = "2010",
-                 //条形码
-                 Carrier = "中国航空",
-                 //承运单位
-                 SettleType = 0,
-                 //预算方式
-                 ServiceType = 0,
-                 //快件或包裹
-                 CreateTime = DateTime.Now,
-                 //创建日期
-                 Status = 0,
-                 //运单状态
-                 ShipperName = "沈志伟",
-                 //发件人姓名或者公司
-                 ShipperContactor = "沈志伟",
-                 //发件人姓名
-                 ShipperCountry = "01",
-                 //发件人国家
-                 ShipperRegion = "021",
-                 //发件人区号
-                 ShipperAddress = "test address",
-                 //发件人地址
-                 ShipperZipCode = "200435",
-                 //发件人邮编
-                 ShipperTel = "13817011234",
-                 //发件人联系电话
-                 ConsigneeContactor = "李宏",
-                 //收件人姓名
-                 ConsigneeCountry = "02",
-                 //收件人国家
-                 ConsigneeRegion = "022",
-                 //收件人区号
-                 ConsigneeAddress = "Japan address",
-                 //收件人地址
-                 ConsigneeZipCode = "201011",
-                 //收件人邮编
-                 ConsigneeTel = "120120",
-                 //收件人联系电话
-                 WeightType = 2,
-                 //计重方式
-                 TotalVolume = 10,
-                 //总体积
-                 TotalWeight = 10,
-                 //总重量
-                 Piece = 10,
-                 //件数
-                 IsInternational = true //是否是国际运单
-             };
-             HAWB HAWB02 = new HAWB
-             {
-                 BarCode = "2011",
-                 //条形码
-                 Carrier = "吉祥航空",
-                 //承运单位
-                 SettleType = 0,
-                 //预算方式
-                 ServiceType = 0,
-                 //快件或包裹
-                 CreateTime = DateTime.Now,
-                 //创建日期
-                 Status = 0,
-                 //运单状态
-                 ShipperName = "沈志伟",
-                 //发件人姓名或者公司
-                 ShipperContactor = "沈志伟",
-                 //发件人姓名
-                 ShipperCountry = "01",
-                 //发件人国家
-                 ShipperRegion = "021",
-                 //发件人区号
-                 ShipperAddress = "test address",
-                 //发件人地址
-                 ShipperZipCode = "200435",
-                 //发件人邮编
-                 ShipperTel = "13817011234",
-                 //发件人联系电话
-                 ConsigneeContactor = "李宏",
-                 //收件人姓名
-                 ConsigneeCountry = "02",
-                 //收件人国家
-                 ConsigneeRegion = "022",
-                 //收件人区号
-                 ConsigneeAddress = "Japan address",
-                 //收件人地址
-                 ConsigneeZipCode = "201011",
-                 //收件人邮编
-                 ConsigneeTel = "120120",
-                 //收件人联系电话
-                 WeightType = 2,
-                 //计重方式
-                 TotalVolume = 10,
-                 //总体积
-                 TotalWeight = 10,
-                 //总重量
-                 Piece = 10,
-                 //件数
-                 IsInternational = true //是否是国际运单
-             };
-             #endregion
+            
             //relation
-            departmentA.HAWBs.Add(HAWB01);//运单关联
+            departmentA.HAWBs.Add(_HAWBManagementService.FindHAWBByBarCode("2010"));//运单关联
             departmentA.CompanyCode = company.CID.ToString();//冗余数据
             departmentA.Company = company;//公司关联
             departmentA.Users.Add(user01);//用户关联
@@ -595,7 +602,7 @@ namespace Application.GGETS.Tests
             departmentA.AddressBooks.Add(addressBookA8);
             departmentA.AddressBooks.Add(addressBookA9);
 
-            departmentB.HAWBs.Add(HAWB02);//运单关联
+            departmentB.HAWBs.Add(_HAWBManagementService.FindHAWBByBarCode("2011"));//运单关联
             departmentB.CompanyCode = company.CID.ToString();//冗余数据
             departmentB.Company = company;//公司关联
             departmentB.Users.Add(user02);//用户关联
