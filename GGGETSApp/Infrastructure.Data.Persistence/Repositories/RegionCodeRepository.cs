@@ -85,8 +85,9 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Repositories
         public IList<RegionCode> FindRegionCodesByCondition(string countryCode, string regioncode, string regionName)
         {
             IEnumerable<RegionCode> regions = null;
-            using (IGGGETSAppUnitOfWork context = UnitOfWork as IGGGETSAppUnitOfWork)
-            {
+            IGGGETSAppUnitOfWork context = UnitOfWork as IGGGETSAppUnitOfWork;
+            //using (IGGGETSAppUnitOfWork context = UnitOfWork as IGGGETSAppUnitOfWork)
+            //{
                 if (context != null)
                 {
                     regions = context.RegionCode.Select(r => r);
@@ -105,7 +106,7 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Repositories
                         GetType().Name));
                 }
                 return regions.ToList();
-            }
+            //}
         }
     }
 }

@@ -151,7 +151,7 @@ namespace Application.GGETS.Tests
         [TestMethod()]
         public void FindCountriedByCountryCodeTest()
         {
-            string countryCode = "TP"; // 国家二字码
+           string countryCode = "TP"; // 国家二字码
             CountryCode actual;
             actual = _countryCodeManagementService.FindCountriedByCountryCode(countryCode);
         }

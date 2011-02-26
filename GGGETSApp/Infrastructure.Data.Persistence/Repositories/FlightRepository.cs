@@ -36,8 +36,9 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Repositories
         public IList<Flight> FindFlightByCondition(string flightNo, string from, string to, DateTime? beginDate, DateTime? endDate)
         {
             IEnumerable<Flight> flights = null;
-            using (IGGGETSAppUnitOfWork context = UnitOfWork as IGGGETSAppUnitOfWork)
-            {
+            IGGGETSAppUnitOfWork context = UnitOfWork as IGGGETSAppUnitOfWork;
+            //using (IGGGETSAppUnitOfWork context = UnitOfWork as IGGGETSAppUnitOfWork)
+            //{
                 if (context != null)
                 {
                     flights = context.Flight.Select(f => f);
@@ -72,12 +73,7 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Repositories
                                                                 GetType().Name));
                 }
                 return flights.OrderByDescending(f => f.TakeOffTime).ToList();
-            }
-        }
-
-        public Flight GetSingleFlightByFlightNo(string flightNo)
-        {
-            throw new NotImplementedException();
+            //}
         }
     }
 }

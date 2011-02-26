@@ -50,8 +50,9 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Repositories
         public IList<Package> FindPackageByCondition(string barCode, DateTime? beginDate, DateTime? endDate, string destinationCode)
         {
             IEnumerable<Package> packages = null;
-            using (IGGGETSAppUnitOfWork context = UnitOfWork as IGGGETSAppUnitOfWork)
-            {
+            IGGGETSAppUnitOfWork context = UnitOfWork as IGGGETSAppUnitOfWork;
+            //using (IGGGETSAppUnitOfWork context = UnitOfWork as IGGGETSAppUnitOfWork)
+            //{
                 if (context != null)
                 {
                     //packages = context.Package.Include(p => p.HAWBs).Include(p => p.MAWB).Select(p => p);
@@ -86,7 +87,7 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Repositories
                                                                 GetType().Name));
                 }
                 return packages.OrderByDescending(p => p.CreateTime).ToList();
-            }
+            //}
         }
     }
 }

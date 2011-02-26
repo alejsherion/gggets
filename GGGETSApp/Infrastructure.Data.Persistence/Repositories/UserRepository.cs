@@ -33,8 +33,9 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Repositories
         {
             IEnumerable<AddressBook> addressBooks = null;
             string UID = string.Empty;
-            using (IGGGETSAppUnitOfWork context = UnitOfWork as IGGGETSAppUnitOfWork)
-            {
+            IGGGETSAppUnitOfWork context = UnitOfWork as IGGGETSAppUnitOfWork;
+            //using (IGGGETSAppUnitOfWork context = UnitOfWork as IGGGETSAppUnitOfWork)
+            //{
                 if (context != null)
                 {
                     //首先获取该用户通过用户账号
@@ -54,7 +55,7 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Repositories
                                                                 GetType().Name));
                 }
                 return addressBooks.OrderByDescending(p => p.CreateTime).ToList();
-            }
+            //}
         }
     }
 }
