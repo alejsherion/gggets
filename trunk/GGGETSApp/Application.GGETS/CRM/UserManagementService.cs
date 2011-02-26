@@ -77,5 +77,35 @@ namespace Application.GGETS
             //complete changes in this unit of work
             unitOfWork.CommitAndRefreshChanges();
         }
+
+        /// <summary>
+        /// 通过用户账号获取发件人地址
+        /// </summary>
+        /// <param name="loginName">用户账号</param>
+        /// <returns></returns>
+        public IList<AddressBook> FindAllShipAddressesByLoginName(string loginName)
+        {
+            return _userRepository.FindAllAddressBooksByCondition(loginName, 0);
+        }
+
+        /// <summary>
+        /// 通过用户账号获取收货人地址
+        /// </summary>
+        /// <param name="loginName">用户账号</param>
+        /// <returns></returns>
+        public IList<AddressBook> FindAllDeliveryAddressesByLoginName(string loginName)
+        {
+            return _userRepository.FindAllAddressBooksByCondition(loginName, 1);
+        }
+
+        /// <summary>
+        /// 通过用户账号获取交付人地址
+        /// </summary>
+        /// <param name="loginName">用户账号</param>
+        /// <returns></returns>
+        public IList<AddressBook> FindAllForwarderAddressesByLoginName(string loginName)
+        {
+            return _userRepository.FindAllAddressBooksByCondition(loginName, 2);
+        }
     }
 }

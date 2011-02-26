@@ -22,5 +22,39 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Repositories
     public class UserRepository : Repository<User>, IUserRepository
     {
         public UserRepository(IGGGETSAppUnitOfWork unitOfWork, ITraceManager traceManager) : base(unitOfWork, traceManager) { }
+        
+        /// <summary>
+        /// 通过用户账号，地址类型获取地址信息
+        /// </summary>
+        /// <param name="loginName">用户账号</param>
+        /// <param name="addressType">地址类型</param>
+        /// <returns></returns>
+        public IList<AddressBook> FindAllAddressBooksByCondition(string loginName, int addressType)
+        {
+            IEnumerable<AddressBook> addressBooks = null;
+            string UID = string.Empty;
+            using (IGGGETSAppUnitOfWork context = UnitOfWork as IGGGETSAppUnitOfWork)
+            {
+                if (context != null)
+                {
+                    //首先获取该用户通过用户账号
+                    //if(!string.IsNullOrEmpty(loginName))
+                    User user = context.User.Where(it => it.LoginName == loginName).SingleOrDefault();
+                    if (user != null) UID = Convert.ToString(user.UID);
+
+                    addressBooks = context.AddressBook.Select(a => a);
+                    if (!string.IsNullOrEmpty(loginName)) addressBooks = addressBooks.Where(a => a.UID == new Guid(UID));
+                    if (addressType == 0 || addressType == 1 || addressType == 2) addressBooks = addressBooks.Where(a => a.AddressType == addressType);
+                }
+                else
+                {
+                    throw new InvalidOperationException(string.Format(
+                                                                CultureInfo.InvariantCulture,
+                                                                Messages.exception_InvalidStoreContext,
+                                                                GetType().Name));
+                }
+                return addressBooks.OrderByDescending(p => p.CreateTime).ToList();
+            }
+        }
     }
 }

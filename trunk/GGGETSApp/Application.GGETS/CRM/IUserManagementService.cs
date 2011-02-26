@@ -17,5 +17,8 @@ namespace Application.GGETS
         User FindUserByLoginName(string loginName);
         void AddUser(User user);
         void ModifyUser(User user);
+        IList<AddressBook> FindAllShipAddressesByLoginName(string loginName);
+        IList<AddressBook> FindAllDeliveryAddressesByLoginName(string loginName);
+        IList<AddressBook> FindAllForwarderAddressesByLoginName(string loginName);
     }
 }
