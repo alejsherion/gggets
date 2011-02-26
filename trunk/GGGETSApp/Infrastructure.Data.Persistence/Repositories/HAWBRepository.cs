@@ -97,7 +97,7 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Repositories
         /// <returns></returns>
         public IList<HAWB> FindHAWBsByCondition(string barCode, string countryCode, string regionCode, string loginName, string departmentCode, string companyName,
                                                string realName, string phone, DateTime? beginTime, DateTime? endTime, int settleType, int serviceType,
-                                               bool isInternational)
+                                               bool? isInternational)
         {
             IEnumerable<HAWB> HAWBs=null;
             using(IGGGETSAppUnitOfWork context = UnitOfWork as IGGGETSAppUnitOfWork)
@@ -124,7 +124,7 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Repositories
                     }
                     if (settleType != -1) HAWBs = HAWBs.Where(a => a.SettleType == Convert.ToInt16(settleType));
                     if (serviceType != -1) HAWBs = HAWBs.Where(a => a.ServiceType == Convert.ToInt16(serviceType));
-                    HAWBs = HAWBs.Where(a => a.IsInternational == isInternational);
+                    if (isInternational.HasValue) HAWBs = HAWBs.Where(a => a.IsInternational == isInternational);
                 }
                 else
                 {

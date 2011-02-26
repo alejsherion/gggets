@@ -80,7 +80,7 @@ namespace Application.GGETS
         /// <returns></returns>
         public IList<HAWB> FindHAWBsByCondition(string barCode, string countryCode, string regionCode, string loginName, string departmentCode, string companyName,
                                                string realName, string phone, DateTime? beginTime, DateTime? endTime, int settleType, int serviceType,
-                                               bool isInternational)
+                                               bool? isInternational)
         {
             return _hawbRepository.FindHAWBsByCondition(barCode, countryCode, regionCode, loginName, departmentCode, companyName,
                                                 realName, phone, beginTime, endTime, settleType, serviceType, isInternational);
