@@ -91,7 +91,7 @@ namespace Application.GGETS
                                                bool? isInternational)
         {
             return _hawbRepository.FindHAWBsByCondition(barCode, countryName, regionName, userCode, companyName,
-                                                        regionName, beginTime, endTime, serviceType, serviceType,
+                                                        realName, beginTime, endTime, serviceType, serviceType,
                                                         isInternational);
         }
 

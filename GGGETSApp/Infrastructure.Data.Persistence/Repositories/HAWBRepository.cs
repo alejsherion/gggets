@@ -171,32 +171,38 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Repositories
             //{
                 if (context != null)
                 {
-                    //国家
-                    CountryCode country =
-                        context.CountryCode.Where(it => it.CountryName == countryName).SingleOrDefault();
-                    //地区
-                    RegionCode region =
-                        context.RegionCode.Where(it => it.RegionName == regionName).SingleOrDefault();
-                    string countryCode = string.Empty;//国家编号
-                    string regionCode = string.Empty;//地区编号
-                    string userOrDepartmentCode = string.Empty;//用户或部门账号
-                    if (country != null) countryCode = country.CountryCode1;
-                    if (region != null) regionCode = region.RegionCode1;
-
                     HAWBs = context.HAWB.Include(h => h.User).Include(h => h.Department).Select(h => h);
                     if (!string.IsNullOrEmpty(barCode)) HAWBs = HAWBs.Where(a => a.BarCode == barCode);
-                    if (!string.IsNullOrEmpty(countryCode)) HAWBs = HAWBs.Where(a => a.ConsigneeCountry == countryCode);
-                    if (!string.IsNullOrEmpty(regionCode)) HAWBs = HAWBs.Where(a => a.ConsigneeRegion == regionCode);
+                    if (!string.IsNullOrEmpty(countryName))
+                    {
+                        //国家
+                        CountryCode country =
+                            context.CountryCode.Where(it => it.CountryName == countryName).SingleOrDefault();
+                        if(country!=null)
+                            HAWBs = HAWBs.Where(a => a.ConsigneeCountry == country.CountryCode1);
+                        else
+                            HAWBs = HAWBs.Where(a => a.ConsigneeCountry == "00");
+                    }
+                    if (!string.IsNullOrEmpty(regionName))
+                    {
+                        //地区
+                        RegionCode region =
+                            context.RegionCode.Where(it => it.RegionName == regionName).SingleOrDefault();
+                        if (region != null)
+                            HAWBs = HAWBs.Where(a => a.ConsigneeRegion == region.RegionCode1);
+                        else
+                            HAWBs = HAWBs.Where(a => a.ConsigneeRegion == "000");
+                    }
                     if (!string.IsNullOrEmpty(userCode))
                     {
                         User user = context.User.Where(it => it.LoginName == userCode).SingleOrDefault();
                         if (user != null)
                         {
-                            userOrDepartmentCode = user.LoginName;
-                            HAWBs = HAWBs.Where(a => a.User.LoginName == userOrDepartmentCode);
+                            userCode = user.LoginName;
+                            HAWBs = HAWBs.Where(a => a.User.LoginName == userCode);
                         }
                         else
-                            HAWBs = HAWBs.Where(a => a.Department.DepCode == userOrDepartmentCode);
+                            HAWBs = HAWBs.Where(a => a.Department.DepCode == userCode);
                     }
                     if (!string.IsNullOrEmpty(companyName)) HAWBs = HAWBs.Where(a => a.Carrier.StartsWith(companyName));
                     //这里的联系人和电话可能是公司也可能是个人的
