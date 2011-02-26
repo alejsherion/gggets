@@ -61,7 +61,6 @@
     <Compile Include="CRM\DepartmentManagementService.cs" />
     <Compile Include="CRM\IAddressBookManagementService.cs" />
     <Compile Include="CRM\ICompanyManagementService.cs" />
-    <Compile Include="CRM\ICompanyUserManagementService.cs" />
     <Compile Include="CRM\IDepartmentManagementService.cs" />
     <Compile Include="CRM\IIndividualUserManagementService.cs" />
     <Compile Include="CRM\IUserManagementService.cs" />

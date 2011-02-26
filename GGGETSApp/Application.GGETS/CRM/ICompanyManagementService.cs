@@ -15,5 +15,6 @@ namespace Application.GGETS
     public interface ICompanyManagementService
     {
         Company FindCompanyByCompanyCode(string companyCode);
+        void AddCompany(Company company);
     }
 }
