@@ -143,5 +143,60 @@ namespace Application.GGETS
             }
             return judge;
         }
+
+        /// <summary>
+        /// 判断当前类型下地址重复
+        /// </summary>
+        /// <param name="addressBook">逻辑地址</param>
+        /// <returns></returns>
+        public bool JudgeRepeat(AddressBook addressBook)
+        {
+            if(addressBook==null) throw new ArgumentNullException("AddressBook is null!");
+            //验证变量
+            bool judge = true;
+            //首先获取类型地址集合
+            IList<AddressBook> addressBooks =
+                _departmentRepository.FindAddressBooksByDIDAndType(Convert.ToString(addressBook.DID),
+                                                                   addressBook.AddressType).Where(it => it.AID != addressBook.AID).ToList();
+            foreach(AddressBook temp in addressBooks)
+            {
+                if (temp.CountryCode.Equals(addressBook.CountryCode))
+                {
+                    judge = false;
+                    break;
+                }
+                if (temp.Provience.Equals(addressBook.Provience))
+                {
+                    judge = false;
+                    break;
+                }
+                if (temp.RegionCode.Equals(addressBook.RegionCode))
+                {
+                    judge = false;
+                    break;
+                }
+                if (temp.PostCode.Equals(addressBook.PostCode))
+                {
+                    judge = false;
+                    break;
+                }
+                if (temp.ContactorName.Equals(addressBook.ContactorName))
+                {
+                    judge = false;
+                    break;
+                }
+                if (temp.Phone.Equals(addressBook.Phone))
+                {
+                    judge = false;
+                    break;
+                }
+                if (temp.Name.Equals(addressBook.Name))
+                {
+                    judge = false;
+                    break;
+                }
+            }
+            return judge;
+        }
     }
 }

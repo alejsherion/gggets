@@ -130,6 +130,33 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Repositories
                 return addressBooks.OrderByDescending(p => p.CreateTime).ToList();
             //}
         }
+
+        /// <summary>
+        /// 通过部门编号和地址类型获取地址信息
+        /// </summary>
+        /// <param name="DID">部门编号</param>
+        /// <param name="type">地址类型</param>
+        /// <returns></returns>
+        public IList<AddressBook> FindAddressBooksByDIDAndType(string DID, int type)
+        {
+            IEnumerable<AddressBook> addressBooks = null;
+            IGGGETSAppUnitOfWork context = UnitOfWork as IGGGETSAppUnitOfWork;
+            if(context!=null)
+            {
+                addressBooks = context.AddressBook.Select(a => a);
+                if (!string.IsNullOrEmpty(DID)) addressBooks = addressBooks.Where(a => a.DID == new Guid(DID));
+                addressBooks = addressBooks.Where(a => a.AddressType == type);
+            }
+            else
+            {
+                throw new InvalidOperationException(string.Format(
+                                                            CultureInfo.InvariantCulture,
+                                                            Messages.exception_InvalidStoreContext,
+                                                            GetType().Name));
+            }
+            return addressBooks.ToList();
+        }
+
         #endregion
     }
 }
