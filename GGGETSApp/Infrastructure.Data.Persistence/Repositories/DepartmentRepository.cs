@@ -64,7 +64,7 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Repositories
             IGGGETSAppUnitOfWork context = UnitOfWork as IGGGETSAppUnitOfWork;
             //don't forget open package's load:HAWBs
             return
-                context.User.Where(it => it.LoginName == loginName).Include(it => it.Department).SingleOrDefault();
+                context.User.Where(it => it.LoginName == loginName).Include(it => it.Department).Include(it=>it.AddressBooks).SingleOrDefault();
         }
 
         /// <summary>

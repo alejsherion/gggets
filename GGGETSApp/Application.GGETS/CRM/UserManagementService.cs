@@ -26,10 +26,13 @@ namespace Application.GGETS
 
         private IUserRepository _userRepository;
 
-        public UserManagementService(IDepartmentRepository departmentRepository, IUserRepository userRepository)
+        private IAddressBookRepository _addressBookRepository;
+
+        public UserManagementService(IDepartmentRepository departmentRepository, IUserRepository userRepository, IAddressBookRepository addressBookRepository)
         {
             _departmentRepository = departmentRepository;
             _userRepository = userRepository;
+            _addressBookRepository = addressBookRepository;
         }
 
         /// <summary>
@@ -59,10 +62,20 @@ namespace Application.GGETS
         /// <summary>
         /// 修改用户
         /// </summary>
-        /// <param name="user"></param>
+        /// <param name="user">用户</param>
         public void ModifyUser(User user)
         {
-            throw new NotImplementedException();
+            if (user == null)
+                throw new ArgumentNullException("User is null");
+            IUnitOfWork unitOfWork = _userRepository.UnitOfWork;
+            _userRepository.Modify(user);
+            //这里需要额外进行一次判断
+            //当地址本取出了外键约束之后要将NULL值进行删除
+            IAddressBookManagementService addressBookBll = new AddressBookManagementService(_departmentRepository, _addressBookRepository);
+            addressBookBll.RemoveBadAddressBook();
+
+            //complete changes in this unit of work
+            unitOfWork.CommitAndRefreshChanges();
         }
     }
 }

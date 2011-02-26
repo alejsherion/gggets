@@ -49,7 +49,7 @@ namespace Application.GGETS.Tests
             _departmentManagementService = new DepartmentManagementService(departmentRepository, HAWBRepository,userRepository,companyRepository,addressBookRepository);
             _HAWBManagementService = new HAWBManagementService(HAWBRepository, HAWBItemRepository, HAWBBoxRepository,
                                                                UserRepository);
-            _userManagementService = new UserManagementService(departmentRepository, userRepository);
+            _userManagementService = new UserManagementService(departmentRepository, userRepository, addressBookRepository);
             _companyManagementService = new CompanyManagementService(departmentRepository, companyRepository);
             _addressBookManagementService = new AddressBookManagementService(departmentRepository, addressBookRepository);
         }
