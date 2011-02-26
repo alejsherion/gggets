@@ -1082,6 +1082,20 @@ namespace Application.GGETS.Tests
         }
         #endregion
 
+        #region 地址本判断重复
+        /// <summary>
+        ///JudgeRepeat 的测试
+        ///</summary>
+        [TestMethod()]
+        public void JudgeRepeatTest()
+        {
+            AddressBook addressBook = _addressBookManagementService.FindAddressBookByAID("7a50fd64-01e1-4b10-b9cd-03f21913ff18");
+            addressBook.ContactorName = "Peter";
+            bool actual;
+            actual = _departmentManagementService.JudgeRepeat(addressBook);
+        }
+        #endregion
+
         public override Expression<Func<Department, bool>> FilterExpression
         {
             get { throw new NotImplementedException(); }
