@@ -69,7 +69,7 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Repositories
 
             if (context != null)
             {
-                return context.HAWB.Include(ba => ba.HAWBItems).Include(ba=>ba.HAWBBoxes).Where(it => it.BarCode == barCode).SingleOrDefault();
+                return context.HAWB.Include(ba => ba.HAWBItems).Include(ba=>ba.HAWBBoxes).Where(it => it.BarCode == barCode).Include(it=>it.Department).SingleOrDefault();
             }
             else
                 throw new InvalidOperationException(string.Format(
