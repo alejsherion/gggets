@@ -48,7 +48,7 @@ namespace Application.GGETS.Tests
             _departmentManagementService = new DepartmentManagementService(departmentRepository, HAWBRepository, userRepository, companyRepository, addressBookRepository);
             _HAWBManagementService = new HAWBManagementService(HAWBRepository, HAWBItemRepository, HAWBBoxRepository,
                                                                UserRepository);
-            _userManagementService = new UserManagementService(departmentRepository, userRepository);
+            _userManagementService = new UserManagementService(departmentRepository, userRepository, addressBookRepository);
             _companyManagementService = new CompanyManagementService(departmentRepository, companyRepository);
             _addressBookManagementService = new AddressBookManagementService(departmentRepository, addressBookRepository);
         }
@@ -163,6 +163,24 @@ namespace Application.GGETS.Tests
             user.Department = department;
             user.AddressBooks.Add(addressBook);
             _userManagementService.AddUser(user);
+            //Assert.Inconclusive("无法验证不返回值的方法。");
+        }
+        #endregion
+
+        #region 修改用户
+        /// <summary>
+        ///ModifyUser 的测试
+        ///</summary>
+        [TestMethod()]
+        public void ModifyUserTest()
+        {
+            User user = null; // 用户
+            //获取当前用户
+            user = _userManagementService.FindUserByLoginName("TEST");
+            //删除里面的地址本
+            AddressBook addressBook = _addressBookManagementService.FindAddressBookByAID("44834b89-fe2c-47dd-b6e7-3dbea94c25f6");
+            user.AddressBooks.Remove(addressBook);
+            _userManagementService.ModifyUser(user);
             //Assert.Inconclusive("无法验证不返回值的方法。");
         }
         #endregion
