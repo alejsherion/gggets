@@ -41,5 +41,19 @@ namespace Application.GGETS
         {
             return _departmentRepository.FindCompanyByCompanyCode(companyCode);
         }
+
+        /// <summary>
+        /// 新增公司信息
+        /// </summary>
+        /// <param name="company">公司</param>
+        public void AddCompany(Company company)
+        {
+            if (company == null)
+                throw new ArgumentNullException("Company is null");
+            IUnitOfWork unitOfWork = _companyRepository.UnitOfWork;
+            _companyRepository.Add(company);
+            //complete changes in this unit of work
+            unitOfWork.Commit();
+        }
     }
 }
