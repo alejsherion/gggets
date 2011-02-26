@@ -16,5 +16,6 @@ namespace Application.GGETS
     {
         User FindUserByLoginName(string loginName);
         void AddUser(User user);
+        void ModifyUser(User user);
     }
 }

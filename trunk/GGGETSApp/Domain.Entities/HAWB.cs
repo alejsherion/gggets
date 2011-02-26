@@ -357,7 +357,7 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
         private string _shipperTel;
     
         [DataMember]
-        public Nullable<System.Guid> ConsigneeName
+        public string ConsigneeName
         {
             get { return _consigneeName; }
             set
@@ -369,7 +369,7 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
                 }
             }
         }
-        private Nullable<System.Guid> _consigneeName;
+        private string _consigneeName;
     
         [DataMember]
         public string ConsigneeContactor

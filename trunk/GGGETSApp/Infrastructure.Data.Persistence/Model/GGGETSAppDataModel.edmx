@@ -179,7 +179,7 @@
           <Property Name="ShipperAddress" Type="nvarchar" Nullable="false" MaxLength="500" />
           <Property Name="ShipperZipCode" Type="varchar" Nullable="false" MaxLength="20" />
           <Property Name="ShipperTel" Type="varchar" Nullable="false" MaxLength="20" />
-          <Property Name="ConsigneeName" Type="uniqueidentifier" />
+          <Property Name="ConsigneeName" Type="nvarchar" MaxLength="200" />
           <Property Name="ConsigneeContactor" Type="nvarchar" Nullable="false" MaxLength="50" />
           <Property Name="ConsigneeCountry" Type="char" Nullable="false" MaxLength="2" />
           <Property Name="ConsigneeRegion" Type="char" Nullable="false" MaxLength="3" />
@@ -625,7 +625,7 @@
           <Property Name="ShipperAddress" Type="String" Nullable="false" MaxLength="500" Unicode="true" FixedLength="false" />
           <Property Name="ShipperZipCode" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
           <Property Name="ShipperTel" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
-          <Property Name="ConsigneeName" Type="Guid" />
+          <Property Name="ConsigneeName" Type="String" />
           <Property Name="ConsigneeContactor" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
           <Property Name="ConsigneeCountry" Type="String" Nullable="false" MaxLength="2" Unicode="false" FixedLength="true" />
           <Property Name="ConsigneeRegion" Type="String" Nullable="false" MaxLength="3" Unicode="false" FixedLength="true" />

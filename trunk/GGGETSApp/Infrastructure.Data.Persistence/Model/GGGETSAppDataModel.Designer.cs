@@ -2829,7 +2829,7 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Model
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public Nullable<global::System.Guid> ConsigneeName
+        public global::System.String ConsigneeName
         {
             get
             {
@@ -2839,13 +2839,13 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Model
             {
                 OnConsigneeNameChanging(value);
                 ReportPropertyChanging("ConsigneeName");
-                _ConsigneeName = StructuralObject.SetValidValue(value);
+                _ConsigneeName = StructuralObject.SetValidValue(value, true);
                 ReportPropertyChanged("ConsigneeName");
                 OnConsigneeNameChanged();
             }
         }
-        private Nullable<global::System.Guid> _ConsigneeName;
-        partial void OnConsigneeNameChanging(Nullable<global::System.Guid> value);
+        private global::System.String _ConsigneeName;
+        partial void OnConsigneeNameChanging(global::System.String value);
         partial void OnConsigneeNameChanged();
     
         /// <summary>
