@@ -14,7 +14,7 @@ namespace Domain.GGGETS
 
         IList<HAWB> FindHAWBsByCondition(string barCode, string countryCode, string regionCode, string loginName, string departmentCode, string companyName,
                                                string realName, string phone, DateTime? beginTime, DateTime? endTime, int settleType, int serviceType,
-                                               bool isInternational);
+                                               bool? isInternational);
 
         HAWB LoadHAWBByBarCode(string barCode);
         IList<HAWBItem> FindHAWBItemByHID(string HID);

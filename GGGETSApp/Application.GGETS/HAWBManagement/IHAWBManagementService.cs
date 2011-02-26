@@ -14,7 +14,7 @@ namespace Application.GGETS
         List<HAWB> FindPagedHAWBs(int pageIndex, int pageCount);
         IList<HAWB> FindHAWBsByCondition(string barCode, string countryCode, string regionCode, string loginName, string departmentCode, string companyName,
                                                string realName, string phone, DateTime? beginTime, DateTime? endTime, int settleType, int serviceType,
-                                               bool isInternational);
+                                               bool? isInternational);
 
         void RemoveHAWB(string barCode);
         HAWB LoadHAWBByBarCode(string barCode);

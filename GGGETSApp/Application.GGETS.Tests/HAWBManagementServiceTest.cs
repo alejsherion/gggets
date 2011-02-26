@@ -284,7 +284,7 @@ namespace Application.GGETS.Tests
             DateTime? endTime = null;
             int settleType = -1;
             int serviceType = -1;
-            bool isInternational = true; 
+            bool? isInternational = null; 
             //IEnumerable<HAWB> expected = null; 
             IList<HAWB> actual;
             actual = _HAWBManagementService.FindHAWBsByCondition(barCode, countryCode, regionCode, loginName, departmentCode, companyName,
