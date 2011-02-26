@@ -185,6 +185,19 @@ namespace Application.GGETS.Tests
         }
         #endregion
 
+        #region 通过用户账号和地址类型获取对应地址信息
+        /// <summary>
+        ///FindAllShipAddressesByLoginName 的测试
+        ///</summary>
+        [TestMethod()]
+        public void FindAllShipAddressesByLoginNameTest()
+        {
+            string loginName = "TEST"; // 用户账号
+            IList<AddressBook> actual;
+            actual = _userManagementService.FindAllShipAddressesByLoginName(loginName);
+        }
+        #endregion
+
         public override Expression<Func<User, bool>> FilterExpression
         {
             get { throw new NotImplementedException(); }

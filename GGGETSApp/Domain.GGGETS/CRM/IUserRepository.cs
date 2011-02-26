@@ -14,5 +14,6 @@ namespace Domain.GGGETS
 {
     public interface IUserRepository : IRepository<User>
     {
+        IList<AddressBook> FindAllAddressBooksByCondition(string loginName, int addressType);
     }
 }
