@@ -123,7 +123,7 @@ namespace Application.GGETS.Tests
             Department department = new Department
             {
                 DID = Guid.NewGuid(),//部门序号
-                DepCode = "00",//部门账号
+                DepCode = "TEST",//部门账号
                 DepName = "TEST",//部门名称
                 FeeDiscountRate = 1,//折扣率，与旗下的用户同步
                 FeeDiscountType = 0,//折扣类型

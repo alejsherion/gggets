@@ -41,5 +41,19 @@ namespace Application.GGETS
         {
             return _departmentRepository.FindUserByLoginName(loginName);
         }
+
+        /// <summary>
+        /// 新增用户
+        /// </summary>
+        /// <param name="user">用户</param>
+        public void AddUser(User user)
+        {
+            if (user == null)
+                throw new ArgumentNullException("User is null");
+            IUnitOfWork unitOfWork = _userRepository.UnitOfWork;
+            _userRepository.Add(user);
+            //complete changes in this unit of work
+            unitOfWork.Commit();
+        }
     }
 }

@@ -27,15 +27,30 @@ namespace Application.GGETS.Tests
     [TestClass()]
     public class UserManagementServiceTest : RepositoryTestsBase<User>
     {
-         static IUserManagementService _userManagementService;//BLL操作类返回
+        private static IDepartmentManagementService _departmentManagementService;//BLL操作类返回
+        private static IHAWBManagementService _HAWBManagementService;//BLL操作类返回
+        private static IUserManagementService _userManagementService;
+        private static ICompanyManagementService _companyManagementService;
+        private static IAddressBookManagementService _addressBookManagementService;
          public UserManagementServiceTest()
         {
             IGGGETSAppUnitOfWork context = GetUnitOfWork();//上下文
             ITraceManager traceManager = GetTraceManager();//跟踪管理器
-            DepartmentRepository departmentRepository = new DepartmentRepository(context, traceManager);//创建DAL操作对象
-            UserRepository userRepository = new UserRepository(context, traceManager);
+            HAWBRepository HAWBRepository = new HAWBRepository(context, traceManager);//创建DAL操作对象
+            DepartmentRepository departmentRepository = new DepartmentRepository(context, traceManager);
+            HAWBItemRepository HAWBItemRepository = new HAWBItemRepository(context, traceManager);
+            HAWBBoxRepository HAWBBoxRepository = new HAWBBoxRepository(context, traceManager);
+            UserRepository UserRepository = new UserRepository(context, traceManager);
+            IUserRepository userRepository = new UserRepository(context, traceManager);
+            CompanyRepository companyRepository = new CompanyRepository(context, traceManager);
+            AddressBookRepository addressBookRepository = new AddressBookRepository(context, traceManager);
 
+            _departmentManagementService = new DepartmentManagementService(departmentRepository, HAWBRepository, userRepository, companyRepository, addressBookRepository);
+            _HAWBManagementService = new HAWBManagementService(HAWBRepository, HAWBItemRepository, HAWBBoxRepository,
+                                                               UserRepository);
             _userManagementService = new UserManagementService(departmentRepository, userRepository);
+            _companyManagementService = new CompanyManagementService(departmentRepository, companyRepository);
+            _addressBookManagementService = new AddressBookManagementService(departmentRepository, addressBookRepository);
         }
 
         private TestContext testContextInstance;
@@ -96,6 +111,59 @@ namespace Application.GGETS.Tests
             string loginName = "U1"; // 用户账号
             User actual;
             actual = _userManagementService.FindUserByLoginName(loginName);
+        }
+        #endregion
+
+        #region 新增用户
+        /// <summary>
+        ///AddUser 的测试
+        ///</summary>
+        [TestMethod()]
+        public void AddUserTest()
+        {
+            User user = null; // 用户
+            user = new User
+            {
+                UID = Guid.NewGuid(),//用户序号
+                LoginName = "TEST",//用户账号
+                Password = "TEST",//用户密码
+                RealName = "TEST",//用户真实姓名
+                UpdateTime = DateTime.Now,//更新日期
+                CreateTime = DateTime.Now,//创建日期
+                Operator = "TEST",//操作人
+                FeeDiscountRate = 1,//费用折扣率
+                FeeDiscountType = 0,//费用折扣类型
+                WeightDiscountRate = 1,//重量折扣率
+                WeightDiscountType = 0,//重量折扣类型
+                SettleType = 0,//结算方式
+                WeightCalType = 0,//计重方式
+                Status = 0//可用与不可用
+            };
+            //获取现由部门
+            Department department = _departmentManagementService.FindDepartmentByDepCode("TEST");
+            //获取运单
+            HAWB hawb = _HAWBManagementService.FindHAWBByBarCode("2012");
+            //创建地址本
+            AddressBook addressBook = new AddressBook
+            {
+                AID = Guid.NewGuid(),//地址本序号
+                Name = department.CompanyCode,//公司名称
+                ContactorName = "TEST",//联系人真名
+                Provience = "TEST",//省份
+                CountryCode = "TT",//国家二字码
+                RegionCode = "TTT",//地区三字码
+                Address = "TEST",//地址
+                PostCode = "TEST",//邮政编码
+                AddressType = 0,//地址类型-发件人地址
+                CreateTime = DateTime.Now,//创建日期
+                UpdateTime = DateTime.Now,//修改日期
+                Operator = "TEST"//操作人姓名
+            };
+            user.HAWBs.Add(hawb);
+            user.Department = department;
+            user.AddressBooks.Add(addressBook);
+            _userManagementService.AddUser(user);
+            //Assert.Inconclusive("无法验证不返回值的方法。");
         }
         #endregion
 

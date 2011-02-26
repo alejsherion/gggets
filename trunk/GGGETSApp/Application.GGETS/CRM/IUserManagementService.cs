@@ -15,5 +15,6 @@ namespace Application.GGETS
     public interface IUserManagementService
     {
         User FindUserByLoginName(string loginName);
+        void AddUser(User user);
     }
 }
