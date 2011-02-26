@@ -55,5 +55,14 @@ namespace Application.GGETS
             //complete changes in this unit of work
             unitOfWork.Commit();
         }
+
+        /// <summary>
+        /// 修改用户
+        /// </summary>
+        /// <param name="user"></param>
+        public void ModifyUser(User user)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
