@@ -409,7 +409,7 @@ namespace Application.GGETS.Tests
             AddressBook addressBookA4 = new AddressBook
             {
                 AID = Guid.NewGuid(),//地址本序号
-                Name = company.FullName,//公司名称
+                Name = "日本株式会社",//公司名称
                 ContactorName = "土肥原贤二",//联系人真名
                 Provience = "日本",//省份
                 CountryCode = "JP",//国家二字码
@@ -425,7 +425,7 @@ namespace Application.GGETS.Tests
             AddressBook addressBookA5 = new AddressBook
             {
                 AID = Guid.NewGuid(),//地址本序号
-                Name = company.FullName,//公司名称
+                Name = "日本株式会社",//公司名称
                 ContactorName = "土肥原贤二",//联系人真名
                 Provience = "日本",//省份
                 CountryCode = "JP",//国家二字码
@@ -441,7 +441,7 @@ namespace Application.GGETS.Tests
             AddressBook addressBookA6 = new AddressBook
             {
                 AID = Guid.NewGuid(),//地址本序号
-                Name = company.FullName,//公司名称
+                Name = "日本株式会社",//公司名称
                 ContactorName = "土肥原贤二",//联系人真名
                 Provience = "日本",//省份
                 CountryCode = "JP",//国家二字码
@@ -457,7 +457,7 @@ namespace Application.GGETS.Tests
             AddressBook addressBookB4 = new AddressBook
             {
                 AID = Guid.NewGuid(),//地址本序号
-                Name = company.FullName,//公司名称
+                Name = "索尼",//公司名称
                 ContactorName = "三池崇史",//联系人真名
                 Provience = "日本",//省份
                 CountryCode = "JP",//国家二字码
@@ -473,7 +473,7 @@ namespace Application.GGETS.Tests
             AddressBook addressBookB5 = new AddressBook
             {
                 AID = Guid.NewGuid(),//地址本序号
-                Name = company.FullName,//公司名称
+                Name = "索尼",//公司名称
                 ContactorName = "三池崇史",//联系人真名
                 Provience = "日本",//省份
                 CountryCode = "JP",//国家二字码
@@ -489,7 +489,7 @@ namespace Application.GGETS.Tests
             AddressBook addressBookB6 = new AddressBook
             {
                 AID = Guid.NewGuid(),//地址本序号
-                Name = company.FullName,//公司名称
+                Name = "索尼",//公司名称
                 ContactorName = "三池崇史",//联系人真名
                 Provience = "日本",//省份
                 CountryCode = "JP",//国家二字码
@@ -509,7 +509,7 @@ namespace Application.GGETS.Tests
             {
                 AID = Guid.NewGuid(),//地址本序号
                 ReceiveAID = addressBookA4.AID,//收件人地址ID
-                Name = company.FullName,//公司名称
+                Name = "KONAMA",//公司名称
                 ContactorName = "本多忠胜",//联系人真名
                 Provience = "日本",//省份
                 CountryCode = "SH",//国家二字码
@@ -526,7 +526,7 @@ namespace Application.GGETS.Tests
              {
                  AID = Guid.NewGuid(),//地址本序号
                  ReceiveAID = addressBookA5.AID,//收件人地址ID
-                 Name = company.FullName,//公司名称
+                 Name = "KONAMA",//公司名称
                  ContactorName = "本多忠胜",//联系人真名
                  Provience = "日本",//省份
                  CountryCode = "SH",//国家二字码
@@ -543,7 +543,7 @@ namespace Application.GGETS.Tests
              {
                  AID = Guid.NewGuid(),//地址本序号
                  ReceiveAID = addressBookA5.AID,//收件人地址ID
-                 Name = company.FullName,//公司名称
+                 Name = "KONAMA",//公司名称
                  ContactorName = "本多忠胜",//联系人真名
                  Provience = "日本",//省份
                  CountryCode = "SH",//国家二字码
@@ -560,7 +560,7 @@ namespace Application.GGETS.Tests
              {
                  AID = Guid.NewGuid(),//地址本序号
                  ReceiveAID = addressBookA5.AID,//收件人地址ID
-                 Name = company.FullName,//公司名称
+                 Name = "KONAMA",//公司名称
                  ContactorName = "明智光秀",//联系人真名
                  Provience = "日本",//省份
                  CountryCode = "SH",//国家二字码
@@ -577,7 +577,7 @@ namespace Application.GGETS.Tests
              {
                  AID = Guid.NewGuid(),//地址本序号
                  ReceiveAID = addressBookA5.AID,//收件人地址ID
-                 Name = company.FullName,//公司名称
+                 Name = "KONAMA",//公司名称
                  ContactorName = "明智光秀",//联系人真名
                  Provience = "日本",//省份
                  CountryCode = "SH",//国家二字码
@@ -594,7 +594,7 @@ namespace Application.GGETS.Tests
              {
                  AID = Guid.NewGuid(),//地址本序号
                  ReceiveAID = addressBookA5.AID,//收件人地址ID
-                 Name = company.FullName,//公司名称
+                 Name = "KONAMA",//公司名称
                  ContactorName = "明智光秀",//联系人真名
                  Provience = "日本",//省份
                  CountryCode = "SH",//国家二字码
@@ -608,8 +608,318 @@ namespace Application.GGETS.Tests
                  Phone = "123451"
              };
             #endregion
-            
-            //relation
+            #region 新增外国地址本
+             AddressBook addressBookA10 = new AddressBook
+             {
+                 AID = Guid.NewGuid(),//地址本序号
+                 Name = "Microsoft",//公司名称
+                 ContactorName = "John",//联系人真名
+                 Provience = "AUSTRALIA",//省份
+                 CountryCode = "AU",//国家二字码
+                 RegionCode = "CBR",//地区三字码
+                 Address = "46 DADASKAYA STREET RYAZAN CITY RUSSIA",//地址
+                 PostCode = "00001",//邮政编码
+                 AddressType = 0,//地址类型-发件人地址
+                 CreateTime = DateTime.Now,//创建日期
+                 UpdateTime = DateTime.Now,//修改日期
+                 Operator = "沈志伟",//操作人姓名
+                 Phone = "118812"
+             };
+             AddressBook addressBookA11 = new AddressBook
+             {
+                 AID = Guid.NewGuid(),//地址本序号
+                 Name = "Microsoft",//公司名称
+                 ContactorName = "John",//联系人真名
+                 Provience = "AUSTRALIA",//省份
+                 CountryCode = "AU",//国家二字码
+                 RegionCode = "CBR",//地区三字码
+                 Address = "Room 4-201，Yongshengxiaoqu,XX Road, Putuo District,Shanghai,PRC",//地址
+                 PostCode = "00002",//邮政编码
+                 AddressType = 0,//地址类型-发件人地址
+                 CreateTime = DateTime.Now,//创建日期
+                 UpdateTime = DateTime.Now,//修改日期
+                 Operator = "沈志伟",//操作人姓名
+                 Phone = "118823"
+             };
+             AddressBook addressBookA12 = new AddressBook
+             {
+                 AID = Guid.NewGuid(),//地址本序号
+                 Name = "Microsoft",//公司名称
+                 ContactorName = "John",//联系人真名
+                 Provience = "AUSTRALIA",//省份
+                 CountryCode = "AU",//国家二字码
+                 RegionCode = "CBR",//地区三字码
+                 Address = "Room 403,No.37,ShiFan Residential Quarter,FengTai District",//地址
+                 PostCode = "00003",//邮政编码
+                 AddressType = 0,//地址类型-发件人地址
+                 CreateTime = DateTime.Now,//创建日期
+                 UpdateTime = DateTime.Now,//修改日期
+                 Operator = "沈志伟",//操作人姓名
+                 Phone = "118827"
+             };
+             AddressBook addressBookB10 = new AddressBook
+             {
+                 AID = Guid.NewGuid(),//地址本序号
+                 Name = "Google",//公司名称
+                 ContactorName = "Peter",//联系人真名
+                 Provience = "BRAZIL",//省份
+                 CountryCode = "BR",//国家二字码
+                 RegionCode = "REC",//地区三字码
+                 Address = "BMW Kundenbetreuung.Wenden Sie sich bei Fragen aller Art an unsere Kundenbetreuung.",//地址
+                 PostCode = "00004",//邮政编码
+                 AddressType = 0,//地址类型-发件人地址
+                 CreateTime = DateTime.Now,//创建日期
+                 UpdateTime = DateTime.Now,//修改日期
+                 Operator = "沈志伟",//操作人姓名
+                 Phone = "118829"
+             };
+             AddressBook addressBookB11 = new AddressBook
+             {
+                 AID = Guid.NewGuid(),//地址本序号
+                 Name = "Google",//公司名称
+                 ContactorName = "Peter",//联系人真名
+                 Provience = "BRAZIL",//省份
+                 CountryCode = "BR",//国家二字码
+                 RegionCode = "REC",//地区三字码
+                 Address = "3900 west century boulevard inglewood",//地址
+                 PostCode = "00005",//邮政编码
+                 AddressType = 0,//地址类型-发件人地址
+                 CreateTime = DateTime.Now,//创建日期
+                 UpdateTime = DateTime.Now,//修改日期
+                 Operator = "沈志伟",//操作人姓名
+                 Phone = "118833"
+             };
+             AddressBook addressBookB12 = new AddressBook
+             {
+                 AID = Guid.NewGuid(),//地址本序号
+                 Name = "Google",//公司名称
+                 ContactorName = "Peter",//联系人真名
+                 Provience = "BRAZIL",//省份
+                 CountryCode = "BR",//国家二字码
+                 RegionCode = "REC",//地区三字码
+                 Address = "mONTEREY PARK500 N. GAFIELD AVE",//地址
+                 PostCode = "00006",//邮政编码
+                 AddressType = 0,//地址类型-发件人地址
+                 CreateTime = DateTime.Now,//创建日期
+                 UpdateTime = DateTime.Now,//修改日期
+                 Operator = "沈志伟",//操作人姓名
+                 Phone = "118838"
+             };
+            #endregion
+            #region 新增外国地址本
+             AddressBook addressBookA13 = new AddressBook
+             {
+                 AID = Guid.NewGuid(),//地址本序号
+                 Name = "Baidu",//公司名称
+                 ContactorName = "Jack",//联系人真名
+                 Provience = "CANADA",//省份
+                 CountryCode = "CA",//国家二字码
+                 RegionCode = "YQR",//地区三字码
+                 Address = "SAN FRANCISCO 806 MONTGOMERY STREET",//地址
+                 PostCode = "02001",//邮政编码
+                 AddressType = 1,//地址类型-发件人地址
+                 CreateTime = DateTime.Now,//创建日期
+                 UpdateTime = DateTime.Now,//修改日期
+                 Operator = "沈志伟",//操作人姓名
+                 Phone = "205060"
+             };
+
+             AddressBook addressBookA14 = new AddressBook
+             {
+                 AID = Guid.NewGuid(),//地址本序号
+                 Name = "Baidu",//公司名称
+                 ContactorName = "Jack",//联系人真名
+                 Provience = "CANADA",//省份
+                 CountryCode = "CA",//国家二字码
+                 RegionCode = "YQR",//地区三字码
+                 Address = "Branson Rd. Kansas City",//地址
+                 PostCode = "02003",//邮政编码
+                 AddressType = 1,//地址类型-发件人地址
+                 CreateTime = DateTime.Now,//创建日期
+                 UpdateTime = DateTime.Now,//修改日期
+                 Operator = "沈志伟",//操作人姓名
+                 Phone = "205062"
+             };
+
+             AddressBook addressBookA15 = new AddressBook
+             {
+                 AID = Guid.NewGuid(),//地址本序号
+                 Name = "Baidu",//公司名称
+                 ContactorName = "Jack",//联系人真名
+                 Provience = "CANADA",//省份
+                 CountryCode = "CA",//国家二字码
+                 RegionCode = "YQR",//地区三字码
+                 Address = "TRANS SECTION GRIDLINES 1014E,1/F.ALT LOGISTIC CENTRE B,BERTH3 KAWAI",//地址
+                 PostCode = "02002",//邮政编码
+                 AddressType = 1,//地址类型-发件人地址
+                 CreateTime = DateTime.Now,//创建日期
+                 UpdateTime = DateTime.Now,//修改日期
+                 Operator = "沈志伟",//操作人姓名
+                 Phone = "205061"
+             };
+
+             AddressBook addressBookB13 = new AddressBook
+             {
+                 AID = Guid.NewGuid(),//地址本序号
+                 Name = "MOTO",//公司名称
+                 ContactorName = "Ken",//联系人真名
+                 Provience = "CZECH REPUBLIC",//省份
+                 CountryCode = "CZ",//国家二字码
+                 RegionCode = "OSR",//地区三字码
+                 Address = "Sherwood St. Boston, MA",//地址
+                 PostCode = "02003",//邮政编码
+                 AddressType = 1,//地址类型-发件人地址
+                 CreateTime = DateTime.Now,//创建日期
+                 UpdateTime = DateTime.Now,//修改日期
+                 Operator = "沈志伟",//操作人姓名
+                 Phone = "205081"
+             };
+
+             AddressBook addressBookB14 = new AddressBook
+             {
+                 AID = Guid.NewGuid(),//地址本序号
+                 Name = "MOTO",//公司名称
+                 ContactorName = "Ken",//联系人真名
+                 Provience = "CZECH REPUBLIC",//省份
+                 CountryCode = "CZ",//国家二字码
+                 RegionCode = "OSR",//地区三字码
+                 Address = "Lindley Ave. Juneau, AK",//地址
+                 PostCode = "02303",//邮政编码
+                 AddressType = 1,//地址类型-发件人地址
+                 CreateTime = DateTime.Now,//创建日期
+                 UpdateTime = DateTime.Now,//修改日期
+                 Operator = "沈志伟",//操作人姓名
+                 Phone = "205091"
+             };
+
+             AddressBook addressBookB15 = new AddressBook
+             {
+                 AID = Guid.NewGuid(),//地址本序号
+                 Name = "MOTO",//公司名称
+                 ContactorName = "Ken",//联系人真名
+                 Provience = "CZECH REPUBLIC",//省份
+                 CountryCode = "CZ",//国家二字码
+                 RegionCode = "OSR",//地区三字码
+                 Address = "leavesden studios po box 3000 leavesden, herts, wd25 7lt",//地址
+                 PostCode = "02353",//邮政编码
+                 AddressType = 1,//地址类型-发件人地址
+                 CreateTime = DateTime.Now,//创建日期
+                 UpdateTime = DateTime.Now,//修改日期
+                 Operator = "沈志伟",//操作人姓名
+                 Phone = "785091"
+             };
+            #endregion
+            #region 新增外国地址本
+             AddressBook addressBookA16 = new AddressBook
+             {
+                 AID = Guid.NewGuid(),//地址本序号
+                 ReceiveAID=addressBookA13.AID,
+                 Name = "Nokia",//公司名称
+                 ContactorName = "Josn",//联系人真名
+                 Provience = "GREENLAND",//省份
+                 CountryCode = "GL",//国家二字码
+                 RegionCode = "GOH",//地区三字码
+                 Address = "82 MARCHINGTON CIRCLE,SCARBOROUGH,ONM1R 3M7",//地址
+                 PostCode = "02031",//邮政编码
+                 AddressType = 2,//地址类型-发件人地址
+                 CreateTime = DateTime.Now,//创建日期
+                 UpdateTime = DateTime.Now,//修改日期
+                 Operator = "沈志伟",//操作人姓名
+                 Phone = "206460"
+             };
+
+             AddressBook addressBookA17 = new AddressBook
+             {
+                 AID = Guid.NewGuid(),//地址本序号
+                 ReceiveAID = addressBookA14.AID,
+                 Name = "Nokia",//公司名称
+                 ContactorName = "Josn",//联系人真名
+                 Provience = "GREENLAND",//省份
+                 CountryCode = "GL",//国家二字码
+                 RegionCode = "GOH",//地区三字码
+                 Address = "xinlung education,122 marylebone high street,london, w1u 5qx",//地址
+                 PostCode = "02034",//邮政编码
+                 AddressType = 2,//地址类型-发件人地址
+                 CreateTime = DateTime.Now,//创建日期
+                 UpdateTime = DateTime.Now,//修改日期
+                 Operator = "沈志伟",//操作人姓名
+                 Phone = "206464"
+             };
+
+             AddressBook addressBookA18 = new AddressBook
+             {
+                 AID = Guid.NewGuid(),//地址本序号
+                 ReceiveAID = addressBookA15.AID,
+                 Name = "Nokia",//公司名称
+                 ContactorName = "Josn",//联系人真名
+                 Provience = "GREENLAND",//省份
+                 CountryCode = "GL",//国家二字码
+                 RegionCode = "GOH",//地区三字码
+                 Address = "xinlung education,sino business uk ltd.cedar house, 8 fairfield st.",//地址
+                 PostCode = "02039",//邮政编码
+                 AddressType = 2,//地址类型-发件人地址
+                 CreateTime = DateTime.Now,//创建日期
+                 UpdateTime = DateTime.Now,//修改日期
+                 Operator = "沈志伟",//操作人姓名
+                 Phone = "206469"
+             };
+
+             AddressBook addressBookB16 = new AddressBook
+             {
+                 AID = Guid.NewGuid(),//地址本序号
+                 ReceiveAID = addressBookB13.AID,
+                 Name = "HTC",//公司名称
+                 ContactorName = "Mary",//联系人真名
+                 Provience = "HONDURAS",//省份
+                 CountryCode = "HN",//国家二字码
+                 RegionCode = "SAP",//地区三字码
+                 Address = "1919B-4th Street S.W.,Box 227,Calgary, AlbertaCanadaT2S 1W4",//地址
+                 PostCode = "04039",//邮政编码
+                 AddressType = 2,//地址类型-发件人地址
+                 CreateTime = DateTime.Now,//创建日期
+                 UpdateTime = DateTime.Now,//修改日期
+                 Operator = "沈志伟",//操作人姓名
+                 Phone = "888469"
+             };
+
+             AddressBook addressBookB17 = new AddressBook
+             {
+                 AID = Guid.NewGuid(),//地址本序号
+                 ReceiveAID = addressBookB14.AID,
+                 Name = "HTC",//公司名称
+                 ContactorName = "Mary",//联系人真名
+                 Provience = "HONDURAS",//省份
+                 CountryCode = "HN",//国家二字码
+                 RegionCode = "SAP",//地区三字码
+                 Address = "Alberta’Edmonton，Alberta Canada T6G 2E6",//地址
+                 PostCode = "04039",//邮政编码
+                 AddressType = 2,//地址类型-发件人地址
+                 CreateTime = DateTime.Now,//创建日期
+                 UpdateTime = DateTime.Now,//修改日期
+                 Operator = "沈志伟",//操作人姓名
+                 Phone = "888469"
+             };
+
+             AddressBook addressBookB18 = new AddressBook
+             {
+                 AID = Guid.NewGuid(),//地址本序号
+                 ReceiveAID = addressBookB15.AID,
+                 Name = "HTC",//公司名称
+                 ContactorName = "Mary",//联系人真名
+                 Provience = "HONDURAS",//省份
+                 CountryCode = "HN",//国家二字码
+                 RegionCode = "SAP",//地区三字码
+                 Address = "900 Broadway SeattIe University SeattIe, WA98122",//地址
+                 PostCode = "04039",//邮政编码
+                 AddressType = 2,//地址类型-发件人地址
+                 CreateTime = DateTime.Now,//创建日期
+                 UpdateTime = DateTime.Now,//修改日期
+                 Operator = "沈志伟",//操作人姓名
+                 Phone = "888469"
+             };
+            #endregion
+
+             //relation
             departmentA.HAWBs.Add(_HAWBManagementService.FindHAWBByBarCode("2010"));//运单关联
             departmentA.CompanyCode = company.CompanyCode.ToString();//冗余数据
             departmentA.Company = company;//公司关联
@@ -623,6 +933,15 @@ namespace Application.GGETS.Tests
             departmentA.AddressBooks.Add(addressBookA7);
             departmentA.AddressBooks.Add(addressBookA8);
             departmentA.AddressBooks.Add(addressBookA9);
+            departmentA.AddressBooks.Add(addressBookA10);
+            departmentA.AddressBooks.Add(addressBookA11);
+            departmentA.AddressBooks.Add(addressBookA12);
+            departmentA.AddressBooks.Add(addressBookA13);
+            departmentA.AddressBooks.Add(addressBookA14);
+            departmentA.AddressBooks.Add(addressBookA15);
+            departmentA.AddressBooks.Add(addressBookA16);
+            departmentA.AddressBooks.Add(addressBookA17);
+            departmentA.AddressBooks.Add(addressBookA18);
 
             departmentB.HAWBs.Add(_HAWBManagementService.FindHAWBByBarCode("2011"));//运单关联
             departmentB.CompanyCode = company.CompanyCode.ToString();//冗余数据
@@ -637,6 +956,15 @@ namespace Application.GGETS.Tests
             departmentB.AddressBooks.Add(addressBookB7);
             departmentB.AddressBooks.Add(addressBookB8);
             departmentB.AddressBooks.Add(addressBookB9);
+            departmentB.AddressBooks.Add(addressBookB10);
+            departmentB.AddressBooks.Add(addressBookB11);
+            departmentB.AddressBooks.Add(addressBookB12);
+            departmentB.AddressBooks.Add(addressBookB13);
+            departmentB.AddressBooks.Add(addressBookB14);
+            departmentB.AddressBooks.Add(addressBookB15);
+            departmentB.AddressBooks.Add(addressBookB16);
+            departmentB.AddressBooks.Add(addressBookB17);
+            departmentB.AddressBooks.Add(addressBookB18);
 
             _departmentManagementService.AddDepartment(departmentA);
             _departmentManagementService.AddDepartment(departmentB);
