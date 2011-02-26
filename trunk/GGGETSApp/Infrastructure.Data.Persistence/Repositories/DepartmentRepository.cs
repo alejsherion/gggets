@@ -110,8 +110,9 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Repositories
             Department departmentObj = FindDepartmentByDepCode(depCode);
             string DID = string.Empty;
             if (departmentObj != null) DID = Convert.ToString(departmentObj.DID);
-            using (IGGGETSAppUnitOfWork context = UnitOfWork as IGGGETSAppUnitOfWork)
-            {
+            IGGGETSAppUnitOfWork context = UnitOfWork as IGGGETSAppUnitOfWork;
+            //using (IGGGETSAppUnitOfWork context = UnitOfWork as IGGGETSAppUnitOfWork)
+            //{
                 if (context != null)
                 {
                     //packages = context.Package.Include(p => p.HAWBs).Include(p => p.MAWB).Select(p => p);
@@ -127,7 +128,7 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Repositories
                                                                 GetType().Name));
                 }
                 return addressBooks.OrderByDescending(p => p.CreateTime).ToList();
-            }
+            //}
         }
         #endregion
     }

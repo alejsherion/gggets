@@ -65,13 +65,16 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Repositories
         public CountryCode FindCountriedByCountryCode(string countryCode)
         {
             IGGGETSAppUnitOfWork context = UnitOfWork as IGGGETSAppUnitOfWork;
-            if (context != null)
-                return context.CountryCode.Where(c => c.CountryCode1 == countryCode).SingleOrDefault();
-            else
-                throw new InvalidOperationException(string.Format(
-                                                            CultureInfo.InvariantCulture,
-                                                            Messages.exception_InvalidStoreContext,
-                                                            GetType().Name));
+            //using (IGGGETSAppUnitOfWork context = UnitOfWork as IGGGETSAppUnitOfWork)
+            //{
+                if (context != null)
+                    return context.CountryCode.Where(c => c.CountryCode1 == countryCode).SingleOrDefault();
+                else
+                    throw new InvalidOperationException(string.Format(
+                                                                CultureInfo.InvariantCulture,
+                                                                Messages.exception_InvalidStoreContext,
+                                                                GetType().Name));
+            //}
         }
 
         /// <summary>
@@ -83,8 +86,9 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Repositories
         public IList<CountryCode> FindCountriesByCondition(string countryCode, string countryName)
         {
             IEnumerable<CountryCode> countries = null;
-            using (IGGGETSAppUnitOfWork context = UnitOfWork as IGGGETSAppUnitOfWork)
-            {
+            IGGGETSAppUnitOfWork context = UnitOfWork as IGGGETSAppUnitOfWork;
+            //using (IGGGETSAppUnitOfWork context = UnitOfWork as IGGGETSAppUnitOfWork)
+            //{
                 if (context != null)
                 {
                     countries = context.CountryCode.Select(c => c);
@@ -101,7 +105,7 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Repositories
                         GetType().Name));
                 }
                 return countries.ToList();
-            }
+            //}
         }
     }
 }

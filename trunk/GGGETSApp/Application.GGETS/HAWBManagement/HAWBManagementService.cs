@@ -86,6 +86,15 @@ namespace Application.GGETS
                                                 realName, phone, beginTime, endTime, settleType, serviceType, isInternational);
         }
 
+        public IList<HAWB> FindHAWBsByCondition(string barCode, string countryName, string regionName, string userCode, string companyName,
+                                               string realName, DateTime? beginTime, DateTime? endTime, int settleType, int serviceType,
+                                               bool? isInternational)
+        {
+            return _hawbRepository.FindHAWBsByCondition(barCode, countryName, regionName, userCode, companyName,
+                                                        regionName, beginTime, endTime, serviceType, serviceType,
+                                                        isInternational);
+        }
+
         /// <summary>
         /// 通过条形码移除运单
         /// </summary>

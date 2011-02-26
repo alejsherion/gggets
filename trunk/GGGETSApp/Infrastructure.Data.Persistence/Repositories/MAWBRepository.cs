@@ -33,8 +33,9 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Repositories
         public IList<MAWB> FindMAWBByCondition(string barCode, DateTime? beginDate, DateTime? endDate)
         {
             IEnumerable<MAWB> mawb = null;
-            using (IGGGETSAppUnitOfWork context = UnitOfWork as IGGGETSAppUnitOfWork)
-            {
+            IGGGETSAppUnitOfWork context = UnitOfWork as IGGGETSAppUnitOfWork;
+            //using (IGGGETSAppUnitOfWork context = UnitOfWork as IGGGETSAppUnitOfWork)
+            //{
                 if (context != null)
                 {
                     mawb = context.MAWB.Select(m => m);
@@ -67,7 +68,7 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Repositories
                                                                 GetType().Name));
                 }
                 return mawb.OrderByDescending(m => m.CreateTime).ToList();
-            }
+            //}
         }
     }
 }

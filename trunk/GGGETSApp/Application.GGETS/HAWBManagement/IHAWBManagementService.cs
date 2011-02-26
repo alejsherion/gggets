@@ -16,6 +16,11 @@ namespace Application.GGETS
                                                string realName, string phone, DateTime? beginTime, DateTime? endTime, int settleType, int serviceType,
                                                bool? isInternational);
 
+        IList<HAWB> FindHAWBsByCondition(string barCode, string countryName, string regionName, string userCode,
+                                         string companyName,
+                                         string realName, DateTime? beginTime, DateTime? endTime, int settleType,
+                                         int serviceType,
+                                         bool? isInternational);
         void RemoveHAWB(string barCode);
         HAWB LoadHAWBByBarCode(string barCode);
         HAWBBox FindHAWBBoxByHID(string HID);

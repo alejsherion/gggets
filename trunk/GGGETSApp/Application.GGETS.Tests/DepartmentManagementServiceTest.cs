@@ -143,9 +143,11 @@ namespace Application.GGETS.Tests
                 //发件人联系电话
                 ConsigneeContactor = "李宏",
                 //收件人姓名
-                ConsigneeCountry = "02",
+                ConsigneeName="李宏",
+                //收件人名称或者公司
+                ConsigneeCountry = "AF",
                 //收件人国家
-                ConsigneeRegion = "022",
+                ConsigneeRegion = "ABX",
                 //收件人区号
                 ConsigneeAddress = "Japan address",
                 //收件人地址
@@ -182,9 +184,9 @@ namespace Application.GGETS.Tests
                 //发件人姓名或者公司
                 ShipperContactor = "沈志伟",
                 //发件人姓名
-                ShipperCountry = "01",
+                ShipperCountry = "AL",
                 //发件人国家
-                ShipperRegion = "021",
+                ShipperRegion = "HRE",
                 //发件人区号
                 ShipperAddress = "test address",
                 //发件人地址
@@ -194,6 +196,8 @@ namespace Application.GGETS.Tests
                 //发件人联系电话
                 ConsigneeContactor = "李宏",
                 //收件人姓名
+                ConsigneeName="李宏",
+                //收件人名称或公司
                 ConsigneeCountry = "02",
                 //收件人国家
                 ConsigneeRegion = "022",
@@ -316,7 +320,8 @@ namespace Application.GGETS.Tests
                 AddressType=0,//地址类型-发件人地址
                 CreateTime=DateTime.Now,//创建日期
                 UpdateTime=DateTime.Now,//修改日期
-                Operator="沈志伟"//操作人姓名
+                Operator="沈志伟",//操作人姓名
+                Phone="56881111"
             };
             AddressBook addressBookA2 = new AddressBook
             {
@@ -331,7 +336,8 @@ namespace Application.GGETS.Tests
                 AddressType = 0,//地址类型-发件人地址
                 CreateTime = DateTime.Now,//创建日期
                 UpdateTime = DateTime.Now,//修改日期
-                Operator = "沈志伟"//操作人姓名
+                Operator = "沈志伟",//操作人姓名
+                Phone = "56882222"
             };
             AddressBook addressBookA3 = new AddressBook
             {
@@ -346,7 +352,8 @@ namespace Application.GGETS.Tests
                 AddressType = 0,//地址类型-发件人地址
                 CreateTime = DateTime.Now,//创建日期
                 UpdateTime = DateTime.Now,//修改日期
-                Operator = "沈志伟"//操作人姓名
+                Operator = "沈志伟",//操作人姓名
+                Phone = "56883333"
             };
             AddressBook addressBookB1 = new AddressBook
             {
@@ -361,7 +368,8 @@ namespace Application.GGETS.Tests
                 AddressType = 0,//地址类型-发件人地址
                 CreateTime = DateTime.Now,//创建日期
                 UpdateTime = DateTime.Now,//修改日期
-                Operator = "沈志伟"//操作人姓名
+                Operator = "沈志伟",//操作人姓名
+                Phone = "56884444"
             };
             AddressBook addressBookB2 = new AddressBook
             {
@@ -376,7 +384,8 @@ namespace Application.GGETS.Tests
                 AddressType = 0,//地址类型-发件人地址
                 CreateTime = DateTime.Now,//创建日期
                 UpdateTime = DateTime.Now,//修改日期
-                Operator = "沈志伟"//操作人姓名
+                Operator = "沈志伟",//操作人姓名
+                Phone = "56885555"
             };
             AddressBook addressBookB3 = new AddressBook
             {
@@ -391,7 +400,8 @@ namespace Application.GGETS.Tests
                 AddressType = 0,//地址类型-发件人地址
                 CreateTime = DateTime.Now,//创建日期
                 UpdateTime = DateTime.Now,//修改日期
-                Operator = "沈志伟"//操作人姓名
+                Operator = "沈志伟",//操作人姓名
+                Phone = "56886666"
             };
             #endregion
             #region 收货人地址本
@@ -409,7 +419,8 @@ namespace Application.GGETS.Tests
                 AddressType = 1,//地址类型-收件人地址
                 CreateTime = DateTime.Now,//创建日期
                 UpdateTime = DateTime.Now,//修改日期
-                Operator = "沈志伟"//操作人姓名
+                Operator = "沈志伟",//操作人姓名
+                Phone = "888888"
             };
             AddressBook addressBookA5 = new AddressBook
             {
@@ -424,7 +435,8 @@ namespace Application.GGETS.Tests
                 AddressType = 1,//地址类型-收件人地址
                 CreateTime = DateTime.Now,//创建日期
                 UpdateTime = DateTime.Now,//修改日期
-                Operator = "沈志伟"//操作人姓名
+                Operator = "沈志伟",//操作人姓名
+                Phone = "888889"
             };
             AddressBook addressBookA6 = new AddressBook
             {
@@ -439,7 +451,8 @@ namespace Application.GGETS.Tests
                 AddressType = 1,//地址类型-收件人地址
                 CreateTime = DateTime.Now,//创建日期
                 UpdateTime = DateTime.Now,//修改日期
-                Operator = "沈志伟"//操作人姓名
+                Operator = "沈志伟",//操作人姓名
+                Phone = "888880"
             };
             AddressBook addressBookB4 = new AddressBook
             {
@@ -454,7 +467,8 @@ namespace Application.GGETS.Tests
                 AddressType = 1,//地址类型-收件人地址
                 CreateTime = DateTime.Now,//创建日期
                 UpdateTime = DateTime.Now,//修改日期
-                Operator = "沈志伟"//操作人姓名
+                Operator = "沈志伟",//操作人姓名
+                Phone = "888887"
             };
             AddressBook addressBookB5 = new AddressBook
             {
@@ -469,7 +483,8 @@ namespace Application.GGETS.Tests
                 AddressType = 1,//地址类型-收件人地址
                 CreateTime = DateTime.Now,//创建日期
                 UpdateTime = DateTime.Now,//修改日期
-                Operator = "沈志伟"//操作人姓名
+                Operator = "沈志伟",//操作人姓名
+                Phone = "888886"
             };
             AddressBook addressBookB6 = new AddressBook
             {
@@ -484,7 +499,8 @@ namespace Application.GGETS.Tests
                 AddressType = 1,//地址类型-收件人地址
                 CreateTime = DateTime.Now,//创建日期
                 UpdateTime = DateTime.Now,//修改日期
-                Operator = "沈志伟"//操作人姓名
+                Operator = "沈志伟",
+                Phone = "888884"
             };
             #endregion
             #region 交付人地址本
@@ -503,7 +519,8 @@ namespace Application.GGETS.Tests
                 AddressType = 2,//地址类型-交付人地址
                 CreateTime = DateTime.Now,//创建日期
                 UpdateTime = DateTime.Now,//修改日期
-                Operator = "沈志伟"//操作人姓名
+                Operator = "沈志伟",//操作人姓名
+                Phone = "123456"
             };
              AddressBook addressBookA8 = new AddressBook
              {
@@ -519,7 +536,8 @@ namespace Application.GGETS.Tests
                  AddressType = 2,//地址类型-交付人地址
                  CreateTime = DateTime.Now,//创建日期
                  UpdateTime = DateTime.Now,//修改日期
-                 Operator = "沈志伟"//操作人姓名
+                 Operator = "沈志伟",//操作人姓名
+                 Phone = "123458"
              };
              AddressBook addressBookA9 = new AddressBook
              {
@@ -535,7 +553,8 @@ namespace Application.GGETS.Tests
                  AddressType = 2,//地址类型-交付人地址
                  CreateTime = DateTime.Now,//创建日期
                  UpdateTime = DateTime.Now,//修改日期
-                 Operator = "沈志伟"//操作人姓名
+                 Operator = "沈志伟",//操作人姓名
+                 Phone = "123459"
              };
              AddressBook addressBookB7 = new AddressBook
              {
@@ -551,7 +570,8 @@ namespace Application.GGETS.Tests
                  AddressType = 2,//地址类型-交付人地址
                  CreateTime = DateTime.Now,//创建日期
                  UpdateTime = DateTime.Now,//修改日期
-                 Operator = "沈志伟"//操作人姓名
+                 Operator = "沈志伟",//操作人姓名
+                 Phone = "123450"
              };
              AddressBook addressBookB8 = new AddressBook
              {
@@ -567,7 +587,8 @@ namespace Application.GGETS.Tests
                  AddressType = 2,//地址类型-交付人地址
                  CreateTime = DateTime.Now,//创建日期
                  UpdateTime = DateTime.Now,//修改日期
-                 Operator = "沈志伟"//操作人姓名
+                 Operator = "沈志伟",//操作人姓名
+                 Phone = "123452"
              };
              AddressBook addressBookB9 = new AddressBook
              {
@@ -583,7 +604,8 @@ namespace Application.GGETS.Tests
                  AddressType = 2,//地址类型-交付人地址
                  CreateTime = DateTime.Now,//创建日期
                  UpdateTime = DateTime.Now,//修改日期
-                 Operator = "沈志伟"//操作人姓名
+                 Operator = "沈志伟",//操作人姓名
+                 Phone = "123451"
              };
             #endregion
             

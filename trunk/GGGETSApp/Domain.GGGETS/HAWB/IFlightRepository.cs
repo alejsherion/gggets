@@ -16,8 +16,6 @@ namespace Domain.GGGETS
     public interface IFlightRepository : IRepository<Flight>
     {
         IList<Flight> FindFlightByCondition(string flightNo, string from, string to, DateTime? beginDate,
-                                            DateTime? endDate);
-
-        Flight GetSingleFlightByFlightNo(string flightNo); 
+                                            DateTime? endDate); 
     }
 }
