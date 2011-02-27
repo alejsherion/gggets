@@ -1090,9 +1090,18 @@ namespace Application.GGETS.Tests
         public void JudgeRepeatTest()
         {
             AddressBook addressBook = _addressBookManagementService.FindAddressBookByAID("7a50fd64-01e1-4b10-b9cd-03f21913ff18");
-            addressBook.ContactorName = "Peter";
+            string ContactorName = "Peter";
+            string Address = "3900 west century boulevard inglewood";
+            string CountryCode = "BR";
+            string Provience = "BRAZIL";
+            string RegionCode = "REC";
+            string PostCode = "00005";
+            string Phone = "118833";
+            string Name = "Google";
             bool actual;
-            actual = _departmentManagementService.JudgeRepeat(addressBook);
+            actual = _departmentManagementService.JudgeRepeat("7a50fd64-01e1-4b10-b9cd-03f21913ff18", Name, Address,
+                                                              CountryCode, Provience, RegionCode, PostCode,
+                                                              ContactorName, Phone);
         }
         #endregion
 

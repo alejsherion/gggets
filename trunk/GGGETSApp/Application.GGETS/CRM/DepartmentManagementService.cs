@@ -147,54 +147,40 @@ namespace Application.GGETS
         /// <summary>
         /// 判断当前类型下地址重复
         /// </summary>
-        /// <param name="addressBook">逻辑地址</param>
+        /// <param name="AID">地址序号</param>
+        /// <param name="tempAddress">地址</param>
+        /// <param name="tempCountryCode">国家二字码</param>
+        /// <param name="tempProvience">省</param>
+        /// <param name="tempRegionCode">地区三字码</param>
+        /// <param name="tempPostCode">邮政编码</param>
+        /// <param name="tempPhone">电话</param>
+        /// <param name="tempName">公司名称</param>
+        /// <param name="tempContactorName">联系人</param>
         /// <returns></returns>
-        public bool JudgeRepeat(AddressBook addressBook)
+        public bool JudgeRepeat(string AID, string tempName, string tempAddress, string tempCountryCode, string tempProvience, string tempRegionCode, string tempPostCode, string tempContactorName, string tempPhone)
         {
-            if(addressBook==null) throw new ArgumentNullException("AddressBook is null!");
             //验证变量
             bool judge = true;
-            //首先获取类型地址集合
-            IList<AddressBook> addressBooks =
-                _departmentRepository.FindAddressBooksByDIDAndType(Convert.ToString(addressBook.DID),
-                                                                   addressBook.AddressType).Where(it => it.AID != addressBook.AID).ToList();
-            foreach(AddressBook temp in addressBooks)
+            //先和自己比
+            AddressBook addressBookSelf = _departmentRepository.FindAddressBookByAID(Convert.ToString(AID));
+            if (addressBookSelf == null) throw new ArgumentNullException("AddressBook is null!");
+            if (addressBookSelf.CountryCode.Equals(tempCountryCode) && addressBookSelf.Provience.Equals(tempProvience) && addressBookSelf.RegionCode.Equals(tempRegionCode) && addressBookSelf.PostCode.Equals(tempPostCode) && addressBookSelf.ContactorName.Equals(tempContactorName) && addressBookSelf.Phone.Equals(tempPhone) && addressBookSelf.Name.Equals(tempName) && addressBookSelf.Address.Equals(tempAddress))
+                judge = true;
+            else
             {
-                if (temp.CountryCode.Equals(addressBook.CountryCode))
+                //再获取其他类型地址集合比，排除自己
+                IList<AddressBook> addressBooks =
+                    _departmentRepository.FindAddressBooksByDIDAndType(Convert.ToString(addressBookSelf.DID),
+                                                                       addressBookSelf.AddressType).Where(it => it.AID != addressBookSelf.AID).ToList();
+                int count = 0;//计数器
+                foreach (AddressBook temp in addressBooks)
                 {
-                    judge = false;
-                    break;
+                    if (!temp.Address.Equals(tempAddress) || !temp.CountryCode.Equals(tempCountryCode) || !temp.Provience.Equals(tempProvience) || !temp.RegionCode.Equals(tempRegionCode) || !temp.PostCode.Equals(tempPostCode) || !temp.ContactorName.Equals(tempContactorName) || !temp.Phone.Equals(tempPhone) || !temp.Name.Equals(tempName))
+                    {
+                        count++;
+                    }
                 }
-                if (temp.Provience.Equals(addressBook.Provience))
-                {
-                    judge = false;
-                    break;
-                }
-                if (temp.RegionCode.Equals(addressBook.RegionCode))
-                {
-                    judge = false;
-                    break;
-                }
-                if (temp.PostCode.Equals(addressBook.PostCode))
-                {
-                    judge = false;
-                    break;
-                }
-                if (temp.ContactorName.Equals(addressBook.ContactorName))
-                {
-                    judge = false;
-                    break;
-                }
-                if (temp.Phone.Equals(addressBook.Phone))
-                {
-                    judge = false;
-                    break;
-                }
-                if (temp.Name.Equals(addressBook.Name))
-                {
-                    judge = false;
-                    break;
-                }
+                if (count != addressBooks.Count) judge = false;
             }
             return judge;
         }

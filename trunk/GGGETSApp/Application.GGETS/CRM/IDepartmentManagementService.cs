@@ -23,6 +23,6 @@ namespace Application.GGETS
         IList<AddressBook> FindAllDeliveryAddressesByDepCode(string depCode);
         IList<AddressBook> FindAllForwarderAddressesByDepCode(string depCode);
         bool JudgeAddressBookWhetherRepeat(string AID,string contactorName);
-        bool JudgeRepeat(AddressBook addressBook);
+        bool JudgeRepeat(string AID, string tempName, string tempAddress, string tempCountryCode, string tempProvience, string tempRegionCode, string tempPostCode, string tempContactorName, string tempPhone);
     }
 }
