@@ -67,6 +67,51 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
         private string _barCode;
     
         [DataMember]
+        public string From
+        {
+            get { return _from; }
+            set
+            {
+                if (_from != value)
+                {
+                    _from = value;
+                    OnPropertyChanged("From");
+                }
+            }
+        }
+        private string _from;
+    
+        [DataMember]
+        public string To
+        {
+            get { return _to; }
+            set
+            {
+                if (_to != value)
+                {
+                    _to = value;
+                    OnPropertyChanged("To");
+                }
+            }
+        }
+        private string _to;
+    
+        [DataMember]
+        public string FlightNo
+        {
+            get { return _flightNo; }
+            set
+            {
+                if (_flightNo != value)
+                {
+                    _flightNo = value;
+                    OnPropertyChanged("FlightNo");
+                }
+            }
+        }
+        private string _flightNo;
+    
+        [DataMember]
         public System.DateTime CreateTime
         {
             get { return _createTime; }
@@ -155,51 +200,6 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
             }
         }
         private int _status;
-    
-        [DataMember]
-        public string From
-        {
-            get { return _from; }
-            set
-            {
-                if (_from != value)
-                {
-                    _from = value;
-                    OnPropertyChanged("From");
-                }
-            }
-        }
-        private string _from;
-    
-        [DataMember]
-        public string To
-        {
-            get { return _to; }
-            set
-            {
-                if (_to != value)
-                {
-                    _to = value;
-                    OnPropertyChanged("To");
-                }
-            }
-        }
-        private string _to;
-    
-        [DataMember]
-        public string FlightNo
-        {
-            get { return _flightNo; }
-            set
-            {
-                if (_flightNo != value)
-                {
-                    _flightNo = value;
-                    OnPropertyChanged("FlightNo");
-                }
-            }
-        }
-        private string _flightNo;
 
         #endregion
         #region Navigation Properties

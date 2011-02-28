@@ -78,11 +78,14 @@
     <Compile Include="PrintTemplate\IParamManagementService.cs" />
     <Compile Include="PrintTemplate\ITemplateManagementService.cs" />
     <Compile Include="PrintTemplate\ParamManagementService.cs" />
+    <Compile Include="PrintTemplate\SQLHelper.cs" />
     <Compile Include="PrintTemplate\TemplateManagementService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Data" />
     <Reference Include="System.Web" />
+    <Reference Include="System.XML" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
