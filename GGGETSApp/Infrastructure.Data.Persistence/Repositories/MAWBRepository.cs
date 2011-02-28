@@ -98,5 +98,33 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Repositories
             //don't forget open package's load:HAWBs
             return context.MAWB.Where(m => m.MID == new Guid(MID)).SingleOrDefault();
         }
+
+        /// <summary>
+        /// 通过航班信息查询下面所有的总运单信息
+        /// </summary>
+        /// <param name="flightNo">航班编号</param>
+        /// <param name="from">起始地字码</param>
+        /// <param name="to">目的地字码</param>
+        /// <returns></returns>
+        public IList<MAWB> FindMAWBByFlightCondition(string flightNo, string from, string to)
+        {
+            IEnumerable<MAWB> mawbs = null;
+            IGGGETSAppUnitOfWork context = UnitOfWork as IGGGETSAppUnitOfWork;
+            if (context != null)
+            {
+                mawbs = context.MAWB.Select(m => m);
+                if (!string.IsNullOrEmpty(flightNo)) mawbs = mawbs.Where(m => m.FlightNo == flightNo);
+                if (!string.IsNullOrEmpty(from)) mawbs = mawbs.Where(m => m.From == from);
+                if (!string.IsNullOrEmpty(to)) mawbs = mawbs.Where(m => m.To == to);
+            }
+            else
+            {
+                throw new InvalidOperationException(string.Format(
+                                                            CultureInfo.InvariantCulture,
+                                                            Messages.exception_InvalidStoreContext,
+                                                            GetType().Name));
+            }
+            return mawbs.OrderByDescending(m => m.CreateTime).ToList();
+        }
     }
 }

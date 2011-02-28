@@ -33,7 +33,7 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
         #region Primitive Properties
     
         [DataMember]
-        public int PID
+        public System.Guid PID
         {
             get { return _pID; }
             set
@@ -49,7 +49,7 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
                 }
             }
         }
-        private int _pID;
+        private System.Guid _pID;
     
         [DataMember]
         public Nullable<System.Guid> TID
