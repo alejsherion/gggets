@@ -181,5 +181,36 @@ namespace Application.GGETS
         {
             return _hawbRepository.FindHAWBsOfPackageByCondition(barCode, beginDate, endDate, destinationCode);
         }
+
+        /// <summary>
+        /// 判断运单和包裹同三字码
+        /// 只有运单的地区三字码和包裹相符合，才能装入这个包裹
+        /// 否则则不行
+        /// 但是如果包裹的三字码是JPX，那么运单就被认为是混包，不用判断可以直接装入任何运单
+        /// </summary>
+        /// <param name="HAWBBarcode">运单号</param>
+        /// <param name="packageBarcode">包裹号</param>
+        /// <returns></returns>
+        public bool JudgeHAWBOfPackageRepeat(string HAWBBarcode, string packageBarcode)
+        {
+            bool judge = false;
+            HAWB hawb = _hawbRepository.FindHAWBByBarCode(HAWBBarcode);
+            Package package = _hawbRepository.FindPackageByBarcode(packageBarcode);
+            if(package!=null)
+            {
+                if (package.RegionCode.Equals("JPX")) return true;//混包不用判断
+                if(hawb!=null)
+                {
+                    if (!string.IsNullOrEmpty(hawb.DeliverRegion))//交付人三字码不为空
+                    {
+                        if (package.RegionCode.Equals(hawb.DeliverRegion)) 
+                            judge = true;//交付人字码和包裹字码相同，可以添加该包裹
+                    }
+                    else //交付人如果是空的，那么就依据收件人字码来计算
+                        if (package.RegionCode.Equals(hawb.ConsigneeRegion)) judge = true;
+                }
+            }
+            return judge;
+        }
     }
 }
