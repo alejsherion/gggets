@@ -22,124 +22,109 @@ using ETS.GGGETSApp.Domain.Core.Entities;
 namespace ETS.GGGETSApp.Domain.Application.Entities
 {
     [DataContract(IsReference = true)]
-    [KnownType(typeof(Package))]
+    [KnownType(typeof(Param))]
     [Serializable]
     [System.CodeDom.Compiler.GeneratedCode("STE-EF",".NET 4.0")]
     #if !SILVERLIGHT
     [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage()]
     #endif
-    public partial class MAWB: IObjectWithChangeTracker, INotifyPropertyChanged
+    public partial class Template: IObjectWithChangeTracker, INotifyPropertyChanged
     {
         #region Primitive Properties
     
         [DataMember]
-        public System.Guid MID
+        public System.Guid TID
         {
-            get { return _mID; }
+            get { return _tID; }
             set
             {
-                if (_mID != value)
+                if (_tID != value)
                 {
                     if (ChangeTracker.ChangeTrackingEnabled && ChangeTracker.State != ObjectState.Added)
                     {
-                        throw new InvalidOperationException("The property 'MID' is part of the object's key and cannot be changed. Changes to key properties can only be made when the object is not being tracked or is in the Added state.");
+                        throw new InvalidOperationException("The property 'TID' is part of the object's key and cannot be changed. Changes to key properties can only be made when the object is not being tracked or is in the Added state.");
                     }
-                    _mID = value;
-                    OnPropertyChanged("MID");
+                    _tID = value;
+                    OnPropertyChanged("TID");
                 }
             }
         }
-        private System.Guid _mID;
+        private System.Guid _tID;
     
         [DataMember]
-        public string BarCode
+        public string Name
         {
-            get { return _barCode; }
+            get { return _name; }
             set
             {
-                if (_barCode != value)
+                if (_name != value)
                 {
-                    _barCode = value;
-                    OnPropertyChanged("BarCode");
+                    _name = value;
+                    OnPropertyChanged("Name");
                 }
             }
         }
-        private string _barCode;
+        private string _name;
     
         [DataMember]
-        public string From
+        public string Desc
         {
-            get { return _from; }
+            get { return _desc; }
             set
             {
-                if (_from != value)
+                if (_desc != value)
                 {
-                    _from = value;
-                    OnPropertyChanged("From");
+                    _desc = value;
+                    OnPropertyChanged("Desc");
                 }
             }
         }
-        private string _from;
+        private string _desc;
     
         [DataMember]
-        public string To
+        public string PaperType
         {
-            get { return _to; }
+            get { return _paperType; }
             set
             {
-                if (_to != value)
+                if (_paperType != value)
                 {
-                    _to = value;
-                    OnPropertyChanged("To");
+                    _paperType = value;
+                    OnPropertyChanged("PaperType");
                 }
             }
         }
-        private string _to;
+        private string _paperType;
     
         [DataMember]
-        public string FlightNo
+        public System.DateTime CreateDate
         {
-            get { return _flightNo; }
+            get { return _createDate; }
             set
             {
-                if (_flightNo != value)
+                if (_createDate != value)
                 {
-                    _flightNo = value;
-                    OnPropertyChanged("FlightNo");
+                    _createDate = value;
+                    OnPropertyChanged("CreateDate");
                 }
             }
         }
-        private string _flightNo;
+        private System.DateTime _createDate;
     
         [DataMember]
-        public System.DateTime CreateTime
+        public System.DateTime ModifyDate
         {
-            get { return _createTime; }
+            get { return _modifyDate; }
             set
             {
-                if (_createTime != value)
+                if (_modifyDate != value)
                 {
-                    _createTime = value;
-                    OnPropertyChanged("CreateTime");
+                    _modifyDate = value;
+                    OnPropertyChanged("ModifyDate");
                 }
             }
         }
-        private System.DateTime _createTime;
-    
-        [DataMember]
-        public Nullable<System.DateTime> LockedTime
-        {
-            get { return _lockedTime; }
-            set
-            {
-                if (_lockedTime != value)
-                {
-                    _lockedTime = value;
-                    OnPropertyChanged("LockedTime");
-                }
-            }
-        }
-        private Nullable<System.DateTime> _lockedTime;
+        private System.DateTime _modifyDate;
     
         [DataMember]
         public string Operator
@@ -155,89 +140,56 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
             }
         }
         private string _operator;
-    
-        [DataMember]
-        public decimal TotalWeight
-        {
-            get { return _totalWeight; }
-            set
-            {
-                if (_totalWeight != value)
-                {
-                    _totalWeight = value;
-                    OnPropertyChanged("TotalWeight");
-                }
-            }
-        }
-        private decimal _totalWeight;
-    
-        [DataMember]
-        public decimal TotalVolume
-        {
-            get { return _totalVolume; }
-            set
-            {
-                if (_totalVolume != value)
-                {
-                    _totalVolume = value;
-                    OnPropertyChanged("TotalVolume");
-                }
-            }
-        }
-        private decimal _totalVolume;
-    
-        [DataMember]
-        public int Status
-        {
-            get { return _status; }
-            set
-            {
-                if (_status != value)
-                {
-                    _status = value;
-                    OnPropertyChanged("Status");
-                }
-            }
-        }
-        private int _status;
 
         #endregion
         #region Navigation Properties
     
         [DataMember]
-        public TrackableCollection<Package> Packages
+        public TrackableCollection<Param> Params
         {
             get
             {
-                if (_packages == null)
+                if (_params == null)
                 {
-                    _packages = new TrackableCollection<Package>();
-                    _packages.CollectionChanged += FixupPackages;
+                    _params = new TrackableCollection<Param>();
+                    _params.CollectionChanged += FixupParams;
                 }
-                return _packages;
+                return _params;
             }
             set
             {
-                if (!ReferenceEquals(_packages, value))
+                if (!ReferenceEquals(_params, value))
                 {
                     if (ChangeTracker.ChangeTrackingEnabled)
                     {
                         throw new InvalidOperationException("Cannot set the FixupChangeTrackingCollection when ChangeTracking is enabled");
                     }
-                    if (_packages != null)
+                    if (_params != null)
                     {
-                        _packages.CollectionChanged -= FixupPackages;
+                        _params.CollectionChanged -= FixupParams;
+                        // This is the principal end in an association that performs cascade deletes.
+                        // Remove the cascade delete event handler for any entities in the current collection.
+                        foreach (Param item in _params)
+                        {
+                            ChangeTracker.ObjectStateChanging -= item.HandleCascadeDelete;
+                        }
                     }
-                    _packages = value;
-                    if (_packages != null)
+                    _params = value;
+                    if (_params != null)
                     {
-                        _packages.CollectionChanged += FixupPackages;
+                        _params.CollectionChanged += FixupParams;
+                        // This is the principal end in an association that performs cascade deletes.
+                        // Add the cascade delete event handler for any entities that are already in the new collection.
+                        foreach (Param item in _params)
+                        {
+                            ChangeTracker.ObjectStateChanging += item.HandleCascadeDelete;
+                        }
                     }
-                    OnNavigationPropertyChanged("Packages");
+                    OnNavigationPropertyChanged("Params");
                 }
             }
         }
-        private TrackableCollection<Package> _packages;
+        private TrackableCollection<Param> _params;
 
         #endregion
         #region ChangeTracking
@@ -317,13 +269,13 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
     
         protected virtual void ClearNavigationProperties()
         {
-            Packages.Clear();
+            Params.Clear();
         }
 
         #endregion
         #region Association Fixup
     
-        private void FixupPackages(object sender, NotifyCollectionChangedEventArgs e)
+        private void FixupParams(object sender, NotifyCollectionChangedEventArgs e)
         {
             if (IsDeserializing)
             {
@@ -332,32 +284,38 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
     
             if (e.NewItems != null)
             {
-                foreach (Package item in e.NewItems)
+                foreach (Param item in e.NewItems)
                 {
-                    item.MAWB = this;
+                    item.Template = this;
                     if (ChangeTracker.ChangeTrackingEnabled)
                     {
                         if (!item.ChangeTracker.ChangeTrackingEnabled)
                         {
                             item.StartTracking();
                         }
-                        ChangeTracker.RecordAdditionToCollectionProperties("Packages", item);
+                        ChangeTracker.RecordAdditionToCollectionProperties("Params", item);
                     }
+                    // This is the principal end in an association that performs cascade deletes.
+                    // Update the event listener to refer to the new dependent.
+                    ChangeTracker.ObjectStateChanging += item.HandleCascadeDelete;
                 }
             }
     
             if (e.OldItems != null)
             {
-                foreach (Package item in e.OldItems)
+                foreach (Param item in e.OldItems)
                 {
-                    if (ReferenceEquals(item.MAWB, this))
+                    if (ReferenceEquals(item.Template, this))
                     {
-                        item.MAWB = null;
+                        item.Template = null;
                     }
                     if (ChangeTracker.ChangeTrackingEnabled)
                     {
-                        ChangeTracker.RecordRemovalFromCollectionProperties("Packages", item);
+                        ChangeTracker.RecordRemovalFromCollectionProperties("Params", item);
                     }
+                    // This is the principal end in an association that performs cascade deletes.
+                    // Remove the previous dependent from the event listener.
+                    ChangeTracker.ObjectStateChanging -= item.HandleCascadeDelete;
                 }
             }
         }

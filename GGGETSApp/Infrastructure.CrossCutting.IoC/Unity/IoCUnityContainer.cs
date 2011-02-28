@@ -78,7 +78,7 @@ namespace ETS.GGGETSApp.Infrastructure.CrossCutting.IoC.Unity
             container.RegisterType<IPackageRepository, PackageRepository>(new TransientLifetimeManager());
             container.RegisterType<IUserRepository, UserRepository>(new TransientLifetimeManager());
             container.RegisterType<IMAWBRepository, MAWBRepository>(new TransientLifetimeManager());
-            container.RegisterType<IFlightRepository, FlightRepository>(new TransientLifetimeManager());
+            //container.RegisterType<IFlightRepository, FlightRepository>(new TransientLifetimeManager());
             container.RegisterType<ICountryCodeRepository, CountryCodeRepository>(new TransientLifetimeManager());
             container.RegisterType<IRegionCodeRepository, RegionCodeRepository>(new TransientLifetimeManager());
             container.RegisterType<IDepartmentRepository, DepartmentRepository>(new TransientLifetimeManager());
@@ -90,7 +90,7 @@ namespace ETS.GGGETSApp.Infrastructure.CrossCutting.IoC.Unity
             container.RegisterType<IHAWBManagementService, HAWBManagementService>(new TransientLifetimeManager());
             container.RegisterType<IPackageManagementService, PackageManagementService>(new TransientLifetimeManager());
             container.RegisterType<IMAWBManagementService, MAWBManagementService>(new TransientLifetimeManager());
-            container.RegisterType<IFlightManagementService, FlightManagementService>(new TransientLifetimeManager());
+            //container.RegisterType<IFlightManagementService, FlightManagementService>(new TransientLifetimeManager());
             container.RegisterType<ICountryCodeManagementService, CountryCodeManagementService>(new TransientLifetimeManager());
             container.RegisterType<IRegionCodeManagementService, RegionCodeManagementService>(new TransientLifetimeManager());
             container.RegisterType<IDepartmentManagementService, DepartmentManagementService>(new TransientLifetimeManager());

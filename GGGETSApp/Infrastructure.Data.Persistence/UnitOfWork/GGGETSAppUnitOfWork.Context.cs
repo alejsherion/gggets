@@ -184,6 +184,12 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.UnitOfWork
         }
         private ObjectSet<AddressBook> _addressBook;
     
+        public IObjectSet<AppModule> AppModule
+        {
+            get { return _appModule  ?? (_appModule = CreateObjectSet<AppModule>("AppModule")); }
+        }
+        private ObjectSet<AppModule> _appModule;
+    
         public IObjectSet<Company> Company
         {
             get { return _company  ?? (_company = CreateObjectSet<Company>("Company")); }
@@ -201,12 +207,6 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.UnitOfWork
             get { return _department  ?? (_department = CreateObjectSet<Department>("Department")); }
         }
         private ObjectSet<Department> _department;
-    
-        public IObjectSet<Flight> Flight
-        {
-            get { return _flight  ?? (_flight = CreateObjectSet<Flight>("Flight")); }
-        }
-        private ObjectSet<Flight> _flight;
     
         public IObjectSet<HAWB> HAWB
         {
@@ -238,29 +238,35 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.UnitOfWork
         }
         private ObjectSet<Package> _package;
     
-        public IObjectSet<RegionCode> RegionCode
+        public IObjectSet<Param> Param
         {
-            get { return _regionCode  ?? (_regionCode = CreateObjectSet<RegionCode>("RegionCode")); }
+            get { return _param  ?? (_param = CreateObjectSet<Param>("Param")); }
         }
-        private ObjectSet<RegionCode> _regionCode;
-    
-        public IObjectSet<User> User
-        {
-            get { return _user  ?? (_user = CreateObjectSet<User>("User")); }
-        }
-        private ObjectSet<User> _user;
-    
-        public IObjectSet<AppModule> AppModule
-        {
-            get { return _appModule  ?? (_appModule = CreateObjectSet<AppModule>("AppModule")); }
-        }
-        private ObjectSet<AppModule> _appModule;
+        private ObjectSet<Param> _param;
     
         public IObjectSet<Privilege> Privilege
         {
             get { return _privilege  ?? (_privilege = CreateObjectSet<Privilege>("Privilege")); }
         }
         private ObjectSet<Privilege> _privilege;
+    
+        public IObjectSet<RegionCode> RegionCode
+        {
+            get { return _regionCode  ?? (_regionCode = CreateObjectSet<RegionCode>("RegionCode")); }
+        }
+        private ObjectSet<RegionCode> _regionCode;
+    
+        public IObjectSet<Template> Template
+        {
+            get { return _template  ?? (_template = CreateObjectSet<Template>("Template")); }
+        }
+        private ObjectSet<Template> _template;
+    
+        public IObjectSet<User> User
+        {
+            get { return _user  ?? (_user = CreateObjectSet<User>("User")); }
+        }
+        private ObjectSet<User> _user;
 
         #endregion
     }

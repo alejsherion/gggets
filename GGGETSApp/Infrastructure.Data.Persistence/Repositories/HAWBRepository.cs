@@ -335,45 +335,45 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Repositories
         #endregion
 
         #region 飞机航班操作
-        /// <summary>
-        /// 通过航班号获取航班
-        /// </summary>
-        /// <param name="FID">航班号</param>
-        /// <returns></returns>
-        public Flight FindFlightByFlightNo(string flightNo)
-        {
-            if (flightNo == null) throw new ArgumentNullException("flightNo is not null!");
-            IGGGETSAppUnitOfWork context = UnitOfWork as IGGGETSAppUnitOfWork;
+        ///// <summary>
+        ///// 通过航班号获取航班
+        ///// </summary>
+        ///// <param name="FID">航班号</param>
+        ///// <returns></returns>
+        //public Flight FindFlightByFlightNo(string flightNo)
+        //{
+        //    if (flightNo == null) throw new ArgumentNullException("flightNo is not null!");
+        //    IGGGETSAppUnitOfWork context = UnitOfWork as IGGGETSAppUnitOfWork;
 
-            if (context != null)
-            {
-                return context.Flight.Include(it=>it.MAWBs).Where(it => it.FlightNo == flightNo).SingleOrDefault();
-            }
-            else
-                throw new InvalidOperationException(string.Format(
-                                                                CultureInfo.InvariantCulture,
-                                                                Messages.exception_InvalidStoreContext,
-                                                                GetType().Name));
-        }
+        //    if (context != null)
+        //    {
+        //        return context.Flight.Include(it=>it.MAWBs).Where(it => it.FlightNo == flightNo).SingleOrDefault();
+        //    }
+        //    else
+        //        throw new InvalidOperationException(string.Format(
+        //                                                        CultureInfo.InvariantCulture,
+        //                                                        Messages.exception_InvalidStoreContext,
+        //                                                        GetType().Name));
+        //}
 
-        /// <summary>
-        /// 查询所有航班
-        /// </summary>
-        /// <returns></returns>
-        public IList<Flight> FindAllFlights()
-        {
-            IGGGETSAppUnitOfWork context = UnitOfWork as IGGGETSAppUnitOfWork;
+        ///// <summary>
+        ///// 查询所有航班
+        ///// </summary>
+        ///// <returns></returns>
+        //public IList<Flight> FindAllFlights()
+        //{
+        //    IGGGETSAppUnitOfWork context = UnitOfWork as IGGGETSAppUnitOfWork;
 
-            if (context != null)
-            {
-                return context.Flight.ToList();
-            }
-            else
-                throw new InvalidOperationException(string.Format(
-                                                                CultureInfo.InvariantCulture,
-                                                                Messages.exception_InvalidStoreContext,
-                                                                GetType().Name));
-        }
+        //    if (context != null)
+        //    {
+        //        return context.Flight.ToList();
+        //    }
+        //    else
+        //        throw new InvalidOperationException(string.Format(
+        //                                                        CultureInfo.InvariantCulture,
+        //                                                        Messages.exception_InvalidStoreContext,
+        //                                                        GetType().Name));
+        //}
 
         /// <summary>
         /// 通过运单间接查询包裹信息
@@ -441,7 +441,7 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Repositories
 
             if (context != null)
             {
-                return context.MAWB.Include(it=>it.Packages).Include(it=>it.Flight).Where(it => it.BarCode == barcode).SingleOrDefault();
+                return context.MAWB.Include(it=>it.Packages).Where(it => it.BarCode == barcode).SingleOrDefault();
             }
             else
                 throw new InvalidOperationException(string.Format(

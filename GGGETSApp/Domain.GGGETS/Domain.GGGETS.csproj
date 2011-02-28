@@ -44,7 +44,6 @@
     <Compile Include="CRM\ICompanyUserRepository.cs" />
     <Compile Include="CRM\IDepartmentRepository.cs" />
     <Compile Include="HAWB\HAWBBarCodeSpecification.cs" />
-    <Compile Include="HAWB\IFlightRepository.cs" />
     <Compile Include="HAWB\IHAWBBoxRepository.cs" />
     <Compile Include="HAWB\IHAWBItemRepository.cs" />
     <Compile Include="HAWB\IHAWBRepository.cs" />
@@ -54,6 +53,8 @@
     <Compile Include="CRM\IUserRepository.cs" />
     <Compile Include="PARAM\ICountryCodeRepository.cs" />
     <Compile Include="PARAM\IRegionCodeRepository.cs" />
+    <Compile Include="TEMPLATE\IParamRepository.cs" />
+    <Compile Include="TEMPLATE\ITemplateRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />

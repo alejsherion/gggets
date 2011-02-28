@@ -22,11 +22,11 @@ using ETS.GGGETSApp.Domain.Core.Entities;
 namespace ETS.GGGETSApp.Domain.Application.Entities
 {
     [DataContract(IsReference = true)]
+    [KnownType(typeof(Department))]
     [KnownType(typeof(Package))]
     [KnownType(typeof(User))]
     [KnownType(typeof(HAWBBox))]
     [KnownType(typeof(HAWBItem))]
-    [KnownType(typeof(Department))]
     [Serializable]
     [System.CodeDom.Compiler.GeneratedCode("STE-EF",".NET 4.0")]
     #if !SILVERLIGHT
@@ -100,6 +100,29 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
             }
         }
         private Nullable<System.Guid> _uID;
+    
+        [DataMember]
+        public Nullable<System.Guid> DID
+        {
+            get { return _dID; }
+            set
+            {
+                if (_dID != value)
+                {
+                    ChangeTracker.RecordOriginalValue("DID", _dID);
+                    if (!IsDeserializing)
+                    {
+                        if (Department != null && Department.DID != value)
+                        {
+                            Department = null;
+                        }
+                    }
+                    _dID = value;
+                    OnPropertyChanged("DID");
+                }
+            }
+        }
+        private Nullable<System.Guid> _dID;
     
         [DataMember]
         public string BarCode
@@ -685,32 +708,26 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
             }
         }
         private Nullable<int> _billTax;
-    
-        [DataMember]
-        public Nullable<System.Guid> DID
-        {
-            get { return _dID; }
-            set
-            {
-                if (_dID != value)
-                {
-                    ChangeTracker.RecordOriginalValue("DID", _dID);
-                    if (!IsDeserializing)
-                    {
-                        if (Department != null && Department.DID != value)
-                        {
-                            Department = null;
-                        }
-                    }
-                    _dID = value;
-                    OnPropertyChanged("DID");
-                }
-            }
-        }
-        private Nullable<System.Guid> _dID;
 
         #endregion
         #region Navigation Properties
+    
+        [DataMember]
+        public Department Department
+        {
+            get { return _department; }
+            set
+            {
+                if (!ReferenceEquals(_department, value))
+                {
+                    var previousValue = _department;
+                    _department = value;
+                    FixupDepartment(previousValue);
+                    OnNavigationPropertyChanged("Department");
+                }
+            }
+        }
+        private Department _department;
     
         [DataMember]
         public Package Package
@@ -827,23 +844,6 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
             }
         }
         private TrackableCollection<HAWBItem> _hAWBItems;
-    
-        [DataMember]
-        public Department Department
-        {
-            get { return _department; }
-            set
-            {
-                if (!ReferenceEquals(_department, value))
-                {
-                    var previousValue = _department;
-                    _department = value;
-                    FixupDepartment(previousValue);
-                    OnNavigationPropertyChanged("Department");
-                }
-            }
-        }
-        private Department _department;
 
         #endregion
         #region ChangeTracking
@@ -923,15 +923,59 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
     
         protected virtual void ClearNavigationProperties()
         {
+            Department = null;
             Package = null;
             User = null;
             HAWBBoxes.Clear();
             HAWBItems.Clear();
-            Department = null;
         }
 
         #endregion
         #region Association Fixup
+    
+        private void FixupDepartment(Department previousValue, bool skipKeys = false)
+        {
+            if (IsDeserializing)
+            {
+                return;
+            }
+    
+            if (previousValue != null && previousValue.HAWBs.Contains(this))
+            {
+                previousValue.HAWBs.Remove(this);
+            }
+    
+            if (Department != null)
+            {
+                if (!Department.HAWBs.Contains(this))
+                {
+                    Department.HAWBs.Add(this);
+                }
+    
+                DID = Department.DID;
+            }
+            else if (!skipKeys)
+            {
+                DID = null;
+            }
+    
+            if (ChangeTracker.ChangeTrackingEnabled)
+            {
+                if (ChangeTracker.OriginalValues.ContainsKey("Department")
+                    && (ChangeTracker.OriginalValues["Department"] == Department))
+                {
+                    ChangeTracker.OriginalValues.Remove("Department");
+                }
+                else
+                {
+                    ChangeTracker.RecordOriginalValue("Department", previousValue);
+                }
+                if (Department != null && !Department.ChangeTracker.ChangeTrackingEnabled)
+                {
+                    Department.StartTracking();
+                }
+            }
+        }
     
         private void FixupPackage(Package previousValue, bool skipKeys = false)
         {
@@ -1017,50 +1061,6 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
                 if (User != null && !User.ChangeTracker.ChangeTrackingEnabled)
                 {
                     User.StartTracking();
-                }
-            }
-        }
-    
-        private void FixupDepartment(Department previousValue, bool skipKeys = false)
-        {
-            if (IsDeserializing)
-            {
-                return;
-            }
-    
-            if (previousValue != null && previousValue.HAWBs.Contains(this))
-            {
-                previousValue.HAWBs.Remove(this);
-            }
-    
-            if (Department != null)
-            {
-                if (!Department.HAWBs.Contains(this))
-                {
-                    Department.HAWBs.Add(this);
-                }
-    
-                DID = Department.DID;
-            }
-            else if (!skipKeys)
-            {
-                DID = null;
-            }
-    
-            if (ChangeTracker.ChangeTrackingEnabled)
-            {
-                if (ChangeTracker.OriginalValues.ContainsKey("Department")
-                    && (ChangeTracker.OriginalValues["Department"] == Department))
-                {
-                    ChangeTracker.OriginalValues.Remove("Department");
-                }
-                else
-                {
-                    ChangeTracker.RecordOriginalValue("Department", previousValue);
-                }
-                if (Department != null && !Department.ChangeTracker.ChangeTrackingEnabled)
-                {
-                    Department.StartTracking();
                 }
             }
         }

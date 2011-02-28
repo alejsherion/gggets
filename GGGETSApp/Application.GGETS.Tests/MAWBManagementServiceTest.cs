@@ -119,6 +119,9 @@ namespace Application.GGETS.Tests
             {
                 MID = Guid.NewGuid(),
                 BarCode="2013",
+                From="TTT",
+                To="TTT",
+                FlightNo="TEST",
                 CreateTime=DateTime.Now,
                 Operator="tester",
                 TotalWeight=20,
@@ -126,21 +129,21 @@ namespace Application.GGETS.Tests
                 Status=0
             };
             //new a fight
-            Flight flight = new Flight
-            {
-                FID=Guid.NewGuid(),
-                FlightNo="T565",
-                From="abc",
-                To="cba",
-                TakeOffTime=DateTime.Now,
-                LandTime=DateTime.Now
-            };
+            //Flight flight = new Flight
+            //{
+            //    FID=Guid.NewGuid(),
+            //    FlightNo="T565",
+            //    From="abc",
+            //    To="cba",
+            //    TakeOffTime=DateTime.Now,
+            //    LandTime=DateTime.Now
+            //};
             Package package = _packageManagementService.FindPackageByBarcode("p1");//获取该总运单需要添加的包裹，可能有多个
             Package package2 = _packageManagementService.FindPackageByBarcode("p2");
             
             mawb.Packages.Add(package);
             mawb.Packages.Add(package2);
-            mawb.Flight.Add(flight);
+            //mawb.Flight.Add(flight);
             _MAWBManagementService.AddMAWB(mawb);
         }
         #endregion
@@ -177,7 +180,7 @@ namespace Application.GGETS.Tests
             #region 总运单中移除包裹，飞机航班测试
             MAWB mawb = _MAWBManagementService.FindMAWBByBarcode("2013");
             mawb.Packages[0].Piece = 999;//修改总运单中第一个包裹的件数
-            mawb.Flight[0].From = "zzz";//修改总运单中航班的起始地
+            //mawb.Flight[0].From = "zzz";//修改总运单中航班的起始地
             mawb.TotalWeight = 999;//修改总运单总重量
             _MAWBManagementService.ModifyMAWB(mawb);//if three condition is all success,then this test is go out
             #endregion
@@ -216,6 +219,19 @@ namespace Application.GGETS.Tests
             previousMAWB.Packages[0].HAWBs.Add(addedHAWB);
 
             Assert.AreEqual(40, previousMAWB.TotalWeight);
+        }
+        #endregion
+
+        #region 通过航班号获取总运单信息
+        /// <summary>
+        ///FindAllMAWBsByFlightNo 的测试
+        ///</summary>
+        [TestMethod()]
+        public void FindAllMAWBsByFlightNoTest()
+        {
+            string flightNo = string.Empty; // 航班号
+            IList<MAWB> actual;
+            actual = _MAWBManagementService.FindAllMAWBsByFlightNo(flightNo);
         }
         #endregion
 

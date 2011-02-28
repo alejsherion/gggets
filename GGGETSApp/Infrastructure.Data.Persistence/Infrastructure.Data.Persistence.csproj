@@ -66,13 +66,14 @@
     <Compile Include="Repositories\CompanyRepository.cs" />
     <Compile Include="Repositories\CountryCodeRepository.cs" />
     <Compile Include="Repositories\DepartmentRepository.cs" />
-    <Compile Include="Repositories\FlightRepository.cs" />
     <Compile Include="Repositories\HAWBBoxRepository.cs" />
     <Compile Include="Repositories\HAWBItemRepository.cs" />
     <Compile Include="Repositories\HAWBRepository.cs" />
     <Compile Include="Repositories\MAWBRepository.cs" />
     <Compile Include="Repositories\PackageRepository.cs" />
+    <Compile Include="Repositories\ParamRepository.cs" />
     <Compile Include="Repositories\RegionCodeRepository.cs" />
+    <Compile Include="Repositories\TemplateRepository.cs" />
     <Compile Include="Repositories\UserRepository.cs" />
     <Compile Include="UnitOfWork\GGGETSAppUnitOfWork.Context.Extensions.cs">
       <DependentUpon>GGGETSAppUnitOfWork.Context.tt</DependentUpon>
