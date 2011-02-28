@@ -64,6 +64,7 @@
     <Compile Include="PackageManagementServiceTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RegionCodeManagementServiceTest.cs" />
+    <Compile Include="TemplateManagementServiceTest.cs" />
     <Compile Include="UserManagementServiceTest.cs" />
   </ItemGroup>
   <ItemGroup>

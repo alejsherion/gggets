@@ -21,9 +21,27 @@ namespace Application.GGETS.PrintTemplate
 {
     public class TemplateManagementService:ITemplateManagementService
     {
+        /// <summary>
+        /// IOC Injecting into
+        /// </summary>
+        ITemplateRepository _templateRepository;
+        public TemplateManagementService(ITemplateRepository templateRepository)
+        {
+            _templateRepository = templateRepository;
+        }
+
+        /// <summary>
+        /// 新增模板
+        /// </summary>
+        /// <param name="template">模板</param>
         public void AddTemplate(Template template)
         {
-            throw new NotImplementedException();
+            if (template == null)
+                throw new ArgumentNullException("Template is null");
+            IUnitOfWork unitOfWork = _templateRepository.UnitOfWork;
+            _templateRepository.Add(template);
+            //complete changes in this unit of work
+            unitOfWork.Commit();
         }
     }
 }

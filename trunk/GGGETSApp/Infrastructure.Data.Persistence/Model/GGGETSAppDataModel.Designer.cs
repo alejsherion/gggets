@@ -3904,27 +3904,27 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Model
         /// </summary>
         /// <param name="mID">MID 属性的初始值。</param>
         /// <param name="barCode">BarCode 属性的初始值。</param>
-        /// <param name="from">From 属性的初始值。</param>
-        /// <param name="to">To 属性的初始值。</param>
-        /// <param name="flightNo">FlightNo 属性的初始值。</param>
         /// <param name="createTime">CreateTime 属性的初始值。</param>
         /// <param name="operator">Operator 属性的初始值。</param>
         /// <param name="totalWeight">TotalWeight 属性的初始值。</param>
         /// <param name="totalVolume">TotalVolume 属性的初始值。</param>
         /// <param name="status">Status 属性的初始值。</param>
-        public static MAWB CreateMAWB(global::System.Guid mID, global::System.String barCode, global::System.String from, global::System.String to, global::System.String flightNo, global::System.DateTime createTime, global::System.String @operator, global::System.Decimal totalWeight, global::System.Decimal totalVolume, global::System.Int32 status)
+        /// <param name="from">From 属性的初始值。</param>
+        /// <param name="to">To 属性的初始值。</param>
+        /// <param name="flightNo">FlightNo 属性的初始值。</param>
+        public static MAWB CreateMAWB(global::System.Guid mID, global::System.String barCode, global::System.DateTime createTime, global::System.String @operator, global::System.Decimal totalWeight, global::System.Decimal totalVolume, global::System.Int32 status, global::System.String from, global::System.String to, global::System.String flightNo)
         {
             MAWB mAWB = new MAWB();
             mAWB.MID = mID;
             mAWB.BarCode = barCode;
-            mAWB.From = from;
-            mAWB.To = to;
-            mAWB.FlightNo = flightNo;
             mAWB.CreateTime = createTime;
             mAWB.Operator = @operator;
             mAWB.TotalWeight = totalWeight;
             mAWB.TotalVolume = totalVolume;
             mAWB.Status = status;
+            mAWB.From = from;
+            mAWB.To = to;
+            mAWB.FlightNo = flightNo;
             return mAWB;
         }
 
@@ -3981,78 +3981,6 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Model
         private global::System.String _BarCode;
         partial void OnBarCodeChanging(global::System.String value);
         partial void OnBarCodeChanged();
-    
-        /// <summary>
-        /// 没有元数据文档可用。
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.String From
-        {
-            get
-            {
-                return _From;
-            }
-            set
-            {
-                OnFromChanging(value);
-                ReportPropertyChanging("From");
-                _From = StructuralObject.SetValidValue(value, false);
-                ReportPropertyChanged("From");
-                OnFromChanged();
-            }
-        }
-        private global::System.String _From;
-        partial void OnFromChanging(global::System.String value);
-        partial void OnFromChanged();
-    
-        /// <summary>
-        /// 没有元数据文档可用。
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.String To
-        {
-            get
-            {
-                return _To;
-            }
-            set
-            {
-                OnToChanging(value);
-                ReportPropertyChanging("To");
-                _To = StructuralObject.SetValidValue(value, false);
-                ReportPropertyChanged("To");
-                OnToChanged();
-            }
-        }
-        private global::System.String _To;
-        partial void OnToChanging(global::System.String value);
-        partial void OnToChanged();
-    
-        /// <summary>
-        /// 没有元数据文档可用。
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.String FlightNo
-        {
-            get
-            {
-                return _FlightNo;
-            }
-            set
-            {
-                OnFlightNoChanging(value);
-                ReportPropertyChanging("FlightNo");
-                _FlightNo = StructuralObject.SetValidValue(value, false);
-                ReportPropertyChanged("FlightNo");
-                OnFlightNoChanged();
-            }
-        }
-        private global::System.String _FlightNo;
-        partial void OnFlightNoChanging(global::System.String value);
-        partial void OnFlightNoChanged();
     
         /// <summary>
         /// 没有元数据文档可用。
@@ -4197,6 +4125,78 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Model
         private global::System.Int32 _Status;
         partial void OnStatusChanging(global::System.Int32 value);
         partial void OnStatusChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String From
+        {
+            get
+            {
+                return _From;
+            }
+            set
+            {
+                OnFromChanging(value);
+                ReportPropertyChanging("From");
+                _From = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("From");
+                OnFromChanged();
+            }
+        }
+        private global::System.String _From;
+        partial void OnFromChanging(global::System.String value);
+        partial void OnFromChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String To
+        {
+            get
+            {
+                return _To;
+            }
+            set
+            {
+                OnToChanging(value);
+                ReportPropertyChanging("To");
+                _To = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("To");
+                OnToChanged();
+            }
+        }
+        private global::System.String _To;
+        partial void OnToChanging(global::System.String value);
+        partial void OnToChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String FlightNo
+        {
+            get
+            {
+                return _FlightNo;
+            }
+            set
+            {
+                OnFlightNoChanging(value);
+                ReportPropertyChanging("FlightNo");
+                _FlightNo = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("FlightNo");
+                OnFlightNoChanged();
+            }
+        }
+        private global::System.String _FlightNo;
+        partial void OnFlightNoChanging(global::System.String value);
+        partial void OnFlightNoChanged();
 
         #endregion
     
@@ -4625,7 +4625,7 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Model
         /// <param name="height">Height 属性的初始值。</param>
         /// <param name="width">Width 属性的初始值。</param>
         /// <param name="paramType">ParamType 属性的初始值。</param>
-        public static Param CreateParam(global::System.Int32 pID, global::System.Int32 tag, global::System.Int32 key, global::System.Int32 value, global::System.Int32 top, global::System.Int32 left, global::System.Int32 height, global::System.Int32 width, global::System.String paramType)
+        public static Param CreateParam(global::System.Guid pID, global::System.Int32 tag, global::System.Int32 key, global::System.Int32 value, global::System.Int32 top, global::System.Int32 left, global::System.Int32 height, global::System.Int32 width, global::System.String paramType)
         {
             Param param = new Param();
             param.PID = pID;
@@ -4648,7 +4648,7 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Model
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.Int32 PID
+        public global::System.Guid PID
         {
             get
             {
@@ -4666,8 +4666,8 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Model
                 }
             }
         }
-        private global::System.Int32 _PID;
-        partial void OnPIDChanging(global::System.Int32 value);
+        private global::System.Guid _PID;
+        partial void OnPIDChanging(global::System.Guid value);
         partial void OnPIDChanged();
     
         /// <summary>
