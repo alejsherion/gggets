@@ -8,7 +8,6 @@
 //************************************************************************
 using System;
 using System.Linq.Expressions;
-using Application.GGETS.PrintTemplate;
 using Domain.GGGETS;
 using ETS.GGGETSApp.Domain.Application.Entities;
 using ETS.GGGETSApp.Infrastructure.CrossCutting.Logging;
@@ -110,10 +109,121 @@ namespace Application.GGETS.Tests
                 ModifyDate=DateTime.Now,//修改日期
                 Operator="admin"//操作人账号
             };
-            Param param = new Param
+            Param param01 = new Param
             {
                 PID=Guid.NewGuid(),//参数编号
+                Tag=1,//参数打印序号
+                Key="条形码",//维护显示名
+                Value = "select barcode from hawb where HID='#key#'",//SQL语句
+                Top=31,//上边距
+                Left=672,//左边距
+                Height=20,//高度
+                Width=100,//宽度
+                //FontName = "宋体",//字体
+                //FontSize=11,//字体大小
+                //Alignment=1,//1-左对齐 2-居中 3-右对齐
+                //Bold=0,//加粗 1-加粗 0-不加粗
+                //Italic=0,//斜体 0-不 1-斜体
+                //Underline=0,//下划线 0-无 1-有 
+                ParamType = "BarCode",//参数类型
             };
+            Param param02 = new Param
+            {
+                PID = Guid.NewGuid(),//参数编号
+                Tag = 2,//参数打印序号
+                Key = "起始地二字码",//维护显示名
+                Value = "select ShipperCountry from hawb where HID='#key#'",//SQL语句
+                Top = 51,//上边距
+                Left = 439,//左边距
+                Height = 20,//高度
+                Width = 100,//宽度
+                FontName = "宋体",//字体
+                FontSize = 9,//字体大小
+                Alignment = 1,//1-左对齐 2-居中 3-右对齐
+                Bold = 0,//加粗 1-加粗 0-不加粗
+                Italic = 0,//斜体 0-不 1-斜体
+                Underline = 0,//下划线 0-无 1-有 
+                ParamType = "Text",//参数类型
+            };
+            Param param03 = new Param
+            {
+                PID = Guid.NewGuid(),//参数编号
+                Tag = 3,//参数打印序号
+                Key = "目的地二字码",//维护显示名
+                Value = "select DeliverCountry from hawb where HID='#key#'",//SQL语句
+                Top = 76,//上边距
+                Left = 438,//左边距
+                Height = 20,//高度
+                Width = 100,//宽度
+                FontName = "宋体",//字体
+                FontSize = 9,//字体大小
+                Alignment = 1,//1-左对齐 2-居中 3-右对齐
+                Bold = 0,//加粗 1-加粗 0-不加粗
+                Italic = 0,//斜体 0-不 1-斜体
+                Underline = 0,//下划线 0-无 1-有 
+                ParamType = "Text",//参数类型
+            };
+            Param param04 = new Param
+            {
+                PID = Guid.NewGuid(),//参数编号
+                Tag = 4,//参数打印序号
+                Key = "发件人姓名",//维护显示名
+                Value = "select ShipperName from hawb where HID='#key#'",//SQL语句
+                Top = 97,//上边距
+                Left = 78,//左边距
+                Height = 20,//高度
+                Width = 100,//宽度
+                FontName = "宋体",//字体
+                FontSize = 9,//字体大小
+                Alignment = 1,//1-左对齐 2-居中 3-右对齐
+                Bold = 0,//加粗 1-加粗 0-不加粗
+                Italic = 0,//斜体 0-不 1-斜体
+                Underline = 0,//下划线 0-无 1-有 
+                ParamType = "Text",//参数类型
+            };
+            Param param05 = new Param
+            {
+                PID = Guid.NewGuid(),//参数编号
+                Tag = 5,//参数打印序号
+                Key = "发件人联系电话",//维护显示名
+                Value = "select ShipperTel from hawb where HID='#key#'",//SQL语句
+                Top = 99,//上边距
+                Left = 244,//左边距
+                Height = 20,//高度
+                Width = 100,//宽度
+                FontName = "宋体",//字体
+                FontSize = 9,//字体大小
+                Alignment = 1,//1-左对齐 2-居中 3-右对齐
+                Bold = 0,//加粗 1-加粗 0-不加粗
+                Italic = 0,//斜体 0-不 1-斜体
+                Underline = 0,//下划线 0-无 1-有 
+                ParamType = "Text",//参数类型
+            };
+            Param param06 = new Param
+            {
+                PID = Guid.NewGuid(),//参数编号
+                Tag = 6,//参数打印序号
+                Key = "发件人公司",//维护显示名
+                Value = "select ShipperName from hawb where HID='#key#'",//SQL语句
+                Top = 127,//上边距
+                Left = 126,//左边距
+                Height = 20,//高度
+                Width = 100,//宽度
+                FontName = "宋体",//字体
+                FontSize = 9,//字体大小
+                Alignment = 1,//1-左对齐 2-居中 3-右对齐
+                Bold = 0,//加粗 1-加粗 0-不加粗
+                Italic = 0,//斜体 0-不 1-斜体
+                Underline = 0,//下划线 0-无 1-有 
+                ParamType = "Text",//参数类型
+            };
+
+            template.Params.Add(param01);
+            template.Params.Add(param02);
+            template.Params.Add(param03);
+            template.Params.Add(param04);
+            template.Params.Add(param05);
+            template.Params.Add(param06);
             _templateManagementService.AddTemplate(template);
             //Assert.Inconclusive("无法验证不返回值的方法。");
         }

@@ -22,7 +22,7 @@ namespace Application.GGETS
         #endregion
 
         #region logic
-        void MaintainDan(int intOrient, int intPageWidth, int intPageHeight, string strPageName, Page page);
+        void MaintainDan(int intOrient, int intPageWidth, int intPageHeight, string strPageName, string identifyKey, int operateType, Page page);
         #endregion
     }
 }

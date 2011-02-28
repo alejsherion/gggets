@@ -90,7 +90,7 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
         private int _tag;
     
         [DataMember]
-        public int Key
+        public string Key
         {
             get { return _key; }
             set
@@ -102,10 +102,10 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
                 }
             }
         }
-        private int _key;
+        private string _key;
     
         [DataMember]
-        public int Value
+        public string Value
         {
             get { return _value; }
             set
@@ -117,7 +117,7 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
                 }
             }
         }
-        private int _value;
+        private string _value;
     
         [DataMember]
         public int Top

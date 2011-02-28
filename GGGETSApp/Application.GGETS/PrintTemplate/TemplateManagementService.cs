@@ -17,7 +17,7 @@ using ETS.GGGETSApp.Domain.Core;
 using ETS.GGGETSApp.Domain.Application.Entities;
 using ETS.GGGETSApp.Domain.Core.Specification;
 
-namespace Application.GGETS.PrintTemplate
+namespace Application.GGETS
 {
     public class TemplateManagementService:ITemplateManagementService
     {

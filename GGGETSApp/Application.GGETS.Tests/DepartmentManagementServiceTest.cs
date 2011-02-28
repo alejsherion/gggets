@@ -155,6 +155,13 @@ namespace Application.GGETS.Tests
                 //收件人邮编
                 ConsigneeTel = "120120",
                 //收件人联系电话
+                DeliverContactor="李宏",
+                DeliverName="李宏",
+                DeliverCountry="AF",
+                DeliverRegion="ABX",
+                DeliverAddress="Japan address",
+                DeliverZipCode="201011",
+                DeliverTel="120120",
                 WeightType = 2,
                 //计重方式
                 TotalVolume = 10,
@@ -198,15 +205,22 @@ namespace Application.GGETS.Tests
                 //收件人姓名
                 ConsigneeName="李宏",
                 //收件人名称或公司
-                ConsigneeCountry = "02",
+                ConsigneeCountry = "JP",
                 //收件人国家
-                ConsigneeRegion = "022",
+                ConsigneeRegion = "TKO",
                 //收件人区号
-                ConsigneeAddress = "Japan address",
+                ConsigneeAddress = "Japan address2",
                 //收件人地址
-                ConsigneeZipCode = "201011",
+                ConsigneeZipCode = "111111",
                 //收件人邮编
-                ConsigneeTel = "120120",
+                ConsigneeTel = "222222",
+                DeliverContactor = "李宏",
+                DeliverName = "李宏",
+                DeliverCountry = "JP",
+                DeliverRegion = "TKO",
+                DeliverAddress = "Japan address2",
+                DeliverZipCode = "111111",
+                DeliverTel = "222222",
                 //收件人联系电话
                 WeightType = 2,
                 //计重方式
