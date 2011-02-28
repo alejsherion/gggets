@@ -352,6 +352,20 @@ namespace Application.GGETS.Tests
         }
         #endregion
 
+        #region 判断运单和包裹字码是否重复不能添加问题测试
+        /// <summary>
+        ///JudgeHAWBOfPackageRepeat 的测试
+        ///</summary>
+        [TestMethod()]
+        public void JudgeHAWBOfPackageRepeatTest()
+        {
+            string HAWBBarcode = "2010"; // HAWB运单号
+            string packageBarcode = "p3"; // 包裹号
+            bool actual;
+            actual = _HAWBManagementService.JudgeHAWBOfPackageRepeat(HAWBBarcode, packageBarcode);
+        }
+        #endregion
+
         public override Expression<Func<HAWB, bool>> FilterExpression
         {
             get { throw new NotImplementedException(); }

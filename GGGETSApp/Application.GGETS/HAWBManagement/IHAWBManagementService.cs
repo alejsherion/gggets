@@ -27,5 +27,7 @@ namespace Application.GGETS
         //Flight FindFlightByFID(string FID);
         IList<HAWB> FindHAWBsOfPackageByCondition(string barCode, DateTime? beginDate, DateTime? endDate,
                                                   string destinationCode);
+
+        bool JudgeHAWBOfPackageRepeat(string HAWBBarcode, string packageBarcode);
     }
 }
