@@ -79,14 +79,17 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
         public bool JudgeHAWB(HAWB hawb)
         {
             bool judge = true;
-            if(this.HAWBs.Count!=0)
+            if (string.IsNullOrEmpty(Convert.ToString(hawb.PID)))
             {
-                foreach(HAWB hawbObj in this.HAWBs)
+                if (this.HAWBs.Count != 0)
                 {
-                    if(hawb.BarCode.Equals(hawbObj.BarCode))
+                    foreach (HAWB hawbObj in this.HAWBs)
                     {
-                        judge = false;
-                        break;
+                        if (hawb.BarCode.Equals(hawbObj.BarCode))
+                        {
+                            judge = false;
+                            break;
+                        }
                     }
                 }
             }
