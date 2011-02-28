@@ -90,5 +90,15 @@ namespace Application.GGETS
         {
             return _mawbRepository.FindAllMAWBsByFlightNo(flightNo);
         }
+
+        /// <summary>
+        /// 通过MID获取总运单
+        /// </summary>
+        /// <param name="MID">总运单编号</param>
+        /// <returns></returns>
+        public MAWB FindMAWBByMID(string MID)
+        {
+            return _mawbRepository.FindMAWBByMID(MID);
+        }
     }
 }

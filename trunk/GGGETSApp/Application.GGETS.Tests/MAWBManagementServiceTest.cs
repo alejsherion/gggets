@@ -235,6 +235,19 @@ namespace Application.GGETS.Tests
         }
         #endregion
 
+        #region 通过MID获取总运单
+        /// <summary>
+        ///FindMAWBByMID 的测试
+        ///</summary>
+        [TestMethod()]
+        public void FindMAWBByMIDTest()
+        {
+            string MID = string.Empty; // 总运单号
+            MAWB actual;
+            actual = _MAWBManagementService.FindMAWBByMID(MID);
+        }
+        #endregion
+
         public override Expression<Func<MAWB, bool>> FilterExpression
         {
             get { throw new NotImplementedException(); }

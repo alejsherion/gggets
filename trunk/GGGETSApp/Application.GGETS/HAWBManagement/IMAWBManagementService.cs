@@ -21,5 +21,6 @@ namespace Application.GGETS
         void ModifyMAWB(MAWB mawb);
         IList<MAWB> FindMAWBByCondition(string barCode, DateTime? beginDate, DateTime? endDate);
         IList<MAWB> FindAllMAWBsByFlightNo(string flightNo);
+        MAWB FindMAWBByMID(string MID);
     }
 }

@@ -76,7 +76,9 @@
     <Compile Include="PARAM\IRegionCodeManagementService.cs" />
     <Compile Include="PARAM\RegionCodeManagementService.cs" />
     <Compile Include="PrintTemplate\IParamManagementService.cs" />
+    <Compile Include="PrintTemplate\ITemplateManagementService.cs" />
     <Compile Include="PrintTemplate\ParamManagementService.cs" />
+    <Compile Include="PrintTemplate\TemplateManagementService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
