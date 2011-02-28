@@ -44,6 +44,7 @@
     <Reference Include="System.Data.Entity" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
@@ -57,7 +58,6 @@
     <Compile Include="CompanyManagementServiceTest.cs" />
     <Compile Include="CountryCodeManagementServiceTest.cs" />
     <Compile Include="DepartmentManagementServiceTest.cs" />
-    <Compile Include="FlightManagementServiceTest.cs" />
     <Compile Include="GenericRepositoryTestsBase.cs" />
     <Compile Include="HAWBManagementServiceTest.cs" />
     <Compile Include="MAWBManagementServiceTest.cs" />

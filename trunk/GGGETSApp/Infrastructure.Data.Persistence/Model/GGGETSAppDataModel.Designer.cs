@@ -20,16 +20,16 @@ using System.Runtime.Serialization;
 
 [assembly: EdmRelationshipAttribute("MYGGGETSModel", "FK_ADDRESSB_REFERENCE_DEPARTME", "Department", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(ETS.GGGETSApp.Infrastructure.Data.Persistence.Model.Department), "AddressBook", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ETS.GGGETSApp.Infrastructure.Data.Persistence.Model.AddressBook), true)]
 [assembly: EdmRelationshipAttribute("MYGGGETSModel", "FK_ADDRESSB_REFERENCE_USER", "User", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(ETS.GGGETSApp.Infrastructure.Data.Persistence.Model.User), "AddressBook", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ETS.GGGETSApp.Infrastructure.Data.Persistence.Model.AddressBook), true)]
+[assembly: EdmRelationshipAttribute("MYGGGETSModel", "FK_PRIVILEG_REFERENCE_APPMODUL", "AppModule", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(ETS.GGGETSApp.Infrastructure.Data.Persistence.Model.AppModule), "Privilege", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ETS.GGGETSApp.Infrastructure.Data.Persistence.Model.Privilege), true)]
 [assembly: EdmRelationshipAttribute("MYGGGETSModel", "FK_DEPARTME_REFERENCE_COMPANY", "Company", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(ETS.GGGETSApp.Infrastructure.Data.Persistence.Model.Company), "Department", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ETS.GGGETSApp.Infrastructure.Data.Persistence.Model.Department), true)]
+[assembly: EdmRelationshipAttribute("MYGGGETSModel", "FK_HAWB_REFERENCE_DEPARTME", "Department", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(ETS.GGGETSApp.Infrastructure.Data.Persistence.Model.Department), "HAWB", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ETS.GGGETSApp.Infrastructure.Data.Persistence.Model.HAWB), true)]
 [assembly: EdmRelationshipAttribute("MYGGGETSModel", "FK_USER_REFERENCE_DEPARTME", "Department", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(ETS.GGGETSApp.Infrastructure.Data.Persistence.Model.Department), "User", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ETS.GGGETSApp.Infrastructure.Data.Persistence.Model.User), true)]
-[assembly: EdmRelationshipAttribute("MYGGGETSModel", "FK_FLIGHT_REFERENCE_MAWB", "MAWB", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(ETS.GGGETSApp.Infrastructure.Data.Persistence.Model.MAWB), "Flight", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ETS.GGGETSApp.Infrastructure.Data.Persistence.Model.Flight), true)]
 [assembly: EdmRelationshipAttribute("MYGGGETSModel", "FK_HAWB_REFERENCE_PACKAGE", "Package", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(ETS.GGGETSApp.Infrastructure.Data.Persistence.Model.Package), "HAWB", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ETS.GGGETSApp.Infrastructure.Data.Persistence.Model.HAWB), true)]
 [assembly: EdmRelationshipAttribute("MYGGGETSModel", "FK_HAWB_REFERENCE_USER", "User", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(ETS.GGGETSApp.Infrastructure.Data.Persistence.Model.User), "HAWB", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ETS.GGGETSApp.Infrastructure.Data.Persistence.Model.HAWB), true)]
 [assembly: EdmRelationshipAttribute("MYGGGETSModel", "FK_HAWBBOX_REFERENCE_HAWB", "HAWB", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ETS.GGGETSApp.Infrastructure.Data.Persistence.Model.HAWB), "HAWBBox", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ETS.GGGETSApp.Infrastructure.Data.Persistence.Model.HAWBBox), true)]
 [assembly: EdmRelationshipAttribute("MYGGGETSModel", "FK_HAWBITEM_REFERENCE_HAWB", "HAWB", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(ETS.GGGETSApp.Infrastructure.Data.Persistence.Model.HAWB), "HAWBItem", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ETS.GGGETSApp.Infrastructure.Data.Persistence.Model.HAWBItem), true)]
 [assembly: EdmRelationshipAttribute("MYGGGETSModel", "FK_PACKAGE_REFERENCE_MAWB", "MAWB", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(ETS.GGGETSApp.Infrastructure.Data.Persistence.Model.MAWB), "Package", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ETS.GGGETSApp.Infrastructure.Data.Persistence.Model.Package), true)]
-[assembly: EdmRelationshipAttribute("MYGGGETSModel", "FK_HAWB_REFERENCE_DEPARTME", "Department", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(ETS.GGGETSApp.Infrastructure.Data.Persistence.Model.Department), "HAWB", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ETS.GGGETSApp.Infrastructure.Data.Persistence.Model.HAWB), true)]
-[assembly: EdmRelationshipAttribute("MYGGGETSModel", "FK_PRIVILEG_REFERENCE_APPMODUL", "AppModule", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(ETS.GGGETSApp.Infrastructure.Data.Persistence.Model.AppModule), "Privilege", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ETS.GGGETSApp.Infrastructure.Data.Persistence.Model.Privilege), true)]
+[assembly: EdmRelationshipAttribute("MYGGGETSModel", "FK_PARAM_FK_PARAM__TEMPLATE", "Template", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(ETS.GGGETSApp.Infrastructure.Data.Persistence.Model.Template), "Param", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ETS.GGGETSApp.Infrastructure.Data.Persistence.Model.Param), true)]
 
 #endregion
 
@@ -100,6 +100,22 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Model
         /// <summary>
         /// 没有元数据文档可用。
         /// </summary>
+        public ObjectSet<AppModule> AppModule
+        {
+            get
+            {
+                if ((_AppModule == null))
+                {
+                    _AppModule = base.CreateObjectSet<AppModule>("AppModule");
+                }
+                return _AppModule;
+            }
+        }
+        private ObjectSet<AppModule> _AppModule;
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
         public ObjectSet<Company> Company
         {
             get
@@ -144,22 +160,6 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Model
             }
         }
         private ObjectSet<Department> _Department;
-    
-        /// <summary>
-        /// 没有元数据文档可用。
-        /// </summary>
-        public ObjectSet<Flight> Flight
-        {
-            get
-            {
-                if ((_Flight == null))
-                {
-                    _Flight = base.CreateObjectSet<Flight>("Flight");
-                }
-                return _Flight;
-            }
-        }
-        private ObjectSet<Flight> _Flight;
     
         /// <summary>
         /// 没有元数据文档可用。
@@ -244,50 +244,18 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Model
         /// <summary>
         /// 没有元数据文档可用。
         /// </summary>
-        public ObjectSet<RegionCode> RegionCode
+        public ObjectSet<Param> Param
         {
             get
             {
-                if ((_RegionCode == null))
+                if ((_Param == null))
                 {
-                    _RegionCode = base.CreateObjectSet<RegionCode>("RegionCode");
+                    _Param = base.CreateObjectSet<Param>("Param");
                 }
-                return _RegionCode;
+                return _Param;
             }
         }
-        private ObjectSet<RegionCode> _RegionCode;
-    
-        /// <summary>
-        /// 没有元数据文档可用。
-        /// </summary>
-        public ObjectSet<User> User
-        {
-            get
-            {
-                if ((_User == null))
-                {
-                    _User = base.CreateObjectSet<User>("User");
-                }
-                return _User;
-            }
-        }
-        private ObjectSet<User> _User;
-    
-        /// <summary>
-        /// 没有元数据文档可用。
-        /// </summary>
-        public ObjectSet<AppModule> AppModule
-        {
-            get
-            {
-                if ((_AppModule == null))
-                {
-                    _AppModule = base.CreateObjectSet<AppModule>("AppModule");
-                }
-                return _AppModule;
-            }
-        }
-        private ObjectSet<AppModule> _AppModule;
+        private ObjectSet<Param> _Param;
     
         /// <summary>
         /// 没有元数据文档可用。
@@ -304,6 +272,54 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Model
             }
         }
         private ObjectSet<Privilege> _Privilege;
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        public ObjectSet<RegionCode> RegionCode
+        {
+            get
+            {
+                if ((_RegionCode == null))
+                {
+                    _RegionCode = base.CreateObjectSet<RegionCode>("RegionCode");
+                }
+                return _RegionCode;
+            }
+        }
+        private ObjectSet<RegionCode> _RegionCode;
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        public ObjectSet<Template> Template
+        {
+            get
+            {
+                if ((_Template == null))
+                {
+                    _Template = base.CreateObjectSet<Template>("Template");
+                }
+                return _Template;
+            }
+        }
+        private ObjectSet<Template> _Template;
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        public ObjectSet<User> User
+        {
+            get
+            {
+                if ((_User == null))
+                {
+                    _User = base.CreateObjectSet<User>("User");
+                }
+                return _User;
+            }
+        }
+        private ObjectSet<User> _User;
 
         #endregion
         #region AddTo 方法
@@ -314,6 +330,14 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Model
         public void AddToAddressBook(AddressBook addressBook)
         {
             base.AddObject("AddressBook", addressBook);
+        }
+    
+        /// <summary>
+        /// 用于向 AppModule EntitySet 添加新对象的方法，已弃用。请考虑改用关联的 ObjectSet&lt;T&gt; 属性的 .Add 方法。
+        /// </summary>
+        public void AddToAppModule(AppModule appModule)
+        {
+            base.AddObject("AppModule", appModule);
         }
     
         /// <summary>
@@ -338,14 +362,6 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Model
         public void AddToDepartment(Department department)
         {
             base.AddObject("Department", department);
-        }
-    
-        /// <summary>
-        /// 用于向 Flight EntitySet 添加新对象的方法，已弃用。请考虑改用关联的 ObjectSet&lt;T&gt; 属性的 .Add 方法。
-        /// </summary>
-        public void AddToFlight(Flight flight)
-        {
-            base.AddObject("Flight", flight);
         }
     
         /// <summary>
@@ -389,27 +405,11 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Model
         }
     
         /// <summary>
-        /// 用于向 RegionCode EntitySet 添加新对象的方法，已弃用。请考虑改用关联的 ObjectSet&lt;T&gt; 属性的 .Add 方法。
+        /// 用于向 Param EntitySet 添加新对象的方法，已弃用。请考虑改用关联的 ObjectSet&lt;T&gt; 属性的 .Add 方法。
         /// </summary>
-        public void AddToRegionCode(RegionCode regionCode)
+        public void AddToParam(Param param)
         {
-            base.AddObject("RegionCode", regionCode);
-        }
-    
-        /// <summary>
-        /// 用于向 User EntitySet 添加新对象的方法，已弃用。请考虑改用关联的 ObjectSet&lt;T&gt; 属性的 .Add 方法。
-        /// </summary>
-        public void AddToUser(User user)
-        {
-            base.AddObject("User", user);
-        }
-    
-        /// <summary>
-        /// 用于向 AppModule EntitySet 添加新对象的方法，已弃用。请考虑改用关联的 ObjectSet&lt;T&gt; 属性的 .Add 方法。
-        /// </summary>
-        public void AddToAppModule(AppModule appModule)
-        {
-            base.AddObject("AppModule", appModule);
+            base.AddObject("Param", param);
         }
     
         /// <summary>
@@ -418,6 +418,30 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Model
         public void AddToPrivilege(Privilege privilege)
         {
             base.AddObject("Privilege", privilege);
+        }
+    
+        /// <summary>
+        /// 用于向 RegionCode EntitySet 添加新对象的方法，已弃用。请考虑改用关联的 ObjectSet&lt;T&gt; 属性的 .Add 方法。
+        /// </summary>
+        public void AddToRegionCode(RegionCode regionCode)
+        {
+            base.AddObject("RegionCode", regionCode);
+        }
+    
+        /// <summary>
+        /// 用于向 Template EntitySet 添加新对象的方法，已弃用。请考虑改用关联的 ObjectSet&lt;T&gt; 属性的 .Add 方法。
+        /// </summary>
+        public void AddToTemplate(Template template)
+        {
+            base.AddObject("Template", template);
+        }
+    
+        /// <summary>
+        /// 用于向 User EntitySet 添加新对象的方法，已弃用。请考虑改用关联的 ObjectSet&lt;T&gt; 属性的 .Add 方法。
+        /// </summary>
+        public void AddToUser(User user)
+        {
+            base.AddObject("User", user);
         }
 
         #endregion
@@ -1625,6 +1649,7 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Model
         /// 创建新的 Department 对象。
         /// </summary>
         /// <param name="dID">DID 属性的初始值。</param>
+        /// <param name="companyCode">CompanyCode 属性的初始值。</param>
         /// <param name="depCode">DepCode 属性的初始值。</param>
         /// <param name="feeDiscountType">FeeDiscountType 属性的初始值。</param>
         /// <param name="feeDiscountRate">FeeDiscountRate 属性的初始值。</param>
@@ -1632,11 +1657,11 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Model
         /// <param name="weightDiscountRate">WeightDiscountRate 属性的初始值。</param>
         /// <param name="settleType">SettleType 属性的初始值。</param>
         /// <param name="weightCalType">WeightCalType 属性的初始值。</param>
-        /// <param name="companyCode">CompanyCode 属性的初始值。</param>
-        public static Department CreateDepartment(global::System.Guid dID, global::System.String depCode, global::System.Int32 feeDiscountType, global::System.Decimal feeDiscountRate, global::System.Int32 weightDiscountType, global::System.Decimal weightDiscountRate, global::System.Int32 settleType, global::System.Int32 weightCalType, global::System.String companyCode)
+        public static Department CreateDepartment(global::System.Guid dID, global::System.String companyCode, global::System.String depCode, global::System.Int32 feeDiscountType, global::System.Decimal feeDiscountRate, global::System.Int32 weightDiscountType, global::System.Decimal weightDiscountRate, global::System.Int32 settleType, global::System.Int32 weightCalType)
         {
             Department department = new Department();
             department.DID = dID;
+            department.CompanyCode = companyCode;
             department.DepCode = depCode;
             department.FeeDiscountType = feeDiscountType;
             department.FeeDiscountRate = feeDiscountRate;
@@ -1644,7 +1669,6 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Model
             department.WeightDiscountRate = weightDiscountRate;
             department.SettleType = settleType;
             department.WeightCalType = weightCalType;
-            department.CompanyCode = companyCode;
             return department;
         }
 
@@ -1701,6 +1725,30 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Model
         private Nullable<global::System.Guid> _CID;
         partial void OnCIDChanging(Nullable<global::System.Guid> value);
         partial void OnCIDChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String CompanyCode
+        {
+            get
+            {
+                return _CompanyCode;
+            }
+            set
+            {
+                OnCompanyCodeChanging(value);
+                ReportPropertyChanging("CompanyCode");
+                _CompanyCode = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("CompanyCode");
+                OnCompanyCodeChanged();
+            }
+        }
+        private global::System.String _CompanyCode;
+        partial void OnCompanyCodeChanging(global::System.String value);
+        partial void OnCompanyCodeChanged();
     
         /// <summary>
         /// 没有元数据文档可用。
@@ -1893,30 +1941,6 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Model
         private global::System.Int32 _WeightCalType;
         partial void OnWeightCalTypeChanging(global::System.Int32 value);
         partial void OnWeightCalTypeChanged();
-    
-        /// <summary>
-        /// 没有元数据文档可用。
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.String CompanyCode
-        {
-            get
-            {
-                return _CompanyCode;
-            }
-            set
-            {
-                OnCompanyCodeChanging(value);
-                ReportPropertyChanging("CompanyCode");
-                _CompanyCode = StructuralObject.SetValidValue(value, false);
-                ReportPropertyChanged("CompanyCode");
-                OnCompanyCodeChanged();
-            }
-        }
-        private global::System.String _CompanyCode;
-        partial void OnCompanyCodeChanging(global::System.String value);
-        partial void OnCompanyCodeChanged();
 
         #endregion
     
@@ -1988,28 +2012,6 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Model
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("MYGGGETSModel", "FK_USER_REFERENCE_DEPARTME", "User")]
-        public EntityCollection<User> Users
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<User>("MYGGGETSModel.FK_USER_REFERENCE_DEPARTME", "User");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<User>("MYGGGETSModel.FK_USER_REFERENCE_DEPARTME", "User", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// 没有元数据文档可用。
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("MYGGGETSModel", "FK_HAWB_REFERENCE_DEPARTME", "HAWB")]
         public EntityCollection<HAWB> HAWBs
         {
@@ -2025,214 +2027,6 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Model
                 }
             }
         }
-
-        #endregion
-    }
-    
-    /// <summary>
-    /// 没有元数据文档可用。
-    /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="MYGGGETSModel", Name="Flight")]
-    [Serializable()]
-    [DataContractAttribute(IsReference=true)]
-    public partial class Flight : EntityObject
-    {
-        #region 工厂方法
-    
-        /// <summary>
-        /// 创建新的 Flight 对象。
-        /// </summary>
-        /// <param name="fID">FID 属性的初始值。</param>
-        /// <param name="flightNo">FlightNo 属性的初始值。</param>
-        /// <param name="from">From 属性的初始值。</param>
-        /// <param name="to">To 属性的初始值。</param>
-        public static Flight CreateFlight(global::System.Guid fID, global::System.String flightNo, global::System.String from, global::System.String to)
-        {
-            Flight flight = new Flight();
-            flight.FID = fID;
-            flight.FlightNo = flightNo;
-            flight.From = from;
-            flight.To = to;
-            return flight;
-        }
-
-        #endregion
-        #region 基元属性
-    
-        /// <summary>
-        /// 没有元数据文档可用。
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.Guid FID
-        {
-            get
-            {
-                return _FID;
-            }
-            set
-            {
-                if (_FID != value)
-                {
-                    OnFIDChanging(value);
-                    ReportPropertyChanging("FID");
-                    _FID = StructuralObject.SetValidValue(value);
-                    ReportPropertyChanged("FID");
-                    OnFIDChanged();
-                }
-            }
-        }
-        private global::System.Guid _FID;
-        partial void OnFIDChanging(global::System.Guid value);
-        partial void OnFIDChanged();
-    
-        /// <summary>
-        /// 没有元数据文档可用。
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public Nullable<global::System.Guid> MID
-        {
-            get
-            {
-                return _MID;
-            }
-            set
-            {
-                OnMIDChanging(value);
-                ReportPropertyChanging("MID");
-                _MID = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("MID");
-                OnMIDChanged();
-            }
-        }
-        private Nullable<global::System.Guid> _MID;
-        partial void OnMIDChanging(Nullable<global::System.Guid> value);
-        partial void OnMIDChanged();
-    
-        /// <summary>
-        /// 没有元数据文档可用。
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.String FlightNo
-        {
-            get
-            {
-                return _FlightNo;
-            }
-            set
-            {
-                OnFlightNoChanging(value);
-                ReportPropertyChanging("FlightNo");
-                _FlightNo = StructuralObject.SetValidValue(value, false);
-                ReportPropertyChanged("FlightNo");
-                OnFlightNoChanged();
-            }
-        }
-        private global::System.String _FlightNo;
-        partial void OnFlightNoChanging(global::System.String value);
-        partial void OnFlightNoChanged();
-    
-        /// <summary>
-        /// 没有元数据文档可用。
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.String From
-        {
-            get
-            {
-                return _From;
-            }
-            set
-            {
-                OnFromChanging(value);
-                ReportPropertyChanging("From");
-                _From = StructuralObject.SetValidValue(value, false);
-                ReportPropertyChanged("From");
-                OnFromChanged();
-            }
-        }
-        private global::System.String _From;
-        partial void OnFromChanging(global::System.String value);
-        partial void OnFromChanged();
-    
-        /// <summary>
-        /// 没有元数据文档可用。
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.String To
-        {
-            get
-            {
-                return _To;
-            }
-            set
-            {
-                OnToChanging(value);
-                ReportPropertyChanging("To");
-                _To = StructuralObject.SetValidValue(value, false);
-                ReportPropertyChanged("To");
-                OnToChanged();
-            }
-        }
-        private global::System.String _To;
-        partial void OnToChanging(global::System.String value);
-        partial void OnToChanged();
-    
-        /// <summary>
-        /// 没有元数据文档可用。
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public Nullable<global::System.DateTime> TakeOffTime
-        {
-            get
-            {
-                return _TakeOffTime;
-            }
-            set
-            {
-                OnTakeOffTimeChanging(value);
-                ReportPropertyChanging("TakeOffTime");
-                _TakeOffTime = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("TakeOffTime");
-                OnTakeOffTimeChanged();
-            }
-        }
-        private Nullable<global::System.DateTime> _TakeOffTime;
-        partial void OnTakeOffTimeChanging(Nullable<global::System.DateTime> value);
-        partial void OnTakeOffTimeChanged();
-    
-        /// <summary>
-        /// 没有元数据文档可用。
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public Nullable<global::System.DateTime> LandTime
-        {
-            get
-            {
-                return _LandTime;
-            }
-            set
-            {
-                OnLandTimeChanging(value);
-                ReportPropertyChanging("LandTime");
-                _LandTime = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("LandTime");
-                OnLandTimeChanged();
-            }
-        }
-        private Nullable<global::System.DateTime> _LandTime;
-        partial void OnLandTimeChanging(Nullable<global::System.DateTime> value);
-        partial void OnLandTimeChanged();
-
-        #endregion
-    
-        #region 导航属性
     
         /// <summary>
         /// 没有元数据文档可用。
@@ -2240,34 +2034,18 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Model
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("MYGGGETSModel", "FK_FLIGHT_REFERENCE_MAWB", "MAWB")]
-        public MAWB MAWBs
+        [EdmRelationshipNavigationPropertyAttribute("MYGGGETSModel", "FK_USER_REFERENCE_DEPARTME", "User")]
+        public EntityCollection<User> Users
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<MAWB>("MYGGGETSModel.FK_FLIGHT_REFERENCE_MAWB", "MAWB").Value;
-            }
-            set
-            {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<MAWB>("MYGGGETSModel.FK_FLIGHT_REFERENCE_MAWB", "MAWB").Value = value;
-            }
-        }
-        /// <summary>
-        /// 没有元数据文档可用。
-        /// </summary>
-        [BrowsableAttribute(false)]
-        [DataMemberAttribute()]
-        public EntityReference<MAWB> MAWBsReference
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<MAWB>("MYGGGETSModel.FK_FLIGHT_REFERENCE_MAWB", "MAWB");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<User>("MYGGGETSModel.FK_USER_REFERENCE_DEPARTME", "User");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<MAWB>("MYGGGETSModel.FK_FLIGHT_REFERENCE_MAWB", "MAWB", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<User>("MYGGGETSModel.FK_USER_REFERENCE_DEPARTME", "User", value);
                 }
             }
         }
@@ -2415,6 +2193,30 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Model
         private Nullable<global::System.Guid> _UID;
         partial void OnUIDChanging(Nullable<global::System.Guid> value);
         partial void OnUIDChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Guid> DID
+        {
+            get
+            {
+                return _DID;
+            }
+            set
+            {
+                OnDIDChanging(value);
+                ReportPropertyChanging("DID");
+                _DID = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("DID");
+                OnDIDChanged();
+            }
+        }
+        private Nullable<global::System.Guid> _DID;
+        partial void OnDIDChanging(Nullable<global::System.Guid> value);
+        partial void OnDIDChanged();
     
         /// <summary>
         /// 没有元数据文档可用。
@@ -3351,34 +3153,48 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Model
         private Nullable<global::System.Int32> _BillTax;
         partial void OnBillTaxChanging(Nullable<global::System.Int32> value);
         partial void OnBillTaxChanged();
-    
-        /// <summary>
-        /// 没有元数据文档可用。
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public Nullable<global::System.Guid> DID
-        {
-            get
-            {
-                return _DID;
-            }
-            set
-            {
-                OnDIDChanging(value);
-                ReportPropertyChanging("DID");
-                _DID = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("DID");
-                OnDIDChanged();
-            }
-        }
-        private Nullable<global::System.Guid> _DID;
-        partial void OnDIDChanging(Nullable<global::System.Guid> value);
-        partial void OnDIDChanged();
 
         #endregion
     
         #region 导航属性
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("MYGGGETSModel", "FK_HAWB_REFERENCE_DEPARTME", "Department")]
+        public Department Department
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Department>("MYGGGETSModel.FK_HAWB_REFERENCE_DEPARTME", "Department").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Department>("MYGGGETSModel.FK_HAWB_REFERENCE_DEPARTME", "Department").Value = value;
+            }
+        }
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<Department> DepartmentReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Department>("MYGGGETSModel.FK_HAWB_REFERENCE_DEPARTME", "Department");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Department>("MYGGGETSModel.FK_HAWB_REFERENCE_DEPARTME", "Department", value);
+                }
+            }
+        }
     
         /// <summary>
         /// 没有元数据文档可用。
@@ -3496,44 +3312,6 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Model
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<HAWBItem>("MYGGGETSModel.FK_HAWBITEM_REFERENCE_HAWB", "HAWBItem", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// 没有元数据文档可用。
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("MYGGGETSModel", "FK_HAWB_REFERENCE_DEPARTME", "Department")]
-        public Department Department
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Department>("MYGGGETSModel.FK_HAWB_REFERENCE_DEPARTME", "Department").Value;
-            }
-            set
-            {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Department>("MYGGGETSModel.FK_HAWB_REFERENCE_DEPARTME", "Department").Value = value;
-            }
-        }
-        /// <summary>
-        /// 没有元数据文档可用。
-        /// </summary>
-        [BrowsableAttribute(false)]
-        [DataMemberAttribute()]
-        public EntityReference<Department> DepartmentReference
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Department>("MYGGGETSModel.FK_HAWB_REFERENCE_DEPARTME", "Department");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Department>("MYGGGETSModel.FK_HAWB_REFERENCE_DEPARTME", "Department", value);
                 }
             }
         }
@@ -4126,16 +3904,22 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Model
         /// </summary>
         /// <param name="mID">MID 属性的初始值。</param>
         /// <param name="barCode">BarCode 属性的初始值。</param>
+        /// <param name="from">From 属性的初始值。</param>
+        /// <param name="to">To 属性的初始值。</param>
+        /// <param name="flightNo">FlightNo 属性的初始值。</param>
         /// <param name="createTime">CreateTime 属性的初始值。</param>
         /// <param name="operator">Operator 属性的初始值。</param>
         /// <param name="totalWeight">TotalWeight 属性的初始值。</param>
         /// <param name="totalVolume">TotalVolume 属性的初始值。</param>
         /// <param name="status">Status 属性的初始值。</param>
-        public static MAWB CreateMAWB(global::System.Guid mID, global::System.String barCode, global::System.DateTime createTime, global::System.String @operator, global::System.Decimal totalWeight, global::System.Decimal totalVolume, global::System.Int32 status)
+        public static MAWB CreateMAWB(global::System.Guid mID, global::System.String barCode, global::System.String from, global::System.String to, global::System.String flightNo, global::System.DateTime createTime, global::System.String @operator, global::System.Decimal totalWeight, global::System.Decimal totalVolume, global::System.Int32 status)
         {
             MAWB mAWB = new MAWB();
             mAWB.MID = mID;
             mAWB.BarCode = barCode;
+            mAWB.From = from;
+            mAWB.To = to;
+            mAWB.FlightNo = flightNo;
             mAWB.CreateTime = createTime;
             mAWB.Operator = @operator;
             mAWB.TotalWeight = totalWeight;
@@ -4197,6 +3981,78 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Model
         private global::System.String _BarCode;
         partial void OnBarCodeChanging(global::System.String value);
         partial void OnBarCodeChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String From
+        {
+            get
+            {
+                return _From;
+            }
+            set
+            {
+                OnFromChanging(value);
+                ReportPropertyChanging("From");
+                _From = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("From");
+                OnFromChanged();
+            }
+        }
+        private global::System.String _From;
+        partial void OnFromChanging(global::System.String value);
+        partial void OnFromChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String To
+        {
+            get
+            {
+                return _To;
+            }
+            set
+            {
+                OnToChanging(value);
+                ReportPropertyChanging("To");
+                _To = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("To");
+                OnToChanged();
+            }
+        }
+        private global::System.String _To;
+        partial void OnToChanging(global::System.String value);
+        partial void OnToChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String FlightNo
+        {
+            get
+            {
+                return _FlightNo;
+            }
+            set
+            {
+                OnFlightNoChanging(value);
+                ReportPropertyChanging("FlightNo");
+                _FlightNo = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("FlightNo");
+                OnFlightNoChanged();
+            }
+        }
+        private global::System.String _FlightNo;
+        partial void OnFlightNoChanging(global::System.String value);
+        partial void OnFlightNoChanged();
     
         /// <summary>
         /// 没有元数据文档可用。
@@ -4345,28 +4201,6 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Model
         #endregion
     
         #region 导航属性
-    
-        /// <summary>
-        /// 没有元数据文档可用。
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("MYGGGETSModel", "FK_FLIGHT_REFERENCE_MAWB", "Flight")]
-        public EntityCollection<Flight> Flight
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Flight>("MYGGGETSModel.FK_FLIGHT_REFERENCE_MAWB", "Flight");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Flight>("MYGGGETSModel.FK_FLIGHT_REFERENCE_MAWB", "Flight", value);
-                }
-            }
-        }
     
         /// <summary>
         /// 没有元数据文档可用。
@@ -4772,6 +4606,502 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Model
     /// <summary>
     /// 没有元数据文档可用。
     /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="MYGGGETSModel", Name="Param")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class Param : EntityObject
+    {
+        #region 工厂方法
+    
+        /// <summary>
+        /// 创建新的 Param 对象。
+        /// </summary>
+        /// <param name="pID">PID 属性的初始值。</param>
+        /// <param name="tag">Tag 属性的初始值。</param>
+        /// <param name="key">Key 属性的初始值。</param>
+        /// <param name="value">Value 属性的初始值。</param>
+        /// <param name="top">Top 属性的初始值。</param>
+        /// <param name="left">Left 属性的初始值。</param>
+        /// <param name="height">Height 属性的初始值。</param>
+        /// <param name="width">Width 属性的初始值。</param>
+        /// <param name="paramType">ParamType 属性的初始值。</param>
+        public static Param CreateParam(global::System.Int32 pID, global::System.Int32 tag, global::System.Int32 key, global::System.Int32 value, global::System.Int32 top, global::System.Int32 left, global::System.Int32 height, global::System.Int32 width, global::System.String paramType)
+        {
+            Param param = new Param();
+            param.PID = pID;
+            param.Tag = tag;
+            param.Key = key;
+            param.Value = value;
+            param.Top = top;
+            param.Left = left;
+            param.Height = height;
+            param.Width = width;
+            param.ParamType = paramType;
+            return param;
+        }
+
+        #endregion
+        #region 基元属性
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 PID
+        {
+            get
+            {
+                return _PID;
+            }
+            set
+            {
+                if (_PID != value)
+                {
+                    OnPIDChanging(value);
+                    ReportPropertyChanging("PID");
+                    _PID = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("PID");
+                    OnPIDChanged();
+                }
+            }
+        }
+        private global::System.Int32 _PID;
+        partial void OnPIDChanging(global::System.Int32 value);
+        partial void OnPIDChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Guid> TID
+        {
+            get
+            {
+                return _TID;
+            }
+            set
+            {
+                OnTIDChanging(value);
+                ReportPropertyChanging("TID");
+                _TID = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("TID");
+                OnTIDChanged();
+            }
+        }
+        private Nullable<global::System.Guid> _TID;
+        partial void OnTIDChanging(Nullable<global::System.Guid> value);
+        partial void OnTIDChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 Tag
+        {
+            get
+            {
+                return _Tag;
+            }
+            set
+            {
+                OnTagChanging(value);
+                ReportPropertyChanging("Tag");
+                _Tag = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Tag");
+                OnTagChanged();
+            }
+        }
+        private global::System.Int32 _Tag;
+        partial void OnTagChanging(global::System.Int32 value);
+        partial void OnTagChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 Key
+        {
+            get
+            {
+                return _Key;
+            }
+            set
+            {
+                OnKeyChanging(value);
+                ReportPropertyChanging("Key");
+                _Key = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Key");
+                OnKeyChanged();
+            }
+        }
+        private global::System.Int32 _Key;
+        partial void OnKeyChanging(global::System.Int32 value);
+        partial void OnKeyChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 Value
+        {
+            get
+            {
+                return _Value;
+            }
+            set
+            {
+                OnValueChanging(value);
+                ReportPropertyChanging("Value");
+                _Value = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Value");
+                OnValueChanged();
+            }
+        }
+        private global::System.Int32 _Value;
+        partial void OnValueChanging(global::System.Int32 value);
+        partial void OnValueChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 Top
+        {
+            get
+            {
+                return _Top;
+            }
+            set
+            {
+                OnTopChanging(value);
+                ReportPropertyChanging("Top");
+                _Top = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Top");
+                OnTopChanged();
+            }
+        }
+        private global::System.Int32 _Top;
+        partial void OnTopChanging(global::System.Int32 value);
+        partial void OnTopChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 Left
+        {
+            get
+            {
+                return _Left;
+            }
+            set
+            {
+                OnLeftChanging(value);
+                ReportPropertyChanging("Left");
+                _Left = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Left");
+                OnLeftChanged();
+            }
+        }
+        private global::System.Int32 _Left;
+        partial void OnLeftChanging(global::System.Int32 value);
+        partial void OnLeftChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 Height
+        {
+            get
+            {
+                return _Height;
+            }
+            set
+            {
+                OnHeightChanging(value);
+                ReportPropertyChanging("Height");
+                _Height = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Height");
+                OnHeightChanged();
+            }
+        }
+        private global::System.Int32 _Height;
+        partial void OnHeightChanging(global::System.Int32 value);
+        partial void OnHeightChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 Width
+        {
+            get
+            {
+                return _Width;
+            }
+            set
+            {
+                OnWidthChanging(value);
+                ReportPropertyChanging("Width");
+                _Width = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Width");
+                OnWidthChanged();
+            }
+        }
+        private global::System.Int32 _Width;
+        partial void OnWidthChanging(global::System.Int32 value);
+        partial void OnWidthChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String FontName
+        {
+            get
+            {
+                return _FontName;
+            }
+            set
+            {
+                OnFontNameChanging(value);
+                ReportPropertyChanging("FontName");
+                _FontName = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("FontName");
+                OnFontNameChanged();
+            }
+        }
+        private global::System.String _FontName;
+        partial void OnFontNameChanging(global::System.String value);
+        partial void OnFontNameChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> FontSize
+        {
+            get
+            {
+                return _FontSize;
+            }
+            set
+            {
+                OnFontSizeChanging(value);
+                ReportPropertyChanging("FontSize");
+                _FontSize = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("FontSize");
+                OnFontSizeChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _FontSize;
+        partial void OnFontSizeChanging(Nullable<global::System.Int32> value);
+        partial void OnFontSizeChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> Alignment
+        {
+            get
+            {
+                return _Alignment;
+            }
+            set
+            {
+                OnAlignmentChanging(value);
+                ReportPropertyChanging("Alignment");
+                _Alignment = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Alignment");
+                OnAlignmentChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _Alignment;
+        partial void OnAlignmentChanging(Nullable<global::System.Int32> value);
+        partial void OnAlignmentChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> Bold
+        {
+            get
+            {
+                return _Bold;
+            }
+            set
+            {
+                OnBoldChanging(value);
+                ReportPropertyChanging("Bold");
+                _Bold = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Bold");
+                OnBoldChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _Bold;
+        partial void OnBoldChanging(Nullable<global::System.Int32> value);
+        partial void OnBoldChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> Italic
+        {
+            get
+            {
+                return _Italic;
+            }
+            set
+            {
+                OnItalicChanging(value);
+                ReportPropertyChanging("Italic");
+                _Italic = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Italic");
+                OnItalicChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _Italic;
+        partial void OnItalicChanging(Nullable<global::System.Int32> value);
+        partial void OnItalicChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> Underline
+        {
+            get
+            {
+                return _Underline;
+            }
+            set
+            {
+                OnUnderlineChanging(value);
+                ReportPropertyChanging("Underline");
+                _Underline = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Underline");
+                OnUnderlineChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _Underline;
+        partial void OnUnderlineChanging(Nullable<global::System.Int32> value);
+        partial void OnUnderlineChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String ParamType
+        {
+            get
+            {
+                return _ParamType;
+            }
+            set
+            {
+                OnParamTypeChanging(value);
+                ReportPropertyChanging("ParamType");
+                _ParamType = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("ParamType");
+                OnParamTypeChanged();
+            }
+        }
+        private global::System.String _ParamType;
+        partial void OnParamTypeChanging(global::System.String value);
+        partial void OnParamTypeChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String GroupName
+        {
+            get
+            {
+                return _GroupName;
+            }
+            set
+            {
+                OnGroupNameChanging(value);
+                ReportPropertyChanging("GroupName");
+                _GroupName = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("GroupName");
+                OnGroupNameChanged();
+            }
+        }
+        private global::System.String _GroupName;
+        partial void OnGroupNameChanging(global::System.String value);
+        partial void OnGroupNameChanged();
+
+        #endregion
+    
+        #region 导航属性
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("MYGGGETSModel", "FK_PARAM_FK_PARAM__TEMPLATE", "Template")]
+        public Template Template
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Template>("MYGGGETSModel.FK_PARAM_FK_PARAM__TEMPLATE", "Template").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Template>("MYGGGETSModel.FK_PARAM_FK_PARAM__TEMPLATE", "Template").Value = value;
+            }
+        }
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<Template> TemplateReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Template>("MYGGGETSModel.FK_PARAM_FK_PARAM__TEMPLATE", "Template");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Template>("MYGGGETSModel.FK_PARAM_FK_PARAM__TEMPLATE", "Template", value);
+                }
+            }
+        }
+
+        #endregion
+    }
+    
+    /// <summary>
+    /// 没有元数据文档可用。
+    /// </summary>
     [EdmEntityTypeAttribute(NamespaceName="MYGGGETSModel", Name="Privilege")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
@@ -5164,6 +5494,240 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Model
 
         #endregion
     
+    }
+    
+    /// <summary>
+    /// 没有元数据文档可用。
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="MYGGGETSModel", Name="Template")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class Template : EntityObject
+    {
+        #region 工厂方法
+    
+        /// <summary>
+        /// 创建新的 Template 对象。
+        /// </summary>
+        /// <param name="tID">TID 属性的初始值。</param>
+        /// <param name="name">Name 属性的初始值。</param>
+        /// <param name="paperType">PaperType 属性的初始值。</param>
+        /// <param name="createDate">CreateDate 属性的初始值。</param>
+        /// <param name="modifyDate">ModifyDate 属性的初始值。</param>
+        /// <param name="operator">Operator 属性的初始值。</param>
+        public static Template CreateTemplate(global::System.Guid tID, global::System.String name, global::System.String paperType, global::System.DateTime createDate, global::System.DateTime modifyDate, global::System.String @operator)
+        {
+            Template template = new Template();
+            template.TID = tID;
+            template.Name = name;
+            template.PaperType = paperType;
+            template.CreateDate = createDate;
+            template.ModifyDate = modifyDate;
+            template.Operator = @operator;
+            return template;
+        }
+
+        #endregion
+        #region 基元属性
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Guid TID
+        {
+            get
+            {
+                return _TID;
+            }
+            set
+            {
+                if (_TID != value)
+                {
+                    OnTIDChanging(value);
+                    ReportPropertyChanging("TID");
+                    _TID = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("TID");
+                    OnTIDChanged();
+                }
+            }
+        }
+        private global::System.Guid _TID;
+        partial void OnTIDChanging(global::System.Guid value);
+        partial void OnTIDChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Name
+        {
+            get
+            {
+                return _Name;
+            }
+            set
+            {
+                OnNameChanging(value);
+                ReportPropertyChanging("Name");
+                _Name = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Name");
+                OnNameChanged();
+            }
+        }
+        private global::System.String _Name;
+        partial void OnNameChanging(global::System.String value);
+        partial void OnNameChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Desc
+        {
+            get
+            {
+                return _Desc;
+            }
+            set
+            {
+                OnDescChanging(value);
+                ReportPropertyChanging("Desc");
+                _Desc = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Desc");
+                OnDescChanged();
+            }
+        }
+        private global::System.String _Desc;
+        partial void OnDescChanging(global::System.String value);
+        partial void OnDescChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String PaperType
+        {
+            get
+            {
+                return _PaperType;
+            }
+            set
+            {
+                OnPaperTypeChanging(value);
+                ReportPropertyChanging("PaperType");
+                _PaperType = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("PaperType");
+                OnPaperTypeChanged();
+            }
+        }
+        private global::System.String _PaperType;
+        partial void OnPaperTypeChanging(global::System.String value);
+        partial void OnPaperTypeChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.DateTime CreateDate
+        {
+            get
+            {
+                return _CreateDate;
+            }
+            set
+            {
+                OnCreateDateChanging(value);
+                ReportPropertyChanging("CreateDate");
+                _CreateDate = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("CreateDate");
+                OnCreateDateChanged();
+            }
+        }
+        private global::System.DateTime _CreateDate;
+        partial void OnCreateDateChanging(global::System.DateTime value);
+        partial void OnCreateDateChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.DateTime ModifyDate
+        {
+            get
+            {
+                return _ModifyDate;
+            }
+            set
+            {
+                OnModifyDateChanging(value);
+                ReportPropertyChanging("ModifyDate");
+                _ModifyDate = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ModifyDate");
+                OnModifyDateChanged();
+            }
+        }
+        private global::System.DateTime _ModifyDate;
+        partial void OnModifyDateChanging(global::System.DateTime value);
+        partial void OnModifyDateChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Operator
+        {
+            get
+            {
+                return _Operator;
+            }
+            set
+            {
+                OnOperatorChanging(value);
+                ReportPropertyChanging("Operator");
+                _Operator = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Operator");
+                OnOperatorChanged();
+            }
+        }
+        private global::System.String _Operator;
+        partial void OnOperatorChanging(global::System.String value);
+        partial void OnOperatorChanged();
+
+        #endregion
+    
+        #region 导航属性
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("MYGGGETSModel", "FK_PARAM_FK_PARAM__TEMPLATE", "Param")]
+        public EntityCollection<Param> Params
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Param>("MYGGGETSModel.FK_PARAM_FK_PARAM__TEMPLATE", "Param");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Param>("MYGGGETSModel.FK_PARAM_FK_PARAM__TEMPLATE", "Param", value);
+                }
+            }
+        }
+
+        #endregion
     }
     
     /// <summary>

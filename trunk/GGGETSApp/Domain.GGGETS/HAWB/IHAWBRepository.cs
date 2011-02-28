@@ -22,8 +22,8 @@ namespace Domain.GGGETS
         User FindUserByUID(string UID);
         Package FindPackageByBarcode(string barcode);
         MAWB FindMAWBByBarcode(string barcode);
-        Flight FindFlightByFlightNo(string flightNo);
-        IList<Flight> FindAllFlights();
+        //Flight FindFlightByFlightNo(string flightNo);
+        //IList<Flight> FindAllFlights();
         IList<HAWB> FindHAWBsOfPackageByCondition(string barCode, DateTime? beginDate, DateTime? endDate,
                                                   string destinationCode);
         IList<HAWB> FindHAWBsByCondition(string barCode, string countryName, string regionName, string userCode, string companyName,

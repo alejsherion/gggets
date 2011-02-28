@@ -67,9 +67,6 @@
     <Compile Include="Department.cs">
       <DependentUpon>GGGETSAppContext.Types.tt</DependentUpon>
     </Compile>
-    <Compile Include="Flight.cs">
-      <DependentUpon>GGGETSAppContext.Types.tt</DependentUpon>
-    </Compile>
     <Compile Include="GGGETSAppContext.Types.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -90,6 +87,9 @@
     <Compile Include="Package.cs">
       <DependentUpon>GGGETSAppContext.Types.tt</DependentUpon>
     </Compile>
+    <Compile Include="Param.cs">
+      <DependentUpon>GGGETSAppContext.Types.tt</DependentUpon>
+    </Compile>
     <Compile Include="Partial\HAWBBoxPartial.cs" />
     <Compile Include="Partial\HAWBItemPartial.cs" />
     <Compile Include="Partial\HAWBPartial.cs" />
@@ -106,6 +106,9 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Messages.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Template.cs">
+      <DependentUpon>GGGETSAppContext.Types.tt</DependentUpon>
     </Compile>
     <Compile Include="User.cs">
       <DependentUpon>GGGETSAppContext.Types.tt</DependentUpon>

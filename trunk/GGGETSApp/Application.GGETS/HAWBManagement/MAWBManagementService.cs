@@ -80,5 +80,15 @@ namespace Application.GGETS
         {
             return _mawbRepository.FindMAWBByCondition(barCode, beginDate, endDate);
         }
+
+        /// <summary>
+        /// 通过航班号获取总运单
+        /// </summary>
+        /// <param name="flightNo">航班号</param>
+        /// <returns></returns>
+        public IList<MAWB> FindAllMAWBsByFlightNo(string flightNo)
+        {
+            return _mawbRepository.FindAllMAWBsByFlightNo(flightNo);
+        }
     }
 }

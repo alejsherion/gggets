@@ -65,9 +65,7 @@
     <Compile Include="CRM\IIndividualUserManagementService.cs" />
     <Compile Include="CRM\IUserManagementService.cs" />
     <Compile Include="CRM\UserManagementService.cs" />
-    <Compile Include="HAWBManagement\FlightManagementService.cs" />
     <Compile Include="HAWBManagement\HAWBManagementService.cs" />
-    <Compile Include="HAWBManagement\IFlightManagementService.cs" />
     <Compile Include="HAWBManagement\IHAWBManagementService.cs" />
     <Compile Include="HAWBManagement\IMAWBManagementService.cs" />
     <Compile Include="HAWBManagement\IPackageManagementService.cs" />
@@ -77,9 +75,12 @@
     <Compile Include="PARAM\ICountryCodeManagementService.cs" />
     <Compile Include="PARAM\IRegionCodeManagementService.cs" />
     <Compile Include="PARAM\RegionCodeManagementService.cs" />
+    <Compile Include="PrintTemplate\IParamManagementService.cs" />
+    <Compile Include="PrintTemplate\ParamManagementService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Web" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -70,5 +70,19 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Repositories
                 return mawb.OrderByDescending(m => m.CreateTime).ToList();
             //}
         }
+
+        /// <summary>
+        /// 通过航班号获取所有总运单
+        /// </summary>
+        /// <param name="flightNo">航班号</param>
+        /// <returns></returns>
+        public IList<MAWB> FindAllMAWBsByFlightNo(string flightNo)
+        {
+            if (string.IsNullOrEmpty(flightNo)) throw new ArgumentException("FlightNo is null!");
+            //Get Assemble's Context
+            IGGGETSAppUnitOfWork context = UnitOfWork as IGGGETSAppUnitOfWork;
+            //don't forget open package's load:HAWBs
+            return context.MAWB.Where(m => m.FlightNo == flightNo).ToList();
+        }
     }
 }
