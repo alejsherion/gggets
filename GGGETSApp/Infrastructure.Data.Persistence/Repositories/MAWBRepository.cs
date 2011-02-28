@@ -84,5 +84,19 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Repositories
             //don't forget open package's load:HAWBs
             return context.MAWB.Where(m => m.FlightNo == flightNo).ToList();
         }
+
+        /// <summary>
+        /// 通过MID获取MAWB
+        /// </summary>
+        /// <param name="MID">总运单编号</param>
+        /// <returns></returns>
+        public MAWB FindMAWBByMID(string MID)
+        {
+            if (string.IsNullOrEmpty(MID)) throw new ArgumentException("MID is null!");
+            //Get Assemble's Context
+            IGGGETSAppUnitOfWork context = UnitOfWork as IGGGETSAppUnitOfWork;
+            //don't forget open package's load:HAWBs
+            return context.MAWB.Where(m => m.MID == new Guid(MID)).SingleOrDefault();
+        }
     }
 }
