@@ -112,5 +112,21 @@ namespace Application.GGETS
         {
             return _mawbRepository.FindMAWBByFlightCondition(flightNo, from, to);
         }
+
+        /// <summary>
+        /// 判断MID是否为空，是空的才可以添加改包裹
+        /// </summary>
+        /// <param name="barcode">包裹编号</param>
+        /// <returns></returns>
+        public bool JudgeMIDIsNull(string barcode)
+        {
+            bool judge = false;
+            Package package = _hawbRepository.FindPackageByBarcode(barcode);
+            if (package != null)
+            {
+                if (string.IsNullOrEmpty(Convert.ToString(package.MID))) judge = true;
+            }
+            return judge;
+        }
     }
 }
