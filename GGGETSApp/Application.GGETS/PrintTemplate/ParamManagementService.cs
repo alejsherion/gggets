@@ -54,12 +54,13 @@ namespace Application.GGETS
         public void MaintainDan(int intOrient, int intPageWidth, int intPageHeight, string strPageName, string identifyKey, int operateType, Page page)
         {
             //string SQLStr = string.Format("select * from param where TID={0}", HttpContext.Current.Request["TID"]);
-            string SQLStr = string.Format("select * from param where TID='{0}' order by Tag", "899abccb-3e21-433e-9a6b-3e7ae99d37df");
+            string SQLStr = string.Format("select * from param where TID='{0}' order by Tag", "3cc500c0-0cac-45ba-8497-989a73a3fe3d");
             identifyKey = "547649c6-63dd-4e5f-a619-4f83419e1d02";
 
-            HttpContext.Current.Response.Write("<script lanuage=javascript>");
-            HttpContext.Current.Response.Write("function MaintainHAWB() {");
-            HttpContext.Current.Response.Write("CreatePage();");
+            StringBuilder sb = new StringBuilder();
+            sb.Append("<script lanuage=javascript>");
+            sb.Append("function MaintainHAWB() {");
+            sb.Append("CreatePage();");
             SqlDataReader reader = Execution(SQLStr);
             //读取数据
             if(reader.HasRows)
@@ -70,24 +71,25 @@ namespace Application.GGETS
                                         identifyKey, operateType);
                 if (reader["ParamType"].ToString().Equals("Text"))
                 {
-                    HttpContext.Current.Response.Write("LODOP.ADD_PRINT_TEXT(" + reader["top"] + "," + reader["left"] + ", " + reader["width"] + ", " + reader["height"] + ", '" + result + "');");//定义内容
-                    HttpContext.Current.Response.Write("LODOP.SET_PRINT_STYLEA(0,\"FontName\",'" + reader["FontName"] + "');");//定义字体
-                    HttpContext.Current.Response.Write("LODOP.SET_PRINT_STYLEA(0,\"FontSize\"," + reader["FontSize"] + ");");//定义字体大小
-                    HttpContext.Current.Response.Write("LODOP.SET_PRINT_STYLEA(0,\"Alignment\"," + reader["Alignment"] + ");");//定义对齐方式
-                    HttpContext.Current.Response.Write("LODOP.SET_PRINT_STYLEA(0,\"Bold\"," + reader["Bold"] + ");");//定义是否粗体
-                    HttpContext.Current.Response.Write("LODOP.SET_PRINT_STYLEA(0,\"Italic\"," + reader["Italic"] + ");");//定义是否斜体
-                    HttpContext.Current.Response.Write("LODOP.SET_PRINT_STYLEA(0,\"Underline\"," + reader["Underline"] + ");");//定义是否下划线
+                    sb.Append("LODOP.ADD_PRINT_TEXT(" + reader["top"] + "," + reader["left"] + ", " + reader["width"] + ", " + reader["height"] + ", '" + result + "');");//定义内容
+                    sb.Append("LODOP.SET_PRINT_STYLEA(0,\"FontName\",'" + reader["FontName"] + "');");//定义字体
+                    sb.Append("LODOP.SET_PRINT_STYLEA(0,\"FontSize\"," + reader["FontSize"] + ");");//定义字体大小
+                    sb.Append("LODOP.SET_PRINT_STYLEA(0,\"Alignment\"," + reader["Alignment"] + ");");//定义对齐方式
+                    sb.Append("LODOP.SET_PRINT_STYLEA(0,\"Bold\"," + reader["Bold"] + ");");//定义是否粗体
+                    sb.Append("LODOP.SET_PRINT_STYLEA(0,\"Italic\"," + reader["Italic"] + ");");//定义是否斜体
+                    sb.Append("LODOP.SET_PRINT_STYLEA(0,\"Underline\"," + reader["Underline"] + ");");//定义是否下划线
                 }   
                 if (reader["ParamType"].ToString().Equals("BarCode"))
-                    HttpContext.Current.Response.Write("LODOP.ADD_PRINT_BARCODE(" + reader["top"] + "," + reader["left"] + ", " + reader["width"] + ", " + reader["height"] + ", \"Code39\", '" + result + "');");//定义内容
+                    sb.Append("LODOP.ADD_PRINT_BARCODE(" + reader["top"] + "," + reader["left"] + ", " + reader["width"] + ", " + reader["height"] + ", \"Code39\", '" + result + "');");//定义内容
             }
             else
                 page.RegisterStartupScript("Print", "<script>alert('模板还没有创建，请联系管理员添加^_^');</script>");
-            HttpContext.Current.Response.Write("LODOP.SET_SHOW_MODE(\"DESIGN_IN_BROWSE\", 1);");
-            HttpContext.Current.Response.Write("LODOP.PRINT_DESIGN();");
-            HttpContext.Current.Response.Write("}; ");
-            HttpContext.Current.Response.Write("</script>");
-            page.RegisterStartupScript("Print", "<script>MaintainHAWB();</script>");
+            sb.Append("LODOP.SET_SHOW_MODE(\"DESIGN_IN_BROWSE\", 1);");
+            sb.Append("LODOP.PRINT_DESIGN();");
+            sb.Append("}; ");
+            sb.Append("</script>");
+            page.RegisterClientScriptBlock("Print1", sb.ToString());
+            page.RegisterStartupScript("Print2", "<script>MaintainHAWB();</script>");
         }
 
         /// <summary>

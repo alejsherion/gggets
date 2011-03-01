@@ -143,7 +143,7 @@ namespace Application.GGETS.Tests
                 Operator = "沈志伟"//操作人姓名
             };
             //获取现有部门对象
-            Department department = _departmentManagementService.FindDepartmentByDepCode("01");
+            Department department = _departmentManagementService.FindDepartmentByDepCodeAndCompanyCode("01","M18");
             addressBook.Department = department;
             _addressBookManagementService.AddAddressBook(addressBook);
             //Assert.Inconclusive("无法验证不返回值的方法。");

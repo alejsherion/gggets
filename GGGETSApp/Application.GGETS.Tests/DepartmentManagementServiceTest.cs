@@ -995,7 +995,7 @@ namespace Application.GGETS.Tests
         public void ModifyDepartmentTest()
         {
             Department department = null; // 获取当前数据库现有部门
-            department = _departmentManagementService.FindDepartmentByDepCode("D1");
+            department = _departmentManagementService.FindDepartmentByDepCodeAndCompanyCode("D1","M18");
             #region 新增移除混合测试
             //首先删除一个运单，在增加另外一个运单
             HAWB oldHAWB = _HAWBManagementService.FindHAWBByBarCode("2010");
@@ -1014,16 +1014,17 @@ namespace Application.GGETS.Tests
         }
         #endregion
         
-        #region 通过部门编号获取部门
+        #region 通过部门账号和公司账号获取部门
         /// <summary>
-        ///FindDepartmentByDepCode 的测试
+        ///FindDepartmentByDepCodeAndCompanyCodeTest 的测试
         ///</summary>
         [TestMethod()]
-        public void FindDepartmentByDepCodeTest()
+        public void FindDepartmentByDepCodeAndCompanyCodeTest()
         {
-            string depCode = "D1"; // 部门账号
+            string depCode = "00"; // 部门账号
+            string companyCode = "M18"; // 公司账号
             Department actual;
-            actual = _departmentManagementService.FindDepartmentByDepCode(depCode);
+            actual = _departmentManagementService.FindDepartmentByDepCodeAndCompanyCode(depCode, companyCode);
         }
         #endregion
 
@@ -1048,8 +1049,9 @@ namespace Application.GGETS.Tests
         public void FindAllShipAddressesByDepCodeTest()
         {
             string depCode = "00"; // 部门账号
+            string companyCode = "M18";
             IList<AddressBook> actual;
-            actual = _departmentManagementService.FindAllShipAddressesByDepCode(depCode);
+            actual = _departmentManagementService.FindAllShipAddressesByDepCodeAndCompanyCode(depCode, companyCode);
         }
         #endregion
 
@@ -1060,9 +1062,10 @@ namespace Application.GGETS.Tests
         [TestMethod()]
         public void FindAllDeliveryAddressesByDepCodeTest()
         {
-            string depCode = "00"; // 部门账号
+            string depCode = "01"; // 部门账号
+            string companyCode = "M18";
             IList<AddressBook> actual;
-            actual = _departmentManagementService.FindAllDeliveryAddressesByDepCode(depCode);
+            actual = _departmentManagementService.FindAllDeliveryAddressesByDepCodeAndCompanyCode(depCode, companyCode);
         }
         #endregion
 
@@ -1074,8 +1077,9 @@ namespace Application.GGETS.Tests
         public void FindAllForwarderAddressesByDepCodeTest()
         {
             string depCode = "00"; // 部门账号
+            string companyCode = "M18";
             IList<AddressBook> actual;
-            actual = _departmentManagementService.FindAllForwarderAddressesByDepCode(depCode);
+            actual = _departmentManagementService.FindAllForwarderAddressesByDepCodeAndCompanyCode(depCode, companyCode);
         }
         #endregion
 

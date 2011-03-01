@@ -20,7 +20,8 @@ namespace Domain.GGGETS
         User FindUserByLoginName(string loginName);
         AddressBook FindAddressBookByAID(string AID);
         IList<Department> FindDepartmentsByCompanyCode(string companyCode);
-        IList<AddressBook> FindAllAddressBooksByCondition(string depCode, int addressType);
+        IList<AddressBook> FindAllAddressBooksByCondition(string depCode,string companyCode, int addressType);
         IList<AddressBook> FindAddressBooksByDIDAndType(string DID, int type);
+        Department FindDepartmentByDepcodeAndCompanyCode(string depcode, string companyCode);
     }
 }
