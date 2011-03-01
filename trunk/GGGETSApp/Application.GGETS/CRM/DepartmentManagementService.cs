@@ -79,9 +79,9 @@ namespace Application.GGETS
         /// </summary>
         /// <param name="depCode">部门账号</param>
         /// <returns></returns>
-        public Department FindDepartmentByDepCode(string depCode)
+        public Department FindDepartmentByDepCodeAndCompanyCode(string depCode, string companyCode)
         {
-            return _departmentRepository.FindDepartmentByDepCode(depCode);
+            return _departmentRepository.FindDepartmentByDepcodeAndCompanyCode(depCode, companyCode);
         }
 
         /// <summary>
@@ -98,30 +98,33 @@ namespace Application.GGETS
         /// 获取所有的发货人地址本通过部门账号
         /// </summary>
         /// <param name="depCode">部门账号</param>
+        /// <param name="companyCode">公司账号</param>
         /// <returns></returns>
-        public IList<AddressBook> FindAllShipAddressesByDepCode(string depCode)
+        public IList<AddressBook> FindAllShipAddressesByDepCodeAndCompanyCode(string depCode, string companyCode)
         {
-            return _departmentRepository.FindAllAddressBooksByCondition(depCode, 0);
+            return _departmentRepository.FindAllAddressBooksByCondition(depCode,companyCode, 0);
         }
 
         /// <summary>
         /// 获取所有的收货人地址本通过部门账号
         /// </summary>
         /// <param name="depCode">部门账号</param>
+        /// <param name="companyCode">公司账号</param>
         /// <returns></returns>
-        public IList<AddressBook> FindAllDeliveryAddressesByDepCode(string depCode)
+        public IList<AddressBook> FindAllDeliveryAddressesByDepCodeAndCompanyCode(string depCode, string companyCode)
         {
-            return _departmentRepository.FindAllAddressBooksByCondition(depCode, 1);
+            return _departmentRepository.FindAllAddressBooksByCondition(depCode,companyCode, 1);
         }
 
         /// <summary>
         /// 获取所有的交付人地址本通过部门账号
         /// </summary>
         /// <param name="depCode">部门账号</param>
+        /// <param name="companyCode">公司账号</param>
         /// <returns></returns>
-        public IList<AddressBook> FindAllForwarderAddressesByDepCode(string depCode)
+        public IList<AddressBook> FindAllForwarderAddressesByDepCodeAndCompanyCode(string depCode, string companyCode)
         {
-            return _departmentRepository.FindAllAddressBooksByCondition(depCode, 2);
+            return _departmentRepository.FindAllAddressBooksByCondition(depCode,companyCode, 2);
         }
 
         /// <summary>

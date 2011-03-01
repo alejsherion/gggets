@@ -17,11 +17,11 @@ namespace Application.GGETS
     {
         void AddDepartment(Department department);
         void ModifyDepartment(Department department);
-        Department FindDepartmentByDepCode(string depCode);
+        Department FindDepartmentByDepCodeAndCompanyCode(string depCode,string companyCode);
         IList<Department> FindDepartmentsByCompanyCode(string companyCode);
-        IList<AddressBook> FindAllShipAddressesByDepCode(string depCode);
-        IList<AddressBook> FindAllDeliveryAddressesByDepCode(string depCode);
-        IList<AddressBook> FindAllForwarderAddressesByDepCode(string depCode);
+        IList<AddressBook> FindAllShipAddressesByDepCodeAndCompanyCode(string depCode, string companyCode);
+        IList<AddressBook> FindAllDeliveryAddressesByDepCodeAndCompanyCode(string depCode, string companyCode);
+        IList<AddressBook> FindAllForwarderAddressesByDepCodeAndCompanyCode(string depCode, string companyCode);
         bool JudgeAddressBookWhetherRepeat(string AID,string contactorName);
         bool JudgeRepeat(string AID, string tempName, string tempAddress, string tempCountryCode, string tempProvience, string tempRegionCode, string tempPostCode, string tempContactorName, string tempPhone);
     }

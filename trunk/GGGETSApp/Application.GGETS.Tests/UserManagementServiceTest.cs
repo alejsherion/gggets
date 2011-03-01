@@ -140,7 +140,7 @@ namespace Application.GGETS.Tests
                 Status = 0//可用与不可用
             };
             //获取现由部门
-            Department department = _departmentManagementService.FindDepartmentByDepCode("TEST");
+            Department department = _departmentManagementService.FindDepartmentByDepCodeAndCompanyCode("01","M18");
             //获取运单
             HAWB hawb = _HAWBManagementService.FindHAWBByBarCode("2012");
             //创建地址本

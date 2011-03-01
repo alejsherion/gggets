@@ -102,22 +102,23 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Repositories
         /// 通过部门编号
         /// </summary>
         /// <param name="depCode">部门账号</param>
+        /// <param name="companyCode">公司账号</param>
         /// <param name="addressType">地址本类型 0=发货地址,1=送货地址,2=交付地址</param>
         /// <returns></returns>
-        public IList<AddressBook> FindAllAddressBooksByCondition(string depCode, int addressType)
+        public IList<AddressBook> FindAllAddressBooksByCondition(string depCode,string companyCode, int addressType)
         {
             IEnumerable<AddressBook> addressBooks = null;
-            Department departmentObj = FindDepartmentByDepCode(depCode);
-            string DID = string.Empty;
-            if (departmentObj != null) DID = Convert.ToString(departmentObj.DID);
             IGGGETSAppUnitOfWork context = UnitOfWork as IGGGETSAppUnitOfWork;
             //using (IGGGETSAppUnitOfWork context = UnitOfWork as IGGGETSAppUnitOfWork)
             //{
                 if (context != null)
                 {
-                    //packages = context.Package.Include(p => p.HAWBs).Include(p => p.MAWB).Select(p => p);
+                    string DID = string.Empty;
+                    Department department = FindDepartmentByDepcodeAndCompanyCode(depCode, companyCode);
+                    if(department!=null) DID = department.DID.ToString();
+                    else return null;
                     addressBooks = context.AddressBook.Select(a => a);
-                    if (!string.IsNullOrEmpty(DID)) addressBooks = addressBooks.Where(a => a.DID == new Guid(DID));
+                    if (!string.IsNullOrEmpty(depCode)) addressBooks = addressBooks.Where(a => a.DID == new Guid(DID));
                     if (addressType == 0 || addressType == 1 || addressType == 2) addressBooks = addressBooks.Where(a => a.AddressType == addressType);
                 }
                 else
@@ -155,6 +156,24 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Repositories
                                                             GetType().Name));
             }
             return addressBooks.ToList();
+        }
+
+        /// <summary>
+        /// 通过部门账号和公司账号获取部门信息
+        /// </summary>
+        /// <param name="depcode">部门账号</param>
+        /// <param name="companyCode">公司账号</param>
+        /// <returns></returns>
+        public Department FindDepartmentByDepcodeAndCompanyCode(string depcode, string companyCode)
+        {
+            if (string.IsNullOrEmpty(depcode)) throw new ArgumentException("Depcode is null!");
+            if (string.IsNullOrEmpty(companyCode)) throw new ArgumentException("CompanyCode is null!");
+            //Get Assemble's Context
+            IGGGETSAppUnitOfWork context = UnitOfWork as IGGGETSAppUnitOfWork;
+            //don't forget open package's load:HAWBs
+            return
+                context.Department.Where(it => it.DepCode == depcode).Where(it => it.CompanyCode == companyCode).
+                    SingleOrDefault();
         }
 
         #endregion
