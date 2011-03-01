@@ -273,6 +273,34 @@ namespace Application.GGETS.Tests
         }
         #endregion
 
+        #region 判断运单的PID是否为空
+        /// <summary>
+        ///JudgePIDIsNull 的测试
+        ///</summary>
+        [TestMethod()]
+        public void JudgePIDIsNullTest()
+        {
+            string barcode = string.Empty; // 运单编号
+            bool actual;
+            actual = _packageManagementService.JudgePIDIsNull(barcode);
+        }
+        #endregion
+
+        #region 判断包裹字码和运单字码是否重复
+        /// <summary>
+        ///JudgeRegionCodeIsRepeat 的测试
+        ///</summary>
+        [TestMethod()]
+        public void JudgeRegionCodeIsRepeatTest()
+        {
+            string barcode = "2010"; // 运单编号
+            string packageRegionCode = "007"; // 包裹三字码
+            bool isMix = false; // 是否混包
+            bool actual;
+            actual = _packageManagementService.JudgeRegionCodeIsRepeat(barcode, packageRegionCode, isMix);
+        }
+        #endregion
+
         public override Expression<Func<Package, bool>> FilterExpression
         {
             get { throw new NotImplementedException(); }
