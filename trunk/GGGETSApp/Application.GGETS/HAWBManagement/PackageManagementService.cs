@@ -94,7 +94,7 @@ namespace Application.GGETS
             HAWB hawb = _hawbRepository.FindHAWBByBarCode(barcode);
             if(hawb!=null)
             {
-                if (!string.IsNullOrEmpty(Convert.ToString(hawb.PID))) judge = true;
+                if (string.IsNullOrEmpty(Convert.ToString(hawb.PID))) judge = true;
             }
             return judge;
         }
