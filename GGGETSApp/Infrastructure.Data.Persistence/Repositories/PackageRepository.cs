@@ -89,5 +89,19 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Repositories
                 return packages.OrderByDescending(p => p.CreateTime).ToList();
             //}
         }
+
+        /// <summary>
+        /// 通过MID获取包裹
+        /// </summary>
+        /// <param name="MID">总运单序号</param>
+        /// <returns></returns>
+        public IList<Package> FindPackagesByMID(string MID)
+        {
+            if (string.IsNullOrEmpty(MID)) throw new ArgumentException("MID is null!");
+            //Get Assemble's Context
+            IGGGETSAppUnitOfWork context = UnitOfWork as IGGGETSAppUnitOfWork;
+            //don't forget open package's load:HAWBs
+            return context.Package.Include(it => it.HAWBs).Where(p => p.MID == new Guid(MID)).ToList();
+        }
     }
 }

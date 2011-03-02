@@ -366,6 +366,19 @@ namespace Application.GGETS.Tests
         }
         #endregion
 
+        #region 通过总运单号获取所有运单
+        /// <summary>
+        ///FindHAWBsByMID 的测试
+        ///</summary>
+        [TestMethod()]
+        public void FindHAWBsByMIDTest()
+        {
+            string MID = "b99f909f-06ab-432f-94a4-c4689e850987"; // 总运单序号
+            IList<HAWB> actual;
+            actual = _HAWBManagementService.FindHAWBsByMID(MID);
+        }
+        #endregion
+
         public override Expression<Func<HAWB, bool>> FilterExpression
         {
             get { throw new NotImplementedException(); }

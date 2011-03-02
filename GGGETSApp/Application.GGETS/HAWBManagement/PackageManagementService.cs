@@ -131,5 +131,15 @@ namespace Application.GGETS
             }
             return judge;
         }
+
+        /// <summary>
+        /// 通过MID获取包裹
+        /// </summary>
+        /// <param name="MID">MID</param>
+        /// <returns></returns>
+        public IList<Package> FindPackagesByMID(string MID)
+        {
+            return _packageRepository.FindPackagesByMID(MID);
+        }
     }
 }

@@ -41,8 +41,9 @@ namespace Application.GGETS.Tests
             PackageRepository packageRepository = new PackageRepository(context, traceManager);
             TemplateRepository templateRepository = new TemplateRepository(context, traceManager);
             ParamRepository paramRepository = new ParamRepository(context, traceManager);
+            MAWBRepository mawbRepository = new MAWBRepository(context, traceManager);
 
-            _paramManagementService = new ParamManagementService(paramRepository);
+            _paramManagementService = new ParamManagementService(paramRepository, mawbRepository, HAWBRepository);
         }
 
         private TestContext testContextInstance;
@@ -113,10 +114,11 @@ namespace Application.GGETS.Tests
             int intPageWidth = 0; 
             int intPageHeight = 0;
             string strPageName = string.Empty; 
-            string identifyKey = string.Empty; 
+            string identifyKey = string.Empty;
+            string templateKey = string.Empty;
             int operateType = 0; 
             Page page = null;
-            _paramManagementService.MaintainDan(intOrient, intPageWidth, intPageHeight, strPageName, identifyKey, operateType, page);
+            _paramManagementService.MaintainDan(intOrient, intPageWidth, intPageHeight, strPageName, identifyKey, templateKey, operateType, page);
             //Assert.Inconclusive("无法验证不返回值的方法。");
         }
     }

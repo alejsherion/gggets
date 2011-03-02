@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Web.UI;
 using ETS.GGGETSApp.Domain.Application.Entities;
 
 namespace Application.GGETS
@@ -29,5 +30,8 @@ namespace Application.GGETS
                                                   string destinationCode);
 
         bool JudgeHAWBOfPackageRepeat(string HAWBBarcode, string packageBarcode);
+        void ExportInvoice(HAWB hawb, Page page);
+        void ExportMAWB(MAWB mawb, IList<HAWB> hawbs, Page page);
+        IList<HAWB> FindHAWBsByMID(string MID);
     }
 }

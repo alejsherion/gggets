@@ -29,5 +29,7 @@ namespace Domain.GGGETS
         IList<HAWB> FindHAWBsByCondition(string barCode, string countryName, string regionName, string userCode, string companyName,
                                                string realName, DateTime? beginTime, DateTime? endTime, int settleType, int serviceType,
                                                bool? isInternational);
+
+        IList<HAWB> FindHAWBsByMID(string MID);
     }
 }
