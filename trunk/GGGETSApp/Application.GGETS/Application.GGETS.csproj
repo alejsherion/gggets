@@ -70,6 +70,7 @@
     <Compile Include="HAWBManagement\IMAWBManagementService.cs" />
     <Compile Include="HAWBManagement\IPackageManagementService.cs" />
     <Compile Include="HAWBManagement\MAWBManagementService.cs" />
+    <Compile Include="HAWBManagement\NPOIHelper.cs" />
     <Compile Include="HAWBManagement\PackageManagementService.cs" />
     <Compile Include="PARAM\CountryCodeManagementService.cs" />
     <Compile Include="PARAM\ICountryCodeManagementService.cs" />
@@ -82,6 +83,24 @@
     <Compile Include="PrintTemplate\TemplateManagementService.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="NPOI">
+      <HintPath>C:\Documents and Settings\Administrator\桌面\3333test\NPOI.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.DDF">
+      <HintPath>C:\Documents and Settings\Administrator\桌面\3333test\NPOI.DDF.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.HPSF">
+      <HintPath>C:\Documents and Settings\Administrator\桌面\3333test\NPOI.HPSF.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.HSSF">
+      <HintPath>C:\Documents and Settings\Administrator\桌面\3333test\NPOI.HSSF.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.POIFS">
+      <HintPath>C:\Documents and Settings\Administrator\桌面\3333test\NPOI.POIFS.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.Util">
+      <HintPath>C:\Documents and Settings\Administrator\桌面\3333test\NPOI.Util.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Web" />

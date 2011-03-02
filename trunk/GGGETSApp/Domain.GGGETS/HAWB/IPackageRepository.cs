@@ -17,5 +17,6 @@ namespace Domain.GGGETS
     {
         Package GetSinglePackageByPid(string PID);
         IList<Package> FindPackageByCondition(string barCode, DateTime? beginDate, DateTime? endDate, string destinationCode);
+        IList<Package> FindPackagesByMID(string MID);
     }
 }

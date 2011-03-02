@@ -449,6 +449,37 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Repositories
                                                                 Messages.exception_InvalidStoreContext,
                                                                 GetType().Name));
         }
+
+        /// <summary>
+        /// 通过总运单号获取运单信息
+        /// </summary>
+        /// <param name="MID">总运单号</param>
+        /// <returns></returns>
+        public IList<HAWB> FindHAWBsByMID(string MID)
+        {
+            IGGGETSAppUnitOfWork context = UnitOfWork as IGGGETSAppUnitOfWork;
+            IList<HAWB> list = new List<HAWB>();
+            if (context != null)
+            {
+                IList<Package> packages = context.Package.Include(it => it.HAWBs).Where(it=>it.MID==new Guid(MID)).ToList();
+                foreach(Package package in packages)
+                {
+                    Guid pid = package.PID;
+                    IList<HAWB> hawbs =
+                        context.HAWB.Include(it => it.HAWBItems).Where(it => it.PID == pid).ToList();
+                    foreach(HAWB hawb in hawbs)
+                    {
+                        list.Add(hawb);
+                    }
+                }
+                return list;
+            }
+            else
+                throw new InvalidOperationException(string.Format(
+                                                                CultureInfo.InvariantCulture,
+                                                                Messages.exception_InvalidStoreContext,
+                                                                GetType().Name));
+        }
         #endregion
     }
 }

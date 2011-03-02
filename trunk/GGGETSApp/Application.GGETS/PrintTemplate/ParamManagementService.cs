@@ -27,10 +27,16 @@ namespace Application.GGETS
         /// <summary>
         /// IOC Injecting into
         /// </summary>
-        IParamRepository _paramRepository;
-        public ParamManagementService(IParamRepository paramRepository)
+        private IParamRepository _paramRepository;
+
+        private IMAWBRepository _mawbRepository;
+
+        private IHAWBRepository _hawbRepository;
+        public ParamManagementService(IParamRepository paramRepository, IMAWBRepository mawbRepository, IHAWBRepository hawbRepository)
         {
             _paramRepository = paramRepository;
+            _mawbRepository = mawbRepository;
+            _hawbRepository = hawbRepository;
         }
 
         #region database
@@ -49,13 +55,13 @@ namespace Application.GGETS
         /// <param name="intPageHeight">高度：毫米,0.1mm</param>
         /// <param name="strPageName">纸张名：Letter, LetterSmall, Tabloid, Ledger, Legal,Statement, Executive, A3, A4, A4Small, A5, B4, B5, Folio, Quarto, qr10X14, qr11X17, Env9, Env10, Env11, Env12,Env14, Sheet, DSheet, ESheet</param>
         /// <param name="identifyKey">标识列，唯一区分对象的序号</param>
+        /// <param name="templateKey">模板序号，唯一区分对象的序号</param>
         /// <param name="operateType">操作类型，是维护还是非维护</param>
         /// <param name="page">页面对象</param>
-        public void MaintainDan(int intOrient, int intPageWidth, int intPageHeight, string strPageName, string identifyKey, int operateType, Page page)
+        public void MaintainDan(int intOrient, int intPageWidth, int intPageHeight, string strPageName, string identifyKey, string templateKey, int operateType, Page page)
         {
             //string SQLStr = string.Format("select * from param where TID={0}", HttpContext.Current.Request["TID"]);
-            string SQLStr = string.Format("select * from param where TID='{0}' order by Tag", "3cc500c0-0cac-45ba-8497-989a73a3fe3d");
-            identifyKey = "547649c6-63dd-4e5f-a619-4f83419e1d02";
+            string SQLStr = string.Format("select * from param where TID='{0}' order by Tag", templateKey);
 
             StringBuilder sb = new StringBuilder();
             sb.Append("<script lanuage=javascript>");
@@ -91,6 +97,59 @@ namespace Application.GGETS
             page.RegisterClientScriptBlock("Print1", sb.ToString());
             page.RegisterStartupScript("Print2", "<script>MaintainHAWB();</script>");
         }
+
+        ///// <summary>
+        ///// 创建总运单发票
+        ///// </summary>
+        //public void CreateInvoice(Page page)
+        //{
+        //    StringBuilder sb = new StringBuilder();
+        //    sb.Append("<div id='div1'>");
+        //    sb.Append("<table border=1 width=\"700\" style=\"text-align: center\">");
+        //    sb.Append("<tr><td height=\"36\" colspan=\"10\" style=\"text-align: center\"><span style=\"font-weight: bold; font-size: xx-large;\">INVOICE</span></td></tr>");
+        //    sb.Append("<tr><td colspan=\"10\">&nbsp;</td></tr>");
+        //    sb.Append("<tr style=\"vertical-align: top;\"><td width=\"140\" height=\"70\" colspan=\"2\"><span style=\"font-weight: bold; font-size: small;\">INTERNATIONAL&nbsp;AIR WAYBILL NO</span></td><td width=\"350\" height=\"70\" colspan=\"5\"><span style=\"font-weight: bold; font-size: xx-large;\">11111111test</span></td><td width=\"210\" height=\"70\" colspan=\"3\"><span style=\"font-weight: bold; font-size: small;\">(NOTE:ALL&nbsp;shipments&nbsp;must&nbsp;be accompanied&nbsp;by&nbsp;a&nbsp;Federal&nbsp;Express international&nbsp;Air&nbsp;Waybill.)</span></td></tr>");
+        //    sb.Append("<tr style=\"vertical-align: top; text-align: left\"><td width=\"280\" height=\"50\" colspan=\"4\"><span style=\"font-weight: bold; font-size: small;\">SHIPPER<br/></span></td><td width=\"420\" height=\"50\" colspan=\"6\"><span style=\"font-weight: bold; font-size: small;\">EXPORT REFERENCES(I.e.,order.,no.,invoice no.)<br/></span></td></tr>");
+        //    sb.Append("<tr style=\"vertical-align: top; text-align: left\"><td width=\"280\" height=\"50\" colspan=\"4\"><span style=\"font-weight: bold; font-size: small;\">&nbsp;</span></td><td width=\"420\" height=\"50\" colspan=\"6\"><span style=\"font-weight: bold; font-size: small;\">IMPORTER-IF OTHER THAN CONSIGNEE<br/></span></td></tr>");
+        //    sb.Append("<tr style=\"vertical-align: top; text-align: left\"><td width=\"280\" height=\"30\" colspan=\"4\"><span style=\"font-weight: bold; font-size: small;\">COUNTRY OF EXPORT<br/></span></td><td width=\"420\" height=\"30\" colspan=\"6\" rowspan=\"2\" style=\"height: 60px\">&nbsp;</td></tr>");
+        //    sb.Append("<tr style=\"vertical-align: top; text-align: left\"><td width=\"280\" height=\"30\" colspan=\"4\"><span style=\"font-weight: bold; font-size: small;\">COUNTRY OF ULTIMATE DESTINATION<br/></span></td></tr>");
+        //    sb.Append("<tr style=\"vertical-align: top; text-align: center\"><td width=\"280\" height=\"50\" colspan=\"1\"><span style=\"font-weight: bold; font-size: small;\">MARKS/NOS.</span></td><td width=\"420\" height=\"50\" colspan=\"1\"><span style=\"font-weight: bold; font-size: small;\">NO.OF PKGS</span></td><td width=\"280\" height=\"50\" colspan=\"1\"><span style=\"font-weight: bold; font-size: small;\">TYPE OF PACKAGING</span></td><td width=\"280\" height=\"50\" colspan=\"2\"><span style=\"font-weight: bold; font-size: small;\">FULL DESCRIPTION OF GOODS</span></td><td width=\"280\" height=\"50\" colspan=\"1\"><span style=\"font-weight: bold; font-size: small;\">QTY (PCS)</span></td><td width=\"280\" height=\"50\" colspan=\"1\"><span style=\"font-weight: bold; font-size: small;\">UNIT (USD)</span></td><td width=\"280\" height=\"50\" colspan=\"1\"><span style=\"font-weight: bold; font-size: small;\">UNIT VALUE (USD)</span></td><td width=\"280\" height=\"50\" colspan=\"1\"><span style=\"font-weight: bold; font-size: small;\">WEIGHT</span></td><td width=\"280\" height=\"50\" colspan=\"1\"><span style=\"font-weight: bold; font-size: small;\">TOTAL VALUE (USD)</span></td></tr>");
+        //    sb.Append("<tr style=\"vertical-align: top; text-align: center\"><td width=\"280\" height=\"50\" colspan=\"1\"><span style=\"font-weight: bold; font-size: small;\">&nbsp;</span></td><td width=\"420\" height=\"50\" colspan=\"1\"><span style=\"font-weight: bold; font-size: small;\">&nbsp;</span></td><td width=\"280\" height=\"50\" colspan=\"1\"><span style=\"font-weight: bold; font-size: small;\">&nbsp;</span></td><td width=\"280\" height=\"50\" colspan=\"2\"><span style=\"font-weight: bold; font-size: small;\">&nbsp;</span></td><td width=\"280\" height=\"50\" colspan=\"1\"><span style=\"font-weight: bold; font-size: small;\">&nbsp;</span></td><td width=\"280\" height=\"50\" colspan=\"1\"><span style=\"font-weight: bold; font-size: small;\">&nbsp;</span></td><td width=\"280\" height=\"50\" colspan=\"1\"><span style=\"font-weight: bold; font-size: small;\">&nbsp;</span></td><td width=\"280\" height=\"50\" rowspan=\"2\" style=\"height: 100px\"><span style=\"font-weight: bold; font-size: small;\">&nbsp;</span></td><td width=\"280\" height=\"50\" rowspan=\"2\" style=\"height: 100px\"><span style=\"font-weight: bold; font-size: small;\">&nbsp;</span></td></tr>");
+        //    sb.Append("<tr style=\"vertical-align: top; text-align: center\"><td width=\"280\" height=\"50\" colspan=\"1\"><span style=\"font-weight: bold; font-size: small;\">&nbsp;</span></td><td width=\"420\" height=\"50\" colspan=\"1\"><span style=\"font-weight: bold; font-size: small;\">&nbsp;</span></td><td width=\"280\" height=\"50\" colspan=\"1\"><span style=\"font-weight: bold; font-size: small;\">&nbsp;</span></td><td width=\"280\" height=\"50\" colspan=\"2\"><span style=\"font-weight: bold; font-size: small;\">&nbsp;</span></t<td width=\"280\" height=\"50\" colspan=\"1\"><span style=\"font-weight: bold; font-size: small;\">&nbsp;</span></td><td width=\"280\" height=\"50\" colspan=\"1\"><span style=\"font-weight: bold; font-size: small;\">&nbsp;</span></td><td width=\"280\" height=\"50\" colspan=\"1\"><span style=\"font-weight: bold; font-size: small;\">&nbsp;</span></td></tr>");
+        //    sb.Append("<tr style=\"vertical-align: top; text-align: center\"><td width=\"280\" height=\"50\" colspan=\"1\"><span style=\"font-weight: bold; font-size: small;\">&nbsp;</span></td><td width=\"420\" height=\"50\" colspan=\"1\"><span style=\"font-weight: bold; font-size: small;\">TOTAL NO.OF PKGS.</span></td><td width=\"280\" height=\"50\" colspan=\"1\"><span style=\"font-weight: bold; font-size: small;\">&nbsp;</span></td><td width=\"280\" height=\"50\" colspan=\"2\"><span style=\"font-weight: bold; font-size: small;\">&nbsp;</span></td><td width=\"280\" height=\"50\" colspan=\"1\"><span style=\"font-weight: bold; font-size: small;\">&nbsp;</span></td><td width=\"280\" height=\"50\" colspan=\"1\"><span style=\"font-weight: bold; font-size: small;\">&nbsp;</span></td><td width=\"280\" height=\"50\" colspan=\"1\"><span style=\"font-weight: bold; font-size: small;\">&nbsp;</span></td><td width=\"280\" height=\"50\" colspan=\"1\"><span style=\"font-weight: bold; font-size: small;\">&nbsp;</span></td><td width=\"280\" height=\"50\" colspan=\"1\"><span style=\"font-weight: bold; font-size: small;\">TOTAL INVOICE VALUE (USD)</span></td></tr>");
+        //    sb.Append("<tr><td width=\"280\" height=\"50\" colspan=\"1\"><span style=\"font-weight: bold; font-size: small;\">&nbsp;</span></td><td width=\"420\" height=\"50\" colspan=\"1\"><span style=\"font-weight: bold; font-size: small;\">&nbsp;</span></td><td height=\"50\" colspan=\"6\"><span style=\"font-weight: bold; font-size: x-small;\">SEE REVERSE SIDE FOR HELP WITH THE ABOVE SECTION</span></td><td width=\"280\" height=\"50\" colspan=\"1\"><span style=\"font-weight: bold; font-size: small;\">&nbsp;</span></td><td width=\"280\" height=\"50\" colspan=\"1\"><span style=\"font-weight: bold; font-size: small;\">TOTAL INVOICE VALUE (USD)</span></td></tr>");
+        //    sb.Append("<tr style=\"vertical-align: top; text-align: left\"><td height=\"20\" colspan=\"10\"><span style=\"font-weight: bold; font-size: small;\">THESE COMMODITIES ARE LICENSED FOR THE ULTIMATE DESTINATION SHOWN .</span></t</tr>");
+        //    sb.Append("<tr style=\"vertical-align: top; text-align: left\"><td height=\"20\" colspan=\"10\"><span style=\"font-weight: bold; font-size: small;\">DIVERSION CONTRARY TO UNITED STATES LAW IS PHOHIBITED .</span></td></tr>");
+        //    sb.Append("<tr style=\"vertical-align: top; text-align: left\"><td height=\"20\" colspan=\"9\"><span style=\"font-weight: bold; font-size: small;\">SIGNATURE OF SHIPPER / EXPORTER (Type name and titie and sign.)</span></td><td height=\"20\" colspan=\"1\"><span style=\"font-weight: bold; font-size: small;\">沈志伟</span></td></tr>");
+        //    sb.Append("<tr style=\"vertical-align: top; text-align: left\"><td height=\"20\" colspan=\"10\"><span style=\"font-weight: bold; font-size: small;\">County of Origin:MADE IN CHINA</span></td></tr>");
+        //    sb.Append("</table>");
+        //    sb.Append("</div>");
+        //    page.RegisterStartupScript("Print3", sb.ToString());
+        //}
+
+        ///// <summary>
+        ///// 导出MAWB的EXCEL
+        ///// </summary>
+        ///// <param name="barcode">总运单编号</param>
+        ///// <param name="page">页面</param>
+        //public void ExportMAWBExcel(string barcode, Page page)
+        //{
+        //    //获取MAWB对象
+        //    //MAWB mawb=_mawbRepository.f
+
+        //    StringBuilder sb = new StringBuilder();
+        //    sb.Append("<div id='div1'>");
+        //    sb.Append("<table border=1 width=\"800\" style=\"text-align: center\">");
+        //    sb.Append("<tr><td colspan=\"10\" style=\"text-align: center\"><span style=\"font-weight: bold; font-size: xx-large;\">GOFOLO MANIFEST</span></td></tr>");
+        //    sb.Append("<tr><td>&nbsp;</td><td><span style=\"font-weight: bold; font-size: small;\">MAWB</span></td><td><span style=\"font-weight: bold; font-size: small;\">FLT</span></td><td><span style=\"font-weight: bold; font-size: small;\">&nbsp;</span></td><td><span style=\"font-weight: bold; font-size: small;\">KGM</span></t<td><span style=\"font-weight: bold; font-size: small;\">PCS</span></td><td><span style=\"font-weight: bold; font-size: small;\">HAWB</span></td><td><span style=\"font-weight: bold; font-size: small;\">CONSIGNEE</span></td><td><span style=\"font-weight: bold; font-size: small;\">ARRIVALDATE</span></td><td><span style=\"font-weight: bold; font-size: small;\">SHIPPER</span></td></tr>");
+        //    sb.Append("<tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>");
+        //    sb.Append("<tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td<td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>");
+        //    sb.Append("<tr><td>&nbsp;</td><td>HAWB</td><td>COMMODITY</td><td>PCS</td><td>KGM</td><td>DECLARED VALUE</td><td>&nbsp;</td><td>&nbsp;</td><td>CITY</td><td>&nbsp;</td></tr>");
+        //    sb.Append("<tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>");
+        //    sb.Append("</table>");
+        //    sb.Append("</div>");
+        //    page.RegisterStartupScript("Print4", sb.ToString());
+        //}
 
         /// <summary>
         /// 返回结果

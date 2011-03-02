@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
+using System.Web;
+using System.Web.UI;
 using Domain.GGGETS;
 using ETS.GGGETSApp.Domain.Core;
 using ETS.GGGETSApp.Domain.Application.Entities;
@@ -211,6 +214,64 @@ namespace Application.GGETS
                 }
             }
             return judge;
+        }
+
+        /// <summary>
+        /// 导出发票
+        /// </summary>
+        /// <param name="hawb">运单</param>
+        /// <param name="page">页面</param>
+        public void ExportInvoice(HAWB hawb, Page page)
+        {
+            NpoiHelper CreateXml = new NpoiHelper(hawb);
+            CreateXml.ExportInvoice();
+            MemoryStream str = (MemoryStream)CreateXml.RenderToExcel();
+            if (str == null) return;
+            var data = str.ToArray();
+            var resp = page.Response;
+            resp.Buffer = true;
+            resp.Clear();
+            resp.Charset = "utf-8";
+            resp.ContentEncoding = System.Text.Encoding.UTF8;
+            resp.ContentType = "application/ms-excel";
+            HttpContext.Current.Response.AddHeader("Content-Disposition", "attachment; filename=" + HttpUtility.UrlEncode(String.Format("{0}.xls", "Invoice"), System.Text.Encoding.UTF8));
+            HttpContext.Current.Response.BinaryWrite(data);
+            HttpContext.Current.Response.Flush();
+            HttpContext.Current.Response.End();
+        }
+
+        /// <summary>
+        /// 导出MAWB
+        /// </summary>
+        /// <param name="mawb">总运单</param>
+        /// <param name="page">页面</param>
+        public void ExportMAWB(MAWB mawb, IList<HAWB> hawbs, Page page)
+        {
+            NpoiHelper CreateXml = new NpoiHelper(mawb, hawbs);
+            CreateXml.ExportMAWB();
+            MemoryStream str = (MemoryStream)CreateXml.RenderToExcel();
+            if (str == null) return;
+            var data = str.ToArray();
+            var resp = page.Response;
+            resp.Buffer = true;
+            resp.Clear();
+            resp.Charset = "utf-8";
+            resp.ContentEncoding = System.Text.Encoding.UTF8;
+            resp.ContentType = "application/ms-excel";
+            HttpContext.Current.Response.AddHeader("Content-Disposition", "attachment; filename=" + HttpUtility.UrlEncode(String.Format("{0}.xls", "MAWB"), System.Text.Encoding.UTF8));
+            HttpContext.Current.Response.BinaryWrite(data);
+            HttpContext.Current.Response.Flush();
+            HttpContext.Current.Response.End();
+        }
+
+        /// <summary>
+        /// 通过总运单号获取运单信息
+        /// </summary>
+        /// <param name="MID">总运单号</param>
+        /// <returns></returns>
+        public IList<HAWB> FindHAWBsByMID(string MID)
+        {
+            return _hawbRepository.FindHAWBsByMID(MID);
         }
     }
 }
