@@ -438,6 +438,17 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
             }
         }
         private string _consigneeRegion;
+
+        [DataMember]
+        public string ConsigneeRegionDesc
+        {
+            get { return _consigneeRegionDesc; }
+            set
+            {
+                _consigneeRegionDesc = value;
+            }
+        }
+        private string _consigneeRegionDesc;
     
         [DataMember]
         public string ConsigneeAddress
