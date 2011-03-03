@@ -469,6 +469,10 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Repositories
                         context.HAWB.Include(it => it.HAWBItems).Where(it => it.PID == pid).ToList();
                     foreach(HAWB hawb in hawbs)
                     {
+                        string name =
+                            (context.RegionCode.Where(it => it.RegionCode1 == hawb.ConsigneeRegion).SingleOrDefault()).
+                                RegionName;
+                        hawb.ConsigneeRegionDesc = name;
                         list.Add(hawb);
                     }
                 }

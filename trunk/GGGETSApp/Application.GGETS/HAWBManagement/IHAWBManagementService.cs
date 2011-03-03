@@ -30,8 +30,6 @@ namespace Application.GGETS
                                                   string destinationCode);
 
         bool JudgeHAWBOfPackageRepeat(string HAWBBarcode, string packageBarcode);
-        void ExportInvoice(HAWB hawb, Page page);
-        void ExportMAWB(MAWB mawb, IList<HAWB> hawbs, Page page);
         IList<HAWB> FindHAWBsByMID(string MID);
     }
 }
