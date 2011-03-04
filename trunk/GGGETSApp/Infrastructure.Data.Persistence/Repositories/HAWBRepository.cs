@@ -37,8 +37,6 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Repositories
                                                                 this.GetType().Name));
         }
 
-
-
         public HAWB FindHAWBByBarCode(string barCode)
         {
 
@@ -69,7 +67,11 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Repositories
 
             if (context != null)
             {
-                return context.HAWB.Include(ba => ba.HAWBItems).Include(ba => ba.HAWBBoxes).Include(it => it.Department).Include(it=>it.User).Where(it => it.BarCode == barCode).SingleOrDefault();
+                HAWB hawb = context.HAWB.Include(ba => ba.HAWBItems).Include(ba => ba.HAWBBoxes).Include(it => it.Department).Include(it=>it.User).Where(it => it.BarCode == barCode).SingleOrDefault();
+                hawb.ShipperCountryDesc =
+                    (context.CountryCode.Where(it => it.CountryCode1 == hawb.ShipperCountry).SingleOrDefault()).
+                        CountryName;
+                return hawb;
             }
             else
                 throw new InvalidOperationException(string.Format(
