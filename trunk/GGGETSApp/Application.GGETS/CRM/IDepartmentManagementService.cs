@@ -24,5 +24,6 @@ namespace Application.GGETS
         IList<AddressBook> FindAllForwarderAddressesByDepCodeAndCompanyCode(string depCode, string companyCode);
         bool JudgeAddressBookWhetherRepeat(string AID,string contactorName);
         bool JudgeRepeat(string AID, string tempName, string tempAddress, string tempCountryCode, string tempProvience, string tempRegionCode, string tempPostCode, string tempContactorName, string tempPhone);
+        IList<Department> FindDepartmentsByCondition(string companyCode, string depCode, string depName);
     }
 }

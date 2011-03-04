@@ -1123,6 +1123,21 @@ namespace Application.GGETS.Tests
         }
         #endregion
 
+        #region 部门多条件查询
+        /// <summary>
+        ///FindDepartmentsByCondition 的测试
+        ///</summary>
+        [TestMethod()]
+        public void FindDepartmentsByConditionTest()
+        {
+            string companyCode = "M18"; // 公司账号
+            string depCode = string.Empty; // 部门账号
+            string depName = string.Empty; // 部门名称
+            IList<Department> actual;
+            actual = _departmentManagementService.FindDepartmentsByCondition(companyCode, depCode, depName);
+        }
+        #endregion
+
         public override Expression<Func<Department, bool>> FilterExpression
         {
             get { throw new NotImplementedException(); }

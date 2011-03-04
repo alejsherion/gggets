@@ -176,6 +176,35 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Repositories
                     SingleOrDefault();
         }
 
+        /// <summary>
+        /// 部门多条件查询
+        /// </summary>
+        /// <param name="companyCode">公司账号</param>
+        /// <param name="depCode">部门账号</param>
+        /// <param name="depName">部门名称</param>
+        /// <returns></returns>
+        public IList<Department> FindDepartmentsByCondition(string companyCode, string depCode, string depName)
+        {
+            IEnumerable<Department> departments = null;
+            IGGGETSAppUnitOfWork context = UnitOfWork as IGGGETSAppUnitOfWork;
+
+            if (context != null)
+            {
+                departments = context.Department.Select(it => it);
+                if (!string.IsNullOrEmpty(companyCode)) departments = departments.Where(it => it.CompanyCode == companyCode);
+                if (!string.IsNullOrEmpty(depCode)) departments = departments.Where(it => it.DepCode == depCode);
+                if (!string.IsNullOrEmpty(depName)) departments = departments.Where(it => it.DepName.StartsWith(depName));
+            }
+            else
+            {
+                throw new InvalidOperationException(string.Format(
+                                                            CultureInfo.InvariantCulture,
+                                                            Messages.exception_InvalidStoreContext,
+                                                            GetType().Name));
+            }
+            return departments.ToList();
+        }
+
         #endregion
     }
 }
