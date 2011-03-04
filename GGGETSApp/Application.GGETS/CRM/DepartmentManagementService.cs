@@ -187,5 +187,17 @@ namespace Application.GGETS
             }
             return judge;
         }
+
+        /// <summary>
+        /// 部门多条件查询
+        /// </summary>
+        /// <param name="companyCode">公司账号</param>
+        /// <param name="depCode">部门账号</param>
+        /// <param name="depName">部门名称</param>
+        /// <returns></returns>
+        public IList<Department> FindDepartmentsByCondition(string companyCode, string depCode, string depName)
+        {
+            return _departmentRepository.FindDepartmentsByCondition(companyCode, depCode, depName);
+        }
     }
 }
