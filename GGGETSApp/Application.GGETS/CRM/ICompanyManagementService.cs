@@ -19,5 +19,6 @@ namespace Application.GGETS
 
         IList<Company> FindCompaniesByCondition(string companyCode, string fullName, string shortName, string contactor,
                                                 string contactorPhone);
+        void ModifyCompany(Company company);
     }
 }

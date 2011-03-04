@@ -70,5 +70,20 @@ namespace Application.GGETS
             return _companyRepository.FindCompaniesByCondition(companyCode, fullName, shortName, contactor,
                                                                contactorPhone);
         }
+
+        /// <summary>
+        /// 修改公司
+        /// </summary>
+        /// <param name="company">公司</param>
+        public void ModifyCompany(Company company)
+        {
+            if (company == null)
+                throw new ArgumentNullException("Company is null");
+            IUnitOfWork unitOfWork = _companyRepository.UnitOfWork;
+            _companyRepository.Modify(company);
+           
+            //complete changes in this unit of work
+            unitOfWork.CommitAndRefreshChanges();
+        }
     }
 }
