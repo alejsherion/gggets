@@ -318,21 +318,6 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
             }
         }
         private string _shipperCountry;
-
-        [DataMember]
-        public string ShipperCountryDesc
-        {
-            get { return _shipperCountryDesc; }
-            set
-            {
-                if (_shipperCountryDesc != value)
-                {
-                    _shipperCountryDesc = value;
-                    OnPropertyChanged("ShipperCountryDesc");
-                }
-            }
-        }
-        private string _shipperCountryDesc;
     
         [DataMember]
         public string ShipperRegion
@@ -434,6 +419,21 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
                 {
                     _consigneeCountry = value;
                     OnPropertyChanged("ConsigneeCountry");
+                }
+            }
+        }
+        private string _consigneeCountryDesc;
+
+        [DataMember]
+        public string ConsigneeCountryDesc
+        {
+            get { return _consigneeCountryDesc; }
+            set
+            {
+                if (_consigneeCountryDesc != value)
+                {
+                    _consigneeCountryDesc = value;
+                    OnPropertyChanged("ConsigneeCountryDesc");
                 }
             }
         }

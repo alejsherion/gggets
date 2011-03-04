@@ -58,6 +58,22 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
             {
                 this.TotalWeight += hawb.TotalWeight;
             }
+            this.TotalWeight = Convert.ToDecimal(TransferWeight(TotalWeight));
+        }
+
+        /// <summary>
+        /// 转化总重量的倍数问题
+        /// </summary>
+        /// <param name="weight">包裹总重量</param>
+        /// <returns></returns>
+        private double TransferWeight(decimal weight)
+        {
+            var temp = 0.0;
+            var transfer = weight - Math.Truncate(weight);
+            if (transfer < (decimal)0.5) temp = (double)(Math.Ceiling(weight) - (decimal)0.5);
+            if (transfer > (decimal)0.5) temp = (double)Math.Ceiling(weight);
+            if (transfer == (decimal)0.5 || transfer == 0) temp = (double)weight;
+            return temp;
         }
 
         /// <summary>
