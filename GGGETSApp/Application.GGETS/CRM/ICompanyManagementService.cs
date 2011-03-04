@@ -16,5 +16,8 @@ namespace Application.GGETS
     {
         Company FindCompanyByCompanyCode(string companyCode);
         void AddCompany(Company company);
+
+        IList<Company> FindCompaniesByCondition(string companyCode, string fullName, string shortName, string contactor,
+                                                string contactorPhone);
     }
 }

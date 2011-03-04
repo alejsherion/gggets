@@ -55,5 +55,20 @@ namespace Application.GGETS
             //complete changes in this unit of work
             unitOfWork.Commit();
         }
+
+        /// <summary>
+        /// 公司多条件查询
+        /// </summary>
+        /// <param name="companyCode">公司编号</param>
+        /// <param name="fullName">公司全称</param>
+        /// <param name="shortName">公司简称</param>
+        /// <param name="contactor">联系人</param>
+        /// <param name="contactorPhone">联系人电话</param>
+        /// <returns></returns>
+        public IList<Company> FindCompaniesByCondition(string companyCode, string fullName, string shortName, string contactor, string contactorPhone)
+        {
+            return _companyRepository.FindCompaniesByCondition(companyCode, fullName, shortName, contactor,
+                                                               contactorPhone);
+        }
     }
 }
