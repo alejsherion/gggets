@@ -15,5 +15,7 @@ namespace Domain.GGGETS
 {
     public interface ICompanyRepository : IRepository<Company>
     {
+        IList<Company> FindCompaniesByCondition(string companyCode, string fullName, string shortName, string contactor,
+                                                string contactorPhone);
     }
 }

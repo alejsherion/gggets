@@ -139,6 +139,23 @@ namespace Application.GGETS.Tests
         }
         #endregion
 
+        #region 公司多条件查询
+        /// <summary>
+        ///FindCompaniesByCondition 的测试
+        ///</summary>
+        [TestMethod()]
+        public void FindCompaniesByConditionTest()
+        {
+            string companyCode = "M18"; // 公司账号
+            string fullName = "麦"; // 全名
+            string shortName = "麦"; // 缩写名
+            string contactor = "沈志"; // 联系人姓名
+            string contactorPhone = "13817011234"; // 联系人电话
+            IList<Company> actual;
+            actual = _companyManagementService.FindCompaniesByCondition(companyCode, fullName, shortName, contactor, contactorPhone);
+        }
+        #endregion
+
         public override Expression<Func<Company, bool>> FilterExpression
         {
             get { throw new NotImplementedException(); }
