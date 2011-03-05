@@ -199,5 +199,15 @@ namespace Application.GGETS
         {
             return _departmentRepository.FindDepartmentsByCondition(companyCode, depCode, depName);
         }
+
+        /// <summary>
+        /// 根据DID查询部门信息
+        /// </summary>
+        /// <param name="DID">部门序号</param>
+        /// <returns></returns>
+        public Department FindDepartmentByDID(string DID)
+        {
+            return _departmentRepository.FindDepartmentByDID(DID);
+        }
     }
 }

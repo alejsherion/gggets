@@ -205,6 +205,20 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Repositories
             return departments.ToList();
         }
 
+        /// <summary>
+        /// 根据DID查询部门信息
+        /// </summary>
+        /// <param name="DID">部门序号</param>
+        /// <returns></returns>
+        public Department FindDepartmentByDID(string DID)
+        {
+            if (string.IsNullOrEmpty(DID)) throw new ArgumentException("DID is null!");
+            //Get Assemble's Context
+            IGGGETSAppUnitOfWork context = UnitOfWork as IGGGETSAppUnitOfWork;
+            //don't forget open package's load:HAWBs
+            return
+                context.Department.Where(it => it.DID == new Guid(DID)).SingleOrDefault();
+        }
         #endregion
     }
 }

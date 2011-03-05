@@ -107,5 +107,17 @@ namespace Application.GGETS
         {
             return _userRepository.FindAllAddressBooksByCondition(loginName, 2);
         }
+
+        /// <summary>
+        /// 用户多条件查询
+        /// </summary>
+        /// <param name="loginName">用户名</param>
+        /// <param name="beginDate">开始日期</param>
+        /// <param name="endDate">结束日期</param>
+        /// <returns></returns>
+        public IList<User> FindUsersByCondition(string loginName, DateTime? beginDate, DateTime? endDate)
+        {
+            return _userRepository.FindUsersByCondition(loginName, beginDate, endDate);
+        }
     }
 }

@@ -198,6 +198,21 @@ namespace Application.GGETS.Tests
         }
         #endregion
 
+        #region 用户多条件查询
+        /// <summary>
+        ///FindUsersByCondition 的测试
+        ///</summary>
+        [TestMethod()]
+        public void FindUsersByConditionTest()
+        {
+            string loginName = string.Empty; // 用户名
+            Nullable<DateTime> beginDate = new DateTime(2011,2,27); // 开始日期
+            Nullable<DateTime> endDate = new DateTime(2011, 2, 28); // 结束日期
+            IList<User> actual;
+            actual = _userManagementService.FindUsersByCondition(loginName, beginDate, endDate);
+        }
+        #endregion
+
         public override Expression<Func<User, bool>> FilterExpression
         {
             get { throw new NotImplementedException(); }

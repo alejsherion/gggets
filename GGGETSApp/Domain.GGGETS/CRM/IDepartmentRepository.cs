@@ -24,5 +24,6 @@ namespace Domain.GGGETS
         IList<AddressBook> FindAddressBooksByDIDAndType(string DID, int type);
         Department FindDepartmentByDepcodeAndCompanyCode(string depcode, string companyCode);
         IList<Department> FindDepartmentsByCondition(string companyCode, string depCode, string depName);
+        Department FindDepartmentByDID(string DID);
     }
 }

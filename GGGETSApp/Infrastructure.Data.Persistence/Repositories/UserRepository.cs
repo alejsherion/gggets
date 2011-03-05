@@ -57,5 +57,51 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Repositories
                 return addressBooks.OrderByDescending(p => p.CreateTime).ToList();
             //}
         }
+
+        /// <summary>
+        /// 用户多条件查询
+        /// </summary>
+        /// <param name="loginName">用户名</param>
+        /// <param name="beginDate">开始日期</param>
+        /// <param name="endDate">结束日期</param>
+        /// <returns></returns>
+        public IList<User> FindUsersByCondition(string loginName, DateTime? beginDate, DateTime? endDate)
+        {
+            IEnumerable<User> users = null;
+            IGGGETSAppUnitOfWork context = UnitOfWork as IGGGETSAppUnitOfWork;
+
+            if (context != null)
+            {
+                users = context.User.Select(it => it);
+                if (!string.IsNullOrEmpty(loginName)) users = users.Where(it => it.LoginName == loginName);
+                if (beginDate.HasValue)
+                {
+                    if (beginDate.Value != DateTime.MinValue)
+                        users =
+                            users.Where(
+                                p =>
+                                p.CreateTime >=
+                                new DateTime(beginDate.Value.Year, beginDate.Value.Month, beginDate.Value.Day, 0, 0,
+                                             0));
+                }
+                if (endDate.HasValue)
+                {
+                    if (endDate.Value != DateTime.MinValue)
+                        users =
+                            users.Where(
+                                p =>
+                                p.CreateTime <=
+                                new DateTime(endDate.Value.Year, endDate.Value.Month, endDate.Value.Day, 23, 59, 59));
+                }
+            }
+            else
+            {
+                throw new InvalidOperationException(string.Format(
+                                                            CultureInfo.InvariantCulture,
+                                                            Messages.exception_InvalidStoreContext,
+                                                            GetType().Name));
+            }
+            return users.OrderByDescending(p => p.CreateTime).ToList();
+        }
     }
 }
