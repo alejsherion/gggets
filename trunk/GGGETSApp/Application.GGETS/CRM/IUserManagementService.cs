@@ -20,5 +20,6 @@ namespace Application.GGETS
         IList<AddressBook> FindAllShipAddressesByLoginName(string loginName);
         IList<AddressBook> FindAllDeliveryAddressesByLoginName(string loginName);
         IList<AddressBook> FindAllForwarderAddressesByLoginName(string loginName);
+        IList<User> FindUsersByCondition(string loginName, DateTime? beginDate, DateTime? endDate);
     }
 }

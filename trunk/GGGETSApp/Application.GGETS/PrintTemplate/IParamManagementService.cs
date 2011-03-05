@@ -23,8 +23,6 @@ namespace Application.GGETS
 
         #region logic
         void MaintainDan(int intOrient, int intPageWidth, int intPageHeight, string strPageName, string identifyKey, string templateKey, int operateType, Page page);
-        //void CreateInvoice(Page page);
-        //void ExportMAWBExcel(string barcode, Page page);
         #endregion
     }
 }
