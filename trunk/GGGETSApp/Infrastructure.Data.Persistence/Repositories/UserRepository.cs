@@ -103,5 +103,19 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Repositories
             }
             return users.OrderByDescending(p => p.CreateTime).ToList();
         }
+
+        /// <summary>
+        /// 通过用户序号获取用户信息
+        /// </summary>
+        /// <param name="UID">用户序号</param>
+        /// <returns></returns>
+        public User FindUserByUID(string UID)
+        {
+            if (string.IsNullOrEmpty(UID)) throw new ArgumentException("UID is null!");
+            //Get Assemble's Context
+            IGGGETSAppUnitOfWork context = UnitOfWork as IGGGETSAppUnitOfWork;
+            //don't forget open package's load:HAWBs
+            return context.User.Where(it => it.UID == new Guid(UID)).SingleOrDefault();
+        }
     }
 }

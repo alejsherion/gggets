@@ -1138,6 +1138,23 @@ namespace Application.GGETS.Tests
         }
         #endregion
 
+        #region 用户多条件查询
+        /// <summary>
+        ///FindUsersByCondition 的测试
+        ///</summary>
+        [TestMethod()]
+        public void FindUsersByConditionTest()
+        {
+            string companyCode = "M18"; // 企业账号
+            string depCode = "00"; // 部门账号
+            string loginName = string.Empty; // 用户账号
+            Nullable<DateTime> beginDate = new Nullable<DateTime>(); // 开始日期
+            Nullable<DateTime> endDate = new Nullable<DateTime>(); // 结束日期
+            IList<User> actual;
+            actual = _departmentManagementService.FindUsersByCondition(companyCode, depCode, loginName, beginDate, endDate);
+        }
+        #endregion
+
         public override Expression<Func<Department, bool>> FilterExpression
         {
             get { throw new NotImplementedException(); }

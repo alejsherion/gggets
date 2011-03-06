@@ -26,5 +26,7 @@ namespace Application.GGETS
         bool JudgeRepeat(string AID, string tempName, string tempAddress, string tempCountryCode, string tempProvience, string tempRegionCode, string tempPostCode, string tempContactorName, string tempPhone);
         IList<Department> FindDepartmentsByCondition(string companyCode, string depCode, string depName);
         Department FindDepartmentByDID(string DID);
+        IList<User> FindUsersByCondition(string companyCode, string depCode, string loginName, DateTime? beginDate,
+                                         DateTime? endDate);
     }
 }
