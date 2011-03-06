@@ -98,5 +98,19 @@ namespace Application.GGETS
             //complete changes in this unit of work
             unitOfWork.Commit();
         }
+
+        /// <summary>
+        /// 地址本多条件查询
+        /// </summary>
+        /// <param name="companyCode">公司账号</param>
+        /// <param name="depCode">部门账号</param>
+        /// <param name="loginName">用户名</param>
+        /// <param name="beginDate">开始日期</param>
+        /// <param name="endDate">结束日期</param>
+        /// <returns></returns>
+        public IList<AddressBook> FindAddressBookByCondition(string companyCode, string depCode, string loginName, DateTime? beginDate, DateTime? endDate)
+        {
+            return _addressBookRepository.FindAddressBookByCondition(companyCode, depCode, loginName, beginDate, endDate);
+        }
     }
 }
