@@ -82,6 +82,20 @@ namespace Application.GGETS
         }
 
         /// <summary>
+        /// 多条件查询总运单(支持分页)
+        /// </summary>
+        /// <param name="barCode">总运单编号</param>
+        /// <param name="beginDate">开始日期</param>
+        /// <param name="endDate">结束日期</param>
+        /// <param name="pageIndex">当前页码</param>
+        /// <param name="pageCount">一页显示个数</param>
+        /// <returns></returns>
+        public IList<MAWB> FindMAWBByCondition(string barCode, DateTime? beginDate, DateTime? endDate, int pageIndex, int pageCount)
+        {
+            return _mawbRepository.FindMAWBByCondition(barCode, beginDate, endDate,pageIndex,pageCount);
+        }
+
+        /// <summary>
         /// 通过航班号获取总运单
         /// </summary>
         /// <param name="flightNo">航班号</param>
@@ -89,6 +103,18 @@ namespace Application.GGETS
         public IList<MAWB> FindAllMAWBsByFlightNo(string flightNo)
         {
             return _mawbRepository.FindAllMAWBsByFlightNo(flightNo);
+        }
+
+        /// <summary>
+        /// 通过航班号获取所有总运单(支持分页)
+        /// </summary>
+        /// <param name="flightNo">航班号</param>
+        /// <param name="pageIndex">当前页码</param>
+        /// <param name="pageCount">一页显示个数</param>
+        /// <returns></returns>
+        public IList<MAWB> FindAllMAWBsByFlightNo(string flightNo, int pageIndex, int pageCount)
+        {
+            return _mawbRepository.FindAllMAWBsByFlightNo(flightNo,pageIndex,pageCount);
         }
 
         /// <summary>
@@ -111,6 +137,20 @@ namespace Application.GGETS
         public IList<MAWB> FindMAWBByFlightCondition(string flightNo, string from, string to)
         {
             return _mawbRepository.FindMAWBByFlightCondition(flightNo, from, to);
+        }
+
+        /// <summary>
+        /// 通过航班信息查询下面所有的总运单信息(支持分页)
+        /// </summary>
+        /// <param name="flightNo">航班编号</param>
+        /// <param name="from">起始地字码</param>
+        /// <param name="to">目的地字码</param>
+        /// <param name="pageIndex">当前页码</param>
+        /// <param name="pageCount">一页显示个数</param>
+        /// <returns></returns>
+        public IList<MAWB> FindMAWBByFlightCondition(string flightNo, string from, string to, int pageIndex, int pageCount)
+        {
+            return _mawbRepository.FindMAWBByFlightCondition(flightNo, from, to,pageIndex,pageCount);
         }
 
         /// <summary>
