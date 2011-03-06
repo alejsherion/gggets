@@ -44,5 +44,67 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Repositories
             }
             return list;
         }
+
+        /// <summary>
+        /// 地址本多条件查询
+        /// </summary>
+        /// <param name="companyCode">公司账号</param>
+        /// <param name="depCode">部门账号</param>
+        /// <param name="loginName">用户名</param>
+        /// <param name="beginDate">开始日期</param>
+        /// <param name="endDate">结束日期</param>
+        /// <returns></returns>
+        public IList<AddressBook> FindAddressBookByCondition(string companyCode, string depCode, string loginName, DateTime? beginDate, DateTime? endDate)
+        {
+            IEnumerable<AddressBook> addressBooks = null;
+            IGGGETSAppUnitOfWork context = UnitOfWork as IGGGETSAppUnitOfWork;
+
+            if (context != null)
+            {
+                addressBooks = context.AddressBook.Include(it => it.User).Include(it => it.Department).ToList();
+                if (!string.IsNullOrEmpty(companyCode))
+                {
+                    addressBooks = addressBooks.Where(it => it.Department != null);
+                    addressBooks = addressBooks.Where(it => it.Department.CompanyCode == companyCode);
+                }
+                if (!string.IsNullOrEmpty(depCode))
+                {
+                    addressBooks = addressBooks.Where(it => it.Department != null);
+                    addressBooks = addressBooks.Where(it => it.Department.DepCode == depCode);
+                }
+                if (!string.IsNullOrEmpty(loginName))
+                {
+                    addressBooks = addressBooks.Where(it => it.User != null);
+                    addressBooks = addressBooks.Where(it => it.User.LoginName == loginName);
+                }
+                if (beginDate.HasValue)
+                {
+                    if (beginDate.Value != DateTime.MinValue)
+                        addressBooks =
+                            addressBooks.Where(
+                                it =>
+                                it.CreateTime >=
+                                new DateTime(beginDate.Value.Year, beginDate.Value.Month, beginDate.Value.Day, 0, 0,
+                                             0));
+                }
+                if (endDate.HasValue)
+                {
+                    if (endDate.Value != DateTime.MinValue)
+                        addressBooks =
+                            addressBooks.Where(
+                                it =>
+                                it.CreateTime <=
+                                new DateTime(endDate.Value.Year, endDate.Value.Month, endDate.Value.Day, 23, 59, 59));
+                }
+            }
+            else
+            {
+                throw new InvalidOperationException(string.Format(
+                                                            CultureInfo.InvariantCulture,
+                                                            Messages.exception_InvalidStoreContext,
+                                                            GetType().Name));
+            }
+            return addressBooks.OrderByDescending(it => it.CreateTime).ToList();
+        }
     }
 }

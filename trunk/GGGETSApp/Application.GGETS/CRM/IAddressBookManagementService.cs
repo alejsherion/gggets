@@ -19,5 +19,7 @@ namespace Application.GGETS
         void RemoveBadAddressBook();
         void ModifyAddressBook(AddressBook addressBook);
         void AddAddressBook(AddressBook addressBook);
+        IList<AddressBook> FindAddressBookByCondition(string companyCode, string depCode, string loginName,
+                                                      DateTime? beginDate, DateTime? endDate);
     }
 }

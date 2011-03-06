@@ -16,5 +16,7 @@ namespace Domain.GGGETS
     public interface IAddressBookRepository : IRepository<AddressBook>
     {
         IList<AddressBook> GetAllBadAddressBook();
+        IList<AddressBook> FindAddressBookByCondition(string companyCode, string depCode, string loginName,
+                                                      DateTime? beginDate, DateTime? endDate);
     }
 }

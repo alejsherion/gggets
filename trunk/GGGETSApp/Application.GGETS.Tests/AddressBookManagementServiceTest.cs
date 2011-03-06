@@ -150,6 +150,23 @@ namespace Application.GGETS.Tests
         }
         #endregion
 
+        #region 地址本多条件查询
+        /// <summary>
+        ///FindAddressBookByCondition 的测试
+        ///</summary>
+        [TestMethod()]
+        public void FindAddressBookByConditionTest()
+        {
+            string companyCode = ""; // 企业账号
+            string depCode = "01"; // 部门账号
+            string loginName = ""; // 用户账号
+            Nullable<DateTime> beginDate = new Nullable<DateTime>(); 
+            Nullable<DateTime> endDate = new Nullable<DateTime>(); 
+            IList<AddressBook> actual;
+            actual = _addressBookManagementService.FindAddressBookByCondition(companyCode, depCode, loginName, beginDate, endDate);
+        }
+        #endregion
+
         public override Expression<Func<AddressBook, bool>> FilterExpression
         {
             get { throw new NotImplementedException(); }
