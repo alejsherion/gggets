@@ -17,11 +17,13 @@ namespace Application.GGETS
         void AddPackage(Package package);
         Package FindPackageByBarcode(string barcode);
         void ModifyPackage(Package package);
-
         IList<Package> FindPackageByCondition(string barCode, DateTime? beginDate, DateTime? endDate,
                                               string destinationCode);
+        IList<Package> FindPackageByCondition(string barCode, DateTime? beginDate, DateTime? endDate,
+                                              string destinationCode, int pageIndex, int pageCount);
         bool JudgePIDIsNull(string barcode);
         bool JudgeRegionCodeIsRepeat(string barcode, string packageRegionCode, bool isMix);
         IList<Package> FindPackagesByMID(string MID);
+        IList<Package> FindPackagesByMID(string MID, int pageIndex, int pageCount);
     }
 }

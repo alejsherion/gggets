@@ -91,6 +91,56 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Repositories
         }
 
         /// <summary>
+        /// 包裹条件查询(支持分页)
+        /// </summary>
+        /// <param name="barCode">包号</param>
+        /// <param name="beginDate">开始日期</param>
+        /// <param name="endDate">结束日期</param>
+        /// <param name="destinationCode">目标三字码</param>
+        /// <param name="pageIndex">当前页码</param>
+        /// <param name="pageCount">一页显示个数</param>
+        /// <returns></returns>
+        public IList<Package> FindPackageByCondition(string barCode, DateTime? beginDate, DateTime? endDate, string destinationCode, int pageIndex, int pageCount)
+        {
+            IEnumerable<Package> packages = null;
+            IGGGETSAppUnitOfWork context = UnitOfWork as IGGGETSAppUnitOfWork;
+
+            if (context != null)
+            {
+                packages = context.Package.Select(p => p);
+                if (!string.IsNullOrEmpty(barCode)) packages = packages.Where(p => p.BarCode == barCode);
+                if (!string.IsNullOrEmpty(destinationCode)) packages = packages.Where(p => p.RegionCode == destinationCode);
+                if (beginDate.HasValue)
+                {
+                    if (beginDate.Value != DateTime.MinValue)
+                        packages =
+                            packages.Where(
+                                p =>
+                                p.CreateTime >=
+                                new DateTime(beginDate.Value.Year, beginDate.Value.Month, beginDate.Value.Day, 0, 0,
+                                             0));
+                }
+                if (endDate.HasValue)
+                {
+                    if (endDate.Value != DateTime.MinValue)
+                        packages =
+                            packages.Where(
+                                p =>
+                                p.CreateTime <=
+                                new DateTime(endDate.Value.Year, endDate.Value.Month, endDate.Value.Day, 23, 59, 59));
+                }
+            }
+            else
+            {
+                throw new InvalidOperationException(string.Format(
+                                                            CultureInfo.InvariantCulture,
+                                                            Messages.exception_InvalidStoreContext,
+                                                            GetType().Name));
+            }
+            return packages.OrderByDescending(p => p.CreateTime).Skip(pageIndex*pageCount).Take(pageCount).ToList();
+        }
+
+        /// <summary>
         /// 通过MID获取包裹
         /// </summary>
         /// <param name="MID">总运单序号</param>
@@ -102,6 +152,22 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Repositories
             IGGGETSAppUnitOfWork context = UnitOfWork as IGGGETSAppUnitOfWork;
             //don't forget open package's load:HAWBs
             return context.Package.Include(it => it.HAWBs).Where(p => p.MID == new Guid(MID)).ToList();
+        }
+
+        /// <summary>
+        /// 通过MID获取包裹(支持分页)
+        /// </summary>
+        /// <param name="MID">总运单序号</param>
+        /// <param name="pageIndex">当前页码</param>
+        /// <param name="pageCount">一页显示个数</param>
+        /// <returns></returns>
+        public IList<Package> FindPackagesByMID(string MID, int pageIndex, int pageCount)
+        {
+            if (string.IsNullOrEmpty(MID)) throw new ArgumentException("MID is null!");
+            //Get Assemble's Context
+            IGGGETSAppUnitOfWork context = UnitOfWork as IGGGETSAppUnitOfWork;
+            //don't forget open package's load:HAWBs
+            return context.Package.Include(it => it.HAWBs).Where(p => p.MID == new Guid(MID)).Skip(pageIndex*pageCount).Take(pageCount).ToList();
         }
     }
 }
