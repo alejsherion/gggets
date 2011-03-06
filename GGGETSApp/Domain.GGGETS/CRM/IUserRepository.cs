@@ -17,5 +17,6 @@ namespace Domain.GGGETS
     {
         IList<AddressBook> FindAllAddressBooksByCondition(string loginName, int addressType);
         IList<User> FindUsersByCondition(string loginName, DateTime? beginDate, DateTime? endDate);
+        User FindUserByUID(string UID);
     }
 }
