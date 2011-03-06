@@ -84,6 +84,21 @@ namespace Application.GGETS
         }
 
         /// <summary>
+        /// 包裹条件查询(支持分页)
+        /// </summary>
+        /// <param name="barCode">包号</param>
+        /// <param name="beginDate">开始日期</param>
+        /// <param name="endDate">结束日期</param>
+        /// <param name="destinationCode">目标三字码</param>
+        /// <param name="pageIndex">当前页码</param>
+        /// <param name="pageCount">一页显示个数</param>
+        /// <returns></returns>
+        public IList<Package> FindPackageByCondition(string barCode, DateTime? beginDate, DateTime? endDate, string destinationCode, int pageIndex, int pageCount)
+        {
+            return _packageRepository.FindPackageByCondition(barCode, beginDate, endDate, destinationCode,pageIndex,pageCount);
+        }
+
+        /// <summary>
         /// 判断加入的运单的PID是否为NULL，如果是NULL才可以加入包裹，否则等于重复添加运单
         /// </summary>
         /// <param name="barcode">运单编号</param>
@@ -140,6 +155,18 @@ namespace Application.GGETS
         public IList<Package> FindPackagesByMID(string MID)
         {
             return _packageRepository.FindPackagesByMID(MID);
+        }
+
+        /// <summary>
+        /// 通过MID获取包裹(支持分页)
+        /// </summary>
+        /// <param name="MID">总运单序号</param>
+        /// <param name="pageIndex">当前页码</param>
+        /// <param name="pageCount">一页显示个数</param>
+        /// <returns></returns>
+        public IList<Package> FindPackagesByMID(string MID, int pageIndex, int pageCount)
+        {
+            return _packageRepository.FindPackagesByMID(MID,pageIndex,pageCount);
         }
     }
 }
