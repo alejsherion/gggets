@@ -18,7 +18,7 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Repositories
 
         public IEnumerable<HAWB> FindPagedHAWBs(int pageIndex, int pageCount)
         {
-             if (pageIndex < 0)
+            if (pageIndex < 0)
                 throw new ArgumentException(Resources.Messages.exception_InvalidPageIndex, "pageIndex");
 
             if (pageCount <= 0)
@@ -149,6 +149,72 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Repositories
         }
 
         /// <summary>
+        /// 运单多条件查询(支持分页)
+        /// </summary>
+        /// <param name="barCode">运单编号</param>
+        /// <param name="countryCode">国家二字码</param>
+        /// <param name="regionCode">地区三字码</param>
+        /// <param name="loginName">客户账号</param>
+        /// <param name="companyName">公司名称</param>
+        /// <param name="realName">联系人姓名</param>
+        /// <param name="phone">联系电话</param>
+        /// <param name="endTime">结束日期</param>
+        /// <param name="settleType">结算方式</param>
+        /// <param name="serviceType">包裹类型</param>
+        /// <param name="isInternational">运单类型</param>
+        /// <param name="beginTime">开始日期</param>
+        /// <param name="departmentCode">部门编号</param>
+        /// <param name="pageIndex">当前页码</param>
+        /// <param name="pageCount">一页显示个数</param>
+        /// <returns></returns>
+        public IList<HAWB> FindHAWBsByCondition(string barCode, string countryCode, string regionCode, string loginName, string departmentCode, string companyName, string realName, string phone, DateTime? beginTime, DateTime? endTime, int settleType, int serviceType, bool? isInternational, int pageIndex, int pageCount)
+        {
+            IEnumerable<HAWB> HAWBs = null;
+            IGGGETSAppUnitOfWork context = UnitOfWork as IGGGETSAppUnitOfWork;
+
+            if (context != null)
+            {
+                HAWBs = context.HAWB.Include(h => h.User).Include(h => h.Department).Select(h => h);
+                if (!string.IsNullOrEmpty(barCode)) HAWBs = HAWBs.Where(a => a.BarCode == barCode);
+                //if (!string.IsNullOrEmpty(countryCode)) HAWBs = HAWBs.Where(a => a.User.CountryCode == countryCode);
+                //if (!string.IsNullOrEmpty(regionCode)) HAWBs = HAWBs.Where(a => a.User.RegionCode == regionCode);
+                if (!string.IsNullOrEmpty(loginName)) HAWBs = HAWBs.Where(a => a.User.LoginName == loginName);
+                if (!string.IsNullOrEmpty(companyName)) HAWBs = HAWBs.Where(a => a.Carrier.StartsWith(companyName));
+                //这里的联系人和电话可能是公司也可能是个人的
+                if (!string.IsNullOrEmpty(realName))
+                {
+                    //根据公司名称获取公司账号
+                    Company companyObj = context.Company.Where(it => it.FullName.StartsWith(realName)).SingleOrDefault();
+                    if (companyObj != null) realName = companyObj.CompanyCode;
+
+                    HAWBs = HAWBs.Where(a => a.Department.CompanyCode == realName).Where(a => a.User.RealName.StartsWith(realName));
+                }
+                if (!string.IsNullOrEmpty(phone)) HAWBs = HAWBs.Where(a => a.User.Phone == phone);
+                if (beginTime.HasValue)
+                {
+                    if (beginTime.Value != DateTime.MinValue)
+                        HAWBs = HAWBs.Where(a => a.CreateTime >= beginTime.Value);
+                }
+                if (endTime.HasValue)
+                {
+                    if (endTime.Value != DateTime.MinValue)
+                        HAWBs = HAWBs.Where(a => a.CreateTime <= endTime.Value);
+                }
+                if (settleType != -1) HAWBs = HAWBs.Where(a => a.SettleType == Convert.ToInt16(settleType));
+                if (serviceType != -1) HAWBs = HAWBs.Where(a => a.ServiceType == Convert.ToInt16(serviceType));
+                if (isInternational.HasValue) HAWBs = HAWBs.Where(a => a.IsInternational == isInternational);
+            }
+            else
+            {
+                throw new InvalidOperationException(string.Format(
+                                                            CultureInfo.InvariantCulture,
+                                                            Messages.exception_InvalidStoreContext,
+                                                            GetType().Name));
+            }
+            return HAWBs.OrderByDescending(a => a.CreateTime).Skip(pageIndex*pageCount).Take(pageCount).ToList();
+        }
+
+        /// <summary>
         /// 运单多条件查询
         /// </summary>
         /// <param name="barCode">运单编号</param>
@@ -243,6 +309,101 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Repositories
                 }
                 return HAWBs.OrderByDescending(a => a.CreateTime).ToList();
             //}
+        }
+
+        /// <summary>
+        /// 运单多条件查询(支持分页)
+        /// </summary>
+        /// <param name="barCode">运单编号</param>
+        /// <param name="countryName">国家名称(目的地)</param>
+        /// <param name="regionName">地区名称(目的地)</param>
+        /// <param name="userCode">客户/部门账号</param>
+        /// <param name="companyName">承运公司名称</param>
+        /// <param name="realName">联系人/公司姓名</param>
+        /// <param name="beginTime">开始日期</param>
+        /// <param name="endTime">结束日期</param>
+        /// <param name="settleType">结算方式</param>
+        /// <param name="serviceType">包裹类型</param>
+        /// <param name="isInternational">运单类型</param>
+        /// <param name="pageIndex">当前页码</param>
+        /// <param name="pageCount">一页显示个数</param>
+        /// <returns></returns>
+        public IList<HAWB> FindHAWBsByCondition(string barCode, string countryName, string regionName, string userCode, string companyName, string realName, DateTime? beginTime, DateTime? endTime, int settleType, int serviceType, bool? isInternational, int pageIndex, int pageCount)
+        {
+            IEnumerable<HAWB> HAWBs = null;
+            IGGGETSAppUnitOfWork context = UnitOfWork as IGGGETSAppUnitOfWork;
+
+            if (context != null)
+            {
+                HAWBs = context.HAWB.Include(h => h.User).Include(h => h.Department).Select(h => h);
+                if (!string.IsNullOrEmpty(barCode)) HAWBs = HAWBs.Where(a => a.BarCode == barCode);
+                if (!string.IsNullOrEmpty(countryName))
+                {
+                    //国家
+                    CountryCode country =
+                        context.CountryCode.Where(it => it.CountryName == countryName).SingleOrDefault();
+                    if (country != null)
+                        HAWBs = HAWBs.Where(a => a.ConsigneeCountry == country.CountryCode1);
+                    else
+                        HAWBs = HAWBs.Where(a => a.ConsigneeCountry == "00");
+                }
+                if (!string.IsNullOrEmpty(regionName))
+                {
+                    //地区
+                    RegionCode region =
+                        context.RegionCode.Where(it => it.RegionName == regionName).SingleOrDefault();
+                    if (region != null)
+                        HAWBs = HAWBs.Where(a => a.ConsigneeRegion == region.RegionCode1);
+                    else
+                        HAWBs = HAWBs.Where(a => a.ConsigneeRegion == "000");
+                }
+                if (!string.IsNullOrEmpty(userCode))
+                {
+                    User user = context.User.Where(it => it.LoginName == userCode).SingleOrDefault();
+                    if (user != null)
+                    {
+                        userCode = user.LoginName;
+                        HAWBs = HAWBs.Where(a => a.User.LoginName == userCode);
+                    }
+                    else
+                        HAWBs = HAWBs.Where(a => a.Department.DepCode == userCode);
+                }
+                if (!string.IsNullOrEmpty(companyName)) HAWBs = HAWBs.Where(a => a.Carrier.StartsWith(companyName));
+                //这里的联系人和电话可能是公司也可能是个人的
+                if (!string.IsNullOrEmpty(realName))
+                {
+                    //根据公司名称获取公司账号
+                    Company companyObj = context.Company.Where(it => it.FullName.StartsWith(realName)).SingleOrDefault();
+                    if (companyObj != null)
+                    {
+                        realName = companyObj.CompanyCode;
+                        HAWBs = HAWBs.Where(a => a.Department.CompanyCode == realName);
+                    }
+                    else
+                        HAWBs = HAWBs.Where(a => a.User.RealName == realName);
+                }
+                if (beginTime.HasValue)
+                {
+                    if (beginTime.Value != DateTime.MinValue)
+                        HAWBs = HAWBs.Where(a => a.CreateTime >= beginTime.Value);
+                }
+                if (endTime.HasValue)
+                {
+                    if (endTime.Value != DateTime.MinValue)
+                        HAWBs = HAWBs.Where(a => a.CreateTime <= endTime.Value);
+                }
+                if (settleType != -1) HAWBs = HAWBs.Where(a => a.SettleType == Convert.ToInt16(settleType));
+                if (serviceType != -1) HAWBs = HAWBs.Where(a => a.ServiceType == Convert.ToInt16(serviceType));
+                if (isInternational.HasValue) HAWBs = HAWBs.Where(a => a.IsInternational == isInternational);
+            }
+            else
+            {
+                throw new InvalidOperationException(string.Format(
+                                                            CultureInfo.InvariantCulture,
+                                                            Messages.exception_InvalidStoreContext,
+                                                            GetType().Name));
+            }
+            return HAWBs.OrderByDescending(a => a.CreateTime).Skip(pageIndex * pageCount).Take(pageCount).ToList();
         }
 
         #region 运单货物操作

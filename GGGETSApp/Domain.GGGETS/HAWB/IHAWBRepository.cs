@@ -15,7 +15,9 @@ namespace Domain.GGGETS
         IList<HAWB> FindHAWBsByCondition(string barCode, string countryCode, string regionCode, string loginName, string departmentCode, string companyName,
                                                string realName, string phone, DateTime? beginTime, DateTime? endTime, int settleType, int serviceType,
                                                bool? isInternational);
-
+        IList<HAWB> FindHAWBsByCondition(string barCode, string countryCode, string regionCode, string loginName, string departmentCode, string companyName,
+                                               string realName, string phone, DateTime? beginTime, DateTime? endTime, int settleType, int serviceType,
+                                               bool? isInternational,int pageIndex,int pageCount);
         HAWB LoadHAWBByBarCode(string barCode);
         IList<HAWBItem> FindHAWBItemByHID(string HID);
         IList<HAWBBox> FindHAWBBoxByHID(string HID);
@@ -29,7 +31,9 @@ namespace Domain.GGGETS
         IList<HAWB> FindHAWBsByCondition(string barCode, string countryName, string regionName, string userCode, string companyName,
                                                string realName, DateTime? beginTime, DateTime? endTime, int settleType, int serviceType,
                                                bool? isInternational);
-
+        IList<HAWB> FindHAWBsByCondition(string barCode, string countryName, string regionName, string userCode, string companyName,
+                                               string realName, DateTime? beginTime, DateTime? endTime, int settleType, int serviceType,
+                                               bool? isInternational, int pageIndex, int pageCount);
         IList<HAWB> FindHAWBsByMID(string MID);
     }
 }

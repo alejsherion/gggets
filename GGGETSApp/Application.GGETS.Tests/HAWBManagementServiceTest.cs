@@ -292,6 +292,31 @@ namespace Application.GGETS.Tests
             //Assert.AreEqual(expected, actual);
             //Assert.Inconclusive("验证此测试方法的正确性。");
         }
+
+        /// <summary>
+        ///FindHAWBsByCondition 的测试
+        ///</summary>
+        [TestMethod()]
+        public void FindHAWBsByConditionTest1()
+        {
+            string barCode = string.Empty; 
+            string countryCode = string.Empty;
+            string regionCode = string.Empty;
+            string loginName = string.Empty;
+            string departmentCode = string.Empty;
+            string companyName = string.Empty;
+            string realName = string.Empty;
+            string phone = string.Empty; 
+            Nullable<DateTime> beginTime = new Nullable<DateTime>(); 
+            Nullable<DateTime> endTime = new Nullable<DateTime>(); 
+            int settleType = 0; 
+            int serviceType = 0; 
+            Nullable<bool> isInternational = new Nullable<bool>(); 
+            int pageIndex = 1; // 当前页码
+            int pageCount = 1; // 一页显示个数
+            IList<HAWB> actual;
+            actual = _HAWBManagementService.FindHAWBsByCondition(barCode, countryCode, regionCode, loginName, departmentCode, companyName, realName, phone, beginTime, endTime, settleType, serviceType, isInternational, pageIndex, pageCount);
+        }
         #endregion
 
         #region 删除运单单元测试
