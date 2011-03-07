@@ -43,6 +43,7 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
             {
                 this.TotalWeight += package.TotalWeight;
             }
+            this.TotalWeight = Math.Ceiling(TotalWeight);
         }
     }
 }

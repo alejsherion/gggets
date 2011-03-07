@@ -58,7 +58,7 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
             {
                 this.TotalWeight += hawb.TotalWeight;
             }
-            this.TotalWeight = Convert.ToDecimal(TransferWeight(TotalWeight));
+            //this.TotalWeight = Convert.ToDecimal(TransferWeight(TotalWeight));
         }
 
         /// <summary>
