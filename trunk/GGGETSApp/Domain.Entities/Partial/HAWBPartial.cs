@@ -21,6 +21,7 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
             ChangeTracker.ChangeTrackingEnabled = true;
             this.HAWBBoxes.CollectionChanged += new System.Collections.Specialized.NotifyCollectionChangedEventHandler(HAWBBoxes_CollectionChanged);
             this._propertyChanged += new System.ComponentModel.PropertyChangedEventHandler(HAWB_propertyChanged);
+            
         }
 
         /// <summary>
@@ -62,7 +63,7 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
             {
                 this.TotalWeight += box.Weight;
             }
-            this.TotalWeight = Math.Ceiling(TotalWeight);
+            //this.TotalWeight = Math.Ceiling(TotalWeight);
         }
 
         /// <summary>
@@ -97,6 +98,12 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
                 volume += box.Length*box.Width*box.Height;
             }
             this.TotalVolume = Convert.ToDecimal(volume);
+        }
+
+        public void RemoveHAWBBox(HAWBBox box)
+        {
+            box.MarkAsDeleted();
+            this.HAWBBoxes.Remove(box);            
         }
     }
 
