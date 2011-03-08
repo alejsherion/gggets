@@ -12,11 +12,11 @@ namespace Domain.GGGETS
         IEnumerable<HAWB> FindPagedHAWBs(int pageIndex, int pageCount);
         HAWB FindHAWBByBarCode(string barCode);
 
-        IList<HAWB> FindHAWBsByCondition(string barCode, string countryCode, string regionCode, string loginName, string departmentCode, string companyName,
-                                               string realName, string phone, DateTime? beginTime, DateTime? endTime, int settleType, int serviceType,
+        IList<HAWB> FindHAWBsByCondition(string barCode, string countryCode, string regionCode, string departmentCode, string companyCode, string carrier,
+                                               string HAWBOperator, string contactor, DateTime? beginTime, DateTime? endTime, int settleType, int serviceType,
                                                bool? isInternational);
-        IList<HAWB> FindHAWBsByCondition(string barCode, string countryCode, string regionCode, string loginName, string departmentCode, string companyName,
-                                               string realName, string phone, DateTime? beginTime, DateTime? endTime, int settleType, int serviceType,
+        IList<HAWB> FindHAWBsByCondition(string barCode, string countryCode, string regionCode, string departmentCode, string companyCode, string carrier,
+                                               string HAWBOperator, string contactor, DateTime? beginTime, DateTime? endTime, int settleType, int serviceType,
                                                bool? isInternational,int pageIndex,int pageCount);
         HAWB LoadHAWBByBarCode(string barCode);
         IList<HAWBItem> FindHAWBItemByHID(string HID);

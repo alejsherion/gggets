@@ -70,10 +70,10 @@ namespace Application.GGETS
         /// <param name="barCode">运单编号</param>
         /// <param name="countryCode">国家二字码</param>
         /// <param name="regionCode">地区三字码</param>
-        /// <param name="loginName">客户账号</param>
-        /// <param name="companyName">公司名称</param>
-        /// <param name="realName">联系人姓名</param>
-        /// <param name="phone">联系电话</param>
+        /// <param name="companyCode">公司账号</param>
+        /// <param name="carrier">承运公司名称</param>
+        /// <param name="contactor">联系人姓名(可能是公司用户，也可能是个人用户)</param>
+        /// <param name="HAWBOperator">用户名称-操作人</param>
         /// <param name="endTime">结束日期</param>
         /// <param name="settleType">结算方式</param>
         /// <param name="serviceType">包裹类型</param>
@@ -81,12 +81,11 @@ namespace Application.GGETS
         /// <param name="beginTime">开始日期</param>
         /// <param name="departmentCode">部门编号</param>
         /// <returns></returns>
-        public IList<HAWB> FindHAWBsByCondition(string barCode, string countryCode, string regionCode, string loginName, string departmentCode, string companyName,
-                                               string realName, string phone, DateTime? beginTime, DateTime? endTime, int settleType, int serviceType,
-                                               bool? isInternational)
+        public IList<HAWB> FindHAWBsByCondition(string barCode, string countryCode, string regionCode, string departmentCode, string companyCode, string carrier, string HAWBOperator, string contactor, DateTime? beginTime, DateTime? endTime, int settleType, int serviceType, bool? isInternational)
         {
-            return _hawbRepository.FindHAWBsByCondition(barCode, countryCode, regionCode, loginName, departmentCode, companyName,
-                                                realName, phone, beginTime, endTime, settleType, serviceType, isInternational);
+            return _hawbRepository.FindHAWBsByCondition(barCode, countryCode, regionCode, departmentCode, companyCode,
+                                                        carrier, HAWBOperator, contactor, beginTime, endTime, settleType,
+                                                        serviceType, isInternational);
         }
 
         /// <summary>
@@ -95,10 +94,10 @@ namespace Application.GGETS
         /// <param name="barCode">运单编号</param>
         /// <param name="countryCode">国家二字码</param>
         /// <param name="regionCode">地区三字码</param>
-        /// <param name="loginName">客户账号</param>
-        /// <param name="companyName">公司名称</param>
-        /// <param name="realName">联系人姓名</param>
-        /// <param name="phone">联系电话</param>
+        /// <param name="companyCode">公司账号</param>
+        /// <param name="carrier">承运公司名称</param>
+        /// <param name="contactor">联系人姓名(可能是公司用户，也可能是个人用户)</param>
+        /// <param name="HAWBOperator">用户名称-操作人</param>
         /// <param name="endTime">结束日期</param>
         /// <param name="settleType">结算方式</param>
         /// <param name="serviceType">包裹类型</param>
@@ -108,13 +107,13 @@ namespace Application.GGETS
         /// <param name="pageIndex">当前页码</param>
         /// <param name="pageCount">一页显示个数</param>
         /// <returns></returns>
-        public IList<HAWB> FindHAWBsByCondition(string barCode, string countryCode, string regionCode, string loginName, string departmentCode, string companyName, string realName, string phone, DateTime? beginTime, DateTime? endTime, int settleType, int serviceType, bool? isInternational, int pageIndex, int pageCount)
+        public IList<HAWB> FindHAWBsByCondition(string barCode, string countryCode, string regionCode, string departmentCode, string companyCode, string carrier, string HAWBOperator, string contactor, DateTime? beginTime, DateTime? endTime, int settleType, int serviceType, bool? isInternational, int pageIndex, int pageCount)
         {
-            return _hawbRepository.FindHAWBsByCondition(barCode, countryCode, regionCode, loginName, departmentCode,
-                                                        companyName,
-                                                        realName, phone, beginTime, endTime, settleType, serviceType,
-                                                        isInternational, pageIndex, pageCount);
+            return _hawbRepository.FindHAWBsByCondition(barCode, countryCode, regionCode, departmentCode, companyCode,
+                                                        carrier, HAWBOperator, contactor, beginTime, endTime, settleType,
+                                                        serviceType, isInternational, pageIndex, pageCount);
         }
+
 
         public IList<HAWB> FindHAWBsByCondition(string barCode, string countryName, string regionName, string userCode, string companyName,
                                                string realName, DateTime? beginTime, DateTime? endTime, int settleType, int serviceType,
