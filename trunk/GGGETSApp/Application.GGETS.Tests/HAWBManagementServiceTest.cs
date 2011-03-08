@@ -385,6 +385,42 @@ namespace Application.GGETS.Tests
             get { throw new NotImplementedException(); }
         }
 
-        
+
+
+        /// <summary>
+        ///FindHAWBsByCondition 的测试
+        ///</summary>
+        [TestMethod()]
+        public void FindHAWBsByConditionTest1()
+        {
+            IHAWBRepository hawbRepository = null; // TODO: 初始化为适当的值
+            IHAWBItemRepository hawbItemRepository = null; // TODO: 初始化为适当的值
+            IHAWBBoxRepository hawbBoxRepository = null; // TODO: 初始化为适当的值
+            IUserRepository userRepository = null; // TODO: 初始化为适当的值
+            HAWBManagementService target = new HAWBManagementService(hawbRepository, hawbItemRepository, hawbBoxRepository, userRepository); // TODO: 初始化为适当的值
+            string barCode = string.Empty; // TODO: 初始化为适当的值
+            string countryCode = string.Empty; // TODO: 初始化为适当的值
+            string regionCode = string.Empty; // TODO: 初始化为适当的值
+            string departmentCode = string.Empty; // TODO: 初始化为适当的值
+            string companyCode = string.Empty; // TODO: 初始化为适当的值
+            string carrier = string.Empty; // TODO: 初始化为适当的值
+            string HAWBOperator = string.Empty; // TODO: 初始化为适当的值
+            string contactor = string.Empty; // TODO: 初始化为适当的值
+            Nullable<DateTime> beginTime = new Nullable<DateTime>(); // TODO: 初始化为适当的值
+            Nullable<DateTime> endTime = new Nullable<DateTime>(); // TODO: 初始化为适当的值
+            int settleType = 0; // TODO: 初始化为适当的值
+            int serviceType = 0; // TODO: 初始化为适当的值
+            Nullable<bool> isInternational = new Nullable<bool>(); // TODO: 初始化为适当的值
+            int pageIndex = 0; // TODO: 初始化为适当的值
+            int pageCount = 0; // TODO: 初始化为适当的值
+            int totalCount = 0; // TODO: 初始化为适当的值
+            int totalCountExpected = 0; // TODO: 初始化为适当的值
+            IList<HAWB> expected = null; // TODO: 初始化为适当的值
+            IList<HAWB> actual;
+            actual = target.FindHAWBsByCondition(barCode, countryCode, regionCode, departmentCode, companyCode, carrier, HAWBOperator, contactor, beginTime, endTime, settleType, serviceType, isInternational, pageIndex, pageCount, ref totalCount);
+            Assert.AreEqual(totalCountExpected, totalCount);
+            Assert.AreEqual(expected, actual);
+            Assert.Inconclusive("验证此测试方法的正确性。");
+        }
     }
 }
