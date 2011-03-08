@@ -20,9 +20,9 @@ namespace Application.GGETS
         MAWB FindMAWBByBarcode(string barcode);
         void ModifyMAWB(MAWB mawb);
         IList<MAWB> FindMAWBByCondition(string barCode, DateTime? beginDate, DateTime? endDate);
-        IList<MAWB> FindMAWBByCondition(string barCode, DateTime? beginDate, DateTime? endDate,int pageIndex,int pageCount);
+        IList<MAWB> FindMAWBByCondition(string barCode, DateTime? beginDate, DateTime? endDate,int pageIndex, int pageCount,ref int totalCount);
         IList<MAWB> FindAllMAWBsByFlightNo(string flightNo);
-        IList<MAWB> FindAllMAWBsByFlightNo(string flightNo, int pageIndex, int pageCount);
+        IList<MAWB> FindAllMAWBsByFlightNo(string flightNo, int pageIndex, int pageCount, ref int totalCount);
         MAWB FindMAWBByMID(string MID);
         IList<MAWB> FindMAWBByFlightCondition(string flightNo, string from, string to);
         IList<MAWB> FindMAWBByFlightCondition(string flightNo, string from, string to, int pageIndex, int pageCount,ref int totalCount);

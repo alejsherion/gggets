@@ -116,8 +116,12 @@ namespace Application.GGETS
         /// <param name="pageIndex">当前页码</param>
         /// <param name="pageCount">一页显示个数</param>
         /// <returns></returns>
-        public IList<MAWB> FindAllMAWBsByFlightNo(string flightNo, int pageIndex, int pageCount)
+        public IList<MAWB> FindAllMAWBsByFlightNo(string flightNo, int pageIndex, int pageCount,ref int totalCount)
         {
+            IList<MAWB> mawbs = FindAllMAWBsByFlightNo(flightNo);
+            if (mawbs != null) totalCount = mawbs.Count;
+            else totalCount = 0;
+
             return _mawbRepository.FindAllMAWBsByFlightNo(flightNo,pageIndex,pageCount);
         }
 
@@ -152,8 +156,12 @@ namespace Application.GGETS
         /// <param name="pageIndex">当前页码</param>
         /// <param name="pageCount">一页显示个数</param>
         /// <returns></returns>
-        public IList<MAWB> FindMAWBByFlightCondition(string flightNo, string from, string to, int pageIndex, int pageCount)
+        public IList<MAWB> FindMAWBByFlightCondition(string flightNo, string from, string to, int pageIndex, int pageCount,ref int totalCount)
         {
+            IList<MAWB> mawbs = FindMAWBByFlightCondition(flightNo, from, to);
+            if (mawbs != null) totalCount = mawbs.Count;
+            else totalCount = 0;
+
             return _mawbRepository.FindMAWBByFlightCondition(flightNo, from, to,pageIndex,pageCount);
         }
 
