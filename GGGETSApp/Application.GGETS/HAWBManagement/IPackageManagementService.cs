@@ -20,7 +20,7 @@ namespace Application.GGETS
         IList<Package> FindPackageByCondition(string barCode, DateTime? beginDate, DateTime? endDate,
                                               string destinationCode);
         IList<Package> FindPackageByCondition(string barCode, DateTime? beginDate, DateTime? endDate,
-                                              string destinationCode, int pageIndex, int pageCount);
+                                              string destinationCode, int pageIndex, int pageCount,ref int totalCount);
         bool JudgePIDIsNull(string barcode);
         bool JudgeRegionCodeIsRepeat(string barcode, string packageRegionCode, bool isMix);
         IList<Package> FindPackagesByMID(string MID);

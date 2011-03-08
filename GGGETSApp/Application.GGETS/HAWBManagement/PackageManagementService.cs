@@ -93,8 +93,12 @@ namespace Application.GGETS
         /// <param name="pageIndex">当前页码</param>
         /// <param name="pageCount">一页显示个数</param>
         /// <returns></returns>
-        public IList<Package> FindPackageByCondition(string barCode, DateTime? beginDate, DateTime? endDate, string destinationCode, int pageIndex, int pageCount)
+        public IList<Package> FindPackageByCondition(string barCode, DateTime? beginDate, DateTime? endDate, string destinationCode, int pageIndex, int pageCount,ref int totalCount)
         {
+            IList<Package> packages = FindPackageByCondition(barCode, beginDate, endDate, destinationCode);
+            if (packages != null) totalCount = packages.Count();
+            else totalCount = 0;
+
             return _packageRepository.FindPackageByCondition(barCode, beginDate, endDate, destinationCode,pageIndex,pageCount);
         }
 
