@@ -107,5 +107,37 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Repositories
                 return countries.ToList();
             //}
         }
+
+        /// <summary>
+        /// 国家二字码多条件查询
+        /// </summary>
+        /// <param name="countryCode">国家二字码</param>
+        /// <param name="countryName">国家全称</param>
+        /// <param name="pageIndex"></param>
+        /// <param name="pageCount"></param>
+        /// <returns></returns>
+        public IList<CountryCode> FindCountriesByCondition(string countryCode, string countryName, int pageIndex, int pageCount)
+        {
+            IEnumerable<CountryCode> countries = null;
+            IGGGETSAppUnitOfWork context = UnitOfWork as IGGGETSAppUnitOfWork;
+            //using (IGGGETSAppUnitOfWork context = UnitOfWork as IGGGETSAppUnitOfWork)
+            //{
+            if (context != null)
+            {
+                countries = context.CountryCode.Select(c => c);
+                if (!string.IsNullOrEmpty(countryCode))
+                    countries = countries.Where(c => c.CountryCode1 == countryCode);
+                if (!string.IsNullOrEmpty(countryName))
+                    countries = countries.Where(c => c.CountryName.StartsWith(countryName));
+            }
+            else
+            {
+                throw new InvalidOperationException(string.Format(
+                    CultureInfo.InvariantCulture,
+                    Messages.exception_InvalidStoreContext,
+                    GetType().Name));
+            }
+            return countries.Skip(pageIndex*pageCount).Take(pageCount).ToList();
+        }
     }
 }
