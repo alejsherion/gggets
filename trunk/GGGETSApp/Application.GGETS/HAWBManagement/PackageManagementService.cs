@@ -168,8 +168,12 @@ namespace Application.GGETS
         /// <param name="pageIndex">当前页码</param>
         /// <param name="pageCount">一页显示个数</param>
         /// <returns></returns>
-        public IList<Package> FindPackagesByMID(string MID, int pageIndex, int pageCount)
+        public IList<Package> FindPackagesByMID(string MID, int pageIndex, int pageCount,ref int totalCount)
         {
+            IList<Package> packages = FindPackagesByMID(MID);
+            if (packages != null) totalCount = packages.Count;
+            else totalCount = 0;
+
             return _packageRepository.FindPackagesByMID(MID,pageIndex,pageCount);
         }
     }

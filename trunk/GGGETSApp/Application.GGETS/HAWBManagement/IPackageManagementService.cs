@@ -24,6 +24,6 @@ namespace Application.GGETS
         bool JudgePIDIsNull(string barcode);
         bool JudgeRegionCodeIsRepeat(string barcode, string packageRegionCode, bool isMix);
         IList<Package> FindPackagesByMID(string MID);
-        IList<Package> FindPackagesByMID(string MID, int pageIndex, int pageCount);
+        IList<Package> FindPackagesByMID(string MID, int pageIndex, int pageCount,ref int totalCount);
     }
 }
