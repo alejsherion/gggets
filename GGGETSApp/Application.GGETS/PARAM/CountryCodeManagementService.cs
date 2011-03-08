@@ -109,5 +109,14 @@ namespace Application.GGETS
         {
             return _countryCodeRepository.FindCountriesByCondition(countryCode, countryName);
         }
+
+        public IList<CountryCode> FindCountriesByCondition(string countrycode, string countryName, int pageIndex, int pageCount, ref int totalCount)
+        {
+            IList<CountryCode> countries = FindCountriesByCondition(countrycode, countryName);
+            if (countries != null) totalCount = countries.Count();
+            else totalCount = 0;
+
+            return _countryCodeRepository.FindCountriesByCondition(countrycode, countryName, pageIndex, pageCount);
+        }
     }
 }

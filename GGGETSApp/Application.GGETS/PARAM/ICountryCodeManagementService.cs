@@ -21,5 +21,6 @@ namespace Application.GGETS
         CountryCode FindCountriedByCountryCode(string countryCode);
         void RemoveCountryCode(CountryCode countryCode);
         IList<CountryCode> FindCountriesByCondition(string countrycode, string countryName);
+        IList<CountryCode> FindCountriesByCondition(string countrycode, string countryName,int pageIndex, int pageCount,ref int totalCount);
     }
 }

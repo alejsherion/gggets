@@ -19,5 +19,6 @@ namespace Domain.GGGETS
         IList<CountryCode> FindCountriedByCountryName(string countryName);
         CountryCode FindCountriedByCountryCode(string countryCode);
         IList<CountryCode> FindCountriesByCondition(string country, string countryName);
+        IList<CountryCode> FindCountriesByCondition(string country, string countryName,int pageIndex, int pageCount);
     }
 }

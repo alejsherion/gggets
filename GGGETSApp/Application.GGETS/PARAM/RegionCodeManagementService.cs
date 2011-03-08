@@ -113,6 +113,16 @@ namespace Application.GGETS
             return _regionCodeRepository.FindRegionCodesByCondition(countryCode, regioncode, regionName);
         }
 
+        public IList<RegionCode> FindRegionCodesByCondition(string countryCode, string regioncode, string regionName, int pageIndex, int pageCount, ref int totalCount)
+        {
+            IList<RegionCode> regions = FindRegionCodesByCondition(countryCode, regioncode, regionName);
+            if (regions != null) totalCount = regions.Count();
+            else totalCount = 0;
+
+            return _regionCodeRepository.FindRegionCodesByCondition(countryCode, regioncode, regionName, pageIndex,
+                                                                    pageCount);
+        }
+
         /// <summary>
         /// 获取所有的地区
         /// </summary>
