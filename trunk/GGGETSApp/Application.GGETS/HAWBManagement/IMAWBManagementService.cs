@@ -25,7 +25,7 @@ namespace Application.GGETS
         IList<MAWB> FindAllMAWBsByFlightNo(string flightNo, int pageIndex, int pageCount);
         MAWB FindMAWBByMID(string MID);
         IList<MAWB> FindMAWBByFlightCondition(string flightNo, string from, string to);
-        IList<MAWB> FindMAWBByFlightCondition(string flightNo, string from, string to, int pageIndex, int pageCount);
+        IList<MAWB> FindMAWBByFlightCondition(string flightNo, string from, string to, int pageIndex, int pageCount,ref int totalCount);
         bool JudgeMIDIsNull(string barcode);
     }
 }
