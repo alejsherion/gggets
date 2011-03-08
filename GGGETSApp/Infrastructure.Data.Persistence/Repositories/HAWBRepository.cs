@@ -86,10 +86,10 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Repositories
         /// <param name="barCode">运单编号</param>
         /// <param name="countryCode">国家二字码</param>
         /// <param name="regionCode">地区三字码</param>
-        /// <param name="loginName">客户账号</param>
-        /// <param name="companyName">公司名称</param>
-        /// <param name="realName">联系人姓名</param>
-        /// <param name="phone">联系电话</param>
+        /// <param name="companyCode">公司账号</param>
+        /// <param name="carrier">承运公司名称</param>
+        /// <param name="contactor">联系人姓名(可能是公司用户，也可能是个人用户)</param>
+        /// <param name="HAWBOperator">用户名称-操作人</param>
         /// <param name="endTime">结束日期</param>
         /// <param name="settleType">结算方式</param>
         /// <param name="serviceType">包裹类型</param>
@@ -97,55 +97,54 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Repositories
         /// <param name="beginTime">开始日期</param>
         /// <param name="departmentCode">部门编号</param>
         /// <returns></returns>
-        public IList<HAWB> FindHAWBsByCondition(string barCode, string countryCode, string regionCode, string loginName, string departmentCode, string companyName,
-                                               string realName, string phone, DateTime? beginTime, DateTime? endTime, int settleType, int serviceType,
+        public IList<HAWB> FindHAWBsByCondition(string barCode, string countryCode, string regionCode, string departmentCode, string companyCode, string carrier,
+                                               string HAWBOperator, string contactor, DateTime? beginTime, DateTime? endTime, int settleType, int serviceType,
                                                bool? isInternational)
         {
             IEnumerable<HAWB> HAWBs=null;
             IGGGETSAppUnitOfWork context = UnitOfWork as IGGGETSAppUnitOfWork;
-            //using(IGGGETSAppUnitOfWork context = UnitOfWork as IGGGETSAppUnitOfWork)
-            //{
-                if (context != null)
-                {
-                    HAWBs = context.HAWB.Include(h => h.User).Include(h=>h.Department).Select(h => h);
-                    if (!string.IsNullOrEmpty(barCode)) HAWBs = HAWBs.Where(a => a.BarCode == barCode);
-                    //if (!string.IsNullOrEmpty(countryCode)) HAWBs = HAWBs.Where(a => a.User.CountryCode == countryCode);
-                    //if (!string.IsNullOrEmpty(regionCode)) HAWBs = HAWBs.Where(a => a.User.RegionCode == regionCode);
-                    if (!string.IsNullOrEmpty(loginName)) HAWBs = HAWBs.Where(a => a.User.LoginName == loginName);
-                    if (!string.IsNullOrEmpty(companyName)) HAWBs = HAWBs.Where(a => a.Carrier.StartsWith(companyName));
-                    //这里的联系人和电话可能是公司也可能是个人的
-                    if (!string.IsNullOrEmpty(realName))
-                    {
-                        //根据公司名称获取公司账号
-                        Company companyObj = context.Company.Where(it => it.FullName.StartsWith(realName)).SingleOrDefault();
-                        if (companyObj != null) realName = companyObj.CompanyCode;
 
-                        HAWBs = HAWBs.Where(a=>a.Department.CompanyCode == realName).Where(a => a.User.RealName.StartsWith(realName));
-                    }
-                    if (!string.IsNullOrEmpty(phone)) HAWBs = HAWBs.Where(a => a.User.Phone == phone);
-                    if(beginTime.HasValue)
-                    {
-                        if(beginTime.Value!=DateTime.MinValue)
-                        HAWBs = HAWBs.Where(a => a.CreateTime >= beginTime.Value);
-                    }
-                    if (endTime.HasValue)
-                    {
-                        if (endTime.Value != DateTime.MinValue)
-                        HAWBs = HAWBs.Where(a => a.CreateTime <= endTime.Value);
-                    }
-                    if (settleType != -1) HAWBs = HAWBs.Where(a => a.SettleType == Convert.ToInt16(settleType));
-                    if (serviceType != -1) HAWBs = HAWBs.Where(a => a.ServiceType == Convert.ToInt16(serviceType));
-                    if (isInternational.HasValue) HAWBs = HAWBs.Where(a => a.IsInternational == isInternational);
-                }
-                else
+            if (context != null)
+            {
+                HAWBs = context.HAWB.Include(h=>h.Department).Select(h => h);
+                if (!string.IsNullOrEmpty(barCode)) HAWBs = HAWBs.Where(a => a.BarCode == barCode);
+                if (!string.IsNullOrEmpty(countryCode)) HAWBs = HAWBs.Where(a => a.ConsigneeCountry == countryCode);
+                if (!string.IsNullOrEmpty(regionCode)) HAWBs = HAWBs.Where(a => a.ConsigneeRegion == regionCode);
+                if (!string.IsNullOrEmpty(departmentCode)) HAWBs = HAWBs.Where(a => a.Department.DepCode == departmentCode);
+                if (!string.IsNullOrEmpty(companyCode)) HAWBs = HAWBs.Where(a => a.Department.CompanyCode == companyCode);
+                if (!string.IsNullOrEmpty(carrier)) HAWBs = HAWBs.Where(a => a.Carrier.StartsWith(carrier));
+                if (!string.IsNullOrEmpty(HAWBOperator)) HAWBs = HAWBs.Where(a => a.Operator == HAWBOperator);
+                if (!string.IsNullOrEmpty(contactor)) HAWBs = HAWBs.Where(a => a.ConsigneeContactor.StartsWith(contactor));
+                if(beginTime.HasValue)
                 {
-                    throw new InvalidOperationException(string.Format(
-                                                                CultureInfo.InvariantCulture,
-                                                                Messages.exception_InvalidStoreContext,
-                                                                GetType().Name));
+                    if (beginTime.Value != DateTime.MinValue)
+                        HAWBs =
+                            HAWBs.Where(
+                                a =>
+                                a.CreateTime >=
+                                new DateTime(beginTime.Value.Year, beginTime.Value.Month, beginTime.Value.Day, 0, 0, 0));
                 }
-                return HAWBs.OrderByDescending(a=>a.CreateTime).ToList();
-            //}
+                if (endTime.HasValue)
+                {
+                    if (endTime.Value != DateTime.MinValue)
+                        HAWBs =
+                            HAWBs.Where(
+                                a =>
+                                a.CreateTime <=
+                                new DateTime(endTime.Value.Year, endTime.Value.Month, endTime.Value.Day, 23, 59, 59));
+                }
+                if (settleType != -1) HAWBs = HAWBs.Where(a => a.SettleType == Convert.ToInt16(settleType));
+                if (serviceType != -1) HAWBs = HAWBs.Where(a => a.ServiceType == Convert.ToInt16(serviceType));
+                if (isInternational.HasValue) HAWBs = HAWBs.Where(a => a.IsInternational == isInternational);
+            }
+            else
+            {
+                throw new InvalidOperationException(string.Format(
+                                                            CultureInfo.InvariantCulture,
+                                                            Messages.exception_InvalidStoreContext,
+                                                            GetType().Name));
+            }
+            return HAWBs.OrderByDescending(a=>a.CreateTime).ToList();
         }
 
         /// <summary>
@@ -154,10 +153,10 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Repositories
         /// <param name="barCode">运单编号</param>
         /// <param name="countryCode">国家二字码</param>
         /// <param name="regionCode">地区三字码</param>
-        /// <param name="loginName">客户账号</param>
-        /// <param name="companyName">公司名称</param>
-        /// <param name="realName">联系人姓名</param>
-        /// <param name="phone">联系电话</param>
+        /// <param name="companyCode">公司账号</param>
+        /// <param name="carrier">承运公司名称</param>
+        /// <param name="contactor">联系人姓名(可能是公司用户，也可能是个人用户)</param>
+        /// <param name="HAWBOperator">用户名称-操作人</param>
         /// <param name="endTime">结束日期</param>
         /// <param name="settleType">结算方式</param>
         /// <param name="serviceType">包裹类型</param>
@@ -167,38 +166,39 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Repositories
         /// <param name="pageIndex">当前页码</param>
         /// <param name="pageCount">一页显示个数</param>
         /// <returns></returns>
-        public IList<HAWB> FindHAWBsByCondition(string barCode, string countryCode, string regionCode, string loginName, string departmentCode, string companyName, string realName, string phone, DateTime? beginTime, DateTime? endTime, int settleType, int serviceType, bool? isInternational, int pageIndex, int pageCount)
+        public IList<HAWB> FindHAWBsByCondition(string barCode, string countryCode, string regionCode, string departmentCode, string companyCode, string carrier, string HAWBOperator, string contactor, DateTime? beginTime, DateTime? endTime, int settleType, int serviceType, bool? isInternational, int pageIndex, int pageCount)
         {
             IEnumerable<HAWB> HAWBs = null;
             IGGGETSAppUnitOfWork context = UnitOfWork as IGGGETSAppUnitOfWork;
 
             if (context != null)
             {
-                HAWBs = context.HAWB.Include(h => h.User).Include(h => h.Department).Select(h => h);
+                HAWBs = context.HAWB.Include(h => h.Department).Select(h => h);
                 if (!string.IsNullOrEmpty(barCode)) HAWBs = HAWBs.Where(a => a.BarCode == barCode);
-                //if (!string.IsNullOrEmpty(countryCode)) HAWBs = HAWBs.Where(a => a.User.CountryCode == countryCode);
-                //if (!string.IsNullOrEmpty(regionCode)) HAWBs = HAWBs.Where(a => a.User.RegionCode == regionCode);
-                if (!string.IsNullOrEmpty(loginName)) HAWBs = HAWBs.Where(a => a.User.LoginName == loginName);
-                if (!string.IsNullOrEmpty(companyName)) HAWBs = HAWBs.Where(a => a.Carrier.StartsWith(companyName));
-                //这里的联系人和电话可能是公司也可能是个人的
-                if (!string.IsNullOrEmpty(realName))
-                {
-                    //根据公司名称获取公司账号
-                    Company companyObj = context.Company.Where(it => it.FullName.StartsWith(realName)).SingleOrDefault();
-                    if (companyObj != null) realName = companyObj.CompanyCode;
-
-                    HAWBs = HAWBs.Where(a => a.Department.CompanyCode == realName).Where(a => a.User.RealName.StartsWith(realName));
-                }
-                if (!string.IsNullOrEmpty(phone)) HAWBs = HAWBs.Where(a => a.User.Phone == phone);
+                if (!string.IsNullOrEmpty(countryCode)) HAWBs = HAWBs.Where(a => a.ConsigneeCountry == countryCode);
+                if (!string.IsNullOrEmpty(regionCode)) HAWBs = HAWBs.Where(a => a.ConsigneeRegion == regionCode);
+                if (!string.IsNullOrEmpty(departmentCode)) HAWBs = HAWBs.Where(a => a.Department.DepCode == departmentCode);
+                if (!string.IsNullOrEmpty(companyCode)) HAWBs = HAWBs.Where(a => a.Department.CompanyCode == companyCode);
+                if (!string.IsNullOrEmpty(carrier)) HAWBs = HAWBs.Where(a => a.Carrier.StartsWith(carrier));
+                if (!string.IsNullOrEmpty(HAWBOperator)) HAWBs = HAWBs.Where(a => a.Operator == HAWBOperator);
+                if (!string.IsNullOrEmpty(contactor)) HAWBs = HAWBs.Where(a => a.ConsigneeContactor.StartsWith(contactor));
                 if (beginTime.HasValue)
                 {
                     if (beginTime.Value != DateTime.MinValue)
-                        HAWBs = HAWBs.Where(a => a.CreateTime >= beginTime.Value);
+                        HAWBs =
+                            HAWBs.Where(
+                                a =>
+                                a.CreateTime >=
+                                new DateTime(beginTime.Value.Year, beginTime.Value.Month, beginTime.Value.Day, 0, 0, 0));
                 }
                 if (endTime.HasValue)
                 {
                     if (endTime.Value != DateTime.MinValue)
-                        HAWBs = HAWBs.Where(a => a.CreateTime <= endTime.Value);
+                        HAWBs =
+                            HAWBs.Where(
+                                a =>
+                                a.CreateTime <=
+                                new DateTime(endTime.Value.Year, endTime.Value.Month, endTime.Value.Day, 23, 59, 59));
                 }
                 if (settleType != -1) HAWBs = HAWBs.Where(a => a.SettleType == Convert.ToInt16(settleType));
                 if (serviceType != -1) HAWBs = HAWBs.Where(a => a.ServiceType == Convert.ToInt16(serviceType));
