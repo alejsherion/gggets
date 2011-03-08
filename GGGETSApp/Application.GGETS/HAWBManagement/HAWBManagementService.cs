@@ -107,8 +107,14 @@ namespace Application.GGETS
         /// <param name="pageIndex">当前页码</param>
         /// <param name="pageCount">一页显示个数</param>
         /// <returns></returns>
-        public IList<HAWB> FindHAWBsByCondition(string barCode, string countryCode, string regionCode, string departmentCode, string companyCode, string carrier, string HAWBOperator, string contactor, DateTime? beginTime, DateTime? endTime, int settleType, int serviceType, bool? isInternational, int pageIndex, int pageCount)
+        public IList<HAWB> FindHAWBsByCondition(string barCode, string countryCode, string regionCode, string departmentCode, string companyCode, string carrier, string HAWBOperator, string contactor, DateTime? beginTime, DateTime? endTime, int settleType, int serviceType, bool? isInternational, int pageIndex, int pageCount,ref int totalCount)
         {
+            IList<HAWB> hawbs = FindHAWBsByCondition(barCode, countryCode, regionCode, departmentCode, companyCode,
+                                                        carrier, HAWBOperator, contactor, beginTime, endTime, settleType,
+                                                        serviceType, isInternational);
+            if (hawbs != null) totalCount = hawbs.Count();
+            else totalCount = 0;
+
             return _hawbRepository.FindHAWBsByCondition(barCode, countryCode, regionCode, departmentCode, companyCode,
                                                         carrier, HAWBOperator, contactor, beginTime, endTime, settleType,
                                                         serviceType, isInternational, pageIndex, pageCount);

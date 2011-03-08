@@ -18,7 +18,7 @@ namespace Application.GGETS
                                                bool? isInternational);
         IList<HAWB> FindHAWBsByCondition(string barCode, string countryCode, string regionCode, string departmentCode, string companyCode, string carrier,
                                                string HAWBOperator, string contactor, DateTime? beginTime, DateTime? endTime, int settleType, int serviceType,
-                                               bool? isInternational, int pageIndex, int pageCount);
+                                               bool? isInternational, int pageIndex, int pageCount,ref int totalCount);
         IList<HAWB> FindHAWBsByCondition(string barCode, string countryName, string regionName, string userCode,
                                          string companyName,
                                          string realName, DateTime? beginTime, DateTime? endTime, int settleType,
