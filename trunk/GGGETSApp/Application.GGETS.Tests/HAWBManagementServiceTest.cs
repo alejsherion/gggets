@@ -375,6 +375,30 @@ namespace Application.GGETS.Tests
         }
         #endregion
 
+        #region 根据运单号查询运单信息
+        /// <summary>
+        ///FindHAWBByBarCode 的测试
+        ///</summary>
+        [TestMethod()]
+        public void FindHAWBByBarCodeTest()
+        {
+            string barCode = "2010"; // 运单号
+            HAWB actual;
+            actual = _HAWBManagementService.FindHAWBByBarCode(barCode);
+        }
+
+        /// <summary>
+        ///LoadHAWBByBarCode 的测试
+        ///</summary>
+        [TestMethod()]
+        public void LoadHAWBByBarCodeTest()
+        {
+            string barCode = "2011"; // 运单号
+            HAWB actual;
+            actual = _HAWBManagementService.LoadHAWBByBarCode(barCode);
+        }
+        #endregion
+
         public override Expression<Func<HAWB, bool>> FilterExpression
         {
             get { throw new NotImplementedException(); }

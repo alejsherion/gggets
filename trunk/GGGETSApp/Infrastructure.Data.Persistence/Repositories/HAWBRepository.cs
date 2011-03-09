@@ -68,7 +68,7 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Repositories
             if (context != null)
             {
                 HAWB hawb = context.HAWB.Include(ba => ba.HAWBItems).Include(ba => ba.HAWBBoxes).Include(it => it.Department).Include(it=>it.User).Where(it => it.BarCode == barCode).SingleOrDefault();
-                if (hawb != null) return null;
+                if (hawb == null) return null;
                 hawb.ConsigneeCountryDesc =
                     (context.CountryCode.Where(it => it.CountryCode1 == hawb.ShipperCountry).SingleOrDefault()).
                         CountryName;
