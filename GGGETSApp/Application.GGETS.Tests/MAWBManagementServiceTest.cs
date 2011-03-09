@@ -156,14 +156,14 @@ namespace Application.GGETS.Tests
         public void ModifyMAWBTest()
         {
             #region 总运单中移除包裹，飞机航班测试
-            //MAWB mawb = _MAWBManagementService.FindMAWBByBarcode("2013");
-            //Package package = _packageManagementService.FindPackageByBarcode("p1");
-            //Package package2 = _packageManagementService.FindPackageByBarcode("p2");
+            MAWB mawb = _MAWBManagementService.FindMAWBByBarcode("M2");
+            Package package = _packageManagementService.FindPackageByBarcode("p3");
+            Package package2 = _packageManagementService.FindPackageByBarcode("p4");
             //Flight flight = _HAWBManagementService.FindFlightByFID("554c6c50-db8b-4e33-84ec-fb77a133e69f");
-            //mawb.Packages.Remove(package);
-            //mawb.Packages.Remove(package2);
+            mawb.Packages.Remove(package);
+            mawb.Packages.Remove(package2);
             //mawb.Flight.Remove(flight);
-            //_MAWBManagementService.ModifyMAWB(mawb);
+            _MAWBManagementService.ModifyMAWB(mawb);
             #endregion
 
             #region 总运单中移除包裹，飞机航班测试
@@ -178,11 +178,11 @@ namespace Application.GGETS.Tests
             #endregion
 
             #region 总运单中移除包裹，飞机航班测试
-            MAWB mawb = _MAWBManagementService.FindMAWBByBarcode("2013");
-            mawb.Packages[0].Piece = 999;//修改总运单中第一个包裹的件数
-            //mawb.Flight[0].From = "zzz";//修改总运单中航班的起始地
-            mawb.TotalWeight = 999;//修改总运单总重量
-            _MAWBManagementService.ModifyMAWB(mawb);//if three condition is all success,then this test is go out
+            //MAWB mawb = _MAWBManagementService.FindMAWBByBarcode("2013");
+            //mawb.Packages[0].Piece = 999;//修改总运单中第一个包裹的件数
+            ////mawb.Flight[0].From = "zzz";//修改总运单中航班的起始地
+            //mawb.TotalWeight = 999;//修改总运单总重量
+            //_MAWBManagementService.ModifyMAWB(mawb);//if three condition is all success,then this test is go out
             #endregion
         }
         #endregion

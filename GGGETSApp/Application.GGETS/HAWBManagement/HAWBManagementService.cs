@@ -55,7 +55,7 @@ namespace Application.GGETS
         {
            // HAWBBarCodeSpecification specification = new HAWBBarCodeSpecification(barCode);
            ////query repository
-            return this._hawbRepository.FindHAWBByBarCode(barCode); ;
+            return this._hawbRepository.FindHAWBByBarCode(barCode); 
 
         }
 

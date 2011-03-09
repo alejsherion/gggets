@@ -156,17 +156,17 @@ namespace Application.GGETS.Tests
             #endregion
 
             #region 包裹移除运单测试
-            //Package package = _packageManagementService.FindPackageByBarcode("p1");
-            //HAWB hawb = _HAWBManagementService.FindHAWBByBarCode("2011");
-            //package.HAWBs.Remove(hawb);
-            //_packageManagementService.ModifyPackage(package);
-            ////Assert.Inconclusive("无法验证不返回值的方法。");
+            Package package = _packageManagementService.FindPackageByBarcode("p4");
+            HAWB hawb = _HAWBManagementService.LoadHAWBByBarCode("2015");
+            package.HAWBs.Remove(hawb);
+            _packageManagementService.ModifyPackage(package);
+            //Assert.Inconclusive("无法验证不返回值的方法。");
             #endregion
 
             #region 直接修改包裹属性
-            Package package = _packageManagementService.FindPackageByBarcode("p1");
-            package.Piece = 111;
-            _packageManagementService.ModifyPackage(package);
+            //Package package = _packageManagementService.FindPackageByBarcode("p1");
+            //package.Piece = 111;
+            //_packageManagementService.ModifyPackage(package);
             //Assert.Inconclusive("无法验证不返回值的方法。");
             #endregion
         }
