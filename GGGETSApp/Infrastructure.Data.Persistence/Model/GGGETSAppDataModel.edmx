@@ -154,6 +154,7 @@
           <Property Name="BarCode" Type="nvarchar" MaxLength="20" />
           <Property Name="Carrier" Type="nvarchar" MaxLength="50" />
           <Property Name="CarrierHAWBID" Type="uniqueidentifier" />
+          <Property Name="CarrierHAWBBarCode" Type="nvarchar" MaxLength="50" />
           <Property Name="SettleType" Type="int" Nullable="false" />
           <Property Name="ServiceType" Type="int" />
           <Property Name="CreateTime" Type="datetime" Nullable="false" />
@@ -639,6 +640,7 @@
           <Property Name="BarCode" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
           <Property Name="Carrier" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
           <Property Name="CarrierHAWBID" Type="Guid" />
+          <Property Name="CarrierHAWBBarCode" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
           <Property Name="SettleType" Type="Int32" Nullable="false" />
           <Property Name="ServiceType" Type="Int32" />
           <Property Name="CreateTime" Type="DateTime" Nullable="false" />
@@ -1050,6 +1052,7 @@
             <ScalarProperty Name="BarCode" ColumnName="BarCode" />
             <ScalarProperty Name="Carrier" ColumnName="Carrier" />
             <ScalarProperty Name="CarrierHAWBID" ColumnName="CarrierHAWBID" />
+            <ScalarProperty Name="CarrierHAWBBarCode" ColumnName="CarrierHAWBBarCode" />
             <ScalarProperty Name="SettleType" ColumnName="SettleType" />
             <ScalarProperty Name="ServiceType" ColumnName="ServiceType" />
             <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
@@ -1219,77 +1222,77 @@
     <!-- Diagram content (shape and connector positions) -->
     <Diagrams>
       <Diagram Name="GGGETSAppDataModel">
-        <EntityTypeShape EntityType="MYGGGETSModel.AddressBook" Width="1.5" PointX="7.5" PointY="16.875" Height="4.1515104166666674" IsExpanded="true" />
-        <EntityTypeShape EntityType="MYGGGETSModel.AppModule" Width="1.5" PointX="5.75" PointY="1.25" Height="1.7908333333333335" IsExpanded="true" />
-        <EntityTypeShape EntityType="MYGGGETSModel.Company" Width="1.5" PointX="0.75" PointY="9.75" Height="3.3084114583333317" IsExpanded="true" />
-        <EntityTypeShape EntityType="MYGGGETSModel.CountryCode" Width="1.5" PointX="5.75" PointY="4.75" Height="1.4535937499999996" IsExpanded="true" />
-        <EntityTypeShape EntityType="MYGGGETSModel.Department" Width="1.5" PointX="3" PointY="9.625" Height="3.4770312499999996" IsExpanded="true" />
-        <EntityTypeShape EntityType="MYGGGETSModel.HAWB" Width="1.5" PointX="10.5" PointY="14.5" Height="9.0414843750000031" IsExpanded="true" />
-        <EntityTypeShape EntityType="MYGGGETSModel.HAWBBox" Width="1.5" PointX="12.75" PointY="16" Height="2.8025520833333317" IsExpanded="true" />
-        <EntityTypeShape EntityType="MYGGGETSModel.HAWBItem" Width="1.5" PointX="12.75" PointY="19.625" Height="2.2966927083333317" IsExpanded="true" />
-        <EntityTypeShape EntityType="MYGGGETSModel.MAWB" Width="1.5" PointX="6" PointY="12.5" Height="2.9711718749999996" IsExpanded="true" />
-        <EntityTypeShape EntityType="MYGGGETSModel.Package" Width="1.5" PointX="8.25" PointY="12.375" Height="3.1397916666666674" IsExpanded="true" />
-        <EntityTypeShape EntityType="MYGGGETSModel.Param" Width="1.5" PointX="3" PointY="1" Height="3.9828906250000031" IsExpanded="true" />
-        <EntityTypeShape EntityType="MYGGGETSModel.Privilege" Width="1.5" PointX="8" PointY="1" Height="2.4653125000000031" IsExpanded="true" />
-        <EntityTypeShape EntityType="MYGGGETSModel.RegionCode" Width="1.5" PointX="0.75" PointY="6.75" Height="1.6222135416666674" IsExpanded="true" />
-        <EntityTypeShape EntityType="MYGGGETSModel.Template" Width="1.5" PointX="0.75" PointY="1.875" Height="2.2966927083333384" IsExpanded="true" />
-        <EntityTypeShape EntityType="MYGGGETSModel.User" Width="1.5" PointX="5.25" PointY="23.875" Height="4.4887500000000031" IsExpanded="true" />
+        <EntityTypeShape EntityType="MYGGGETSModel.AddressBook" Width="1.5" PointX="7.5" PointY="18.875" Height="4.6443082682291674" IsExpanded="true" />
+        <EntityTypeShape EntityType="MYGGGETSModel.AppModule" Width="1.5" PointX="5.75" PointY="1.375" Height="1.9700325520833335" IsExpanded="true" />
+        <EntityTypeShape EntityType="MYGGGETSModel.Company" Width="1.5" PointX="0.75" PointY="10.875" Height="3.6892097981770817" IsExpanded="true" />
+        <EntityTypeShape EntityType="MYGGGETSModel.CountryCode" Width="1.5" PointX="5.75" PointY="4.75" Height="1.5879931640624996" IsExpanded="true" />
+        <EntityTypeShape EntityType="MYGGGETSModel.Department" Width="1.5" PointX="3" PointY="10.75" Height="3.8802294921874996" IsExpanded="true" />
+        <EntityTypeShape EntityType="MYGGGETSModel.HAWB" Width="1.5" PointX="10.5" PointY="16" Height="10.374899088541667" IsExpanded="true" />
+        <EntityTypeShape EntityType="MYGGGETSModel.HAWBBox" Width="1.5" PointX="12.75" PointY="18" Height="3.1161507161458317" IsExpanded="true" />
+        <EntityTypeShape EntityType="MYGGGETSModel.HAWBItem" Width="1.5" PointX="12.75" PointY="21.875" Height="2.5430916341145817" IsExpanded="true" />
+        <EntityTypeShape EntityType="MYGGGETSModel.MAWB" Width="1.5" PointX="6" PointY="14.625" Height="3.3071704101562478" IsExpanded="true" />
+        <EntityTypeShape EntityType="MYGGGETSModel.Package" Width="1.5" PointX="8.25" PointY="14.5" Height="3.4981901041666674" IsExpanded="true" />
+        <EntityTypeShape EntityType="MYGGGETSModel.Param" Width="1.5" PointX="3" PointY="1" Height="4.4532885742187531" IsExpanded="true" />
+        <EntityTypeShape EntityType="MYGGGETSModel.Privilege" Width="1.5" PointX="8" PointY="1" Height="2.7341113281250031" IsExpanded="true" />
+        <EntityTypeShape EntityType="MYGGGETSModel.RegionCode" Width="1.5" PointX="0.75" PointY="6.75" Height="1.7790128580729174" IsExpanded="true" />
+        <EntityTypeShape EntityType="MYGGGETSModel.Template" Width="1.5" PointX="0.75" PointY="2" Height="2.5430916341145888" IsExpanded="true" />
+        <EntityTypeShape EntityType="MYGGGETSModel.User" Width="1.5" PointX="5.25" PointY="26.625" Height="5.0263476562500031" IsExpanded="true" />
         <AssociationConnector Association="MYGGGETSModel.FK_ADDRESSB_REFERENCE_DEPARTME" ManuallyRouted="false">
-          <ConnectorPoint PointX="3.75" PointY="13.10203125" />
-          <ConnectorPoint PointX="3.75" PointY="18.950755208333334" />
-          <ConnectorPoint PointX="4.0729191666666669" PointY="18.950755208333334" />
-          <ConnectorPoint PointX="4.2395858333333329" PointY="18.950755208333334" />
-          <ConnectorPoint PointX="7.5" PointY="18.950755208333334" />
+          <ConnectorPoint PointX="3.75" PointY="14.6302294921875" />
+          <ConnectorPoint PointX="3.75" PointY="21.197154134114584" />
+          <ConnectorPoint PointX="4.0729191666666669" PointY="21.197154134114584" />
+          <ConnectorPoint PointX="4.2395858333333329" PointY="21.197154134114584" />
+          <ConnectorPoint PointX="7.5" PointY="21.197154134114584" />
         </AssociationConnector>
         <AssociationConnector Association="MYGGGETSModel.FK_ADDRESSB_REFERENCE_USER" ManuallyRouted="false">
-          <ConnectorPoint PointX="6" PointY="23.875" />
-          <ConnectorPoint PointX="6" PointY="20.0198853125" />
-          <ConnectorPoint PointX="7.5" PointY="20.0198853125" />
+          <ConnectorPoint PointX="6" PointY="26.625" />
+          <ConnectorPoint PointX="6" PointY="22.389483701171876" />
+          <ConnectorPoint PointX="7.5" PointY="22.389483701171876" />
         </AssociationConnector>
         <AssociationConnector Association="MYGGGETSModel.FK_PRIVILEG_REFERENCE_APPMODUL" ManuallyRouted="false">
-          <ConnectorPoint PointX="7.25" PointY="2.1454166666666667" />
-          <ConnectorPoint PointX="8" PointY="2.1454166666666667" />
+          <ConnectorPoint PointX="7.25" PointY="2.3600162760416667" />
+          <ConnectorPoint PointX="8" PointY="2.3600162760416667" />
         </AssociationConnector>
         <AssociationConnector Association="MYGGGETSModel.FK_DEPARTME_REFERENCE_COMPANY" ManuallyRouted="false">
-          <ConnectorPoint PointX="2.25" PointY="11.404205729166666" />
-          <ConnectorPoint PointX="3" PointY="11.404205729166666" />
+          <ConnectorPoint PointX="2.25" PointY="12.719604899088541" />
+          <ConnectorPoint PointX="3" PointY="12.719604899088541" />
         </AssociationConnector>
         <AssociationConnector Association="MYGGGETSModel.FK_HAWB_REFERENCE_DEPARTME" ManuallyRouted="false">
-          <ConnectorPoint PointX="4.1562525" PointY="13.10203125" />
-          <ConnectorPoint PointX="4.1562525" PointY="22.315247395833335" />
-          <ConnectorPoint PointX="5.916666666666667" PointY="22.315247395833335" />
-          <ConnectorPoint PointX="6.083333333333333" PointY="22.315247395833335" />
-          <ConnectorPoint PointX="10.5" PointY="22.315247395833335" />
+          <ConnectorPoint PointX="4.1562525" PointY="14.6302294921875" />
+          <ConnectorPoint PointX="4.1562525" PointY="24.978353678385417" />
+          <ConnectorPoint PointX="5.916666666666667" PointY="24.978353678385417" />
+          <ConnectorPoint PointX="6.083333333333333" PointY="24.978353678385417" />
+          <ConnectorPoint PointX="10.5" PointY="24.978353678385417" />
         </AssociationConnector>
         <AssociationConnector Association="MYGGGETSModel.FK_USER_REFERENCE_DEPARTME" ManuallyRouted="false">
-          <ConnectorPoint PointX="3.3437475" PointY="13.10203125" />
-          <ConnectorPoint PointX="3.3437475" PointY="26.119375" />
-          <ConnectorPoint PointX="5.25" PointY="26.119375" />
+          <ConnectorPoint PointX="3.3437475" PointY="14.6302294921875" />
+          <ConnectorPoint PointX="3.3437475" PointY="29.138173828125" />
+          <ConnectorPoint PointX="5.25" PointY="29.138173828125" />
         </AssociationConnector>
         <AssociationConnector Association="MYGGGETSModel.FK_HAWB_REFERENCE_PACKAGE" ManuallyRouted="false">
-          <ConnectorPoint PointX="9.75" PointY="15.007395833333334" />
-          <ConnectorPoint PointX="10.5" PointY="15.007395833333334" />
+          <ConnectorPoint PointX="9.75" PointY="16.999095052083334" />
+          <ConnectorPoint PointX="10.5" PointY="16.999095052083334" />
         </AssociationConnector>
         <AssociationConnector Association="MYGGGETSModel.FK_HAWB_REFERENCE_USER" ManuallyRouted="false">
-          <ConnectorPoint PointX="6.75" PointY="26.119375" />
-          <ConnectorPoint PointX="11.25" PointY="26.119375" />
-          <ConnectorPoint PointX="11.25" PointY="23.541484375000003" />
+          <ConnectorPoint PointX="6.75" PointY="29.138173828125" />
+          <ConnectorPoint PointX="11.25" PointY="29.138173828125" />
+          <ConnectorPoint PointX="11.25" PointY="26.374899088541667" />
         </AssociationConnector>
         <AssociationConnector Association="MYGGGETSModel.FK_HAWBBOX_REFERENCE_HAWB" ManuallyRouted="false">
-          <ConnectorPoint PointX="12" PointY="17.401276041666666" />
-          <ConnectorPoint PointX="12.75" PointY="17.401276041666666" />
+          <ConnectorPoint PointX="12" PointY="19.558075358072916" />
+          <ConnectorPoint PointX="12.75" PointY="19.558075358072916" />
         </AssociationConnector>
         <AssociationConnector Association="MYGGGETSModel.FK_HAWBITEM_REFERENCE_HAWB" ManuallyRouted="false">
-          <ConnectorPoint PointX="12" PointY="20.773346354166666" />
-          <ConnectorPoint PointX="12.75" PointY="20.773346354166666" />
+          <ConnectorPoint PointX="12" PointY="23.146545817057291" />
+          <ConnectorPoint PointX="12.75" PointY="23.146545817057291" />
         </AssociationConnector>
         <AssociationConnector Association="MYGGGETSModel.FK_PACKAGE_REFERENCE_MAWB" ManuallyRouted="false">
-          <ConnectorPoint PointX="7.5" PointY="13.9855859375" />
-          <ConnectorPoint PointX="8.25" PointY="13.9855859375" />
+          <ConnectorPoint PointX="7.5" PointY="16.278585205078123" />
+          <ConnectorPoint PointX="8.25" PointY="16.278585205078123" />
         </AssociationConnector>
         <AssociationConnector Association="MYGGGETSModel.FK_PARAM_FK_PARAM__TEMPLATE" ManuallyRouted="false">
-          <ConnectorPoint PointX="2.25" PointY="3.0233463541666694" />
-          <ConnectorPoint PointX="3" PointY="3.0233463541666694" />
+          <ConnectorPoint PointX="2.25" PointY="3.2715458170572944" />
+          <ConnectorPoint PointX="3" PointY="3.2715458170572944" />
         </AssociationConnector>
       </Diagram>
     </Diagrams>
