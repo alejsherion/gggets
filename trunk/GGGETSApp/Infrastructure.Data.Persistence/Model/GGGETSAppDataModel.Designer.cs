@@ -2293,6 +2293,30 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Model
         /// <summary>
         /// 没有元数据文档可用。
         /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String CarrierHAWBBarCode
+        {
+            get
+            {
+                return _CarrierHAWBBarCode;
+            }
+            set
+            {
+                OnCarrierHAWBBarCodeChanging(value);
+                ReportPropertyChanging("CarrierHAWBBarCode");
+                _CarrierHAWBBarCode = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("CarrierHAWBBarCode");
+                OnCarrierHAWBBarCodeChanged();
+            }
+        }
+        private global::System.String _CarrierHAWBBarCode;
+        partial void OnCarrierHAWBBarCodeChanging(global::System.String value);
+        partial void OnCarrierHAWBBarCodeChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
         public global::System.Int32 SettleType

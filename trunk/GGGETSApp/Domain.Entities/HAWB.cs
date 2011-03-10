@@ -35,7 +35,38 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
     public partial class HAWB: IObjectWithChangeTracker, INotifyPropertyChanged
     {
         #region Primitive Properties
-    
+        private string _consigneeRegionDesc;
+
+        [DataMember]
+        public string ConsigneeRegionDesc
+        {
+            get { return _consigneeRegionDesc; }
+            set
+            {
+                if (_consigneeRegionDesc != value)
+                {
+                    _consigneeRegionDesc = value;
+                    OnPropertyChanged("ConsigneeRegionDesc");
+                }
+            }
+        }
+
+        private string _consigneeCountryDesc;
+
+        [DataMember]
+        public string ConsigneeCountryDesc
+        {
+            get { return _consigneeCountryDesc; }
+            set
+            {
+                if (_consigneeCountryDesc != value)
+                {
+                    _consigneeCountryDesc = value;
+                    OnPropertyChanged("ConsigneeCountryDesc");
+                }
+            }
+        }
+
         [DataMember]
         public System.Guid HID
         {
@@ -168,6 +199,21 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
             }
         }
         private Nullable<System.Guid> _carrierHAWBID;
+    
+        [DataMember]
+        public string CarrierHAWBBarCode
+        {
+            get { return _carrierHAWBBarCode; }
+            set
+            {
+                if (_carrierHAWBBarCode != value)
+                {
+                    _carrierHAWBBarCode = value;
+                    OnPropertyChanged("CarrierHAWBBarCode");
+                }
+            }
+        }
+        private string _carrierHAWBBarCode;
     
         [DataMember]
         public int SettleType
@@ -422,21 +468,6 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
                 }
             }
         }
-        private string _consigneeCountryDesc;
-
-        [DataMember]
-        public string ConsigneeCountryDesc
-        {
-            get { return _consigneeCountryDesc; }
-            set
-            {
-                if (_consigneeCountryDesc != value)
-                {
-                    _consigneeCountryDesc = value;
-                    OnPropertyChanged("ConsigneeCountryDesc");
-                }
-            }
-        }
         private string _consigneeCountry;
     
         [DataMember]
@@ -453,17 +484,6 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
             }
         }
         private string _consigneeRegion;
-
-        [DataMember]
-        public string ConsigneeRegionDesc
-        {
-            get { return _consigneeRegionDesc; }
-            set
-            {
-                _consigneeRegionDesc = value;
-            }
-        }
-        private string _consigneeRegionDesc;
     
         [DataMember]
         public string ConsigneeAddress
