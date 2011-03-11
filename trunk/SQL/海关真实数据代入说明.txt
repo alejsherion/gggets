@@ -1,0 +1,4 @@
+INSERT INTO HSProduct select newid(),商品编码,商品名称,优惠税率,普通税率,出口税率,消费税率,增值税率,所需证件标志,重点审价标志,征税要求标记,备注 FROM OPENROWSET('MICROSOFT.JET.OLEDB.4.0','Excel 5.0;HDR=YES;DATABASE=c:\test.xls',sheet1$)
+
+
+注：将海关编码EXCEL复制到C盘根目录下，命名为test，在更新最新PD后生成数据库后执行上面的语句即可实现导入数据，数据量非常大，请耐心等待数据库执行完毕。
