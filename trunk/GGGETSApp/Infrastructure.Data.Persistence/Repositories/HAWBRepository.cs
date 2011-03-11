@@ -648,6 +648,52 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Repositories
                                                                 Messages.exception_InvalidStoreContext,
                                                                 GetType().Name));
         }
+
+        /// <summary>
+        /// 用户套打
+        /// </summary>
+        /// <param name="barCode">运单号</param>
+        /// <param name="beginDate">开始日期</param>
+        /// <param name="endDate">结束日期</param>
+        /// <returns></returns>
+        public IList<HAWB> FindHAWBsByCondition(string barCode, DateTime? beginDate, DateTime? endDate)
+        {
+            IEnumerable<HAWB> HAWBs = null;
+            IGGGETSAppUnitOfWork context = UnitOfWork as IGGGETSAppUnitOfWork;
+
+            if (context != null)
+            {
+                HAWBs = context.HAWB.Select(h => h);
+                if (!string.IsNullOrEmpty(barCode)) HAWBs = HAWBs.Where(a => a.BarCode == barCode);
+                if (beginDate.HasValue)
+                {
+                    if (beginDate.Value != DateTime.MinValue)
+                        HAWBs =
+                            HAWBs.Where(
+                                a =>
+                                a.CreateTime >=
+                                new DateTime(beginDate.Value.Year, beginDate.Value.Month, beginDate.Value.Day, 0, 0, 0));
+                }
+                if (endDate.HasValue)
+                {
+                    if (endDate.Value != DateTime.MinValue)
+                        HAWBs =
+                            HAWBs.Where(
+                                a =>
+                                a.CreateTime <=
+                                new DateTime(endDate.Value.Year, endDate.Value.Month, endDate.Value.Day, 23, 59, 59));
+                }
+            }
+            else
+            {
+                throw new InvalidOperationException(string.Format(
+                                                            CultureInfo.InvariantCulture,
+                                                            Messages.exception_InvalidStoreContext,
+                                                            GetType().Name));
+            }
+            return HAWBs.OrderByDescending(a => a.CreateTime).ToList();
+        }
+
         #endregion
     }
 }

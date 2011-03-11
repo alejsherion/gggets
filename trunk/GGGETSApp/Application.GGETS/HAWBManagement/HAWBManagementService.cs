@@ -264,5 +264,17 @@ namespace Application.GGETS
         {
             return _hawbRepository.FindHAWBsByMID(MID);
         }
+
+        /// <summary>
+        /// 用户套打
+        /// </summary>
+        /// <param name="barCode">运单号</param>
+        /// <param name="beginDate">开始日期</param>
+        /// <param name="endDate">结束日期</param>
+        /// <returns></returns>
+        public IList<HAWB> FindHAWBsByCondition(string barCode, DateTime? beginDate, DateTime? endDate)
+        {
+            return _hawbRepository.FindHAWBsByCondition(barCode, beginDate, endDate);
+        }
     }
 }

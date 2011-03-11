@@ -399,6 +399,21 @@ namespace Application.GGETS.Tests
         }
         #endregion
 
+        #region 套打
+        /// <summary>
+        ///FindHAWBsByCondition 的测试
+        ///</summary>
+        [TestMethod()]
+        public void FindHAWBsByConditionTest1()
+        {
+            string barCode = "2011";
+            Nullable<DateTime> beginDate = new Nullable<DateTime>();
+            Nullable<DateTime> endDate = new Nullable<DateTime>();
+            IList<HAWB> actual;
+            actual = _HAWBManagementService.FindHAWBsByCondition(barCode, beginDate, endDate);
+        }
+        #endregion
+
         public override Expression<Func<HAWB, bool>> FilterExpression
         {
             get { throw new NotImplementedException(); }
@@ -408,5 +423,6 @@ namespace Application.GGETS.Tests
         {
             get { throw new NotImplementedException(); }
         }
+        
     }
 }
