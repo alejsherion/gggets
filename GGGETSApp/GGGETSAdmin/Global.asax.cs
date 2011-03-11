@@ -1,9 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Security;
 using System.Web.SessionState;
+using EFCachingProvider;
+using EFCachingProvider.Caching;
+using EFCachingProvider.Web;
 
 namespace GGGETSAdmin
 {
@@ -13,6 +17,8 @@ namespace GGGETSAdmin
         void Application_Start(object sender, EventArgs e)
         {
             // Code that runs on application startup
+            EFCachingProviderConfiguration.DefaultCache = new AspNetCache();
+            EFCachingProviderConfiguration.DefaultCachingPolicy = CachingPolicy.NoCaching;
 
         }
 
