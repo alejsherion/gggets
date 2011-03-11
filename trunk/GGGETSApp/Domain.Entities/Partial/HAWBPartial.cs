@@ -23,6 +23,10 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
             this._propertyChanged += new System.ComponentModel.PropertyChangedEventHandler(HAWB_propertyChanged);
             
         }
+        //用于单证导出
+        public string ConsigneeCountryDesc { get; set; }
+        //用于单证导出
+        public string ConsigneeRegionDesc { get; set; }
 
         /// <summary>
         /// 当添加或者删除运单包裹时，都要重新计算运单重量
