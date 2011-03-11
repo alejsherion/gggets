@@ -35,38 +35,6 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
     public partial class HAWB: IObjectWithChangeTracker, INotifyPropertyChanged
     {
         #region Primitive Properties
-        private string _consigneeRegionDesc;
-
-        [DataMember]
-        public string ConsigneeRegionDesc
-        {
-            get { return _consigneeRegionDesc; }
-            set
-            {
-                if (_consigneeRegionDesc != value)
-                {
-                    _consigneeRegionDesc = value;
-                    OnPropertyChanged("ConsigneeRegionDesc");
-                }
-            }
-        }
-
-        private string _consigneeCountryDesc;
-
-        [DataMember]
-        public string ConsigneeCountryDesc
-        {
-            get { return _consigneeCountryDesc; }
-            set
-            {
-                if (_consigneeCountryDesc != value)
-                {
-                    _consigneeCountryDesc = value;
-                    OnPropertyChanged("ConsigneeCountryDesc");
-                }
-            }
-        }
-
         [DataMember]
         public System.Guid HID
         {
