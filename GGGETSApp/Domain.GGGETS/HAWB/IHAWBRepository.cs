@@ -35,5 +35,6 @@ namespace Domain.GGGETS
                                                string realName, DateTime? beginTime, DateTime? endTime, int settleType, int serviceType,
                                                bool? isInternational, int pageIndex, int pageCount);
         IList<HAWB> FindHAWBsByMID(string MID);
+        IList<HAWB> FindHAWBsByCondition(string barCode, DateTime? beginDate, DateTime? endDate);
     }
 }
