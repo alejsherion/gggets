@@ -4,10 +4,12 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Data.Objects;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Linq.Expressions;
-
-
+using System.Web;
+using EFCachingProvider.Caching;
+using EFCachingProvider.Web;
 using ETS.GGGETSApp.Domain.Core;
 using ETS.GGGETSApp.Domain.Core.Entities;
 using ETS.GGGETSApp.Domain.Core.Specification;
@@ -102,7 +104,15 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Core
                 &&
                 item.ChangeTracker.State == ObjectState.Added)
             {
-                _CurrentUoW.RegisterChanges<TEntity>(item);
+                _CurrentUoW.Cache = new AspNetCache();
+                _CurrentUoW.CachingPolicy = CachingPolicy.NoCaching;
+
+                // exception
+                //using (TextWriter log = File.CreateText(logFile))
+                //{
+                    //_CurrentUoW.Log = log;
+
+                    _CurrentUoW.RegisterChanges<TEntity>(item);
 
                 _TraceManager.TraceInfo(
                     string.Format(CultureInfo.InvariantCulture,
@@ -172,6 +182,9 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Core
             {
                 item.MarkAsModified();
             }
+            // Cache
+            _CurrentUoW.Cache = new AspNetCache();
+            _CurrentUoW.CachingPolicy = CachingPolicy.NoCaching;
             //apply changes for item object
             _CurrentUoW.RegisterChanges(item);
 
@@ -421,6 +434,8 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Core
         {
             if (_CurrentUoW != (IUnitOfWork)null)
             {
+                _CurrentUoW.Cache = new AspNetCache();
+                _CurrentUoW.CachingPolicy = CachingPolicy.NoCaching;
                 IObjectSet<TEntity> objectSet = _CurrentUoW.CreateSet<TEntity>();
                 
                 //set merge option to underlying ObjectQuery

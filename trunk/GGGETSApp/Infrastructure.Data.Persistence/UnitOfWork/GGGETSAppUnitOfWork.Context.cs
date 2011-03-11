@@ -15,12 +15,26 @@ using System.ComponentModel;
 using System.Data.Common;
 using System.Data.EntityClient;
 using System.Data.Metadata.Edm;
-using System.Data.Objects.DataClasses;
 using System.Data.Objects;
 using System.Data;
+using System.Data.Objects.DataClasses;
 using System.Diagnostics;
 using System.Globalization;
 using System.Linq;
+using System.IO;
+using EFCachingProvider;
+using EFCachingProvider.Caching;
+using EFProviderWrapperToolkit;
+using EFTracingProvider;
+using ETS.GGGETSApp.Domain.Core.Entities;
+using ETS.GGGETSApp.Domain.Application.Entities;
+
+
+
+using ETS.GGGETSApp.Domain.Core.Entities;
+using ETS.GGGETSApp.Domain.Core;
+using ETS.GGGETSApp.Domain.Application.Entities;
+using System.Reflection;
 
 
 
@@ -36,17 +50,26 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.UnitOfWork
     {
         public const string ConnectionString = "name=GGGETSUnitOfWork";
         public const string ContainerName = "GGGETSUnitOfWork";
+    	private TextWriter logOutput;
     
         #region Constructors
     	
         public GGGETSUnitOfWork()
-            : base(ConnectionString, ContainerName)
+            : base(EntityConnectionWrapperUtils.CreateEntityConnectionWithWrappers(
+                        ConnectionString,
+                        "EFTracingProvider",
+                        "EFCachingProvider"
+                ), ContainerName)
         {
             Initialize();
         }
     
         public GGGETSUnitOfWork(string connectionString)
-            : base(connectionString, ContainerName)
+            : base(EntityConnectionWrapperUtils.CreateEntityConnectionWithWrappers(
+                        connectionString,
+                        "EFTracingProvider",
+                        "EFCachingProvider"
+                ), ContainerName)
         {
             Initialize();
         }
@@ -82,6 +105,84 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.UnitOfWork
                 }
                 this.StoreReferenceKeyValues(entity);
             }
+        }
+    
+        #endregion
+    #region Tracing Extensions
+    
+        private EFTracingConnection TracingConnection
+        {
+            get { return this.UnwrapConnection<EFTracingConnection>(); }
+        }
+    
+        public event EventHandler<CommandExecutionEventArgs> CommandExecuting
+        {
+            add { this.TracingConnection.CommandExecuting += value; }
+            remove { this.TracingConnection.CommandExecuting -= value; }
+        }
+    
+        public event EventHandler<CommandExecutionEventArgs> CommandFinished
+        {
+            add { this.TracingConnection.CommandFinished += value; }
+            remove { this.TracingConnection.CommandFinished -= value; }
+        }
+    
+        public event EventHandler<CommandExecutionEventArgs> CommandFailed
+        {
+            add { this.TracingConnection.CommandFailed += value; }
+            remove { this.TracingConnection.CommandFailed -= value; }
+        }
+    
+        private void AppendToLog(object sender, CommandExecutionEventArgs e)
+        {
+            if (this.logOutput != null)
+            {
+                this.logOutput.WriteLine(e.ToTraceString().TrimEnd());
+                this.logOutput.WriteLine();
+            }
+        }
+    
+        public TextWriter Log
+        {
+            get { return this.logOutput; }
+            set
+            {
+                if ((this.logOutput != null) != (value != null))
+                {
+                    if (value == null)
+                    {
+                        CommandExecuting -= AppendToLog;
+                    }
+                    else
+                    {
+                        CommandExecuting += AppendToLog;
+                    }
+                }
+    
+                this.logOutput = value;
+            }
+        }
+    
+    
+        #endregion
+    
+        #region Caching Extensions
+    
+        private EFCachingConnection CachingConnection
+        {
+            get { return this.UnwrapConnection<EFCachingConnection>(); }
+        }
+    
+        public ICache Cache
+        {
+            get { return CachingConnection.Cache; }
+            set { CachingConnection.Cache = value; }
+        }
+    
+        public CachingPolicy CachingPolicy
+        {
+            get { return CachingConnection.CachingPolicy; }
+            set { CachingConnection.CachingPolicy = value; }
         }
     
         #endregion

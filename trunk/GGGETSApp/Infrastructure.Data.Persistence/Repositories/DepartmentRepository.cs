@@ -9,6 +9,8 @@
 using System;
 using System.Collections.Generic;
 using System.Globalization;
+using EFCachingProvider.Caching;
+using EFCachingProvider.Web;
 using ETS.GGGETSApp.Infrastructure.Data.Core;
 using ETS.GGGETSApp.Infrastructure.Data.Core.Extensions;
 using ETS.GGGETSApp.Infrastructure.Data.Persistence.Resources;
@@ -113,6 +115,9 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Repositories
             //{
                 if (context != null)
                 {
+                    context.Cache = new AspNetCache();
+                    context.CachingPolicy = CachingPolicy.CacheAll;
+
                     string DID = string.Empty;
                     Department department = FindDepartmentByDepcodeAndCompanyCode(depCode, companyCode);
                     if(department!=null) DID = department.DID.ToString();

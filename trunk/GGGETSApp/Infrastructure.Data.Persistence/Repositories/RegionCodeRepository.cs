@@ -9,6 +9,8 @@
 using System;
 using System.Collections.Generic;
 using System.Globalization;
+using EFCachingProvider.Caching;
+using EFCachingProvider.Web;
 using ETS.GGGETSApp.Infrastructure.Data.Core;
 using ETS.GGGETSApp.Infrastructure.Data.Core.Extensions;
 using ETS.GGGETSApp.Infrastructure.Data.Persistence.Resources;
@@ -32,7 +34,12 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Repositories
         {
             IGGGETSAppUnitOfWork context = UnitOfWork as IGGGETSAppUnitOfWork;
             if (context != null)
+            {
+                context.Cache = new AspNetCache();
+                context.CachingPolicy = CachingPolicy.CacheAll;
                 return context.RegionCode.Where(it => it.CountryCode == countryCode).ToList();
+            }
+                
             else
                 throw new InvalidOperationException(string.Format(
                                                             CultureInfo.InvariantCulture,
@@ -67,7 +74,12 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Repositories
         {
             IGGGETSAppUnitOfWork context = UnitOfWork as IGGGETSAppUnitOfWork;
             if (context != null)
+            {
+                context.Cache = new AspNetCache();
+                context.CachingPolicy = CachingPolicy.CacheAll;
                 return context.RegionCode.Where(it => it.RegionCode1 == regionCode).SingleOrDefault();
+            }
+                
             else
                 throw new InvalidOperationException(string.Format(
                                                             CultureInfo.InvariantCulture,
@@ -90,6 +102,9 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Repositories
             //{
                 if (context != null)
                 {
+                    context.Cache = new AspNetCache();
+                    context.CachingPolicy = CachingPolicy.CacheAll;
+
                     regions = context.RegionCode.Select(r => r);
                     if (!string.IsNullOrEmpty(countryCode))
                         regions = regions.Where(r => r.CountryCode == countryCode);
@@ -125,6 +140,9 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Repositories
      
             if (context != null)
             {
+                context.Cache = new AspNetCache();
+                context.CachingPolicy = CachingPolicy.CacheAll;
+
                 regions = context.RegionCode.Select(r => r);
                 if (!string.IsNullOrEmpty(countryCode))
                     regions = regions.Where(r => r.CountryCode == countryCode);
