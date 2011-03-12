@@ -30,6 +30,8 @@ using System.Runtime.Serialization;
 [assembly: EdmRelationshipAttribute("MYGGGETSModel", "FK_HAWBITEM_REFERENCE_HAWB", "HAWB", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(ETS.GGGETSApp.Infrastructure.Data.Persistence.Model.HAWB), "HAWBItem", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ETS.GGGETSApp.Infrastructure.Data.Persistence.Model.HAWBItem), true)]
 [assembly: EdmRelationshipAttribute("MYGGGETSModel", "FK_PACKAGE_REFERENCE_MAWB", "MAWB", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(ETS.GGGETSApp.Infrastructure.Data.Persistence.Model.MAWB), "Package", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ETS.GGGETSApp.Infrastructure.Data.Persistence.Model.Package), true)]
 [assembly: EdmRelationshipAttribute("MYGGGETSModel", "FK_PARAM_FK_PARAM__TEMPLATE", "Template", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(ETS.GGGETSApp.Infrastructure.Data.Persistence.Model.Template), "Param", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ETS.GGGETSApp.Infrastructure.Data.Persistence.Model.Param), true)]
+[assembly: EdmRelationshipAttribute("MYGGGETSModel", "FK_HSRELATI_FK_HSRELA_HSPRODUC", "HSProduct", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(ETS.GGGETSApp.Infrastructure.Data.Persistence.Model.HSProduct), "HSRelation", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ETS.GGGETSApp.Infrastructure.Data.Persistence.Model.HSRelation), true)]
+[assembly: EdmRelationshipAttribute("MYGGGETSModel", "FK_HSRELATI_FK_HSRELA_HSPROPER", "HSProperty", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(ETS.GGGETSApp.Infrastructure.Data.Persistence.Model.HSProperty), "HSRelation", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ETS.GGGETSApp.Infrastructure.Data.Persistence.Model.HSRelation), true)]
 
 #endregion
 
@@ -320,6 +322,54 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Model
             }
         }
         private ObjectSet<User> _User;
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        public ObjectSet<HSProduct> HSProduct
+        {
+            get
+            {
+                if ((_HSProduct == null))
+                {
+                    _HSProduct = base.CreateObjectSet<HSProduct>("HSProduct");
+                }
+                return _HSProduct;
+            }
+        }
+        private ObjectSet<HSProduct> _HSProduct;
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        public ObjectSet<HSProperty> HSProperty
+        {
+            get
+            {
+                if ((_HSProperty == null))
+                {
+                    _HSProperty = base.CreateObjectSet<HSProperty>("HSProperty");
+                }
+                return _HSProperty;
+            }
+        }
+        private ObjectSet<HSProperty> _HSProperty;
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        public ObjectSet<HSRelation> HSRelation
+        {
+            get
+            {
+                if ((_HSRelation == null))
+                {
+                    _HSRelation = base.CreateObjectSet<HSRelation>("HSRelation");
+                }
+                return _HSRelation;
+            }
+        }
+        private ObjectSet<HSRelation> _HSRelation;
 
         #endregion
         #region AddTo 方法
@@ -442,6 +492,30 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Model
         public void AddToUser(User user)
         {
             base.AddObject("User", user);
+        }
+    
+        /// <summary>
+        /// 用于向 HSProduct EntitySet 添加新对象的方法，已弃用。请考虑改用关联的 ObjectSet&lt;T&gt; 属性的 .Add 方法。
+        /// </summary>
+        public void AddToHSProduct(HSProduct hSProduct)
+        {
+            base.AddObject("HSProduct", hSProduct);
+        }
+    
+        /// <summary>
+        /// 用于向 HSProperty EntitySet 添加新对象的方法，已弃用。请考虑改用关联的 ObjectSet&lt;T&gt; 属性的 .Add 方法。
+        /// </summary>
+        public void AddToHSProperty(HSProperty hSProperty)
+        {
+            base.AddObject("HSProperty", hSProperty);
+        }
+    
+        /// <summary>
+        /// 用于向 HSRelation EntitySet 添加新对象的方法，已弃用。请考虑改用关联的 ObjectSet&lt;T&gt; 属性的 .Add 方法。
+        /// </summary>
+        public void AddToHSRelation(HSRelation hSRelation)
+        {
+            base.AddObject("HSRelation", hSRelation);
         }
 
         #endregion
@@ -3906,6 +3980,672 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Model
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<HAWB>("MYGGGETSModel.FK_HAWBITEM_REFERENCE_HAWB", "HAWB", value);
+                }
+            }
+        }
+
+        #endregion
+    }
+    
+    /// <summary>
+    /// 没有元数据文档可用。
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="MYGGGETSModel", Name="HSProduct")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class HSProduct : EntityObject
+    {
+        #region 工厂方法
+    
+        /// <summary>
+        /// 创建新的 HSProduct 对象。
+        /// </summary>
+        /// <param name="hSID">HSID 属性的初始值。</param>
+        /// <param name="hSCode">HSCode 属性的初始值。</param>
+        /// <param name="hSName">HSName 属性的初始值。</param>
+        /// <param name="discountTax">DiscountTax 属性的初始值。</param>
+        /// <param name="generalTax">GeneralTax 属性的初始值。</param>
+        /// <param name="riseTax">RiseTax 属性的初始值。</param>
+        public static HSProduct CreateHSProduct(global::System.Guid hSID, global::System.String hSCode, global::System.String hSName, global::System.Decimal discountTax, global::System.Decimal generalTax, global::System.Decimal riseTax)
+        {
+            HSProduct hSProduct = new HSProduct();
+            hSProduct.HSID = hSID;
+            hSProduct.HSCode = hSCode;
+            hSProduct.HSName = hSName;
+            hSProduct.DiscountTax = discountTax;
+            hSProduct.GeneralTax = generalTax;
+            hSProduct.RiseTax = riseTax;
+            return hSProduct;
+        }
+
+        #endregion
+        #region 基元属性
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Guid HSID
+        {
+            get
+            {
+                return _HSID;
+            }
+            set
+            {
+                if (_HSID != value)
+                {
+                    OnHSIDChanging(value);
+                    ReportPropertyChanging("HSID");
+                    _HSID = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("HSID");
+                    OnHSIDChanged();
+                }
+            }
+        }
+        private global::System.Guid _HSID;
+        partial void OnHSIDChanging(global::System.Guid value);
+        partial void OnHSIDChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String HSCode
+        {
+            get
+            {
+                return _HSCode;
+            }
+            set
+            {
+                OnHSCodeChanging(value);
+                ReportPropertyChanging("HSCode");
+                _HSCode = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("HSCode");
+                OnHSCodeChanged();
+            }
+        }
+        private global::System.String _HSCode;
+        partial void OnHSCodeChanging(global::System.String value);
+        partial void OnHSCodeChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String HSName
+        {
+            get
+            {
+                return _HSName;
+            }
+            set
+            {
+                OnHSNameChanging(value);
+                ReportPropertyChanging("HSName");
+                _HSName = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("HSName");
+                OnHSNameChanged();
+            }
+        }
+        private global::System.String _HSName;
+        partial void OnHSNameChanging(global::System.String value);
+        partial void OnHSNameChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Decimal DiscountTax
+        {
+            get
+            {
+                return _DiscountTax;
+            }
+            set
+            {
+                OnDiscountTaxChanging(value);
+                ReportPropertyChanging("DiscountTax");
+                _DiscountTax = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("DiscountTax");
+                OnDiscountTaxChanged();
+            }
+        }
+        private global::System.Decimal _DiscountTax;
+        partial void OnDiscountTaxChanging(global::System.Decimal value);
+        partial void OnDiscountTaxChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Decimal GeneralTax
+        {
+            get
+            {
+                return _GeneralTax;
+            }
+            set
+            {
+                OnGeneralTaxChanging(value);
+                ReportPropertyChanging("GeneralTax");
+                _GeneralTax = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("GeneralTax");
+                OnGeneralTaxChanged();
+            }
+        }
+        private global::System.Decimal _GeneralTax;
+        partial void OnGeneralTaxChanging(global::System.Decimal value);
+        partial void OnGeneralTaxChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Decimal> ExportTax
+        {
+            get
+            {
+                return _ExportTax;
+            }
+            set
+            {
+                OnExportTaxChanging(value);
+                ReportPropertyChanging("ExportTax");
+                _ExportTax = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ExportTax");
+                OnExportTaxChanged();
+            }
+        }
+        private Nullable<global::System.Decimal> _ExportTax;
+        partial void OnExportTaxChanging(Nullable<global::System.Decimal> value);
+        partial void OnExportTaxChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Decimal> ConsumeTax
+        {
+            get
+            {
+                return _ConsumeTax;
+            }
+            set
+            {
+                OnConsumeTaxChanging(value);
+                ReportPropertyChanging("ConsumeTax");
+                _ConsumeTax = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ConsumeTax");
+                OnConsumeTaxChanged();
+            }
+        }
+        private Nullable<global::System.Decimal> _ConsumeTax;
+        partial void OnConsumeTaxChanging(Nullable<global::System.Decimal> value);
+        partial void OnConsumeTaxChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Decimal RiseTax
+        {
+            get
+            {
+                return _RiseTax;
+            }
+            set
+            {
+                OnRiseTaxChanging(value);
+                ReportPropertyChanging("RiseTax");
+                _RiseTax = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("RiseTax");
+                OnRiseTaxChanged();
+            }
+        }
+        private global::System.Decimal _RiseTax;
+        partial void OnRiseTaxChanging(global::System.Decimal value);
+        partial void OnRiseTaxChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String CertificateSign
+        {
+            get
+            {
+                return _CertificateSign;
+            }
+            set
+            {
+                OnCertificateSignChanging(value);
+                ReportPropertyChanging("CertificateSign");
+                _CertificateSign = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("CertificateSign");
+                OnCertificateSignChanged();
+            }
+        }
+        private global::System.String _CertificateSign;
+        partial void OnCertificateSignChanging(global::System.String value);
+        partial void OnCertificateSignChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String PricingSign
+        {
+            get
+            {
+                return _PricingSign;
+            }
+            set
+            {
+                OnPricingSignChanging(value);
+                ReportPropertyChanging("PricingSign");
+                _PricingSign = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("PricingSign");
+                OnPricingSignChanged();
+            }
+        }
+        private global::System.String _PricingSign;
+        partial void OnPricingSignChanging(global::System.String value);
+        partial void OnPricingSignChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String TaxDemandSign
+        {
+            get
+            {
+                return _TaxDemandSign;
+            }
+            set
+            {
+                OnTaxDemandSignChanging(value);
+                ReportPropertyChanging("TaxDemandSign");
+                _TaxDemandSign = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("TaxDemandSign");
+                OnTaxDemandSignChanged();
+            }
+        }
+        private global::System.String _TaxDemandSign;
+        partial void OnTaxDemandSignChanging(global::System.String value);
+        partial void OnTaxDemandSignChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Remark
+        {
+            get
+            {
+                return _Remark;
+            }
+            set
+            {
+                OnRemarkChanging(value);
+                ReportPropertyChanging("Remark");
+                _Remark = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Remark");
+                OnRemarkChanged();
+            }
+        }
+        private global::System.String _Remark;
+        partial void OnRemarkChanging(global::System.String value);
+        partial void OnRemarkChanged();
+
+        #endregion
+    
+        #region 导航属性
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("MYGGGETSModel", "FK_HSRELATI_FK_HSRELA_HSPRODUC", "HSRelation")]
+        public EntityCollection<HSRelation> HSRelations
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<HSRelation>("MYGGGETSModel.FK_HSRELATI_FK_HSRELA_HSPRODUC", "HSRelation");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<HSRelation>("MYGGGETSModel.FK_HSRELATI_FK_HSRELA_HSPRODUC", "HSRelation", value);
+                }
+            }
+        }
+
+        #endregion
+    }
+    
+    /// <summary>
+    /// 没有元数据文档可用。
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="MYGGGETSModel", Name="HSProperty")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class HSProperty : EntityObject
+    {
+        #region 工厂方法
+    
+        /// <summary>
+        /// 创建新的 HSProperty 对象。
+        /// </summary>
+        /// <param name="hSPID">HSPID 属性的初始值。</param>
+        /// <param name="propertyName">PropertyName 属性的初始值。</param>
+        public static HSProperty CreateHSProperty(global::System.Guid hSPID, global::System.String propertyName)
+        {
+            HSProperty hSProperty = new HSProperty();
+            hSProperty.HSPID = hSPID;
+            hSProperty.PropertyName = propertyName;
+            return hSProperty;
+        }
+
+        #endregion
+        #region 基元属性
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Guid HSPID
+        {
+            get
+            {
+                return _HSPID;
+            }
+            set
+            {
+                if (_HSPID != value)
+                {
+                    OnHSPIDChanging(value);
+                    ReportPropertyChanging("HSPID");
+                    _HSPID = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("HSPID");
+                    OnHSPIDChanged();
+                }
+            }
+        }
+        private global::System.Guid _HSPID;
+        partial void OnHSPIDChanging(global::System.Guid value);
+        partial void OnHSPIDChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String PropertyName
+        {
+            get
+            {
+                return _PropertyName;
+            }
+            set
+            {
+                OnPropertyNameChanging(value);
+                ReportPropertyChanging("PropertyName");
+                _PropertyName = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("PropertyName");
+                OnPropertyNameChanged();
+            }
+        }
+        private global::System.String _PropertyName;
+        partial void OnPropertyNameChanging(global::System.String value);
+        partial void OnPropertyNameChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String ChineseRemark
+        {
+            get
+            {
+                return _ChineseRemark;
+            }
+            set
+            {
+                OnChineseRemarkChanging(value);
+                ReportPropertyChanging("ChineseRemark");
+                _ChineseRemark = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("ChineseRemark");
+                OnChineseRemarkChanged();
+            }
+        }
+        private global::System.String _ChineseRemark;
+        partial void OnChineseRemarkChanging(global::System.String value);
+        partial void OnChineseRemarkChanged();
+
+        #endregion
+    
+        #region 导航属性
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("MYGGGETSModel", "FK_HSRELATI_FK_HSRELA_HSPROPER", "HSRelation")]
+        public EntityCollection<HSRelation> HSRelations
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<HSRelation>("MYGGGETSModel.FK_HSRELATI_FK_HSRELA_HSPROPER", "HSRelation");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<HSRelation>("MYGGGETSModel.FK_HSRELATI_FK_HSRELA_HSPROPER", "HSRelation", value);
+                }
+            }
+        }
+
+        #endregion
+    }
+    
+    /// <summary>
+    /// 没有元数据文档可用。
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="MYGGGETSModel", Name="HSRelation")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class HSRelation : EntityObject
+    {
+        #region 工厂方法
+    
+        /// <summary>
+        /// 创建新的 HSRelation 对象。
+        /// </summary>
+        /// <param name="rID">RID 属性的初始值。</param>
+        public static HSRelation CreateHSRelation(global::System.Guid rID)
+        {
+            HSRelation hSRelation = new HSRelation();
+            hSRelation.RID = rID;
+            return hSRelation;
+        }
+
+        #endregion
+        #region 基元属性
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Guid RID
+        {
+            get
+            {
+                return _RID;
+            }
+            set
+            {
+                if (_RID != value)
+                {
+                    OnRIDChanging(value);
+                    ReportPropertyChanging("RID");
+                    _RID = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("RID");
+                    OnRIDChanged();
+                }
+            }
+        }
+        private global::System.Guid _RID;
+        partial void OnRIDChanging(global::System.Guid value);
+        partial void OnRIDChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Guid> HSID
+        {
+            get
+            {
+                return _HSID;
+            }
+            set
+            {
+                OnHSIDChanging(value);
+                ReportPropertyChanging("HSID");
+                _HSID = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("HSID");
+                OnHSIDChanged();
+            }
+        }
+        private Nullable<global::System.Guid> _HSID;
+        partial void OnHSIDChanging(Nullable<global::System.Guid> value);
+        partial void OnHSIDChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Guid> HSPID
+        {
+            get
+            {
+                return _HSPID;
+            }
+            set
+            {
+                OnHSPIDChanging(value);
+                ReportPropertyChanging("HSPID");
+                _HSPID = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("HSPID");
+                OnHSPIDChanged();
+            }
+        }
+        private Nullable<global::System.Guid> _HSPID;
+        partial void OnHSPIDChanging(Nullable<global::System.Guid> value);
+        partial void OnHSPIDChanged();
+
+        #endregion
+    
+        #region 导航属性
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("MYGGGETSModel", "FK_HSRELATI_FK_HSRELA_HSPRODUC", "HSProduct")]
+        public HSProduct HSProduct
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<HSProduct>("MYGGGETSModel.FK_HSRELATI_FK_HSRELA_HSPRODUC", "HSProduct").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<HSProduct>("MYGGGETSModel.FK_HSRELATI_FK_HSRELA_HSPRODUC", "HSProduct").Value = value;
+            }
+        }
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<HSProduct> HSProductReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<HSProduct>("MYGGGETSModel.FK_HSRELATI_FK_HSRELA_HSPRODUC", "HSProduct");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<HSProduct>("MYGGGETSModel.FK_HSRELATI_FK_HSRELA_HSPRODUC", "HSProduct", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("MYGGGETSModel", "FK_HSRELATI_FK_HSRELA_HSPROPER", "HSProperty")]
+        public HSProperty HSProperty
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<HSProperty>("MYGGGETSModel.FK_HSRELATI_FK_HSRELA_HSPROPER", "HSProperty").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<HSProperty>("MYGGGETSModel.FK_HSRELATI_FK_HSRELA_HSPROPER", "HSProperty").Value = value;
+            }
+        }
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<HSProperty> HSPropertyReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<HSProperty>("MYGGGETSModel.FK_HSRELATI_FK_HSRELA_HSPROPER", "HSProperty");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<HSProperty>("MYGGGETSModel.FK_HSRELATI_FK_HSRELA_HSPROPER", "HSProperty", value);
                 }
             }
         }

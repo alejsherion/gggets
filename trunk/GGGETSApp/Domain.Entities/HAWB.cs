@@ -35,6 +35,7 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
     public partial class HAWB: IObjectWithChangeTracker, INotifyPropertyChanged
     {
         #region Primitive Properties
+    
         [DataMember]
         public System.Guid HID
         {

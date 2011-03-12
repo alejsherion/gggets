@@ -64,6 +64,7 @@
     <Compile Include="DepartmentManagementServiceTest.cs" />
     <Compile Include="GenericRepositoryTestsBase.cs" />
     <Compile Include="HAWBManagementServiceTest.cs" />
+    <Compile Include="HSProductManagementServiceTest.cs" />
     <Compile Include="MAWBManagementServiceTest.cs" />
     <Compile Include="PackageManagementServiceTest.cs" />
     <Compile Include="ParamManagementServiceTest.cs" />

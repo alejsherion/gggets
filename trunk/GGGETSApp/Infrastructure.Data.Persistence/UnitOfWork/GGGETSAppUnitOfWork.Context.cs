@@ -368,6 +368,24 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.UnitOfWork
             get { return _user  ?? (_user = CreateObjectSet<User>("User")); }
         }
         private ObjectSet<User> _user;
+    
+        public IObjectSet<HSProduct> HSProduct
+        {
+            get { return _hSProduct  ?? (_hSProduct = CreateObjectSet<HSProduct>("HSProduct")); }
+        }
+        private ObjectSet<HSProduct> _hSProduct;
+    
+        public IObjectSet<HSProperty> HSProperty
+        {
+            get { return _hSProperty  ?? (_hSProperty = CreateObjectSet<HSProperty>("HSProperty")); }
+        }
+        private ObjectSet<HSProperty> _hSProperty;
+    
+        public IObjectSet<HSRelation> HSRelation
+        {
+            get { return _hSRelation  ?? (_hSRelation = CreateObjectSet<HSRelation>("HSRelation")); }
+        }
+        private ObjectSet<HSRelation> _hSRelation;
 
         #endregion
     }
