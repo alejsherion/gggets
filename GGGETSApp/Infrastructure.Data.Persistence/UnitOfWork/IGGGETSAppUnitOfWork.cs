@@ -82,6 +82,15 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.UnitOfWork
     
         IObjectSet<User> User{get;}
         
+    
+        IObjectSet<HSProduct> HSProduct{get;}
+        
+    
+        IObjectSet<HSProperty> HSProperty{get;}
+        
+    
+        IObjectSet<HSRelation> HSRelation{get;}
+        
 
         #endregion
     

@@ -81,6 +81,15 @@
     <Compile Include="HAWBItem.cs">
       <DependentUpon>GGGETSAppContext.Types.tt</DependentUpon>
     </Compile>
+    <Compile Include="HSProduct.cs">
+      <DependentUpon>GGGETSAppContext.Types.tt</DependentUpon>
+    </Compile>
+    <Compile Include="HSProperty.cs">
+      <DependentUpon>GGGETSAppContext.Types.tt</DependentUpon>
+    </Compile>
+    <Compile Include="HSRelation.cs">
+      <DependentUpon>GGGETSAppContext.Types.tt</DependentUpon>
+    </Compile>
     <Compile Include="MAWB.cs">
       <DependentUpon>GGGETSAppContext.Types.tt</DependentUpon>
     </Compile>
