@@ -33,6 +33,10 @@
         </ObjectGroup>
       </Objects>
     </PublishDatabaseSettings>
+    <ExcludeGeneratedDebugSymbol>true</ExcludeGeneratedDebugSymbol>
+    <FilesToIncludeForPublish>AllFilesInTheProject</FilesToIncludeForPublish>
+    <ExcludeApp_Data>false</ExcludeApp_Data>
+    <PublishDatabases>true</PublishDatabases>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -43,6 +47,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AjaxControlToolkit, Version=1.0.20229.20821, Culture=neutral, PublicKeyToken=28f01b0e84b6d53e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>DLLs\AjaxControlToolkit.dll</HintPath>
+    </Reference>
+    <Reference Include="AutoCompleteExtra, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>DLLs\AutoCompleteExtra.dll</HintPath>
+    </Reference>
     <Reference Include="EFCachingProvider">
       <HintPath>..\..\ShareLibs\EFCache\EFCachingProvider.dll</HintPath>
     </Reference>
@@ -56,6 +68,38 @@
       <HintPath>..\..\ShareLibs\EFCache\EFTracingProvider.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="NPOI, Version=1.2.2.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\NPOI.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.DDF, Version=1.2.2.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\NPOI.DDF.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.HPSF, Version=1.2.2.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\NPOI.HPSF.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.HSSF, Version=1.2.2.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\NPOI.HSSF.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.POIFS, Version=1.2.2.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\NPOI.POIFS.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.SS, Version=1.0.0.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\NPOI.SS.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.Util, Version=1.2.2.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\NPOI.Util.dll</HintPath>
+    </Reference>
+    <Reference Include="SAFF.Client, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>DLLs\SAFF.Client.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Core" />
@@ -71,53 +115,81 @@
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="Telerik.Web.UI, Version=2010.2.713.40, Culture=neutral, PublicKeyToken=121fae78165ba3d4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Telerik.Web.UI.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Account\ChangePassword.aspx" />
     <Content Include="Account\ChangePasswordSuccess.aspx" />
     <Content Include="Account\Login.aspx" />
     <Content Include="Account\Register.aspx" />
+    <Content Include="AddressBookManage\AddressBookAdd.aspx" />
+    <Content Include="AddressBookManage\AddressBookDetails.aspx" />
+    <Content Include="AddressBookManage\AddressBookManagemnet.aspx" />
+    <Content Include="AddressBookManage\AddressBookModify.aspx" />
     <Content Include="App_Themes\logisitc\base.css" />
     <Content Include="App_Themes\logisitc\component.css" />
     <Content Include="App_Themes\logisitc\dataView.css" />
     <Content Include="App_Themes\logisitc\logistic.css" />
-    <Content Include="bin\Application.GGETS.dll" />
-    <Content Include="bin\Application.GGETS.pdb" />
-    <Content Include="bin\Domain.GGGETS.dll" />
-    <Content Include="bin\Domain.GGGETS.pdb" />
-    <Content Include="bin\GGGETS.Infrastructure.Data.Core.dll" />
-    <Content Include="bin\GGGETS.Infrastructure.Data.Core.pdb" />
-    <Content Include="bin\GGGETS.Infrastructure.Data.Core.xml" />
-    <Content Include="bin\GGGETSAdmin.dll" />
-    <Content Include="bin\GGGETSAdmin.pdb" />
-    <Content Include="bin\GGGETSApp.Domain.Application.Entities.dll" />
-    <Content Include="bin\GGGETSApp.Domain.Application.Entities.pdb" />
-    <Content Include="bin\GGGETSApp.Domain.Application.Entities.xml" />
-    <Content Include="bin\GGGETSApp.Domain.Core.dll" />
-    <Content Include="bin\GGGETSApp.Domain.Core.Entities.dll" />
-    <Content Include="bin\GGGETSApp.Domain.Core.Entities.pdb" />
-    <Content Include="bin\GGGETSApp.Domain.Core.Entities.xml" />
-    <Content Include="bin\GGGETSApp.Domain.Core.pdb" />
-    <Content Include="bin\GGGETSApp.Domain.Core.xml" />
-    <Content Include="bin\GGGETSApp.Infrastructure.CrossCutting.dll" />
-    <Content Include="bin\GGGETSApp.Infrastructure.CrossCutting.IoC.dll" />
-    <Content Include="bin\GGGETSApp.Infrastructure.CrossCutting.IoC.pdb" />
-    <Content Include="bin\GGGETSApp.Infrastructure.CrossCutting.IoC.xml" />
-    <Content Include="bin\GGGETSApp.Infrastructure.CrossCutting.NetFx.dll" />
-    <Content Include="bin\GGGETSApp.Infrastructure.CrossCutting.NetFx.pdb" />
-    <Content Include="bin\GGGETSApp.Infrastructure.CrossCutting.pdb" />
-    <Content Include="bin\GGGETSApp.Infrastructure.CrossCutting.xml" />
-    <Content Include="bin\GGGETSApp.Infrastructure.Data.Persistence.dll" />
-    <Content Include="bin\GGGETSApp.Infrastructure.Data.Persistence.pdb" />
-    <Content Include="bin\GGGETSApp.Infrastructure.Data.Persistence.xml" />
-    <Content Include="bin\Microsoft.Practices.Unity.dll" />
+    <Content Include="AutoCountryCode.asmx" />
+    <Content Include="Common\WebForm1.aspx" />
+    <Content Include="CountryZiMaManage\TwoZiMaAdd.aspx" />
+    <Content Include="CountryZiMaManage\TwoZiMaManage.aspx" />
+    <Content Include="DLLs\AjaxControlToolkit.dll" />
+    <Content Include="DLLs\AutoCompleteExtra.dll" />
+    <Content Include="DLLs\Microsoft.Practices.ServiceLocation.dll" />
+    <Content Include="DLLs\NPOI.DDF.dll" />
+    <Content Include="DLLs\NPOI.dll" />
+    <Content Include="DLLs\NPOI.HPSF.dll" />
+    <Content Include="DLLs\NPOI.HSSF.dll" />
+    <Content Include="DLLs\NPOI.POIFS.dll" />
+    <Content Include="DLLs\NPOI.SS.dll" />
+    <Content Include="DLLs\NPOI.Util.dll" />
+    <Content Include="DLLs\SAFF.Client.dll" />
+    <Content Include="DLLs\Telerik.Web.UI.dll" />
+    <Content Include="FlightManage\FlightManagement.aspx" />
+    <Content Include="HAWBManage\Addresshistory.aspx" />
+    <Content Include="HAWBManage\DeliverAdd.aspx" />
+    <Content Include="HAWBManage\HAWBAdd.aspx" />
+    <Content Include="HAWBManage\HAWBDetails.aspx" />
+    <Content Include="HAWBManage\HAWBItemAdd.aspx" />
+    <Content Include="HAWBManage\HAWBManagement.aspx" />
+    <Content Include="MawbManage\MawbAdd.aspx" />
+    <Content Include="MawbManage\MawbDetails.aspx" />
+    <Content Include="MawbManage\MawbManagement.aspx" />
+    <Content Include="MawbManage\MawbModify.aspx" />
+    <Content Include="Navigation.aspx" />
     <Content Include="obj\Debug\GGGETSAdmin.csproj.FileListAbsolute.txt" />
+    <Content Include="PackageManage\packageAdd.aspx" />
+    <Content Include="PackageManage\PackageDetails.aspx" />
+    <Content Include="PackageManage\packageManagement.aspx" />
+    <Content Include="PackageManage\packageModify.aspx" />
+    <Content Include="PackageManage\WebForm1.aspx" />
+    <Content Include="PersonnelManage\CompanyManage\CompanyAdd.aspx" />
+    <Content Include="PersonnelManage\CompanyManage\CompanyDetails.aspx" />
+    <Content Include="PersonnelManage\CompanyManage\CompanyManagemnet.aspx" />
+    <Content Include="PersonnelManage\CompanyManage\CompanyModify.aspx" />
+    <Content Include="PersonnelManage\DepartmentManage\DepartmentAdd.aspx" />
+    <Content Include="PersonnelManage\DepartmentManage\DepartmentDetails.aspx" />
+    <Content Include="PersonnelManage\DepartmentManage\DepartmentManagemnet.aspx" />
+    <Content Include="PersonnelManage\DepartmentManage\DepartmentModify.aspx" />
+    <Content Include="PersonnelManage\UserManage\UserAdd.aspx" />
+    <Content Include="PersonnelManage\UserManage\UserDetails.aspx" />
+    <Content Include="PersonnelManage\UserManage\UserManagemnet.aspx" />
+    <Content Include="PersonnelManage\UserManage\UserModify.aspx" />
+    <Content Include="RegionZiMaManage\regionAdd.aspx" />
+    <Content Include="RegionZiMaManage\regionManagement.aspx" />
+    <Content Include="Resource\China.txt" />
+    <Content Include="Resource\English.txt" />
     <Content Include="Scripts\calendar.js" />
     <Content Include="Styles\Site.css" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\jquery-1.4.1-vsdoc.js" />
     <Content Include="Scripts\jquery-1.4.1.js" />
     <Content Include="Scripts\jquery-1.4.1.min.js" />
+    <Content Include="UserMenu\a8a1b9e4-9402-455d-b109-91a155588689Menu.xml" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -157,11 +229,282 @@
     <Compile Include="Account\Register.aspx.designer.cs">
       <DependentUpon>Register.aspx</DependentUpon>
     </Compile>
+    <Compile Include="AddressBookManage\AddressBookAdd.aspx.cs">
+      <DependentUpon>AddressBookAdd.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AddressBookManage\AddressBookAdd.aspx.designer.cs">
+      <DependentUpon>AddressBookAdd.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AddressBookManage\AddressBookDetails.aspx.cs">
+      <DependentUpon>AddressBookDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AddressBookManage\AddressBookDetails.aspx.designer.cs">
+      <DependentUpon>AddressBookDetails.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AddressBookManage\AddressBookManagemnet.aspx.cs">
+      <DependentUpon>AddressBookManagemnet.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AddressBookManage\AddressBookManagemnet.aspx.designer.cs">
+      <DependentUpon>AddressBookManagemnet.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AddressBookManage\AddressBookModify.aspx.cs">
+      <DependentUpon>AddressBookModify.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AddressBookManage\AddressBookModify.aspx.designer.cs">
+      <DependentUpon>AddressBookModify.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AutoCountryCode.asmx.cs">
+      <DependentUpon>AutoCountryCode.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Common\NPOIHelper.cs" />
+    <Compile Include="Common\WebForm1.aspx.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Common\WebForm1.aspx.designer.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CountryZiMaManage\TwoZiMaAdd.aspx.cs">
+      <DependentUpon>TwoZiMaAdd.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CountryZiMaManage\TwoZiMaAdd.aspx.designer.cs">
+      <DependentUpon>TwoZiMaAdd.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CountryZiMaManage\TwoZiMaManage.aspx.cs">
+      <DependentUpon>TwoZiMaManage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CountryZiMaManage\TwoZiMaManage.aspx.designer.cs">
+      <DependentUpon>TwoZiMaManage.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Extensions\IoCPageHandlerFactory.cs" />
+    <Compile Include="FlightManage\FlightManagement.aspx.cs">
+      <DependentUpon>FlightManagement.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FlightManage\FlightManagement.aspx.designer.cs">
+      <DependentUpon>FlightManagement.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="HAWBManage\Addresshistory.aspx.cs">
+      <DependentUpon>Addresshistory.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="HAWBManage\Addresshistory.aspx.designer.cs">
+      <DependentUpon>Addresshistory.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="HAWBManage\DeliverAdd.aspx.cs">
+      <DependentUpon>DeliverAdd.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="HAWBManage\DeliverAdd.aspx.designer.cs">
+      <DependentUpon>DeliverAdd.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="HAWBManage\HAWBAdd.aspx.cs">
+      <DependentUpon>HAWBAdd.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="HAWBManage\HAWBAdd.aspx.designer.cs">
+      <DependentUpon>HAWBAdd.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="HAWBManage\HAWBDetails.aspx.cs">
+      <DependentUpon>HAWBDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="HAWBManage\HAWBDetails.aspx.designer.cs">
+      <DependentUpon>HAWBDetails.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="HAWBManage\HAWBItemAdd.aspx.cs">
+      <DependentUpon>HAWBItemAdd.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="HAWBManage\HAWBItemAdd.aspx.designer.cs">
+      <DependentUpon>HAWBItemAdd.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="HAWBManage\HAWBManagement.aspx.cs">
+      <DependentUpon>HAWBManagement.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="HAWBManage\HAWBManagement.aspx.designer.cs">
+      <DependentUpon>HAWBManagement.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MawbManage\MawbAdd.aspx.cs">
+      <DependentUpon>MawbAdd.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MawbManage\MawbAdd.aspx.designer.cs">
+      <DependentUpon>MawbAdd.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MawbManage\MawbDetails.aspx.cs">
+      <DependentUpon>MawbDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MawbManage\MawbDetails.aspx.designer.cs">
+      <DependentUpon>MawbDetails.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MawbManage\MawbManagement.aspx.cs">
+      <DependentUpon>MawbManagement.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MawbManage\MawbManagement.aspx.designer.cs">
+      <DependentUpon>MawbManagement.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MawbManage\MawbModify.aspx.cs">
+      <DependentUpon>MawbModify.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MawbManage\MawbModify.aspx.designer.cs">
+      <DependentUpon>MawbModify.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Navigation.aspx.cs">
+      <DependentUpon>Navigation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Navigation.aspx.designer.cs">
+      <DependentUpon>Navigation.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PackageManage\packageAdd.aspx.cs">
+      <DependentUpon>packageAdd.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PackageManage\packageAdd.aspx.designer.cs">
+      <DependentUpon>packageAdd.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PackageManage\PackageDetails.aspx.cs">
+      <DependentUpon>PackageDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PackageManage\PackageDetails.aspx.designer.cs">
+      <DependentUpon>PackageDetails.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PackageManage\packageManagement.aspx.cs">
+      <DependentUpon>packageManagement.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PackageManage\packageManagement.aspx.designer.cs">
+      <DependentUpon>packageManagement.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PackageManage\packageModify.aspx.cs">
+      <DependentUpon>packageModify.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PackageManage\packageModify.aspx.designer.cs">
+      <DependentUpon>packageModify.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PackageManage\WebForm1.aspx.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PackageManage\WebForm1.aspx.designer.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PersonnelManage\CompanyManage\CompanyAdd.aspx.cs">
+      <DependentUpon>CompanyAdd.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PersonnelManage\CompanyManage\CompanyAdd.aspx.designer.cs">
+      <DependentUpon>CompanyAdd.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PersonnelManage\CompanyManage\CompanyDetails.aspx.cs">
+      <DependentUpon>CompanyDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PersonnelManage\CompanyManage\CompanyDetails.aspx.designer.cs">
+      <DependentUpon>CompanyDetails.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PersonnelManage\CompanyManage\CompanyManagemnet.aspx.cs">
+      <DependentUpon>CompanyManagemnet.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PersonnelManage\CompanyManage\CompanyManagemnet.aspx.designer.cs">
+      <DependentUpon>CompanyManagemnet.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PersonnelManage\CompanyManage\CompanyModify.aspx.cs">
+      <DependentUpon>CompanyModify.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PersonnelManage\CompanyManage\CompanyModify.aspx.designer.cs">
+      <DependentUpon>CompanyModify.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PersonnelManage\DepartmentManage\DepartmentAdd.aspx.cs">
+      <DependentUpon>DepartmentAdd.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PersonnelManage\DepartmentManage\DepartmentAdd.aspx.designer.cs">
+      <DependentUpon>DepartmentAdd.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PersonnelManage\DepartmentManage\DepartmentDetails.aspx.cs">
+      <DependentUpon>DepartmentDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PersonnelManage\DepartmentManage\DepartmentDetails.aspx.designer.cs">
+      <DependentUpon>DepartmentDetails.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PersonnelManage\DepartmentManage\DepartmentManagemnet.aspx.cs">
+      <DependentUpon>DepartmentManagemnet.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PersonnelManage\DepartmentManage\DepartmentManagemnet.aspx.designer.cs">
+      <DependentUpon>DepartmentManagemnet.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PersonnelManage\DepartmentManage\DepartmentModify.aspx.cs">
+      <DependentUpon>DepartmentModify.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PersonnelManage\DepartmentManage\DepartmentModify.aspx.designer.cs">
+      <DependentUpon>DepartmentModify.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PersonnelManage\UserManage\UserAdd.aspx.cs">
+      <DependentUpon>UserAdd.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PersonnelManage\UserManage\UserAdd.aspx.designer.cs">
+      <DependentUpon>UserAdd.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PersonnelManage\UserManage\UserDetails.aspx.cs">
+      <DependentUpon>UserDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PersonnelManage\UserManage\UserDetails.aspx.designer.cs">
+      <DependentUpon>UserDetails.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PersonnelManage\UserManage\UserManagemnet.aspx.cs">
+      <DependentUpon>UserManagemnet.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PersonnelManage\UserManage\UserManagemnet.aspx.designer.cs">
+      <DependentUpon>UserManagemnet.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PersonnelManage\UserManage\UserModify.aspx.cs">
+      <DependentUpon>UserModify.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PersonnelManage\UserManage\UserModify.aspx.designer.cs">
+      <DependentUpon>UserModify.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RegionZiMaManage\regionAdd.aspx.cs">
+      <DependentUpon>regionAdd.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RegionZiMaManage\regionAdd.aspx.designer.cs">
+      <DependentUpon>regionAdd.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="RegionZiMaManage\regionManagement.aspx.cs">
+      <DependentUpon>regionManagement.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RegionZiMaManage\regionManagement.aspx.designer.cs">
+      <DependentUpon>regionManagement.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Site1.Master.cs">
       <DependentUpon>Site1.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -169,10 +512,13 @@
     <Compile Include="Site1.Master.designer.cs">
       <DependentUpon>Site1.Master</DependentUpon>
     </Compile>
+    <Compile Include="xmlHelp.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="bin\" />
     <Folder Include="obj\Debug\TempPE\" />
+    <Folder Include="Resources\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Account\Web.config" />
@@ -190,6 +536,10 @@
       <Project>{6F82F34C-72F8-4C1F-9B41-2EE88C54AB01}</Project>
       <Name>Domain.GGGETS.Entities</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Domain.GGGETS\Domain.GGGETS.csproj">
+      <Project>{D97E400C-5C18-4414-9E53-6A660ED3395F}</Project>
+      <Name>Domain.GGGETS</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Infrastructure.CrossCutting.IoC\Infrastructure.CrossCutting.IoC.csproj">
       <Project>{59814C32-5A3B-4AEE-94FA-502EA57CDF70}</Project>
       <Name>Infrastructure.CrossCutting.IoC</Name>
@@ -199,7 +549,15 @@
     <Content Include="App_Themes\logisitc\logistic.skin" />
     <None Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
     <None Include="obj\Debug\ResolveAssemblyReference.cache" />
+    <Content Include="Web.sitemap" />
+    <None Include="SAFFClient.pfx" />
+    <None Include="SAFFSSO.cer" />
     <Content Include="Site1.Master" />
+    <None Include="Template\Invoice.xls" />
+    <None Include="Template\MAWB.XLS" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="PackageManage\App_LocalResources\PackageDetails.aspx.resx" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
