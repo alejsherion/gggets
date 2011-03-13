@@ -1,7 +1,6 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site1.master.cs" Inherits="GGGETSAdmin.Site1" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
@@ -9,10 +8,14 @@
     </asp:ContentPlaceHolder>
 </head>
 <body>
-    <form id="form1" runat="server">
+    <form id="form1" runat="server" keypreview="true">
     <div>
+        <asp:ContentPlaceHolder ID="CPH_Navigation" runat="server">
+            <div style="text-align: right">
+                <asp:LinkButton ID="lbtn_Navigation" runat="server" Text="主页" PostBackUrl="~/Navigation.aspx" CssClass="LinkBtn"></asp:LinkButton>
+            </div>
+        </asp:ContentPlaceHolder>
         <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
-        
         </asp:ContentPlaceHolder>
     </div>
     </form>
