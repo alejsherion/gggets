@@ -13,22 +13,40 @@ namespace GGGETSAdmin.PackageManage {
     public partial class packageAdd {
         
         /// <summary>
-        /// lbl_BagNumber 控件。
+        /// ToolkitScriptManager1 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_BagNumber;
+        protected global::AjaxControlToolkit.ToolkitScriptManager ToolkitScriptManager1;
         
         /// <summary>
-        /// Txt_BagNumber 控件。
+        /// UpdatePanel1 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox Txt_BagNumber;
+        protected global::System.Web.UI.UpdatePanel UpdatePanel1;
+        
+        /// <summary>
+        /// lbl_BagBarCode 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_BagBarCode;
+        
+        /// <summary>
+        /// Txt_BagBarCode 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox Txt_BagBarCode;
         
         /// <summary>
         /// lbl_CreateTime 控件。
@@ -49,22 +67,22 @@ namespace GGGETSAdmin.PackageManage {
         protected global::System.Web.UI.WebControls.Label txt_CreateTime;
         
         /// <summary>
-        /// lbl_UpdateTime 控件。
+        /// lbl_PackageType 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_UpdateTime;
+        protected global::System.Web.UI.WebControls.Label lbl_PackageType;
         
         /// <summary>
-        /// txt_UpdateTime 控件。
+        /// rbtn_PackageType 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label txt_UpdateTime;
+        protected global::System.Web.UI.WebControls.RadioButtonList rbtn_PackageType;
         
         /// <summary>
         /// lbl_Region 控件。
