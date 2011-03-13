@@ -28,11 +28,13 @@ namespace GGGETSAdmin.HAWBManage
         }
         protected void Page_Load(object sender, EventArgs e)
         {
+            hawb = (HAWB)Session["HAWB"];
+
             if (!IsPostBack)
             {
                 if (Session["HAWB"] != null)
                 {
-                    hawb = (HAWB)Session["HAWB"];
+
                     if (Request.QueryString["type"] == "Amend")
                     {
                         type = Request.QueryString["type"];
@@ -81,44 +83,73 @@ namespace GGGETSAdmin.HAWBManage
         protected void AddItem()
         {
             item.HID = hawb.HID;
-            if (Txt_ItemPiece.Text == "")
+            if (Txt_ItemPiece.Text.Trim() == "")
             {
-                Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('不能为空！')</script>");
+                Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('件数不能为空！')</script>");
                 Txt_ItemPiece.Focus();
             }
-            else if (Txt_ItemName.Text == "")
+            else if (Txt_ItemName.Text.Trim() == "")
             {
-                Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('不能为空！')</script>");
+                Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('物品名称不能为空！')</script>");
                 Txt_ItemName.Focus();
             }
-            else if (Txt_ItemPice.Text == "")
+            else if (Txt_ItemPice.Text.Trim() == "")
             {
-                Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('不能为空！')</script>");
+                Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('物品价值不能为空！')</script>");
                 Txt_ItemPice.Focus();
             }
             else
             {
-                if (!Regex.IsMatch(Txt_ItemPiece.Text, intPattern))
+                if (!Regex.IsMatch(Txt_ItemPiece.Text.Trim(), intPattern))
                 {
-                    Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('只能输入非零的整数！')</script>");
+                    Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('件数只能输入非零的整数！')</script>");
                     Txt_ItemPiece.Focus();
                 }
-                else if (!Regex.IsMatch(Txt_ItemPice.Text, decimalPattern))
+                else if (!Regex.IsMatch(Txt_ItemPice.Text.Trim(), decimalPattern))
                 {
-                    Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('只能小数且小数点后保留2位！')</script>");
+                    Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('物品价值只能小数且小数点后保留2位！')</script>");
                     Txt_ItemPice.Focus();
                 }
                 else
                 {
-                    item.Name = Txt_ItemName.Text;
-                    item.Piece = int.Parse(Txt_ItemPiece.Text);
-                    item.Remark = Txt_ItemType.Text;
-                    item.UnitAmount = decimal.Parse(Txt_ItemPice.Text);
-                    item.TotalAmount += item.UnitAmount;
-                    
-                    hawb.HAWBItems.Add(item);
-                    GV_item.DataSource = hawb.HAWBItems;
-                    GV_item.DataBind();
+                    item.Name = Txt_ItemName.Text.Trim();
+                    item.Piece = int.Parse(Txt_ItemPiece.Text.Trim());
+                    item.Remark = Txt_ItemType.Text.Trim();
+                    item.UnitAmount = decimal.Parse(Txt_ItemPice.Text.Trim());
+                    if (rbt_BoxType.SelectedValue == "2")
+                    {
+                        hawb.HAWBItems.Add(item);
+                        GV_item.DataSource = hawb.HAWBItems;
+                        GV_item.DataBind();
+                        txt_BoxPiece.Focus();
+                    }
+                    else
+                    {
+                        if (item.Piece * item.UnitAmount <= 100)
+                        {
+                            if (ReturnTotal(4) + item.Piece * item.UnitAmount <= 100)
+                            {
+                                hawb.HAWBItems.Add(item);
+                                GV_item.DataSource = hawb.HAWBItems;
+                                GV_item.DataBind();
+                                Txt_ItemName.Text = string.Empty;
+                                Txt_ItemPiece.Text = string.Empty;
+                                Txt_ItemType.Text = string.Empty;
+                                Txt_ItemPice.Text = string.Empty;
+                                txt_BoxPiece.Focus();
+                            }
+                            else
+                            {
+                                Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('总计价值超过100美金不能添加！')</script>");
+                                Txt_ItemPiece.Focus();
+                            }
+                        }
+                        else
+                        {
+                            Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('总计价值超过100美金不能添加！')</script>");
+                            Txt_ItemPiece.Focus();
+                        }
+                    }
                 }
             }
         }
@@ -130,59 +161,75 @@ namespace GGGETSAdmin.HAWBManage
         }
         protected void AddBox()
         {
-            
+
             box.BoxType = int.Parse(rbt_BoxType.SelectedValue);
-            if (Txt_BoxWeight.Text == "")
+            if (Txt_BoxWeight.Text.Trim() == "")
             {
-                Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('不能为空！')</script>");
+                Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('包裹重量不能为空！')</script>");
                 Txt_BoxWeight.Focus();
             }
-            else if (txt_BoxPiece.Text == "" && txt_BoxPiece.Visible==false)
+            else if (txt_BoxPiece.Text.Trim() == "" && txt_BoxPiece.Visible == false)
             {
-                Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('不能为空！')</script>");
+                Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('包裹件数不能为空！')</script>");
                 txt_BoxPiece.Focus();
             }
             else
             {
-                if (!Regex.IsMatch(txt_BoxPiece.Text, intPattern))
+                if (!Regex.IsMatch(txt_BoxPiece.Text.Trim(), intPattern))
                 {
-                    Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('只能输入整数！')</script>");
+                    Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('包裹件数只能输入整数！')</script>");
                     txt_BoxPiece.Focus();
                 }
-                else if (!Regex.IsMatch(Txt_BoxWeight.Text, decimalPattern))
+                else if (!Regex.IsMatch(Txt_BoxWeight.Text.Trim(), decimalPattern))
                 {
-                    Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('只能小数且小数点后保留2位！')</script>");
+                    Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('包裹重量只能输入整数或小数且小数点后保留2位！')</script>");
                     Txt_BoxWeight.Focus();
                 }
-                else if (!Regex.IsMatch(Txt_BoxHeight.Text, decimalPattern) && Txt_BoxHeight.Visible==false)
+                else if (!Regex.IsMatch(Txt_BoxHeight.Text.Trim(), decimalPattern) && Txt_BoxHeight.Visible != false && Txt_BoxHeight.Text.Trim() != "")
                 {
-                    Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('只能小数且小数点后保留2位！')</script>");
+                    Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('包裹高度只能输入整数或小数且小数点后保留2位！')</script>");
                     Txt_BoxHeight.Focus();
                 }
-                else if (!Regex.IsMatch(Txt_BoxLength.Text, decimalPattern) && Txt_BoxLength.Visible == false)
+                else if (!Regex.IsMatch(Txt_BoxLength.Text.Trim(), decimalPattern) && Txt_BoxLength.Visible != false && Txt_BoxHeight.Text.Trim() != "")
                 {
-                    Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('只能小数且小数点后保留2位！')</script>");
+                    Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('包裹长度只能输入整数或小数且小数点后保留2位！')</script>");
                     Txt_BoxLength.Focus();
                 }
-                else if (!Regex.IsMatch(Txt_BoxWidth.Text, decimalPattern) && Txt_BoxWidth.Visible==false)
+                else if (!Regex.IsMatch(Txt_BoxWidth.Text.Trim(), decimalPattern) && Txt_BoxWidth.Visible != false && Txt_BoxWidth.Text.Trim() != "")
                 {
-                    Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('只能小数且小数点后保留2位！')</script>");
+                    Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('包裹宽度只能输入整数或小数且小数点后保留2位！')</script>");
                     Txt_BoxWidth.Focus();
                 }
                 else
                 {
-                    box.Height = decimal.Parse(Txt_BoxHeight.Text);
-                    box.Length = decimal.Parse(Txt_BoxLength.Text);
-                    box.Piece = int.Parse(txt_BoxPiece.Text);
-                    box.Weight = decimal.Parse(Txt_BoxWeight.Text);
-                    box.Width = decimal.Parse(Txt_BoxWidth.Text);
+                    if (Txt_BoxHeight.Text.Trim() != "")
+                    {
+                        box.Height = decimal.Parse(Txt_BoxHeight.Text.Trim());
+                    }
+                    if (Txt_BoxLength.Text.Trim() != "")
+                    {
+                        box.Length = decimal.Parse(Txt_BoxLength.Text.Trim());
+                    }
+                    if (Txt_BoxWidth.Text.Trim() != "")
+                    {
+                        box.Width = decimal.Parse(Txt_BoxWidth.Text.Trim());
+                    }
+                    box.Piece = int.Parse(txt_BoxPiece.Text.Trim());
+                    box.Weight = decimal.Parse(Txt_BoxWeight.Text.Trim());
+
                     hawb.HAWBBoxes.Add(box);
                     txt_TotalWeight.Text = hawb.TotalWeight.ToString();
-                    lbl_TotalVolume.Text = hawb.TotalVolume.ToString();
+                    Txt_VolumeWeight.Text = hawb.VolumeWeight.Value.ToString();
                     lbl_Piece.Text = hawb.Piece.ToString();
-                   
+
                     gv_Box.DataSource = hawb.HAWBBoxes;
                     gv_Box.DataBind();
+                    txt_BoxPiece.Focus();
+                    Txt_BoxHeight.Text = string.Empty;
+                    Txt_BoxLength.Text = string.Empty;
+                    txt_BoxPiece.Text = string.Empty;
+                    Txt_BoxWeight.Text = string.Empty;
+                    Txt_BoxWidth.Text = string.Empty;
                 }
             }
         }
@@ -194,8 +241,8 @@ namespace GGGETSAdmin.HAWBManage
         protected void Evaluate()
         {
             lbl_BarCode.Text = hawb.BarCode;
-            lbl_ShipperCountry.Text = hawb.ShipperCountry;
             lbl_ShipperRegion.Text = hawb.ShipperRegion;
+            lbl_ConsigneeRegion.Text = hawb.ConsigneeRegion;
             lbl_ShipperName.Text = hawb.ShipperName;
             lbl_ConsigneeName.Text = hawb.ConsigneeName.ToString();
             if (ViewState["type"] != null)
@@ -210,14 +257,17 @@ namespace GGGETSAdmin.HAWBManage
                 }
                 BoxType();
                 rbt_BillTax.SelectedValue = hawb.BillTax.ToString();
-                Rbl_SpecialInstruction.SelectedValue = hawb.SpecialInstruction.ToString();
+                if (hawb.SpecialInstruction != null)
+                {
+                    Rbl_SpecialInstruction.SelectedValue = hawb.SpecialInstruction;
+                }
                 ddl_WeightType.SelectedValue = hawb.WeightType.ToString();
                 txt_TotalWeight.Text = hawb.TotalWeight.ToString();
                 lbl_Piece.Text = hawb.Piece.ToString();
-                lbl_TotalVolume.Text = hawb.TotalVolume.ToString();
+                Txt_VolumeWeight.Text = hawb.VolumeWeight.Value.ToString();
                 txt_Remark.Text = hawb.Remark;
                 Txt_Carrier.Text = hawb.Carrier;
-                Txt_CarrierHAWBID.Text = hawb.CarrierHAWBID.ToString();
+                Txt_CarrierHAWBBarCode.Text = hawb.CarrierHAWBBarCode;
             }
         }
 
@@ -230,17 +280,32 @@ namespace GGGETSAdmin.HAWBManage
             }
             else
             {
-                hawb.TotalVolume = decimal.Parse(txt_TotalWeight.Text);
+                hawb.TotalVolume = decimal.Parse(txt_TotalWeight.Text.Trim());
             }
             hawb.IsInternational = true;
-            hawb.BillTax = int.Parse(rbt_BillTax.SelectedValue);
-            hawb.SpecialInstruction = Rbl_SpecialInstruction.Text;
-            hawb.Remark = txt_Remark.Text;
-            hawb.Carrier = Txt_Carrier.Text;
-            hawb.ServiceType = int.Parse(rbt_BoxType.SelectedValue);
-            //hawb.CarrierHAWBID = Guid.Parse(Txt_CarrierHAWBID.Text);
-            if (hawb.HAWBBoxes.Count != 0 && hawb.HAWBItems.Count != 0)
+            if (Txt_CarrierHAWBBarCode.Text.Trim() != null)
             {
+                hawb.CarrierHAWBID = Guid.NewGuid();
+                hawb.CarrierHAWBBarCode = Txt_CarrierHAWBBarCode.Text.Trim().ToUpper();
+            }
+            hawb.BillTax = int.Parse(rbt_BillTax.SelectedValue);
+            hawb.SpecialInstruction = Rbl_SpecialInstruction.Text.Trim();
+            hawb.Remark = txt_Remark.Text.Trim().ToUpper();
+            hawb.Carrier = Txt_Carrier.Text.Trim().ToUpper();
+            hawb.ServiceType = int.Parse(rbt_BoxType.SelectedValue);
+            if (hawb.HAWBBoxes.Count != 0)
+            {
+                if (hawb.HAWBItems.Count == 0)
+                {
+                    item = new HAWBItem();
+                    item.ItemID = Guid.NewGuid();
+                    item.HID = hawb.HID;
+                    item.Name = Txt_ItemName.Text.Trim();
+                    item.Piece = 0;
+                    item.Remark = string.Empty;
+                    item.UnitAmount = decimal.Parse("0.00");
+                    hawb.HAWBItems.Add(item);
+                }
                 if (ViewState["type"] != null)
                 {
                     type = ViewState["type"].ToString(); ;
@@ -252,17 +317,18 @@ namespace GGGETSAdmin.HAWBManage
                     Session.Clear();
                 }
                 else
-                { 
+                {
                     _hawbService.AddHAWB(hawb);
-                    Response.Write("<script>alert('添加成功！');location='HAWBManagement.aspx'</script>");
-                    Session.Clear();
+                    Response.Write("<script>alert('添加成功！');location='HAWBAdd.aspx'</script>");
+                    //Session["HAWB"] = null;
+                    Session.Remove("HAWB");
                 }
-                
-                
+
+
             }
             else
             {
-                Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('请添加包裹和物品！')</script>");
+                Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('请添加包裹！')</script>");
             }
         }
 
@@ -273,8 +339,19 @@ namespace GGGETSAdmin.HAWBManage
         protected void BoxType()
         {
             if (rbt_BoxType.SelectedValue == "0")
-            {
+            {              
                 Txt_ItemName.Enabled = false;
+                Txt_ItemName.Text = "Documents";
+                Txt_ItemType.Text = string.Empty;
+                Txt_ItemPice.Text = string.Empty;
+                Txt_ItemPiece.Text = string.Empty;
+                Txt_BoxHeight.Text = string.Empty;
+                Txt_BoxLength.Text = string.Empty;
+                Txt_BoxWidth.Text = string.Empty;
+
+                GV_item.DataSource = null;
+                GV_item.DataBind();
+
                 Txt_ItemType.Enabled = false;
                 Txt_ItemPice.Enabled = false;
                 Txt_ItemPiece.Enabled = false;
@@ -286,6 +363,13 @@ namespace GGGETSAdmin.HAWBManage
             }
             else
             {
+                Txt_ItemName.Text = string.Empty;
+                Txt_ItemType.Text = string.Empty;
+                Txt_ItemPice.Text = string.Empty;
+                Txt_ItemPiece.Text = string.Empty;
+                Txt_BoxHeight.Text = string.Empty;
+                Txt_BoxLength.Text = string.Empty;
+                Txt_BoxWidth.Text = string.Empty;
                 Txt_ItemName.Enabled = true;
                 Txt_ItemType.Enabled = true;
                 Txt_ItemPice.Enabled = true;
@@ -315,81 +399,94 @@ namespace GGGETSAdmin.HAWBManage
                     box = bx;
                 }
             }
-            foreach (GridViewRow itemrow in gv_Box.Rows)
+
+            if (((TextBox)gv_Box.Rows[e.RowIndex].FindControl("txt_BoxPiece") as TextBox).Text.Trim() == "")
             {
-                if (((TextBox)itemrow.FindControl("txt_BoxPiece") as TextBox).Text == "")
+                Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('包裹件数不能为空！')</script>");
+                ((TextBox)gv_Box.Rows[e.RowIndex].FindControl("txt_BoxPiece") as TextBox).Focus();
+            }
+            else if (((TextBox)gv_Box.Rows[e.RowIndex].FindControl("txt_BoxWeight") as TextBox).Text.Trim() == "")
+            {
+                Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('包裹重量不能为空！')</script>");
+                ((TextBox)gv_Box.Rows[e.RowIndex].FindControl("txt_BoxWeight") as TextBox).Focus();
+            }
+            else
+            {
+                if (!Regex.IsMatch(((TextBox)gv_Box.Rows[e.RowIndex].FindControl("txt_BoxPiece") as TextBox).Text.Trim(), intPattern))
                 {
-                    Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('不能为空！')</script>");
-                    ((TextBox)itemrow.FindControl("txt_BoxPiece") as TextBox).Focus();
+                    Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('只能输入整数！')</script>");
+                    ((TextBox)gv_Box.Rows[e.RowIndex].FindControl("txt_BoxPiece") as TextBox).Focus();
                 }
-                else if (((TextBox)itemrow.FindControl("txt_BoxWeight") as TextBox).Text == "")
+                else if (!Regex.IsMatch(((TextBox)gv_Box.Rows[e.RowIndex].FindControl("txt_BoxWeight") as TextBox).Text.Trim(), decimalPattern))
                 {
-                    Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('不能为空！')</script>");
-                    ((TextBox)itemrow.FindControl("txt_BoxWeight") as TextBox).Focus();
+                    Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('只能小数且小数点后保留2位！')</script>");
+                    ((TextBox)gv_Box.Rows[e.RowIndex].FindControl("txt_BoxWeight") as TextBox).Focus();
+                }
+                else if (!Regex.IsMatch(((TextBox)gv_Box.Rows[e.RowIndex].FindControl("txt_BoxHeight") as TextBox).Text.Trim(), decimalPattern) && ((TextBox)gv_Box.Rows[e.RowIndex].FindControl("txt_BoxHeight") as TextBox).Text.Trim() != "")
+                {
+                    Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('只能小数且小数点后保留2位！')</script>");
+                    ((TextBox)gv_Box.Rows[e.RowIndex].FindControl("txt_BoxHeight") as TextBox).Focus();
+                }
+                else if (!Regex.IsMatch(((TextBox)gv_Box.Rows[e.RowIndex].FindControl("txt_BoxLength") as TextBox).Text.Trim(), decimalPattern) && ((TextBox)gv_Box.Rows[e.RowIndex].FindControl("txt_BoxLength") as TextBox).Text.Trim() != "")
+                {
+                    Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('只能小数且小数点后保留2位！')</script>");
+                    ((TextBox)gv_Box.Rows[e.RowIndex].FindControl("txt_BoxLength") as TextBox).Focus();
+                }
+                else if (!Regex.IsMatch(((TextBox)gv_Box.Rows[e.RowIndex].FindControl("txt_BoxWidth") as TextBox).Text.Trim(), decimalPattern) && ((TextBox)gv_Box.Rows[e.RowIndex].FindControl("txt_BoxWidth") as TextBox).Text.Trim() != "")
+                {
+                    Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('只能小数且小数点后保留2位！')</script>");
+                    ((TextBox)gv_Box.Rows[e.RowIndex].FindControl("txt_BoxWidth") as TextBox).Focus();
                 }
                 else
                 {
-                    if (!Regex.IsMatch(((TextBox)itemrow.FindControl("txt_BoxPiece") as TextBox).Text, intPattern))
+                    if (((TextBox)gv_Box.Rows[e.RowIndex].FindControl("txt_BoxHeight") as TextBox).Text.Trim() != "")
                     {
-                        Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('只能输入整数！')</script>");
-                        ((TextBox)itemrow.FindControl("txt_BoxPiece") as TextBox).Focus();
+                        box.Height = decimal.Parse(((TextBox)gv_Box.Rows[e.RowIndex].FindControl("txt_BoxHeight") as TextBox).Text.Trim());
                     }
-                    else if (!Regex.IsMatch(((TextBox)itemrow.FindControl("txt_BoxWeight") as TextBox).Text, decimalPattern))
+                    if (((TextBox)gv_Box.Rows[e.RowIndex].FindControl("txt_BoxLength") as TextBox).Text.Trim() != "")
                     {
-                        Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('只能小数且小数点后保留2位！')</script>");
-                        ((TextBox)itemrow.FindControl("txt_BoxWeight") as TextBox).Focus();
+                        box.Length = decimal.Parse(((TextBox)gv_Box.Rows[e.RowIndex].FindControl("txt_BoxLength") as TextBox).Text.Trim());
+
                     }
-                    else if (!Regex.IsMatch(((TextBox)itemrow.FindControl("txt_BoxHeight") as TextBox).Text, decimalPattern) && ((TextBox)gv_Box.FindControl("txt_BoxHeight") as TextBox).Text != "")
+                    box.Piece = int.Parse(((TextBox)gv_Box.Rows[e.RowIndex].FindControl("txt_BoxPiece") as TextBox).Text.Trim());
+                    if (((TextBox)gv_Box.Rows[e.RowIndex].FindControl("txt_BoxWeight") as TextBox).Text.Trim() != "")
                     {
-                        Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('只能小数且小数点后保留2位！')</script>");
-                        ((TextBox)itemrow.FindControl("txt_BoxHeight") as TextBox).Focus();
+                        box.Weight = decimal.Parse(((TextBox)gv_Box.Rows[e.RowIndex].FindControl("txt_BoxWeight") as TextBox).Text.Trim());
                     }
-                    else if (!Regex.IsMatch(((TextBox)itemrow.FindControl("txt_BoxLength") as TextBox).Text, decimalPattern) && ((TextBox)gv_Box.FindControl("txt_BoxLength") as TextBox).Text != "")
+                    if (((TextBox)gv_Box.Rows[e.RowIndex].FindControl("txt_BoxWidth") as TextBox).Text.Trim() != "")
                     {
-                        Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('只能小数且小数点后保留2位！')</script>");
-                        ((TextBox)itemrow.FindControl("txt_BoxLength") as TextBox).Focus();
+                        box.Width = decimal.Parse(((TextBox)gv_Box.Rows[e.RowIndex].FindControl("txt_BoxWidth") as TextBox).Text.Trim());
                     }
-                    else if (!Regex.IsMatch(((TextBox)itemrow.FindControl("txt_BoxWidth") as TextBox).Text, decimalPattern) && ((TextBox)gv_Box.FindControl("txt_BoxWidth") as TextBox).Text != "")
-                    {
-                        Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('只能小数且小数点后保留2位！')</script>");
-                        ((TextBox)itemrow.FindControl("txt_BoxWidth") as TextBox).Focus();
-                    }
-                    else
-                    {
-                        box.Height = decimal.Parse(((TextBox)itemrow.FindControl("txt_BoxHeight") as TextBox).Text.Trim());
-                        box.Length = decimal.Parse(((TextBox)itemrow.FindControl("txt_BoxLength") as TextBox).Text);
-                        box.Piece = int.Parse(((TextBox)itemrow.FindControl("txt_BoxPiece") as TextBox).Text);
-                        box.Weight = decimal.Parse(((TextBox)itemrow.FindControl("txt_BoxWeight") as TextBox).Text);
-                        box.Width = decimal.Parse(((TextBox)itemrow.FindControl("txt_BoxWidth") as TextBox).Text);
-                        hawb.HAWBBoxes.Add(box);
-                        lbl_TotalVolume.Text = hawb.TotalVolume.ToString();
-                        lbl_Piece.Text = hawb.Piece.ToString();
-                        gv_Box.EditIndex = -1;
-                        Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('更新成功！')</script>");
-                        gv_Box.DataSource = hawb.HAWBBoxes;
-                        gv_Box.DataBind();
-                    }
+                    hawb.HAWBBoxes.Add(box);
+                    Txt_VolumeWeight.Text = hawb.VolumeWeight.Value.ToString();
+                    txt_TotalWeight.Text = hawb.TotalWeight.ToString();
+                    lbl_Piece.Text = hawb.Piece.ToString();
+                    gv_Box.EditIndex = -1;
+                    Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('更新成功！')</script>");
+                    gv_Box.DataSource = hawb.HAWBBoxes;
+                    gv_Box.DataBind();
                 }
             }
+
         }
 
         protected void gv_Box_RowCommand(object sender, GridViewCommandEventArgs e)
         {
             if (e.CommandName == "Delete")
             {
-                int inex=Convert.ToInt16(e.CommandArgument);
-                Guid id=Guid.Parse(gv_Box.DataKeys[inex].Value.ToString());
+                int inex = Convert.ToInt16(e.CommandArgument);
+                Guid id = Guid.Parse(gv_Box.DataKeys[inex].Value.ToString());
                 foreach (HAWBBox bx in hawb.HAWBBoxes)
                 {
                     if (bx.BoxID == id)
                     {
                         box = bx;
-                        
+
                     }
                 }
                 hawb.HAWBBoxes.Remove(box);
                 txt_TotalWeight.Text = hawb.TotalWeight.ToString();
-                lbl_TotalVolume.Text = hawb.TotalVolume.ToString();
+                Txt_VolumeWeight.Text = hawb.VolumeWeight.Value.ToString();
                 lbl_Piece.Text = hawb.Piece.ToString();
                 gv_Box.DataSource = hawb.HAWBBoxes;
                 gv_Box.DataBind();
@@ -431,53 +528,54 @@ namespace GGGETSAdmin.HAWBManage
                     item = it;
                 }
             }
-            foreach (GridViewRow itemrow in GV_item.Rows)
+            if (((TextBox)GV_item.Rows[e.RowIndex].FindControl("txt_ItemPiece") as TextBox).Text.Trim() == "")
             {
-                if (((TextBox)itemrow.FindControl("txt_ItemPiece") as TextBox).Text == "")
+                Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('不能为空！')</script>");
+                ((TextBox)GV_item.Rows[e.RowIndex].FindControl("txt_ItemPiece") as TextBox).Focus();
+            }
+            else if (((TextBox)GV_item.Rows[e.RowIndex].FindControl("txt_ItemName") as TextBox).Text.Trim() == "")
+            {
+                Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('不能为空！')</script>");
+                ((TextBox)GV_item.Rows[e.RowIndex].FindControl("txt_ItemName") as TextBox).Focus();
+            }
+            else if (((TextBox)GV_item.Rows[e.RowIndex].FindControl("txt_ItemPice") as TextBox).Text.Trim() == "")
+            {
+                Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('不能为空！')</script>");
+                ((TextBox)GV_item.Rows[e.RowIndex].FindControl("txt_ItemPice") as TextBox).Focus();
+            }
+            else
+            {
+                if (!Regex.IsMatch(((TextBox)GV_item.Rows[e.RowIndex].FindControl("txt_ItemPiece") as TextBox).Text.Trim(), intPattern))
                 {
-                    Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('不能为空！')</script>");
-                    ((TextBox)itemrow.FindControl("txt_ItemPiece") as TextBox).Focus();
+                    Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('只能输入整数！')</script>");
+                    ((TextBox)GV_item.Rows[e.RowIndex].FindControl("txt_ItemPiece") as TextBox).Focus();
                 }
-                else if (((TextBox)itemrow.FindControl("txt_ItemName") as TextBox).Text == "")
+                else if (!Regex.IsMatch(((TextBox)GV_item.Rows[e.RowIndex].FindControl("txt_ItemPice") as TextBox).Text.Trim(), decimalPattern))
                 {
-                    Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('不能为空！')</script>");
-                    ((TextBox)itemrow.FindControl("txt_ItemName") as TextBox).Focus();
+                    Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('只能小数且小数点后保留2位！')</script>");
+                    ((TextBox)GV_item.Rows[e.RowIndex].FindControl("txt_ItemPice") as TextBox).Focus();
                 }
-                else if (((TextBox)itemrow.FindControl("txt_ItemPice") as TextBox).Text == "")
+                else if (int.Parse(((TextBox)GV_item.Rows[e.RowIndex].FindControl("txt_ItemPiece") as TextBox).Text.Trim()) * decimal.Parse(((TextBox)GV_item.Rows[e.RowIndex].FindControl("txt_ItemPice") as TextBox).Text.Trim()) > 100)
                 {
-                    Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('不能为空！')</script>");
-                    ((TextBox)itemrow.FindControl("txt_ItemPice") as TextBox).Focus();
+                    Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('总计价值超过100美金不能添加！')</script>");
+                    ((TextBox)GV_item.Rows[e.RowIndex].FindControl("txt_ItemPiece") as TextBox).Focus();
+                }
+                else if (int.Parse(((TextBox)GV_item.Rows[e.RowIndex].FindControl("txt_ItemPiece") as TextBox).Text) * decimal.Parse(((TextBox)GV_item.Rows[e.RowIndex].FindControl("txt_ItemPice") as TextBox).Text) + ReturnTotal(4) > 100 && GV_item.Rows.Count > 1)
+                {
+                    Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('总计价值超过100美金不能添加！')</script>");
+                    ((TextBox)GV_item.Rows[e.RowIndex].FindControl("txt_ItemPiece") as TextBox).Focus();
                 }
                 else
                 {
-                    if (!Regex.IsMatch(((TextBox)itemrow.FindControl("txt_ItemPiece") as TextBox).Text, intPattern))
-                    {
-                        Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('只能输入整数！')</script>");
-                        ((TextBox)itemrow.FindControl("txt_ItemPiece") as TextBox).Focus();
-                    }
-                    else if (!Regex.IsMatch(((TextBox)itemrow.FindControl("txt_ItemName") as TextBox).Text, decimalPattern))
-                    {
-                        Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('只能小数且小数点后保留2位！')</script>");
-                        ((TextBox)itemrow.FindControl("txt_ItemName") as TextBox).Focus();
-                    }
-                    else if (!Regex.IsMatch(((TextBox)itemrow.FindControl("txt_ItemPice") as TextBox).Text, decimalPattern))
-                    {
-                        Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('只能小数且小数点后保留2位！')</script>");
-                        ((TextBox)itemrow.FindControl("txt_ItemPice") as TextBox).Focus();
-                    }
-                    else
-                    {
-                        item.Name = ((TextBox)itemrow.FindControl("txt_ItemName") as TextBox).Text.Trim();
-                        item.Piece = int.Parse(((TextBox)itemrow.FindControl("txt_ItemPiece") as TextBox).Text);
-                        item.Remark = ((TextBox)itemrow.FindControl("txt_ItemType") as TextBox).Text;
-                        item.UnitAmount = decimal.Parse(((TextBox)itemrow.FindControl("txt_ItemPice") as TextBox).Text);
-                        item.TotalAmount += item.UnitAmount;
-                        hawb.HAWBItems.Add(item);
-                        GV_item.EditIndex = -1;
-                        Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('更新成功！')</script>");
-                        GV_item.DataSource = hawb.HAWBItems;
-                        GV_item.DataBind();
-                    }
+                    item.Name = ((TextBox)GV_item.Rows[e.RowIndex].FindControl("txt_ItemName") as TextBox).Text.Trim();
+                    item.Piece = int.Parse(((TextBox)GV_item.Rows[e.RowIndex].FindControl("txt_ItemPiece") as TextBox).Text.Trim());
+                    item.Remark = ((TextBox)GV_item.Rows[e.RowIndex].FindControl("txt_ItemType") as TextBox).Text.Trim();
+                    item.UnitAmount = decimal.Parse(((TextBox)GV_item.Rows[e.RowIndex].FindControl("txt_ItemPice") as TextBox).Text.Trim());
+                    hawb.HAWBItems.Add(item);
+                    GV_item.EditIndex = -1;
+                    Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('更新成功！')</script>");
+                    GV_item.DataSource = hawb.HAWBItems;
+                    GV_item.DataBind();
                 }
             }
         }
@@ -508,6 +606,42 @@ namespace GGGETSAdmin.HAWBManage
             GV_item.DataBind();
         }
 
-        
+        protected void GV_item_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (GV_item.Rows.Count != 0)
+            {
+                if (e.Row.RowType == DataControlRowType.Footer)//判断此行是否是页尾，如果是则开始统计数据
+                {
+
+                    e.Row.Cells[0].Text = "合计";//每一列的数
+
+                    e.Row.Cells[4].Text = ReturnTotal(4).ToString();//第六列合计值
+                }
+
+            }
+
+        }
+        public decimal ReturnTotal(int col)   //根据col变量（col值代表某一列，值由GridView1_RowDataBound传入）计算某列的合计值
+        {
+
+            decimal char_total = 0;
+
+            foreach (GridViewRow gvr in GV_item.Rows)
+            {
+
+                if (((Label)gvr.FindControl("lbl_SumPice") as Label).Text != "")
+                {
+
+                    char_total += Convert.ToDecimal(((Label)gvr.FindControl("lbl_SumPice") as Label).Text.Trim());
+
+                }
+
+            }
+
+            return decimal.Round(char_total, 2);
+
+        }
+
+
     }
 }

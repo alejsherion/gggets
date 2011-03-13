@@ -22,6 +22,15 @@ namespace GGGETSAdmin.HAWBManage {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
+        /// lbtn_Navigation 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lbtn_Navigation;
+        
+        /// <summary>
         /// phHawb 控件。
         /// </summary>
         /// <remarks>
@@ -130,6 +139,24 @@ namespace GGGETSAdmin.HAWBManage {
         protected global::System.Web.UI.WebControls.TextBox Txt_corporationName;
         
         /// <summary>
+        /// lbl_LoginName 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_LoginName;
+        
+        /// <summary>
+        /// Txt_LoginName 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox Txt_LoginName;
+        
+        /// <summary>
         /// lbl_Contactor 控件。
         /// </summary>
         /// <remarks>
@@ -146,24 +173,6 @@ namespace GGGETSAdmin.HAWBManage {
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox Txt_Contactor;
-        
-        /// <summary>
-        /// Label1 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label1;
-        
-        /// <summary>
-        /// Txt_phone 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox Txt_phone;
         
         /// <summary>
         /// lbl_CreateTime 控件。
@@ -191,24 +200,6 @@ namespace GGGETSAdmin.HAWBManage {
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox Txt_StopTime;
-        
-        /// <summary>
-        /// lbl_SettleType 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_SettleType;
-        
-        /// <summary>
-        /// DDl_SettleType 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DDl_SettleType;
         
         /// <summary>
         /// lbl_BoxType 控件。
@@ -247,6 +238,24 @@ namespace GGGETSAdmin.HAWBManage {
         protected global::System.Web.UI.WebControls.DropDownList ddl_HAWBType;
         
         /// <summary>
+        /// lbl_SettleType 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_SettleType;
+        
+        /// <summary>
+        /// DDl_SettleType 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList DDl_SettleType;
+        
+        /// <summary>
         /// btn_Demand 控件。
         /// </summary>
         /// <remarks>
@@ -256,15 +265,6 @@ namespace GGGETSAdmin.HAWBManage {
         protected global::System.Web.UI.WebControls.Button btn_Demand;
         
         /// <summary>
-        /// btn_Add 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btn_Add;
-        
-        /// <summary>
         /// Gv_HAWB 控件。
         /// </summary>
         /// <remarks>
@@ -272,5 +272,86 @@ namespace GGGETSAdmin.HAWBManage {
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView Gv_HAWB;
+        
+        /// <summary>
+        /// FenYe 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl FenYe;
+        
+        /// <summary>
+        /// btn_homepage 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btn_homepage;
+        
+        /// <summary>
+        /// btn_Up 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btn_Up;
+        
+        /// <summary>
+        /// lbl_nuber 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_nuber;
+        
+        /// <summary>
+        /// lbl_sumnuber 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_sumnuber;
+        
+        /// <summary>
+        /// btn_Jumpto 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btn_Jumpto;
+        
+        /// <summary>
+        /// Txt_Jumpto 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox Txt_Jumpto;
+        
+        /// <summary>
+        /// btn_down 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btn_down;
+        
+        /// <summary>
+        /// btn_lastpage 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btn_lastpage;
     }
 }
