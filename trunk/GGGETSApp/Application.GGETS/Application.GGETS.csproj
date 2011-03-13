@@ -73,8 +73,10 @@
     <Compile Include="HAWBManagement\PackageManagementService.cs" />
     <Compile Include="HS\HSProductManagementService.cs" />
     <Compile Include="HS\HSPropertyManagementService.cs" />
+    <Compile Include="HS\HSRelationManagementService.cs" />
     <Compile Include="HS\IHSProductManagementService.cs" />
     <Compile Include="HS\IHSPropertyManagementService.cs" />
+    <Compile Include="HS\IHSRelationManagementService.cs" />
     <Compile Include="PARAM\CountryCodeManagementService.cs" />
     <Compile Include="PARAM\ICountryCodeManagementService.cs" />
     <Compile Include="PARAM\IRegionCodeManagementService.cs" />

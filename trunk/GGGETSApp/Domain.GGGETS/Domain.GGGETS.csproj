@@ -53,6 +53,7 @@
     <Compile Include="CRM\IUserRepository.cs" />
     <Compile Include="HS\IHSProductRepository.cs" />
     <Compile Include="HS\IHSPropertyRepository.cs" />
+    <Compile Include="HS\IHSRelationRepository.cs" />
     <Compile Include="PARAM\ICountryCodeRepository.cs" />
     <Compile Include="PARAM\IRegionCodeRepository.cs" />
     <Compile Include="TEMPLATE\IParamRepository.cs" />

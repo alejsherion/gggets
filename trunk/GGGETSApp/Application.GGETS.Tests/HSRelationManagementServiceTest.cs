@@ -1,9 +1,9 @@
 ﻿//************************************************************************
 // 用户名				GGGETS国际综合快递
 // 系统名				管理后台
-// 子系统名		        HS商品编码单元测试
+// 子系统名		        HS分配单元测试
 // 作成者				ZhiWei.Shen
-// 改版日				2011.03.12
+// 改版日				2011.03.13
 // 改版内容				创建并且修改
 //************************************************************************
 using System;
@@ -22,25 +22,25 @@ namespace Application.GGETS.Tests
     
     
     /// <summary>
-    ///这是 HSProductManagementServiceTest 的测试类，旨在
-    ///包含所有 HSProductManagementServiceTest 单元测试
+    ///这是 HSRelationManagementServiceTest 的测试类，旨在
+    ///包含所有 HSRelationManagementServiceTest 单元测试
     ///</summary>
     [TestClass()]
-    public class HSProductManagementServiceTest : RepositoryTestsBase<HSProduct>
+    public class HSRelationManagementServiceTest : RepositoryTestsBase<HSRelation>
     {
-        static IHSProductManagementService _HSProductManagementService;//BLL操作类返回
+        static IHSRelationManagementService _HSRelationManagementService;//BLL操作类返回
+        static IHSProductManagementService _HSProductManagementService;
         static IHSPropertyManagementService _HSPropertyManagementService;
-        static IHSRelationManagementService _HSRelatioMnanagementService;
-        public HSProductManagementServiceTest()
+        public HSRelationManagementServiceTest()
         {
             IGGGETSAppUnitOfWork context = GetUnitOfWork();//上下文
             ITraceManager traceManager = GetTraceManager();//跟踪管理器
-            HSProductRepository HSProductRepository = new HSProductRepository(context, traceManager);//创建DAL操作对象
+            HSRelationRepository HSRelationRepository = new HSRelationRepository(context, traceManager);//创建DAL操作对象
+            HSProductRepository HSProductRepository = new HSProductRepository(context, traceManager);
             HSPropertyRepository HSPropertyRepository = new HSPropertyRepository(context, traceManager);
-            HSRelationRepository HSRelationRepository = new HSRelationRepository(context, traceManager);
+            _HSRelationManagementService = new HSRelationManagementService(HSRelationRepository);
             _HSProductManagementService = new HSProductManagementService(HSProductRepository);
             _HSPropertyManagementService = new HSPropertyManagementService(HSPropertyRepository);
-            _HSRelatioMnanagementService = new HSRelationManagementService(HSRelationRepository);
         }
 
         private TestContext testContextInstance;
@@ -91,50 +91,45 @@ namespace Application.GGETS.Tests
         //
         #endregion
 
-        public override Expression<Func<HSProduct, bool>> FilterExpression
+
+        /// <summary>
+        ///ModifyHSRelation 的测试
+        ///</summary>
+        [TestMethod()]
+        public void ModifyHSRelationTest()
+        {
+            HSRelation relation = null;
+            _HSRelationManagementService.ModifyHSRelation(relation);
+        }
+
+        public override Expression<Func<HSRelation, bool>> FilterExpression
         {
             get { throw new NotImplementedException(); }
         }
 
-        public override Expression<Func<HSProduct, int>> OrderByExpression
+        public override Expression<Func<HSRelation, int>> OrderByExpression
         {
             get { throw new NotImplementedException(); }
         }
 
-        #region 获取所有编码信息
         /// <summary>
-        ///GetAll 的测试
+        ///AddHSRelation 的测试
         ///</summary>
         [TestMethod()]
-        public void GetAllTest1()
+        public void AddHSRelationTest()
         {
-            int actual;
-            actual = _HSProductManagementService.GetAll().Count;
-        }
-        #endregion
-
-        #region 更新关系
-        /// <summary>
-        ///ModifyHSProduct 的测试
-        ///</summary>
-        [TestMethod()]
-        public void ModifyHSProductTest()
-        {
-            HSProduct product = null; // 获取当前数据库中需要测试的海关商品
-            product = _HSProductManagementService.LoadHSProductByHSCode("6304939000");
+            HSRelation relation = null;
+            HSProduct product = _HSProductManagementService.LoadHSProductByHSCode("6304939000");
             HSProperty property = _HSPropertyManagementService.FindHSPropertyByHSPID("da448190-2c7d-4062-8f2b-d808aae731c6");//获取cloths的品名
 
-            HSRelation newRelation = new HSRelation
-                                         {
-                                             RID = Guid.NewGuid(),
-                                             HSProduct = product,
-                                             HSProperty=property
-                                         };
-
-            product.HSRelations.Remove(newRelation);
-            _HSProductManagementService.ModifyHSProduct(product);
+            relation = new HSRelation
+                           {
+                               RID=Guid.NewGuid(),
+                               HSID=product.HSID,
+                               HSPID=property.HSPID
+                           };
+            _HSRelationManagementService.AddHSRelation(relation);
             //Assert.Inconclusive("无法验证不返回值的方法。");
         }
-        #endregion
     }
 }

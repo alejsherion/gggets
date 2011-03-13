@@ -34,8 +34,8 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Repositories
             IGGGETSAppUnitOfWork context = UnitOfWork as IGGGETSAppUnitOfWork;
             if (context != null)
             {
-                context.Cache = new AspNetCache();
-                context.CachingPolicy = CachingPolicy.CacheAll;
+                //context.Cache = new AspNetCache();
+                //context.CachingPolicy = CachingPolicy.CacheAll;
                 return context.HSProperty.OrderBy(it => it.PropertyName).ToList();
             }
 

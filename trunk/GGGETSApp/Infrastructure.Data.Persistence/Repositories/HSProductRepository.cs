@@ -67,6 +67,26 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Repositories
         }
 
         /// <summary>
+        /// 加载关系
+        /// </summary>
+        /// <param name="HSCode"></param>
+        /// <returns></returns>
+        public HSProduct LoadHSProductByHSCode(string HSCode)
+        {
+            IGGGETSAppUnitOfWork context = UnitOfWork as IGGGETSAppUnitOfWork;
+            if (context != null)
+            {
+                return context.HSProduct.Include(it=>it.HSRelations).Where(it => it.HSCode == HSCode).SingleOrDefault();
+            }
+
+            else
+                throw new InvalidOperationException(string.Format(
+                                                            CultureInfo.InvariantCulture,
+                                                            Messages.exception_InvalidStoreContext,
+                                                            GetType().Name)); 
+        }
+
+        /// <summary>
         /// 多条件查询
         /// </summary>
         /// <param name="HSCode">HS编码</param>
@@ -79,8 +99,8 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Repositories
 
             if (context != null)
             {
-                context.Cache = new AspNetCache();
-                context.CachingPolicy = CachingPolicy.CacheAll;
+                //context.Cache = new AspNetCache();
+                //context.CachingPolicy = CachingPolicy.CacheAll;
                 products = context.HSProduct.Select(p => p);
                 if (!string.IsNullOrEmpty(HSCode)) products = products.Where(p => p.HSCode.StartsWith(HSCode));
                 if (!string.IsNullOrEmpty(HSName)) products = products.Where(p => p.HSName.StartsWith(HSName));
@@ -102,8 +122,8 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Repositories
 
             if (context != null)
             {
-                context.Cache = new AspNetCache();
-                context.CachingPolicy = CachingPolicy.CacheAll;
+                //context.Cache = new AspNetCache();
+                //context.CachingPolicy = CachingPolicy.CacheAll;
                 products = context.HSProduct.Select(p => p);
                 if (!string.IsNullOrEmpty(HSCode)) products = products.Where(p => p.HSCode.StartsWith(HSCode));
                 if (!string.IsNullOrEmpty(HSName)) products = products.Where(p => p.HSName.StartsWith(HSName));
