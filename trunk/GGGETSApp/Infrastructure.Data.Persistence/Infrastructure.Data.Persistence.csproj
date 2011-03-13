@@ -82,6 +82,7 @@
     <Compile Include="Repositories\HAWBItemRepository.cs" />
     <Compile Include="Repositories\HAWBRepository.cs" />
     <Compile Include="Repositories\HSProductRepository.cs" />
+    <Compile Include="Repositories\HSPropertyRepository.cs" />
     <Compile Include="Repositories\MAWBRepository.cs" />
     <Compile Include="Repositories\PackageRepository.cs" />
     <Compile Include="Repositories\ParamRepository.cs" />
