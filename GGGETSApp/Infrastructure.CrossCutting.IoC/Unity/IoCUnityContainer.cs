@@ -89,6 +89,7 @@ namespace ETS.GGGETSApp.Infrastructure.CrossCutting.IoC.Unity
             container.RegisterType<IParamRepository, ParamRepository>(new TransientLifetimeManager());
             container.RegisterType<IHSProductRepository, HSProductRepository>(new TransientLifetimeManager());
             container.RegisterType<IHSPropertyRepository, HSPropertyRepository>(new TransientLifetimeManager());
+            container.RegisterType<IHSRelationRepository, HSRelationRepository>(new TransientLifetimeManager());
             //Register application services mappings
 
             container.RegisterType<IHAWBManagementService, HAWBManagementService>(new TransientLifetimeManager());
@@ -105,6 +106,7 @@ namespace ETS.GGGETSApp.Infrastructure.CrossCutting.IoC.Unity
             container.RegisterType<IParamManagementService, ParamManagementService>(new TransientLifetimeManager());
             container.RegisterType<IHSProductManagementService, HSProductManagementService>(new TransientLifetimeManager());
             container.RegisterType<IHSPropertyManagementService, HSPropertyManagementService>(new TransientLifetimeManager());
+            container.RegisterType<IHSRelationManagementService, HSRelationManagementService>(new TransientLifetimeManager());
             //Register domain services mappings
             //container.RegisterType<IBankTransferDomainService, BankTransferDomainService>(new TransientLifetimeManager());
             

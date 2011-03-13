@@ -58,6 +58,11 @@ namespace Application.GGETS
             return _HSProductRepository.FindHSProductByHSCode(HSCode);
         }
 
+        public HSProduct LoadHSProductByHSCode(string HSCode)
+        {
+            return _HSProductRepository.LoadHSProductByHSCode(HSCode);
+        }
+
         /// <summary>
         /// HS海关商品编码多条件查询
         /// </summary>
@@ -74,6 +79,20 @@ namespace Application.GGETS
         public IList<HSProduct> FindHSProductByCondition(string HSCode, string HSName)
         {
             return _HSProductRepository.FindHSProductByCondition(HSCode, HSName);
+        }
+
+        /// <summary>
+        /// 修改
+        /// </summary>
+        /// <param name="product">海关商品</param>
+        public void ModifyHSProduct(HSProduct product)
+        {
+            if (product == null)
+                throw new ArgumentNullException("HSProduct is null");
+            IUnitOfWork unitOfWork = _HSProductRepository.UnitOfWork;
+            _HSProductRepository.Modify(product);
+            //complete changes in this unit of work
+            unitOfWork.CommitAndRefreshChanges();
         }
     }
 }

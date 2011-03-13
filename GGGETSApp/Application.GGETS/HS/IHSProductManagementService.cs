@@ -17,7 +17,9 @@ namespace Application.GGETS
         IList<HSProduct> GetAll();
         IList<HSProduct> GetPagedAll(int pageIndex, int pageCount);
         HSProduct FindHSProductByHSCode(string HSCode);
+        HSProduct LoadHSProductByHSCode(string HSCode);
         IList<HSProduct> FindHSProductByCondition(string HSCode, string HSName, int pageIndex, int pageCount);
         IList<HSProduct> FindHSProductByCondition(string HSCode, string HSName);
+        void ModifyHSProduct(HSProduct product);
     }
 }
