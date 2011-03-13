@@ -13,22 +13,40 @@ namespace GGGETSAdmin.PackageManage {
     public partial class packageModify {
         
         /// <summary>
-        /// lbl_BagNumber1 控件。
+        /// ToolkitScriptManager1 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_BagNumber1;
+        protected global::AjaxControlToolkit.ToolkitScriptManager ToolkitScriptManager1;
         
         /// <summary>
-        /// ltbn_BagNumber 控件。
+        /// UpdatePanel1 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton ltbn_BagNumber;
+        protected global::System.Web.UI.UpdatePanel UpdatePanel1;
+        
+        /// <summary>
+        /// lbl_BagBarCode 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_BagBarCode;
+        
+        /// <summary>
+        /// lbtn_BagBarCode 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lbtn_BagBarCode;
         
         /// <summary>
         /// lbl_FLTNo 控件。
@@ -49,22 +67,22 @@ namespace GGGETSAdmin.PackageManage {
         protected global::System.Web.UI.WebControls.TextBox txt_FLTNo;
         
         /// <summary>
-        /// lbl_SumHAWBNo 控件。
+        /// lbl_MAWBNCode 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_SumHAWBNo;
+        protected global::System.Web.UI.WebControls.Label lbl_MAWBNCode;
         
         /// <summary>
-        /// Txt_SumHAWBNo 控件。
+        /// Txt_MAWBCode 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox Txt_SumHAWBNo;
+        protected global::System.Web.UI.WebControls.TextBox Txt_MAWBCode;
         
         /// <summary>
         /// lbl_CreateTime1 控件。
@@ -103,6 +121,24 @@ namespace GGGETSAdmin.PackageManage {
         protected global::System.Web.UI.WebControls.Label txt_UpdateTime;
         
         /// <summary>
+        /// lbl_Destination 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_Destination;
+        
+        /// <summary>
+        /// txt_Destination 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txt_Destination;
+        
+        /// <summary>
         /// lbl_Pice 控件。
         /// </summary>
         /// <remarks>
@@ -137,24 +173,6 @@ namespace GGGETSAdmin.PackageManage {
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Txt_TotalWeight;
-        
-        /// <summary>
-        /// lbl_Status 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_Status;
-        
-        /// <summary>
-        /// txt_Status 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label txt_Status;
         
         /// <summary>
         /// btn_Save 控件。

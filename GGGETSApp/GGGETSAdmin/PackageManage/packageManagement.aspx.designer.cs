@@ -13,6 +13,15 @@ namespace GGGETSAdmin.PackageManage {
     public partial class packageManagement {
         
         /// <summary>
+        /// ToolkitScriptManager1 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::AjaxControlToolkit.ToolkitScriptManager ToolkitScriptManager1;
+        
+        /// <summary>
         /// lbl_BagBarCode 控件。
         /// </summary>
         /// <remarks>
@@ -58,22 +67,31 @@ namespace GGGETSAdmin.PackageManage {
         protected global::System.Web.UI.WebControls.TextBox txt_ToCreateTime;
         
         /// <summary>
-        /// lbl_Region 控件。
+        /// lbl_Destination 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_Region;
+        protected global::System.Web.UI.WebControls.Label lbl_Destination;
         
         /// <summary>
-        /// Txt_Region 控件。
+        /// txt_Destination 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox Txt_Region;
+        protected global::System.Web.UI.WebControls.TextBox txt_Destination;
+        
+        /// <summary>
+        /// autocomplete 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::AutoCompleteExtra.AutoCompleteExtraExtender autocomplete;
         
         /// <summary>
         /// btn_Demand 控件。
@@ -94,12 +112,84 @@ namespace GGGETSAdmin.PackageManage {
         protected global::System.Web.UI.WebControls.GridView gv_HAWB;
         
         /// <summary>
-        /// btn_Close 控件。
+        /// FenYe 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btn_Close;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl FenYe;
+        
+        /// <summary>
+        /// btn_homepage 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btn_homepage;
+        
+        /// <summary>
+        /// btn_Up 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btn_Up;
+        
+        /// <summary>
+        /// lbl_nuber 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_nuber;
+        
+        /// <summary>
+        /// lbl_sumnuber 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_sumnuber;
+        
+        /// <summary>
+        /// btn_Jumpto 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btn_Jumpto;
+        
+        /// <summary>
+        /// Txt_Jumpto 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox Txt_Jumpto;
+        
+        /// <summary>
+        /// btn_down 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btn_down;
+        
+        /// <summary>
+        /// btn_lastpage 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btn_lastpage;
     }
 }
