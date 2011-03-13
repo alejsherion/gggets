@@ -40,24 +40,6 @@ namespace GGGETSAdmin.HAWBManage {
         protected global::System.Web.UI.WebControls.Label lbl_ShipperCountryTitle;
         
         /// <summary>
-        /// lbl_ShipperCountry 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_ShipperCountry;
-        
-        /// <summary>
-        /// lbl_ShipperRegionTitle 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_ShipperRegionTitle;
-        
-        /// <summary>
         /// lbl_ShipperRegion 控件。
         /// </summary>
         /// <remarks>
@@ -65,6 +47,24 @@ namespace GGGETSAdmin.HAWBManage {
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lbl_ShipperRegion;
+        
+        /// <summary>
+        /// lbl_ConsigneeRegionTitle 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_ConsigneeRegionTitle;
+        
+        /// <summary>
+        /// lbl_ConsigneeRegion 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_ConsigneeRegion;
         
         /// <summary>
         /// lbl_ShipperNameTitle 控件。
@@ -391,13 +391,13 @@ namespace GGGETSAdmin.HAWBManage {
         protected global::System.Web.UI.WebControls.DropDownList ddl_WeightType;
         
         /// <summary>
-        /// lbl_VolumeWeight 控件。
+        /// lbl_TotalWeight 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_VolumeWeight;
+        protected global::System.Web.UI.WebControls.Label lbl_TotalWeight;
         
         /// <summary>
         /// txt_TotalWeight 控件。
@@ -427,22 +427,22 @@ namespace GGGETSAdmin.HAWBManage {
         protected global::System.Web.UI.WebControls.Label lbl_Piece;
         
         /// <summary>
-        /// lbl_TotalVolumeTile 控件。
+        /// lbl_VolumeWeight 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_TotalVolumeTile;
+        protected global::System.Web.UI.WebControls.Label lbl_VolumeWeight;
         
         /// <summary>
-        /// lbl_TotalVolume 控件。
+        /// Txt_VolumeWeight 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_TotalVolume;
+        protected global::System.Web.UI.WebControls.Label Txt_VolumeWeight;
         
         /// <summary>
         /// lbl_Remark 控件。
@@ -481,22 +481,22 @@ namespace GGGETSAdmin.HAWBManage {
         protected global::System.Web.UI.WebControls.TextBox Txt_Carrier;
         
         /// <summary>
-        /// lbl_CarrierHAWBID 控件。
+        /// lbl_CarrierHAWBBarCode 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_CarrierHAWBID;
+        protected global::System.Web.UI.WebControls.Label lbl_CarrierHAWBBarCode;
         
         /// <summary>
-        /// Txt_CarrierHAWBID 控件。
+        /// Txt_CarrierHAWBBarCode 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox Txt_CarrierHAWBID;
+        protected global::System.Web.UI.WebControls.TextBox Txt_CarrierHAWBBarCode;
         
         /// <summary>
         /// But_AddHAWB 控件。

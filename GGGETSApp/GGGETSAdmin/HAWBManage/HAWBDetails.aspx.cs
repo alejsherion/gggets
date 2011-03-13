@@ -7,40 +7,65 @@ using System.Web.UI.WebControls;
 using ETS.GGGETSApp.Domain.Application.Entities;
 using Application.GGETS;
 using System.Text.RegularExpressions;
+using GGGETSAdmin.Common;
+using System.IO;
 
 namespace GGGETSAdmin.HAWBManage
 {
     public partial class HAWBDetails : System.Web.UI.Page
     {
-        protected static string BarCode = string.Empty;
-        protected static HAWB hawb;
+        private string BarCode = string.Empty;
+        private HAWB hawb;
+        private static IList<CountryCode> listcountry;
+        private static IList<RegionCode> listregion;
+        private static ICountryCodeManagementService _countryservice;
+        private static IRegionCodeManagementService _regionservice;
         protected IHAWBManagementService _hawbService;
         protected HAWBDetails()
         { }
-        public HAWBDetails(IHAWBManagementService hawbService)
+        public HAWBDetails(IHAWBManagementService hawbService, ICountryCodeManagementService countryservice, IRegionCodeManagementService regionservice)
         {
             _hawbService = hawbService;
+            _countryservice = countryservice;
+            _regionservice = regionservice;
         }
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
-                if (Request.QueryString["BarCode"] != null)
+                listcountry = _countryservice.FindAllCountries();
+                listregion = _regionservice.FindAllRegionCodes();
+                
+                if (!string.IsNullOrWhiteSpace(Request.QueryString["BarCode"]))
                 {
                     BarCode = Request.QueryString["BarCode"];
                     hawb = _hawbService.LoadHAWBByBarCode(BarCode);
-                    ViewState["UrlReferrer"] = Request.UrlReferrer.ToString();
+                    if (Request.UrlReferrer != null)
+                    {
+                        ViewState["UrlReferrer"] = Request.UrlReferrer.ToString();
+                    }
                     Storage();
                 }
                 else
                 {
-                    Response.Redirect((string)ViewState["UrlReferrer"]);
+                    Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('没有该运单！')</script>");
+                    if (ViewState["UrlReferrer"] != null)
+                    {
+                        Response.Redirect((string)ViewState["UrlReferrer"]);
+                    }
+                    else
+                    {
+                        Response.Redirect("../Navigation.aspx");
+                    }
                 }
             }
         }
         protected void Storage()
         {
             Txt_BarCode.Text = hawb.BarCode;
+            Department depar = hawb.Department;
+            Txt_Account1.Text = depar.CompanyCode;
+            Txt_Account2.Text = depar.DepCode;
             DDl_SettleType.SelectedValue = hawb.SettleType.ToString();
             switch (hawb.Status)
             {
@@ -60,56 +85,103 @@ namespace GGGETSAdmin.HAWBManage
                     txt_Status.Text = "in包";
                     break;
             }
+
             Txt_ShipperName.Text = hawb.ShipperName;
             Txt_ShipperContactor.Text = hawb.ShipperContactor;
-            Txt_ShipperCountry.Text = hawb.ShipperCountry;
-            Txt_ShipperRegion.Text = hawb.ShipperRegion;
             Txt_ShipperAddress.Text = hawb.ShipperAddress;
             Txt_ShipperTel.Text = hawb.ShipperTel;
             Txt_ShipperZipCode.Text = hawb.ShipperZipCode;
 
-            Txt_ConsigneeName.Text = hawb.ConsigneeName.ToString();
+            Txt_ConsigneeName.Text = hawb.ConsigneeName;
             Txt_ConsigneeContactor.Text = hawb.ConsigneeContactor;
-            Txt_ConsigneeCountry.Text = hawb.ConsigneeCountry;
-            Txt_ConsigneeRegion.Text = hawb.ConsigneeRegion;
             Txt_ConsigneeAddress.Text = hawb.ConsigneeAddress;
             Txt_ConsigneeTel.Text = hawb.ConsigneeTel;
             Txt_ConsigneeZipCode.Text = hawb.ConsigneeZipCode;
 
-            if (hawb.DeliverName != "")
+            if (hawb.DeliverName != "" && hawb.DeliverName!=null)
             {
+                foreach (CountryCode code in listcountry)
+                {
+                    if (code.CountryCode1 == hawb.ShipperCountry)
+                    {
+                        Txt_ShipperCountry.Text = code.CountryName;
+                    }
+                    if (code.CountryCode1 == hawb.ConsigneeCountry)
+                    {
+                        Txt_ConsigneeCountry.Text = code.CountryName;
+                    }
+                    if (code.CountryCode1 == hawb.DeliverCountry)
+                    {
+                        Txt_DeliverCountry.Text = code.CountryName;
+                    }
+
+                }
+                foreach (RegionCode code in listregion)
+                {
+                    if (code.RegionCode1 == hawb.ShipperRegion)
+                    {
+                        Txt_ShipperRegion.Text = code.RegionName;
+                    }
+                    if (code.RegionCode1 == hawb.ConsigneeRegion)
+                    {
+                        Txt_ConsigneeRegion.Text = code.RegionName;
+                    }
+                    if (code.RegionCode1 == hawb.DeliverRegion)
+                    {
+                        Txt_DeliverRegion.Text = code.RegionName;
+                    }
+                }
                 Deliver.Visible = true;
                 Txt_DeliverName.Text = hawb.DeliverName;
                 Txt_DeliverAddress.Text = hawb.DeliverAddress;
-                Txt_DeliverCountry.Text = hawb.DeliverCountry;
-                Txt_DeliverRegion.Text = hawb.DeliverRegion;
                 Txt_DeliverContactor.Text = hawb.DeliverContactor;
                 Txt_DeliverZipCode.Text = hawb.DeliverZipCode;
                 Txt_DeliverTel.Text = hawb.DeliverTel;
+                Txt_CarrierHAWBBarCode.Text = hawb.CarrierHAWBBarCode;
+                Txt_Carrier.Text = hawb.Carrier;
             }
             else
             {
                 Deliver.Visible = false;
+                foreach (CountryCode code in listcountry)
+                {
+                    if (code.CountryCode1 == hawb.ShipperCountry)
+                    {
+                        Txt_ShipperCountry.Text = code.CountryName;
+                    }
+                    if (code.CountryCode1 == hawb.ConsigneeCountry)
+                    {
+                        Txt_ConsigneeCountry.Text = code.CountryName;
+                    }
+                }
+                foreach (RegionCode code in listregion)
+                {
+                    if (code.RegionCode1 == hawb.ShipperRegion)
+                    {
+                        Txt_ShipperRegion.Text = code.RegionName;;
+                    }
+                    if (code.RegionCode1 == hawb.ConsigneeRegion)
+                    {
+                        Txt_ConsigneeRegion.Text = code.RegionName;
+                    }
+                    
+                }
+                rbt_BoxType.SelectedValue = hawb.ServiceType.ToString();
+                rbt_payer.SelectedValue = hawb.BillTax.ToString();
+                Rbl_SpecialInstruction.SelectedValue = hawb.SpecialInstruction;
+                ddl_WeightType.SelectedValue = hawb.WeightType.ToString();
+                hawb.CalculateTotalWeight();
+                txt_TotalWeight.Text = hawb.TotalWeight.ToString();
+                lbl_Piece.Text = hawb.Piece.ToString();
+                lbl_TotalVolume.Text = hawb.TotalVolume.ToString();
+                txt_Remark.Text = hawb.Remark;
+                Txt_Carrier.Text = hawb.Carrier;
+                Txt_CarrierHAWBBarCode.Text = hawb.CarrierHAWBBarCode;
+                gv_Box.DataSource = hawb.HAWBBoxes;
+                gv_Box.DataBind();
+                GV_item.DataSource = hawb.HAWBItems;
+                GV_item.DataBind();
             }
-            //foreach(HAWBBox box in hawb.HAWBBoxes)
-            //{
-            //    rbt_BoxType.SelectedValue = box.BoxType.ToString();
-            //}
-            rbt_BoxType.SelectedValue = hawb.ServiceType.ToString();
-            rbt_payer.SelectedValue = hawb.BillTax.ToString();
-            Rbl_SpecialInstruction.SelectedValue = hawb.SpecialInstruction;
-            ddl_WeightType.SelectedValue = hawb.WeightType.ToString();
-            hawb.CalculateTotalWeight();
-            txt_TotalWeight.Text = hawb.TotalWeight.ToString();
-            lbl_Piece.Text = hawb.Piece.ToString();
-            lbl_TotalVolume.Text = hawb.TotalVolume.ToString();
-            txt_Remark.Text = hawb.Remark;
-            Txt_Carrier.Text = hawb.Carrier;
-            Txt_CarrierHAWBID.Text = hawb.CarrierHAWBID.ToString();
-            gv_Box.DataSource = hawb.HAWBBoxes;
-            gv_Box.DataBind();
-            GV_item.DataSource = hawb.HAWBItems;
-            GV_item.DataBind();
         }
         protected void But_Conel_Click(object sender, EventArgs e)
         {
@@ -119,7 +191,54 @@ namespace GGGETSAdmin.HAWBManage
         protected void But_Next_Click(object sender, EventArgs e)
         {
             int Update = 1;
-            Response.Redirect("HAWBAdd.aspx?BarCode=" + BarCode + "&update="+Update+"");
+            Response.Redirect("HAWBAdd.aspx?BarCode=" + Txt_BarCode.Text + "&update=" + Update + "");
+        }
+
+        protected void btn_DeriveSince_Click(object sender, EventArgs e)
+        {
+            HAWB hawb = _hawbService.FindHAWBByBarCode(Txt_BarCode.Text.Trim());
+            var NpoiHelper = new NpoiHelper(hawb, Txt_BarCode.Text);
+            NpoiHelper.ExportInvoice();
+            var str = (MemoryStream)NpoiHelper.RenderToExcel();
+            if (str == null) return;
+            var data = str.ToArray();
+            var resp = Page.Response;
+            resp.Buffer = true;
+            resp.Clear();
+            resp.Charset = "utf-8";
+            resp.ContentEncoding = System.Text.Encoding.UTF8;
+            resp.ContentType = "application/ms-excel";
+            HttpContext.Current.Response.AddHeader("Content-Disposition", "attachment; filename=" + HttpUtility.UrlEncode(String.Format("{0}.xls", Txt_BarCode.Text+"运单发票"), System.Text.Encoding.UTF8));
+            HttpContext.Current.Response.BinaryWrite(data);
+            HttpContext.Current.Response.Flush();
+            HttpContext.Current.Response.End();
+        }
+
+        protected void btn_DeriveAccept_Click(object sender, EventArgs e)
+        {
+            HAWB hawb = _hawbService.FindHAWBByBarCode(Txt_BarCode.Text.Trim());
+            if (!string.IsNullOrEmpty(Txt_CarrierHAWBBarCode.Text))
+            {
+                var NpoiHelper = new NpoiHelper(hawb, Txt_CarrierHAWBBarCode.Text);
+                NpoiHelper.ExportInvoice();
+                var str = (MemoryStream)NpoiHelper.RenderToExcel();
+                if (str == null) return;
+                var data = str.ToArray();
+                var resp = Page.Response;
+                resp.Buffer = true;
+                resp.Clear();
+                resp.Charset = "utf-8";
+                resp.ContentEncoding = System.Text.Encoding.UTF8;
+                resp.ContentType = "application/ms-excel";
+                HttpContext.Current.Response.AddHeader("Content-Disposition", "attachment; filename=" + HttpUtility.UrlEncode(String.Format("{0}.xls", Txt_BarCode.Text + "承运发票"), System.Text.Encoding.UTF8));
+                HttpContext.Current.Response.BinaryWrite(data);
+                HttpContext.Current.Response.Flush();
+                HttpContext.Current.Response.End();
+            }
+            else
+            {
+                Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('没有承运公司编号,不能导出！')</script>");
+            }
         }
     }
 }

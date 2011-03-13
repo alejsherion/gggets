@@ -13,6 +13,15 @@ namespace GGGETSAdmin.HAWBManage {
     public partial class DeliverAdd {
         
         /// <summary>
+        /// Head1 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlHead Head1;
+        
+        /// <summary>
         /// form1 控件。
         /// </summary>
         /// <remarks>
@@ -20,6 +29,15 @@ namespace GGGETSAdmin.HAWBManage {
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
+        
+        /// <summary>
+        /// ToolkitScriptManager1 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::AjaxControlToolkit.ToolkitScriptManager ToolkitScriptManager1;
         
         /// <summary>
         /// tbDeliver 控件。
@@ -38,6 +56,15 @@ namespace GGGETSAdmin.HAWBManage {
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lbl_Deliver;
+        
+        /// <summary>
+        /// lbtn_Deliverhistory 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lbtn_Deliverhistory;
         
         /// <summary>
         /// lbl_DeliverName 控件。
@@ -94,6 +121,33 @@ namespace GGGETSAdmin.HAWBManage {
         protected global::System.Web.UI.WebControls.TextBox Txt_DeliverCountry;
         
         /// <summary>
+        /// autoDeliveCountry 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::AutoCompleteExtra.AutoCompleteExtraExtender autoDeliveCountry;
+        
+        /// <summary>
+        /// lbl_DeliverProvince 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_DeliverProvince;
+        
+        /// <summary>
+        /// Txt_DeliverProvince 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox Txt_DeliverProvince;
+        
+        /// <summary>
         /// lbl_DeliverRegion 控件。
         /// </summary>
         /// <remarks>
@@ -112,22 +166,13 @@ namespace GGGETSAdmin.HAWBManage {
         protected global::System.Web.UI.WebControls.TextBox Txt_DeliverRegion;
         
         /// <summary>
-        /// lbl_DeliverCity 控件。
+        /// autoDeliverRegion 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_DeliverCity;
-        
-        /// <summary>
-        /// Txt_DeliverCity 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox Txt_DeliverCity;
+        protected global::AutoCompleteExtra.AutoCompleteExtraExtender autoDeliverRegion;
         
         /// <summary>
         /// lbl_DeliverZipCode 控件。
