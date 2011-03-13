@@ -1,0 +1,35 @@
+<ul Create="2011-02-26" id="menu2" class="menu expandfirst">
+  <li>
+    <a href="#" title="包管理">包管理</a>
+    <ul>
+      <li>
+        <a href="PackageManage/packageManagement.aspx" Target="_blank">包查询</a>
+      </li>
+      <li>
+        <a href="PackageManage/packageAdd.aspx" Target="_blank">包新建</a>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <a href="#" title="运单管理">运单管理</a>
+    <ul>
+      <li>
+        <a href="HAWBManage/HAWBAdd.aspx" Target="_blank">运单新建</a>
+      </li>
+      <li>
+        <a href="HAWBManage/HAWBManagement.aspx" Target="_blank">运单查询</a>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <a href="#" title="总运单管理">总运单管理</a>
+    <ul>
+      <li>
+        <a href="MawbManage/MawbManagement.aspx" Target="_blank">总运单查询</a>
+      </li>
+      <li>
+        <a href="MawbManage/MawbAdd.aspx" Target="_blank">总运单新建</a>
+      </li>
+    </ul>
+  </li>
+</ul>

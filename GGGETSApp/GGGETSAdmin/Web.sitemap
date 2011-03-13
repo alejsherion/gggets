@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0" >
+  <siteMapNode url="" title="国际快递业务平台" description="">
+    <siteMapNode url="" title="运单管理"  description="">
+          <siteMapNode url="HAWBManage/HAWBAdd.aspx" title="新建运单"  description=""/>
+          <siteMapNode url="HAWBManage/HAWBManagement.aspx" title="运单查询"  description="" />
+    </siteMapNode>
+    <siteMapNode url="" title="包管理"  description="">
+          <siteMapNode url="PackageManage/packageAdd.aspx" title="新建包"  description=""/>
+          <siteMapNode url="PackageManage/packageManagement.aspx" title="包查询"  description="" />
+    </siteMapNode>
+    <siteMapNode url="" title="总运单管理"  description="">
+          <siteMapNode url="MawbManage/MawbAdd.aspx" title="新总运单"  description=""/>
+          <siteMapNode url="MawbManage/MawbManagement.aspx" title="总运单查询"  description="" />
+    </siteMapNode>
+    <siteMapNode url="" title="航班管理"  description="">      
+        <siteMapNode url="FlightManage/FlightManagement.aspx" title="航班查询"  description="" />
+    </siteMapNode>
+    <siteMapNode url="" title="人员管理管理"  description="">
+      <siteMapNode url="" title="公司管理"  description="">
+          <siteMapNode url="PersonnelManage/CompanyManage/CompanyAdd.aspx" title="新建公司账号"></siteMapNode>
+          <siteMapNode url="PersonnelManage/CompanyManage/CompanyManagemnet.aspx" title="公司查询"></siteMapNode>
+          <siteMapNode url="" title="公司部门管理">
+              <siteMapNode url="PersonnelManage/DepartmentManage/DepartmentAdd.aspx" title="新建部门"></siteMapNode>
+              <siteMapNode url="PersonnelManage/DepartmentManage/DepartmentManagemnet.aspx" title="部门查询"></siteMapNode>
+          </siteMapNode>
+      </siteMapNode>
+      <siteMapNode url="" title="个人用户管理" description="">
+          <siteMapNode url="PersonnelManage/UserManage/UserAdd.aspx" title="新建用户"></siteMapNode>
+          <siteMapNode url="PersonnelManage/UserManage/UserManagemnet.aspx" title="用户查询"></siteMapNode>
+      </siteMapNode>
+      <siteMapNode url="" title="地址簿管理">
+        <siteMapNode url="AddressBookManage/AddressBookAdd.aspx" title="地址簿添加"></siteMapNode>
+        <siteMapNode url="AddressBookManage/AddressBookManagemnet.aspx" title="地址簿查询"></siteMapNode>
+      </siteMapNode>
+    </siteMapNode>
+    <siteMapNode url="" title="国家/地区二三字码管理" description="">
+      <siteMapNode url="" title="国家二字码" description="">
+          <siteMapNode url="CountryZiMaManage/TwoZiMaAdd.aspx" title="二字码添加" description=""></siteMapNode>
+          <siteMapNode url="CountryZiMaManage/TwoZiMaManage.aspx" title="二字码查询及修改" description=""></siteMapNode>
+      </siteMapNode>
+      <siteMapNode url="" title="地区二字码" description="">
+        <siteMapNode url="RegionZiMaManage/regionAdd.aspx" title="三字码添加" description=""></siteMapNode>
+        <siteMapNode url="RegionZiMaManage/regionManagement.aspx" title="三字码查询及修改" description=""></siteMapNode>
+      </siteMapNode>
+    </siteMapNode>
+  </siteMapNode>
+</siteMap>
