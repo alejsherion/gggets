@@ -137,18 +137,6 @@
     <Content Include="Common\WebForm1.aspx" />
     <Content Include="CountryZiMaManage\TwoZiMaAdd.aspx" />
     <Content Include="CountryZiMaManage\TwoZiMaManage.aspx" />
-    <Content Include="DLLs\AjaxControlToolkit.dll" />
-    <Content Include="DLLs\AutoCompleteExtra.dll" />
-    <Content Include="DLLs\Microsoft.Practices.ServiceLocation.dll" />
-    <Content Include="DLLs\NPOI.DDF.dll" />
-    <Content Include="DLLs\NPOI.dll" />
-    <Content Include="DLLs\NPOI.HPSF.dll" />
-    <Content Include="DLLs\NPOI.HSSF.dll" />
-    <Content Include="DLLs\NPOI.POIFS.dll" />
-    <Content Include="DLLs\NPOI.SS.dll" />
-    <Content Include="DLLs\NPOI.Util.dll" />
-    <Content Include="DLLs\SAFF.Client.dll" />
-    <Content Include="DLLs\Telerik.Web.UI.dll" />
     <Content Include="FlightManage\FlightManagement.aspx" />
     <Content Include="HAWBManage\Addresshistory.aspx" />
     <Content Include="HAWBManage\DeliverAdd.aspx" />
@@ -161,12 +149,10 @@
     <Content Include="MawbManage\MawbManagement.aspx" />
     <Content Include="MawbManage\MawbModify.aspx" />
     <Content Include="Navigation.aspx" />
-    <Content Include="obj\Debug\GGGETSAdmin.csproj.FileListAbsolute.txt" />
     <Content Include="PackageManage\packageAdd.aspx" />
     <Content Include="PackageManage\PackageDetails.aspx" />
     <Content Include="PackageManage\packageManagement.aspx" />
     <Content Include="PackageManage\packageModify.aspx" />
-    <Content Include="PackageManage\WebForm1.aspx" />
     <Content Include="PersonnelManage\CompanyManage\CompanyAdd.aspx" />
     <Content Include="PersonnelManage\CompanyManage\CompanyDetails.aspx" />
     <Content Include="PersonnelManage\CompanyManage\CompanyManagemnet.aspx" />
@@ -399,13 +385,6 @@
     <Compile Include="PackageManage\packageModify.aspx.designer.cs">
       <DependentUpon>packageModify.aspx</DependentUpon>
     </Compile>
-    <Compile Include="PackageManage\WebForm1.aspx.cs">
-      <DependentUpon>WebForm1.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="PackageManage\WebForm1.aspx.designer.cs">
-      <DependentUpon>WebForm1.aspx</DependentUpon>
-    </Compile>
     <Compile Include="PersonnelManage\CompanyManage\CompanyAdd.aspx.cs">
       <DependentUpon>CompanyAdd.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -517,7 +496,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="bin\" />
-    <Folder Include="obj\Debug\TempPE\" />
     <Folder Include="Resources\" />
   </ItemGroup>
   <ItemGroup>
@@ -547,8 +525,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Themes\logisitc\logistic.skin" />
-    <None Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
-    <None Include="obj\Debug\ResolveAssemblyReference.cache" />
     <Content Include="Web.sitemap" />
     <None Include="SAFFClient.pfx" />
     <None Include="SAFFSSO.cer" />
