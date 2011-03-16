@@ -91,7 +91,7 @@ namespace GGGETSAdmin.PersonnelManage.UserManage
             }
             else if (e.CommandName == "Updata")
             {
-                Response.Redirect("UserModify.aspx?CompanyCode=" + loginName + "");
+                Response.Redirect("UserModify.aspx?LoginName=" + loginName + "");
             }
             else if (e.CommandName == "Del")
             {

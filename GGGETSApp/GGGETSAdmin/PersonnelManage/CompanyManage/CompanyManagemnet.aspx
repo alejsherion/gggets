@@ -46,8 +46,9 @@
                 </tr>
             </tbody>
         </table>
+        <div style="height: 350px;overflow-x:auto;overflow-y:auto;">
         <asp:GridView ID="gv_Company" runat="server" AutoGenerateColumns="False" 
-            onrowcommand="gv_Company_RowCommand" DataKeyNames="CompanyCode">
+            onrowcommand="gv_Company_RowCommand" DataKeyNames="CompanyCode" PageSize="2000">
             <Columns>
                 <asp:TemplateField HeaderText="公司账号">
                     <ItemTemplate>
@@ -96,5 +97,6 @@
                 </asp:TemplateField>
             </Columns>
         </asp:GridView>
+        </div>
     </div>
 </asp:Content>

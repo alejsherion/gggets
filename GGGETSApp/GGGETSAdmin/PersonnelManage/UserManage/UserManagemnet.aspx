@@ -30,8 +30,9 @@
                 </tr>
             </tbody>
         </table>
+        <div style="height: 350px;overflow-x:auto;overflow-y:auto;">
         <asp:GridView ID="gv_User" runat="server" AutoGenerateColumns="false" 
-            onrowcommand="gv_User_RowCommand">
+            onrowcommand="gv_User_RowCommand" PageSize="2000">
             <Columns>
                 <asp:TemplateField HeaderText="用户名">
                     <ItemTemplate>
@@ -88,5 +89,6 @@
                 </asp:TemplateField>
             </Columns>
         </asp:GridView>
+        </div>
     </div>
 </asp:Content>

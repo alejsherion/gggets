@@ -31,7 +31,7 @@
                     </td>
                     <td align="left">
                         <asp:TextBox ID="Txt_LoginName" runat="server" CssClass="TextBox" TabIndex="3" 
-                            AutoPostBack="True" ontextchanged="Txt_LoginName_TextChanged" Style="text-transform: uppercase"></asp:TextBox>
+                            AutoPostBack="True" ontextchanged="Txt_LoginName_TextChanged" MaxLength="15" Style="text-transform: uppercase"></asp:TextBox>
                         <b style="color: Red">*</b></td>
                 </tr>                
                 <tr class="Row">
@@ -39,7 +39,7 @@
                         <asp:Label ID="lbl_RealName" runat="server" Text="真实姓名:"></asp:Label>
                     </td>
                     <td align="left">
-                        <asp:TextBox ID="Txt_RealName" runat="server" CssClass="TextBox" TabIndex="6" Style="text-transform: uppercase"></asp:TextBox>
+                        <asp:TextBox ID="Txt_RealName" runat="server" MaxLength="30" CssClass="TextBox" TabIndex="6" Style="text-transform: uppercase"></asp:TextBox>
                         <b style="color: Red">*</b></td>
                 </tr>
                 <tr class="AlternatingRow">
@@ -47,7 +47,7 @@
                         <asp:Label ID="lbl_Email" runat="server" Text="邮箱地址:"></asp:Label>
                     </td>
                     <td align="left">
-                        <asp:TextBox ID="Txt_Email" runat="server" CssClass="TextBox" TabIndex="7"></asp:TextBox>
+                        <asp:TextBox ID="Txt_Email" runat="server" MaxLength="35" CssClass="TextBox" TabIndex="7"></asp:TextBox>
                         </td>
                 </tr>
                 <tr class="Row">
@@ -55,7 +55,7 @@
                         <asp:Label ID="lbl_Phone" runat="server" Text="联系电话:"></asp:Label>
                     </td>
                     <td align="left">
-                        <asp:TextBox ID="Txt_Phone" runat="server" CssClass="TextBox" TabIndex="8"></asp:TextBox>
+                        <asp:TextBox ID="Txt_Phone" runat="server" CssClass="TextBox" MaxLength="35" TabIndex="8"></asp:TextBox>
                         </td>
                 </tr>
                 <tr class="Row">
@@ -129,7 +129,7 @@
                         <asp:Label ID="lbl_Remark" runat="server" Text="备注:"></asp:Label>
                     </td>
                     <td align="left">
-                        <asp:TextBox ID="Txt_Remark" runat="server" CssClass="TextBox" TabIndex="15" TextMode="MultiLine" Width="300" Style="text-transform: uppercase"></asp:TextBox>
+                        <asp:TextBox ID="Txt_Remark" runat="server" MaxLength="130" CssClass="TextBox" TabIndex="15" TextMode="MultiLine" Width="300" Style="text-transform: uppercase"></asp:TextBox>
                     </td>
                 </tr>
                  <td class="FieldHeader" align="right">

@@ -33,8 +33,9 @@
                 </tr>
             </tbody>
         </table>
+        <div style="height: 350px;overflow-x:auto;overflow-y:auto;">
         <asp:GridView ID="gv_Depar" runat="server" AutoGenerateColumns="False" 
-            onrowcommand="gv_Depar_RowCommand">
+            onrowcommand="gv_Depar_RowCommand" PageSize="2000">
             <Columns>
                 <asp:TemplateField HeaderText="公司账号">
                     <ItemTemplate>
@@ -93,5 +94,6 @@
                 </asp:TemplateField>
             </Columns>
         </asp:GridView>
+        </div>
     </div>
 </asp:Content>
