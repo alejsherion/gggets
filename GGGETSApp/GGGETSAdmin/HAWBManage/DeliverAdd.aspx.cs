@@ -118,60 +118,60 @@ namespace GGGETSAdmin.HAWBManage
             {
                 hawb = (HAWB)Session["HAWB"];
             }
-            if (Txt_DeliverName.Text == "")
+            if (Txt_DeliverName.Text.Trim() == "")
             {
                 Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('名称不能为空！')</script>");
                 Txt_DeliverName.Focus();
             }
-            else if (Txt_DeliverAddress.Text == "")
+            else if (Txt_DeliverAddress.Text.Trim() == "")
             {
                 Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('地址不能为空！')</script>");
                 Txt_DeliverAddress.Focus();
             }
-            else if (Txt_DeliverCountry.Text == "")
+            else if (Txt_DeliverCountry.Text.Trim() == "")
             {
                 Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('国家不能为空！')</script>");
                 Txt_DeliverCountry.Focus();
             }
-            else if (Txt_DeliverRegion.Text == "")
+            else if (Txt_DeliverRegion.Text.Trim() == "")
             {
                 Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('地区不能为空!')</script>");
                 Txt_DeliverRegion.Focus();
             }
-            else if (Txt_DeliverZipCode.Text == "")
+            else if (Txt_DeliverZipCode.Text.Trim() == "")
             {
                 Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('邮编不能为空！')</script>");
                 Txt_DeliverZipCode.Focus();
             }
 
-            else if (Txt_DeliverContactor.Text == "")
+            else if (Txt_DeliverContactor.Text.Trim() == "")
             {
                 Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('联系人不能为空！')</script>");
                 Txt_DeliverContactor.Focus();
             }
-            else if (Txt_DeliverTel.Text == "")
+            else if (Txt_DeliverTel.Text.Trim() == "")
             {
                 Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('电话不能为空！')</script>");
                 Txt_DeliverTel.Focus();
             }
             else
             {
-                if (!RTel.IsMatch(Txt_DeliverTel.Text))
+                if (!RTel.IsMatch(Txt_DeliverTel.Text.Trim()))
                 {
                     Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('电话号码格式不正确！')</script>");
                     Txt_DeliverTel.Focus();
                 }
                 else
                 {
-                    if (!string.IsNullOrEmpty(CountrySwitch(Txt_DeliverCountry.Text.Trim(), 0)) && !string.IsNullOrEmpty(RegionSwitch(Txt_DeliverRegion.Text.Trim(), 0)))
+                    if (!string.IsNullOrEmpty(CountrySwitch(Txt_DeliverCountry.Text.Trim().ToUpper(), 0)) && !string.IsNullOrEmpty(RegionSwitch(Txt_DeliverRegion.Text.Trim().ToUpper(), 0)))
                     {
-                        hawb.DeliverName = Txt_DeliverName.Text.Trim();
-                        hawb.DeliverAddress = Txt_DeliverAddress.Text.Trim();
-                        hawb.DeliverCountry = CountrySwitch(Txt_DeliverCountry.Text.Trim(), 0);
-                        hawb.DeliverRegion = RegionSwitch(Txt_DeliverRegion.Text.Trim(), 0);
-                        hawb.DeliverContactor = Txt_DeliverContactor.Text.Trim();
-                        hawb.DeliverZipCode = Txt_DeliverZipCode.Text.Trim();
-                        hawb.DeliverTel = Txt_DeliverTel.Text.Trim();
+                        hawb.DeliverName = Txt_DeliverName.Text.Trim().ToUpper();
+                        hawb.DeliverAddress = Txt_DeliverAddress.Text.Trim().ToUpper();
+                        hawb.DeliverCountry = CountrySwitch(Txt_DeliverCountry.Text.Trim().ToUpper(), 0);
+                        hawb.DeliverRegion = RegionSwitch(Txt_DeliverRegion.Text.Trim().ToUpper(), 0);
+                        hawb.DeliverContactor = Txt_DeliverContactor.Text.Trim().ToUpper();
+                        hawb.DeliverZipCode = Txt_DeliverZipCode.Text.Trim().ToUpper();
+                        hawb.DeliverTel = Txt_DeliverTel.Text.Trim().ToUpper();
                         Session["HAWB"] = hawb;
                         Session.Remove("ComCode");
                         Session.Remove("DepCode");

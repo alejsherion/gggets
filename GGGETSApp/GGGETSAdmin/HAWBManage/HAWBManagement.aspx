@@ -146,7 +146,7 @@
                 </asp:TemplateField>
                 <asp:TemplateField HeaderText="发件公司">
                     <ItemTemplate>
-                        <asp:Label ID="lbl_ShipperName" runat="server" Text='<%# Eval("ShipperName") %>'></asp:Label>
+                        <asp:Label ID="lbl_ShipperName" runat="server" Text='<%# Eval("ShipperName").ToString().Length>10?Eval("ShipperName").ToString().Substring(0,10)+"":Eval("ShipperName") %>' ToolTip='<%# Eval("ShipperName")%>'></asp:Label>
                     </ItemTemplate>
                     <ControlStyle Width="150px" />
                     <HeaderStyle HorizontalAlign="Center" />
@@ -154,7 +154,7 @@
                 </asp:TemplateField>
                 <asp:TemplateField HeaderText="收件公司">
                     <ItemTemplate>
-                        <asp:Label ID="lbl_ConsigneeName" runat="server" Text='<%# Eval("ConsigneeName") %>'></asp:Label>
+                        <asp:Label ID="lbl_ConsigneeName" runat="server" Text='<%# Eval("ConsigneeName").ToString().Length>10?Eval("ConsigneeName").ToString().Substring(0,10)+"":Eval("ConsigneeName") %>' ToolTip='<%# Eval("ConsigneeName")%>'></asp:Label>
                     </ItemTemplate>
                     <ControlStyle Width="150px" />
                     <HeaderStyle HorizontalAlign="Center" />
@@ -188,7 +188,7 @@
                 </asp:TemplateField>
                 <asp:TemplateField >
                     <ItemTemplate>
-                        <asp:LinkButton ID="lbtn_DeriveAccept" CommandArgument='<%# Eval("CarrierHAWBBarCode") %>' CommandName="DeriveAccept" runat="server" Text="导出承运单发票"></asp:LinkButton>
+                        <asp:LinkButton ID="lbtn_DeriveAccept" CommandArgument='<%# Eval("CarrierHAWBBarCode") %>' CommandName="DeriveAccept" runat="server" Text="导出承运发票"></asp:LinkButton>
                         
                     </ItemTemplate>
                     <ItemStyle HorizontalAlign="Center" />

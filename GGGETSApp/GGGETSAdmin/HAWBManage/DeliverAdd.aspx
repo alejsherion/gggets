@@ -93,7 +93,7 @@
                         <asp:Label ID="lbl_DeliverName" runat="server" Text="公司:"></asp:Label>
                     </td>
                     <td align="left" colspan="5">
-                        <asp:TextBox ID="Txt_DeliverName" runat="server" Width="500" TabIndex="1" 
+                        <asp:TextBox ID="Txt_DeliverName" runat="server" MaxLength="180" Width="500" TabIndex="1" 
                             Style="text-transform: uppercase"></asp:TextBox>
                     </td>
                 </tr>
@@ -102,7 +102,7 @@
                         <asp:Label ID="lbl_DeliverAddress" runat="server" Text="地址:"></asp:Label>
                     </td>
                     <td align="left" colspan="5">
-                        <asp:TextBox ID="Txt_DeliverAddress" runat="server" Width="500" TabIndex="2" TextMode="MultiLine"
+                        <asp:TextBox ID="Txt_DeliverAddress" runat="server" Width="500" MaxLength="400" TabIndex="2" TextMode="MultiLine"
                             Style="text-transform: uppercase"></asp:TextBox>
                         <b style="color: Red">*</b>
                     </td>
@@ -144,7 +144,7 @@
                         <asp:Label ID="lbl_DeliverZipCode" runat="server" Text="邮编:"></asp:Label>
                     </td>
                     <td align="left">
-                        <asp:TextBox ID="Txt_DeliverZipCode" runat="server" Width="80" TabIndex="6"
+                        <asp:TextBox ID="Txt_DeliverZipCode" runat="server" MaxLength="15" Width="80" TabIndex="6"
                             Style="text-transform: uppercase"></asp:TextBox>
                         <b style="color: Red">*</b>
                     </td>
@@ -152,14 +152,14 @@
                         <asp:Label ID="lbl_DeliverContactor" runat="server" Text="姓名:"></asp:Label>
                     </td>
                     <td align="left">
-                        <asp:TextBox ID="Txt_DeliverContactor" runat="server" Width="80" TabIndex="7" Style="text-transform: uppercase"></asp:TextBox>
+                        <asp:TextBox ID="Txt_DeliverContactor" runat="server" MaxLength="40" Width="80" TabIndex="7" Style="text-transform: uppercase"></asp:TextBox>
                         <b style="color: Red">*</b>
                     </td>
                     <td class="FieldHeader">
                         <asp:Label ID="lbl_DeliverTel" runat="server" Text="电话:"></asp:Label>
                     </td>
                     <td align="left">
-                        <asp:TextBox ID="Txt_DeliverTel" runat="server" Width="80" TabIndex="8" Style="text-transform: uppercase"></asp:TextBox>
+                        <asp:TextBox ID="Txt_DeliverTel" runat="server" Width="80" MaxLength="20" TabIndex="8" Style="text-transform: uppercase"></asp:TextBox>
                         <b style="color: Red">*</b>
                     </td>
                 </tr>
