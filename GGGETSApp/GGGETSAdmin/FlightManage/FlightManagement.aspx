@@ -21,7 +21,7 @@
                     <td>
                         <asp:TextBox ID="Txt_FlightNo" TabIndex="1" runat="server" Width="250"></asp:TextBox>
                     </td>
-                     <td class="FieldHeader">
+                     <td class="FieldHeader" style="width:160px">
                         <asp:Label ID="lbl_From" runat="server" Text="起飞三字码:"></asp:Label>
                     </td>
                     <td>
@@ -31,7 +31,7 @@
                                         MinimumPrefixLength="1" CompletionSetCount="10" onitemselected="autoFrom_ItemSelected">
                                     </cc1:AutoCompleteExtraExtender>
                     </td>
-                     <td class="FieldHeader">
+                     <td class="FieldHeader" style="width:160px">
                         <asp:Label ID="lbl_To" runat="server" Text="到达三字码:"></asp:Label>
                     </td>
                     <td>
@@ -47,26 +47,33 @@
                 </tr>
             </tbody>
         </table>
+        <div style="height: 350px;overflow-x:auto;overflow-y:auto;">
         <asp:GridView ID="gv_HAWB" runat="server" CssClass="DataView" AutoGenerateColumns="False"
             OnRowEditing="gv_HAWB_RowEditing" onrowupdating="gv_HAWB_RowUpdating" 
             DataKeyNames="MID" onrowcancelingedit="gv_HAWB_RowCancelingEdit" 
-            onrowcommand="gv_HAWB_RowCommand" onrowdeleting="gv_HAWB_RowDeleting">
+            onrowcommand="gv_HAWB_RowCommand" onrowdeleting="gv_HAWB_RowDeleting" PageSize="5000">
             <Columns>
                 <asp:TemplateField HeaderText="行号">
                     <ItemTemplate>
                         <asp:Label ID="lbl_Number" runat="server" Text='<%# N() %>'></asp:Label>
                     </ItemTemplate>
+                    <HeaderStyle HorizontalAlign="left" />
+                    <ItemStyle HorizontalAlign="Left" />
                 </asp:TemplateField>
                 <asp:TemplateField HeaderText="航班号">
                     <ItemTemplate>
                         <asp:Label ID="lbl_FlightNo" runat="server" Text='<%# Eval("FlightNo")%>'></asp:Label>
                     </ItemTemplate>
+                    <HeaderStyle HorizontalAlign="Center" />
+                    <ItemStyle HorizontalAlign="Center" />
                 </asp:TemplateField>
                 <asp:TemplateField HeaderText="总运单号">
                     <ItemTemplate>
                         <asp:LinkButton ID="lbtn_BarCode" runat="server" CommandName="Select" PostBackUrl='<%# "../MawbManage/MawbDetails.aspx?BarCode="+Eval("BarCode") %>' Text='<%# Eval("BarCode") %>'></asp:LinkButton>
                     </ItemTemplate>
                     <ControlStyle Width="220px" />
+                    <HeaderStyle HorizontalAlign="Center" />
+                    <ItemStyle HorizontalAlign="Center" />
                 </asp:TemplateField>
                 <asp:TemplateField HeaderText="起飞三字码">
                     <ItemTemplate>
@@ -79,6 +86,8 @@
                                         MinimumPrefixLength="1" CompletionSetCount="10" onitemselected="autoFrom_ItemSelected">
                                     </cc1:AutoCompleteExtraExtender>
                     </EditItemTemplate>
+                    <HeaderStyle HorizontalAlign="Center" />
+                    <ItemStyle HorizontalAlign="Center" />
                 </asp:TemplateField>
                 <asp:TemplateField HeaderText="起飞三字码">
                     <ItemTemplate>
@@ -91,6 +100,8 @@
                                         MinimumPrefixLength="1" CompletionSetCount="10" onitemselected="autoTo_ItemSelected">
                                     </cc1:AutoCompleteExtraExtender>
                     </EditItemTemplate>
+                    <HeaderStyle HorizontalAlign="Center" />
+                    <ItemStyle HorizontalAlign="Center" />
                 </asp:TemplateField>
                 <%--<asp:CommandField ShowEditButton="True" />--%>
                 <asp:ButtonField CommandName="Delete" ButtonType="Link" Text="删除" />
@@ -104,5 +115,6 @@
                             </asp:TemplateField>--%>
             </Columns>
         </asp:GridView>
+        </div>
     </div>
 </asp:Content>
