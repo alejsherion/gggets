@@ -6,7 +6,9 @@
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <cc2:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server">
     </cc2:ToolkitScriptManager>
-    <div>
+    <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+        <ContentTemplate>
+            <div>
         <table class="DataView">
             <tbody id="tbDeliver" runat="server">
                 <tr class="AlternatingRow">
@@ -35,7 +37,7 @@
                     <td>
                         <asp:TextBox ID="Txt_LoginName" runat="server"
                             AutoPostBack="True" Style="text-transform: uppercase" 
-                            ontextchanged="Txt_LoginName_TextChanged" TabIndex="4"></asp:TextBox>
+                            ontextchanged="Txt_LoginName_TextChanged" MaxLength="12" TabIndex="4"></asp:TextBox>
                     </td>
                 </tr>
                 <tr class="Row">
@@ -43,7 +45,7 @@
                         <asp:Label ID="lbl_DeliverName" runat="server" Text="公司:"></asp:Label>
                     </td>
                     <td align="left" colspan="5">
-                        <asp:TextBox ID="Txt_DeliverName" runat="server" Width="500" TabIndex="5" Style="text-transform: uppercase"></asp:TextBox>
+                        <asp:TextBox ID="Txt_DeliverName" runat="server" MaxLength="180" Width="500" TabIndex="5" Style="text-transform: uppercase"></asp:TextBox>
                         <b style="color: Red">*</b>
                     </td>
                 </tr>
@@ -52,7 +54,7 @@
                         <asp:Label ID="lbl_DeliverAddress" runat="server" Text="地址:"></asp:Label>
                     </td>
                     <td align="left" colspan="5">
-                        <asp:TextBox ID="Txt_DeliverAddress" runat="server" Width="500" TabIndex="6" TextMode="MultiLine"
+                        <asp:TextBox ID="Txt_DeliverAddress" runat="server" MaxLength="400" Width="500" TabIndex="6" TextMode="MultiLine"
                             Style="text-transform: uppercase"></asp:TextBox>
                         <b style="color: Red">*</b>
                     </td>
@@ -94,7 +96,7 @@
                         <asp:Label ID="lbl_DeliverZipCode" runat="server" Text="邮编:"></asp:Label>
                     </td>
                     <td align="left">
-                        <asp:TextBox ID="Txt_DeliverZipCode" runat="server" Width="80" TabIndex="10"
+                        <asp:TextBox ID="Txt_DeliverZipCode" runat="server" MaxLength="15" Width="80" TabIndex="10"
                             Style="text-transform: uppercase"></asp:TextBox>
                         <b style="color: Red">*</b>
                     </td>
@@ -102,14 +104,14 @@
                         <asp:Label ID="lbl_DeliverContactor" runat="server" Text="姓名:"></asp:Label>
                     </td>
                     <td align="left">
-                        <asp:TextBox ID="Txt_DeliverContactor" runat="server" Width="80" TabIndex="11" Style="text-transform: uppercase"></asp:TextBox>
+                        <asp:TextBox ID="Txt_DeliverContactor" runat="server" MaxLength="40" Width="80" TabIndex="11" Style="text-transform: uppercase"></asp:TextBox>
                         <b style="color: Red">*</b>
                     </td>
                     <td class="FieldHeader">
                         <asp:Label ID="lbl_DeliverTel" runat="server" Text="电话:"></asp:Label>
                     </td>
                     <td align="left">
-                        <asp:TextBox ID="Txt_DeliverTel" runat="server" Width="80" TabIndex="12" Style="text-transform: uppercase"></asp:TextBox>
+                        <asp:TextBox ID="Txt_DeliverTel" runat="server" Width="80" MaxLength="20" TabIndex="12" Style="text-transform: uppercase"></asp:TextBox>
                         <b style="color: Red">*</b>
                     </td>
                 </tr>
@@ -124,4 +126,6 @@
             </tbody>
         </table>
     </div>
+        </ContentTemplate>
+    </asp:UpdatePanel>
 </asp:Content>
