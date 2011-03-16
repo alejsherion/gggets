@@ -73,25 +73,17 @@ namespace GGGETSAdmin.HAWBManage
             {
                 listHawb = _hawbService.FindHAWBsByCondition(BarCode, countryCode, regionCode,departmentCode,CompanyName,carrier,HAWBOperator,contactor,beginTime,endTime,settleType,serviceType,isInternational,PageIndex,PageCount,ref totalCount);
                 ViewState["totalCount"] = totalCount;
-                if (listHawb.Count <= pageCount)
-                {
-                    Gv_HAWB.DataSource = listHawb;
-                    Gv_HAWB.DataBind();
-                    FenYe.Visible = false;
-                }
-                else if (listHawb.Count > 0)
+                if (listHawb.Count > 0)
                 {
 
                     Gv_HAWB.DataSource = listHawb;
                     Gv_HAWB.DataBind();
-                    FenYe.Visible = true;
                 }
                 else
                 {
                     Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('没有相关记录！')</script>");
                     Gv_HAWB.DataSource = null;
                     Gv_HAWB.DataBind();
-                    FenYe.Visible = false;
                     InitialControl(this.Controls);
                 }
             }
@@ -221,6 +213,14 @@ namespace GGGETSAdmin.HAWBManage
             lbl_nuber.Text = "1";
             lbl_sumnuber.Text = (((int)ViewState["totalCount"] + PageCount - 1) / PageCount).ToString();
             DataBound();
+            if (Gv_HAWB.Rows.Count < PageCount)
+            {
+                FenYe.Visible = false;
+            }
+            else
+            {
+                FenYe.Visible = true;
+            }
         }
 
         protected void Gv_HAWB_RowCommand(object sender, GridViewCommandEventArgs e)

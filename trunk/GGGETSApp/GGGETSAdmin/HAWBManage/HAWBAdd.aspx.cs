@@ -372,7 +372,7 @@ namespace GGGETSAdmin.HAWBManage
                 ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('运单号不能为空!')", true);
                 Txt_BarCode.Focus();
             }
-            else if (TextEmpty())
+            else if (TextEmpty(3))
             {
                 Storage();
                 if (ViewState["update"] != null)
@@ -1346,7 +1346,7 @@ namespace GGGETSAdmin.HAWBManage
                 Department deparment = _departmentservice.FindDepartmentByDepCodeAndCompanyCode(Txt_Account2.Text.Trim().ToUpper(), Txt_Account1.Text.Trim().ToUpper());
                 address.AID = Guid.NewGuid();
                 address.DID = deparment.DID;
-                if (TextEmpty())
+                if (TextEmpty(type))
                 {
                     if (type == 0)
                     {
@@ -1675,116 +1675,461 @@ namespace GGGETSAdmin.HAWBManage
             return ok;
         }
 
-        private bool TextEmpty()
+        private bool TextEmpty(int type)
         {
             bool ok = true;
-            if (Txt_Account1.Text.Trim().ToUpper() == "")
+            if (type == 3)
             {
-                ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('客户账号不能为空!')", true);
-                //Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('客户账号不能为空！')</script>");
-                Txt_Account1.Focus();
-                ok = false;
+                if (Txt_Account1.Text.Trim().ToUpper() == "")
+                {
+                    ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('客户账号不能为空!')", true);
+                    //Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('客户账号不能为空！')</script>");
+                    Txt_Account1.Focus();
+                    ok = false;
+                }
+                else if (Txt_ShipperName.Text.Trim().ToUpper() == "")
+                {
+                    ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('发件人公司名称不能为空!')", true);
+                    //Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('发件人公司名称不能为空！')</script>");
+                    Txt_ShipperName.Focus();
+                    ok = false;
+                }
+                else if (Txt_ShipperCountry.Text.Trim().ToUpper() == "")
+                {
+                    ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('发件人国家不能为空!')", true);
+                    //Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('发件人国家不能为空！')</script>");
+                    Txt_ShipperCountry.Focus();
+                }
+                else if (Txt_ShipperRegion.Text.Trim().ToUpper() == "")
+                {
+                    ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('发件人地区不能为空!')", true);
+                    //Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('发件人地区不能为空！')</script>");
+                    Txt_ShipperRegion.Focus();
+                    ok = false;
+                }
+                else if (Txt_ShipperZipCode.Text.Trim().ToUpper() == "")
+                {
+                    ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('发件人邮编不能为空!')", true);
+                    //Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('发件人邮编不能为空！')</script>");
+                    Txt_ShipperZipCode.Focus();
+                    ok = false;
+                }
+                else if (Txt_ShipperAddress.Text.Trim().ToUpper() == "")
+                {
+                    ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('发件人地址不能为空!')", true);
+                    //Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('发件人地址不能为空！')</script>");
+                    Txt_ShipperAddress.Focus();
+                    ok = false;
+                }
+                else if (Txt_ShipperContactor.Text.Trim().ToUpper() == "")
+                {
+                    ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('发件人姓名不能为空!')", true);
+                    //Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('发件人姓名不能为空！')</script>");
+                    Txt_ShipperContactor.Focus();
+                    ok = false;
+                }
+                else if (Txt_ShipperTel.Text.Trim().ToUpper() == "")
+                {
+                    ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('发件人电话不能为空!')", true);
+                    //Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('发件人电话不能为空！')</script>");
+                    Txt_ShipperTel.Focus();
+                    ok = false;
+                }
+                else if (Txt_ConsigneeName.Text.Trim().ToUpper() == "")
+                {
+                    ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('收件人公司名称不能为空!')", true);
+                    //Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('收件人公司名称不能为空！')</script>");
+                    Txt_ConsigneeName.Focus();
+                    ok = false;
+                }
+                else if (Txt_ConsigneeCountry.Text.Trim().ToUpper() == "")
+                {
+                    ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('收件人国家不能为空!')", true);
+                    //Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('收件人国家不能为空！')</script>");
+                    Txt_ConsigneeCountry.Focus();
+                    ok = false;
+                }
+                else if (Txt_ConsigneeRegion.Text.Trim().ToUpper() == "")
+                {
+                    ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('收件人地区不能为空!')", true);
+                    //Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('收件人地区不能为空！')</script>");
+                    Txt_ConsigneeRegion.Focus();
+                    ok = false;
+                }
+                else if (Txt_ConsigneeZipCode.Text.Trim().ToUpper() == "")
+                {
+                    ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('收件人邮编不能为空!')", true);
+                    //Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('收件人地区不能为空！')</script>");
+                    Txt_ConsigneeZipCode.Focus();
+                    ok = false;
+                }
+                else if (Txt_ConsigneeAddress.Text.Trim().ToUpper() == "")
+                {
+                    ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('收件人地址不能为空!')", true);
+                    //Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('收件人地区不能为空！')</script>");
+                    Txt_ConsigneeAddress.Focus();
+                    ok = false;
+                }
+                else if (Txt_ConsigneeContactor.Text.Trim().ToUpper() == "")
+                {
+                    ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('收件人姓名不能为空!')", true);
+                    //Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('收件人姓名不能为空！')</script>");
+                    Txt_ConsigneeContactor.Focus();
+                    ok = false;
+                }
+                else if (Txt_ConsigneeTel.Text.Trim().ToUpper() == "")
+                {
+                    ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('收件人电话不能为空!')", true);
+                    //Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('收件人电话不能为空！')</script>");
+                    Txt_ConsigneeTel.Focus();
+                    ok = false;
+                }
+                else if (Deliver.Visible == true)
+                {
+                    if (Txt_DeliverName.Text.Trim().ToUpper() == "")
+                    {
+                        ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('交付人公司名称不能为空!')", true);
+                        //Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('交付人公司名称不能为空！')</script>");
+                        Txt_DeliverName.Focus();
+                        ok = false;
+                    }
+                    else if (Txt_DeliverCountry.Text.Trim().ToUpper() == "")
+                    {
+                        ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('交付人国家不能为空!')", true);
+                        //Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('交付人国家不能为空！')</script>");
+                        Txt_DeliverCountry.Focus();
+                        ok = false;
+                    }
+                    else if (Txt_DeliverRegion.Text.Trim().ToUpper() == "")
+                    {
+                        ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('交付人地区不能为空!')", true);
+                        //Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('交付人地区不能为空！')</script>");
+                        Txt_DeliverRegion.Focus();
+                        ok = false;
+                    }
+                    else if (Txt_DeliverZipCode.Text.Trim().ToUpper() == "")
+                    {
+                        ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('交付人邮编不能为空!')", true);
+                        //Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('交付人邮编不能为空！')</script>");
+                        Txt_DeliverZipCode.Focus();
+                        ok = false;
+                    }
+                    else if (Txt_DeliverAddress.Text.Trim().ToUpper() == "")
+                    {
+                        ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('交付人地址不能为空!')", true);
+                        //Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('交付人地址不能为空！')</script>");
+                        Txt_DeliverAddress.Focus();
+                        ok = false;
+                    }
+                    else if (Txt_DeliverContactor.Text.Trim().ToUpper() == "")
+                    {
+                        ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('交付人姓名不能为空!')", true);
+                        //Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('交付人姓名不能为空！')</script>");
+                        Txt_DeliverContactor.Focus();
+                        ok = false;
+                    }
+                    else if (Txt_DeliverTel.Text.Trim().ToUpper() == "")
+                    {
+                        ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('交付人电话不能为空!')", true);
+                        //Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('交付人电话不能为空！')</script>");
+                        Txt_DeliverTel.Focus();
+                    }
+                    else
+                    {
+                        if (!RTel.IsMatch(Txt_ShipperTel.Text.Trim().ToUpper()))
+                        {
+                            ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('发件人电话只能输入数字!')", true);
+                            //Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('发件人电话只能输入数字！')</script>");
+                            Txt_ShipperTel.Focus();
+                            ok = false;
+                        }
+                        else if (!RTel.IsMatch(Txt_ConsigneeTel.Text.Trim().ToUpper()))
+                        {
+                            ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('收件人电话只能输入数字!')", true);
+                            //Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('收件人电话只能输入数字！')</script>");
+                            Txt_ConsigneeTel.Focus();
+                            ok = false;
+                        }
+                        else if (!RTel.IsMatch(Txt_DeliverTel.Text.Trim().ToUpper()))
+                        {
+                            ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('交付人电话只能输入数字!')", true);
+                            //Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('收件人电话只能输入数字！')</script>");
+                            Txt_DeliverTel.Focus();
+                            ok = false;
+                        }
+                        else if (!RRegion.IsMatch(Txt_ShipperCountry.Text.Trim().ToUpper()) && !string.IsNullOrEmpty(CountrySwitch(Txt_ShipperCountry.Text.Trim().ToUpper())))
+                        {
+                            ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('发件人国家只能输入字母!')", true);
+                            //Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('发件人国家只能输入字母！')</script>");
+                            Txt_ShipperCountry.Focus();
+                            ok = false;
+                        }
+                        else if (!RRegion.IsMatch(Txt_ShipperRegion.Text.Trim().ToUpper()) && !string.IsNullOrEmpty(RegionSwitch(Txt_ShipperRegion.Text.Trim().ToUpper())))
+                        {
+                            ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('发件人地区只能输入字母!')", true);
+                            //Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('发件人地区只能输入字母！')</script>");
+                            Txt_ShipperRegion.Focus();
+                            ok = false;
+                        }
+                        else if (!RRegion.IsMatch(Txt_ConsigneeCountry.Text.Trim().ToUpper()) && !string.IsNullOrEmpty(CountrySwitch(Txt_ConsigneeCountry.Text.Trim().ToUpper())))
+                        {
+                            ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('收件人国家只能输入字母!')", true);
+                            //Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('收件人国家只能输入字母！')</script>");
+                            Txt_ConsigneeCountry.Focus();
+                            ok = false;
+                        }
+                        else if (!RRegion.IsMatch(Txt_ConsigneeRegion.Text.Trim().ToUpper()) && !string.IsNullOrEmpty(RegionSwitch(Txt_ConsigneeRegion.Text.Trim().ToUpper())))
+                        {
+                            ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('收件人地区只能输入字母!')", true);
+                            //Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('收件人地区只能输入字母！')</script>");
+                            Txt_ConsigneeRegion.Focus();
+                            ok = false;
+                        }
+                        else if (!RRegion.IsMatch(Txt_DeliverCountry.Text.Trim().ToUpper()) && !string.IsNullOrEmpty(CountrySwitch(Txt_DeliverCountry.Text.Trim().ToUpper())))
+                        {
+                            ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('交付人国家只能输入字母!')", true);
+                            //Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('交付人国家只能输入字母！')</script>");
+                            Txt_DeliverCountry.Focus();
+                            ok = false;
+                        }
+                        else if (!RRegion.IsMatch(Txt_DeliverRegion.Text.Trim().ToUpper()) && !string.IsNullOrEmpty(RegionSwitch(Txt_DeliverRegion.Text.Trim().ToUpper())))
+                        {
+                            ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('交付件人地区只能输入字母!')", true);
+                            //Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('交付件人地区只能输入字母！')</script>");
+                            Txt_DeliverRegion.Focus();
+                            ok = false;
+                        }
+                    }
+                }
+                else
+                {
+
+                    if (!RTel.IsMatch(Txt_ShipperTel.Text.Trim().ToUpper()))
+                    {
+                        ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('发件人电话只能输入数字!')", true);
+                        //Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('发件人电话只能输入数字！')</script>");
+                        Txt_ShipperTel.Focus();
+                        ok = false;
+                    }
+                    else if (!RTel.IsMatch(Txt_ConsigneeTel.Text.Trim().ToUpper()))
+                    {
+                        ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('收件人电话只能输入数字!')", true);
+                        //Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('收件人电话只能输入数字！')</script>");
+                        Txt_ConsigneeTel.Focus();
+                        ok = false;
+                    }
+                    //else if (!RTel.IsMatch(Txt_DeliverTel.Text.Trim().ToUpper()))
+                    //{
+                    //    ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('交付件人电话只能输入数字!')", true);
+                    //    //Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('收件人电话只能输入数字！')</script>");
+                    //    Txt_DeliverTel.Focus();
+                    //    ok = false;
+                    //}
+                    else if (!RRegion.IsMatch(Txt_ShipperCountry.Text.Trim().ToUpper()) && !string.IsNullOrEmpty(CountrySwitch(Txt_ShipperCountry.Text.Trim().ToUpper())))
+                    {
+                        ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('发件人国家只能输入字母!')", true);
+                        //Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('发件人国家只能输入字母！')</script>");
+                        Txt_ShipperCountry.Focus();
+                        ok = false;
+                    }
+                    else if (!RRegion.IsMatch(Txt_ShipperRegion.Text.Trim().ToUpper()) && !string.IsNullOrEmpty(RegionSwitch(Txt_ShipperRegion.Text.Trim().ToUpper())))
+                    {
+                        ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('发件人地区只能输入字母!')", true);
+                        //Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('发件人地区只能输入字母！')</script>");
+                        Txt_ShipperRegion.Focus();
+                        ok = false;
+                    }
+                    else if (!RRegion.IsMatch(Txt_ConsigneeCountry.Text.Trim().ToUpper()) && !string.IsNullOrEmpty(CountrySwitch(Txt_ConsigneeCountry.Text.Trim().ToUpper())))
+                    {
+                        ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('收件人国家只能输入字母!')", true);
+                        //Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('收件人国家只能输入字母！')</script>");
+                        Txt_ConsigneeCountry.Focus();
+                        ok = false;
+                    }
+                    else if (!RRegion.IsMatch(Txt_ConsigneeRegion.Text.Trim().ToUpper()) && !string.IsNullOrEmpty(RegionSwitch(Txt_ConsigneeRegion.Text.Trim().ToUpper())))
+                    {
+                        ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('收件人地区只能输入字母!')", true);
+                        //Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('收件人地区只能输入字母！')</script>");
+                        Txt_ConsigneeRegion.Focus();
+                        ok = false;
+                    }
+                }
             }
-            else if (Txt_ShipperName.Text.Trim().ToUpper() == "")
+            else if (type == 0)
             {
-                ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('发件人公司名称不能为空!')", true);
-                //Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('发件人公司名称不能为空！')</script>");
-                Txt_ShipperName.Focus();
-                ok = false;
+                if (Txt_Account1.Text.Trim().ToUpper() == "")
+                {
+                    ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('客户账号不能为空!')", true);
+                    //Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('客户账号不能为空！')</script>");
+                    Txt_Account1.Focus();
+                    ok = false;
+                }
+                else if (Txt_ShipperName.Text.Trim().ToUpper() == "")
+                {
+                    ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('发件人公司名称不能为空!')", true);
+                    //Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('发件人公司名称不能为空！')</script>");
+                    Txt_ShipperName.Focus();
+                    ok = false;
+                }
+                else if (Txt_ShipperCountry.Text.Trim().ToUpper() == "")
+                {
+                    ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('发件人国家不能为空!')", true);
+                    //Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('发件人国家不能为空！')</script>");
+                    Txt_ShipperCountry.Focus();
+                }
+                else if (Txt_ShipperRegion.Text.Trim().ToUpper() == "")
+                {
+                    ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('发件人地区不能为空!')", true);
+                    //Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('发件人地区不能为空！')</script>");
+                    Txt_ShipperRegion.Focus();
+                    ok = false;
+                }
+                else if (Txt_ShipperZipCode.Text.Trim().ToUpper() == "")
+                {
+                    ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('发件人邮编不能为空!')", true);
+                    //Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('发件人邮编不能为空！')</script>");
+                    Txt_ShipperZipCode.Focus();
+                    ok = false;
+                }
+                else if (Txt_ShipperAddress.Text.Trim().ToUpper() == "")
+                {
+                    ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('发件人地址不能为空!')", true);
+                    //Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('发件人地址不能为空！')</script>");
+                    Txt_ShipperAddress.Focus();
+                    ok = false;
+                }
+                else if (Txt_ShipperContactor.Text.Trim().ToUpper() == "")
+                {
+                    ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('发件人姓名不能为空!')", true);
+                    //Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('发件人姓名不能为空！')</script>");
+                    Txt_ShipperContactor.Focus();
+                    ok = false;
+                }
+                else if (Txt_ShipperTel.Text.Trim().ToUpper() == "")
+                {
+                    ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('发件人电话不能为空!')", true);
+                    //Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('发件人电话不能为空！')</script>");
+                    Txt_ShipperTel.Focus();
+                    ok = false;
+                }
+                else
+                {
+                    if (!RTel.IsMatch(Txt_ShipperTel.Text.Trim().ToUpper()))
+                    {
+                        ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('发件人电话只能输入数字!')", true);
+                        //Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('发件人电话只能输入数字！')</script>");
+                        Txt_ShipperTel.Focus();
+                        ok = false;
+                    }
+                    else if (!RRegion.IsMatch(Txt_ShipperCountry.Text.Trim().ToUpper()) && !string.IsNullOrEmpty(CountrySwitch(Txt_ShipperCountry.Text.Trim().ToUpper())))
+                    {
+                        ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('发件人国家只能输入字母!')", true);
+                        //Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('发件人国家只能输入字母！')</script>");
+                        Txt_ShipperCountry.Focus();
+                        ok = false;
+                    }
+                    else if (!RRegion.IsMatch(Txt_ShipperRegion.Text.Trim().ToUpper()) && !string.IsNullOrEmpty(RegionSwitch(Txt_ShipperRegion.Text.Trim().ToUpper())))
+                    {
+                        ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('发件人地区只能输入字母!')", true);
+                        //Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('发件人地区只能输入字母！')</script>");
+                        Txt_ShipperRegion.Focus();
+                        ok = false;
+                    }
+                }
             }
-            else if (Txt_ShipperCountry.Text.Trim().ToUpper() == "")
+            else if(type==1)
             {
-                ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('发件人国家不能为空!')", true);
-                //Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('发件人国家不能为空！')</script>");
-                Txt_ShipperCountry.Focus();
+                if (Txt_Account1.Text.Trim().ToUpper() == "")
+                {
+                    ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('客户账号不能为空!')", true);
+                    //Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('客户账号不能为空！')</script>");
+                    Txt_Account1.Focus();
+                    ok = false;
+                }
+                else if (Txt_ConsigneeName.Text.Trim().ToUpper() == "")
+                {
+                    ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('收件人公司名称不能为空!')", true);
+                    //Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('收件人公司名称不能为空！')</script>");
+                    Txt_ConsigneeName.Focus();
+                    ok = false;
+                }
+                else if (Txt_ConsigneeCountry.Text.Trim().ToUpper() == "")
+                {
+                    ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('收件人国家不能为空!')", true);
+                    //Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('收件人国家不能为空！')</script>");
+                    Txt_ConsigneeCountry.Focus();
+                    ok = false;
+                }
+                else if (Txt_ConsigneeRegion.Text.Trim().ToUpper() == "")
+                {
+                    ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('收件人地区不能为空!')", true);
+                    //Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('收件人地区不能为空！')</script>");
+                    Txt_ConsigneeRegion.Focus();
+                    ok = false;
+                }
+                else if (Txt_ConsigneeZipCode.Text.Trim().ToUpper() == "")
+                {
+                    ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('收件人邮编不能为空!')", true);
+                    //Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('收件人地区不能为空！')</script>");
+                    Txt_ConsigneeZipCode.Focus();
+                    ok = false;
+                }
+                else if (Txt_ConsigneeAddress.Text.Trim().ToUpper() == "")
+                {
+                    ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('收件人地址不能为空!')", true);
+                    //Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('收件人地区不能为空！')</script>");
+                    Txt_ConsigneeAddress.Focus();
+                    ok = false;
+                }
+                else if (Txt_ConsigneeContactor.Text.Trim().ToUpper() == "")
+                {
+                    ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('收件人姓名不能为空!')", true);
+                    //Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('收件人姓名不能为空！')</script>");
+                    Txt_ConsigneeContactor.Focus();
+                    ok = false;
+                }
+                else if (Txt_ConsigneeTel.Text.Trim().ToUpper() == "")
+                {
+                    ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('收件人电话不能为空!')", true);
+                    //Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('收件人电话不能为空！')</script>");
+                    Txt_ConsigneeTel.Focus();
+                    ok = false;
+                }
+                else
+                {
+                    if (!RTel.IsMatch(Txt_ConsigneeTel.Text.Trim().ToUpper()))
+                    {
+                        ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('收件人电话只能输入数字!')", true);
+                        //Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('收件人电话只能输入数字！')</script>");
+                        Txt_ConsigneeTel.Focus();
+                        ok = false;
+                    }
+                    else if (!RRegion.IsMatch(Txt_ConsigneeCountry.Text.Trim().ToUpper()) && !string.IsNullOrEmpty(CountrySwitch(Txt_ConsigneeCountry.Text.Trim().ToUpper())))
+                    {
+                        ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('收件人国家只能输入字母!')", true);
+                        //Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('收件人国家只能输入字母！')</script>");
+                        Txt_ConsigneeCountry.Focus();
+                        ok = false;
+                    }
+                    else if (!RRegion.IsMatch(Txt_ConsigneeRegion.Text.Trim().ToUpper()) && !string.IsNullOrEmpty(RegionSwitch(Txt_ConsigneeRegion.Text.Trim().ToUpper())))
+                    {
+                        ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('收件人地区只能输入字母!')", true);
+                        //Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('收件人地区只能输入字母！')</script>");
+                        Txt_ConsigneeRegion.Focus();
+                        ok = false;
+                    }
+                }
             }
-            else if (Txt_ShipperRegion.Text.Trim().ToUpper() == "")
+            else if (type == 2)
             {
-                ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('发件人地区不能为空!')", true);
-                //Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('发件人地区不能为空！')</script>");
-                Txt_ShipperRegion.Focus();
-                ok = false;
-            }
-            else if (Txt_ShipperZipCode.Text.Trim().ToUpper() == "")
-            {
-                ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('发件人邮编不能为空!')", true);
-                //Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('发件人邮编不能为空！')</script>");
-                Txt_ShipperZipCode.Focus();
-                ok = false;
-            }
-            else if (Txt_ShipperAddress.Text.Trim().ToUpper() == "")
-            {
-                ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('发件人地址不能为空!')", true);
-                //Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('发件人地址不能为空！')</script>");
-                Txt_ShipperAddress.Focus();
-                ok = false;
-            }
-            else if (Txt_ShipperContactor.Text.Trim().ToUpper() == "")
-            {
-                ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('发件人姓名不能为空!')", true);
-                //Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('发件人姓名不能为空！')</script>");
-                Txt_ShipperContactor.Focus();
-                ok = false;
-            }
-            else if (Txt_ShipperTel.Text.Trim().ToUpper() == "")
-            {
-                ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('发件人电话不能为空!')", true);
-                //Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('发件人电话不能为空！')</script>");
-                Txt_ShipperTel.Focus();
-                ok = false;
-            }
-            else if (Txt_ConsigneeName.Text.Trim().ToUpper() == "")
-            {
-                ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('收件人公司名称不能为空!')", true);
-                //Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('收件人公司名称不能为空！')</script>");
-                Txt_ConsigneeName.Focus();
-                ok = false;
-            }
-            else if (Txt_ConsigneeCountry.Text.Trim().ToUpper() == "")
-            {
-                ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('收件人国家不能为空!')", true);
-                //Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('收件人国家不能为空！')</script>");
-                Txt_ConsigneeCountry.Focus();
-                ok = false;
-            }
-            else if (Txt_ConsigneeRegion.Text.Trim().ToUpper() == "")
-            {
-                ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('收件人地区不能为空!')", true);
-                //Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('收件人地区不能为空！')</script>");
-                Txt_ConsigneeRegion.Focus();
-                ok = false;
-            }
-            else if (Txt_ConsigneeZipCode.Text.Trim().ToUpper() == "")
-            {
-                ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('收件人邮编不能为空!')", true);
-                //Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('收件人地区不能为空！')</script>");
-                Txt_ConsigneeZipCode.Focus();
-                ok = false;
-            }
-            else if (Txt_ConsigneeAddress.Text.Trim().ToUpper() == "")
-            {
-                ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('收件人地址不能为空!')", true);
-                //Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('收件人地区不能为空！')</script>");
-                Txt_ConsigneeAddress.Focus();
-                ok = false;
-            }
-            else if (Txt_ConsigneeContactor.Text.Trim().ToUpper() == "")
-            {
-                ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('收件人姓名不能为空!')", true);
-                //Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('收件人姓名不能为空！')</script>");
-                Txt_ConsigneeContactor.Focus();
-                ok = false;
-            }
-            else if (Txt_ConsigneeTel.Text.Trim().ToUpper() == "")
-            {
-                ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('收件人电话不能为空!')", true);
-                //Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('收件人电话不能为空！')</script>");
-                Txt_ConsigneeTel.Focus();
-                ok = false;
-            }
-            else if (Deliver.Visible == true)
-            {
-                if (Txt_DeliverName.Text.Trim().ToUpper() == "")
+                if (Txt_Account1.Text.Trim().ToUpper() == "")
+                {
+                    ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('客户账号不能为空!')", true);
+                    //Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('客户账号不能为空！')</script>");
+                    Txt_Account1.Focus();
+                    ok = false;
+                }
+                else if (Txt_DeliverName.Text.Trim().ToUpper() == "")
                 {
                     ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('交付人公司名称不能为空!')", true);
                     //Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('交付人公司名称不能为空！')</script>");
@@ -1834,52 +2179,11 @@ namespace GGGETSAdmin.HAWBManage
                 }
                 else
                 {
-                    if (!RTel.IsMatch(Txt_ShipperTel.Text.Trim().ToUpper()))
+                    if (!RTel.IsMatch(Txt_DeliverTel.Text.Trim().ToUpper()))
                     {
-                        ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('发件人电话只能输入数字!')", true);
-                        //Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('发件人电话只能输入数字！')</script>");
-                        Txt_ShipperTel.Focus();
-                        ok = false;
-                    }
-                    else if (!RTel.IsMatch(Txt_ConsigneeTel.Text.Trim().ToUpper()))
-                    {
-                        ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('收件人电话只能输入数字!')", true);
-                        //Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('收件人电话只能输入数字！')</script>");
-                        Txt_ConsigneeTel.Focus();
-                        ok = false;
-                    }
-                    else if (!RTel.IsMatch(Txt_DeliverTel.Text.Trim().ToUpper()))
-                    {
-                        ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('收件人电话只能输入数字!')", true);
+                        ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('交付人电话只能输入数字!')", true);
                         //Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('收件人电话只能输入数字！')</script>");
                         Txt_DeliverTel.Focus();
-                    }
-                    else if (!RRegion.IsMatch(Txt_ShipperCountry.Text.Trim().ToUpper())&&!string.IsNullOrEmpty(CountrySwitch(Txt_ShipperCountry.Text.Trim().ToUpper())))
-                    {
-                        ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('发件人国家只能输入字母!')", true);
-                        //Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('发件人国家只能输入字母！')</script>");
-                        Txt_ShipperCountry.Focus();
-                        ok = false;
-                    }
-                    else if (!RRegion.IsMatch(Txt_ShipperRegion.Text.Trim().ToUpper()) && !string.IsNullOrEmpty(RegionSwitch(Txt_ShipperRegion.Text.Trim().ToUpper())))
-                    {
-                        ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('发件人地区只能输入字母!')", true);
-                        //Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('发件人地区只能输入字母！')</script>");
-                        Txt_ShipperRegion.Focus();
-                        ok = false;
-                    }
-                    else if (!RRegion.IsMatch(Txt_ConsigneeCountry.Text.Trim().ToUpper()) && !string.IsNullOrEmpty(CountrySwitch(Txt_ConsigneeCountry.Text.Trim().ToUpper())))
-                    {
-                        ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('收件人国家只能输入字母!')", true);
-                        //Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('收件人国家只能输入字母！')</script>");
-                        Txt_ConsigneeCountry.Focus();
-                        ok = false;
-                    }
-                    else if (!RRegion.IsMatch(Txt_ConsigneeRegion.Text.Trim().ToUpper())&&!string.IsNullOrEmpty(RegionSwitch(Txt_ConsigneeRegion.Text.Trim().ToUpper())))
-                    {
-                        ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('收件人地区只能输入字母!')", true);
-                        //Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('收件人地区只能输入字母！')</script>");
-                        Txt_ConsigneeRegion.Focus();
                         ok = false;
                     }
                     else if (!RRegion.IsMatch(Txt_DeliverCountry.Text.Trim().ToUpper()) && !string.IsNullOrEmpty(CountrySwitch(Txt_DeliverCountry.Text.Trim().ToUpper())))
@@ -1898,59 +2202,6 @@ namespace GGGETSAdmin.HAWBManage
                     }
                 }
             }
-            else
-            {
-
-                if (!RTel.IsMatch(Txt_ShipperTel.Text.Trim().ToUpper()))
-                {
-                    ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('发件人电话只能输入数字!')", true);
-                    //Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('发件人电话只能输入数字！')</script>");
-                    Txt_ShipperTel.Focus();
-                    ok = false;
-                }
-                else if (!RTel.IsMatch(Txt_ConsigneeTel.Text.Trim().ToUpper()))
-                {
-                    ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('收件人电话只能输入数字!')", true);
-                    //Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('收件人电话只能输入数字！')</script>");
-                    Txt_ConsigneeTel.Focus();
-                    ok = false;
-                }
-                else if (!RTel.IsMatch(Txt_DeliverTel.Text.Trim().ToUpper()))
-                {
-                    ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('收件人电话只能输入数字!')", true);
-                    //Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('收件人电话只能输入数字！')</script>");
-                    Txt_DeliverTel.Focus();
-                    ok = false;
-                }
-                else if (!RRegion.IsMatch(Txt_ShipperCountry.Text.Trim().ToUpper()) && !string.IsNullOrEmpty(CountrySwitch(Txt_ShipperCountry.Text.Trim().ToUpper())))
-                {
-                    ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('发件人国家只能输入字母!')", true);
-                    //Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('发件人国家只能输入字母！')</script>");
-                    Txt_ShipperCountry.Focus();
-                    ok = false;
-                }
-                else if (!RRegion.IsMatch(Txt_ShipperRegion.Text.Trim().ToUpper()) && !string.IsNullOrEmpty(RegionSwitch(Txt_ShipperRegion.Text.Trim().ToUpper())))
-                {
-                    ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('发件人地区只能输入字母!')", true);
-                    //Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('发件人地区只能输入字母！')</script>");
-                    Txt_ShipperRegion.Focus();
-                    ok = false;
-                }
-                else if (!RRegion.IsMatch(Txt_ConsigneeCountry.Text.Trim().ToUpper()) && !string.IsNullOrEmpty(CountrySwitch(Txt_ConsigneeCountry.Text.Trim().ToUpper())))
-                {
-                    ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('收件人国家只能输入字母!')", true);
-                    //Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('收件人国家只能输入字母！')</script>");
-                    Txt_ConsigneeCountry.Focus();
-                    ok = false;
-                }
-                else if (!RRegion.IsMatch(Txt_ConsigneeRegion.Text.Trim().ToUpper()) && !string.IsNullOrEmpty(RegionSwitch(Txt_ConsigneeRegion.Text.Trim().ToUpper())))
-                {
-                    ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('收件人地区只能输入字母!')", true);
-                    //Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('收件人地区只能输入字母！')</script>");
-                    Txt_ConsigneeRegion.Focus();
-                    ok = false;
-                }
-            }
             return ok;
         }
 
@@ -1964,12 +2215,6 @@ namespace GGGETSAdmin.HAWBManage
             System.Threading.Thread.CurrentThread.CurrentUICulture = culture;
             Server.Transfer(Request.Path);
         }
-
-        protected void Button1_Click(object sender, EventArgs e)
-        {
-            SetLanguage("en-us");
-        }
-
         protected void btn_ConsigneeName_Click(object sender, EventArgs e)
         {
             Storage();
@@ -1991,6 +2236,16 @@ namespace GGGETSAdmin.HAWBManage
                 }
             }
             Txt_ConsigneeAddress.Focus();
+        }
+        protected override void InitializeCulture()
+        {
+            if (Session["LanType"] != null)
+            {
+                string langageType = Session["LanType"].ToString();
+                CultureInfo culture = new CultureInfo(langageType);
+                System.Threading.Thread.CurrentThread.CurrentUICulture = culture;
+            }
+            base.InitializeCulture();
         }
 
     }

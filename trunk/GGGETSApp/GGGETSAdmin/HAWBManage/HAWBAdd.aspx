@@ -1,12 +1,13 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true"
-    CodeBehind="HAWBAdd.aspx.cs" Inherits="GGGETSAdmin.HAWBManage.HAWBAdd" Theme="logisitc" %>
+    CodeBehind="HAWBAdd.aspx.cs" Inherits="GGGETSAdmin.HAWBManage.HAWBAdd" Theme="logisitc" culture="auto" meta:resourcekey="PageResource1" uiculture="auto" %>
 
 <%@ Register Assembly="AutoCompleteExtra" Namespace="AutoCompleteExtra" TagPrefix="cc1" %>
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <asp:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server">
+    <asp:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server" 
+        CombineScripts="True">
     </asp:ToolkitScriptManager>
     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
         <ContentTemplate>
@@ -15,9 +16,6 @@
                     <thead>
                         <tr class="Header">
                             <th colspan="6">
-                                <%--<asp:Button ID="Button1" runat="server" Text="Button" onclick="Button1_Click" />--%>
-                                <%--<asp:Label ID="lbl_Orede" runat="server"></asp:Label>--%>
-                                <%--<a>William</a>--%>
                             </th>
                         </tr>
                     </thead>
@@ -27,264 +25,296 @@
                                 <asp:Label ID="lbl_BarCode" runat="server" Text="运单号：" meta:resourcekey="lbl_BarCode"></asp:Label>
                             </td>
                             <td align="left" colspan="5">
-                                <asp:TextBox ID="Txt_BarCode" runat="server" Width="300" TabIndex="1" OnTextChanged="Txt_BarCode_TextChanged"
-                                    AutoPostBack="true" Style="text-transform: uppercase"></asp:TextBox><b style="color: Red">*</b>
+                                <asp:TextBox ID="Txt_BarCode" runat="server" MaxLength="15" Width="300px" TabIndex="1" OnTextChanged="Txt_BarCode_TextChanged"
+                                    AutoPostBack="True" Style="text-transform: uppercase" 
+                                    meta:resourcekey="Txt_BarCodeResource1"></asp:TextBox><b style="color: Red">*</b>
                             </td>
                         </tr>
                         <tr class="AlternatingRow">
                             <td class="FieldHeader">
-                                <asp:Label ID="lbl_Account" runat="server" Text="客户帐号：" Width="80"></asp:Label>
+                                <asp:Label ID="lbl_Account" runat="server" Text="客户帐号：" Width="80px" 
+                                    meta:resourcekey="lbl_AccountResource1"></asp:Label>
                             </td>
                             <td align="left">
-                                <asp:TextBox ID="Txt_Account1" runat="server" Width="80" TabIndex="2" Style="text-transform: uppercase"
-                                    AutoPostBack="True" OnTextChanged="Txt_Account1_TextChanged"></asp:TextBox>
+                                <asp:TextBox ID="Txt_Account1" runat="server" Width="80px" TabIndex="2" Style="text-transform: uppercase"
+                                    AutoPostBack="True" MaxLength="45" OnTextChanged="Txt_Account1_TextChanged" 
+                                    meta:resourcekey="Txt_Account1Resource1"></asp:TextBox>
                                 -
-                                <asp:TextBox ID="Txt_Account2" runat="server" Width="50" TabIndex="3" Style="text-transform: uppercase"
-                                    AutoPostBack="True" OnTextChanged="Txt_Account2_TextChanged"></asp:TextBox>
+                                <asp:TextBox ID="Txt_Account2" runat="server" Width="50px" TabIndex="3" Style="text-transform: uppercase"
+                                    AutoPostBack="True" MaxLength="45" OnTextChanged="Txt_Account2_TextChanged" 
+                                    meta:resourcekey="Txt_Account2Resource1"></asp:TextBox>
                                 <b style="color: Red">*</b>
                             </td>
                             <td class="FieldHeader">
-                                <asp:Label ID="lbl_SettleType" runat="server" Text="结算方式：" Width="80"></asp:Label>
+                                <asp:Label ID="lbl_SettleType" runat="server" Text="结算方式：" Width="80px" 
+                                    meta:resourcekey="lbl_SettleTypeResource1"></asp:Label>
                             </td>
                             <td align="left">
-                                <asp:DropDownList ID="DDl_SettleType" runat="server">
-                                    <asp:ListItem Value="0" Text="预付月结"></asp:ListItem>
-                                    <asp:ListItem Value="1" Text="预付现结"></asp:ListItem>
-                                    <asp:ListItem Value="2" Text="到付月结"></asp:ListItem>
-                                    <asp:ListItem Value="3" Text="到付现结"></asp:ListItem>
+                                <asp:DropDownList ID="DDl_SettleType" runat="server" 
+                                    meta:resourcekey="DDl_SettleTypeResource1">
+                                    <asp:ListItem Value="0" Text="预付月结" meta:resourcekey="ListItemResource1"></asp:ListItem>
+                                    <asp:ListItem Value="1" Text="预付现结" meta:resourcekey="ListItemResource2"></asp:ListItem>
+                                    <asp:ListItem Value="2" Text="到付月结" meta:resourcekey="ListItemResource3"></asp:ListItem>
+                                    <asp:ListItem Value="3" Text="到付现结" meta:resourcekey="ListItemResource4"></asp:ListItem>
                                 </asp:DropDownList>
                             </td>
                             <td class="FieldHeader">
-                                <asp:Label ID="lbl_Status" runat="server" Text="状态："></asp:Label>
+                                <asp:Label ID="lbl_Status" runat="server" Text="状态：" 
+                                    meta:resourcekey="lbl_StatusResource1"></asp:Label>
                             </td>
                             <td align="left">
-                                <asp:DropDownList ID="DDl_Status" runat="server">
-                                    <asp:ListItem Value="0" Text="待审核"></asp:ListItem>
-                                    <asp:ListItem Value="1" Text="取货"></asp:ListItem>
-                                    <asp:ListItem Value="2" Text="核单"></asp:ListItem>
-                                    <asp:ListItem Value="3" Text="派送"></asp:ListItem>
-                                    <asp:ListItem Value="4" Text="in包"></asp:ListItem>
+                                <asp:DropDownList ID="DDl_Status" runat="server" 
+                                    meta:resourcekey="DDl_StatusResource1">
+                                    <asp:ListItem Value="0" Text="待审核" meta:resourcekey="ListItemResource5"></asp:ListItem>
+                                    <asp:ListItem Value="1" Text="取货" meta:resourcekey="ListItemResource6"></asp:ListItem>
+                                    <asp:ListItem Value="2" Text="核单" meta:resourcekey="ListItemResource7"></asp:ListItem>
+                                    <asp:ListItem Value="3" Text="派送" meta:resourcekey="ListItemResource8"></asp:ListItem>
+                                    <asp:ListItem Value="4" Text="in包" meta:resourcekey="ListItemResource9"></asp:ListItem>
                                 </asp:DropDownList>
                             </td>
                         </tr>
                     </tbody>
                 </table>
             </div>
-        <%--</ContentTemplate>
-    </asp:UpdatePanel>--%>
     <div>
         <table class="DataView">
             <tbody>
                 <tr class="EditRow">
                     <td colspan="6" align="left">
-                        <asp:Label ID="lbl_Shipper" runat="server" Text="发件人信息"></asp:Label>
-                        <%--<input id="lbtn_Shipperhistory" runat="server" name="lbtn_Shipperhistory" value="历史" onclick="OpenShipperhistory()" type="button" class="LinkBtn" />--%>
-                        <asp:LinkButton ID="lbtn_Shipperhistory" runat="server" Text="[历史]" OnClick="lbtn_Shipperhistory_Click"></asp:LinkButton>
-                        <asp:Label ID="lbl_ShipperAddressAid" runat="server" Visible="false"></asp:Label>
+                        <asp:Label ID="lbl_Shipper" runat="server" Text="发件人信息" 
+                            meta:resourcekey="lbl_ShipperResource1"></asp:Label>
+                        <asp:LinkButton ID="lbtn_Shipperhistory" runat="server" Text="[历史]" 
+                            OnClick="lbtn_Shipperhistory_Click" 
+                            meta:resourcekey="lbtn_ShipperhistoryResource1"></asp:LinkButton>
+                        <asp:Label ID="lbl_ShipperAddressAid" runat="server" Visible="False" 
+                            meta:resourcekey="lbl_ShipperAddressAidResource1"></asp:Label>
                     </td>
                 </tr>
             </tbody>
         </table>
     </div>
-    <%--<asp:UpdatePanel ID="upShipper" runat="server">
-        <ContentTemplate>--%>
             <div>
                 <table class="DataView">
                     <tbody>
                         <tr class="Row">
                             <td class="FieldHeader">
-                                <asp:Label ID="lbl_ShipperName" runat="server" Text="公司："></asp:Label>
+                                <asp:Label ID="lbl_ShipperName" runat="server" Text="公司：" 
+                                    meta:resourcekey="lbl_ShipperNameResource1"></asp:Label>
                             </td>
                             <td align="left" colspan="5">
-                                <asp:TextBox ID="Txt_ShipperName" runat="server" Width="800" TabIndex="5" Style="text-transform: uppercase"
-                                    AutoPostBack="True" OnTextChanged="Txt_ShipperName_TextChanged"></asp:TextBox><b
+                                <asp:TextBox ID="Txt_ShipperName" MaxLength="180" runat="server" Width="800px" TabIndex="5" Style="text-transform: uppercase"
+                                    AutoPostBack="True" OnTextChanged="Txt_ShipperName_TextChanged" 
+                                    meta:resourcekey="Txt_ShipperNameResource1"></asp:TextBox><b
                                         style="color: Red">*</b>
                             </td>
                         </tr>
                         <tr class="Row">
                             <td class="FieldHeader">
-                                <asp:Label ID="lbl_ShipperAddress" runat="server" Text="地址："></asp:Label>
+                                <asp:Label ID="lbl_ShipperAddress" runat="server" Text="地址：" 
+                                    meta:resourcekey="lbl_ShipperAddressResource1"></asp:Label>
                             </td>
                             <td align="left" colspan="5">
-                                <asp:TextBox ID="Txt_ShipperAddress" runat="server" Width="800" TabIndex="6" TextMode="MultiLine"
+                                <asp:TextBox ID="Txt_ShipperAddress" runat="server" MaxLength="400" Width="800px" TabIndex="6" TextMode="MultiLine"
                                     Style="text-transform: uppercase" OnTextChanged="Txt_ShipperAddress_TextChanged"
-                                    AutoPostBack="true"></asp:TextBox><b style="color: Red">*</b>
+                                    AutoPostBack="True" meta:resourcekey="Txt_ShipperAddressResource1"></asp:TextBox><b style="color: Red">*</b>
                             </td>
                         </tr>
                         <tr class="Row">
                             <td class="FieldHeader">
-                                <asp:Label ID="lbl_ShipperCountry" runat="server" Text="国家："></asp:Label>
+                                <asp:Label ID="lbl_ShipperCountry" runat="server" Text="国家：" 
+                                    meta:resourcekey="lbl_ShipperCountryResource1"></asp:Label>
                             </td>
                             <td align="left" class="style2">
-                                <asp:TextBox ID="Txt_ShipperCountry" runat="server" Width="80" AutoPostBack="true"
-                                    OnTextChanged="Txt_ShipperCountry_TextChanged" TabIndex="7" Style="text-transform: uppercase"></asp:TextBox>
+                                <asp:TextBox ID="Txt_ShipperCountry" runat="server" Width="80px" AutoPostBack="True"
+                                    OnTextChanged="Txt_ShipperCountry_TextChanged" TabIndex="7" 
+                                    Style="text-transform: uppercase" 
+                                    meta:resourcekey="Txt_ShipperCountryResource1"></asp:TextBox>
                                 <b style="color: Red">*</b>
                                 <cc1:AutoCompleteExtraExtender runat="server" ID="autocomplete" ServiceMethod="GetCountryList"
-                                    TargetControlID="Txt_ShipperCountry" AsyncPostback="false" AutoPostback="true"
-                                    MinimumPrefixLength="1" CompletionSetCount="10" OnItemSelected="autocomplete_ItemSelected">
+                                    TargetControlID="Txt_ShipperCountry" AutoPostback="True"
+                                    MinimumPrefixLength="1" OnItemSelected="autocomplete_ItemSelected" 
+                                    DelimiterCharacters="" Enabled="True" ServicePath="">
                                 </cc1:AutoCompleteExtraExtender>
                             </td>
                             <td class="FieldHeader">
-                                <asp:Label ID="lbl_ShipperProvince" runat="server" Text="省份："></asp:Label>
+                                <asp:Label ID="lbl_ShipperProvince" runat="server" Text="省份：" 
+                                    meta:resourcekey="lbl_ShipperProvinceResource1"></asp:Label>
                             </td>
                             <td align="left">
-                                <asp:TextBox ID="Txt_ShipperProvince" runat="server" Width="80" TabIndex="8" Style="text-transform: uppercase"
-                                    OnTextChanged="Txt_ShipperProvince_TextChanged" AutoPostBack="True"></asp:TextBox>
+                                <asp:TextBox ID="Txt_ShipperProvince" runat="server" Width="80px" TabIndex="8" Style="text-transform: uppercase"
+                                    OnTextChanged="Txt_ShipperProvince_TextChanged" AutoPostBack="True" 
+                                    meta:resourcekey="Txt_ShipperProvinceResource1"></asp:TextBox>
                             </td>
                             <td class="FieldHeader">
-                                <asp:Label ID="lbl_ShipperRegion" runat="server" Text="城市："></asp:Label>
+                                <asp:Label ID="lbl_ShipperRegion" runat="server" Text="城市：" 
+                                    meta:resourcekey="lbl_ShipperRegionResource1"></asp:Label>
                             </td>
                             <td align="left" class="style1">
-                                <asp:TextBox ID="Txt_ShipperRegion" runat="server" Width="80" TabIndex="9" Style="text-transform: uppercase"
-                                    AutoPostBack="True" OnTextChanged="Txt_ShipperRegion_TextChanged"></asp:TextBox>
+                                <asp:TextBox ID="Txt_ShipperRegion" runat="server" Width="80px" TabIndex="9" Style="text-transform: uppercase"
+                                    AutoPostBack="True" OnTextChanged="Txt_ShipperRegion_TextChanged" 
+                                    meta:resourcekey="Txt_ShipperRegionResource1"></asp:TextBox>
                                 <b style="color: Red">*</b>
                                 <cc1:AutoCompleteExtraExtender runat="server" ID="autoRegion" ServiceMethod="GetRegionList"
-                                    TargetControlID="Txt_ShipperRegion" AsyncPostback="false" MinimumPrefixLength="1"
-                                    CompletionSetCount="10" UseContextKey="True">
+                                    TargetControlID="Txt_ShipperRegion" MinimumPrefixLength="1" 
+                                    UseContextKey="True" DelimiterCharacters="" Enabled="True" ServicePath="">
                                 </cc1:AutoCompleteExtraExtender>
                             </td>
                         </tr>
                         <tr class="Row">
                             <td class="FieldHeader">
-                                <asp:Label ID="lbl_ShipperZipCode" runat="server" Text="邮编："></asp:Label>
+                                <asp:Label ID="lbl_ShipperZipCode" runat="server" Text="邮编：" 
+                                    meta:resourcekey="lbl_ShipperZipCodeResource1"></asp:Label>
                             </td>
                             <td align="left" class="style2">
-                                <asp:TextBox ID="Txt_ShipperZipCode" runat="server" Width="80" TabIndex="10" Style="text-transform: uppercase"
-                                    OnTextChanged="Txt_ShipperZipCode_TextChanged" AutoPostBack="True"></asp:TextBox>
+                                <asp:TextBox ID="Txt_ShipperZipCode" runat="server" Width="80px" TabIndex="10" Style="text-transform: uppercase"
+                                    OnTextChanged="Txt_ShipperZipCode_TextChanged" MaxLength="15" AutoPostBack="True" 
+                                    meta:resourcekey="Txt_ShipperZipCodeResource1"></asp:TextBox>
                                 <b style="color: Red">*</b>
                             </td>
                             <td class="FieldHeader">
-                                <asp:Label ID="lbl_ShipperContactor" runat="server" Text="姓名："></asp:Label>
+                                <asp:Label ID="lbl_ShipperContactor" runat="server" Text="姓名：" 
+                                    meta:resourcekey="lbl_ShipperContactorResource1"></asp:Label>
                             </td>
                             <td align="left" class="style1">
-                                <asp:TextBox ID="Txt_ShipperContactor" runat="server" Width="80" TabIndex="11" Style="text-transform: uppercase"
-                                    OnTextChanged="Txt_ShipperContactor_TextChanged" AutoPostBack="True"></asp:TextBox>
+                                <asp:TextBox ID="Txt_ShipperContactor" runat="server" Width="80px" 
+                                    TabIndex="11" Style="text-transform: uppercase"
+                                    OnTextChanged="Txt_ShipperContactor_TextChanged" MaxLength="40" AutoPostBack="True" 
+                                    meta:resourcekey="Txt_ShipperContactorResource1"></asp:TextBox>
                                 <b style="color: Red">*</b>
                             </td>
                             <td class="FieldHeader">
-                                <asp:Label ID="lbl_ShipperTel" runat="server" Text="电话："></asp:Label>
+                                <asp:Label ID="lbl_ShipperTel" runat="server" Text="电话：" 
+                                    meta:resourcekey="lbl_ShipperTelResource1"></asp:Label>
                             </td>
                             <td align="left">
-                                <asp:TextBox ID="Txt_ShipperTel" AutoPostBack="true" runat="server" Width="80" TabIndex="12"
-                                    Style="text-transform: uppercase" OnTextChanged="Txt_ShipperTel_TextChanged"></asp:TextBox>
+                                <asp:TextBox ID="Txt_ShipperTel" AutoPostBack="True" runat="server" 
+                                    Width="80px" MaxLength="20" TabIndex="12"
+                                    Style="text-transform: uppercase" 
+                                    OnTextChanged="Txt_ShipperTel_TextChanged" 
+                                    meta:resourcekey="Txt_ShipperTelResource1"></asp:TextBox>
                                 <b style="color: Red">*</b>
-                                <asp:Button ID="btn_Addressbox" runat="server" Text="保存新地址" ForeColor="Red" Visible="false"
-                                    CssClass="InputBtn" OnClick="btn_Addressbox_Click" />
+                                <asp:Button ID="btn_Addressbox" runat="server" Text="保存新地址" ForeColor="Red" Visible="False"
+                                    CssClass="InputBtn" OnClick="btn_Addressbox_Click" 
+                                    meta:resourcekey="btn_AddressboxResource1" />
                             </td>
                         </tr>
                     </tbody>
                 </table>
             </div>
-        <%--</ContentTemplate>
-    </asp:UpdatePanel>--%>
-    <%--<div id="delivertitle" runat="server" visible="false">
-        <table class="DataView">
-            <tbody>
-                <tr class="EditRow">
-                    <td colspan="6" align="left">
-                        <asp:Label ID="lbl_Deliver" runat="server" Text="交付人信息"></asp:Label>
-                        <asp:LinkButton ID="lbtn_Deliverhistory" runat="server" Text="[历史]" OnClick="lbtn_Deliverhistory_Click"></asp:LinkButton>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </div>--%>
-    <%--<asp:UpdatePanel ID="upDeliver" runat="server">
-        <ContentTemplate>--%>
-            <div id="Deliver" runat="server" visible="false">
+            <div id="Deliver" runat="server" visible="False">
                 <table class="DataView">
                     <tbody>
                         <tr class="EditRow">
                     <td colspan="6" align="left">
-                        <asp:Label ID="lbl_Deliver" runat="server" Text="交付人信息"></asp:Label>
-                        <asp:LinkButton ID="lbtn_Deliverhistory" runat="server" Text="[历史]" OnClick="lbtn_Deliverhistory_Click"></asp:LinkButton>
+                        <asp:Label ID="lbl_Deliver" runat="server" Text="交付人信息" 
+                            meta:resourcekey="lbl_DeliverResource1"></asp:Label>
+                        <asp:LinkButton ID="lbtn_Deliverhistory" runat="server" Text="[历史]" 
+                            OnClick="lbtn_Deliverhistory_Click" 
+                            meta:resourcekey="lbtn_DeliverhistoryResource1"></asp:LinkButton>
                     </td>
                 </tr>
                         <tr class="Row">
                             <td class="FieldHeader">
-                                <asp:Label ID="lbl_DeliverName" runat="server" Text="公司:"></asp:Label>
+                                <asp:Label ID="lbl_DeliverName" runat="server" Text="公司:" 
+                                    meta:resourcekey="lbl_DeliverNameResource1"></asp:Label>
                             </td>
                             <td align="left" colspan="5">
-                                <asp:TextBox ID="Txt_DeliverName" runat="server" Width="800" TabIndex="13" Style="text-transform: uppercase"
-                                    OnTextChanged="Txt_DeliverName_TextChanged" AutoPostBack="True"></asp:TextBox>
+                                <asp:TextBox ID="Txt_DeliverName" runat="server" MaxLength="180" Width="800px" TabIndex="13" Style="text-transform: uppercase"
+                                    OnTextChanged="Txt_DeliverName_TextChanged" AutoPostBack="True" 
+                                    meta:resourcekey="Txt_DeliverNameResource1"></asp:TextBox>
                             </td>
                         </tr>
                         <tr class="Row">
                             <td class="FieldHeader">
-                                <asp:Label ID="lbl_DeliverAddress" runat="server" Text="地址："></asp:Label>
+                                <asp:Label ID="lbl_DeliverAddress" runat="server" Text="地址：" 
+                                    meta:resourcekey="lbl_DeliverAddressResource1"></asp:Label>
                             </td>
                             <td align="left" colspan="5">
-                                <asp:TextBox ID="Txt_DeliverAddress" runat="server" Width="800" TabIndex="14" TextMode="MultiLine"
+                                <asp:TextBox ID="Txt_DeliverAddress" runat="server" MaxLength="400" Width="800px" TabIndex="14" TextMode="MultiLine"
                                     Style="text-transform: uppercase" OnTextChanged="Txt_DeliverAddress_TextChanged"
-                                    AutoPostBack="True"></asp:TextBox>
+                                    AutoPostBack="True" meta:resourcekey="Txt_DeliverAddressResource1"></asp:TextBox>
                             </td>
                         </tr>
                         <tr class="Row">
                             <td class="FieldHeader">
-                                <asp:Label ID="lbl_DeliverCountry" runat="server" Text="国家："></asp:Label>
+                                <asp:Label ID="lbl_DeliverCountry" runat="server" Text="国家：" 
+                                    meta:resourcekey="lbl_DeliverCountryResource1"></asp:Label>
                             </td>
                             <td align="left" class="style2">
-                                <asp:TextBox ID="Txt_DeliverCountry" runat="server" AutoPostBack="true" OnTextChanged="Txt_DeliverCountry_TextChanged"
-                                    Width="80" TabIndex="24" Style="text-transform: uppercase"></asp:TextBox>
+                                <asp:TextBox ID="Txt_DeliverCountry" runat="server" AutoPostBack="True" OnTextChanged="Txt_DeliverCountry_TextChanged"
+                                    Width="80px" TabIndex="24" Style="text-transform: uppercase" 
+                                    meta:resourcekey="Txt_DeliverCountryResource1"></asp:TextBox>
                                 <cc1:AutoCompleteExtraExtender runat="server" ID="autoDeliveCountry" ServiceMethod="GetCountryList"
-                                    TargetControlID="Txt_DeliverCountry" AsyncPostback="false" AutoPostback="true"
-                                    MinimumPrefixLength="1" CompletionSetCount="10" OnItemSelected="autoDeliveCountry_ItemSelected">
+                                    TargetControlID="Txt_DeliverCountry" AutoPostback="True"
+                                    MinimumPrefixLength="1" OnItemSelected="autoDeliveCountry_ItemSelected" 
+                                    DelimiterCharacters="" Enabled="True" ServicePath="">
                                 </cc1:AutoCompleteExtraExtender>
                             </td>
                             <td class="FieldHeader">
-                                <asp:Label ID="lbl_DeliverProvince" runat="server" Text="省份："></asp:Label>
+                                <asp:Label ID="lbl_DeliverProvince" runat="server" Text="省份：" 
+                                    meta:resourcekey="lbl_DeliverProvinceResource1"></asp:Label>
                             </td>
                             <td align="left">
-                                <asp:TextBox ID="Txt_DeliverProvince" runat="server" Width="80" TabIndex="15" Style="text-transform: uppercase"
-                                    OnTextChanged="Txt_DeliverProvince_TextChanged" AutoPostBack="True"></asp:TextBox>
+                                <asp:TextBox ID="Txt_DeliverProvince" runat="server" Width="80px" TabIndex="15" Style="text-transform: uppercase"
+                                    OnTextChanged="Txt_DeliverProvince_TextChanged" AutoPostBack="True" 
+                                    meta:resourcekey="Txt_DeliverProvinceResource1"></asp:TextBox>
                             </td>
                             <td class="FieldHeader">
-                                <asp:Label ID="lbl_DeliverRegion" runat="server" Text="城市："></asp:Label>
+                                <asp:Label ID="lbl_DeliverRegion" runat="server" Text="城市：" 
+                                    meta:resourcekey="lbl_DeliverRegionResource1"></asp:Label>
                             </td>
                             <td align="left" class="style1">
-                                <asp:TextBox ID="Txt_DeliverRegion" runat="server" Width="80" TabIndex="16" Style="text-transform: uppercase"
-                                    OnTextChanged="Txt_DeliverRegion_TextChanged" AutoPostBack="True"></asp:TextBox>
+                                <asp:TextBox ID="Txt_DeliverRegion" runat="server" Width="80px" TabIndex="16" Style="text-transform: uppercase"
+                                    OnTextChanged="Txt_DeliverRegion_TextChanged" AutoPostBack="True" 
+                                    meta:resourcekey="Txt_DeliverRegionResource1"></asp:TextBox>
                                 <cc1:AutoCompleteExtraExtender runat="server" ID="autoDeliverRegion" ServiceMethod="GetRegionList"
-                                    TargetControlID="Txt_DeliverRegion" AsyncPostback="false" MinimumPrefixLength="1"
-                                    CompletionSetCount="10" UseContextKey="True">
+                                    TargetControlID="Txt_DeliverRegion" MinimumPrefixLength="1" 
+                                    UseContextKey="True" DelimiterCharacters="" Enabled="True" ServicePath="">
                                 </cc1:AutoCompleteExtraExtender>
                             </td>
                         </tr>
                         <tr class="Row">
                             <td class="FieldHeader">
-                                <asp:Label ID="lbl_DeliverZipCode" runat="server" Text="邮编："></asp:Label>
+                                <asp:Label ID="lbl_DeliverZipCode" runat="server" Text="邮编：" 
+                                    meta:resourcekey="lbl_DeliverZipCodeResource1"></asp:Label>
                             </td>
                             <td align="left" class="style2">
-                                <asp:TextBox ID="Txt_DeliverZipCode" runat="server" Width="80" TabIndex="17" Style="text-transform: uppercase"
-                                    OnTextChanged="Txt_DeliverZipCode_TextChanged" AutoPostBack="True"></asp:TextBox>
+                                <asp:TextBox ID="Txt_DeliverZipCode" runat="server" MaxLength="15" Width="80px" TabIndex="17" Style="text-transform: uppercase"
+                                    OnTextChanged="Txt_DeliverZipCode_TextChanged" AutoPostBack="True" 
+                                    meta:resourcekey="Txt_DeliverZipCodeResource1"></asp:TextBox>
                             </td>
                             <td class="FieldHeader">
-                                <asp:Label ID="lbl_DeliverContactor" runat="server" Text="姓名："></asp:Label>
+                                <asp:Label ID="lbl_DeliverContactor" runat="server" Text="姓名：" 
+                                    meta:resourcekey="lbl_DeliverContactorResource1"></asp:Label>
                             </td>
                             <td align="left" class="style1">
-                                <asp:TextBox ID="Txt_DeliverContactor" runat="server" Width="80" TabIndex="18" Style="text-transform: uppercase"
-                                    OnTextChanged="Txt_DeliverContactor_TextChanged" AutoPostBack="True"></asp:TextBox>
+                                <asp:TextBox ID="Txt_DeliverContactor" runat="server" MaxLength="40" Width="80px" 
+                                    TabIndex="18" Style="text-transform: uppercase"
+                                    OnTextChanged="Txt_DeliverContactor_TextChanged" AutoPostBack="True" 
+                                    meta:resourcekey="Txt_DeliverContactorResource1"></asp:TextBox>
                             </td>
                             <td class="FieldHeader">
-                                <asp:Label ID="lbl_DeliverTel" runat="server" Text="电话："></asp:Label>
+                                <asp:Label ID="lbl_DeliverTel" runat="server" Text="电话：" 
+                                    meta:resourcekey="lbl_DeliverTelResource1"></asp:Label>
                             </td>
                             <td align="left">
-                                <asp:TextBox ID="Txt_DeliverTel" runat="server" Width="80" TabIndex="19" Style="text-transform: uppercase"
-                                    OnTextChanged="Txt_DeliverTel_TextChanged" AutoPostBack="True"></asp:TextBox>
-                                <asp:Button ID="btn_DeliverAddress" runat="server" Text="保存新地址" ForeColor="Red" Visible="false"
-                                    CssClass="InputBtn" OnClick="btn_DeliverAddress_Click" />
+                                <asp:TextBox ID="Txt_DeliverTel" runat="server" Width="80px" MaxLength="20" TabIndex="19" Style="text-transform: uppercase"
+                                    OnTextChanged="Txt_DeliverTel_TextChanged" AutoPostBack="True" 
+                                    meta:resourcekey="Txt_DeliverTelResource1"></asp:TextBox>
+                                <asp:Button ID="btn_DeliverAddress" runat="server" Text="保存新地址" ForeColor="Red" Visible="False"
+                                    CssClass="InputBtn" OnClick="btn_DeliverAddress_Click" 
+                                    meta:resourcekey="btn_DeliverAddressResource1" />
                             </td>
                         </tr>
                         <tr class="Row">
                             <td colspan="6">
-                                <asp:Button ID="but_cancel" runat="server" Text="清除交付人信息" CssClass="InputBtn" OnClick="but_cancel_Click" />
+                                <asp:Button ID="but_cancel" runat="server" Text="清除交付人信息" CssClass="InputBtn" 
+                                    OnClick="but_cancel_Click" meta:resourcekey="but_cancelResource1" />
                             </td>
                         </tr>
                     </tbody>
                 </table>
             </div>
-        <%--</ContentTemplate>
-    </asp:UpdatePanel>--%>
     <div>
         <table class="DataView">
             <tbody>
@@ -292,103 +322,124 @@
             </tbody>
         </table>
     </div>
-    <%--<asp:UpdatePanel ID="upConsignee" runat="server">
-        <ContentTemplate>--%>
             <div>
                 <table class="DataView">
                     <tbody>
                         <tr class="EditRow">
                     <td colspan="6" align="left">
-                        <asp:Label ID="lbl_Consignee" runat="server" Text="收件人信息"></asp:Label>
-                        <asp:LinkButton ID="lbtn_Consigneehistory" runat="server" Text="[历史]" OnClick="lbtn_Consigneehistory_Click"></asp:LinkButton>
+                        <asp:Label ID="lbl_Consignee" runat="server" Text="收件人信息" 
+                            meta:resourcekey="lbl_ConsigneeResource1"></asp:Label>
+                        <asp:LinkButton ID="lbtn_Consigneehistory" runat="server" Text="[历史]" 
+                            OnClick="lbtn_Consigneehistory_Click" 
+                            meta:resourcekey="lbtn_ConsigneehistoryResource1"></asp:LinkButton>
                         &nbsp;&nbsp;&nbsp;&nbsp;
                         <asp:LinkButton ID="lbtn_AddConsignee" runat="server" Text="添加交付人信息" CssClass="LinkBtn"
-                            OnClick="lbtn_AddConsignee_Click"></asp:LinkButton>
-                        <%--<input id="lbtn_AddConsignee" name="lbtn_AddConsignee" runat="server" type="button" class="LinkBtn" value="添加交付人信息" onclick="javascript:__doPostBack()" />--%>
+                            OnClick="lbtn_AddConsignee_Click" 
+                            meta:resourcekey="lbtn_AddConsigneeResource1"></asp:LinkButton>
                     </td>
                 </tr>
                         <tr class="Row">
                             <td class="FieldHeader">
-                                <asp:Label ID="lbl_ConsigneeName" runat="server" Text="公司："></asp:Label>
+                                <asp:Label ID="lbl_ConsigneeName" runat="server" Text="公司：" 
+                                    meta:resourcekey="lbl_ConsigneeNameResource1"></asp:Label>
                             </td>
                             <td align="left" colspan="5">
-                                <asp:TextBox ID="Txt_ConsigneeName" runat="server" Width="800" onchange="Context()" TabIndex="20" Style="text-transform: uppercase"></asp:TextBox>
+                                <asp:TextBox ID="Txt_ConsigneeName" runat="server" Width="800px" 
+                                    onchange="Context()" TabIndex="20" MaxLength="180" Style="text-transform: uppercase" 
+                                    meta:resourcekey="Txt_ConsigneeNameResource1"></asp:TextBox>
                                 <asp:Button ID="btn_ConsigneeName" runat="server" 
                                     onclick="btn_ConsigneeName_Click" BackColor="White" BorderStyle="None" 
-                                    EnableTheming="False"/>
+                                    EnableTheming="False" meta:resourcekey="btn_ConsigneeNameResource1"/>
                                 <b style="color: Red">*</b>
                             </td>
                         </tr>
                         <tr class="Row">
                             <td class="FieldHeader">
-                                <asp:Label ID="lbl_ConsigneeAddress" runat="server" Text="地址："></asp:Label>
+                                <asp:Label ID="lbl_ConsigneeAddress" runat="server" Text="地址：" 
+                                    meta:resourcekey="lbl_ConsigneeAddressResource1"></asp:Label>
                             </td>
                             <td align="left" colspan="5">
-                                <asp:TextBox ID="Txt_ConsigneeAddress" runat="server" Width="800" TabIndex="21" TextMode="MultiLine"
+                                <asp:TextBox ID="Txt_ConsigneeAddress" runat="server" Width="800px" 
+                                    TabIndex="21" TextMode="MultiLine" MaxLength="400"
                                     Style="text-transform: uppercase" OnTextChanged="Txt_ConsigneeAddress_TextChanged"
-                                    AutoPostBack="True"></asp:TextBox><b style="color: Red">*</b>
+                                    AutoPostBack="True" meta:resourcekey="Txt_ConsigneeAddressResource1"></asp:TextBox><b style="color: Red">*</b>
                             </td>
                         </tr>
                         <tr class="Row">
                             <td class="FieldHeader">
-                                <asp:Label ID="lbl_ConsigneeCountry" runat="server" Text="国家："></asp:Label>
+                                <asp:Label ID="lbl_ConsigneeCountry" runat="server" Text="国家：" 
+                                    meta:resourcekey="lbl_ConsigneeCountryResource1"></asp:Label>
                             </td>
                             <td align="left" class="style2">
-                                <asp:TextBox ID="Txt_ConsigneeCountry" runat="server" Width="80" OnTextChanged="Txt_ConsigneeCountry_TextChanged"
-                                    AutoPostBack="true" TabIndex="22" Style="text-transform: uppercase"></asp:TextBox>
+                                <asp:TextBox ID="Txt_ConsigneeCountry" runat="server" Width="80px" OnTextChanged="Txt_ConsigneeCountry_TextChanged"
+                                    AutoPostBack="True" TabIndex="22" Style="text-transform: uppercase" 
+                                    meta:resourcekey="Txt_ConsigneeCountryResource1"></asp:TextBox>
                                 <b style="color: Red">*</b>
                                 <cc1:AutoCompleteExtraExtender runat="server" ID="autoConsigneeCountry" ServiceMethod="GetCountryList"
-                                    TargetControlID="Txt_ConsigneeCountry" AsyncPostback="false" AutoPostback="true"
-                                    MinimumPrefixLength="1" CompletionSetCount="10" OnItemSelected="autoConsigneeCountry_ItemSelected">
+                                    TargetControlID="Txt_ConsigneeCountry" AutoPostback="True"
+                                    MinimumPrefixLength="1" OnItemSelected="autoConsigneeCountry_ItemSelected" 
+                                    DelimiterCharacters="" Enabled="True" ServicePath="">
                                 </cc1:AutoCompleteExtraExtender>
                             </td>
                             <td class="FieldHeader">
-                                <asp:Label ID="lbl_ConsigneeProvince" runat="server" Text="省份："></asp:Label>
+                                <asp:Label ID="lbl_ConsigneeProvince" runat="server" Text="省份：" 
+                                    meta:resourcekey="lbl_ConsigneeProvinceResource1"></asp:Label>
                             </td>
                             <td align="left">
-                                <asp:TextBox ID="Txt_ConsigneeProvince" runat="server" Width="80" TabIndex="23" Style="text-transform: uppercase"
-                                    OnTextChanged="Txt_ConsigneeProvince_TextChanged" AutoPostBack="True"></asp:TextBox>
+                                <asp:TextBox ID="Txt_ConsigneeProvince" runat="server" Width="80px" 
+                                    TabIndex="23" Style="text-transform: uppercase"
+                                    OnTextChanged="Txt_ConsigneeProvince_TextChanged" AutoPostBack="True" 
+                                    meta:resourcekey="Txt_ConsigneeProvinceResource1"></asp:TextBox>
                             </td>
                             <td class="FieldHeader">
-                                <asp:Label ID="lbl_ConsigneeRegion" runat="server" Text="城市："></asp:Label>
+                                <asp:Label ID="lbl_ConsigneeRegion" runat="server" Text="城市：" 
+                                    meta:resourcekey="lbl_ConsigneeRegionResource1"></asp:Label>
                             </td>
                             <td align="left" class="style1">
-                                <asp:TextBox ID="Txt_ConsigneeRegion" runat="server" Width="80" TabIndex="24" Style="text-transform: uppercase"
-                                    AutoPostBack="True" OnTextChanged="Txt_ConsigneeRegion_TextChanged"></asp:TextBox>
+                                <asp:TextBox ID="Txt_ConsigneeRegion" runat="server" Width="80px" TabIndex="24" Style="text-transform: uppercase"
+                                    AutoPostBack="True" OnTextChanged="Txt_ConsigneeRegion_TextChanged" 
+                                    meta:resourcekey="Txt_ConsigneeRegionResource1"></asp:TextBox>
                                 <b style="color: Red">*</b>
                                 <cc1:AutoCompleteExtraExtender runat="server" ID="autoConsigneeRegion" ServiceMethod="GetRegionList"
-                                    TargetControlID="Txt_ConsigneeRegion" AsyncPostback="false" MinimumPrefixLength="1"
-                                    CompletionSetCount="10" UseContextKey="True">
+                                    TargetControlID="Txt_ConsigneeRegion" MinimumPrefixLength="1" 
+                                    UseContextKey="True" DelimiterCharacters="" Enabled="True" ServicePath="">
                                 </cc1:AutoCompleteExtraExtender>
                             </td>
                         </tr>
                         <tr class="Row">
                             <td class="FieldHeader">
-                                <asp:Label ID="lbl_ConsigneeZipCode" runat="server" Text="邮编："></asp:Label>
+                                <asp:Label ID="lbl_ConsigneeZipCode" runat="server" Text="邮编：" 
+                                    meta:resourcekey="lbl_ConsigneeZipCodeResource1"></asp:Label>
                             </td>
                             <td align="left" class="style2">
-                                <asp:TextBox ID="Txt_ConsigneeZipCode" runat="server" Width="80" TabIndex="25" Style="text-transform: uppercase"
-                                    OnTextChanged="Txt_ConsigneeZipCode_TextChanged" AutoPostBack="True"></asp:TextBox>
+                                <asp:TextBox ID="Txt_ConsigneeZipCode" runat="server" Width="80px" 
+                                    TabIndex="25" Style="text-transform: uppercase"
+                                    OnTextChanged="Txt_ConsigneeZipCode_TextChanged" MaxLength="15" AutoPostBack="True" 
+                                    meta:resourcekey="Txt_ConsigneeZipCodeResource1"></asp:TextBox>
                                 <b style="color: Red">*</b>
                             </td>
                             <td class="FieldHeader">
-                                <asp:Label ID="lbl_ConsigneeContactor" runat="server" Text="姓名："></asp:Label>
+                                <asp:Label ID="lbl_ConsigneeContactor" runat="server" Text="姓名：" 
+                                    meta:resourcekey="lbl_ConsigneeContactorResource1"></asp:Label>
                             </td>
                             <td align="left" class="style1">
-                                <asp:TextBox ID="Txt_ConsigneeContactor" runat="server" Width="80" TabIndex="26"
+                                <asp:TextBox ID="Txt_ConsigneeContactor" runat="server" MaxLength="40" Width="80px" TabIndex="26"
                                     Style="text-transform: uppercase" OnTextChanged="Txt_ConsigneeContactor_TextChanged"
-                                    AutoPostBack="True"></asp:TextBox>
+                                    AutoPostBack="True" meta:resourcekey="Txt_ConsigneeContactorResource1"></asp:TextBox>
                                 <b style="color: Red">*</b>
                             </td>
                             <td class="FieldHeader">
-                                <asp:Label ID="lbl_ConsigneeTel" runat="server" Text="电话："></asp:Label>
+                                <asp:Label ID="lbl_ConsigneeTel" runat="server" Text="电话：" 
+                                    meta:resourcekey="lbl_ConsigneeTelResource1"></asp:Label>
                             </td>
                             <td align="left">
-                                <asp:TextBox ID="Txt_ConsigneeTel" runat="server" Width="80" TabIndex="27" Style="text-transform: uppercase"
-                                    OnTextChanged="Txt_ConsigneeTel_TextChanged" AutoPostBack="True"></asp:TextBox>
+                                <asp:TextBox ID="Txt_ConsigneeTel" runat="server" Width="80px" TabIndex="27" Style="text-transform: uppercase"
+                                    OnTextChanged="Txt_ConsigneeTel_TextChanged" AutoPostBack="True" 
+                                    meta:resourcekey="Txt_ConsigneeTelResource1" MaxLength="20"></asp:TextBox>
                                 <b style="color: Red">*</b>
                                 <asp:Button ID="btn_ConsigneeAddress" runat="server" Text="保存新地址" ForeColor="Red"
-                                    Visible="false" CssClass="InputBtn" OnClick="btn_ConsigneeAddress_Click" />
+                                    Visible="False" CssClass="InputBtn" OnClick="btn_ConsigneeAddress_Click" 
+                                    meta:resourcekey="btn_ConsigneeAddressResource1" />
                             </td>
                         </tr>
                     </tbody>
@@ -396,9 +447,10 @@
             </div>
             <div class="FooterBtnBar">
         <asp:Button ID="But_Next" runat="server" Text="下一页" CssClass="InputBtn" TabIndex="28"
-            OnClick="But_Next_Click" />
+            OnClick="But_Next_Click" meta:resourcekey="But_NextResource1" />
         <asp:Button ID="But_Conel" runat="server" Text="重  填" CssClass="InputBtn" TabIndex="29"
-            OnClick="But_Conel_Click" OnClientClick="return confirm('是否确认重填？');" />
+            OnClick="But_Conel_Click" OnClientClick="return confirm('是否确认重填？');" 
+                    meta:resourcekey="But_ConelResource1" />
     </div>
         </ContentTemplate>
     </asp:UpdatePanel>
