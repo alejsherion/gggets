@@ -18,7 +18,7 @@ namespace GGGETSAdmin.PackageManage
         private string BarCode = string.Empty;
         private string regionCode = string.Empty;
         private IList<HAWB> listHawb;
-        private readonly int PageCount = 25;//页面显示个数，固定不变。需要配置请修改此属性
+        private readonly int PageCount = 35;//页面显示个数，固定不变。需要配置请修改此属性
         public int PageIndex //当期页码，会随着点击下一页，上一页进行动态变化
         {
             get { return (int)ViewState["pageIndex"]; }
@@ -103,25 +103,17 @@ namespace GGGETSAdmin.PackageManage
             {
                 listpackage = _packageservice.FindPackageByCondition(BarCode, beginTime, endTime, regionCode,pageIndex,pageCount,ref totalCount);
                 ViewState["totalCount"] = totalCount;
-                if (listpackage.Count <= pageCount)
-                {
-                    gv_HAWB.DataSource = listpackage;
-                    gv_HAWB.DataBind();
-                    FenYe.Visible = false;
-                }
-                else if (listpackage.Count > 0)
+                if (listpackage.Count > 0)
                 {
 
                     gv_HAWB.DataSource = listpackage;
                     gv_HAWB.DataBind();
-                    FenYe.Visible = true;
                 }
                 else
                 {
                     Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('没有相关记录！')</script>");
                     gv_HAWB.DataSource = null;
                     gv_HAWB.DataBind();
-                    FenYe.Visible = false;
                 }
             }
             else
@@ -133,10 +125,20 @@ namespace GGGETSAdmin.PackageManage
         {
             PageIndex = 0;
             Band(PageIndex, PageCount);
-            
-            lbl_nuber.Text = "1";
-            lbl_sumnuber.Text = (((int)ViewState["totalCount"] + PageCount - 1) / PageCount).ToString();
-            DataBound();            
+            if (ViewState["totalCount"]!=null)
+            {
+                lbl_nuber.Text = "1";
+                lbl_sumnuber.Text = (((int)ViewState["totalCount"] + PageCount - 1) / PageCount).ToString();
+                DataBound();
+                if (gv_HAWB.Rows.Count < PageCount)
+                {
+                    FenYe.Visible = false;
+                }
+                else
+                {
+                    FenYe.Visible = true;
+                }
+            }
         }
 
         protected void btn_Close_Click(object sender, EventArgs e)

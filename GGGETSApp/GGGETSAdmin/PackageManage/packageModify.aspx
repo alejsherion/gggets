@@ -24,24 +24,24 @@
                                 <asp:Label ID="lbl_FLTNo" runat="server" Text="航班号:"></asp:Label>
                             </td>
                             <td colspan="3" align="left">
-                                <asp:TextBox ID="txt_FLTNo" TabIndex="1" runat="server" Width="250" Style="text-transform: uppercase"></asp:TextBox>
+                                <asp:TextBox ID="txt_FLTNo" TabIndex="1" MaxLength="45" runat="server" Width="250" Style="text-transform: uppercase"></asp:TextBox>
                             </td>
                         </tr>
                         <tr class="Row">
-                            <td class="FieldHeader">
+                            <td class="FieldHeader" align="right">
                                 <asp:Label ID="lbl_MAWBNCode" runat="server" Text="总运单号:"></asp:Label>
                             </td>
                             <td colspan="3" align="left">
-                                <asp:TextBox ID="Txt_MAWBCode" TabIndex="2" runat="server" Width="250" 
+                                <asp:TextBox ID="Txt_MAWBCode" TabIndex="2" MaxLength="45" runat="server" Width="250" 
                                     Style="text-transform: uppercase"></asp:TextBox>
                             </td>
-                            <td class="FieldHeader">
+                            <td class="FieldHeader" align="right" style="width:150px">
                                 <asp:Label ID="lbl_CreateTime1" runat="server" Text="创建时间:"></asp:Label>
                             </td>
                             <td align="left">
                                 <asp:Label ID="txt_CreateTime" runat="server"></asp:Label>
                             </td>
-                            <td class="FieldHeader">
+                            <td class="FieldHeader" align="right">
                                 <asp:Label ID="lbl_UpdateTime" runat="server" Text="修改时间:"></asp:Label>
                             </td>
                             <td align="left">
@@ -49,11 +49,11 @@
                             </td>
                         </tr>
                         <tr class="Row">
-                            <td class="FieldHeader">
+                            <td class="FieldHeader" align="right" style="width:200px">
                                 <asp:Label ID="lbl_Destination" runat="server" Text="目的三字码:"></asp:Label>
                             </td>
                             <td align="left">
-                                <asp:TextBox ID="txt_Destination" runat="server" Width="50" TabIndex="3" Style="text-transform: uppercase"></asp:TextBox>
+                                <asp:TextBox ID="txt_Destination" runat="server" Width="50" TabIndex="3" MaxLength="3" Style="text-transform: uppercase"></asp:TextBox>
                                 <%--<cc1:AutoCompleteExtraExtender runat="server" ID="autocomplete" ServiceMethod="GetCountryList"
                                     TargetControlID="txt_Destination" AsyncPostback="false" AutoPostback="true" MinimumPrefixLength="1"
                                     CompletionSetCount="10" OnItemSelected="autocomplete_ItemSelected">

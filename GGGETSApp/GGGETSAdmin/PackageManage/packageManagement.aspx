@@ -31,7 +31,7 @@
                         <asp:Label ID="lbl_Destination" runat="server" Text="目的地三字码:"></asp:Label>
                     </td>
                     <td align="left">
-                        <asp:TextBox ID="txt_Destination" TabIndex="4" runat="server" Width="50" Style="text-transform: uppercase"></asp:TextBox>
+                        <asp:TextBox ID="txt_Destination" TabIndex="4" runat="server" Width="50" MaxLength="3" Style="text-transform: uppercase"></asp:TextBox>
                         <cc1:AutoCompleteExtraExtender runat="server" ID="autocomplete" ServiceMethod="GetCountryList"
                             TargetControlID="txt_Destination" AsyncPostback="false" AutoPostback="true" MinimumPrefixLength="1"
                             CompletionSetCount="10" OnItemSelected="autocomplete_ItemSelected">
@@ -46,7 +46,7 @@
         </table>
         <div style="height: 350px;overflow-x:auto;overflow-y:auto;">
         <asp:GridView ID="gv_HAWB" runat="server" CssClass="DataView" 
-            AutoGenerateColumns="False" PageSize="26">
+            AutoGenerateColumns="False" PageSize="36">
             <Columns>
                 <asp:TemplateField HeaderText="行号">
                     <ItemTemplate>

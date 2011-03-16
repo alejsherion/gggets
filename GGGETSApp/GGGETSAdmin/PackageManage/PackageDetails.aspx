@@ -26,7 +26,7 @@
                         <asp:Label ID="txt_CreateTime" runat="server" 
                             meta:resourcekey="txt_CreateTimeResource1"></asp:Label>
                     </td>
-                    <td class="FieldHeader">
+                    <td class="FieldHeader" style="width:120px">
                         <asp:Label ID="lbl_UpdateTime" runat="server" Text="修改时间:" 
                             meta:resourcekey="lbl_UpdateTimeResource1"></asp:Label>
                     </td>
