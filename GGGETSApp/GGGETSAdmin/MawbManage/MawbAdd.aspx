@@ -19,19 +19,19 @@
                                 <%--<input id="Txt_MAWBBarCode" name="Txt_MAWBBarCode" type="text" class="TextBox" runat="server" onblur="MAWBBarCode(this)" style="width:250px" />--%>
                                 <asp:TextBox ID="Txt_MAWBBarCode" runat="server" Width="250" CssClass="TextBox" TabIndex="1"
                                     Style="text-transform: uppercase" OnTextChanged="Txt_MAWBBarCode_TextChanged"
-                                    AutoPostBack="True"></asp:TextBox>
+                                    AutoPostBack="True" MaxLength="45"></asp:TextBox>
                             </td>
                             <td class="FieldHeader">
                                 <asp:Label ID="lbl_CreateTime" runat="server" Text="创建时间:"></asp:Label>
                             </td>
                             <td>
-                                <asp:Label ID="txt_CreateTime" runat="server" CssClass="TextBox"></asp:Label>
+                                <asp:Label ID="txt_CreateTime" runat="server"></asp:Label>
                             </td>
                             <td class="FieldHeader">
                                 <asp:Label ID="lbl_UpdateTime" runat="server" Text="修改时间:"></asp:Label>
                             </td>
                             <td>
-                                <asp:Label ID="txt_UpdateTime" runat="server" CssClass="TextBox"></asp:Label>
+                                <asp:Label ID="txt_UpdateTime" runat="server"></asp:Label>
                             </td>
                         </tr>
                         <tr class="Row">
@@ -39,7 +39,7 @@
                                 <asp:Label ID="lbl_FLTNo" runat="server" Text="航班号:"></asp:Label>
                             </td>
                             <td colspan="3">
-                                <asp:TextBox ID="txt_FLTNo" runat="server" Width="250" CssClass="TextBox" TabIndex="2"
+                                <asp:TextBox ID="txt_FLTNo" runat="server" MaxLength="45" Width="250" CssClass="TextBox" TabIndex="2"
                                     Style="text-transform: uppercase"></asp:TextBox>
                             </td>
                             <td class="FieldHeader">
@@ -63,13 +63,13 @@
                                 <asp:Label ID="lbl_TotalWeight" runat="server" Text="总重量:"></asp:Label>
                             </td>
                             <td>
-                                <asp:Label ID="Txt_TotalWeight" runat="server" CssClass="TextBox"></asp:Label>
+                                <asp:Label ID="Txt_TotalWeight" runat="server"></asp:Label>
                             </td>
                             <td class="FieldHeader">
                                 <asp:Label ID="lbl_TotalVolume" runat="server" Text="总体积:"></asp:Label>
                             </td>
                             <td>
-                                <asp:Label ID="txt_TotalVolume" runat="server" CssClass="TextBox"></asp:Label>
+                                <asp:Label ID="txt_TotalVolume" runat="server"></asp:Label>
                             </td>
                             <td colspan="2">
                                 <asp:Button ID="btn_Save" runat="server" Text="保 存" CssClass="InputBtn" OnClick="btn_Save_Click"

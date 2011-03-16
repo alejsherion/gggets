@@ -87,24 +87,16 @@ namespace GGGETSAdmin.MawbManage
             {
                 listmawb = _mawbService.FindMAWBByCondition(BarCode, beginTime, endTime, pageIndex, pageCount, ref totalCount);
                 ViewState["totalCount"] = totalCount;
-                if (listmawb.Count <= pageCount)
+                if (listmawb.Count > 0)
                 {
                     gv_HAWB.DataSource = listmawb;
                     gv_HAWB.DataBind();
-                    FenYe.Visible = false;
-                }
-                else if (listmawb.Count > 0)
-                {
-                    gv_HAWB.DataSource = listmawb;
-                    gv_HAWB.DataBind();
-                    FenYe.Visible = true;
                 }
                 else
                 {
                     Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('没有记录！')</script>");
                     gv_HAWB.DataSource = null;
                     gv_HAWB.DataBind();
-                    FenYe.Visible = false;
                 }
             }
             else
@@ -120,6 +112,14 @@ namespace GGGETSAdmin.MawbManage
             lbl_nuber.Text = "1";
             lbl_sumnuber.Text = (((int)ViewState["totalCount"] + PageCount - 1) / PageCount).ToString();
             DataBound();
+            if (gv_HAWB.Rows.Count < PageCount)
+            {
+                FenYe.Visible = false;
+            }
+            else
+            {
+                FenYe.Visible = true;
+            }
         }
         public int N()
         {
