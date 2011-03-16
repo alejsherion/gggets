@@ -48,7 +48,7 @@
                             <asp:Label ID="lbl_CountryName" runat="server" Text='<%# Eval("CountryName") %>'></asp:Label>
                         </ItemTemplate>
                         <EditItemTemplate>
-                            <asp:TextBox ID="Txt_CountryName" runat="server" Text='<%# Eval("CountryName") %>'
+                            <asp:TextBox ID="Txt_CountryName" MaxLength="50" runat="server" Text='<%# Eval("CountryName") %>'
                                 Style="text-transform: uppercase"></asp:TextBox>
                         </EditItemTemplate>
                         <HeaderStyle HorizontalAlign="Center" />
