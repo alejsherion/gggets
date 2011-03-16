@@ -25,9 +25,9 @@
     <PublishDatabaseSettings>
       <Objects>
         <ObjectGroup Name="GGGETSUnitOfWork-Deployment" Order="1">
-          <Destination Path="Data Source=.%3bInitial Catalog=GGGETS%3bUser ID=rs-developer%3bPassword=12345678" />
-          <Object Type="dbFullSql" Enabled="True">
-            <PreSource Path="Data Source=WILLIAM-PC\SQLServer2008%3bInitial Catalog=GGGETS%3bUser ID=sa%3bPassword=iloveYUN122" ScriptSchema="True" ScriptData="False" CopyAllFullTextCatalogs="False" />
+          <Destination Path="Data Source=.%3bInitial Catalog=GGGETS%3bUser ID=sa%3bPassword=sql" />
+          <Object Type="dbFullSql" Enabled="False">
+            <PreSource Path="Data Source=.%3bInitial Catalog=GGGETS%3bUser ID=sa%3bPassword=iloveYUN122" ScriptSchema="True" ScriptData="False" CopyAllFullTextCatalogs="False" />
             <Source Path="obj\Debug\AutoScripts\GGGETSUnitOfWork-Deployment_SchemaOnly.sql" Transacted="True" />
           </Object>
         </ObjectGroup>
@@ -70,31 +70,31 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="NPOI, Version=1.2.2.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\NPOI.dll</HintPath>
+      <HintPath>DLLs\NPOI.dll</HintPath>
     </Reference>
     <Reference Include="NPOI.DDF, Version=1.2.2.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\NPOI.DDF.dll</HintPath>
+      <HintPath>DLLs\NPOI.DDF.dll</HintPath>
     </Reference>
     <Reference Include="NPOI.HPSF, Version=1.2.2.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\NPOI.HPSF.dll</HintPath>
+      <HintPath>DLLs\NPOI.HPSF.dll</HintPath>
     </Reference>
     <Reference Include="NPOI.HSSF, Version=1.2.2.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\NPOI.HSSF.dll</HintPath>
+      <HintPath>DLLs\NPOI.HSSF.dll</HintPath>
     </Reference>
     <Reference Include="NPOI.POIFS, Version=1.2.2.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\NPOI.POIFS.dll</HintPath>
+      <HintPath>DLLs\NPOI.POIFS.dll</HintPath>
     </Reference>
     <Reference Include="NPOI.SS, Version=1.0.0.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\NPOI.SS.dll</HintPath>
+      <HintPath>DLLs\NPOI.SS.dll</HintPath>
     </Reference>
     <Reference Include="NPOI.Util, Version=1.2.2.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\NPOI.Util.dll</HintPath>
+      <HintPath>DLLs\NPOI.Util.dll</HintPath>
     </Reference>
     <Reference Include="SAFF.Client, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -535,6 +535,24 @@
   <ItemGroup>
     <Content Include="PackageManage\App_LocalResources\PackageDetails.aspx.resx" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="PackageManage\App_LocalResources\WebForm1.aspx.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="PackageManage\App_LocalResources\WebForm1.aspx.en-us.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="HAWBManage\App_LocalResources\HAWBAdd.aspx.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="HAWBManage\App_LocalResources\HAWBAdd.aspx.en-us.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="HAWBManage\App_LocalResources\HAWBItemAdd.aspx.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="HAWBManage\App_LocalResources\HAWBItemAdd.aspx.en-us.resx" />
+  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
   <ProjectExtensions>
@@ -543,7 +561,7 @@
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>2537</DevelopmentServerPort>
+          <DevelopmentServerPort>2178</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>
           </IISUrl>
