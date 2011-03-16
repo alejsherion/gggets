@@ -24,7 +24,7 @@
                 </td>
                 <td>
                     <asp:TextBox ID="txt_RegionName" runat="server" Width="100"
-                        TabIndex="3" style="text-transform:uppercase"></asp:TextBox>
+                        TabIndex="3" MaxLength="35" style="text-transform:uppercase"></asp:TextBox>
                 </td>
                 <td>
                     <asp:Button ID="btn_Demand" TabIndex="4" runat="server" Text="查 询" CssClass="InputBtn" OnClick="btn_Demand_Click" />
@@ -53,7 +53,7 @@
                         <asp:Label ID="lbl_RegionName" runat="server" Text='<%# Eval("RegionName") %>'></asp:Label>
                     </ItemTemplate>
                     <EditItemTemplate>
-                        <asp:TextBox ID="Txt_RegionName" runat="server" Text='<%# Eval("RegionName") %>' style="text-transform:uppercase"></asp:TextBox>
+                        <asp:TextBox ID="Txt_RegionName" runat="server" MaxLength="35" Text='<%# Eval("RegionName") %>' style="text-transform:uppercase"></asp:TextBox>
                     </EditItemTemplate>
                     <HeaderStyle HorizontalAlign="Center" />
                     <ItemStyle HorizontalAlign="Center" />
