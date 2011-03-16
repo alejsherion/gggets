@@ -37,7 +37,7 @@
         </table>
         <div style="height: 350px;overflow-x:auto;overflow-y:auto;">
         <asp:GridView ID="gv_AddressBook" runat="server" AutoGenerateColumns="false" 
-            onrowcommand="gv_AddressBook_RowCommand">
+            onrowcommand="gv_AddressBook_RowCommand" PageSize="5000">
             <Columns>
                 <asp:TemplateField HeaderText="行号">
                     <ItemTemplate>

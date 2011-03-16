@@ -54,7 +54,8 @@ namespace GGGETSAdmin.AddressBookManage
                 Company company = _companyService.FindCompanyByCompanyCode(Txt_CompanyCode.Text.Trim());
                 if (company == null)
                 {
-                    Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('没有该公司，请重新输入！')</script>");
+                    ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('没有该公司，请重新输入!')", true);
+                    //Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('没有该公司，请重新输入！')</script>");
                     Txt_CompanyCode.Focus();
                     Txt_CompanyCode.Text = "";
                 }
@@ -74,7 +75,8 @@ namespace GGGETSAdmin.AddressBookManage
                     depar = _departmentservice.FindDepartmentByDepCodeAndCompanyCode(Txt_Code.Text.Trim(), Txt_CompanyCode.Text.Trim());
                     if (depar == null)
                     {
-                        Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('没有该部门账号，请重新输入！')</script>");
+                        ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('没有该部门账号，请重新输入!')", true);
+                        //Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('没有该部门账号，请重新输入！')</script>");
                         Txt_Code.Focus();
                         Txt_Code.Text = "";
                     }
@@ -86,14 +88,16 @@ namespace GGGETSAdmin.AddressBookManage
                 }
                 else
                 {
-                    Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('请重新输入部门账号！')</script>");
+                    //Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('请重新输入部门账号！')</script>");
+                    ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('请重新输入部门账号!')", true);
                     Txt_Code.Focus();
                 }
 
             }
             else
             {
-                Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('请重新输入公司账号！')</script>");
+                //Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('请重新输入公司账号！')</script>");
+                ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('请重新输入公司账号!')", true);
                 Txt_CompanyCode.Focus();
             }
             
@@ -105,7 +109,8 @@ namespace GGGETSAdmin.AddressBookManage
                 user = _userService.FindUserByLoginName(Txt_LoginName.Text.Trim());
                 if (user == null)
                 {
-                    Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('没有该用户名，请重新输入！')</script>");
+                    //Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('没有该用户名，请重新输入！')</script>");
+                    ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('没有该用户名，请重新输入!')", true);
                     Txt_LoginName.Focus();
                     Txt_LoginName.Text = "";
                 }
@@ -170,7 +175,7 @@ namespace GGGETSAdmin.AddressBookManage
             IList<CountryCode> country = _countryservice.FindAllCountries();
             foreach (CountryCode countrycode in country)
             {
-                if (countrycode.CountryName == Txt_DeliverCountry.Text.Trim())
+                if (countrycode.CountryName == Txt_DeliverCountry.Text.Trim().ToUpper())
                 {
                     autoDeliverRegion.ContextKey = countrycode.ID.ToString();
                     ok = true;
@@ -183,7 +188,8 @@ namespace GGGETSAdmin.AddressBookManage
             }
             else
             {
-                Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('请输入正确的国家！')</script>");
+                //Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('请输入正确的国家！')</script>");
+                ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('请输入正确的国家!')", true);
                 Txt_DeliverCountry.Focus();
                 Txt_DeliverCountry.Text = string.Empty;
             }
@@ -197,7 +203,7 @@ namespace GGGETSAdmin.AddressBookManage
             bool Ok = false;
             foreach (RegionCode regioncode in region)
             {
-                if (regioncode.RegionName == Txt_DeliverRegion.Text.Trim())
+                if (regioncode.RegionName == Txt_DeliverRegion.Text.Trim().ToUpper())
                 {
                     Ok = true;
                     break;
@@ -209,7 +215,8 @@ namespace GGGETSAdmin.AddressBookManage
             }
             else
             {
-                Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('请输入正确的城市！')</script>");
+                //Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('请输入正确的城市！')</script>");
+                ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('请输入正确的城市!')", true);
                 Txt_DeliverRegion.Focus();
             }
         }
@@ -220,7 +227,8 @@ namespace GGGETSAdmin.AddressBookManage
             string Did = "";
             if (Txt_CompanyCode.Text.Trim() == "" && Txt_Code.Text.Trim() == "" && Txt_LoginName.Text.Trim() == "")
             {
-                Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('部门账号与用户名必须填写一个！')</script>");
+                //Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('部门账号与用户名必须填写一个！')</script>");
+                ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('部门账号与用户名必须填写一个!')", true);
                 Txt_LoginName.Focus();
             }
             else
@@ -238,47 +246,55 @@ namespace GGGETSAdmin.AddressBookManage
         }
         protected void AddRessBook(string UID,string DID)
         {
-            if (Txt_DeliverName.Text == "")
+            if (Txt_DeliverName.Text.Trim() == "")
             {
-                Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('不能为空！')</script>");
+                //Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('不能为空！')</script>");
+                ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('公司名称不能为空!')", true);
                 Txt_DeliverName.Focus();
             }
-            else if (Txt_DeliverAddress.Text == "")
+            else if (Txt_DeliverAddress.Text.Trim() == "")
             {
-                Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('不能为空！')</script>");
+                //Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('不能为空！')</script>");
+                ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('地址不能为空!')", true);
                 Txt_DeliverAddress.Focus();
             }
-            else if (Txt_DeliverCountry.Text == "")
+            else if (Txt_DeliverCountry.Text.Trim() == "")
             {
-                Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('不能为空！')</script>");
+                //Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('不能为空！')</script>");
+                ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('国家不能为空!')", true);
                 Txt_DeliverCountry.Focus();
             }
-            else if (Txt_DeliverRegion.Text == "")
+            else if (Txt_DeliverRegion.Text.Trim() == "")
             {
-                Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('不能为空!')</script>");
+                //Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('不能为空!')</script>");
+                ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('地区不能为空!')", true);
                 Txt_DeliverRegion.Focus();
             }
-            else if (Txt_DeliverZipCode.Text == "")
+            else if (Txt_DeliverZipCode.Text.Trim() == "")
             {
-                Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('不能为空！')</script>");
+                //Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('不能为空！')</script>");
+                ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('邮编不能为空!')", true);
                 Txt_DeliverZipCode.Focus();
             }
 
-            else if (Txt_DeliverContactor.Text == "")
+            else if (Txt_DeliverContactor.Text.Trim() == "")
             {
-                Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('不能为空！')</script>");
+                //Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('不能为空！')</script>");
+                ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('联系人不能为空!')", true);
                 Txt_DeliverContactor.Focus();
             }
-            else if (Txt_DeliverTel.Text == "")
+            else if (Txt_DeliverTel.Text.Trim() == "")
             {
-                Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('不能为空！')</script>");
+                //Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('不能为空！')</script>");
+                ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('电话号码不能为空!')", true);
                 Txt_DeliverTel.Focus();
             }
             else
             {
-                if (!RTel.IsMatch(Txt_DeliverTel.Text))
+                if (!RTel.IsMatch(Txt_DeliverTel.Text.Trim()))
                 {
-                    Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('电话号码格式不正确！')</script>");
+                    //Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('电话号码格式不正确！')</script>");
+                    ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('电话号码格式不正确!')", true);
                     Txt_DeliverTel.Focus();
                 }
                 else
@@ -293,20 +309,21 @@ namespace GGGETSAdmin.AddressBookManage
                     {
                         address.DID = Guid.Parse(DID);
                     }
-                    address.Name = Txt_DeliverName.Text.Trim();
-                    address.Address = Txt_DeliverAddress.Text.Trim();
-                    address.CountryCode = CountrySwitch(Txt_DeliverCountry.Text.Trim());
-                    address.Provience = Txt_DeliverProvince.Text.Trim();
-                    address.RegionCode = RegionSwitch(Txt_DeliverRegion.Text.Trim());
-                    address.PostCode = Txt_DeliverZipCode.Text.Trim();
-                    address.ContactorName = Txt_DeliverContactor.Text.Trim();
-                    address.Phone = Txt_DeliverTel.Text.Trim();
+                    address.Name = Txt_DeliverName.Text.Trim().ToUpper();
+                    address.Address = Txt_DeliverAddress.Text.Trim().ToUpper();
+                    address.CountryCode = CountrySwitch(Txt_DeliverCountry.Text.Trim().ToUpper());
+                    address.Provience = Txt_DeliverProvince.Text.Trim().ToUpper();
+                    address.RegionCode = RegionSwitch(Txt_DeliverRegion.Text.Trim().ToUpper());
+                    address.PostCode = Txt_DeliverZipCode.Text.Trim().ToUpper();
+                    address.ContactorName = Txt_DeliverContactor.Text.Trim().ToUpper();
+                    address.Phone = Txt_DeliverTel.Text.Trim().ToUpper();
                     address.AddressType = int.Parse(ddl_AddressBookType.SelectedValue);
                     address.CreateTime = DateTime.Now;
                     address.UpdateTime = DateTime.Now;
                     address.Operator = "admin";
                     _addressbookservice.AddAddressBook(address);
-                    Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('添加成功！')</script>");
+                    //Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('添加成功！')</script>");
+                    ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('添加成功!')", true);
                     InitialControl(this.Controls);
                 }
             }
