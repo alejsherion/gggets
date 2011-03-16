@@ -18,10 +18,10 @@
                     <td class="FieldHeader">
                         <asp:Label ID="lbl_CreateTime" runat="server" Text="创建时间:"></asp:Label>
                     </td>
-                    <td>
+                    <td style="width:75px">
                         <asp:TextBox ID="txt_UpCreateTime" TabIndex="2" runat="server" Width="75px" onfocusin="calendar()" style="text-transform:uppercase"></asp:TextBox>
                     </td>
-                    <td class="FieldHeader">
+                    <td class="FieldHeader" style="width:5px">
                         <asp:Label ID="lbl_Status" runat="server" Text="-"></asp:Label>
                     </td>
                     <td>

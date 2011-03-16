@@ -58,8 +58,7 @@ namespace GGGETSAdmin.MawbManage
                 
                 if (package != null)
                 {
-
-
+                    
                     if (_mawbservice.JudgeMIDIsNull(package.BarCode))
                     {
                         mawb = (MAWB)Session["mawb"];
@@ -170,8 +169,6 @@ namespace GGGETSAdmin.MawbManage
                         }
                     }
                     mawb.Packages.Remove(package);
-                    mawb.TotalWeight = mawb.TotalWeight - package.TotalWeight;
-                    mawb.TotalVolume = decimal.Round(mawb.TotalWeight / 166, 2);
                     Txt_TotalWeight.Text = mawb.TotalWeight.ToString();
                     txt_TotalVolume.Text = mawb.TotalVolume.ToString();
                 }

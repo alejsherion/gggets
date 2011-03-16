@@ -13,7 +13,7 @@
                         <asp:Label ID="lbl_MAWBBarCode" runat="server" Text="总运单号:"></asp:Label>
                     </td>
                     <td colspan="3">
-                        <asp:TextBox ID="Txt_MAWBBarCode" TabIndex="1" runat="server" Width="250" Style="text-transform: uppercase"></asp:TextBox>
+                        <asp:TextBox ID="Txt_MAWBBarCode" TabIndex="1" MaxLength="45" runat="server" Width="250" Style="text-transform: uppercase"></asp:TextBox>
                     </td>
                     <td class="FieldHeader">
                         <asp:Label ID="lbl_CreateTime" runat="server" Text="创建时间:"></asp:Label>
@@ -33,7 +33,7 @@
                         <asp:Label ID="lbl_FLTNo" runat="server" Text="航班号:"></asp:Label>
                     </td>
                     <td colspan="3">
-                        <asp:TextBox ID="txt_FLTNo" runat="server" Width="250" TabIndex="2" Style="text-transform: uppercase"></asp:TextBox>
+                        <asp:TextBox ID="txt_FLTNo" runat="server" MaxLength="45" Width="250" TabIndex="2" Style="text-transform: uppercase"></asp:TextBox>
                     </td>
                     <td class="FieldHeader" style="width:150px">
                         <asp:Label ID="lbl_AirportRegion" runat="server" Text="机场三字码:"></asp:Label>

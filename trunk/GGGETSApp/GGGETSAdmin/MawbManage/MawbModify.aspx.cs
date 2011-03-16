@@ -93,8 +93,6 @@ namespace GGGETSAdmin.MawbManage
                     }
                     mawb.Packages.Add(package);
                     _mawbservice.ModifyMAWB(mawb);
-                    mawb.TotalWeight = mawb.TotalWeight + package.TotalWeight;
-                    mawb.TotalVolume = decimal.Round(mawb.TotalWeight / 166, 2);
                     Txt_TotalWeight.Text = mawb.TotalWeight.ToString();
                     txt_TotalVolume.Text = mawb.TotalVolume.ToString();
                     gv_Bag.DataSource = mawb.Packages;
