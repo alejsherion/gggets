@@ -19,7 +19,7 @@
                         </td>
                         <td colspan="3">
                             <asp:TextBox ID="Txt_BagBarCode" runat="server" Width="250" TabIndex="1" Style="text-transform: uppercase"
-                                OnTextChanged="Txt_BagBarCode_TextChanged" AutoPostBack="True"></asp:TextBox>
+                                OnTextChanged="Txt_BagBarCode_TextChanged" MaxLength="45" AutoPostBack="True"></asp:TextBox>
                         </td>
                         <td class="FieldHeader">
                             <asp:Label ID="lbl_CreateTime" runat="server" Text="创建时间:"></asp:Label>
@@ -39,11 +39,13 @@
                         </td>
                     </tr>
                     <tr class="Row">
-                        <td class="FieldHeader">
+                        <td class="FieldHeader" style="width:150px">
                             <asp:Label ID="lbl_Region" runat="server" Text="目的地三字码:"></asp:Label>
                         </td>
                         <td style="width: 80px">
-                            <asp:TextBox ID="txt_Destination" runat="server" Width="50" TabIndex="2" Style="text-transform: uppercase"></asp:TextBox>
+                            <asp:TextBox ID="Txt_Region" runat="server" TabIndex="2" Width="50" 
+                                MaxLength="3" AutoPostBack="true" OnTextChanged="Txt_Region_TextChanged" Style="text-transform: uppercase"></asp:TextBox>
+                           
                             <%--<cc1:AutoCompleteExtraExtender runat="server" ID="autocomplete" ServiceMethod="GetCountryList"
                                 TargetControlID="txt_Destination" AsyncPostback="false" AutoPostback="true" MinimumPrefixLength="1"
                                 CompletionSetCount="10" OnItemSelected="autocomplete_ItemSelected">

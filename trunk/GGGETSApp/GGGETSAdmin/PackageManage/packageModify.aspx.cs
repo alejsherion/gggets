@@ -199,6 +199,7 @@ namespace GGGETSAdmin.PackageManage
         }
         protected void ModifyPackage(int type)
         {
+            bool ok = false;
             if (package == null)
             {
                 package = _packageservice.FindPackageByBarcode(lbtn_BagBarCode.Text);
@@ -222,59 +223,76 @@ namespace GGGETSAdmin.PackageManage
             }
             if (Regex.IsMatch(txt_Destination.Text.Trim(), RRegion))
             {
-                if (Txt_MAWBCode.Text != "")
+                IList<RegionCode> Regioncode = _regionservice.FindAllRegionCodes();
+                foreach (RegionCode regioncode in Regioncode)
                 {
-                    if (txt_FLTNo.Text != "")
+                    if (regioncode.RegionCode1 == txt_Destination.Text.Trim().ToUpper())
                     {
-                        MAWB mawb = _mawbservice.FindMAWBByBarcode(Txt_MAWBCode.Text.Trim());
-                        if (mawb != null)
+                        ok = true;
+                        break;
+                    }
+                }
+                if (!ok)
+                {
+                    ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('没有该三字码!')", true);
+                    txt_Destination.Focus();
+                }
+                else
+                {
+                    if (Txt_MAWBCode.Text != "")
+                    {
+                        if (txt_FLTNo.Text != "")
                         {
-                            if (mawb.FlightNo == txt_FLTNo.Text.Trim())
+                            MAWB mawb = _mawbservice.FindMAWBByBarcode(Txt_MAWBCode.Text.Trim());
+                            if (mawb != null)
                             {
-                                package.MID = mawb.MID;
-                                package.CreateTime = DateTime.Parse(txt_CreateTime.Text.Trim());
-                                package.UpdateTime = DateTime.Now;
-                                package.RegionCode = txt_Destination.Text.Trim().ToUpper();
-                                _packageservice.ModifyPackage(package);
-                                ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('修改成功!');", true);
-                                Response.Redirect("packageManagement.aspx");
+                                if (mawb.FlightNo == txt_FLTNo.Text.Trim())
+                                {
+                                    package.MID = mawb.MID;
+                                    package.CreateTime = DateTime.Parse(txt_CreateTime.Text.Trim());
+                                    package.UpdateTime = DateTime.Now;
+                                    package.RegionCode = txt_Destination.Text.Trim().ToUpper();
+                                    _packageservice.ModifyPackage(package);
+                                    ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('修改成功!');", true);
+                                    Response.Redirect("packageManagement.aspx");
+                                }
+                                else
+                                {
+                                    ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('航班号不正确!');", true);
+                                    txt_FLTNo.Focus();
+                                }
                             }
                             else
                             {
-                                ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('航班号不正确!');", true);
-                                txt_FLTNo.Focus();
+                                ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('没有该总运单号!');", true);
+                                Txt_MAWBCode.Focus();
+                                Txt_MAWBCode.Text = "";
                             }
                         }
                         else
                         {
-                            ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('没有该总运单号!');", true);
-                            Txt_MAWBCode.Focus();
-                            Txt_MAWBCode.Text = "";
+                            ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('请输入航班号!');", true);
+                            txt_FLTNo.Focus();
                         }
                     }
                     else
                     {
-                        ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('请输入航班号!');", true);
-                        txt_FLTNo.Focus();
+                        package.MID = null;
+                        package.CreateTime = DateTime.Parse(txt_CreateTime.Text.Trim());
+                        package.UpdateTime = DateTime.Now;
+                        package.RegionCode = txt_Destination.Text.Trim().ToUpper();
+                        _packageservice.ModifyPackage(package);
+                        ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('修改成功!');location='packageManagement.aspx'", true);
+
                     }
-                }
-                else
-                {
-                    package.MID = null;
-                    package.CreateTime = DateTime.Parse(txt_CreateTime.Text.Trim());
-                    package.UpdateTime = DateTime.Now;
-                    package.RegionCode = txt_Destination.Text.Trim();
-                    _packageservice.ModifyPackage(package);                    
-                    ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('修改成功!');location='packageManagement.aspx'", true);
-                    
                 }
             }
             else
             {
-                ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('三字码只能输入字母!');", true);
+                ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('目的地三字码只能输入字母!');", true);
                 txt_Destination.Focus();
             }
-
+            
         }
 
         protected void lbtn_BagBarCode_Click(object sender, EventArgs e)

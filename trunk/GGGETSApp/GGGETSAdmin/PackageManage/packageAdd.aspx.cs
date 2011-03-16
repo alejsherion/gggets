@@ -7,7 +7,6 @@ using System.Web.UI.WebControls;
 using ETS.GGGETSApp.Domain.Application.Entities;
 using Application.GGETS;
 using System.Text.RegularExpressions;
-using System.Net;
 
 namespace GGGETSAdmin.PackageManage
 {
@@ -34,7 +33,7 @@ namespace GGGETSAdmin.PackageManage
             txt_CreateTime.Text = time.ToString("yyyy-MM-dd HH:mm");
             Txt_BagBarCode.Focus();
             if (!IsPostBack)
-            {               
+            {
                 package = new Package();
                 Session["package"] = package;
                 if (gv_HAWB.Rows.Count == 0)
@@ -54,7 +53,7 @@ namespace GGGETSAdmin.PackageManage
             }
             else
             {
-                if (Txt_BagBarCode.Text.Trim() != "" && txt_Destination.Text.Trim() != "")
+                if (Txt_BagBarCode.Text.Trim() != "" && Txt_Region.Text.Trim() != "")
                 {
                     hawb = _hawbservice.FindHAWBByBarCode(txt_BarCode.Text.Trim());
                     if (hawb != null)
@@ -79,7 +78,7 @@ namespace GGGETSAdmin.PackageManage
                             }
                             if (_packageservice.JudgePIDIsNull(hawb.BarCode))
                             {
-                                //if (_packageservice.JudgeRegionCodeIsRepeat(hawb.BarCode, txt_Destination.Text.Trim().ToUpper(), isMix))
+                                //if (_packageservice.JudgeRegionCodeIsRepeat(hawb.BarCode, Txt_Region.Text.Trim().ToUpper(), isMix))
                                 //{
                                 package.HAWBs.Add(hawb);
                                 txt_Pice.Text = package.Piece.ToString();
@@ -134,12 +133,12 @@ namespace GGGETSAdmin.PackageManage
         protected void AddPackage(int type)
         {
             package = (Package)Session["package"];
-
+            bool ok = false;
             if (Txt_BagBarCode.Text.Trim() != "")
             {
-                if (txt_Destination.Text.Trim() != "")
+                if (Txt_Region.Text.Trim() != "")
                 {
-                    package.RegionCode = txt_Destination.Text.Trim().ToUpper();
+                    package.RegionCode = Txt_Region.Text.Trim().ToUpper();
                     if (txt_Pice.Text.Trim() != "")
                     {
                         package.Piece = int.Parse(txt_Pice.Text.Trim());
@@ -152,35 +151,53 @@ namespace GGGETSAdmin.PackageManage
                     {
                         package.Status = 1;
                     }
-                    if (Regex.IsMatch(txt_Destination.Text.Trim(), RRegion))
+                    if (Regex.IsMatch(Txt_Region.Text.Trim(), RRegion))
                     {
-                        package.PID = Guid.NewGuid();
-                        package.BarCode = Txt_BagBarCode.Text.Trim().ToUpper();
-                        package.CreateTime = DateTime.Parse(txt_CreateTime.Text.Trim());
-                        package.UpdateTime = DateTime.Now;
-                        package.Operator = "ceshi";
-                        _packageservice.AddPackage(package);
-                        ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('添加成功!')", true);
-                        Session["package"] = null;
-                        Txt_BagBarCode.Text = string.Empty;
-                        txt_CreateTime.Text = DateTime.Now.ToString("yyyy-MM-dd HH:mm");
-                        txt_Destination.Text = string.Empty;
-                        txt_Pice.Text = string.Empty;
-                        Txt_TotalWeight.Text = string.Empty;
-                        gv_HAWB.DataSource = null;
-                        gv_HAWB.DataBind();
+                        IList<RegionCode> Regioncode = _regionservice.FindAllRegionCodes();
+                        foreach (RegionCode regioncode in Regioncode)
+                        {
+                            if (regioncode.RegionCode1 == Txt_Region.Text.Trim().ToUpper())
+                            {
+                                ok = true;
+                                break;
+                            }
+                        }
+                        if (!ok)
+                        {
+                            ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('没有该三字码!')", true);
+                            Txt_Region.Focus();
+                        }
+                        else
+                        {
+                            package.PID = Guid.NewGuid();
+                            package.BarCode = Txt_BagBarCode.Text.Trim().ToUpper();
+                            package.CreateTime = DateTime.Parse(txt_CreateTime.Text.Trim());
+                            package.UpdateTime = DateTime.Now;
+                            package.RegionCode = Txt_Region.Text.Trim().ToUpper();
+                            package.Operator = "ceshi";
+                            _packageservice.AddPackage(package);
+                            ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('添加成功!')", true);
+                            Session["package"] = null;
+                            Txt_BagBarCode.Text = string.Empty;
+                            txt_CreateTime.Text = DateTime.Now.ToString("yyyy-MM-dd HH:mm");
+                            Txt_Region.Text = string.Empty;
+                            txt_Pice.Text = string.Empty;
+                            Txt_TotalWeight.Text = string.Empty;
+                            gv_HAWB.DataSource = null;
+                            gv_HAWB.DataBind();
+                        }
 
                     }
                     else
                     {
-                        ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('只能输入字母并为!')", true);
-                        txt_Destination.Focus();
+                        ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('目的地三字码只能输入字母!')", true);
+                        Txt_Region.Focus();
                     }
                 }
                 else
                 {
-                    ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('目的地不能为空!')", true);
-                    txt_Destination.Focus();
+                    ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('目的地三字码不能为空!')", true);
+                    Txt_Region.Focus();
                 }
             }
             else
@@ -267,7 +284,7 @@ namespace GGGETSAdmin.PackageManage
             }
             else
             {
-                txt_Destination.Focus();
+                Txt_Region.Focus();
             }
         }
         [System.Web.Services.WebMethodAttribute(), System.Web.Script.Services.ScriptMethodAttribute()]
@@ -293,8 +310,42 @@ namespace GGGETSAdmin.PackageManage
 
         protected void autocomplete_ItemSelected(object sender, EventArgs e)
         {
-            txt_Destination.Text = ((AutoCompleteExtra.AutoCompleteExtraExtender)sender).SelectedValue;
+            Txt_Region.Text = ((AutoCompleteExtra.AutoCompleteExtraExtender)sender).SelectedValue;
             txt_BarCode.Focus();
+        }
+
+        protected void Txt_Region_TextChanged(object sender, EventArgs e)
+        {
+            Region();
+        }
+        private void Region()
+        {
+            bool ok = false;
+            if (!string.IsNullOrEmpty(Txt_Region.Text.Trim()))
+            {
+                if (Regex.IsMatch(Txt_Region.Text.Trim(), RRegion))
+                {
+                    IList<RegionCode> Regioncode = _regionservice.FindAllRegionCodes();
+                    foreach (RegionCode regioncode in Regioncode)
+                    {
+                        if (regioncode.RegionCode1 == Txt_Region.Text.Trim().ToUpper())
+                        {
+                            ok = true;
+                            break;
+                        }
+                    }
+                    if (!ok)
+                    {
+                        ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('没有该三字码!')", true);
+                        Txt_Region.Focus();
+                    }
+                }
+                else
+                {
+                    ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('目的地三字码只能为字母!')", true);
+                    Txt_Region.Focus();
+                }
+            }
         }
     }
 }
