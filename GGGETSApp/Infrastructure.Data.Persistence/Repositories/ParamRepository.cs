@@ -39,5 +39,34 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Repositories
                                                             Messages.exception_InvalidStoreContext,
                                                             GetType().Name));
         }
+
+        /// <summary>
+        /// 通过TID获取参数对象
+        /// </summary>
+        /// <param name="TID">TID</param>
+        /// <returns></returns>
+        public Param FindParamByTID(string TID)
+        {
+            IGGGETSAppUnitOfWork context = UnitOfWork as IGGGETSAppUnitOfWork;
+            if (context != null)
+                return context.Param.Where(it => it.TID == new Guid(TID)).SingleOrDefault();
+            else
+                throw new InvalidOperationException(string.Format(
+                                                            CultureInfo.InvariantCulture,
+                                                            Messages.exception_InvalidStoreContext,
+                                                            GetType().Name));
+        }
+
+        public Param FindParamByTIDAndTag(string TID, int Tag)
+        {
+            IGGGETSAppUnitOfWork context = UnitOfWork as IGGGETSAppUnitOfWork;
+            if (context != null)
+                return context.Param.Where(it => it.TID == new Guid(TID)).Where(it => it.Tag == Tag).SingleOrDefault();
+            else
+                throw new InvalidOperationException(string.Format(
+                                                            CultureInfo.InvariantCulture,
+                                                            Messages.exception_InvalidStoreContext,
+                                                            GetType().Name));
+        }
     }
 }

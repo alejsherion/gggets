@@ -19,6 +19,10 @@ namespace Application.GGETS
     {
         #region database
         IList<Param> FindParamsByTID(string TID);
+        Param FindParamByTID(string TID);
+        void ModifyParam(Param param);
+        void RemoveParam(Param param);
+        Param FindParamByTIDAndTag(string TID, int Tag);
         #endregion
 
         #region logic

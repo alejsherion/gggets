@@ -39,9 +39,56 @@ namespace Application.GGETS
         }
 
         #region database
+        /// <summary>
+        /// 通过TID获取参数集合
+        /// </summary>
+        /// <param name="TID">参数序号</param>
+        /// <returns></returns>
         public IList<Param> FindParamsByTID(string TID)
         {
             return _paramRepository.FindParamsByTID(TID);
+        }
+
+        /// <summary>
+        /// 通过TID获取参数对象
+        /// </summary>
+        /// <param name="TID">参数序号</param>
+        /// <returns></returns>
+        public Param FindParamByTID(string TID)
+        {
+            return _paramRepository.FindParamByTID(TID);
+        }
+
+        /// <summary>
+        /// 修改
+        /// </summary>
+        /// <param name="param"></param>
+        public void ModifyParam(Param param)
+        {
+            if (param == null)
+                throw new ArgumentNullException("Param is null");
+            IUnitOfWork unitOfWork = _paramRepository.UnitOfWork;
+            _paramRepository.Modify(param);
+            //complete changes in this unit of work
+            unitOfWork.CommitAndRefreshChanges();
+        }
+
+        /// <summary>
+        /// 删除
+        /// </summary>
+        /// <param name="param"></param>
+        public void RemoveParam(Param param)
+        {
+            if (param == null)
+                throw new ArgumentNullException("Param is null");
+            IUnitOfWork unitOfWork = _paramRepository.UnitOfWork;
+            _paramRepository.Remove(param);
+            unitOfWork.Commit();
+        }
+
+        public Param FindParamByTIDAndTag(string TID, int Tag)
+        {
+            return _paramRepository.FindParamByTIDAndTag(TID, Tag);
         }
 
         #endregion
