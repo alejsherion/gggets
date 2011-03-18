@@ -94,5 +94,19 @@ namespace Application.GGETS
             //complete changes in this unit of work
             unitOfWork.CommitAndRefreshChanges();
         }
+
+        /// <summary>
+        /// 新增海关商品
+        /// </summary>
+        /// <param name="product">商品</param>
+        public void AddHSProduct(HSProduct product)
+        {
+            if (product == null)
+                throw new ArgumentNullException("HSProduct is null");
+            IUnitOfWork unitOfWork = _HSProductRepository.UnitOfWork;
+            _HSProductRepository.Add(product);
+            //complete changes in this unit of work
+            unitOfWork.Commit();
+        }
     }
 }

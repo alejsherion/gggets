@@ -21,5 +21,6 @@ namespace Application.GGETS
         IList<HSProduct> FindHSProductByCondition(string HSCode, string HSName, int pageIndex, int pageCount);
         IList<HSProduct> FindHSProductByCondition(string HSCode, string HSName);
         void ModifyHSProduct(HSProduct product);
+        void AddHSProduct(HSProduct product);
     }
 }
