@@ -18,6 +18,10 @@ namespace Application.GGETS
     public interface ITemplateManagementService
     {
         #region database
+        Template FindTemplateByTemplateCode(string templateCode);
+        IList<Template> GetAll();
+        Template FindTemplateByTID(string TID);
+        void ModifyTemplate(Template template);
         #endregion
 
         #region logic

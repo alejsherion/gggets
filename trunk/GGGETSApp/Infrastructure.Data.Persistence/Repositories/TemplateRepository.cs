@@ -24,5 +24,32 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Repositories
     {
         public TemplateRepository(IGGGETSAppUnitOfWork unitOfWork, ITraceManager traceManager) : base(unitOfWork, traceManager) { }
 
+        /// <summary>
+        /// 通过模板编号获取模板信息
+        /// </summary>
+        /// <param name="templateCode">模板编号</param>
+        /// <returns></returns>
+        public Template FindTemplateByTemplateCode(string templateCode)
+        {
+            if (string.IsNullOrEmpty(templateCode)) throw new ArgumentException("TemplateCode is null!");
+            //Get Assemble's Context
+            IGGGETSAppUnitOfWork context = UnitOfWork as IGGGETSAppUnitOfWork;
+            //don't forget open package's load:HAWBs
+            return context.Template.Where(it => it.TemplateCode == templateCode).SingleOrDefault();
+        }
+
+        /// <summary>
+        /// 通过TID获取模板
+        /// </summary>
+        /// <param name="TID">模板序号GUID</param>
+        /// <returns></returns>
+        public Template FindTemplateByTID(string TID)
+        {
+            if (string.IsNullOrEmpty(TID)) throw new ArgumentException("TID is null!");
+            //Get Assemble's Context
+            IGGGETSAppUnitOfWork context = UnitOfWork as IGGGETSAppUnitOfWork;
+            //don't forget open package's load:HAWBs
+            return context.Template.Where(it => it.TID == new Guid(TID)).SingleOrDefault();
+        }
     }
 }

@@ -16,7 +16,6 @@
           <EntitySet Name="HAWBItem" EntityType="MYGGGETSModel.Store.HAWBItem" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="HSProduct" EntityType="MYGGGETSModel.Store.HSProduct" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="HSProperty" EntityType="MYGGGETSModel.Store.HSProperty" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="HSRelation" EntityType="MYGGGETSModel.Store.HSRelation" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="MAWB" EntityType="MYGGGETSModel.Store.MAWB" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Package" EntityType="MYGGGETSModel.Store.Package" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Param" EntityType="MYGGGETSModel.Store.Param" store:Type="Tables" Schema="dbo" />
@@ -24,6 +23,18 @@
           <EntitySet Name="RegionCode" EntityType="MYGGGETSModel.Store.RegionCode" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Template" EntityType="MYGGGETSModel.Store.Template" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="User" EntityType="MYGGGETSModel.Store.User" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="FindInfo" EntityType="MYGGGETSModel.Store.FindInfo" store:Type="Views" store:Schema="dbo" store:Name="FindInfo">
+            <DefiningQuery>SELECT 
+      [FindInfo].[fieldname] AS [fieldname], 
+      [FindInfo].[identity] AS [identity], 
+      [FindInfo].[primarykey] AS [primarykey], 
+      [FindInfo].[type] AS [type], 
+      [FindInfo].[length] AS [length], 
+      [FindInfo].[decimal] AS [decimal], 
+      [FindInfo].[isnull] AS [isnull], 
+      [FindInfo].[name] AS [name]
+      FROM [dbo].[FindInfo] AS [FindInfo]</DefiningQuery>
+          </EntitySet>
           <AssociationSet Name="FK_ADDRESSB_REFERENCE_DEPARTME" Association="MYGGGETSModel.Store.FK_ADDRESSB_REFERENCE_DEPARTME">
             <End Role="Department" EntitySet="Department" />
             <End Role="AddressBook" EntitySet="AddressBook" />
@@ -56,13 +67,9 @@
             <End Role="HAWB" EntitySet="HAWB" />
             <End Role="HAWBItem" EntitySet="HAWBItem" />
           </AssociationSet>
-          <AssociationSet Name="FK_HSRELATI_FK_HSRELA_HSPRODUC" Association="MYGGGETSModel.Store.FK_HSRELATI_FK_HSRELA_HSPRODUC">
+          <AssociationSet Name="FK_HSPROPER_FK_HSPROP_HSPRODUC" Association="MYGGGETSModel.Store.FK_HSPROPER_FK_HSPROP_HSPRODUC">
             <End Role="HSProduct" EntitySet="HSProduct" />
-            <End Role="HSRelation" EntitySet="HSRelation" />
-          </AssociationSet>
-          <AssociationSet Name="FK_HSRELATI_FK_HSRELA_HSPROPER" Association="MYGGGETSModel.Store.FK_HSRELATI_FK_HSRELA_HSPROPER">
             <End Role="HSProperty" EntitySet="HSProperty" />
-            <End Role="HSRelation" EntitySet="HSRelation" />
           </AssociationSet>
           <AssociationSet Name="FK_PACKAGE_REFERENCE_MAWB" Association="MYGGGETSModel.Store.FK_PACKAGE_REFERENCE_MAWB">
             <End Role="MAWB" EntitySet="MAWB" />
@@ -252,16 +259,9 @@
             <PropertyRef Name="HSPID" />
           </Key>
           <Property Name="HSPID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="HSID" Type="uniqueidentifier" />
           <Property Name="PropertyName" Type="nvarchar" Nullable="false" MaxLength="20" />
           <Property Name="ChineseRemark" Type="nvarchar" MaxLength="100" />
-        </EntityType>
-        <EntityType Name="HSRelation">
-          <Key>
-            <PropertyRef Name="RID" />
-          </Key>
-          <Property Name="RID" Type="uniqueidentifier" Nullable="false" />
-          <Property Name="HSID" Type="uniqueidentifier" />
-          <Property Name="HSPID" Type="uniqueidentifier" />
         </EntityType>
         <EntityType Name="MAWB">
           <Key>
@@ -315,7 +315,8 @@
           <Property Name="Italic" Type="int" />
           <Property Name="Underline" Type="int" />
           <Property Name="ParamType" Type="nvarchar" Nullable="false" MaxLength="10" />
-          <Property Name="GroupName" Type="nvarchar" MaxLength="20" />
+          <Property Name="HorizontalRange" Type="int" />
+          <Property Name="VerticalRange" Type="int" />
         </EntityType>
         <EntityType Name="Privilege">
           <Key>
@@ -344,12 +345,20 @@
             <PropertyRef Name="TID" />
           </Key>
           <Property Name="TID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="TemplateCode" Type="nvarchar" Nullable="false" MaxLength="10" />
           <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="200" />
           <Property Name="Desc" Type="nvarchar" MaxLength="400" />
-          <Property Name="PaperType" Type="nvarchar" Nullable="false" MaxLength="15" />
+          <Property Name="PrintDirection" Type="int" />
+          <Property Name="PagerWidth" Type="int" />
+          <Property Name="PagerHeight" Type="int" />
+          <Property Name="PaperType" Type="nvarchar" MaxLength="15" />
+          <Property Name="BatchHeight" Type="int" />
           <Property Name="CreateDate" Type="datetime" Nullable="false" />
           <Property Name="ModifyDate" Type="datetime" Nullable="false" />
           <Property Name="Operator" Type="nvarchar" Nullable="false" MaxLength="20" />
+          <Property Name="CorrespondingTable" Type="nvarchar" MaxLength="400" />
+          <Property Name="CorrespondingCN" Type="nvarchar" MaxLength="400" />
+          <Property Name="IdentifyKey" Type="nvarchar" MaxLength="20" />
         </EntityType>
         <EntityType Name="User">
           <Key>
@@ -373,6 +382,26 @@
           <Property Name="SettleType" Type="int" Nullable="false" />
           <Property Name="WeightCalType" Type="int" Nullable="false" />
           <Property Name="Status" Type="int" Nullable="false" />
+        </EntityType>
+        <!--生成过程中发现错误:
+      警告 6002: 表/视图“MYGGGETS.dbo.FindInfo”未定义主键。已推断出该键，并将定义创建为只读的表/视图。
+      警告 6005: 不支持数据类型“sql_variant”；已排除了表“MYGGGETS.dbo.FindInfo”中的列“fielddesc”。
+      -->
+        <EntityType Name="FindInfo">
+          <Key>
+            <PropertyRef Name="primarykey" />
+            <PropertyRef Name="decimal" />
+            <PropertyRef Name="isnull" />
+            <PropertyRef Name="name" />
+          </Key>
+          <Property Name="fieldname" Type="nvarchar" MaxLength="128" />
+          <Property Name="identity" Type="int" />
+          <Property Name="primarykey" Type="varchar" Nullable="false" MaxLength="1" />
+          <Property Name="type" Type="nvarchar" MaxLength="128" />
+          <Property Name="length" Type="int" />
+          <Property Name="decimal" Type="int" Nullable="false" />
+          <Property Name="isnull" Type="varchar" Nullable="false" MaxLength="1" />
+          <Property Name="name" Type="nvarchar" Nullable="false" MaxLength="128" />
         </EntityType>
         <Association Name="FK_ADDRESSB_REFERENCE_DEPARTME">
           <End Role="Department" Type="MYGGGETSModel.Store.Department" Multiplicity="0..1" />
@@ -472,27 +501,15 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_HSRELATI_FK_HSRELA_HSPRODUC">
+        <Association Name="FK_HSPROPER_FK_HSPROP_HSPRODUC">
           <End Role="HSProduct" Type="MYGGGETSModel.Store.HSProduct" Multiplicity="0..1" />
-          <End Role="HSRelation" Type="MYGGGETSModel.Store.HSRelation" Multiplicity="*" />
+          <End Role="HSProperty" Type="MYGGGETSModel.Store.HSProperty" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="HSProduct">
               <PropertyRef Name="HSID" />
             </Principal>
-            <Dependent Role="HSRelation">
+            <Dependent Role="HSProperty">
               <PropertyRef Name="HSID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_HSRELATI_FK_HSRELA_HSPROPER">
-          <End Role="HSProperty" Type="MYGGGETSModel.Store.HSProperty" Multiplicity="0..1" />
-          <End Role="HSRelation" Type="MYGGGETSModel.Store.HSRelation" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="HSProperty">
-              <PropertyRef Name="HSPID" />
-            </Principal>
-            <Dependent Role="HSRelation">
-              <PropertyRef Name="HSPID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -616,14 +633,10 @@
           </AssociationSet>
           <EntitySet Name="HSProduct" EntityType="MYGGGETSModel.HSProduct" />
           <EntitySet Name="HSProperty" EntityType="MYGGGETSModel.HSProperty" />
-          <EntitySet Name="HSRelation" EntityType="MYGGGETSModel.HSRelation" />
-          <AssociationSet Name="FK_HSRELATI_FK_HSRELA_HSPRODUC" Association="MYGGGETSModel.FK_HSRELATI_FK_HSRELA_HSPRODUC">
+          <EntitySet Name="FindInfo" EntityType="MYGGGETSModel.FindInfo" />
+          <AssociationSet Name="FK_HSPROPER_FK_HSPROP_HSPRODUC" Association="MYGGGETSModel.FK_HSPROPER_FK_HSPROP_HSPRODUC">
             <End Role="HSProduct" EntitySet="HSProduct" />
-            <End Role="HSRelation" EntitySet="HSRelation" />
-          </AssociationSet>
-          <AssociationSet Name="FK_HSRELATI_FK_HSRELA_HSPROPER" Association="MYGGGETSModel.FK_HSRELATI_FK_HSRELA_HSPROPER">
             <End Role="HSProperty" EntitySet="HSProperty" />
-            <End Role="HSRelation" EntitySet="HSRelation" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="AddressBook">
@@ -845,8 +858,9 @@
           <Property Name="Italic" Type="Int32" />
           <Property Name="Underline" Type="Int32" />
           <Property Name="ParamType" Type="String" Nullable="false" MaxLength="10" Unicode="true" FixedLength="false" />
-          <Property Name="GroupName" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
           <NavigationProperty Name="Template" Relationship="MYGGGETSModel.FK_PARAM_FK_PARAM__TEMPLATE" FromRole="Param" ToRole="Template" />
+          <Property Type="Int32" Name="HorizontalRange" />
+          <Property Type="Int32" Name="VerticalRange" />
         </EntityType>
         <EntityType Name="Privilege">
           <Key>
@@ -883,6 +897,14 @@
           <Property Name="ModifyDate" Type="DateTime" Nullable="false" />
           <Property Name="Operator" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false" />
           <NavigationProperty Name="Params" Relationship="MYGGGETSModel.FK_PARAM_FK_PARAM__TEMPLATE" FromRole="Template" ToRole="Param" />
+          <Property Type="String" Name="TemplateCode" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="PrintDirection" />
+          <Property Type="Int32" Name="PagerWidth" />
+          <Property Type="Int32" Name="PagerHeight" />
+          <Property Type="Int32" Name="BatchHeight" />
+          <Property Type="String" Name="CorrespondingTable" MaxLength="400" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="CorrespondingCN" MaxLength="400" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="IdentifyKey" MaxLength="20" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="User">
           <Key>
@@ -1074,7 +1096,7 @@
           <Property Type="String" Name="PricingSign" MaxLength="30" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="TaxDemandSign" MaxLength="30" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="Remark" MaxLength="200" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="HSRelations" Relationship="MYGGGETSModel.FK_HSRELATI_FK_HSRELA_HSPRODUC" FromRole="HSProduct" ToRole="HSRelation" />
+          <NavigationProperty Name="HSProperty" Relationship="MYGGGETSModel.FK_HSPROPER_FK_HSPROP_HSPRODUC" FromRole="HSProduct" ToRole="HSProperty" />
         </EntityType>
         <EntityType Name="HSProperty">
           <Key>
@@ -1083,39 +1105,34 @@
           <Property Type="Guid" Name="HSPID" Nullable="false" />
           <Property Type="String" Name="PropertyName" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="ChineseRemark" MaxLength="100" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="HSRelations" Relationship="MYGGGETSModel.FK_HSRELATI_FK_HSRELA_HSPROPER" FromRole="HSProperty" ToRole="HSRelation" />
-        </EntityType>
-        <EntityType Name="HSRelation">
-          <Key>
-            <PropertyRef Name="RID" />
-          </Key>
-          <Property Type="Guid" Name="RID" Nullable="false" />
           <Property Type="Guid" Name="HSID" />
-          <Property Type="Guid" Name="HSPID" />
-          <NavigationProperty Name="HSProduct" Relationship="MYGGGETSModel.FK_HSRELATI_FK_HSRELA_HSPRODUC" FromRole="HSRelation" ToRole="HSProduct" />
-          <NavigationProperty Name="HSProperty" Relationship="MYGGGETSModel.FK_HSRELATI_FK_HSRELA_HSPROPER" FromRole="HSRelation" ToRole="HSProperty" />
+          <NavigationProperty Name="HSProduct" Relationship="MYGGGETSModel.FK_HSPROPER_FK_HSPROP_HSPRODUC" FromRole="HSProperty" ToRole="HSProduct" />
         </EntityType>
-        <Association Name="FK_HSRELATI_FK_HSRELA_HSPRODUC">
+        <EntityType Name="FindInfo">
+          <Key>
+            <PropertyRef Name="primarykey" />
+            <PropertyRef Name="decimal" />
+            <PropertyRef Name="isnull" />
+            <PropertyRef Name="name" />
+          </Key>
+          <Property Type="String" Name="fieldname" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="identity" />
+          <Property Type="String" Name="primarykey" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="type" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="length" />
+          <Property Type="Int32" Name="decimal" Nullable="false" />
+          <Property Type="String" Name="isnull" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="name" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <Association Name="FK_HSPROPER_FK_HSPROP_HSPRODUC">
           <End Type="MYGGGETSModel.HSProduct" Role="HSProduct" Multiplicity="0..1" />
-          <End Type="MYGGGETSModel.HSRelation" Role="HSRelation" Multiplicity="*" />
+          <End Type="MYGGGETSModel.HSProperty" Role="HSProperty" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="HSProduct">
               <PropertyRef Name="HSID" />
             </Principal>
-            <Dependent Role="HSRelation">
+            <Dependent Role="HSProperty">
               <PropertyRef Name="HSID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_HSRELATI_FK_HSRELA_HSPROPER">
-          <End Type="MYGGGETSModel.HSProperty" Role="HSProperty" Multiplicity="0..1" />
-          <End Type="MYGGGETSModel.HSRelation" Role="HSRelation" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="HSProperty">
-              <PropertyRef Name="HSPID" />
-            </Principal>
-            <Dependent Role="HSRelation">
-              <PropertyRef Name="HSPID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1277,7 +1294,9 @@
             <ScalarProperty Name="IsMixed" ColumnName="IsMixed" />
           </MappingFragment></EntityTypeMapping></EntitySetMapping>
           <EntitySetMapping Name="Param"><EntityTypeMapping TypeName="MYGGGETSModel.Param"><MappingFragment StoreEntitySet="Param">
-            <ScalarProperty Name="PID" ColumnName="PID" />
+            <ScalarProperty Name="VerticalRange" ColumnName="VerticalRange" />
+                <ScalarProperty Name="HorizontalRange" ColumnName="HorizontalRange" />
+                <ScalarProperty Name="PID" ColumnName="PID" />
             <ScalarProperty Name="TID" ColumnName="TID" />
             <ScalarProperty Name="Tag" ColumnName="Tag" />
             <ScalarProperty Name="Key" ColumnName="Key" />
@@ -1293,7 +1312,6 @@
             <ScalarProperty Name="Italic" ColumnName="Italic" />
             <ScalarProperty Name="Underline" ColumnName="Underline" />
             <ScalarProperty Name="ParamType" ColumnName="ParamType" />
-            <ScalarProperty Name="GroupName" ColumnName="GroupName" />
           </MappingFragment></EntityTypeMapping></EntitySetMapping>
           <EntitySetMapping Name="Privilege"><EntityTypeMapping TypeName="MYGGGETSModel.Privilege"><MappingFragment StoreEntitySet="Privilege">
             <ScalarProperty Name="PrivilegeID" ColumnName="PrivilegeID" />
@@ -1312,7 +1330,15 @@
             <ScalarProperty Name="RegionName" ColumnName="RegionName" />
           </MappingFragment></EntityTypeMapping></EntitySetMapping>
           <EntitySetMapping Name="Template"><EntityTypeMapping TypeName="MYGGGETSModel.Template"><MappingFragment StoreEntitySet="Template">
-            <ScalarProperty Name="TID" ColumnName="TID" />
+            <ScalarProperty Name="IdentifyKey" ColumnName="IdentifyKey" />
+                <ScalarProperty Name="CorrespondingCN" ColumnName="CorrespondingCN" />
+                <ScalarProperty Name="CorrespondingTable" ColumnName="CorrespondingTable" />
+                <ScalarProperty Name="BatchHeight" ColumnName="BatchHeight" />
+                <ScalarProperty Name="PagerHeight" ColumnName="PagerHeight" />
+                <ScalarProperty Name="PagerWidth" ColumnName="PagerWidth" />
+                <ScalarProperty Name="PrintDirection" ColumnName="PrintDirection" />
+                <ScalarProperty Name="TemplateCode" ColumnName="TemplateCode" />
+                <ScalarProperty Name="TID" ColumnName="TID" />
             <ScalarProperty Name="Name" ColumnName="Name" />
             <ScalarProperty Name="Desc" ColumnName="Desc" />
             <ScalarProperty Name="PaperType" ColumnName="PaperType" />
@@ -1361,18 +1387,24 @@
           <EntitySetMapping Name="HSProperty">
             <EntityTypeMapping TypeName="MYGGGETSModel.HSProperty">
               <MappingFragment StoreEntitySet="HSProperty">
+                <ScalarProperty Name="HSID" ColumnName="HSID" />
                 <ScalarProperty Name="ChineseRemark" ColumnName="ChineseRemark" />
                 <ScalarProperty Name="PropertyName" ColumnName="PropertyName" />
                 <ScalarProperty Name="HSPID" ColumnName="HSPID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="HSRelation">
-            <EntityTypeMapping TypeName="MYGGGETSModel.HSRelation">
-              <MappingFragment StoreEntitySet="HSRelation">
-                <ScalarProperty Name="HSPID" ColumnName="HSPID" />
-                <ScalarProperty Name="HSID" ColumnName="HSID" />
-                <ScalarProperty Name="RID" ColumnName="RID" />
+          <EntitySetMapping Name="FindInfo">
+            <EntityTypeMapping TypeName="MYGGGETSModel.FindInfo">
+              <MappingFragment StoreEntitySet="FindInfo">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="isnull" ColumnName="isnull" />
+                <ScalarProperty Name="decimal" ColumnName="decimal" />
+                <ScalarProperty Name="length" ColumnName="length" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="primarykey" ColumnName="primarykey" />
+                <ScalarProperty Name="identity" ColumnName="identity" />
+                <ScalarProperty Name="fieldname" ColumnName="fieldname" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1407,7 +1439,7 @@
         <EntityTypeShape EntityType="MYGGGETSModel.HAWBItem" Width="1.5" PointX="12.75" PointY="21.875" Height="2.5430916341145817" IsExpanded="true" />
         <EntityTypeShape EntityType="MYGGGETSModel.MAWB" Width="1.5" PointX="6" PointY="14.625" Height="3.3071704101562478" IsExpanded="true" />
         <EntityTypeShape EntityType="MYGGGETSModel.Package" Width="1.5" PointX="8.25" PointY="14.5" Height="3.4981901041666674" IsExpanded="true" />
-        <EntityTypeShape EntityType="MYGGGETSModel.Param" Width="1.5" PointX="3" PointY="1" Height="4.4532885742187531" IsExpanded="true" />
+        <EntityTypeShape EntityType="MYGGGETSModel.Param" Width="1.5" PointX="3" PointY="1" Height="4.1515104166666656" IsExpanded="true" />
         <EntityTypeShape EntityType="MYGGGETSModel.Privilege" Width="1.5" PointX="8" PointY="1" Height="2.7341113281250031" IsExpanded="true" />
         <EntityTypeShape EntityType="MYGGGETSModel.RegionCode" Width="1.5" PointX="0.75" PointY="6.75" Height="1.7790128580729174" IsExpanded="true" />
         <EntityTypeShape EntityType="MYGGGETSModel.Template" Width="1.5" PointX="0.75" PointY="2" Height="2.5430916341145888" IsExpanded="true" />
@@ -1470,19 +1502,15 @@
           <ConnectorPoint PointX="8.25" PointY="16.1105859375" />
         </AssociationConnector>
         <AssociationConnector Association="MYGGGETSModel.FK_PARAM_FK_PARAM__TEMPLATE" ManuallyRouted="false">
-          <ConnectorPoint PointX="2.25" PointY="3.2715458170572944" />
-          <ConnectorPoint PointX="3" PointY="3.2715458170572944" />
+          <ConnectorPoint PointX="2.25" PointY="3.5698958333333333" />
+          <ConnectorPoint PointX="3" PointY="3.5698958333333333" />
         </AssociationConnector>
-        <EntityTypeShape EntityType="MYGGGETSModel.HSProduct" Width="1.5" PointX="5.375" PointY="8" Height="3.1397916666666674" />
+        <EntityTypeShape EntityType="MYGGGETSModel.HSProduct" Width="1.5" PointX="5.625" PointY="8.125" Height="3.1397916666666656" />
         <EntityTypeShape EntityType="MYGGGETSModel.HSProperty" Width="1.5" PointX="9.875" PointY="9.25" Height="1.6222135416666674" />
-        <EntityTypeShape EntityType="MYGGGETSModel.HSRelation" Width="1.5" PointX="7.625" PointY="8.625" Height="1.7908333333333388" />
-        <AssociationConnector Association="MYGGGETSModel.FK_HSRELATI_FK_HSRELA_HSPRODUC" >
-          <ConnectorPoint PointX="6.875" PointY="9.52041666666667" />
-          <ConnectorPoint PointX="7.625" PointY="9.52041666666667" />
-        </AssociationConnector>
-        <AssociationConnector Association="MYGGGETSModel.FK_HSRELATI_FK_HSRELA_HSPROPER" >
-          <ConnectorPoint PointX="9.875" PointY="9.83291666666667" />
-          <ConnectorPoint PointX="9.125" PointY="9.83291666666667" />
+        <EntityTypeShape EntityType="MYGGGETSModel.FindInfo" Width="1.5" PointX="8.375" PointY="4.75" Height="2.2966927083333388" />
+        <AssociationConnector Association="MYGGGETSModel.FK_HSPROPER_FK_HSPROP_HSPRODUC" >
+          <ConnectorPoint PointX="7.125" PointY="10.145416666666666" />
+          <ConnectorPoint PointX="9.875" PointY="10.145416666666666" />
         </AssociationConnector>
       </Diagram>
     </Diagrams>

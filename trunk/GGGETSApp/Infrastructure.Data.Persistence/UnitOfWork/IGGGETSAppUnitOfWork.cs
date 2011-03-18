@@ -89,7 +89,7 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.UnitOfWork
         IObjectSet<HSProperty> HSProperty{get;}
         
     
-        IObjectSet<HSRelation> HSRelation{get;}
+        IObjectSet<FindInfo> FindInfo{get;}
         
 
         #endregion

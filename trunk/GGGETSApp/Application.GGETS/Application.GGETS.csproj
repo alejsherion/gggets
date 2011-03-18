@@ -73,14 +73,14 @@
     <Compile Include="HAWBManagement\PackageManagementService.cs" />
     <Compile Include="HS\HSProductManagementService.cs" />
     <Compile Include="HS\HSPropertyManagementService.cs" />
-    <Compile Include="HS\HSRelationManagementService.cs" />
     <Compile Include="HS\IHSProductManagementService.cs" />
     <Compile Include="HS\IHSPropertyManagementService.cs" />
-    <Compile Include="HS\IHSRelationManagementService.cs" />
     <Compile Include="PARAM\CountryCodeManagementService.cs" />
     <Compile Include="PARAM\ICountryCodeManagementService.cs" />
     <Compile Include="PARAM\IRegionCodeManagementService.cs" />
     <Compile Include="PARAM\RegionCodeManagementService.cs" />
+    <Compile Include="PrintTemplate\FindInfoManagementService.cs" />
+    <Compile Include="PrintTemplate\IFindInfoManagementService.cs" />
     <Compile Include="PrintTemplate\IParamManagementService.cs" />
     <Compile Include="PrintTemplate\ITemplateManagementService.cs" />
     <Compile Include="PrintTemplate\ParamManagementService.cs" />

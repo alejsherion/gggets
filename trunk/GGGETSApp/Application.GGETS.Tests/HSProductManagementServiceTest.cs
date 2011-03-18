@@ -30,17 +30,14 @@ namespace Application.GGETS.Tests
     {
         static IHSProductManagementService _HSProductManagementService;//BLL操作类返回
         static IHSPropertyManagementService _HSPropertyManagementService;
-        static IHSRelationManagementService _HSRelatioMnanagementService;
         public HSProductManagementServiceTest()
         {
             IGGGETSAppUnitOfWork context = GetUnitOfWork();//上下文
             ITraceManager traceManager = GetTraceManager();//跟踪管理器
             HSProductRepository HSProductRepository = new HSProductRepository(context, traceManager);//创建DAL操作对象
             HSPropertyRepository HSPropertyRepository = new HSPropertyRepository(context, traceManager);
-            HSRelationRepository HSRelationRepository = new HSRelationRepository(context, traceManager);
             _HSProductManagementService = new HSProductManagementService(HSProductRepository);
             _HSPropertyManagementService = new HSPropertyManagementService(HSPropertyRepository);
-            _HSRelatioMnanagementService = new HSRelationManagementService(HSRelationRepository);
         }
 
         private TestContext testContextInstance;
@@ -123,15 +120,6 @@ namespace Application.GGETS.Tests
             HSProduct product = null; // 获取当前数据库中需要测试的海关商品
             product = _HSProductManagementService.LoadHSProductByHSCode("6304939000");
             HSProperty property = _HSPropertyManagementService.FindHSPropertyByHSPID("da448190-2c7d-4062-8f2b-d808aae731c6");//获取cloths的品名
-
-            HSRelation newRelation = new HSRelation
-                                         {
-                                             RID = Guid.NewGuid(),
-                                             HSProduct = product,
-                                             HSProperty=property
-                                         };
-
-            product.HSRelations.Remove(newRelation);
             _HSProductManagementService.ModifyHSProduct(product);
             //Assert.Inconclusive("无法验证不返回值的方法。");
         }

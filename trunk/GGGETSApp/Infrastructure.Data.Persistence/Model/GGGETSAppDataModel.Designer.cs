@@ -30,8 +30,7 @@ using System.Runtime.Serialization;
 [assembly: EdmRelationshipAttribute("MYGGGETSModel", "FK_HAWBITEM_REFERENCE_HAWB", "HAWB", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(ETS.GGGETSApp.Infrastructure.Data.Persistence.Model.HAWB), "HAWBItem", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ETS.GGGETSApp.Infrastructure.Data.Persistence.Model.HAWBItem), true)]
 [assembly: EdmRelationshipAttribute("MYGGGETSModel", "FK_PACKAGE_REFERENCE_MAWB", "MAWB", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(ETS.GGGETSApp.Infrastructure.Data.Persistence.Model.MAWB), "Package", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ETS.GGGETSApp.Infrastructure.Data.Persistence.Model.Package), true)]
 [assembly: EdmRelationshipAttribute("MYGGGETSModel", "FK_PARAM_FK_PARAM__TEMPLATE", "Template", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(ETS.GGGETSApp.Infrastructure.Data.Persistence.Model.Template), "Param", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ETS.GGGETSApp.Infrastructure.Data.Persistence.Model.Param), true)]
-[assembly: EdmRelationshipAttribute("MYGGGETSModel", "FK_HSRELATI_FK_HSRELA_HSPRODUC", "HSProduct", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(ETS.GGGETSApp.Infrastructure.Data.Persistence.Model.HSProduct), "HSRelation", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ETS.GGGETSApp.Infrastructure.Data.Persistence.Model.HSRelation), true)]
-[assembly: EdmRelationshipAttribute("MYGGGETSModel", "FK_HSRELATI_FK_HSRELA_HSPROPER", "HSProperty", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(ETS.GGGETSApp.Infrastructure.Data.Persistence.Model.HSProperty), "HSRelation", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ETS.GGGETSApp.Infrastructure.Data.Persistence.Model.HSRelation), true)]
+[assembly: EdmRelationshipAttribute("MYGGGETSModel", "FK_HSPROPER_FK_HSPROP_HSPRODUC", "HSProduct", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(ETS.GGGETSApp.Infrastructure.Data.Persistence.Model.HSProduct), "HSProperty", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ETS.GGGETSApp.Infrastructure.Data.Persistence.Model.HSProperty), true)]
 
 #endregion
 
@@ -358,18 +357,18 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Model
         /// <summary>
         /// 没有元数据文档可用。
         /// </summary>
-        public ObjectSet<HSRelation> HSRelation
+        public ObjectSet<FindInfo> FindInfo
         {
             get
             {
-                if ((_HSRelation == null))
+                if ((_FindInfo == null))
                 {
-                    _HSRelation = base.CreateObjectSet<HSRelation>("HSRelation");
+                    _FindInfo = base.CreateObjectSet<FindInfo>("FindInfo");
                 }
-                return _HSRelation;
+                return _FindInfo;
             }
         }
-        private ObjectSet<HSRelation> _HSRelation;
+        private ObjectSet<FindInfo> _FindInfo;
 
         #endregion
         #region AddTo 方法
@@ -511,11 +510,11 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Model
         }
     
         /// <summary>
-        /// 用于向 HSRelation EntitySet 添加新对象的方法，已弃用。请考虑改用关联的 ObjectSet&lt;T&gt; 属性的 .Add 方法。
+        /// 用于向 FindInfo EntitySet 添加新对象的方法，已弃用。请考虑改用关联的 ObjectSet&lt;T&gt; 属性的 .Add 方法。
         /// </summary>
-        public void AddToHSRelation(HSRelation hSRelation)
+        public void AddToFindInfo(FindInfo findInfo)
         {
-            base.AddObject("HSRelation", hSRelation);
+            base.AddObject("FindInfo", findInfo);
         }
 
         #endregion
@@ -2125,6 +2124,244 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Model
         }
 
         #endregion
+    }
+    
+    /// <summary>
+    /// 没有元数据文档可用。
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="MYGGGETSModel", Name="FindInfo")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class FindInfo : EntityObject
+    {
+        #region 工厂方法
+    
+        /// <summary>
+        /// 创建新的 FindInfo 对象。
+        /// </summary>
+        /// <param name="primarykey">primarykey 属性的初始值。</param>
+        /// <param name="decimal">decimal 属性的初始值。</param>
+        /// <param name="isnull">isnull 属性的初始值。</param>
+        /// <param name="name">name 属性的初始值。</param>
+        public static FindInfo CreateFindInfo(global::System.String primarykey, global::System.Int32 @decimal, global::System.String isnull, global::System.String name)
+        {
+            FindInfo findInfo = new FindInfo();
+            findInfo.primarykey = primarykey;
+            findInfo.@decimal = @decimal;
+            findInfo.isnull = isnull;
+            findInfo.name = name;
+            return findInfo;
+        }
+
+        #endregion
+        #region 基元属性
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String fieldname
+        {
+            get
+            {
+                return _fieldname;
+            }
+            set
+            {
+                OnfieldnameChanging(value);
+                ReportPropertyChanging("fieldname");
+                _fieldname = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("fieldname");
+                OnfieldnameChanged();
+            }
+        }
+        private global::System.String _fieldname;
+        partial void OnfieldnameChanging(global::System.String value);
+        partial void OnfieldnameChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> identity
+        {
+            get
+            {
+                return _identity;
+            }
+            set
+            {
+                OnidentityChanging(value);
+                ReportPropertyChanging("identity");
+                _identity = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("identity");
+                OnidentityChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _identity;
+        partial void OnidentityChanging(Nullable<global::System.Int32> value);
+        partial void OnidentityChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String primarykey
+        {
+            get
+            {
+                return _primarykey;
+            }
+            set
+            {
+                if (_primarykey != value)
+                {
+                    OnprimarykeyChanging(value);
+                    ReportPropertyChanging("primarykey");
+                    _primarykey = StructuralObject.SetValidValue(value, false);
+                    ReportPropertyChanged("primarykey");
+                    OnprimarykeyChanged();
+                }
+            }
+        }
+        private global::System.String _primarykey;
+        partial void OnprimarykeyChanging(global::System.String value);
+        partial void OnprimarykeyChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String type
+        {
+            get
+            {
+                return _type;
+            }
+            set
+            {
+                OntypeChanging(value);
+                ReportPropertyChanging("type");
+                _type = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("type");
+                OntypeChanged();
+            }
+        }
+        private global::System.String _type;
+        partial void OntypeChanging(global::System.String value);
+        partial void OntypeChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> length
+        {
+            get
+            {
+                return _length;
+            }
+            set
+            {
+                OnlengthChanging(value);
+                ReportPropertyChanging("length");
+                _length = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("length");
+                OnlengthChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _length;
+        partial void OnlengthChanging(Nullable<global::System.Int32> value);
+        partial void OnlengthChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 @decimal
+        {
+            get
+            {
+                return _decimal;
+            }
+            set
+            {
+                if (_decimal != value)
+                {
+                    OndecimalChanging(value);
+                    ReportPropertyChanging("decimal");
+                    _decimal = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("decimal");
+                    OndecimalChanged();
+                }
+            }
+        }
+        private global::System.Int32 _decimal;
+        partial void OndecimalChanging(global::System.Int32 value);
+        partial void OndecimalChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String isnull
+        {
+            get
+            {
+                return _isnull;
+            }
+            set
+            {
+                if (_isnull != value)
+                {
+                    OnisnullChanging(value);
+                    ReportPropertyChanging("isnull");
+                    _isnull = StructuralObject.SetValidValue(value, false);
+                    ReportPropertyChanged("isnull");
+                    OnisnullChanged();
+                }
+            }
+        }
+        private global::System.String _isnull;
+        partial void OnisnullChanging(global::System.String value);
+        partial void OnisnullChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String name
+        {
+            get
+            {
+                return _name;
+            }
+            set
+            {
+                if (_name != value)
+                {
+                    OnnameChanging(value);
+                    ReportPropertyChanging("name");
+                    _name = StructuralObject.SetValidValue(value, false);
+                    ReportPropertyChanged("name");
+                    OnnameChanged();
+                }
+            }
+        }
+        private global::System.String _name;
+        partial void OnnameChanging(global::System.String value);
+        partial void OnnameChanged();
+
+        #endregion
+    
     }
     
     /// <summary>
@@ -4322,18 +4559,18 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Model
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("MYGGGETSModel", "FK_HSRELATI_FK_HSRELA_HSPRODUC", "HSRelation")]
-        public EntityCollection<HSRelation> HSRelations
+        [EdmRelationshipNavigationPropertyAttribute("MYGGGETSModel", "FK_HSPROPER_FK_HSPROP_HSPRODUC", "HSProperty")]
+        public EntityCollection<HSProperty> HSProperty
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<HSRelation>("MYGGGETSModel.FK_HSRELATI_FK_HSRELA_HSPRODUC", "HSRelation");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<HSProperty>("MYGGGETSModel.FK_HSPROPER_FK_HSPROP_HSPRODUC", "HSProperty");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<HSRelation>("MYGGGETSModel.FK_HSRELATI_FK_HSRELA_HSPRODUC", "HSRelation", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<HSProperty>("MYGGGETSModel.FK_HSPROPER_FK_HSPROP_HSPRODUC", "HSProperty", value);
                 }
             }
         }
@@ -4441,86 +4678,6 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Model
         private global::System.String _ChineseRemark;
         partial void OnChineseRemarkChanging(global::System.String value);
         partial void OnChineseRemarkChanged();
-
-        #endregion
-    
-        #region 导航属性
-    
-        /// <summary>
-        /// 没有元数据文档可用。
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("MYGGGETSModel", "FK_HSRELATI_FK_HSRELA_HSPROPER", "HSRelation")]
-        public EntityCollection<HSRelation> HSRelations
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<HSRelation>("MYGGGETSModel.FK_HSRELATI_FK_HSRELA_HSPROPER", "HSRelation");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<HSRelation>("MYGGGETSModel.FK_HSRELATI_FK_HSRELA_HSPROPER", "HSRelation", value);
-                }
-            }
-        }
-
-        #endregion
-    }
-    
-    /// <summary>
-    /// 没有元数据文档可用。
-    /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="MYGGGETSModel", Name="HSRelation")]
-    [Serializable()]
-    [DataContractAttribute(IsReference=true)]
-    public partial class HSRelation : EntityObject
-    {
-        #region 工厂方法
-    
-        /// <summary>
-        /// 创建新的 HSRelation 对象。
-        /// </summary>
-        /// <param name="rID">RID 属性的初始值。</param>
-        public static HSRelation CreateHSRelation(global::System.Guid rID)
-        {
-            HSRelation hSRelation = new HSRelation();
-            hSRelation.RID = rID;
-            return hSRelation;
-        }
-
-        #endregion
-        #region 基元属性
-    
-        /// <summary>
-        /// 没有元数据文档可用。
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.Guid RID
-        {
-            get
-            {
-                return _RID;
-            }
-            set
-            {
-                if (_RID != value)
-                {
-                    OnRIDChanging(value);
-                    ReportPropertyChanging("RID");
-                    _RID = StructuralObject.SetValidValue(value);
-                    ReportPropertyChanged("RID");
-                    OnRIDChanged();
-                }
-            }
-        }
-        private global::System.Guid _RID;
-        partial void OnRIDChanging(global::System.Guid value);
-        partial void OnRIDChanged();
     
         /// <summary>
         /// 没有元数据文档可用。
@@ -4545,30 +4702,6 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Model
         private Nullable<global::System.Guid> _HSID;
         partial void OnHSIDChanging(Nullable<global::System.Guid> value);
         partial void OnHSIDChanged();
-    
-        /// <summary>
-        /// 没有元数据文档可用。
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public Nullable<global::System.Guid> HSPID
-        {
-            get
-            {
-                return _HSPID;
-            }
-            set
-            {
-                OnHSPIDChanging(value);
-                ReportPropertyChanging("HSPID");
-                _HSPID = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("HSPID");
-                OnHSPIDChanged();
-            }
-        }
-        private Nullable<global::System.Guid> _HSPID;
-        partial void OnHSPIDChanging(Nullable<global::System.Guid> value);
-        partial void OnHSPIDChanged();
 
         #endregion
     
@@ -4580,16 +4713,16 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Model
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("MYGGGETSModel", "FK_HSRELATI_FK_HSRELA_HSPRODUC", "HSProduct")]
+        [EdmRelationshipNavigationPropertyAttribute("MYGGGETSModel", "FK_HSPROPER_FK_HSPROP_HSPRODUC", "HSProduct")]
         public HSProduct HSProduct
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<HSProduct>("MYGGGETSModel.FK_HSRELATI_FK_HSRELA_HSPRODUC", "HSProduct").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<HSProduct>("MYGGGETSModel.FK_HSPROPER_FK_HSPROP_HSPRODUC", "HSProduct").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<HSProduct>("MYGGGETSModel.FK_HSRELATI_FK_HSRELA_HSPRODUC", "HSProduct").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<HSProduct>("MYGGGETSModel.FK_HSPROPER_FK_HSPROP_HSPRODUC", "HSProduct").Value = value;
             }
         }
         /// <summary>
@@ -4601,51 +4734,13 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Model
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<HSProduct>("MYGGGETSModel.FK_HSRELATI_FK_HSRELA_HSPRODUC", "HSProduct");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<HSProduct>("MYGGGETSModel.FK_HSPROPER_FK_HSPROP_HSPRODUC", "HSProduct");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<HSProduct>("MYGGGETSModel.FK_HSRELATI_FK_HSRELA_HSPRODUC", "HSProduct", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// 没有元数据文档可用。
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("MYGGGETSModel", "FK_HSRELATI_FK_HSRELA_HSPROPER", "HSProperty")]
-        public HSProperty HSProperty
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<HSProperty>("MYGGGETSModel.FK_HSRELATI_FK_HSRELA_HSPROPER", "HSProperty").Value;
-            }
-            set
-            {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<HSProperty>("MYGGGETSModel.FK_HSRELATI_FK_HSRELA_HSPROPER", "HSProperty").Value = value;
-            }
-        }
-        /// <summary>
-        /// 没有元数据文档可用。
-        /// </summary>
-        [BrowsableAttribute(false)]
-        [DataMemberAttribute()]
-        public EntityReference<HSProperty> HSPropertyReference
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<HSProperty>("MYGGGETSModel.FK_HSRELATI_FK_HSRELA_HSPROPER", "HSProperty");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<HSProperty>("MYGGGETSModel.FK_HSRELATI_FK_HSRELA_HSPROPER", "HSProperty", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<HSProduct>("MYGGGETSModel.FK_HSPROPER_FK_HSPROP_HSPRODUC", "HSProduct", value);
                 }
             }
         }
@@ -5799,24 +5894,48 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Model
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public global::System.String GroupName
+        public Nullable<global::System.Int32> HorizontalRange
         {
             get
             {
-                return _GroupName;
+                return _HorizontalRange;
             }
             set
             {
-                OnGroupNameChanging(value);
-                ReportPropertyChanging("GroupName");
-                _GroupName = StructuralObject.SetValidValue(value, true);
-                ReportPropertyChanged("GroupName");
-                OnGroupNameChanged();
+                OnHorizontalRangeChanging(value);
+                ReportPropertyChanging("HorizontalRange");
+                _HorizontalRange = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("HorizontalRange");
+                OnHorizontalRangeChanged();
             }
         }
-        private global::System.String _GroupName;
-        partial void OnGroupNameChanging(global::System.String value);
-        partial void OnGroupNameChanged();
+        private Nullable<global::System.Int32> _HorizontalRange;
+        partial void OnHorizontalRangeChanging(Nullable<global::System.Int32> value);
+        partial void OnHorizontalRangeChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> VerticalRange
+        {
+            get
+            {
+                return _VerticalRange;
+            }
+            set
+            {
+                OnVerticalRangeChanging(value);
+                ReportPropertyChanging("VerticalRange");
+                _VerticalRange = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("VerticalRange");
+                OnVerticalRangeChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _VerticalRange;
+        partial void OnVerticalRangeChanging(Nullable<global::System.Int32> value);
+        partial void OnVerticalRangeChanged();
 
         #endregion
     
@@ -6279,7 +6398,8 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Model
         /// <param name="createDate">CreateDate 属性的初始值。</param>
         /// <param name="modifyDate">ModifyDate 属性的初始值。</param>
         /// <param name="operator">Operator 属性的初始值。</param>
-        public static Template CreateTemplate(global::System.Guid tID, global::System.String name, global::System.String paperType, global::System.DateTime createDate, global::System.DateTime modifyDate, global::System.String @operator)
+        /// <param name="templateCode">TemplateCode 属性的初始值。</param>
+        public static Template CreateTemplate(global::System.Guid tID, global::System.String name, global::System.String paperType, global::System.DateTime createDate, global::System.DateTime modifyDate, global::System.String @operator, global::System.String templateCode)
         {
             Template template = new Template();
             template.TID = tID;
@@ -6288,6 +6408,7 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Model
             template.CreateDate = createDate;
             template.ModifyDate = modifyDate;
             template.Operator = @operator;
+            template.TemplateCode = templateCode;
             return template;
         }
 
@@ -6464,6 +6585,198 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Model
         private global::System.String _Operator;
         partial void OnOperatorChanging(global::System.String value);
         partial void OnOperatorChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String TemplateCode
+        {
+            get
+            {
+                return _TemplateCode;
+            }
+            set
+            {
+                OnTemplateCodeChanging(value);
+                ReportPropertyChanging("TemplateCode");
+                _TemplateCode = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("TemplateCode");
+                OnTemplateCodeChanged();
+            }
+        }
+        private global::System.String _TemplateCode;
+        partial void OnTemplateCodeChanging(global::System.String value);
+        partial void OnTemplateCodeChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> PrintDirection
+        {
+            get
+            {
+                return _PrintDirection;
+            }
+            set
+            {
+                OnPrintDirectionChanging(value);
+                ReportPropertyChanging("PrintDirection");
+                _PrintDirection = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("PrintDirection");
+                OnPrintDirectionChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _PrintDirection;
+        partial void OnPrintDirectionChanging(Nullable<global::System.Int32> value);
+        partial void OnPrintDirectionChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> PagerWidth
+        {
+            get
+            {
+                return _PagerWidth;
+            }
+            set
+            {
+                OnPagerWidthChanging(value);
+                ReportPropertyChanging("PagerWidth");
+                _PagerWidth = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("PagerWidth");
+                OnPagerWidthChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _PagerWidth;
+        partial void OnPagerWidthChanging(Nullable<global::System.Int32> value);
+        partial void OnPagerWidthChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> PagerHeight
+        {
+            get
+            {
+                return _PagerHeight;
+            }
+            set
+            {
+                OnPagerHeightChanging(value);
+                ReportPropertyChanging("PagerHeight");
+                _PagerHeight = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("PagerHeight");
+                OnPagerHeightChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _PagerHeight;
+        partial void OnPagerHeightChanging(Nullable<global::System.Int32> value);
+        partial void OnPagerHeightChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> BatchHeight
+        {
+            get
+            {
+                return _BatchHeight;
+            }
+            set
+            {
+                OnBatchHeightChanging(value);
+                ReportPropertyChanging("BatchHeight");
+                _BatchHeight = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("BatchHeight");
+                OnBatchHeightChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _BatchHeight;
+        partial void OnBatchHeightChanging(Nullable<global::System.Int32> value);
+        partial void OnBatchHeightChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String CorrespondingTable
+        {
+            get
+            {
+                return _CorrespondingTable;
+            }
+            set
+            {
+                OnCorrespondingTableChanging(value);
+                ReportPropertyChanging("CorrespondingTable");
+                _CorrespondingTable = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("CorrespondingTable");
+                OnCorrespondingTableChanged();
+            }
+        }
+        private global::System.String _CorrespondingTable;
+        partial void OnCorrespondingTableChanging(global::System.String value);
+        partial void OnCorrespondingTableChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String CorrespondingCN
+        {
+            get
+            {
+                return _CorrespondingCN;
+            }
+            set
+            {
+                OnCorrespondingCNChanging(value);
+                ReportPropertyChanging("CorrespondingCN");
+                _CorrespondingCN = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("CorrespondingCN");
+                OnCorrespondingCNChanged();
+            }
+        }
+        private global::System.String _CorrespondingCN;
+        partial void OnCorrespondingCNChanging(global::System.String value);
+        partial void OnCorrespondingCNChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String IdentifyKey
+        {
+            get
+            {
+                return _IdentifyKey;
+            }
+            set
+            {
+                OnIdentifyKeyChanging(value);
+                ReportPropertyChanging("IdentifyKey");
+                _IdentifyKey = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("IdentifyKey");
+                OnIdentifyKeyChanged();
+            }
+        }
+        private global::System.String _IdentifyKey;
+        partial void OnIdentifyKeyChanging(global::System.String value);
+        partial void OnIdentifyKeyChanged();
 
         #endregion
     

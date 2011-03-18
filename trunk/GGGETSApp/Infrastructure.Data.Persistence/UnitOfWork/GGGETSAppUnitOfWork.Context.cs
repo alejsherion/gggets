@@ -381,11 +381,11 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.UnitOfWork
         }
         private ObjectSet<HSProperty> _hSProperty;
     
-        public IObjectSet<HSRelation> HSRelation
+        public IObjectSet<FindInfo> FindInfo
         {
-            get { return _hSRelation  ?? (_hSRelation = CreateObjectSet<HSRelation>("HSRelation")); }
+            get { return _findInfo  ?? (_findInfo = CreateObjectSet<FindInfo>("FindInfo")); }
         }
-        private ObjectSet<HSRelation> _hSRelation;
+        private ObjectSet<FindInfo> _findInfo;
 
         #endregion
     }
