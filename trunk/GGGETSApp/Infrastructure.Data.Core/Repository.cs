@@ -104,8 +104,8 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Core
                 &&
                 item.ChangeTracker.State == ObjectState.Added)
             {
-                _CurrentUoW.Cache = new AspNetCache();
-                _CurrentUoW.CachingPolicy = CachingPolicy.NoCaching;
+                //_CurrentUoW.Cache = new AspNetCache();
+                //_CurrentUoW.CachingPolicy = CachingPolicy.NoCaching;
 
                 // exception
                 //using (TextWriter log = File.CreateText(logFile))
