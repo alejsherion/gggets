@@ -31,6 +31,49 @@ namespace Application.GGETS
         }
 
         /// <summary>
+        /// 通过模板编号获取模板信息
+        /// </summary>
+        /// <param name="templateCode">模板编号</param>
+        /// <returns></returns>
+        public Template FindTemplateByTemplateCode(string templateCode)
+        {
+            return _templateRepository.FindTemplateByTemplateCode(templateCode);
+        }
+
+        /// <summary>
+        /// 获取所有模板信息
+        /// </summary>
+        /// <returns></returns>
+        public IList<Template> GetAll()
+        {
+            return _templateRepository.GetAll().ToList();
+        }
+
+        /// <summary>
+        /// 通过TID获取模板
+        /// </summary>
+        /// <param name="TID">模板序号</param>
+        /// <returns></returns>
+        public Template FindTemplateByTID(string TID)
+        {
+            return _templateRepository.FindTemplateByTID(TID);
+        }
+
+        /// <summary>
+        /// 修改模板
+        /// </summary>
+        /// <param name="template">模板</param>
+        public void ModifyTemplate(Template template)
+        {
+            if (template == null)
+                throw new ArgumentNullException("Template is null");
+            IUnitOfWork unitOfWork = _templateRepository.UnitOfWork;
+            _templateRepository.Modify(template);
+            //complete changes in this unit of work
+            unitOfWork.CommitAndRefreshChanges();
+        }
+
+        /// <summary>
         /// 新增模板
         /// </summary>
         /// <param name="template">模板</param>

@@ -1,0 +1,16 @@
+HAWB:
+SettleType:0=预付月结,1=预付现结,2=到付月结,3=到付现结
+ServiceType:0=快件,1=包裹
+Status:0=待审核,1=取货,2=核单,3=派送,4=in包(默认0)
+WeightType:0=实重,1=泡重,2=实重+泡重加权（默认0）
+IsInternational:true=国际运单,false=国内运单
+BillTax:0=发件方，1=收件方,2=第三方
+
+HAWBBox:
+BoxType:0=文件,1=包裹(默认为包裹）
+TransCurrency:(0=美元,1=日元) 默认美元
+
+HAWBItem:
+
+User:
+Status:0=可用,1=不可用

@@ -67,6 +67,9 @@
     <Compile Include="Department.cs">
       <DependentUpon>GGGETSAppContext.Types.tt</DependentUpon>
     </Compile>
+    <Compile Include="FindInfo.cs">
+      <DependentUpon>GGGETSAppContext.Types.tt</DependentUpon>
+    </Compile>
     <Compile Include="GGGETSAppContext.Types.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -85,9 +88,6 @@
       <DependentUpon>GGGETSAppContext.Types.tt</DependentUpon>
     </Compile>
     <Compile Include="HSProperty.cs">
-      <DependentUpon>GGGETSAppContext.Types.tt</DependentUpon>
-    </Compile>
-    <Compile Include="HSRelation.cs">
       <DependentUpon>GGGETSAppContext.Types.tt</DependentUpon>
     </Compile>
     <Compile Include="MAWB.cs">

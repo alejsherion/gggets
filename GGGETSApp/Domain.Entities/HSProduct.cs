@@ -22,7 +22,7 @@ using ETS.GGGETSApp.Domain.Core.Entities;
 namespace ETS.GGGETSApp.Domain.Application.Entities
 {
     [DataContract(IsReference = true)]
-    [KnownType(typeof(HSRelation))]
+    [KnownType(typeof(HSProperty))]
     [Serializable]
     [System.CodeDom.Compiler.GeneratedCode("STE-EF",".NET 4.0")]
     #if !SILVERLIGHT
@@ -220,39 +220,39 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
         #region Navigation Properties
     
         [DataMember]
-        public TrackableCollection<HSRelation> HSRelations
+        public TrackableCollection<HSProperty> HSProperty
         {
             get
             {
-                if (_hSRelations == null)
+                if (_hSProperty == null)
                 {
-                    _hSRelations = new TrackableCollection<HSRelation>();
-                    _hSRelations.CollectionChanged += FixupHSRelations;
+                    _hSProperty = new TrackableCollection<HSProperty>();
+                    _hSProperty.CollectionChanged += FixupHSProperty;
                 }
-                return _hSRelations;
+                return _hSProperty;
             }
             set
             {
-                if (!ReferenceEquals(_hSRelations, value))
+                if (!ReferenceEquals(_hSProperty, value))
                 {
                     if (ChangeTracker.ChangeTrackingEnabled)
                     {
                         throw new InvalidOperationException("Cannot set the FixupChangeTrackingCollection when ChangeTracking is enabled");
                     }
-                    if (_hSRelations != null)
+                    if (_hSProperty != null)
                     {
-                        _hSRelations.CollectionChanged -= FixupHSRelations;
+                        _hSProperty.CollectionChanged -= FixupHSProperty;
                     }
-                    _hSRelations = value;
-                    if (_hSRelations != null)
+                    _hSProperty = value;
+                    if (_hSProperty != null)
                     {
-                        _hSRelations.CollectionChanged += FixupHSRelations;
+                        _hSProperty.CollectionChanged += FixupHSProperty;
                     }
-                    OnNavigationPropertyChanged("HSRelations");
+                    OnNavigationPropertyChanged("HSProperty");
                 }
             }
         }
-        private TrackableCollection<HSRelation> _hSRelations;
+        private TrackableCollection<HSProperty> _hSProperty;
 
         #endregion
         #region ChangeTracking
@@ -332,13 +332,13 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
     
         protected virtual void ClearNavigationProperties()
         {
-            HSRelations.Clear();
+            HSProperty.Clear();
         }
 
         #endregion
         #region Association Fixup
     
-        private void FixupHSRelations(object sender, NotifyCollectionChangedEventArgs e)
+        private void FixupHSProperty(object sender, NotifyCollectionChangedEventArgs e)
         {
             if (IsDeserializing)
             {
@@ -347,7 +347,7 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
     
             if (e.NewItems != null)
             {
-                foreach (HSRelation item in e.NewItems)
+                foreach (HSProperty item in e.NewItems)
                 {
                     item.HSProduct = this;
                     if (ChangeTracker.ChangeTrackingEnabled)
@@ -356,14 +356,14 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
                         {
                             item.StartTracking();
                         }
-                        ChangeTracker.RecordAdditionToCollectionProperties("HSRelations", item);
+                        ChangeTracker.RecordAdditionToCollectionProperties("HSProperty", item);
                     }
                 }
             }
     
             if (e.OldItems != null)
             {
-                foreach (HSRelation item in e.OldItems)
+                foreach (HSProperty item in e.OldItems)
                 {
                     if (ReferenceEquals(item.HSProduct, this))
                     {
@@ -371,7 +371,7 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
                     }
                     if (ChangeTracker.ChangeTrackingEnabled)
                     {
-                        ChangeTracker.RecordRemovalFromCollectionProperties("HSRelations", item);
+                        ChangeTracker.RecordRemovalFromCollectionProperties("HSProperty", item);
                     }
                 }
             }

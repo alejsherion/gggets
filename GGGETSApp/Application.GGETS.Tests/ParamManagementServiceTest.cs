@@ -43,7 +43,7 @@ namespace Application.GGETS.Tests
             ParamRepository paramRepository = new ParamRepository(context, traceManager);
             MAWBRepository mawbRepository = new MAWBRepository(context, traceManager);
 
-            _paramManagementService = new ParamManagementService(paramRepository, mawbRepository, HAWBRepository);
+            _paramManagementService = new ParamManagementService(paramRepository,templateRepository);
         }
 
         private TestContext testContextInstance;
@@ -118,7 +118,7 @@ namespace Application.GGETS.Tests
             string templateKey = string.Empty;
             int operateType = 0; 
             Page page = null;
-            _paramManagementService.MaintainDan(intOrient, intPageWidth, intPageHeight, strPageName, identifyKey, templateKey, operateType, page);
+            _paramManagementService.PrintHAWB(intOrient, intPageWidth, intPageHeight, strPageName, identifyKey, templateKey, 0, operateType, page);
             //Assert.Inconclusive("无法验证不返回值的方法。");
         }
     }

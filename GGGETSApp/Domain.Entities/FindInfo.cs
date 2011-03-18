@@ -22,107 +22,150 @@ using ETS.GGGETSApp.Domain.Core.Entities;
 namespace ETS.GGGETSApp.Domain.Application.Entities
 {
     [DataContract(IsReference = true)]
-    [KnownType(typeof(HSProduct))]
     [Serializable]
     [System.CodeDom.Compiler.GeneratedCode("STE-EF",".NET 4.0")]
     #if !SILVERLIGHT
     [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage()]
     #endif
-    public partial class HSProperty: IObjectWithChangeTracker, INotifyPropertyChanged
+    public partial class FindInfo: IObjectWithChangeTracker, INotifyPropertyChanged
     {
         #region Primitive Properties
     
         [DataMember]
-        public System.Guid HSPID
+        public string fieldname
         {
-            get { return _hSPID; }
+            get { return _fieldname; }
             set
             {
-                if (_hSPID != value)
+                if (_fieldname != value)
+                {
+                    _fieldname = value;
+                    OnPropertyChanged("fieldname");
+                }
+            }
+        }
+        private string _fieldname;
+    
+        [DataMember]
+        public Nullable<int> identity
+        {
+            get { return _identity; }
+            set
+            {
+                if (_identity != value)
+                {
+                    _identity = value;
+                    OnPropertyChanged("identity");
+                }
+            }
+        }
+        private Nullable<int> _identity;
+    
+        [DataMember]
+        public string primarykey
+        {
+            get { return _primarykey; }
+            set
+            {
+                if (_primarykey != value)
                 {
                     if (ChangeTracker.ChangeTrackingEnabled && ChangeTracker.State != ObjectState.Added)
                     {
-                        throw new InvalidOperationException("The property 'HSPID' is part of the object's key and cannot be changed. Changes to key properties can only be made when the object is not being tracked or is in the Added state.");
+                        throw new InvalidOperationException("The property 'primarykey' is part of the object's key and cannot be changed. Changes to key properties can only be made when the object is not being tracked or is in the Added state.");
                     }
-                    _hSPID = value;
-                    OnPropertyChanged("HSPID");
+                    _primarykey = value;
+                    OnPropertyChanged("primarykey");
                 }
             }
         }
-        private System.Guid _hSPID;
+        private string _primarykey;
     
         [DataMember]
-        public string PropertyName
+        public string type
         {
-            get { return _propertyName; }
+            get { return _type; }
             set
             {
-                if (_propertyName != value)
+                if (_type != value)
                 {
-                    _propertyName = value;
-                    OnPropertyChanged("PropertyName");
+                    _type = value;
+                    OnPropertyChanged("type");
                 }
             }
         }
-        private string _propertyName;
+        private string _type;
     
         [DataMember]
-        public string ChineseRemark
+        public Nullable<int> length
         {
-            get { return _chineseRemark; }
+            get { return _length; }
             set
             {
-                if (_chineseRemark != value)
+                if (_length != value)
                 {
-                    _chineseRemark = value;
-                    OnPropertyChanged("ChineseRemark");
+                    _length = value;
+                    OnPropertyChanged("length");
                 }
             }
         }
-        private string _chineseRemark;
+        private Nullable<int> _length;
     
         [DataMember]
-        public Nullable<System.Guid> HSID
+        public int @decimal
         {
-            get { return _hSID; }
+            get { return _decimal; }
             set
             {
-                if (_hSID != value)
+                if (_decimal != value)
                 {
-                    ChangeTracker.RecordOriginalValue("HSID", _hSID);
-                    if (!IsDeserializing)
+                    if (ChangeTracker.ChangeTrackingEnabled && ChangeTracker.State != ObjectState.Added)
                     {
-                        if (HSProduct != null && HSProduct.HSID != value)
-                        {
-                            HSProduct = null;
-                        }
+                        throw new InvalidOperationException("The property 'decimal' is part of the object's key and cannot be changed. Changes to key properties can only be made when the object is not being tracked or is in the Added state.");
                     }
-                    _hSID = value;
-                    OnPropertyChanged("HSID");
+                    _decimal = value;
+                    OnPropertyChanged("decimal");
                 }
             }
         }
-        private Nullable<System.Guid> _hSID;
-
-        #endregion
-        #region Navigation Properties
+        private int _decimal;
     
         [DataMember]
-        public HSProduct HSProduct
+        public string isnull
         {
-            get { return _hSProduct; }
+            get { return _isnull; }
             set
             {
-                if (!ReferenceEquals(_hSProduct, value))
+                if (_isnull != value)
                 {
-                    var previousValue = _hSProduct;
-                    _hSProduct = value;
-                    FixupHSProduct(previousValue);
-                    OnNavigationPropertyChanged("HSProduct");
+                    if (ChangeTracker.ChangeTrackingEnabled && ChangeTracker.State != ObjectState.Added)
+                    {
+                        throw new InvalidOperationException("The property 'isnull' is part of the object's key and cannot be changed. Changes to key properties can only be made when the object is not being tracked or is in the Added state.");
+                    }
+                    _isnull = value;
+                    OnPropertyChanged("isnull");
                 }
             }
         }
-        private HSProduct _hSProduct;
+        private string _isnull;
+    
+        [DataMember]
+        public string name
+        {
+            get { return _name; }
+            set
+            {
+                if (_name != value)
+                {
+                    if (ChangeTracker.ChangeTrackingEnabled && ChangeTracker.State != ObjectState.Added)
+                    {
+                        throw new InvalidOperationException("The property 'name' is part of the object's key and cannot be changed. Changes to key properties can only be made when the object is not being tracked or is in the Added state.");
+                    }
+                    _name = value;
+                    OnPropertyChanged("name");
+                }
+            }
+        }
+        private string _name;
 
         #endregion
         #region ChangeTracking
@@ -202,54 +245,6 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
     
         protected virtual void ClearNavigationProperties()
         {
-            HSProduct = null;
-        }
-
-        #endregion
-        #region Association Fixup
-    
-        private void FixupHSProduct(HSProduct previousValue, bool skipKeys = false)
-        {
-            if (IsDeserializing)
-            {
-                return;
-            }
-    
-            if (previousValue != null && previousValue.HSProperty.Contains(this))
-            {
-                previousValue.HSProperty.Remove(this);
-            }
-    
-            if (HSProduct != null)
-            {
-                if (!HSProduct.HSProperty.Contains(this))
-                {
-                    HSProduct.HSProperty.Add(this);
-                }
-    
-                HSID = HSProduct.HSID;
-            }
-            else if (!skipKeys)
-            {
-                HSID = null;
-            }
-    
-            if (ChangeTracker.ChangeTrackingEnabled)
-            {
-                if (ChangeTracker.OriginalValues.ContainsKey("HSProduct")
-                    && (ChangeTracker.OriginalValues["HSProduct"] == HSProduct))
-                {
-                    ChangeTracker.OriginalValues.Remove("HSProduct");
-                }
-                else
-                {
-                    ChangeTracker.RecordOriginalValue("HSProduct", previousValue);
-                }
-                if (HSProduct != null && !HSProduct.ChangeTracker.ChangeTrackingEnabled)
-                {
-                    HSProduct.StartTracking();
-                }
-            }
         }
 
         #endregion

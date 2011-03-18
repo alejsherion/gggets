@@ -76,7 +76,7 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Repositories
             IGGGETSAppUnitOfWork context = UnitOfWork as IGGGETSAppUnitOfWork;
             if (context != null)
             {
-                return context.HSProduct.Include(it=>it.HSRelations).Where(it => it.HSCode == HSCode).SingleOrDefault();
+                return context.HSProduct.Where(it => it.HSCode == HSCode).SingleOrDefault();
             }
 
             else

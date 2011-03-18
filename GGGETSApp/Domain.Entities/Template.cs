@@ -140,6 +140,126 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
             }
         }
         private string _operator;
+    
+        [DataMember]
+        public string TemplateCode
+        {
+            get { return _templateCode; }
+            set
+            {
+                if (_templateCode != value)
+                {
+                    _templateCode = value;
+                    OnPropertyChanged("TemplateCode");
+                }
+            }
+        }
+        private string _templateCode;
+    
+        [DataMember]
+        public Nullable<int> PrintDirection
+        {
+            get { return _printDirection; }
+            set
+            {
+                if (_printDirection != value)
+                {
+                    _printDirection = value;
+                    OnPropertyChanged("PrintDirection");
+                }
+            }
+        }
+        private Nullable<int> _printDirection;
+    
+        [DataMember]
+        public Nullable<int> PagerWidth
+        {
+            get { return _pagerWidth; }
+            set
+            {
+                if (_pagerWidth != value)
+                {
+                    _pagerWidth = value;
+                    OnPropertyChanged("PagerWidth");
+                }
+            }
+        }
+        private Nullable<int> _pagerWidth;
+    
+        [DataMember]
+        public Nullable<int> PagerHeight
+        {
+            get { return _pagerHeight; }
+            set
+            {
+                if (_pagerHeight != value)
+                {
+                    _pagerHeight = value;
+                    OnPropertyChanged("PagerHeight");
+                }
+            }
+        }
+        private Nullable<int> _pagerHeight;
+    
+        [DataMember]
+        public Nullable<int> BatchHeight
+        {
+            get { return _batchHeight; }
+            set
+            {
+                if (_batchHeight != value)
+                {
+                    _batchHeight = value;
+                    OnPropertyChanged("BatchHeight");
+                }
+            }
+        }
+        private Nullable<int> _batchHeight;
+    
+        [DataMember]
+        public string CorrespondingTable
+        {
+            get { return _correspondingTable; }
+            set
+            {
+                if (_correspondingTable != value)
+                {
+                    _correspondingTable = value;
+                    OnPropertyChanged("CorrespondingTable");
+                }
+            }
+        }
+        private string _correspondingTable;
+    
+        [DataMember]
+        public string CorrespondingCN
+        {
+            get { return _correspondingCN; }
+            set
+            {
+                if (_correspondingCN != value)
+                {
+                    _correspondingCN = value;
+                    OnPropertyChanged("CorrespondingCN");
+                }
+            }
+        }
+        private string _correspondingCN;
+    
+        [DataMember]
+        public string IdentifyKey
+        {
+            get { return _identifyKey; }
+            set
+            {
+                if (_identifyKey != value)
+                {
+                    _identifyKey = value;
+                    OnPropertyChanged("IdentifyKey");
+                }
+            }
+        }
+        private string _identifyKey;
 
         #endregion
         #region Navigation Properties
