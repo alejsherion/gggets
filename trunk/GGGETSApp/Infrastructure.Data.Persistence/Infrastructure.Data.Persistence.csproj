@@ -78,7 +78,6 @@
     <Compile Include="Repositories\CompanyRepository.cs" />
     <Compile Include="Repositories\CountryCodeRepository.cs" />
     <Compile Include="Repositories\DepartmentRepository.cs" />
-    <Compile Include="Repositories\FindInfoRepository.cs" />
     <Compile Include="Repositories\HAWBBoxRepository.cs" />
     <Compile Include="Repositories\HAWBItemRepository.cs" />
     <Compile Include="Repositories\HAWBRepository.cs" />

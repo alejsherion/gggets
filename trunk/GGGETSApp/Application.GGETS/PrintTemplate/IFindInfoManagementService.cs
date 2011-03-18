@@ -18,5 +18,6 @@ namespace Application.GGETS
     public interface IFindInfoManagementService
     {
         IList<FindInfo> FindAllByTableName(string tableName);
+        FindInfo FindInfoByTableAndFieldName(string fieldName, string tableName);
     }
 }

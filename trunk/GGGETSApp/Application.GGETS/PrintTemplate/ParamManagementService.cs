@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Web;
@@ -204,6 +205,20 @@ namespace Application.GGETS
             sb.Append("</script>");
             page.RegisterClientScriptBlock("", sb.ToString());
             page.RegisterStartupScript("", "<script>Print();</script>");
+        }
+
+        /// <summary>
+        /// 新增参数
+        /// </summary>
+        /// <param name="param">参数</param>
+        public void AddParam(Param param)
+        {
+            if (param == null)
+                throw new ArgumentNullException("Param is null");
+            IUnitOfWork unitOfWork = _paramRepository.UnitOfWork;
+            _paramRepository.Add(param);
+            //complete changes in this unit of work
+            unitOfWork.Commit();
         }
 
         /// <summary>

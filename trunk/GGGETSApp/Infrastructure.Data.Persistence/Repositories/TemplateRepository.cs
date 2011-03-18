@@ -49,7 +49,7 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Repositories
             //Get Assemble's Context
             IGGGETSAppUnitOfWork context = UnitOfWork as IGGGETSAppUnitOfWork;
             //don't forget open package's load:HAWBs
-            return context.Template.Where(it => it.TID == new Guid(TID)).SingleOrDefault();
+            return context.Template.Include(it=>it.Params).Where(it => it.TID == new Guid(TID)).SingleOrDefault();
         }
     }
 }
