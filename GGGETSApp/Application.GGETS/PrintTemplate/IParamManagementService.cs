@@ -23,6 +23,7 @@ namespace Application.GGETS
 
         #region logic
         void PrintHAWB(int intOrient, int intPageWidth, int intPageHeight, string strPageName, string identifyKey, string templateCode, int batchHeight, int operateType, Page page);
+        void AddParam(Param param);
         #endregion
     }
 }
