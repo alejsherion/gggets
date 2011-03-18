@@ -85,6 +85,7 @@ namespace Application.GGETS.Tests
             //实力化一个虚假运单对象
             HAWB HAWBObj = new HAWB
                                {
+                                   HID=Guid.NewGuid(),
                                    BarCode = "2010",
                                    //条形码
                                    Carrier = "中国航空",

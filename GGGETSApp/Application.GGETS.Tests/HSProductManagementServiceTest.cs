@@ -124,5 +124,36 @@ namespace Application.GGETS.Tests
             //Assert.Inconclusive("无法验证不返回值的方法。");
         }
         #endregion
+
+        /// <summary>
+        ///AddHSProduct 的测试
+        ///</summary>
+        [TestMethod()]
+        public void AddHSProductTest()
+        {
+            HSProduct product = null;
+            product = new HSProduct
+            {
+                HSID=Guid.NewGuid(),
+                HSCode="test008",
+                HSName="test008",
+                DiscountTax=1,
+                GeneralTax=1,
+                RiseTax=1
+            };
+            HSProperty property01 = new HSProperty
+            {
+                HSPID=Guid.NewGuid(),
+                PropertyName="property09"
+            };
+            HSProperty property02 = new HSProperty
+            {
+                HSPID = Guid.NewGuid(),
+                PropertyName = "property10"
+            };
+            product.HSProperty.Add(property01);
+            product.HSProperty.Add(property02);
+            _HSProductManagementService.AddHSProduct(product);
+        }
     }
 }
