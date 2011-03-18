@@ -166,6 +166,21 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
             }
         }
         private string _name;
+    
+        [DataMember]
+        public string fielddesc
+        {
+            get { return _fielddesc; }
+            set
+            {
+                if (_fielddesc != value)
+                {
+                    _fielddesc = value;
+                    OnPropertyChanged("fielddesc");
+                }
+            }
+        }
+        private string _fielddesc;
 
         #endregion
         #region ChangeTracking

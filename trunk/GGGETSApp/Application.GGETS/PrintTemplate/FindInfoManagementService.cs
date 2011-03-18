@@ -25,23 +25,15 @@ namespace Application.GGETS
     public class FindInfoManagementService:IFindInfoManagementService
     {
         /// <summary>
-        /// IOC Injecting into
-        /// </summary>
-        private IFindInfoRepository _findInfoRepository;
-
-        public FindInfoManagementService(IFindInfoRepository findInfoRepository)
-        {
-            _findInfoRepository = findInfoRepository;
-        }
-
-        /// <summary>
         /// 通过表名获取所有的列信息
         /// </summary>
         /// <param name="tableName">表名</param>
         /// <returns></returns>
         public IList<FindInfo> FindAllByTableName(string tableName)
         {
-            return _findInfoRepository.FindAllByTableName(tableName);
+            string SQLStr = string.Format("select * from findinfo where name='{0}'", tableName);
+            SqlDataReader reader = SqlHelper.ExecuteReader(CommandType.Text, SQLStr);
+            //todo 反射
         }
     }
 }
