@@ -16,5 +16,7 @@ namespace Domain.GGGETS
     public interface IParamRepository :IRepository<Param>
     {
         IList<Param> FindParamsByTID(string TID);
+        Param FindParamByTID(string TID);
+        Param FindParamByTIDAndTag(string TID, int Tag);
     }
 }
