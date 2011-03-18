@@ -2359,6 +2359,30 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Model
         private global::System.String _name;
         partial void OnnameChanging(global::System.String value);
         partial void OnnameChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String fielddesc
+        {
+            get
+            {
+                return _fielddesc;
+            }
+            set
+            {
+                OnfielddescChanging(value);
+                ReportPropertyChanging("fielddesc");
+                _fielddesc = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("fielddesc");
+                OnfielddescChanged();
+            }
+        }
+        private global::System.String _fielddesc;
+        partial void OnfielddescChanging(global::System.String value);
+        partial void OnfielddescChanged();
 
         #endregion
     

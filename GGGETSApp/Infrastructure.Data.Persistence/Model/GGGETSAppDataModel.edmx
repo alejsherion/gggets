@@ -32,6 +32,7 @@
       [FindInfo].[length] AS [length], 
       [FindInfo].[decimal] AS [decimal], 
       [FindInfo].[isnull] AS [isnull], 
+      [FindInfo].[fielddesc] AS [fielddesc], 
       [FindInfo].[name] AS [name]
       FROM [dbo].[FindInfo] AS [FindInfo]</DefiningQuery>
           </EntitySet>
@@ -385,7 +386,6 @@
         </EntityType>
         <!--生成过程中发现错误:
       警告 6002: 表/视图“MYGGGETS.dbo.FindInfo”未定义主键。已推断出该键，并将定义创建为只读的表/视图。
-      警告 6005: 不支持数据类型“sql_variant”；已排除了表“MYGGGETS.dbo.FindInfo”中的列“fielddesc”。
       -->
         <EntityType Name="FindInfo">
           <Key>
@@ -401,6 +401,7 @@
           <Property Name="length" Type="int" />
           <Property Name="decimal" Type="int" Nullable="false" />
           <Property Name="isnull" Type="varchar" Nullable="false" MaxLength="1" />
+          <Property Name="fielddesc" Type="varchar" MaxLength="50" />
           <Property Name="name" Type="nvarchar" Nullable="false" MaxLength="128" />
         </EntityType>
         <Association Name="FK_ADDRESSB_REFERENCE_DEPARTME">
@@ -1123,6 +1124,7 @@
           <Property Type="Int32" Name="decimal" Nullable="false" />
           <Property Type="String" Name="isnull" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
           <Property Type="String" Name="name" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="fielddesc" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <Association Name="FK_HSPROPER_FK_HSPROP_HSPRODUC">
           <End Type="MYGGGETSModel.HSProduct" Role="HSProduct" Multiplicity="0..1" />
@@ -1397,6 +1399,7 @@
           <EntitySetMapping Name="FindInfo">
             <EntityTypeMapping TypeName="MYGGGETSModel.FindInfo">
               <MappingFragment StoreEntitySet="FindInfo">
+                <ScalarProperty Name="fielddesc" ColumnName="fielddesc" />
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="isnull" ColumnName="isnull" />
                 <ScalarProperty Name="decimal" ColumnName="decimal" />
