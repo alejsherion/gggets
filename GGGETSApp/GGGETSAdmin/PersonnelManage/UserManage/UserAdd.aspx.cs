@@ -29,6 +29,11 @@ namespace GGGETSAdmin.PersonnelManage.UserManage
         {
 
         }
+        /// <summary>
+        /// 验证公司账号是否存在
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void Txt_CompanyCode_TextChanged(object sender, EventArgs e)
         {
             Company company = _companyService.FindCompanyByCompanyCode(Txt_CompanyCode.Text.Trim());
@@ -43,6 +48,11 @@ namespace GGGETSAdmin.PersonnelManage.UserManage
                 Txt_DepCode.Focus();
             }
         }
+        /// <summary>
+        /// 部门账号验证
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void Txt_DepCode_TextChanged(object sender, EventArgs e)
         {
             if (Txt_CompanyCode.Text.Trim() != "")
@@ -83,6 +93,11 @@ namespace GGGETSAdmin.PersonnelManage.UserManage
                 Txt_CompanyCode.Focus();
             }
         }
+        /// <summary>
+        /// 个人账号验证是否已经存在
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void Txt_LoginName_TextChanged(object sender, EventArgs e)
         {
             if(Txt_LoginName.Text.Trim()!="")
@@ -100,7 +115,11 @@ namespace GGGETSAdmin.PersonnelManage.UserManage
                 }
             }
         }
-
+        /// <summary>
+        /// 确认密码比对
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void Txt_Qpassword_TextChanged(object sender, EventArgs e)
         {
             if (Txt_Qpassword.Text.Trim() != Txt_Password.Text.Trim())
@@ -114,6 +133,11 @@ namespace GGGETSAdmin.PersonnelManage.UserManage
                 Txt_RealName.Focus();
             }
         }
+        /// <summary>
+        /// 创建新用户
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void btn_AddCompany_Click(object sender, EventArgs e)
         {
             if (Txt_LoginName.Text.Trim() == "")
@@ -193,6 +217,10 @@ namespace GGGETSAdmin.PersonnelManage.UserManage
                 }
             }
         }
+        /// <summary>
+        /// 页面输入框清空
+        /// </summary>
+        /// <param name="objControlCollection"></param>
         private void InitialControl(ControlCollection objControlCollection)
         {
             foreach (System.Web.UI.Control objControl in objControlCollection)
@@ -210,7 +238,11 @@ namespace GGGETSAdmin.PersonnelManage.UserManage
                 }
             }
         }
-
+        /// <summary>
+        /// 取消
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void btn_Cancel_Click(object sender, EventArgs e)
         {
             Response.Redirect("../../Navigation.aspx");
