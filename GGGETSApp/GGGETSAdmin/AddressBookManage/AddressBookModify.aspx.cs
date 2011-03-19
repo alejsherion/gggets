@@ -51,6 +51,10 @@ namespace GGGETSAdmin.AddressBookManage
                 }
             }
         }
+        /// <summary>
+        /// 根据地址id取值赋值
+        /// </summary>
+        /// <param name="AID"></param>
         protected void Storage(string AID)
         {
             address = _addressbookservice.FindAddressBookByAID(AID);
@@ -84,6 +88,12 @@ namespace GGGETSAdmin.AddressBookManage
             Session["Address"] = address;
 
         }
+        /// <summary>
+        /// 国家地区三字码转换
+        /// </summary>
+        /// <param name="countryname"></param>
+        /// <param name="Countype"></param>
+        /// <returns></returns>
         protected string CountrySwitch(string countryname,string Countype)
         {
             string country = string.Empty;
@@ -141,6 +151,11 @@ namespace GGGETSAdmin.AddressBookManage
             return region.ToUpper();
         }
 
+        /// <summary>
+        /// 判断公司是否存在
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void Txt_CompanyCode_TextChanged(object sender, EventArgs e)
         {
             if (Txt_CompanyCode.Text.Trim() != "")
@@ -159,7 +174,11 @@ namespace GGGETSAdmin.AddressBookManage
                 }
             }
         }
-
+        /// <summary>
+        /// 判断公司部门是否存在
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void Txt_Code_TextChanged(object sender, EventArgs e)
         {
             if (Txt_CompanyCode.Text.Trim() != "")
@@ -195,6 +214,11 @@ namespace GGGETSAdmin.AddressBookManage
                 Txt_CompanyCode.Focus();
             }
         }
+        /// <summary>
+        /// 判断个人用户是否存在
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void Txt_LoginName_TextChanged(object sender, EventArgs e)
         {
             if (Txt_LoginName.Text.Trim() != "")
@@ -215,6 +239,12 @@ namespace GGGETSAdmin.AddressBookManage
             }
         }
 
+        /// <summary>
+        /// 国家二字码填充
+        /// </summary>
+        /// <param name="prefixText"></param>
+        /// <param name="count"></param>
+        /// <returns></returns>
         [System.Web.Services.WebMethodAttribute(), System.Web.Script.Services.ScriptMethodAttribute()]
         public static string[][] GetCountryList(string prefixText, int count)
         {
@@ -236,7 +266,13 @@ namespace GGGETSAdmin.AddressBookManage
             return items.Take(count).ToArray();
         }
 
-
+        /// <summary>
+        /// 地区三字码填充
+        /// </summary>
+        /// <param name="prefixText"></param>
+        /// <param name="count"></param>
+        /// <param name="contextKey"></param>
+        /// <returns></returns>
         [System.Web.Services.WebMethodAttribute(), System.Web.Script.Services.ScriptMethodAttribute()]
         public static string[][] GetRegionList(string prefixText, int count, string contextKey)
         {
@@ -261,6 +297,11 @@ namespace GGGETSAdmin.AddressBookManage
             }
             return items.Take(count).ToArray();
         }
+        /// <summary>
+        /// 判断是否正确的国家码
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void Txt_DeliverCountry_TextChanged(object sender, EventArgs e)
         {
             Txt_DeliverRegion.Text = "";
@@ -290,6 +331,12 @@ namespace GGGETSAdmin.AddressBookManage
         protected void autoDeliveCountry_ItemSelected(object sender, EventArgs e)
         {
         }
+
+        /// <summary>
+        /// 判断是否正确的地区码
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void Txt_DeliverRegion_TextChanged(object sender, EventArgs e)
         {
             IList<RegionCode> region = _regionservice.FindAllRegionCodes();
@@ -314,11 +361,20 @@ namespace GGGETSAdmin.AddressBookManage
             }
         }
 
+        /// <summary>
+        /// 取消按钮
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void But_Conel_Click(object sender, EventArgs e)
         {
             Response.Redirect((string)ViewState["Url"]);
         }
-
+        /// <summary>
+        /// 修改按钮
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void But_Update_Click(object sender, EventArgs e)
         {
             string Uid = "";
@@ -342,6 +398,11 @@ namespace GGGETSAdmin.AddressBookManage
                 AddRessBook(Uid, DID);
             }
         }
+        /// <summary>
+        /// 数据操作方法
+        /// </summary>
+        /// <param name="UID"></param>
+        /// <param name="DID"></param>
         protected void AddRessBook(string UID, string DID)
         {
             if (address == null)
