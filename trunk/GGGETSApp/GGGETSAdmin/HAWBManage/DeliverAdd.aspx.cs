@@ -39,13 +39,16 @@ namespace GGGETSAdmin.HAWBManage
                 Evaluate();
             }
         }
+        /// <summary>
+        /// 页面控件赋值
+        /// </summary>
         protected void Evaluate()
         {
-            if (Session["HAWB"] != null)
+            if (Session["HAWB"] != null)//判断信息页面传的值是否为空
             {
                 hawb = (HAWB)Session["HAWB"];
             }
-            if (Session["DeliverBook"] != null)
+            if (Session["DeliverBook"] != null)//判断选择历史按钮是否又记录
             {
                 Addbook = (AddressBook)Session["DeliverBook"];
             }
@@ -112,6 +115,11 @@ namespace GGGETSAdmin.HAWBManage
                 }
             }
         }
+        /// <summary>
+        /// 添加按钮事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void btn_AddDeliver_Click1(object sender, EventArgs e)
         {
             if (hawb == null)
@@ -175,8 +183,8 @@ namespace GGGETSAdmin.HAWBManage
                         Session["HAWB"] = hawb;
                         Session.Remove("ComCode");
                         Session.Remove("DepCode");
-                        Response.Write("<script>window.parent.location = 'HAWBAdd.aspx';</script>");
-                        Page.ClientScript.RegisterStartupScript(this.GetType(), "myscript", "<script>closeList2();</script>");
+                        Response.Write("<script>window.parent.location = 'HAWBAdd.aspx';</script>");//刷新前一个页面
+                        Page.ClientScript.RegisterStartupScript(this.GetType(), "myscript", "<script>closeList2();</script>");//关闭层
                     }
                     else
                     {
@@ -187,6 +195,12 @@ namespace GGGETSAdmin.HAWBManage
             }
             
         }
+        /// <summary>
+        /// 国家二字码填充
+        /// </summary>
+        /// <param name="prefixText"></param>
+        /// <param name="count"></param>
+        /// <returns></returns>
         [System.Web.Services.WebMethodAttribute(), System.Web.Script.Services.ScriptMethodAttribute()]
         public static string[][] GetCountryList(string prefixText, int count)
         {
@@ -208,7 +222,13 @@ namespace GGGETSAdmin.HAWBManage
             return items.Take(count).ToArray();
         }
 
-
+        /// <summary>
+        /// 地区三字码填充
+        /// </summary>
+        /// <param name="prefixText"></param>
+        /// <param name="count"></param>
+        /// <param name="contextKey"></param>
+        /// <returns></returns>
         [System.Web.Services.WebMethodAttribute(), System.Web.Script.Services.ScriptMethodAttribute()]
         public static string[][] GetRegionList(string prefixText, int count, string contextKey)
         {
@@ -233,7 +253,11 @@ namespace GGGETSAdmin.HAWBManage
             }
             return items.Take(count).ToArray();
         }
-
+        /// <summary>
+        /// 验证是否正确的国家
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
 
         protected void Txt_DeliverCountry_TextChanged(object sender, EventArgs e)
         {
@@ -267,57 +291,11 @@ namespace GGGETSAdmin.HAWBManage
             //Txt_DeliverCountry.Text = ((AutoCompleteExtra.AutoCompleteExtraExtender)sender).SelectedValue;
             
         }
-        protected void gv_Deliver_RowCommand(object sender, GridViewCommandEventArgs e)
-        {
-            if (Session["HAWB"] != null)
-            {
-                hawb = (HAWB)Session["HAWB"];
-            }
-                if (hawb != null)
-                {
-                    Department depar = hawb.Department;
-                    if (e.CommandName == "Select")
-                    {
-                        Guid Aid = Guid.Parse(e.CommandArgument.ToString());
-                        IList<AddressBook> ressbook = _deparservice.FindAllForwarderAddressesByDepCodeAndCompanyCode(depar.DepCode, depar.CompanyCode);
-                        if (ressbook != null)
-                        {
-                            foreach (AddressBook address in ressbook)
-                            {
-                                if (address.AID == Aid)
-                                {
-                                    Txt_DeliverName.Text = address.Name;
-                                    Txt_DeliverAddress.Text = address.Address;
-                                    foreach (CountryCode countrycode in listcountry)
-                                    {
-                                        if (countrycode.CountryCode1 == address.CountryCode)
-                                        {
-                                            Txt_DeliverCountry.Text = countrycode.CountryName;
-                                            break;
-                                        }
-                                    }
-                                    foreach (RegionCode regioncode in listregion)
-                                    {
-                                        if (regioncode.RegionCode1 == address.RegionCode)
-                                        {
-                                            Txt_DeliverRegion.Text = regioncode.RegionName;
-                                            break;
-                                        }
-                                    }
-                                    Txt_DeliverProvince.Text = address.Provience;
-                                    Txt_DeliverZipCode.Text = address.PostCode;
-                                    Txt_DeliverContactor.Text = address.ContactorName;
-                                    Txt_DeliverTel.Text = address.Phone;
-                                    break;
-                                }
-
-                            }
-                        }
-                    }
-                }
-            
-        }
-
+        /// <summary>
+        /// 验证地区三字码是否正确
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void Txt_DeliverRegion_TextChanged(object sender, EventArgs e)
         {
             IList<RegionCode> region = _regionservice.FindAllRegionCodes();
@@ -340,6 +318,12 @@ namespace GGGETSAdmin.HAWBManage
                 Txt_DeliverRegion.Focus();
             }
         }
+        /// <summary>
+        /// 国家地区三字码转换
+        /// </summary>
+        /// <param name="countryname"></param>
+        /// <param name="type"></param>
+        /// <returns></returns>
         protected string CountrySwitch(string countryname,int type)
         {
             string country = string.Empty;
@@ -402,7 +386,11 @@ namespace GGGETSAdmin.HAWBManage
         {   
             
         }
-
+        /// <summary>
+        /// 历史按钮
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void lbtn_Deliverhistory_Click1(object sender, EventArgs e)
         {
             Session["historytype"] = "Deliver";

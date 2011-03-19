@@ -18,7 +18,7 @@ namespace GGGETSAdmin.HAWBManage
         private HAWBBox box;
         private string type = string.Empty;
         private static string intPattern = @"^[+]?[1-9][0-9]*$";
-        private static string decimalPattern = @"^[+]?[1-9][0-9]*|[0-9]+[.]?[0-9]+$";//
+        private static string decimalPattern = @"^(0|[1-9][0-9]*)$|^[0-9]+(.[0-9]{2})?$";//
         private IHAWBManagementService _hawbService;
         protected HAWBItemAdd()
         { }
@@ -35,7 +35,7 @@ namespace GGGETSAdmin.HAWBManage
                 if (Session["HAWB"] != null)
                 {
 
-                    if (Request.QueryString["type"] == "Amend")
+                    if (Request.QueryString["type"] == "Amend")//修改页面显示
                     {
                         type = Request.QueryString["type"];
                         ViewState["type"] = type;
@@ -45,7 +45,7 @@ namespace GGGETSAdmin.HAWBManage
                         GV_item.DataSource = hawb.HAWBItems;
                         GV_item.DataBind();
                     }
-                    else
+                    else //新建页面显示
                     {
                         item = new HAWBItem();
                         box = new HAWBBox();
@@ -60,6 +60,9 @@ namespace GGGETSAdmin.HAWBManage
 
             }
         }
+        /// <summary>
+        /// 物品数据源绑定
+        /// </summary>
         protected void gv_item()
         {
             List<HAWBItem> lt = new List<HAWBItem>();
@@ -67,6 +70,9 @@ namespace GGGETSAdmin.HAWBManage
             GV_item.DataSource = lt;
             GV_item.DataBind();
         }
+        /// <summary>
+        /// 包裹数据源绑定
+        /// </summary>
         protected void gv_box()
         {
             List<HAWBBox> lt = new List<HAWBBox>();
@@ -74,6 +80,11 @@ namespace GGGETSAdmin.HAWBManage
             gv_Box.DataSource = lt;
             gv_Box.DataBind();
         }
+        /// <summary>
+        /// 添加包裹
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void but_AddItem_Click(object sender, EventArgs e)
         {
             item = new HAWBItem();
@@ -119,6 +130,7 @@ namespace GGGETSAdmin.HAWBManage
                     if (rbt_BoxType.SelectedValue == "2")
                     {
                         hawb.HAWBItems.Add(item);
+                        Session["HAWB"] = hawb;
                         GV_item.DataSource = hawb.HAWBItems;
                         GV_item.DataBind();
                         txt_BoxPiece.Focus();
@@ -130,6 +142,7 @@ namespace GGGETSAdmin.HAWBManage
                             if (ReturnTotal(4) + item.Piece * item.UnitAmount <= 100)
                             {
                                 hawb.HAWBItems.Add(item);
+                                Session["HAWB"] = hawb;
                                 GV_item.DataSource = hawb.HAWBItems;
                                 GV_item.DataBind();
                                 Txt_ItemName.Text = string.Empty;
@@ -153,6 +166,11 @@ namespace GGGETSAdmin.HAWBManage
                 }
             }
         }
+        /// <summary>
+        /// 添加物品
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void but_AddBox_Click(object sender, EventArgs e)
         {
             box = new HAWBBox();
@@ -200,7 +218,7 @@ namespace GGGETSAdmin.HAWBManage
                     }
 
                 }
-                else if (Txt_BoxLength.Text.Trim() != "")
+                if (Txt_BoxLength.Text.Trim() != "")
                 {
                     if (Regex.IsMatch(Txt_BoxLength.Text.Trim(), decimalPattern))
                     {
@@ -214,7 +232,7 @@ namespace GGGETSAdmin.HAWBManage
                         ok = false;
                     }
                 }
-                else if (Txt_BoxWidth.Text.Trim() != "")
+                if (Txt_BoxWidth.Text.Trim() != "")
                 {
                     if (Regex.IsMatch(Txt_BoxWidth.Text.Trim(), decimalPattern))
                     {
@@ -235,10 +253,11 @@ namespace GGGETSAdmin.HAWBManage
                     box.Weight = decimal.Parse(Txt_BoxWeight.Text.Trim());
 
                     hawb.HAWBBoxes.Add(box);
+                    Session["HAWB"] = hawb;
                     txt_TotalWeight.Text = hawb.TotalWeight.ToString();
                     Txt_VolumeWeight.Text = hawb.VolumeWeight.Value.ToString();
                     lbl_Piece.Text = hawb.Piece.ToString();
-
+                    
                     gv_Box.DataSource = hawb.HAWBBoxes;
                     gv_Box.DataBind();
                     txt_BoxPiece.Focus();
@@ -250,11 +269,18 @@ namespace GGGETSAdmin.HAWBManage
                 }
             }
         }
+        /// <summary>
+        /// 返回事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void But_Rurnet_Click(object sender, EventArgs e)
         {
             Response.Redirect((string)ViewState["UrlReferrer"]);
-
         }
+        /// <summary>
+        /// 页面控件赋值
+        /// </summary>
         protected void Evaluate()
         {
             lbl_BarCode.Text = hawb.BarCode;
@@ -285,6 +311,11 @@ namespace GGGETSAdmin.HAWBManage
             }
         }
 
+        /// <summary>
+        /// 创建运单
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void But_AddHAWB_Click(object sender, EventArgs e)
         {
             hawb.WeightType = int.Parse(ddl_WeightType.SelectedValue);
@@ -303,44 +334,33 @@ namespace GGGETSAdmin.HAWBManage
                 hawb.CarrierHAWBBarCode = Txt_CarrierHAWBBarCode.Text.Trim().ToUpper();
             }
             hawb.BillTax = int.Parse(rbt_BillTax.SelectedValue);
-            hawb.SpecialInstruction = Rbl_SpecialInstruction.Text.Trim();
+            hawb.SpecialInstruction = Rbl_SpecialInstruction.SelectedValue;
             hawb.Remark = txt_Remark.Text.Trim().ToUpper();
             hawb.Carrier = Txt_Carrier.Text.Trim().ToUpper();
             hawb.ServiceType = int.Parse(rbt_BoxType.SelectedValue);
-            if (hawb.HAWBBoxes.Count != 0)
+            if (ViewState["type"] != null)
             {
-                if (rbt_BoxType.SelectedValue == "0")
-                {
-                    hawb.HAWBItems.Clear();
-                    
-                    
-                }
-                if (ViewState["type"] != null)
-                {
-                    type = ViewState["type"].ToString(); ;
-                }
-                if (type == "Amend")
-                {
-                    _hawbService.ChangeHAWB(hawb);
-                    Response.Write("<script>alert('修改成功！');location='HAWBManagement.aspx'</script>");
-                    Session.Clear();
-                }
-                else
-                {
-                    _hawbService.AddHAWB(hawb);
-                    Response.Write("<script>alert('添加成功！');location='HAWBAdd.aspx'</script>");
-                    //Session["HAWB"] = null;
-                    Session.Remove("HAWB");
-                }
-
-
+                type = ViewState["type"].ToString(); ;
+            }
+            if (type == "Amend")
+            {
+                _hawbService.ChangeHAWB(hawb);
+                Response.Write("<script>alert('修改成功！');location='HAWBManagement.aspx'</script>");
+                Session.Clear();
             }
             else
             {
-                Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('请添加包裹！')</script>");
+                _hawbService.AddHAWB(hawb);
+                Response.Write("<script>alert('添加成功！');location='HAWBAdd.aspx'</script>");
+                //Session["HAWB"] = null;
+                Session.Remove("HAWB");
             }
         }
-
+        /// <summary>
+        /// 包类型选择
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void rbt_BoxType_SelectedIndexChanged(object sender, EventArgs e)
         {
             BoxType();
@@ -357,13 +377,12 @@ namespace GGGETSAdmin.HAWBManage
                 Txt_BoxHeight.Text = string.Empty;
                 Txt_BoxLength.Text = string.Empty;
                 Txt_BoxWidth.Text = string.Empty;
-                //if (hawb == null)
-                //{
-                //    hawb = (HAWB)Session["HAWB"];                    
-                //}
-                //hawb.HAWBItems.Clear();
-                //Session.Remove("HAWB");
-                //Session["HAWB"] = hawb;
+                int sum = hawb.HAWBItems.Count;
+                for (int i = sum-1; i > -1; i--)
+                {
+                    hawb.HAWBItems.RemoveAt(i);
+                }
+                Session["HAWB"] = hawb;
                 GV_item.DataSource = null;
                 GV_item.DataBind();
 
@@ -396,13 +415,22 @@ namespace GGGETSAdmin.HAWBManage
                 Txt_BoxWidth.Enabled = true;
             }
         }
+        /// <summary>
+        /// 包裹修改
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void gv_Box_RowEditing(object sender, GridViewEditEventArgs e)
         {
             gv_Box.EditIndex = e.NewEditIndex;
             gv_Box.DataSource = hawb.HAWBBoxes;
             gv_Box.DataBind();
         }
-
+        /// <summary>
+        /// 包裹更新
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void gv_Box_RowUpdating(object sender, GridViewUpdateEventArgs e)
         {
             int inex = Convert.ToInt16(e.RowIndex);
@@ -484,7 +512,11 @@ namespace GGGETSAdmin.HAWBManage
             }
 
         }
-
+        /// <summary>
+        /// 包裹删除
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void gv_Box_RowCommand(object sender, GridViewCommandEventArgs e)
         {
             if (e.CommandName == "Delete")
@@ -500,6 +532,7 @@ namespace GGGETSAdmin.HAWBManage
                     }
                 }
                 hawb.HAWBBoxes.Remove(box);
+                Session["HAWB"] = hawb;
                 txt_TotalWeight.Text = hawb.TotalWeight.ToString();
                 Txt_VolumeWeight.Text = hawb.VolumeWeight.Value.ToString();
                 lbl_Piece.Text = hawb.Piece.ToString();
@@ -512,14 +545,22 @@ namespace GGGETSAdmin.HAWBManage
         {
 
         }
-
+        /// <summary>
+        /// 取消更新
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void gv_Box_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
         {
             gv_Box.EditIndex = -1;
             gv_Box.DataSource = hawb.HAWBBoxes;
             gv_Box.DataBind();
         }
-
+        /// <summary>
+        /// 物品修改
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void GV_item_RowEditing(object sender, GridViewEditEventArgs e)
         {
             GV_item.EditIndex = e.NewEditIndex;
@@ -531,7 +572,11 @@ namespace GGGETSAdmin.HAWBManage
         {
 
         }
-
+        /// <summary>
+        /// 物品更新
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void GV_item_RowUpdating(object sender, GridViewUpdateEventArgs e)
         {
             int inex = Convert.ToInt16(e.RowIndex);
@@ -594,7 +639,11 @@ namespace GGGETSAdmin.HAWBManage
                 }
             }
         }
-
+        /// <summary>
+        /// 物品移除
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void GV_item_RowCommand(object sender, GridViewCommandEventArgs e)
         {
             if (e.CommandName == "Delete")
@@ -609,18 +658,27 @@ namespace GGGETSAdmin.HAWBManage
                     }
                 }
                 hawb.HAWBItems.Remove(item);
+                Session["HAWB"] = hawb;
                 GV_item.DataSource = hawb.HAWBItems;
                 GV_item.DataBind();
             }
         }
-
+        /// <summary>
+        /// 更新取消
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void GV_item_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
         {
             GV_item.EditIndex = -1;
             GV_item.DataSource = hawb.HAWBItems;
             GV_item.DataBind();
         }
-
+        /// <summary>
+        /// 计算物品总价值
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void GV_item_RowDataBound(object sender, GridViewRowEventArgs e)
         {
             if (GV_item.Rows.Count != 0)

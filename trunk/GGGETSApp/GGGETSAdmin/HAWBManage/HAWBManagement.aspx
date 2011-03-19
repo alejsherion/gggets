@@ -9,7 +9,7 @@
     <script type="text/javascript">
 
         function NumberCheck(name) {
-            var s = document.getElementById('ContentPlaceHolder1_Txt_Jumpto').value;
+            var s = name.value;
             var regu = /^[0-9]*$/;
             var re = new RegExp(regu);
             if (s.search(re) == -1) {

@@ -81,7 +81,9 @@ namespace GGGETSAdmin.HAWBManage
             }
 
         }
-
+        /// <summary>
+        /// HWAB赋值
+        /// </summary>
         private void Storage()
         {
             if (ViewState["update"] != null)
@@ -139,6 +141,9 @@ namespace GGGETSAdmin.HAWBManage
             Session.Remove("HAWB");
             Session["HAWB"] = hawb;
         }
+        /// <summary>
+        /// 页面控件赋值
+        /// </summary>
         protected void Evaluate()
         {
             hawb = (HAWB)Session["HAWB"];
@@ -151,7 +156,7 @@ namespace GGGETSAdmin.HAWBManage
                 DDl_SettleType.SelectedValue = depar.SettleType.ToString();
                 DDl_Status.SelectedValue = hawb.Status.ToString();
             }
-            if (Session["AddressShipperBook"] != null)
+            if (Session["AddressShipperBook"] != null)//判断发件人历史记录是否又记录
             {
 
                 AddressBook AddderssShipper = (AddressBook)Session["AddressShipperBook"];
@@ -207,7 +212,7 @@ namespace GGGETSAdmin.HAWBManage
                     Txt_ShipperZipCode.Text = hawb.ShipperZipCode;
                 }
             }
-            if (Session["AddressConsigneeBook"] != null)
+            if (Session["AddressConsigneeBook"] != null)//判断收件人历史是否又记录
             {
                 AddressBook AddderssConsignee = (AddressBook)Session["AddressConsigneeBook"];
                 Txt_ConsigneeName.Text = AddderssConsignee.Name;
@@ -266,7 +271,7 @@ namespace GGGETSAdmin.HAWBManage
                     }
                 }
             }
-            if (Session["AddressDeliverBook"] != null)
+            if (Session["AddressDeliverBook"] != null)//判断交付人历史是否有记录
             {
                 AddressBook AddderssDeliver = (AddressBook)Session["AddressDeliverBook"];
                 Txt_DeliverName.Text = AddderssDeliver.Name;
@@ -346,6 +351,11 @@ namespace GGGETSAdmin.HAWBManage
             }
         }
         #endregion
+        /// <summary>
+        /// 添加交付人信息
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void lbtn_AddConsignee_Click(object sender, EventArgs e)
         {
             if (Txt_Account2.Text.Trim().ToUpper() != "")
@@ -364,6 +374,11 @@ namespace GGGETSAdmin.HAWBManage
             }
         }
 
+        /// <summary>
+        /// 下一页
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void But_Next_Click(object sender, EventArgs e)
         {
             if (Txt_BarCode.Text.Trim().ToUpper() == "")
@@ -395,11 +410,21 @@ namespace GGGETSAdmin.HAWBManage
             }
         }
  
+        /// <summary>
+        /// 重填
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void But_Conel_Click(object sender, EventArgs e)
         {
             InitialControl(this.Controls);
             Session["HAWB"] = null;
         }
+        /// <summary>
+        /// 清除交付人信息
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void but_cancel_Click(object sender, EventArgs e)
         {
             Txt_DeliverName.Text = string.Empty;
@@ -435,6 +460,11 @@ namespace GGGETSAdmin.HAWBManage
             Session.Remove("AddressDeliverBook");
         }
 
+        /// <summary>
+        /// 运单号验证判断
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void Txt_BarCode_TextChanged(object sender, EventArgs e)
         {
             HAWB ha = _hawbService.FindHAWBByBarCode(Txt_BarCode.Text.Trim().ToUpper());
@@ -450,6 +480,13 @@ namespace GGGETSAdmin.HAWBManage
             else
             { Txt_Account1.Focus(); }
         }
+
+        /// <summary>
+        /// 国家二字码填充
+        /// </summary>
+        /// <param name="prefixText"></param>
+        /// <param name="count"></param>
+        /// <returns></returns>
         [System.Web.Services.WebMethodAttribute(), System.Web.Script.Services.ScriptMethodAttribute()]
         public static string[][] GetCountryList(string prefixText, int count)
         {
@@ -471,7 +508,13 @@ namespace GGGETSAdmin.HAWBManage
             return items.Take(count).ToArray();
         }
 
-
+        /// <summary>
+        /// 地区三字码填充
+        /// </summary>
+        /// <param name="prefixText"></param>
+        /// <param name="count"></param>
+        /// <param name="contextKey"></param>
+        /// <returns></returns>
         [System.Web.Services.WebMethodAttribute(), System.Web.Script.Services.ScriptMethodAttribute()]
         public static string[][] GetRegionList(string prefixText, int count, string contextKey)
         {
@@ -497,7 +540,11 @@ namespace GGGETSAdmin.HAWBManage
             return items.Take(count).ToArray();
         }
 
-
+        /// <summary>
+        /// 国家二字码判断
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void Txt_ShipperCountry_TextChanged(object sender, EventArgs e)
         {
             Txt_ShipperRegion.Text = "";
@@ -617,7 +664,11 @@ namespace GGGETSAdmin.HAWBManage
 
         }
 
-
+        /// <summary>
+        /// 获取国家二字码后填充地区三字码
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void autocomplete_ItemSelected(object sender, EventArgs e)
         {
             //Txt_ShipperCountry.Text = ((AutoCompleteExtra.AutoCompleteExtraExtender)sender).SelectedValue;
@@ -633,6 +684,12 @@ namespace GGGETSAdmin.HAWBManage
             //Txt_ConsigneeCountry.Text = ((AutoCompleteExtra.AutoCompleteExtraExtender)sender).SelectedValue;
             Txt_ConsigneeProvince.Focus();
         }
+
+        /// <summary>
+        /// 客户账号验证
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void Txt_Account1_TextChanged(object sender, EventArgs e)
         {
             if (Txt_Account1.Text.Trim() != "")
@@ -667,7 +724,11 @@ namespace GGGETSAdmin.HAWBManage
                 Txt_Account1.Focus();
             }
         }
-
+        /// <summary>
+        /// 部门账号验证
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void Txt_Account2_TextChanged(object sender, EventArgs e)
         {
             if (Txt_Account2.Text.Trim()!= "" && Txt_Account1.Text.Trim()!="")
@@ -682,6 +743,11 @@ namespace GGGETSAdmin.HAWBManage
                 Txt_Account2.Focus();
             }
         }
+        /// <summary>
+        /// 根据公司账号和部门账号填充发件人信息
+        /// </summary>
+        /// <param name="companycode"></param>
+        /// <param name="deparcode"></param>
         protected void ShipAddressEvaluate(string companycode,string deparcode)
         {
             Department departmant = _departmentservice.FindDepartmentByDepCodeAndCompanyCode(deparcode,companycode);
@@ -742,7 +808,11 @@ namespace GGGETSAdmin.HAWBManage
                 Txt_ShipperTel.Text = string.Empty;
             }
         }
-
+        /// <summary>
+        /// 收件人信息填充
+        /// </summary>
+        /// <param name="companycode"></param>
+        /// <param name="deparcode"></param>
         protected void ConsigneeEvaluate(string companycode,string deparcode)
         {
             Department departmant = _departmentservice.FindDepartmentByDepCodeAndCompanyCode(deparcode, companycode);
@@ -787,34 +857,38 @@ namespace GGGETSAdmin.HAWBManage
             }
         }
 
-        protected void gv_Shipper_RowCommand(object sender, GridViewCommandEventArgs e)
-        {
-            if (e.CommandName == "Select")
-            {
-                Guid Aid = Guid.Parse(e.CommandArgument.ToString());
-                IList<AddressBook> ressbook = _departmentservice.FindAllShipAddressesByDepCodeAndCompanyCode(Txt_Account2.Text.Trim().ToUpper(),Txt_Account1.Text.Trim().ToUpper());
-                if (ressbook != null)
-                {
-                    foreach (AddressBook address in ressbook)
-                    {
-                        if (address.AID == Aid)
-                        {
-                            Txt_ShipperName.Text = address.Name;
-                            Txt_ShipperAddress.Text = address.Address;
-                            Txt_ShipperCountry.Text = address.CountryCode;
-                            Txt_ShipperRegion.Text = address.RegionCode;
-                            Txt_ShipperProvince.Text = address.Provience;
-                            Txt_ShipperZipCode.Text = address.PostCode;
-                            Txt_ShipperContactor.Text = address.ContactorName;
-                            Txt_ShipperTel.Text = address.Phone;
-                            break;
-                        }
+        //protected void Shipper_RowCommand(object sender, GridViewCommandEventArgs e)
+        //{
+        //    if (e.CommandName == "Select")
+        //    {
+        //        Guid Aid = Guid.Parse(e.CommandArgument.ToString());
+        //        IList<AddressBook> ressbook = _departmentservice.FindAllShipAddressesByDepCodeAndCompanyCode(Txt_Account2.Text.Trim().ToUpper(),Txt_Account1.Text.Trim().ToUpper());
+        //        if (ressbook != null)
+        //        {
+        //            foreach (AddressBook address in ressbook)
+        //            {
+        //                if (address.AID == Aid)
+        //                {
+        //                    Txt_ShipperName.Text = address.Name;
+        //                    Txt_ShipperAddress.Text = address.Address;
+        //                    Txt_ShipperCountry.Text = address.CountryCode;
+        //                    Txt_ShipperRegion.Text = address.RegionCode;
+        //                    Txt_ShipperProvince.Text = address.Provience;
+        //                    Txt_ShipperZipCode.Text = address.PostCode;
+        //                    Txt_ShipperContactor.Text = address.ContactorName;
+        //                    Txt_ShipperTel.Text = address.Phone;
+        //                    break;
+        //                }
 
-                    }
-                }
-            }
-        }
-
+        //            }
+        //        }
+        //    }
+        //}
+        /// <summary>
+        /// 发件人历史查询
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void lbtn_Shipperhistory_Click(object sender, EventArgs e)
         {
             if (Txt_Account2.Text.Trim().ToUpper() != "" && Txt_Account1.Text.Trim().ToUpper()!="")
@@ -838,6 +912,11 @@ namespace GGGETSAdmin.HAWBManage
             }
         }
 
+        /// <summary>
+        /// 收件人历史查询
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void lbtn_Consigneehistory_Click(object sender, EventArgs e)
         {
             if (Txt_Account2.Text.Trim().ToUpper() != "" && Txt_Account1.Text.Trim().ToUpper()!="")
@@ -859,6 +938,11 @@ namespace GGGETSAdmin.HAWBManage
             }
         }
 
+        /// <summary>
+        /// 交付人历史查询
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void lbtn_Deliverhistory_Click(object sender, EventArgs e)
         {
             if (Txt_Account2.Text.Trim().ToUpper() != "" && Txt_Account1.Text.Trim().ToUpper()!="")
@@ -882,6 +966,11 @@ namespace GGGETSAdmin.HAWBManage
             }
         }
 
+        /// <summary>
+        /// 地区三字码匹配和验证是否为是地址
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void Txt_DeliverRegion_TextChanged(object sender, EventArgs e)
         {
             IList<RegionCode> region = _regionservice.FindAllRegionCodes();
@@ -1014,6 +1103,11 @@ namespace GGGETSAdmin.HAWBManage
             }
         }
 
+        /// <summary>
+        /// 国家二字码和地区三字码转换
+        /// </summary>
+        /// <param name="countryname"></param>
+        /// <returns></returns>
         protected string CountrySwitch(string countryname)
         {
             string country = string.Empty;
@@ -1043,6 +1137,12 @@ namespace GGGETSAdmin.HAWBManage
             return region.ToUpper();
         }
 
+
+        /// <summary>
+        /// 发件人信息对比是否为新地址
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void Txt_ShipperName_TextChanged(object sender, EventArgs e)
         {
             
@@ -1125,6 +1225,11 @@ namespace GGGETSAdmin.HAWBManage
             Txt_ShipperTel.Focus();
         }
 
+        /// <summary>
+        /// 交付人信息对比是否为新地址
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void Txt_DeliverName_TextChanged(object sender, EventArgs e)
         {
             if (!AddressName(Txt_DeliverName.Text.Trim().ToUpper(), 2))
@@ -1221,6 +1326,11 @@ namespace GGGETSAdmin.HAWBManage
             Txt_ConsigneeName.Focus();
         }
 
+        /// <summary>
+        /// 收件人信息对比是否为新地址
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void Txt_ConsigneeName_TextChanged(object sender, EventArgs e)
         {
             Storage();
@@ -1324,20 +1434,38 @@ namespace GGGETSAdmin.HAWBManage
             But_Next.Focus();
         }
 
+        /// <summary>
+        /// 保存发件人新地址
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void btn_ConsigneeAddress_Click(object sender, EventArgs e)
         {
             Address(1);
         }
 
+        /// <summary>
+        /// 保存收件人新地址
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void btn_Addressbox_Click(object sender, EventArgs e)
         {
             Address(0);
         }
-
+        /// <summary>
+        /// 保存交付人新地址
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void btn_DeliverAddress_Click(object sender, EventArgs e)
         {
             Address(2);
         }
+        /// <summary>
+        /// 保存新地址
+        /// </summary>
+        /// <param name="type">信息类型 0：发件人，1：收件人，2：交付人</param>
         protected void Address(int type)
         {
             AddressBook address = new AddressBook();
@@ -1410,6 +1538,12 @@ namespace GGGETSAdmin.HAWBManage
                 }
             }
         }
+        /// <summary>
+        /// 是否新公司比对
+        /// </summary>
+        /// <param name="name">公司名称</param>
+        /// <param name="type">信息类型</param>
+        /// <returns></returns>
         protected bool AddressName(string name, int type)
         {
             bool ok=false;
@@ -1443,6 +1577,13 @@ namespace GGGETSAdmin.HAWBManage
             }
             return ok;
         }
+
+        /// <summary>
+        /// 是否新地址比对
+        /// </summary>
+        /// <param name="name">地址</param>
+        /// <param name="type">信息类型</param>
+        /// <returns></returns>
         protected bool Address(string name, int type)
         {
             bool ok = false;
@@ -1476,6 +1617,13 @@ namespace GGGETSAdmin.HAWBManage
             }
             return ok;
         }
+
+        /// <summary>
+        /// 是否新国家比对
+        /// </summary>
+        /// <param name="name">国家名称</param>
+        /// <param name="type">信息类型</param>
+        /// <returns></returns>
         protected bool AddressCountry(string name, int type)
         {
             bool ok = false;
@@ -1509,6 +1657,13 @@ namespace GGGETSAdmin.HAWBManage
             }
             return ok;
         }
+
+        /// <summary>
+        /// 是否新地区
+        /// </summary>
+        /// <param name="name">地区名称</param>
+        /// <param name="type">信息类型</param>
+        /// <returns></returns>
         protected bool AddressRegion(string name, int type)
         {
             bool ok = false;
@@ -1542,6 +1697,13 @@ namespace GGGETSAdmin.HAWBManage
             }
             return ok;
         }
+
+        /// <summary>
+        /// 是否新省份
+        /// </summary>
+        /// <param name="name">省份</param>
+        /// <param name="type">信息类型</param>
+        /// <returns></returns>
         protected bool AddressProvince(string name, int type)
         {
             bool ok = false;
@@ -1575,6 +1737,13 @@ namespace GGGETSAdmin.HAWBManage
             }
             return ok;
         }
+
+        /// <summary>
+        /// 是否新邮编
+        /// </summary>
+        /// <param name="name">邮编</param>
+        /// <param name="type">信息类型</param>
+        /// <returns></returns>
         protected bool AddressZip(string name, int type)
         {
             bool ok = false;
@@ -1608,6 +1777,12 @@ namespace GGGETSAdmin.HAWBManage
             }
             return ok;
         }
+        /// <summary>
+        /// 是否新联系人
+        /// </summary>
+        /// <param name="name">联系人</param>
+        /// <param name="type">信息类型</param>
+        /// <returns></returns>
         protected bool AddressContactorName(string name, int type)
         {
             bool ok = false;
@@ -1641,6 +1816,12 @@ namespace GGGETSAdmin.HAWBManage
             }
             return ok;
         }
+        /// <summary>
+        /// 是否新电话
+        /// </summary>
+        /// <param name="name">电话</param>
+        /// <param name="type">信息类型</param>
+        /// <returns></returns>
         protected bool AddressTel(string name, int type)
         {
             bool ok = false;
@@ -1674,7 +1855,11 @@ namespace GGGETSAdmin.HAWBManage
             }
             return ok;
         }
-
+        /// <summary>
+        /// 用户输入判断
+        /// </summary>
+        /// <param name="type"></param>
+        /// <returns></returns>
         private bool TextEmpty(int type)
         {
             bool ok = true;
@@ -2205,7 +2390,10 @@ namespace GGGETSAdmin.HAWBManage
             return ok;
         }
 
-
+        /// <summary>
+        /// 国际化转换
+        /// </summary>
+        /// <param name="langageType"></param>
         public void SetLanguage(string langageType)
         {
             //Response.Cookies["LanType"].Value = langageType;
@@ -2215,6 +2403,21 @@ namespace GGGETSAdmin.HAWBManage
             System.Threading.Thread.CurrentThread.CurrentUICulture = culture;
             Server.Transfer(Request.Path);
         }
+        protected override void InitializeCulture()
+        {
+            if (Session["LanType"] != null)
+            {
+                string langageType = Session["LanType"].ToString();
+                CultureInfo culture = new CultureInfo(langageType);
+                System.Threading.Thread.CurrentThread.CurrentUICulture = culture;
+            }
+            base.InitializeCulture();
+        }
+        /// <summary>
+        /// 收件人公司名称输入调用事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void btn_ConsigneeName_Click(object sender, EventArgs e)
         {
             Storage();
@@ -2237,16 +2440,7 @@ namespace GGGETSAdmin.HAWBManage
             }
             Txt_ConsigneeAddress.Focus();
         }
-        protected override void InitializeCulture()
-        {
-            if (Session["LanType"] != null)
-            {
-                string langageType = Session["LanType"].ToString();
-                CultureInfo culture = new CultureInfo(langageType);
-                System.Threading.Thread.CurrentThread.CurrentUICulture = culture;
-            }
-            base.InitializeCulture();
-        }
+        
 
     }
 }
