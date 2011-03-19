@@ -38,6 +38,11 @@ namespace GGGETSAdmin.MawbManage
         protected void Page_Load(object sender, EventArgs e)
         {
         }
+        /// <summary>
+        /// 数据源绑定
+        /// </summary>
+        /// <param name="pageIndex"></param>
+        /// <param name="pageCount"></param>
         protected void Band(int pageIndex, int pageCount)
         {
             bool Ok = true;
@@ -104,6 +109,11 @@ namespace GGGETSAdmin.MawbManage
                 Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('请按提示操作！')</script>");
             }
         }
+        /// <summary>
+        /// 查询按钮事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void btn_Demand_Click(object sender, EventArgs e)
         {
             PageIndex = 0;
@@ -112,7 +122,7 @@ namespace GGGETSAdmin.MawbManage
             lbl_nuber.Text = "1";
             lbl_sumnuber.Text = (((int)ViewState["totalCount"] + PageCount - 1) / PageCount).ToString();
             DataBound();
-            if (gv_HAWB.Rows.Count < PageCount)
+            if (gv_HAWB.Rows.Count < PageCount)//判断数据源控件条数是否小于查询条数，true影藏分页控件
             {
                 FenYe.Visible = false;
             }
@@ -121,11 +131,19 @@ namespace GGGETSAdmin.MawbManage
                 FenYe.Visible = true;
             }
         }
+        /// <summary>
+        /// 前台行号显示方法
+        /// </summary>
+        /// <returns></returns>
         public int N()
         {
             return n++;
         }
-
+        /// <summary>
+        /// 数据源导出总运单和承运单清单
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void gv_HAWB_RowCommand(object sender, GridViewCommandEventArgs e)
         {
             if (e.CommandName == "Derive")
@@ -185,7 +203,11 @@ namespace GGGETSAdmin.MawbManage
                 }
             }
         }
-
+        /// <summary>
+        /// 上一页
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void btn_Up_Click(object sender, EventArgs e)
         {
             btn_down.Enabled = true;            
@@ -194,7 +216,11 @@ namespace GGGETSAdmin.MawbManage
             lbl_nuber.Text = (int.Parse(lbl_nuber.Text) - 1).ToString();
             DataBound();
         }
-
+        /// <summary>
+        /// 下一页
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void btn_down_Click(object sender, EventArgs e)
         {
             btn_Up.Enabled = true;            
@@ -203,7 +229,9 @@ namespace GGGETSAdmin.MawbManage
             lbl_nuber.Text = (int.Parse(lbl_nuber.Text) + 1).ToString();
             DataBound();
         }
-
+        /// <summary>
+        /// 上下页按钮控制
+        /// </summary>
         protected void DataBound()
         {
             if (PageIndex <= 0)
@@ -225,7 +253,11 @@ namespace GGGETSAdmin.MawbManage
             }
             
         }
-
+        /// <summary>
+        /// 首页
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void btn_homepage_Click(object sender, EventArgs e)
         {
             PageIndex = 0;
@@ -233,7 +265,11 @@ namespace GGGETSAdmin.MawbManage
             lbl_nuber.Text = "1";
             DataBound();
         }
-
+        /// <summary>
+        /// 末页
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void btn_lastpage_Click(object sender, EventArgs e)
         {
             PageIndex = int.Parse(lbl_sumnuber.Text) - 1;
@@ -241,7 +277,11 @@ namespace GGGETSAdmin.MawbManage
             lbl_nuber.Text = lbl_sumnuber.Text;
             DataBound();
         }
-
+        /// <summary>
+        /// 跳转到几页
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void btn_Jumpto_Click(object sender, EventArgs e)
         {
             if (int.Parse(Txt_Jumpto.Text.Trim()) <= 0)

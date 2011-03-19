@@ -2,10 +2,17 @@
     CodeBehind="MawbModify.aspx.cs" Inherits="GGGETSAdmin.MawbManage.MawbModify"
     Theme="logisitc" %>
 
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div>
+    <cc1:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server">
+    </cc1:ToolkitScriptManager>
+    <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+        <ContentTemplate>
+        
+            <div>
         <table class="DataView">
             <tbody>
                 <tr class="Row">
@@ -132,6 +139,8 @@
             </tbody>
         </table>
     </div>
+        </ContentTemplate>
+    </asp:UpdatePanel>
     <script type="text/javascript">
 
         function checkAll(obj, form_id) {
@@ -161,6 +170,10 @@
             }
             else
                 event.returnValue = true;
+        }
+        function Url() {
+            alert("修改成功！");
+            top.location = 'MawbManagement.aspx';
         }
     </script>
 </asp:Content>
