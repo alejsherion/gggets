@@ -26,7 +26,9 @@
         </table>
         <div>
             <asp:Button ID="btn_Add" runat="server" CssClass="InputBtn" Text="添 加" 
-                        onclick="btn_Add_Click" TabIndex="3"/>
+                        onclick="btn_Add_Click" TabIndex="3"/>&nbsp;&nbsp;&nbsp;&nbsp;
+            <asp:Button ID="But_Conel" runat="server" Text="返 回" CssClass="InputBtn" 
+        TabIndex="4" onclick="But_Conel_Click" />
         </div>
     </div>
 </asp:Content>

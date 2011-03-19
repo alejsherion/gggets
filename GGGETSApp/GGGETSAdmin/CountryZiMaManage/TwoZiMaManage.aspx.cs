@@ -25,6 +25,11 @@ namespace GGGETSAdmin.CountryZiMaManage
         {
 
         }
+        /// <summary>
+        /// 查询
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void btn_Demand_Click(object sender, EventArgs e)
         {
             string CountryCode = string.Empty;
@@ -55,7 +60,11 @@ namespace GGGETSAdmin.CountryZiMaManage
             gv_Country.DataSource = listCountry;
             gv_Country.DataBind();
         }
-
+        /// <summary>
+        /// 修改
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void gv_Country_RowUpdating(object sender, GridViewUpdateEventArgs e)
         {
             //foreach (GridViewItem row in gv_Country.Rows)
@@ -80,7 +89,11 @@ namespace GGGETSAdmin.CountryZiMaManage
         {
 
         }
-
+        /// <summary>
+        /// 编辑
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void gv_Country_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
         {
             if (listCountry == null)
@@ -91,7 +104,11 @@ namespace GGGETSAdmin.CountryZiMaManage
             gv_Country.DataSource = listCountry;
             gv_Country.DataBind();
         }
-
+        /// <summary>
+        /// 删除
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void gv_Country_RowCommand(object sender, GridViewCommandEventArgs e)
         {
             if (e.CommandName == "Delete")

@@ -60,5 +60,10 @@ namespace GGGETSAdmin.CountryZiMaManage
             }
 
         }
+
+        protected void But_Conel_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("../Navigation.aspx");
+        }
     }
 }
