@@ -44,5 +44,9 @@
         <siteMapNode url="RegionZiMaManage/regionManagement.aspx" title="三字码查询及修改" description=""></siteMapNode>
       </siteMapNode>
     </siteMapNode>
+    <siteMapNode url="" title="海关编码管理" description="">
+      <siteMapNode url="ProductManage/ProductAdd.aspx" title="海关编码添加" description=""></siteMapNode>
+      <siteMapNode url="ProductManage/ProductManagemnet.aspx" title="海关编码查询" description=""></siteMapNode>
+    </siteMapNode>
   </siteMapNode>
 </siteMap>
