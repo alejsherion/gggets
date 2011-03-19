@@ -1,6 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true"
     CodeBehind="packageManagement.aspx.cs" Inherits="GGGETSAdmin.PackageManage.packageManagement"
-    Theme="logisitc" %>
+    Theme="logisitc"%>
 
 <%@ Register Assembly="AutoCompleteExtra" Namespace="AutoCompleteExtra" TagPrefix="cc1" %>
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
@@ -111,8 +111,8 @@
         <asp:Label ID="lbl_nuber" runat="server" ForeColor="Red"></asp:Label><b style="color: Red">/</b>
         <asp:Label ID="lbl_sumnuber" runat="server" ForeColor="Red"></asp:Label>&nbsp;&nbsp;&nbsp;&nbsp;
         <asp:Button ID="btn_Jumpto" runat="server" Text="跳转到" CssClass="InputBtn" 
-            onclick="btn_Jumpto_Click" /><asp:TextBox ID="Txt_Jumpto"
-            runat="server" Width="30" CssClass="TextBox" onblur="NumberCheck(this)"></asp:TextBox>
+            onclick="btn_Jumpto_Click" />
+        <asp:TextBox ID="Txt_Jumpto" runat="server" Width="30" CssClass="TextBox" onblur="NumberCheck(this)"></asp:TextBox>
         <asp:Button ID="btn_down" runat="server" Text="下一页" onclick="btn_down_Click" CssClass="InputBtn" />&nbsp;&nbsp;&nbsp;&nbsp;
         <asp:Button ID="btn_lastpage" runat="server" Text="末页" CssClass="InputBtn" 
             onclick="btn_lastpage_Click" />
@@ -120,7 +120,7 @@
     <script type="text/javascript">
 
         function NumberCheck(name) {
-            var s = document.getElementById('ContentPlaceHolder1_Txt_Jumpto').value;
+            var s = name.value;
             var regu = /^[0-9]*$/;
             var re = new RegExp(regu);
             if (s.search(re) == -1) {

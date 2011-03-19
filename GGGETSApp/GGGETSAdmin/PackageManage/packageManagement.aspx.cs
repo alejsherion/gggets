@@ -40,13 +40,18 @@ namespace GGGETSAdmin.PackageManage
         {
 
         }
+        /// <summary>
+        /// 数据源控件绑定
+        /// </summary>
+        /// <param name="pageIndex"></param>
+        /// <param name="pageCount"></param>
         protected void Band(int pageIndex, int pageCount)
         {
             bool Ok = true;
             int totalCount = 0;//总页数
-            if (Txt_BagBarCode.Text != "")
+            if (Txt_BagBarCode.Text.Trim() != "")
             {
-                BarCode = Txt_BagBarCode.Text.ToUpper();
+                BarCode = Txt_BagBarCode.Text.Trim().ToUpper();
             }
             if (txt_UpCreateTime.Text.Trim() != "")
             {
@@ -102,7 +107,7 @@ namespace GGGETSAdmin.PackageManage
             if (Ok == true)
             {
                 listpackage = _packageservice.FindPackageByCondition(BarCode, beginTime, endTime, regionCode,pageIndex,pageCount,ref totalCount);
-                ViewState["totalCount"] = totalCount;
+                ViewState["totalCount"] = totalCount;//返回总条数
                 if (listpackage.Count > 0)
                 {
 
@@ -121,6 +126,11 @@ namespace GGGETSAdmin.PackageManage
                 Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('请按提示操作！')</script>");
             }
         }
+        /// <summary>
+        /// 查询按钮
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void btn_Demand_Click(object sender, EventArgs e)
         {
             PageIndex = 0;
@@ -182,10 +192,20 @@ namespace GGGETSAdmin.PackageManage
             //    Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "show", "<script>alert('请选择要删除的记录！')</script>");
             //}
         }
+        /// <summary>
+        /// 前台行号显示
+        /// </summary>
+        /// <returns></returns>
         public int N()
         {
            return n++;
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="prefixText"></param>
+        /// <param name="count"></param>
+        /// <returns></returns>
         [System.Web.Services.WebMethodAttribute(), System.Web.Script.Services.ScriptMethodAttribute()]
         public static string[][] GetCountryList(string prefixText, int count)
         {
@@ -211,7 +231,11 @@ namespace GGGETSAdmin.PackageManage
         {
             txt_Destination.Text = ((AutoCompleteExtra.AutoCompleteExtraExtender)sender).SelectedValue;
         }
-
+        /// <summary>
+        /// 上一页
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void btn_Up_Click(object sender, EventArgs e)
         {
             btn_down.Enabled = true;
@@ -220,7 +244,11 @@ namespace GGGETSAdmin.PackageManage
             lbl_nuber.Text = (int.Parse(lbl_nuber.Text) - 1).ToString();
             DataBound();
         }
-
+        /// <summary>
+        /// 下一页
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void btn_down_Click(object sender, EventArgs e)
         {
             btn_Up.Enabled = true;
@@ -229,7 +257,9 @@ namespace GGGETSAdmin.PackageManage
             lbl_nuber.Text = (int.Parse(lbl_nuber.Text) + 1).ToString();
             DataBound();
         }
-
+        /// <summary>
+        /// 上下页按钮控制方法
+        /// </summary>
         protected void DataBound()
         {
             if (PageIndex <= 0)
@@ -250,7 +280,11 @@ namespace GGGETSAdmin.PackageManage
                 btn_down.Enabled = true;
             }
         }
-
+        /// <summary>
+        /// 首页
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void btn_homepage_Click(object sender, EventArgs e)
         {
             PageIndex = 0;
@@ -258,7 +292,11 @@ namespace GGGETSAdmin.PackageManage
             lbl_nuber.Text = "1";
             DataBound();
         }
-
+        /// <summary>
+        /// 跳转到几页
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void btn_Jumpto_Click(object sender, EventArgs e)
         {
             if (int.Parse(Txt_Jumpto.Text.Trim()) <= 0)
@@ -280,7 +318,11 @@ namespace GGGETSAdmin.PackageManage
             }
             Txt_Jumpto.Text = string.Empty;
         }
-
+        /// <summary>
+        /// 末页
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void btn_lastpage_Click(object sender, EventArgs e)
         {
             PageIndex = int.Parse(lbl_sumnuber.Text) - 1;

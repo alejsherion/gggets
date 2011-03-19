@@ -60,6 +60,10 @@ namespace GGGETSAdmin.PackageManage
                 }
             }
         }
+        /// <summary>
+        /// 页面控件赋值
+        /// </summary>
+        /// <param name="package"></param>
         protected void Evaluate(Package package)
         {
             lbtn_BagBarCode.Text = package.BarCode;
@@ -85,7 +89,11 @@ namespace GGGETSAdmin.PackageManage
                 btn_Close.Visible = false;
             }
         }
-
+        /// <summary>
+        /// 删除包里的运单
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void btn_Close_Click(object sender, EventArgs e)
         {
             if (package == null)
@@ -124,11 +132,19 @@ namespace GGGETSAdmin.PackageManage
                 ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('请选择要删除的记录!');", true);
             }
         }
+        /// <summary>
+        /// 前台行号显示方法
+        /// </summary>
+        /// <returns></returns>
         public int N()
         {
             return n++;
         }
-
+        /// <summary>
+        /// 包添加运单
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void btn_Add_Click(object sender, EventArgs e)
         {
             if (txt_BarCode.Text.Trim() == "")
@@ -146,9 +162,9 @@ namespace GGGETSAdmin.PackageManage
                     {
                         package = new Package();
                     }
-                    if (_packageservice.JudgePIDIsNull(hawb.BarCode))
+                    if (_packageservice.JudgePIDIsNull(hawb.BarCode))//判断运单是否已存在包号
                     {
-                        if (package.JudgeHAWB(hawb))
+                        if (package.JudgeHAWB(hawb))//判断该包是否存在该条运单
                         {
                             //if (_packageservice.JudgeRegionCodeIsRepeat(hawb.BarCode, txt_Destination.Text.Trim().ToUpper(), package.IsMixed))
                             //{
@@ -186,17 +202,29 @@ namespace GGGETSAdmin.PackageManage
             txt_BarCode.Text = string.Empty;
             txt_BarCode.Focus();
         }
-
+        /// <summary>
+        /// 保存
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void btn_Save_Click(object sender, EventArgs e)
         {
             
             ModifyPackage(0);
         }
-
+        /// <summary>
+        /// 保存并关闭
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void btn_SaveAndClose_Click(object sender, EventArgs e)
         {
             ModifyPackage(1);
         }
+        /// <summary>
+        /// 保存方法
+        /// </summary>
+        /// <param name="type">0:保存，1：保存并关闭</param>
         protected void ModifyPackage(int type)
         {
             bool ok = false;
@@ -253,8 +281,7 @@ namespace GGGETSAdmin.PackageManage
                                     package.UpdateTime = DateTime.Now;
                                     package.RegionCode = txt_Destination.Text.Trim().ToUpper();
                                     _packageservice.ModifyPackage(package);
-                                    ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('修改成功!');", true);
-                                    Response.Redirect("packageManagement.aspx");
+                                    ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "Url()", true);
                                 }
                                 else
                                 {
@@ -282,7 +309,7 @@ namespace GGGETSAdmin.PackageManage
                         package.UpdateTime = DateTime.Now;
                         package.RegionCode = txt_Destination.Text.Trim().ToUpper();
                         _packageservice.ModifyPackage(package);
-                        ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('修改成功!');location='packageManagement.aspx'", true);
+                        ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "Url()", true);
 
                     }
                 }
@@ -294,11 +321,21 @@ namespace GGGETSAdmin.PackageManage
             }
             
         }
-
+        /// <summary>
+        /// 查看包信息
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void lbtn_BagBarCode_Click(object sender, EventArgs e)
         {
             Response.Redirect("PackageDetails.aspx?BarCode=" + lbtn_BagBarCode.Text + "");
         }
+        /// <summary>
+        /// 地区三字码填充
+        /// </summary>
+        /// <param name="prefixText"></param>
+        /// <param name="count"></param>
+        /// <returns></returns>
         [System.Web.Services.WebMethodAttribute(), System.Web.Script.Services.ScriptMethodAttribute()]
         public static string[][] GetCountryList(string prefixText, int count)
         {
