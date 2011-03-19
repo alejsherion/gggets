@@ -8,6 +8,7 @@
 //************************************************************************
 using System;
 using System.Collections.Generic;
+using System.Data;
 using ETS.GGGETSApp.Domain.Application.Entities;
 using System;
 using System.Web;
@@ -22,10 +23,18 @@ namespace Application.GGETS
         IList<Template> GetAll();
         Template FindTemplateByTID(string TID);
         void ModifyTemplate(Template template);
+        void RemoveTemplate(Template template);
         #endregion
 
         #region logic
         void AddTemplate(Template template);
+
+        /// <summary>
+        /// 获取主表相关信息
+        /// </summary>
+        /// <returns></returns>
+        DataTable GetAllPrimaryTable();
+       
         #endregion
     }
 }

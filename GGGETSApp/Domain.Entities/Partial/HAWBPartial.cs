@@ -14,6 +14,23 @@ using ETS.GGGETSApp.Domain.Core.Entities;
 
 namespace ETS.GGGETSApp.Domain.Application.Entities
 {
+    #region 枚举
+    public enum ServiceType
+    {
+        文件,
+        小包裹=1,
+        普通货物=2
+    }
+
+    public enum SettleType
+    {
+        预付月结,
+        预付现结 = 1,
+        到付月结 = 2,
+        到付现结 = 3
+    }
+    #endregion
+
     public partial class HAWB
     {
         public HAWB()
@@ -107,7 +124,7 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
         public void RemoveHAWBBox(HAWBBox box)
         {
             box.MarkAsDeleted();
-            this.HAWBBoxes.Remove(box);            
+            this.HAWBBoxes.Remove(box);
         }
     }
 

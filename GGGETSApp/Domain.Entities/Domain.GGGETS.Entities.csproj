@@ -104,6 +104,7 @@
     <Compile Include="Partial\HAWBPartial.cs" />
     <Compile Include="Partial\MAWBPartial.cs" />
     <Compile Include="Partial\PackagePartial.cs" />
+    <Compile Include="Partial\TemplatePartial.cs" />
     <Compile Include="Privilege.cs">
       <DependentUpon>GGGETSAppContext.Types.tt</DependentUpon>
     </Compile>

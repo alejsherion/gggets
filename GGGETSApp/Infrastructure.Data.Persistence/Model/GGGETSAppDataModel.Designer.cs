@@ -5918,48 +5918,24 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Model
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public Nullable<global::System.Int32> HorizontalRange
+        public global::System.String DefaultValue
         {
             get
             {
-                return _HorizontalRange;
+                return _DefaultValue;
             }
             set
             {
-                OnHorizontalRangeChanging(value);
-                ReportPropertyChanging("HorizontalRange");
-                _HorizontalRange = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("HorizontalRange");
-                OnHorizontalRangeChanged();
+                OnDefaultValueChanging(value);
+                ReportPropertyChanging("DefaultValue");
+                _DefaultValue = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("DefaultValue");
+                OnDefaultValueChanged();
             }
         }
-        private Nullable<global::System.Int32> _HorizontalRange;
-        partial void OnHorizontalRangeChanging(Nullable<global::System.Int32> value);
-        partial void OnHorizontalRangeChanged();
-    
-        /// <summary>
-        /// 没有元数据文档可用。
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public Nullable<global::System.Int32> VerticalRange
-        {
-            get
-            {
-                return _VerticalRange;
-            }
-            set
-            {
-                OnVerticalRangeChanging(value);
-                ReportPropertyChanging("VerticalRange");
-                _VerticalRange = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("VerticalRange");
-                OnVerticalRangeChanged();
-            }
-        }
-        private Nullable<global::System.Int32> _VerticalRange;
-        partial void OnVerticalRangeChanging(Nullable<global::System.Int32> value);
-        partial void OnVerticalRangeChanged();
+        private global::System.String _DefaultValue;
+        partial void OnDefaultValueChanging(global::System.String value);
+        partial void OnDefaultValueChanged();
 
         #endregion
     

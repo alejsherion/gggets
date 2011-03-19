@@ -32,7 +32,7 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Repositories
         {
             IGGGETSAppUnitOfWork context = UnitOfWork as IGGGETSAppUnitOfWork;
             if (context != null)
-                return context.Param.Where(it => it.TID == new Guid(TID)).ToList();
+                return context.Param.Where(it => it.TID == new Guid(TID)).OrderBy(it=>it.Tag).ToList();
             else
                 throw new InvalidOperationException(string.Format(
                                                             CultureInfo.InvariantCulture,

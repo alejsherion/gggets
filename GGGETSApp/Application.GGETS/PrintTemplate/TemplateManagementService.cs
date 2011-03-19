@@ -8,6 +8,7 @@
 //************************************************************************
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Web;
@@ -74,6 +75,19 @@ namespace Application.GGETS
         }
 
         /// <summary>
+        /// 删除模板
+        /// </summary>
+        /// <param name="template">模板</param>
+        public void RemoveTemplate(Template template)
+        {
+            if (template == null)
+                throw new ArgumentNullException("Template is null");
+            IUnitOfWork unitOfWork = _templateRepository.UnitOfWork;
+            _templateRepository.Remove(template);
+            unitOfWork.Commit();
+        }
+
+        /// <summary>
         /// 新增模板
         /// </summary>
         /// <param name="template">模板</param>
@@ -85,6 +99,19 @@ namespace Application.GGETS
             _templateRepository.Add(template);
             //complete changes in this unit of work
             unitOfWork.Commit();
+        }
+
+        /// <summary>
+        /// 获取主表相关信息
+        /// </summary>
+        /// <returns></returns>
+        public DataTable GetAllPrimaryTable()
+        {
+            var sqlStr = "select * from TemplateDesc";
+            var datasource = SqlHelper.ExecuteDataset(CommandType.Text, sqlStr);
+            if (datasource == null) return null;
+            var table = datasource.Tables[0];
+            return table;
         }
     }
 }
