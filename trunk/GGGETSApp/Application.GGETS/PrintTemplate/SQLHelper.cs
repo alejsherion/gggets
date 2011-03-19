@@ -18,9 +18,8 @@ using System.Collections;
     /// </summary>
     public abstract class SqlHelper
     {
-
         //Database connection strings
-        public static readonly string CONN_STRING_NON_DTC = "Data Source=.;Initial Catalog=MYGGGETS;User ID=sa;Pwd=shenzhiwei";
+        public static readonly string CONN_STRING_NON_DTC = System.Configuration.ConfigurationSettings.AppSettings["sqlhelper"];
 
         // Hashtable to store cached parameters
         private static Hashtable parmCache = Hashtable.Synchronized(new Hashtable());
