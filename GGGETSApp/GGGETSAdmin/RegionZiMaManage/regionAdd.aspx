@@ -10,7 +10,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <cc2:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server">
     </cc2:ToolkitScriptManager>
-     <div class="">
+     <div>
         <table class="DataView">
             <tr class="Row">
                 <td class="FieldHeader" style="width:120px">
@@ -48,7 +48,9 @@
         </table>
         <div class="FooterBtnBar">
             <asp:Button ID="btn_Add" runat="server" CssClass="InputBtn" Text="添 加" 
-                        onclick="btn_Add_Click" TabIndex="4"/>
+                        onclick="btn_Add_Click" TabIndex="4"/>&nbsp;&nbsp;&nbsp;&nbsp;
+            <asp:Button ID="But_Conel" runat="server" Text="返 回" CssClass="InputBtn" 
+        TabIndex="5" onclick="But_Conel_Click" />
         </div>
     </div>
 </asp:Content>
