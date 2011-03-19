@@ -24,13 +24,17 @@ namespace GGGETSAdmin.PersonnelManage.UserManage
         {
 
         }
-
+        /// <summary>
+        /// 查询
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void btn_Demand_Click(object sender, EventArgs e)
         {
             string loginName = string.Empty;
             DateTime beginTime=new DateTime();
             DateTime endTime=new DateTime();
-            bool Ok = true;
+            bool Ok = true;//判断条件是否有误
             if (Txt_LoginName.Text.Trim() != "")
             {
                 loginName = Txt_LoginName.Text.Trim();
@@ -74,12 +78,16 @@ namespace GGGETSAdmin.PersonnelManage.UserManage
             }
             if (Ok)
             {
-                gv_User.DataSource = _userService.FindUsersByCondition(loginName, beginTime, endTime);
+                gv_User.DataSource = _userService.FindUsersByCondition(loginName, beginTime, endTime);//根据条件获取用户信息
                 gv_User.DataBind();
                 InitialControl(this.Controls);
             }
         }
-
+        /// <summary>
+        /// 数据操作
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void gv_User_RowCommand(object sender, GridViewCommandEventArgs e)
         {
             int index = int.Parse(e.CommandArgument.ToString());
@@ -98,6 +106,10 @@ namespace GGGETSAdmin.PersonnelManage.UserManage
                 
             }
         }
+        /// <summary>
+        /// 清空页面控件
+        /// </summary>
+        /// <param name="objControlCollection"></param>
         private void InitialControl(ControlCollection objControlCollection)
         {
             foreach (System.Web.UI.Control objControl in objControlCollection)

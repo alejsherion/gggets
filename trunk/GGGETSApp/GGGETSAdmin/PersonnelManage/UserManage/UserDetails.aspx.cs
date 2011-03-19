@@ -38,9 +38,13 @@ namespace GGGETSAdmin.PersonnelManage.UserManage
                 }
             }
         }
+        /// <summary>
+        /// 页面控件赋值
+        /// </summary>
+        /// <param name="loginname">个人用户登录名</param>
         protected void Storage(string loginname)
         {
-            ETS.GGGETSApp.Domain.Application.Entities.User user = _userService.FindUserByLoginName(loginname);
+            ETS.GGGETSApp.Domain.Application.Entities.User user = _userService.FindUserByLoginName(loginname);//根据用户名获取信息
             if (user != null)
             {
                 if (user.DID != null)
@@ -113,12 +117,21 @@ namespace GGGETSAdmin.PersonnelManage.UserManage
                 }
             }
         }
+        /// <summary>
+        /// 修改
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void But_Next_Click(object sender, EventArgs e)
         {
 
             Response.Redirect("UserModify.aspx?LoginName=" + Txt_LoginName.Text.Trim() + "");
         }
-
+        /// <summary>
+        /// 返回
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void But_Conel_Click(object sender, EventArgs e)
         {
             Response.Redirect((string)ViewState["Url"]);

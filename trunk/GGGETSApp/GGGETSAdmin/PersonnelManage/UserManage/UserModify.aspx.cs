@@ -44,6 +44,10 @@ namespace GGGETSAdmin.PersonnelManage.UserManage
                 }
             }
         }
+        /// <summary>
+        /// 页面控件赋值
+        /// </summary>
+        /// <param name="loginname">登录名</param>
         protected void Storage(string loginname)
         {
             user = _userService.FindUserByLoginName(loginname);
@@ -74,6 +78,11 @@ namespace GGGETSAdmin.PersonnelManage.UserManage
             }
         }
 
+        /// <summary>
+        /// 修改
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void btn_UpCompany_Click(object sender, EventArgs e)
         {
             if (user == null)
@@ -149,15 +158,23 @@ namespace GGGETSAdmin.PersonnelManage.UserManage
                 }
             }
         }
-
+        /// <summary>
+        /// 返回
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void btn_Cancel_Click(object sender, EventArgs e)
         {
             Response.Redirect((string)ViewState["Url"]);
         }
-
+        /// <summary>
+        /// 公司账号验证
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void Txt_CompanyCode_TextChanged(object sender, EventArgs e)
         {
-            Company company = _companyService.FindCompanyByCompanyCode(Txt_CompanyCode.Text.Trim());
+            Company company = _companyService.FindCompanyByCompanyCode(Txt_CompanyCode.Text.Trim());//根据公司账号获取信息
             if (company == null)
             {
                 Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('没有该公司账号，请重新输入！')</script>");
@@ -169,12 +186,16 @@ namespace GGGETSAdmin.PersonnelManage.UserManage
                 Txt_DepCode.Focus();
             }
         }
-
+        /// <summary>
+        /// 部门账号验证
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void Txt_DepCode_TextChanged(object sender, EventArgs e)
         {
             if (Txt_CompanyCode.Text.Trim() != "")
             {
-                IList<Department> ldepar = _deparService.FindDepartmentsByCompanyCode(Txt_CompanyCode.Text.Trim());
+                IList<Department> ldepar = _deparService.FindDepartmentsByCompanyCode(Txt_CompanyCode.Text.Trim());//根据部门账号获取信息
                 bool Ok = false;
                 if (ldepar != null)
                 {
@@ -210,12 +231,16 @@ namespace GGGETSAdmin.PersonnelManage.UserManage
                 Txt_CompanyCode.Focus();
             }
         }
-
+        /// <summary>
+        /// 登录名验证
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void Txt_LoginName_TextChanged(object sender, EventArgs e)
         {
             if (Txt_LoginName.Text.Trim() != "")
             {
-                ETS.GGGETSApp.Domain.Application.Entities.User user = _userService.FindUserByLoginName(Txt_LoginName.Text.Trim());
+                ETS.GGGETSApp.Domain.Application.Entities.User user = _userService.FindUserByLoginName(Txt_LoginName.Text.Trim());//根据登录名获取信息
                 if (user != null)
                 {
                     Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "show", "<script>alert('用户名已存在请重新输入！')</script>");
