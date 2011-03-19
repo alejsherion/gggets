@@ -107,6 +107,8 @@ namespace Application.GGETS
         /// <param name="page">页面对象</param>
         public void PrintHAWB(int intOrient, int intPageWidth, int intPageHeight, string strPageName, string identifyKey, string templateCode, int batchHeight, int operateType, Page page)
         {
+            IList<Param> paramsListTemp = new List<Param>();//暂时保存radiobox类型记录
+
             if (string.IsNullOrEmpty(strPageName)) strPageName = "";
             Template template = _templateRepository.FindTemplateByTemplateCode(templateCode);
             string SQLStr = string.Format("select * from param where TID='{0}' order by Tag", template.TID);
@@ -121,137 +123,136 @@ namespace Application.GGETS
             if (reader.HasRows)
                 while (reader.Read())
                 {
-                    //搜集参数信息....................................................................................
-                    string key = Convert.ToString(reader["Key"]);//用于维护时，显示字段说明
-                    string value = Convert.ToString(reader["Value"]);//用于非维护时，绑定打印值,需要解析这个SQL语句
-                    string paramType = Convert.ToString(reader["ParamType"]);//参数类型：文本，条形码以及单选框
-                    int top = Convert.ToInt32(reader["top"]);//上边距
-                    int left = Convert.ToInt32(reader["left"]);//左边距
-                    int width = Convert.ToInt32(reader["width"]);//打印控件宽度
-                    int height = Convert.ToInt32(reader["height"]);//打印控件高度
-                    string fontName = Convert.ToString(reader["FontName"]);//字体名称
-                    int fontSize = Convert.ToInt32(reader["FontSize"]);//字体大小
-                    int aligment = Convert.ToInt32(reader["Alignment"]);//对齐方式
-                    int bold = Convert.ToInt32(reader["Bold"]);//是否加粗
-                    int italic = Convert.ToInt32(reader["Italic"]);//是否斜体
-                    int underLine = Convert.ToInt32(reader["Underline"]);//是否下划线
-                    int horizontalRange = Convert.ToInt32(reader["HorizontalRange"]);//用于特殊类型，主要用于单选框的定位
-                    int verticalRange = Convert.ToInt32(reader["VerticalRange"]);//同上
-                    //搜集完成..........................................................................................
+                    //通过反射获取当前Param对象
+                    Param paramTemp = GetEntityByDR<Param>(reader);
 
-                    //处理上边距和左边距(默认都是0，只有当类型为单选框时，需要取当前对象的value与其的乘积)...................
-                    if(paramType=="RadioBox" || paramType=="CheckBox")
+                    if(paramTemp.ParamType == "RadioBox")
                     {
-                        top = top + Convert.ToInt32(value)*verticalRange;
-                        left = left + Convert.ToInt32(value)*horizontalRange;
+                        paramsListTemp.Add(paramTemp);//存入
+                        if(operateType!=0)
+                            continue;
                     }
-                    //这里逻辑太独立了，只能这么来处理
-                    if (paramType == "SType" && operateType==1)
-                    {
-                        string output = ResolveResult(key, value, paramType, identifyKey, 1);//获取KEY对应的VALUE值
-                        if(output!="0")
-                        {
-                            left = left + horizontalRange;
-                        }
-                    }
-                    if(paramType=="STType" && operateType==1)
-                    {
-                        string output = ResolveResult(key, value, paramType, identifyKey, 1);//获取KEY对应的VALUE值
-                        if(output=="2")
-                        {
-                            left = left + horizontalRange;
-                        }
-                        if(output=="1" || output=="3")
-                        {
-                            left = left + horizontalRange*2;
-                        }
-                    }
-                    //处理完毕..........................................................................................
 
-                    //开始处理对象，可能是一个，也可能是多个(批处理)......................................................
-                    if(identifyKey.Contains(",") && operateType==1)
-                    {
-                        string[] identifykeys = identifyKey.Split(new char[] { ',' });
-                        int count = 0;//计数器
-                        foreach(string identifykeyTemp in identifykeys)
-                        {
-                            int newTop = top + count*batchHeight;//批处理高度的解决方案
-
-                            //获取打印输出值
-                            string output = ResolveResult(key, value, paramType, identifykeyTemp, operateType);
-                            //控制打印
-                            if (paramType.Equals("Text") || paramType.Equals("SType") || paramType.Equals("STType"))
-                            {
-                                if (paramType.Equals("SType") || paramType.Equals("STType")) 
-                                    output = "√";
-                                sb.Append("LODOP.ADD_PRINT_TEXT(" + newTop + "," + left + ", " + width + ", " + height + ", '" + output + "');");//定义内容
-                                sb.Append("LODOP.SET_PRINT_STYLEA(0,\"FontName\",'" + fontName + "');");//定义字体
-                                sb.Append("LODOP.SET_PRINT_STYLEA(0,\"FontSize\"," + fontSize + ");");//定义字体大小
-                                sb.Append("LODOP.SET_PRINT_STYLEA(0,\"Alignment\"," + aligment + ");");//定义对齐方式
-                                sb.Append("LODOP.SET_PRINT_STYLEA(0,\"Bold\"," + bold + ");");//定义是否粗体
-                                sb.Append("LODOP.SET_PRINT_STYLEA(0,\"Italic\"," + italic + ");");//定义是否斜体
-                                sb.Append("LODOP.SET_PRINT_STYLEA(0,\"Underline\"," + underLine + ");");//定义是否下划线
-                            }
-                            if (paramType.Equals("BarCode"))
-                                sb.Append("LODOP.ADD_PRINT_BARCODE(" + newTop + "," + left + ", " + width + ", " + height + ", \"Code39\", '" + output + "');");//定义内容
-                            if (paramType.Equals("Textarea"))
-                            {
-                                string strDivStyle = "<style>span {word-break:keep-all;word-wrap:break-word;white-space:normal}</style>";
-                                var strDivHtml = strDivStyle + "<span>" + output + "</span>";
-                                sb.Append("LODOP.ADD_PRINT_HTM(" + newTop + "," + left + ", " + width + ", " + height + ", '" + strDivHtml + "');");//定义内容
-                                sb.Append("LODOP.SET_PRINT_STYLEA(0,\"FontName\",'" + fontName + "');");//定义字体
-                                sb.Append("LODOP.SET_PRINT_STYLEA(0,\"FontSize\"," + fontSize + ");");//定义字体大小
-                                sb.Append("LODOP.SET_PRINT_STYLEA(0,\"Alignment\"," + aligment + ");");//定义对齐方式
-                                sb.Append("LODOP.SET_PRINT_STYLEA(0,\"Bold\"," + bold + ");");//定义是否粗体
-                                sb.Append("LODOP.SET_PRINT_STYLEA(0,\"Italic\"," + italic + ");");//定义是否斜体
-                                sb.Append("LODOP.SET_PRINT_STYLEA(0,\"Underline\"," + underLine + ");");//定义是否下划线
-                            }
-                               
-                            count++;
-                        }
-                        
-                    }
-                    else
-                    {
-                        //获取打印输出值
-                        string output = ResolveResult(key, value, paramType, identifyKey, operateType);
-                        //控制打印
-                        if (paramType.Equals("Text") || paramType.Equals("SType") || paramType.Equals("STType"))
-                        {
-                            if (paramType.Equals("SType") || paramType.Equals("STType")) 
-                                output = "√";
-                            sb.Append("LODOP.ADD_PRINT_TEXT(" + top + "," + left + ", " + width + ", " + height + ", '" + output + "');");//定义内容
-                            sb.Append("LODOP.SET_PRINT_STYLEA(0,\"FontName\",'" + fontName + "');");//定义字体
-                            sb.Append("LODOP.SET_PRINT_STYLEA(0,\"FontSize\"," + fontSize + ");");//定义字体大小
-                            sb.Append("LODOP.SET_PRINT_STYLEA(0,\"Alignment\"," + aligment + ");");//定义对齐方式
-                            sb.Append("LODOP.SET_PRINT_STYLEA(0,\"Bold\"," + bold + ");");//定义是否粗体
-                            sb.Append("LODOP.SET_PRINT_STYLEA(0,\"Italic\"," + italic + ");");//定义是否斜体
-                            sb.Append("LODOP.SET_PRINT_STYLEA(0,\"Underline\"," + underLine + ");");//定义是否下划线
-                        }
-                        if (paramType.Equals("BarCode"))
-                            sb.Append("LODOP.ADD_PRINT_BARCODE(" + top + "," + left + ", " + width + ", " + height + ", \"Code39\", '" + output + "');");//定义内容
-                        if (paramType.Equals("Textarea"))
-                        {
-                            string strDivStyle = "<style>span {word-break:keep-all;word-wrap:break-word;white-space:normal}</style>";
-                            var strDivHtml = strDivStyle + "<span>" + output + "</span>";
-                            sb.Append("LODOP.ADD_PRINT_HTM(" + top + "," + left + ", " + width + ", " + height + ", '" + strDivHtml + "');");//定义内容
-                            sb.Append("LODOP.SET_PRINT_STYLEA(0,\"FontName\",'" + fontName + "');");//定义字体
-                            sb.Append("LODOP.SET_PRINT_STYLEA(0,\"FontSize\"," + fontSize + ");");//定义字体大小
-                            sb.Append("LODOP.SET_PRINT_STYLEA(0,\"Alignment\"," + aligment + ");");//定义对齐方式
-                            sb.Append("LODOP.SET_PRINT_STYLEA(0,\"Bold\"," + bold + ");");//定义是否粗体
-                            sb.Append("LODOP.SET_PRINT_STYLEA(0,\"Italic\"," + italic + ");");//定义是否斜体
-                            sb.Append("LODOP.SET_PRINT_STYLEA(0,\"Underline\"," + underLine + ");");//定义是否下划线
-                        }
-                    }
+                    //处理过程
+                    ResolveProcess(paramTemp, identifyKey, operateType, batchHeight, sb);
                 }
             else
                 page.RegisterStartupScript("", "<script>alert('模板还没有创建，请联系管理员添加^_^');</script>");
-           
+            
+            //处理RadioBox类型的集合
+            if(operateType!=0)
+                ResolveRadioBox(paramsListTemp, identifyKey, operateType, batchHeight, sb);
+
             sb.Append("DisplayDesign();");
             sb.Append("}; ");
             sb.Append("</script>");
             page.RegisterClientScriptBlock("", sb.ToString());
             page.RegisterStartupScript("", "<script>Print();</script>");
+        }
+
+        /// <summary>
+        /// 处理LODOP过程式语言
+        /// </summary>
+        private void ResolveProcess(Param paramTemp, string identifyKey, int operateType, int batchHeight,StringBuilder sb)
+        {
+            //开始处理对象，可能是一个，也可能是多个(批处理)......................................................
+            if (identifyKey.Contains(",") && operateType == 1)
+            {
+                string[] identifykeys = identifyKey.Split(new char[] { ',' });
+                int count = 0;//计数器
+                foreach (string identifykeyTemp in identifykeys)
+                {
+                    int newTop = paramTemp.Top + count * batchHeight;//批处理高度的解决方案
+
+                    //获取打印输出值
+                    string output = ResolveResult(paramTemp.Key, paramTemp.Value, paramTemp.ParamType, identifykeyTemp, operateType);
+                    //控制打印
+                    if (paramTemp.ParamType.Equals("Text") || paramTemp.ParamType.Equals("RadioBox"))
+                    {
+                        if (paramTemp.ParamType.Equals("RadioBox"))
+                            output = "√";
+                        sb.Append("LODOP.ADD_PRINT_TEXT(" + newTop + "," + paramTemp.Left + ", " + paramTemp.Width + ", " + paramTemp.Height + ", '" + output + "');");//定义内容
+                        sb.Append("LODOP.SET_PRINT_STYLEA(0,\"FontName\",'" + paramTemp.FontName + "');");//定义字体
+                        sb.Append("LODOP.SET_PRINT_STYLEA(0,\"FontSize\"," + paramTemp.FontSize + ");");//定义字体大小
+                        sb.Append("LODOP.SET_PRINT_STYLEA(0,\"Alignment\"," + paramTemp.Alignment + ");");//定义对齐方式
+                        sb.Append("LODOP.SET_PRINT_STYLEA(0,\"Bold\"," + paramTemp.Bold + ");");//定义是否粗体
+                        sb.Append("LODOP.SET_PRINT_STYLEA(0,\"Italic\"," + paramTemp.Italic + ");");//定义是否斜体
+                        sb.Append("LODOP.SET_PRINT_STYLEA(0,\"Underline\"," + paramTemp.Underline + ");");//定义是否下划线
+                    }
+                    if (paramTemp.ParamType.Equals("BarCode"))
+                        sb.Append("LODOP.ADD_PRINT_BARCODE(" + newTop + "," + paramTemp.Left + ", " + paramTemp.Width + ", " + paramTemp.Height + ", \"Code39\", '" + output + "');");//定义内容
+                    if (paramTemp.ParamType.Equals("Textarea"))
+                    {
+                        string strDivStyle = "<style>span {word-break:keep-all;word-wrap:break-word;white-space:normal}</style>";
+                        var strDivHtml = strDivStyle + "<span>" + output + "</span>";
+                        sb.Append("LODOP.ADD_PRINT_HTM(" + newTop + "," + paramTemp.Left + ", " + paramTemp.Width + ", " + paramTemp.Height + ", '" + strDivHtml + "');");//定义内容
+                        sb.Append("LODOP.SET_PRINT_STYLEA(0,\"FontName\",'" + paramTemp.FontName + "');");//定义字体
+                        sb.Append("LODOP.SET_PRINT_STYLEA(0,\"FontSize\"," + paramTemp.FontSize + ");");//定义字体大小
+                        sb.Append("LODOP.SET_PRINT_STYLEA(0,\"Alignment\"," + paramTemp.Alignment + ");");//定义对齐方式
+                        sb.Append("LODOP.SET_PRINT_STYLEA(0,\"Bold\"," + paramTemp.Bold + ");");//定义是否粗体
+                        sb.Append("LODOP.SET_PRINT_STYLEA(0,\"Italic\"," + paramTemp.Italic + ");");//定义是否斜体
+                        sb.Append("LODOP.SET_PRINT_STYLEA(0,\"Underline\"," + paramTemp.Underline + ");");//定义是否下划线
+                    }
+
+                    count++;
+                }
+
+            }
+            else
+            {
+                //获取打印输出值
+                string output = ResolveResult(paramTemp.Key, paramTemp.Value, paramTemp.ParamType, identifyKey, operateType);
+                //控制打印
+                if (paramTemp.ParamType.Equals("Text") || paramTemp.ParamType.Equals("RadioBox"))
+                {
+                    if (paramTemp.ParamType.Equals("RadioBox") && operateType == 1)
+                        output = "√";
+                    sb.Append("LODOP.ADD_PRINT_TEXT(" + paramTemp.Top + "," + paramTemp.Left + ", " + paramTemp.Width + ", " + paramTemp.Height + ", '" + output + "');");//定义内容
+                    sb.Append("LODOP.SET_PRINT_STYLEA(0,\"FontName\",'" + paramTemp.FontName + "');");//定义字体
+                    sb.Append("LODOP.SET_PRINT_STYLEA(0,\"FontSize\"," + paramTemp.FontSize + ");");//定义字体大小
+                    sb.Append("LODOP.SET_PRINT_STYLEA(0,\"Alignment\"," + paramTemp.Alignment + ");");//定义对齐方式
+                    sb.Append("LODOP.SET_PRINT_STYLEA(0,\"Bold\"," + paramTemp.Bold + ");");//定义是否粗体
+                    sb.Append("LODOP.SET_PRINT_STYLEA(0,\"Italic\"," + paramTemp.Italic + ");");//定义是否斜体
+                    sb.Append("LODOP.SET_PRINT_STYLEA(0,\"Underline\"," + paramTemp.Underline + ");");//定义是否下划线
+                }
+                if (paramTemp.ParamType.Equals("BarCode"))
+                    sb.Append("LODOP.ADD_PRINT_BARCODE(" + paramTemp.Top + "," + paramTemp.Left + ", " + paramTemp.Width + ", " + paramTemp.Height + ", \"Code39\", '" + output + "');");//定义内容
+                if (paramTemp.ParamType.Equals("Textarea"))
+                {
+                    string strDivStyle = "<style>span {word-break:keep-all;word-wrap:break-word;white-space:normal}</style>";
+                    var strDivHtml = strDivStyle + "<span>" + output + "</span>";
+                    sb.Append("LODOP.ADD_PRINT_HTM(" + paramTemp.Top + "," + paramTemp.Left + ", " + paramTemp.Width + ", " + paramTemp.Height + ", '" + strDivHtml + "');");//定义内容
+                    sb.Append("LODOP.SET_PRINT_STYLEA(0,\"FontName\",'" + paramTemp.FontName + "');");//定义字体
+                    sb.Append("LODOP.SET_PRINT_STYLEA(0,\"FontSize\"," + paramTemp.FontSize + ");");//定义字体大小
+                    sb.Append("LODOP.SET_PRINT_STYLEA(0,\"Alignment\"," + paramTemp.Alignment + ");");//定义对齐方式
+                    sb.Append("LODOP.SET_PRINT_STYLEA(0,\"Bold\"," + paramTemp.Bold + ");");//定义是否粗体
+                    sb.Append("LODOP.SET_PRINT_STYLEA(0,\"Italic\"," + paramTemp.Italic + ");");//定义是否斜体
+                    sb.Append("LODOP.SET_PRINT_STYLEA(0,\"Underline\"," + paramTemp.Underline + ");");//定义是否下划线
+                }
+            }
+            //处理完毕...............................................................................................................................................................................
+        }
+
+        /// <summary>
+        /// 处理RadioBox类型的集合
+        /// </summary>
+        private void ResolveRadioBox(IList<Param> paramObj,string identifyKey, int operateType, int batchHeight,StringBuilder sb)
+        {
+            if(paramObj.Count!=0)
+            {
+                foreach(Param param in paramObj)
+                {
+                    if(!string.IsNullOrEmpty(param.Value))
+                    {
+                        string value = Regex.Replace(param.Value, "#key#", identifyKey);
+                        SqlDataReader reader = Execution(value);
+                        value = ReadExecution(reader);
+                        //如果defaultvalue和value相等，才添加入lodop中
+                        if (value.Equals(param.DefaultValue))
+                            ResolveProcess(param, identifyKey, operateType, batchHeight, sb);
+                    }
+                }
+            }
         }
 
         /// <summary>
@@ -288,7 +289,7 @@ namespace Application.GGETS
             else
             {
                 //文本类型/条形码类型，此时value就是SQL语句，需要进行执行
-                if (paramType.Equals("Text") || paramType.Equals("BarCode") || paramType.Equals("Textarea") || paramType.Equals("SType") || paramType.Equals("STType"))
+                if (paramType.Equals("Text") || paramType.Equals("BarCode") || paramType.Equals("Textarea"))
                 {
                     //将SQL语句进行正则转化
                     value = Regex.Replace(value, "#key#", identifyKey);
@@ -350,5 +351,87 @@ namespace Application.GGETS
             }
             return result.ToString().Substring(0, result.Length - 2);
         }
+
+        #region reader反射
+        /// <summary>
+        /// 反射
+        /// </summary>
+        /// <typeparam name="T">抽象类</typeparam>
+        /// <param name="dr">sqlreader</param>
+        /// <returns></returns>
+        public static T GetEntityByDR<T>(SqlDataReader dr)
+        {
+            //获取该对象的类型
+            Type type = typeof(T);
+            T destObj = Activator.CreateInstance<T>();
+            //获取该类型中存在属性名称
+            foreach (PropertyInfo prop in type.GetProperties())
+            {
+                try
+                {
+                    if ((dr[prop.Name] != null) && (dr[prop.Name] != DBNull.Value))
+                    {
+                        SetPropertyValue(prop, destObj, dr[prop.Name]);
+                    }
+                }
+                catch
+                {
+                }
+            }
+            return destObj;
+        }
+
+        private static void SetPropertyValue(PropertyInfo prop, object destObj, object value)
+        {
+            object temp = ChangeType(prop.PropertyType, value);
+            prop.SetValue(destObj, temp, null);
+        }
+
+        private static object ChangeType(Type type, object value)
+        {
+            if ((value == null) && type.IsGenericType)
+            {
+                return Activator.CreateInstance(type);
+            }
+            if (value == null)
+            {
+                return null;
+            }
+            if (type != value.GetType())
+            {
+                if (type.IsEnum)
+                {
+                    if (value is string)
+                    {
+                        return Enum.Parse(type, value as string);
+                    }
+                    return Enum.ToObject(type, value);
+                }
+                if ((type == typeof(bool)) && typeof(int).IsInstanceOfType(value))
+                {
+                    return (int.Parse(value.ToString()) != 0);
+                }
+                if (!(type.IsInterface || !type.IsGenericType))
+                {
+                    Type type1 = type.GetGenericArguments()[0];
+                    object obj1 = ChangeType(type1, value);
+                    return Activator.CreateInstance(type, new object[] { obj1 });
+                }
+                if ((value is string) && (type == typeof(Guid)))
+                {
+                    return new Guid(value as string);
+                }
+                if ((value is string) && (type == typeof(Version)))
+                {
+                    return new Version(value as string);
+                }
+                if (value is IConvertible)
+                {
+                    return Convert.ChangeType(value, type);
+                }
+            }
+            return value;
+        }
+        #endregion
     }
 }

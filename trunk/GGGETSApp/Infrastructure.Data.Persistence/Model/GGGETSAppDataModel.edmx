@@ -316,8 +316,7 @@
           <Property Name="Italic" Type="int" />
           <Property Name="Underline" Type="int" />
           <Property Name="ParamType" Type="nvarchar" Nullable="false" MaxLength="10" />
-          <Property Name="HorizontalRange" Type="int" />
-          <Property Name="VerticalRange" Type="int" />
+          <Property Name="DefaultValue" Type="nvarchar" MaxLength="40" />
         </EntityType>
         <EntityType Name="Privilege">
           <Key>
@@ -860,8 +859,7 @@
           <Property Name="Underline" Type="Int32" />
           <Property Name="ParamType" Type="String" Nullable="false" MaxLength="10" Unicode="true" FixedLength="false" />
           <NavigationProperty Name="Template" Relationship="MYGGGETSModel.FK_PARAM_FK_PARAM__TEMPLATE" FromRole="Param" ToRole="Template" />
-          <Property Type="Int32" Name="HorizontalRange" />
-          <Property Type="Int32" Name="VerticalRange" />
+          <Property Type="String" Name="DefaultValue" MaxLength="40" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Privilege">
           <Key>
@@ -1296,8 +1294,7 @@
             <ScalarProperty Name="IsMixed" ColumnName="IsMixed" />
           </MappingFragment></EntityTypeMapping></EntitySetMapping>
           <EntitySetMapping Name="Param"><EntityTypeMapping TypeName="MYGGGETSModel.Param"><MappingFragment StoreEntitySet="Param">
-            <ScalarProperty Name="VerticalRange" ColumnName="VerticalRange" />
-                <ScalarProperty Name="HorizontalRange" ColumnName="HorizontalRange" />
+                <ScalarProperty Name="DefaultValue" ColumnName="DefaultValue" />
                 <ScalarProperty Name="PID" ColumnName="PID" />
             <ScalarProperty Name="TID" ColumnName="TID" />
             <ScalarProperty Name="Tag" ColumnName="Tag" />
@@ -1442,10 +1439,10 @@
         <EntityTypeShape EntityType="MYGGGETSModel.HAWBItem" Width="1.5" PointX="12.75" PointY="21.875" Height="2.5430916341145817" IsExpanded="true" />
         <EntityTypeShape EntityType="MYGGGETSModel.MAWB" Width="1.5" PointX="6" PointY="14.625" Height="3.3071704101562478" IsExpanded="true" />
         <EntityTypeShape EntityType="MYGGGETSModel.Package" Width="1.5" PointX="8.25" PointY="14.5" Height="3.4981901041666674" IsExpanded="true" />
-        <EntityTypeShape EntityType="MYGGGETSModel.Param" Width="1.5" PointX="3" PointY="1" Height="4.1515104166666656" IsExpanded="true" />
+        <EntityTypeShape EntityType="MYGGGETSModel.Param" Width="1.5" PointX="3.375" PointY="1.625" Height="3.9828906250000005" IsExpanded="true" />
         <EntityTypeShape EntityType="MYGGGETSModel.Privilege" Width="1.5" PointX="8" PointY="1" Height="2.7341113281250031" IsExpanded="true" />
         <EntityTypeShape EntityType="MYGGGETSModel.RegionCode" Width="1.5" PointX="0.75" PointY="6.75" Height="1.7790128580729174" IsExpanded="true" />
-        <EntityTypeShape EntityType="MYGGGETSModel.Template" Width="1.5" PointX="0.75" PointY="2" Height="2.5430916341145888" IsExpanded="true" />
+        <EntityTypeShape EntityType="MYGGGETSModel.Template" Width="1.5" PointX="1.125" PointY="1.25" Height="3.6456510416666656" IsExpanded="true" />
         <EntityTypeShape EntityType="MYGGGETSModel.User" Width="1.5" PointX="5.25" PointY="26.625" Height="5.0263476562500031" IsExpanded="true" />
         <AssociationConnector Association="MYGGGETSModel.FK_ADDRESSB_REFERENCE_DEPARTME" ManuallyRouted="false">
           <ConnectorPoint PointX="3.75" PointY="14.22703125" />
@@ -1505,8 +1502,8 @@
           <ConnectorPoint PointX="8.25" PointY="16.1105859375" />
         </AssociationConnector>
         <AssociationConnector Association="MYGGGETSModel.FK_PARAM_FK_PARAM__TEMPLATE" ManuallyRouted="false">
-          <ConnectorPoint PointX="2.25" PointY="3.5698958333333333" />
-          <ConnectorPoint PointX="3" PointY="3.5698958333333333" />
+          <ConnectorPoint PointX="2.625" PointY="3.2603255208333328" />
+          <ConnectorPoint PointX="3.375" PointY="3.2603255208333328" />
         </AssociationConnector>
         <EntityTypeShape EntityType="MYGGGETSModel.HSProduct" Width="1.5" PointX="5.625" PointY="8.125" Height="3.1397916666666656" />
         <EntityTypeShape EntityType="MYGGGETSModel.HSProperty" Width="1.5" PointX="9.875" PointY="9.25" Height="1.6222135416666674" />

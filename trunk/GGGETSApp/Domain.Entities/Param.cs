@@ -285,34 +285,19 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
         private string _paramType;
     
         [DataMember]
-        public Nullable<int> HorizontalRange
+        public string DefaultValue
         {
-            get { return _horizontalRange; }
+            get { return _defaultValue; }
             set
             {
-                if (_horizontalRange != value)
+                if (_defaultValue != value)
                 {
-                    _horizontalRange = value;
-                    OnPropertyChanged("HorizontalRange");
+                    _defaultValue = value;
+                    OnPropertyChanged("DefaultValue");
                 }
             }
         }
-        private Nullable<int> _horizontalRange;
-    
-        [DataMember]
-        public Nullable<int> VerticalRange
-        {
-            get { return _verticalRange; }
-            set
-            {
-                if (_verticalRange != value)
-                {
-                    _verticalRange = value;
-                    OnPropertyChanged("VerticalRange");
-                }
-            }
-        }
-        private Nullable<int> _verticalRange;
+        private string _defaultValue;
 
         #endregion
         #region Navigation Properties
