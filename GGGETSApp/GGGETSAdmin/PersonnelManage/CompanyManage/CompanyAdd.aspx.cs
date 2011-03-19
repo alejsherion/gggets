@@ -27,7 +27,11 @@ namespace GGGETSAdmin.PersonnelManage.CompanyManage
         {
 
         }
-
+        /// <summary>
+        /// 新建公司账号
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void btn_AddCompany_Click(object sender, EventArgs e)
         {
             bool ok = true;
@@ -111,13 +115,20 @@ namespace GGGETSAdmin.PersonnelManage.CompanyManage
                 }
             }
         }
-
+        /// <summary>
+        /// 返回按钮
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void btn_Cancel_Click(object sender, EventArgs e)
         {
             Response.Redirect("../../Navigation.aspx");
 
         }
-
+        /// <summary>
+        /// 清空页面输入控件值
+        /// </summary>
+        /// <param name="objControlCollection"></param>
         private void InitialControl(ControlCollection objControlCollection)
         {
             foreach (System.Web.UI.Control objControl in objControlCollection)
@@ -135,7 +146,11 @@ namespace GGGETSAdmin.PersonnelManage.CompanyManage
                 }
             }
         }
-
+        /// <summary>
+        /// 判断账号是否已经存在
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void Txt_CompanyCode_TextChanged(object sender, EventArgs e)
         {
             Company company = _companyService.FindCompanyByCompanyCode(Txt_CompanyCode.Text.Trim());

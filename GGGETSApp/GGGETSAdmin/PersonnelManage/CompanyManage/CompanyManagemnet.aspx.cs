@@ -24,6 +24,11 @@ namespace GGGETSAdmin.PersonnelManage.CompanyManage
         {
 
         }
+        /// <summary>
+        /// 查询按钮
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void btn_Demand_Click(object sender, EventArgs e)
         {
             string CompanyCode = string.Empty;
@@ -31,7 +36,7 @@ namespace GGGETSAdmin.PersonnelManage.CompanyManage
             string ShortName = string.Empty;
             string Contactor = string.Empty;
             string ContactorPhone = string.Empty;
-            bool Ok = true;
+            bool Ok = true;//判断是否条件有误
             if (Txt_CompanyCode.Text.Trim() != "")
             {
                 CompanyCode = Txt_CompanyCode.Text.Trim().ToUpper();
@@ -67,6 +72,11 @@ namespace GGGETSAdmin.PersonnelManage.CompanyManage
                 gv_Company.DataBind();
             }
         }
+        /// <summary>
+        /// 数据修改，编辑
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void gv_Company_RowCommand(object sender, GridViewCommandEventArgs e)
         {
             if (e.CommandName == "Eidt")
