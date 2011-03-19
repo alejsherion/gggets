@@ -41,6 +41,11 @@ namespace GGGETSAdmin.PersonnelManage.DepartmentManage
                 }
             }
         }
+        /// <summary>
+        /// 页面控件赋值
+        /// </summary>
+        /// <param name="deparcode">部门账号</param>
+        /// <param name="CompanyCode">公司账号</param>
         protected void Storage(string deparcode, string CompanyCode)
         {
             depar = _deparService.FindDepartmentByDepCodeAndCompanyCode(deparcode, CompanyCode);
@@ -85,7 +90,11 @@ namespace GGGETSAdmin.PersonnelManage.DepartmentManage
                 Session["Department"] = depar;
             }
         }
-
+        /// <summary>
+        /// 修改
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void btn_UpCompany_Click(object sender, EventArgs e)
         {
             if (depar == null)
@@ -145,12 +154,20 @@ namespace GGGETSAdmin.PersonnelManage.DepartmentManage
                 }
             }
         }
-
+        /// <summary>
+        /// 返回
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void btn_Cancel_Click(object sender, EventArgs e)
         {
             Response.Redirect((string)ViewState["Url"]);
         }
-
+        /// <summary>
+        /// 部门账号验证
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void Txt_DepName_TextChanged(object sender, EventArgs e)
         {
             bool tabindex = true;

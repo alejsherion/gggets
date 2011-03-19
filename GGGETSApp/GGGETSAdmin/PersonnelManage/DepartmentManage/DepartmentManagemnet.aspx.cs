@@ -22,7 +22,11 @@ namespace GGGETSAdmin.PersonnelManage.DepartmentManage
         {
 
         }
-
+        /// <summary>
+        /// 查询按钮
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void btn_Demand_Click(object sender, EventArgs e)
         {
             string CompanyCode = string.Empty;
@@ -43,7 +47,11 @@ namespace GGGETSAdmin.PersonnelManage.DepartmentManage
             gv_Depar.DataSource = _deparService.FindDepartmentsByCondition(CompanyCode, DepCode, DepName);
             gv_Depar.DataBind();
         }
-
+        /// <summary>
+        /// 数据操作
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void gv_Depar_RowCommand(object sender, GridViewCommandEventArgs e)
         {
             int index = int.Parse(e.CommandArgument.ToString());

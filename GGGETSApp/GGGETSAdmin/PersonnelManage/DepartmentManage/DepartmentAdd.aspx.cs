@@ -26,7 +26,11 @@ namespace GGGETSAdmin.PersonnelManage.DepartmentManage
         {
 
         }
-
+        /// <summary>
+        /// 验证公司账号是否存在
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void Txt_CompanyCode_TextChanged(object sender, EventArgs e)
         {
             Company company = _companyService.FindCompanyByCompanyCode(Txt_CompanyCode.Text.Trim());
@@ -44,7 +48,11 @@ namespace GGGETSAdmin.PersonnelManage.DepartmentManage
         }
 
         
-
+        /// <summary>
+        /// 验证部门账号是否存在
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void Txt_DepCode_TextChanged(object sender, EventArgs e)
         {
             bool tabIndex = true;
@@ -70,7 +78,11 @@ namespace GGGETSAdmin.PersonnelManage.DepartmentManage
             }
             
         }
-
+        /// <summary>
+        /// 验证该部门是否已经存在
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void Txt_DepName_TextChanged(object sender, EventArgs e)
         {
             bool tabindex = true;
@@ -101,6 +113,11 @@ namespace GGGETSAdmin.PersonnelManage.DepartmentManage
             }
             
         }
+        /// <summary>
+        /// 新建
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void btn_AddCompany_Click(object sender, EventArgs e)
         {
             Department depar = new Department();
@@ -202,6 +219,10 @@ namespace GGGETSAdmin.PersonnelManage.DepartmentManage
                 }
             }
         }
+        /// <summary>
+        /// 页面输入框清空
+        /// </summary>
+        /// <param name="objControlCollection"></param>
         private void InitialControl(ControlCollection objControlCollection)
         {
             foreach (System.Web.UI.Control objControl in objControlCollection)
@@ -219,7 +240,11 @@ namespace GGGETSAdmin.PersonnelManage.DepartmentManage
                 }
             }
         }
-
+        /// <summary>
+        /// 返回
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void btn_Cancel_Click(object sender, EventArgs e)
         {
             Response.Redirect("../../Navigation.aspx");

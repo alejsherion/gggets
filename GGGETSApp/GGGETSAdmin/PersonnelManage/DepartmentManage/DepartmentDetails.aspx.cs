@@ -38,6 +38,11 @@ namespace GGGETSAdmin.PersonnelManage.DepartmentManage
                 }
             }
         }
+        /// <summary>
+        /// 页面控件赋值
+        /// </summary>
+        /// <param name="deparcode">部门账号</param>
+        /// <param name="CompanyCode">公司账号</param>
         protected void Storage(string deparcode, string CompanyCode)
         {
             Department depar = _deparService.FindDepartmentByDepCodeAndCompanyCode(deparcode, CompanyCode);
@@ -89,12 +94,20 @@ namespace GGGETSAdmin.PersonnelManage.DepartmentManage
                 }
             }
         }
-
+        /// <summary>
+        /// 修改
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void But_Next_Click(object sender, EventArgs e)
         {
             Response.Redirect("DepartmentModify.aspx?DeparCode=" + Txt_DepCode.Text.Trim() + "&CompanyCode=" + Txt_CompanyCode.Text + "");
         }
-
+        /// <summary>
+        /// 返回
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void But_Conel_Click(object sender, EventArgs e)
         {
             Response.Redirect((string)ViewState["Url"]);
