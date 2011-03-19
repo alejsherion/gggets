@@ -39,6 +39,10 @@ namespace GGGETSAdmin.PersonnelManage.CompanyManage
                 }
             }
         }
+        /// <summary>
+        /// 页面控件赋值
+        /// </summary>
+        /// <param name="Companycode">公司账号</param>
         protected void Storage(string Companycode)
         {
             company = _companyService.FindCompanyByCompanyCode(Companycode);
@@ -59,6 +63,11 @@ namespace GGGETSAdmin.PersonnelManage.CompanyManage
                 Session["Company"] = company;
             }
         }
+        /// <summary>
+        /// 修改
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void btn_UpCompany_Click(object sender, EventArgs e)
         {
             bool ok = true;
@@ -148,7 +157,11 @@ namespace GGGETSAdmin.PersonnelManage.CompanyManage
                 }
             }
         }
-
+        /// <summary>
+        /// 取消
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void btn_Cancel_Click(object sender, EventArgs e)
         {
             Response.Redirect((string)ViewState["Url"]);

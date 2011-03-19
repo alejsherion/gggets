@@ -35,6 +35,10 @@ namespace GGGETSAdmin.PersonnelManage.CompanyManage
                 }
             }
         }
+        /// <summary>
+        /// 页面控件赋值
+        /// </summary>
+        /// <param name="Companycode"></param>
         protected void Storage(string Companycode)
         {
             Company company = _companyService.FindCompanyByCompanyCode(Companycode);
@@ -61,12 +65,20 @@ namespace GGGETSAdmin.PersonnelManage.CompanyManage
                 }
             }
         }
-
+        /// <summary>
+        /// 修改
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void But_Next_Click(object sender, EventArgs e)
         {
             Response.Redirect("CompanyModify.aspx?CompanyCode=" + Txt_CompanyCode.Text.Trim() + "");
         }
-
+        /// <summary>
+        /// 取消
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void But_Conel_Click(object sender, EventArgs e)
         {
             Response.Redirect((string)ViewState["Url"]);
