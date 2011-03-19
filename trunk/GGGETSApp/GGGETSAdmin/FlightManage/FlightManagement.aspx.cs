@@ -39,6 +39,12 @@ namespace GGGETSAdmin.FlightManage
                 }
             }
         }
+        /// <summary>
+        /// gridviw数据源绑定
+        /// </summary>
+        /// <param name="barCode"></param>
+        /// <param name="From"></param>
+        /// <param name="to"></param>
         protected void Band(string barCode,string From,string to)
         {
             if (Txt_FlightNo.Text.Trim() != "")
@@ -56,6 +62,11 @@ namespace GGGETSAdmin.FlightManage
             gv_HAWB.DataSource = _mawbservice.FindMAWBByFlightCondition(BarCode, From, to);
             gv_HAWB.DataBind();
         }
+        /// <summary>
+        /// 查询
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void btn_Demand_Click(object sender, EventArgs e)
         {
             Band(BarCode, From, to);         
