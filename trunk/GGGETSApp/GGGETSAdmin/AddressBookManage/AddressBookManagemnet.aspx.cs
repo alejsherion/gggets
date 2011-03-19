@@ -25,6 +25,9 @@ namespace GGGETSAdmin.AddressBookManage
         {
 
         }
+        /// <summary>
+        /// 绑定gridviw数据源控件
+        /// </summary>
         protected void Band()
         {
             string CompanyCode = string.Empty;
@@ -86,12 +89,22 @@ namespace GGGETSAdmin.AddressBookManage
                 InitialControl(this.Controls);
             }
         }
+        /// <summary>
+        /// 查询按钮事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void btn_Demand_Click(object sender, EventArgs e)
         {
             Band();
             
         }
 
+        /// <summary>
+        /// 地址的详细，修改，删除事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void gv_AddressBook_RowCommand(object sender, GridViewCommandEventArgs e)
         {
             if (e.CommandName == "Eidt")
@@ -113,6 +126,11 @@ namespace GGGETSAdmin.AddressBookManage
                 }
             }
         }
+
+        /// <summary>
+        /// 清空页面控件值
+        /// </summary>
+        /// <param name="objControlCollection"></param>
         private void InitialControl(ControlCollection objControlCollection)
         {
             foreach (System.Web.UI.Control objControl in objControlCollection)
@@ -130,6 +148,11 @@ namespace GGGETSAdmin.AddressBookManage
                 }
             }
         }
+
+        /// <summary>
+        /// 前台行号方法
+        /// </summary>
+        /// <returns></returns>
         public int N()
         {
             return i++;

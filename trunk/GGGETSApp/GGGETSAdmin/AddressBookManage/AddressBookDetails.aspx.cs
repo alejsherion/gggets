@@ -44,6 +44,10 @@ namespace GGGETSAdmin.AddressBookManage
                 }
             }
         }
+        /// <summary>
+        /// 根据地址ID进行页面赋值
+        /// </summary>
+        /// <param name="Aid"></param>
         protected void Storage(string Aid)
         {
             AddressBook address = _AddressBookService.FindAddressBookByAID(AID);
@@ -89,6 +93,11 @@ namespace GGGETSAdmin.AddressBookManage
             }
             
         }
+        /// <summary>
+        /// 国家地区码转换
+        /// </summary>
+        /// <param name="countryname"></param>
+        /// <returns></returns>
         protected string CountrySwitch(string countryname)
         {
             string country = string.Empty;
@@ -118,11 +127,20 @@ namespace GGGETSAdmin.AddressBookManage
             }
             return region.ToUpper();
         }
+        /// <summary>
+        /// 返回按钮
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void But_Conel_Click(object sender, EventArgs e)
         {
             Response.Redirect((string)ViewState["Url"]);
         }
-
+        /// <summary>
+        /// 修改按钮
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void But_Update_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(AID))

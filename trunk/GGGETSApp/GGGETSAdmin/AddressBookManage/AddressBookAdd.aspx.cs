@@ -41,12 +41,16 @@ namespace GGGETSAdmin.AddressBookManage
         {
             if (!IsPostBack)
             {
-                listcountry = _countryservice.FindAllCountries();
-                listregion = _regionservice.FindAllRegionCodes();
+                listcountry = _countryservice.FindAllCountries();//获取国家二字码
+                listregion = _regionservice.FindAllRegionCodes();//获取地区三字码
                 
             }
         }
-
+        /// <summary>
+        /// 验证是否是已注册的公司账号
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void Txt_CompanyCode_TextChanged(object sender, EventArgs e)
         {
             if (Txt_CompanyCode.Text.Trim() != "")
@@ -65,7 +69,11 @@ namespace GGGETSAdmin.AddressBookManage
                 }
             }
         }
-
+        /// <summary>
+        /// 验证是否已注册的部门账号
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void Txt_Code_TextChanged(object sender, EventArgs e)
         {
             if (Txt_CompanyCode.Text.Trim() != "")
@@ -102,6 +110,11 @@ namespace GGGETSAdmin.AddressBookManage
             }
             
         }
+        /// <summary>
+        /// 验证是否是已注册的个人账号
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void Txt_LoginName_TextChanged(object sender, EventArgs e)
         {
             if (Txt_LoginName.Text.Trim() != "")
@@ -121,6 +134,13 @@ namespace GGGETSAdmin.AddressBookManage
                 }
             }
         }
+
+        /// <summary>
+        /// 自动填充国家二字码
+        /// </summary>
+        /// <param name="prefixText"></param>
+        /// <param name="count"></param>
+        /// <returns></returns>
         [System.Web.Services.WebMethodAttribute(), System.Web.Script.Services.ScriptMethodAttribute()]
         public static string[][] GetCountryList(string prefixText, int count)
         {
@@ -142,7 +162,13 @@ namespace GGGETSAdmin.AddressBookManage
             return items.Take(count).ToArray();
         }
 
-
+        /// <summary>
+        /// 自动填充地区三字码
+        /// </summary>
+        /// <param name="prefixText"></param>
+        /// <param name="count"></param>
+        /// <param name="contextKey"></param>
+        /// <returns></returns>
         [System.Web.Services.WebMethodAttribute(), System.Web.Script.Services.ScriptMethodAttribute()]
         public static string[][] GetRegionList(string prefixText, int count, string contextKey)
         {
@@ -168,6 +194,11 @@ namespace GGGETSAdmin.AddressBookManage
             return items.Take(count).ToArray();
         }
 
+        /// <summary>
+        /// 验证是否正确的国家码
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void Txt_DeliverCountry_TextChanged(object sender, EventArgs e)
         {
             Txt_DeliverRegion.Text = "";
@@ -197,6 +228,12 @@ namespace GGGETSAdmin.AddressBookManage
         protected void autoDeliveCountry_ItemSelected(object sender, EventArgs e)
         {
         }
+
+        /// <summary>
+        /// 验证是否正确的地区码
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void Txt_DeliverRegion_TextChanged(object sender, EventArgs e)
         {
             IList<RegionCode> region = _regionservice.FindAllRegionCodes();
@@ -221,6 +258,11 @@ namespace GGGETSAdmin.AddressBookManage
             }
         }
 
+        /// <summary>
+        /// 新建地址
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void btn_AddDeliver_Click(object sender, EventArgs e)
         {
             string Uid = "";
@@ -244,6 +286,11 @@ namespace GGGETSAdmin.AddressBookManage
                 AddRessBook(Uid, Did);
             }
         }
+        /// <summary>
+        /// 用户输入验证
+        /// </summary>
+        /// <param name="UID"></param>
+        /// <param name="DID"></param>
         protected void AddRessBook(string UID,string DID)
         {
             if (Txt_DeliverName.Text.Trim() == "")
@@ -328,6 +375,11 @@ namespace GGGETSAdmin.AddressBookManage
                 }
             }
         }
+        /// <summary>
+        /// 国家地区码转换
+        /// </summary>
+        /// <param name="countryname"></param>
+        /// <returns></returns>
         protected string CountrySwitch(string countryname)
         {
             string country = string.Empty;
@@ -356,6 +408,10 @@ namespace GGGETSAdmin.AddressBookManage
             }
             return region.ToUpper();
         }
+        /// <summary>
+        /// 清空页面数据
+        /// </summary>
+        /// <param name="objControlCollection"></param>
         private void InitialControl(ControlCollection objControlCollection)
         {
             foreach (System.Web.UI.Control objControl in objControlCollection)
