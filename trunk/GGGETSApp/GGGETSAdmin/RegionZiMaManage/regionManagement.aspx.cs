@@ -26,7 +26,11 @@ namespace GGGETSAdmin.RegionZiMaManage
         {
 
         }
-
+        /// <summary>
+        /// 查询
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void btn_Demand_Click(object sender, EventArgs e)
         {
             string CountryCode = string.Empty;
@@ -44,7 +48,7 @@ namespace GGGETSAdmin.RegionZiMaManage
             {
                 RegionName = txt_RegionName.Text.Trim().ToUpper();
             }
-            listregion = _regionservice.FindRegionCodesByCondition(CountryCode, RegionCode, RegionName);
+            listregion = _regionservice.FindRegionCodesByCondition(CountryCode, RegionCode, RegionName);//查询地区二字码
             gv_Region.DataSource = listregion;
             gv_Region.DataBind();
             Session["Region"] = listregion;
@@ -52,7 +56,11 @@ namespace GGGETSAdmin.RegionZiMaManage
             txt_RegionCode.Text = string.Empty;
             txt_RegionName.Text = string.Empty;
         }
-
+        /// <summary>
+        /// 编辑
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void gv_Region_RowEditing(object sender, GridViewEditEventArgs e)
         {
             if (listregion == null)
@@ -63,7 +71,11 @@ namespace GGGETSAdmin.RegionZiMaManage
             gv_Region.DataSource = listregion;
             gv_Region.DataBind();
         }
-
+        /// <summary>
+        /// 修改
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void gv_Region_RowUpdating(object sender, GridViewUpdateEventArgs e)
         {
             regioncode.ID = int.Parse(gv_Region.DataKeys[e.RowIndex].Value.ToString());
@@ -73,17 +85,25 @@ namespace GGGETSAdmin.RegionZiMaManage
             _regionservice.ModifyRegionCode(regioncode);
             Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('修改成功！')</script>");
             gv_Region.EditIndex = -1;
-            listregion = _regionservice.FindAllRegionCodes();
+            listregion = _regionservice.FindAllRegionCodes();//获取所以地区三字码
             gv_Region.DataSource = listregion;
             gv_Region.DataBind();
             Session["Region"] = listregion;
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void gv_Region_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
             
         }
-
+        /// <summary>
+        /// 取消
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void gv_Region_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
         {
             if (listregion == null)
@@ -95,12 +115,17 @@ namespace GGGETSAdmin.RegionZiMaManage
             gv_Region.DataBind();
         }
 
+        /// <summary>
+        /// 删除
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void gv_Region_RowCommand(object sender, GridViewCommandEventArgs e)
         {
             if (e.CommandName == "Delete")
             {
                 string RegionCode = e.CommandArgument.ToString();
-                regioncode = _regionservice.FindRegionByRegionCode(RegionCode);
+                regioncode = _regionservice.FindRegionByRegionCode(RegionCode);//根据地区二字码获取信息
                 _regionservice.RemoveRegionCode(regioncode);
                 Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('删除成功！')</script>");
                 if (listregion == null)

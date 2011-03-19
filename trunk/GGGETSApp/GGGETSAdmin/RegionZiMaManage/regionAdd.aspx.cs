@@ -27,7 +27,11 @@ namespace GGGETSAdmin.RegionZiMaManage
         {
 
         }
-
+        /// <summary>
+        /// 国家码添加
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void btn_Add_Click(object sender, EventArgs e)
         {
             if (Txt_CountryCode.Text.Trim() == "")
@@ -72,6 +76,12 @@ namespace GGGETSAdmin.RegionZiMaManage
                 txt_RegionName.Text = string.Empty;
             }
         }
+        /// <summary>
+        /// 国家码填充
+        /// </summary>
+        /// <param name="prefixText"></param>
+        /// <param name="count"></param>
+        /// <returns></returns>
         [System.Web.Services.WebMethodAttribute(), System.Web.Script.Services.ScriptMethodAttribute()]
         public static string[][] GetCountryList(string prefixText, int count)
         {
@@ -82,7 +92,7 @@ namespace GGGETSAdmin.RegionZiMaManage
 
             List<string[]> items = new List<string[]>();
 
-            IList<CountryCode> countrycode = _countryservice.FindCountriedByCountryName(prefixText);
+            IList<CountryCode> countrycode = _countryservice.FindCountriedByCountryName(prefixText);//获取国家二字码
             foreach (CountryCode country in countrycode)
             {
                 string[] ItemArry = new string[3];
@@ -96,6 +106,11 @@ namespace GGGETSAdmin.RegionZiMaManage
         protected void autocomplete_ItemSelected(object sender, EventArgs e)
         {
             Txt_CountryCode.Text = autocomplete.SelectedValue;
+        }
+
+        protected void But_Conel_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("../Navigation.aspx");
         }
 
     }
