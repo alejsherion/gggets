@@ -47,6 +47,11 @@ namespace GGGETSAdmin.HAWBManage
         protected void Page_Load(object sender, EventArgs e)
         {
         }
+        /// <summary>
+        /// 数据源绑定
+        /// </summary>
+        /// <param name="pageIndex"></param>
+        /// <param name="pageCount"></param>
         protected void Band(int pageIndex, int pageCount)
         {
             bool Ok = true;
@@ -205,15 +210,21 @@ namespace GGGETSAdmin.HAWBManage
             return ok;
         }
         #endregion
+
+        /// <summary>
+        /// 查询按钮
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void btn_Demand_Click(object sender, EventArgs e)
         {
             PageIndex = 0;
             Band(PageIndex, PageCount);
             
             lbl_nuber.Text = "1";
-            lbl_sumnuber.Text = (((int)ViewState["totalCount"] + PageCount - 1) / PageCount).ToString();
+            lbl_sumnuber.Text = (((int)ViewState["totalCount"] + PageCount - 1) / PageCount).ToString();//总页数
             DataBound();
-            if (Gv_HAWB.Rows.Count < PageCount)
+            if (Gv_HAWB.Rows.Count < PageCount)//数据源总数小于总条数的时候分页不可用
             {
                 FenYe.Visible = false;
             }
@@ -222,7 +233,11 @@ namespace GGGETSAdmin.HAWBManage
                 FenYe.Visible = true;
             }
         }
-
+        /// <summary>
+        /// 数据源操作
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void Gv_HAWB_RowCommand(object sender, GridViewCommandEventArgs e)
         {
             
@@ -296,6 +311,11 @@ namespace GGGETSAdmin.HAWBManage
 
         }
 
+        /// <summary>
+        /// 上一页
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void btn_Up_Click(object sender, EventArgs e)
         {
             btn_down.Enabled = true;
@@ -305,7 +325,11 @@ namespace GGGETSAdmin.HAWBManage
             DataBound();
            
         }
-
+        /// <summary>
+        /// 下一页
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void btn_down_Click(object sender, EventArgs e)
         {
             btn_Up.Enabled = true;
@@ -314,7 +338,9 @@ namespace GGGETSAdmin.HAWBManage
             lbl_nuber.Text = (int.Parse(lbl_nuber.Text) + 1).ToString();
             DataBound();
         }
-
+        /// <summary>
+        /// 上下页控件控制
+        /// </summary>
         protected void DataBound()
         {
             if (PageIndex <= 0)
@@ -359,11 +385,19 @@ namespace GGGETSAdmin.HAWBManage
             ddl_HAWBType.SelectedValue = "0";
             DDl_SettleType.SelectedValue = "-1";
         }
+        /// <summary>
+        /// 行号方法
+        /// </summary>
+        /// <returns></returns>
         public int N()
         {
             return n++;
         }
-
+        /// <summary>
+        /// 跳转到几页
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void btn_Jumpto_Click(object sender, EventArgs e)
         {
             if (int.Parse(Txt_Jumpto.Text.Trim()) <= 0)
@@ -385,7 +419,11 @@ namespace GGGETSAdmin.HAWBManage
             }
             Txt_Jumpto.Text = string.Empty;
         }
-
+        /// <summary>
+        /// 末页
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void btn_lastpage_Click(object sender, EventArgs e)
         {
             PageIndex = int.Parse(lbl_sumnuber.Text) - 1;
@@ -393,7 +431,11 @@ namespace GGGETSAdmin.HAWBManage
             lbl_nuber.Text = lbl_sumnuber.Text;
             DataBound();
         }
-
+       /// <summary>
+       /// 首页
+       /// </summary>
+       /// <param name="sender"></param>
+       /// <param name="e"></param>
         protected void btn_homepage_Click(object sender, EventArgs e)
         {
             PageIndex = 0;

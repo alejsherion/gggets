@@ -60,6 +60,9 @@ namespace GGGETSAdmin.HAWBManage
                 }
             }
         }
+        /// <summary>
+        /// 页面控件赋值
+        /// </summary>
         protected void Storage()
         {
             Txt_BarCode.Text = hawb.BarCode;
@@ -183,6 +186,11 @@ namespace GGGETSAdmin.HAWBManage
                 GV_item.DataBind();
             }
         }
+        /// <summary>
+        /// 返回按钮
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void But_Conel_Click(object sender, EventArgs e)
         {
             Response.Redirect((string)ViewState["UrlReferrer"]);
@@ -193,7 +201,11 @@ namespace GGGETSAdmin.HAWBManage
             int Update = 1;
             Response.Redirect("HAWBAdd.aspx?BarCode=" + Txt_BarCode.Text + "&update=" + Update + "");
         }
-
+        /// <summary>
+        /// 导出运单发票
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void btn_DeriveSince_Click(object sender, EventArgs e)
         {
             HAWB hawb = _hawbService.FindHAWBByBarCode(Txt_BarCode.Text.Trim());
@@ -214,6 +226,11 @@ namespace GGGETSAdmin.HAWBManage
             HttpContext.Current.Response.End();
         }
 
+        /// <summary>
+        /// 导出承运单发票
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void btn_DeriveAccept_Click(object sender, EventArgs e)
         {
             HAWB hawb = _hawbService.FindHAWBByBarCode(Txt_BarCode.Text.Trim());

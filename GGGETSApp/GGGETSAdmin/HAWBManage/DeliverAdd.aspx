@@ -7,19 +7,6 @@
 <head id="Head1" runat="server">
     <title></title>
    <style type="text/css">
-        div.ps
-        {
-            position: absolute;
-            display: none;
-            z-index: 999;
-            background-color: #FFFFFF;
-            border: thin solid #CCCCCC;
-            left: 150px;
-            top: 100px;
-            opacity: 1;
-            filter: alpha(opacity=100);
-        }
-        
         div.sg
         {
             position: absolute;

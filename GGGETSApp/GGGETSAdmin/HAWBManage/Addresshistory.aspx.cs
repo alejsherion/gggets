@@ -11,11 +11,13 @@ namespace GGGETSAdmin.HAWBManage
     public partial class Addresshistory : System.Web.UI.Page
     {
         private IDepartmentManagementService _deparservice;
+        private IAddressBookManagementService _AddRessBook;
         protected Addresshistory()
         { }
-        public Addresshistory(IDepartmentManagementService deparservice)
+        public Addresshistory(IDepartmentManagementService deparservice,IAddressBookManagementService AddRessBook)
         {
             _deparservice = deparservice;
+            _AddRessBook = AddRessBook;
         }
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -24,9 +26,12 @@ namespace GGGETSAdmin.HAWBManage
                 Evaluate();
             }
         }
+        /// <summary>
+        /// 判断运单页面所传的值并绑定gridviw数据源
+        /// </summary>
         protected void Evaluate()
         {
-            if (Session["Department"] != null)
+            if (Session["Department"] != null)//判断公司账号是否存在
             {
                 string type = string.Empty;
                 string CompanyCode = string.Empty;
@@ -34,32 +39,32 @@ namespace GGGETSAdmin.HAWBManage
                 string Name = string.Empty;
                 if (Session["compayCode"] != null)
                 {
-                    CompanyCode = Session["compayCode"].ToString();
+                    CompanyCode = Session["compayCode"].ToString();//公司账号
                 }
                 if (Session["DepCode"] != null)
                 {
-                    DepCode = Session["DepCode"].ToString();
+                    DepCode = Session["DepCode"].ToString();//部门账号
                 }
                 if (Session["name"] != null)
                 {
-                    Name = Session["name"].ToString();
+                    Name = Session["name"].ToString();//个人账号
                 }
                 if (Session["historytype"] != null)
                 {
-                    type = Session["historytype"].ToString();
+                    type = Session["historytype"].ToString();//地址类型
                 }
                 if (!string.IsNullOrEmpty(DepCode) && !string.IsNullOrEmpty(CompanyCode))
                 {
                     if (type == "Shipper")
                     {
-                        IList<AddressBook> ressbook = _deparservice.FindAllShipAddressesByDepCodeAndCompanyCode(DepCode, CompanyCode);
+                        IList<AddressBook> ressbook = _deparservice.FindAllShipAddressesByDepCodeAndCompanyCode(DepCode, CompanyCode);//获取发件人信息
 
                         gv_Shipper.DataSource = ressbook;
                         gv_Shipper.DataBind();
                     }
                     else if (type == "Consignee")
                     {
-                        IList<AddressBook> ressbook = _deparservice.FindAllDeliveryAddressesByDepCodeAndCompanyCode(DepCode, CompanyCode);
+                        IList<AddressBook> ressbook = _deparservice.FindAllDeliveryAddressesByDepCodeAndCompanyCode(DepCode, CompanyCode);//获取发件人信息
                         if (Name != "")
                         {
                             ressbook = ressbook.Where(it => it.Name == Name).ToList();
@@ -69,7 +74,7 @@ namespace GGGETSAdmin.HAWBManage
                     }
                     else if (type == "Deliver")
                     {
-                        IList<AddressBook> ressbook = _deparservice.FindAllForwarderAddressesByDepCodeAndCompanyCode(DepCode, CompanyCode);
+                        IList<AddressBook> ressbook = _deparservice.FindAllForwarderAddressesByDepCodeAndCompanyCode(DepCode, CompanyCode);//获取交付人信息
                         gv_Shipper.DataSource = ressbook;
                         gv_Shipper.DataBind();
                     }
@@ -82,93 +87,39 @@ namespace GGGETSAdmin.HAWBManage
         {
             if (e.CommandName == "Select")
             {
-                string CompanyCode = string.Empty;
-                string DepCode = string.Empty;
-                IList<AddressBook> ressbook = null;
-                Guid Aid = Guid.Parse(e.CommandArgument.ToString());
+                string Aid = e.CommandArgument.ToString();
                 string DeliverLiShi = string.Empty;
                 string type = string.Empty;
-                if (Session["compayCode"] != null)
-                {
-                    CompanyCode = Session["compayCode"].ToString();
-                }
-                if (Session["DepCode"] != null)
-                {
-                    DepCode = Session["DepCode"].ToString();
-                }
+                AddressBook ressbook;
                 if (Session["historytype"] != null)
                 {
                     type = Session["historytype"].ToString();
                 }
                 if (Session["DeliverLiShi"] != null)
                 {
-                    DeliverLiShi = Session["DeliverLiShi"].ToString();
+                    DeliverLiShi = Session["DeliverLiShi"].ToString();//添加交付人历史页面说传的值
                 }
                 if (type == "Shipper")
                 {
-                    ressbook = _deparservice.FindAllShipAddressesByDepCodeAndCompanyCode(DepCode, CompanyCode);
-                    if (ressbook != null)
-                    {
-                        foreach (AddressBook address in ressbook)
-                        {
-                            if (address.AID == Aid)
-                            {
-                                Session["AddressShipperBook"] = address;
-                                break;
-                            }
-
-                        }
-                    }
+                    ressbook = _AddRessBook.FindAddressBookByAID(Aid);
+                    Session["AddressShipperBook"] = ressbook;
                 }
                 else if (type == "Consignee")
                 {
-                    ressbook = _deparservice.FindAllDeliveryAddressesByDepCodeAndCompanyCode(DepCode, CompanyCode);
-                    if (ressbook != null)
-                    {
-                        foreach (AddressBook address in ressbook)
-                        {
-                            if (address.AID == Aid)
-                            {
-                                Session["AddressConsigneeBook"] = address;
-                                break;
-                            }
-
-                        }
-                    }
+                    ressbook = _AddRessBook.FindAddressBookByAID(Aid);
+                    Session["AddressConsigneeBook"] = ressbook;
                 }
                 else if (type == "Deliver")
                 {
                     if (!string.IsNullOrEmpty(DeliverLiShi))
                     {
-                        ressbook = _deparservice.FindAllForwarderAddressesByDepCodeAndCompanyCode(DepCode, CompanyCode);
-                        if (ressbook != null)
-                        {
-                            foreach (AddressBook address in ressbook)
-                            {
-                                if (address.AID == Aid)
-                                {
-                                    Session["DeliverBook"] = address;
-                                    break;
-                                }
-
-                            }
-                        }
+                        ressbook = _AddRessBook.FindAddressBookByAID(Aid);
+                        Session["DeliverBook"] = ressbook;
                     }
                     else
                     {
-                        ressbook = _deparservice.FindAllForwarderAddressesByDepCodeAndCompanyCode(DepCode, CompanyCode);
-                        if (ressbook != null)
-                        {
-                            foreach (AddressBook address in ressbook)
-                            {
-                                if (address.AID == Aid)
-                                {
-                                    Session["AddressDeliverBook"] = address;
-                                    break;
-                                }
-
-                            }
-                        }
+                        ressbook = _AddRessBook.FindAddressBookByAID(Aid);
+                        Session["AddressDeliverBook"] = ressbook;
                     }
                 }
                 Session.Remove("ComCode");
