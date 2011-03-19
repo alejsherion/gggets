@@ -31,7 +31,7 @@ namespace GGGETSAdmin.PackageManage
                 if (Request.QueryString["BarCode"] != "" && Request.QueryString["BarCode"] != null)
                 {
                     ViewState["UrlReferrer"] = Request.UrlReferrer.ToString();
-                    package = _packageservice.FindPackageByBarcode(Request.QueryString["BarCode"]);
+                    package = _packageservice.FindPackageByBarcode(Request.QueryString["BarCode"]);//根据包号获取包信息
                     if (package != null)
                     {
                         Evaluate(package);
@@ -48,6 +48,10 @@ namespace GGGETSAdmin.PackageManage
                 }
             }
         }
+        /// <summary>
+        /// 页面控件赋值
+        /// </summary>
+        /// <param name="package"></param>
         protected void Evaluate(Package package)
         {
             txt_BagBarCode.Text = package.BarCode;
@@ -66,15 +70,28 @@ namespace GGGETSAdmin.PackageManage
             gv_HAWB.DataSource = package.HAWBs;
             gv_HAWB.DataBind();
         }
+        /// <summary>
+        /// 前台行号显示方法
+        /// </summary>
+        /// <returns></returns>
         public int N()
         {
             return n++;
         }
+        /// <summary>
+        /// 返回上一级页面
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void But_Conel_Click(object sender, EventArgs e)
         {
             Response.Redirect((string)ViewState["UrlReferrer"]);
         }
-
+        /// <summary>
+        /// 修改事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void But_Next_Click(object sender, EventArgs e)
         {
             //if (txt_Status.Text == "打开")
@@ -86,7 +103,11 @@ namespace GGGETSAdmin.PackageManage
             //    Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "show", "<script>alert('该包处于关闭状态，不能进行修改！')</script>");
             //}
         }
-
+        /// <summary>
+        /// 查看该包所在的总运单信息
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void lbtn_MHAWb_Click(object sender, EventArgs e)
         {
             Response.Redirect("../MawbManage/MawbDetails.aspx?BarCode=" + lbtn_MHAWb.Text + "");

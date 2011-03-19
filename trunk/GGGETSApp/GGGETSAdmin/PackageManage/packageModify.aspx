@@ -167,5 +167,9 @@
             else
                 event.returnValue = true;
         }
+        function Url() {
+            alert("修改成功！");
+            top.location = 'packageManagement.aspx';
+        }
     </script>
 </asp:Content>

@@ -42,7 +42,11 @@ namespace GGGETSAdmin.PackageManage
                 }
             }
         }
-
+        /// <summary>
+        /// 包添加运单
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void btn_Add_Click(object sender, EventArgs e)
         {
             string type = rbtn_PackageType.SelectedValue;
@@ -65,10 +69,10 @@ namespace GGGETSAdmin.PackageManage
                             package = new Package();
                         }
 
-                        if (package.JudgeHAWB(hawb))
+                        if (package.JudgeHAWB(hawb))//判断运单是否在该包里面
                         {
                             bool isMix;
-                            if (rbtn_PackageType.SelectedValue == "0")
+                            if (rbtn_PackageType.SelectedValue == "0")//判断是否混包
                             {
                                 isMix = false;
                             }
@@ -76,7 +80,7 @@ namespace GGGETSAdmin.PackageManage
                             {
                                 isMix = true;
                             }
-                            if (_packageservice.JudgePIDIsNull(hawb.BarCode))
+                            if (_packageservice.JudgePIDIsNull(hawb.BarCode))//判断该运单是否已经打包
                             {
                                 //if (_packageservice.JudgeRegionCodeIsRepeat(hawb.BarCode, Txt_Region.Text.Trim().ToUpper(), isMix))
                                 //{
@@ -120,16 +124,28 @@ namespace GGGETSAdmin.PackageManage
             txt_BarCode.Focus();
             
         }
-
+        /// <summary>
+        /// 保存
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void btn_Save_Click(object sender, EventArgs e)
         {
             AddPackage(0);
         }
-
+        /// <summary>
+        /// 保存并关闭
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void btn_SaveAndClose_Click(object sender, EventArgs e)
         {
             AddPackage(1);
         }
+        /// <summary>
+        /// 保存方法
+        /// </summary>
+        /// <param name="type">保存类型0:保存,1：保存并关闭</param>
         protected void AddPackage(int type)
         {
             package = (Package)Session["package"];
@@ -206,7 +222,11 @@ namespace GGGETSAdmin.PackageManage
                 Txt_BagBarCode.Focus();
             }
         }
-
+        /// <summary>
+        /// 删除包里面的运单
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void btn_Close_Click(object sender, EventArgs e)
         {
             if (package == null)
@@ -250,6 +270,10 @@ namespace GGGETSAdmin.PackageManage
             }
             
         }
+        /// <summary>
+        /// 清空页面控件值
+        /// </summary>
+        /// <param name="objControlCollection"></param>
         private void InitialControl(ControlCollection objControlCollection)
         {
             foreach (System.Web.UI.Control objControl in objControlCollection)
@@ -269,11 +293,19 @@ namespace GGGETSAdmin.PackageManage
             txt_Pice.Text = string.Empty;
             Txt_TotalWeight.Text = string.Empty;
         }
+        /// <summary>
+        /// 前台行号显示方法
+        /// </summary>
+        /// <returns></returns>
         public int N()
         {
             return n++;
         }
-
+        /// <summary>
+        /// 判断包是否已存在
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void Txt_BagBarCode_TextChanged(object sender, EventArgs e)
         {
             Package pack = _packageservice.FindPackageByBarcode(Txt_BagBarCode.Text.Trim());
@@ -287,6 +319,12 @@ namespace GGGETSAdmin.PackageManage
                 Txt_Region.Focus();
             }
         }
+        /// <summary>
+        /// 三字码填充
+        /// </summary>
+        /// <param name="prefixText"></param>
+        /// <param name="count"></param>
+        /// <returns></returns>
         [System.Web.Services.WebMethodAttribute(), System.Web.Script.Services.ScriptMethodAttribute()]
         public static string[][] GetCountryList(string prefixText, int count)
         {
@@ -313,7 +351,11 @@ namespace GGGETSAdmin.PackageManage
             Txt_Region.Text = ((AutoCompleteExtra.AutoCompleteExtraExtender)sender).SelectedValue;
             txt_BarCode.Focus();
         }
-
+        /// <summary>
+        /// 判断是否正确的三字码
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void Txt_Region_TextChanged(object sender, EventArgs e)
         {
             Region();
