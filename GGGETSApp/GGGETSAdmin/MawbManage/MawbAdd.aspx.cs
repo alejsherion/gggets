@@ -44,9 +44,14 @@ namespace GGGETSAdmin.MawbManage
 
             }
         }
-
+        /// <summary>
+        /// 总运单添加包裹
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void btn_Add_Click(object sender, EventArgs e)
         {
+            bool ok = true;
             if (Txt_BagBarCode.Text.Trim() == "")
             {
                 ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('请输入运单号!')", true);
@@ -59,18 +64,40 @@ namespace GGGETSAdmin.MawbManage
                 if (package != null)
                 {
                     
-                    if (_mawbservice.JudgeMIDIsNull(package.BarCode))
+                    if (_mawbservice.JudgeMIDIsNull(package.BarCode))//判断包裹是否已经存在总运单号
                     {
                         mawb = (MAWB)Session["mawb"];
-                        mawb.Packages.Add(package);
-                        Txt_TotalWeight.Text = mawb.TotalWeight.ToString();
-                        txt_TotalVolume.Text = mawb.TotalVolume.ToString();
-                        txt_Pice.Text = package.Piece.ToString();
-
-                        gv_Bag.DataSource = mawb.Packages;
-                        gv_Bag.DataBind();
-                        Session.Remove("mawb");
-                        Session["mawb"] = mawb;
+                        if (mawb.Packages.Count == 0)
+                        {
+                            mawb.Packages.Add(package);
+                           
+                        }
+                        else
+                        {
+                            foreach (Package pack in mawb.Packages)
+                            {
+                                if (package.BarCode == pack.BarCode)
+                                {
+                                    ok = false;
+                                    break;
+                                }
+                            }
+                        }
+                        if (ok)
+                        {
+                            mawb.Packages.Add(package);
+                            Txt_TotalWeight.Text = mawb.TotalWeight.ToString();
+                            txt_TotalVolume.Text = mawb.TotalVolume.ToString();
+                            txt_Pice.Text = package.Piece.ToString();
+                            gv_Bag.DataSource = mawb.Packages;
+                            gv_Bag.DataBind();
+                            Session.Remove("mawb");
+                            Session["mawb"] = mawb;
+                        }
+                        else
+                        {
+                            ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('该包已经添加，不能再次进行添加!')", true);
+                        }
                     }
                     else
                     {
@@ -92,61 +119,90 @@ namespace GGGETSAdmin.MawbManage
             Txt_BagBarCode.Focus();
         }
 
+        /// <summary>
+        /// 保存按钮
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void btn_Save_Click(object sender, EventArgs e)
         {
             Addmawb(0);
         }
-
+        /// <summary>
+        /// 保存并关闭按钮
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void btn_SaveAndClose_Click(object sender, EventArgs e)
         {
             Addmawb(1);
         }
+        /// <summary>
+        /// 保存方法
+        /// </summary>
+        /// <param name="type">保存类型0:保存,1:保存并关闭</param>
         protected void Addmawb(int type)
         {
             mawb = (MAWB)Session["mawb"];
 
-            if (Txt_TotalWeight.Text.Trim() != "")
+            if (Txt_MAWBBarCode.Text.Trim() == "")
             {
-                mawb.TotalWeight = decimal.Parse(Txt_TotalWeight.Text.Trim());
+                ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('请输入总运单号!')", true);
             }
-            if (txt_TotalVolume.Text.Trim() != "")
+            else if (txt_FLTNo.Text.Trim() == "")
             {
-                mawb.TotalVolume = decimal.Parse(txt_TotalVolume.Text.Trim());
-            }
-            if (type == 1)
-            {
-                mawb.Status = 1;
-            }
-            if (Regex.IsMatch(txt_From.Text.Trim(), RRegion) && Regex.IsMatch(txt_To.Text.Trim(), RRegion))
-            {
-                mawb.MID = Guid.NewGuid();
-                mawb.BarCode = Txt_MAWBBarCode.Text.Trim().ToUpper();
-                mawb.FlightNo = txt_FLTNo.Text.Trim().ToUpper();
-                mawb.From = txt_From.Text.Trim().ToUpper();
-                mawb.To = txt_To.Text.Trim().ToUpper();
-                mawb.CreateTime = DateTime.Parse(txt_CreateTime.Text.Trim());
-                mawb.Operator = "ceshi";
-                _mawbservice.AddMAWB(mawb);
-
-                ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('添加成功!')", true);
-                Session["mawb"] = null;
-                Txt_MAWBBarCode.Text = string.Empty;
-                txt_FLTNo.Text = string.Empty;
-                txt_CreateTime.Text = DateTime.Now.ToString("yyyy-MM-dd HH:mm");
-                txt_From.Text = string.Empty;
-                txt_To.Text = string.Empty;
-                txt_Pice.Text = string.Empty;
-                Txt_TotalWeight.Text = string.Empty;
-                txt_TotalVolume.Text = string.Empty;
-                gv_Bag.DataSource = null;
-                gv_Bag.DataBind();
-                btn_Close.Visible = true;
+                ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('请输入航班号!')", true);
             }
             else
             {
-                ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('机场三字码只能输入字母并为3位!')", true);
+                if (Txt_TotalWeight.Text.Trim() != "")
+                {
+                    mawb.TotalWeight = decimal.Parse(Txt_TotalWeight.Text.Trim());
+                }
+                if (txt_TotalVolume.Text.Trim() != "")
+                {
+                    mawb.TotalVolume = decimal.Parse(txt_TotalVolume.Text.Trim());
+                }
+                if (type == 1)
+                {
+                    mawb.Status = 1;
+                }
+                if (Regex.IsMatch(txt_From.Text.Trim(), RRegion) && Regex.IsMatch(txt_To.Text.Trim(), RRegion))
+                {
+                    mawb.MID = Guid.NewGuid();
+                    mawb.BarCode = Txt_MAWBBarCode.Text.Trim().ToUpper();
+                    mawb.FlightNo = txt_FLTNo.Text.Trim().ToUpper();
+                    mawb.From = txt_From.Text.Trim().ToUpper();
+                    mawb.To = txt_To.Text.Trim().ToUpper();
+                    mawb.CreateTime = DateTime.Parse(txt_CreateTime.Text.Trim());
+                    mawb.Operator = "ceshi";
+                    _mawbservice.AddMAWB(mawb);
+
+                    ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('添加成功!')", true);
+                    Session["mawb"] = null;
+                    Txt_MAWBBarCode.Text = string.Empty;
+                    txt_FLTNo.Text = string.Empty;
+                    txt_CreateTime.Text = DateTime.Now.ToString("yyyy-MM-dd HH:mm");
+                    txt_From.Text = string.Empty;
+                    txt_To.Text = string.Empty;
+                    txt_Pice.Text = string.Empty;
+                    Txt_TotalWeight.Text = string.Empty;
+                    txt_TotalVolume.Text = string.Empty;
+                    gv_Bag.DataSource = null;
+                    gv_Bag.DataBind();
+                    btn_Close.Visible = true;
+                }
+                else
+                {
+                    ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('机场三字码只能输入字母并为3位!')", true);
+                }
             }
         }
+        /// <summary>
+        /// 删除总运单里的包
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void btn_Close_Click(object sender, EventArgs e)
         {
             bool ok = false;
@@ -190,11 +246,19 @@ namespace GGGETSAdmin.MawbManage
                 ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('请选择要移除的记录!')", true);
             }
         }
+        /// <summary>
+        /// 前台行号显示方法
+        /// </summary>
+        /// <returns></returns>
         public int N()
         {
             return n++;
         }
-
+        /// <summary>
+        /// 判断总运单号是否存在
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void Txt_MAWBBarCode_TextChanged(object sender, EventArgs e)
         {
             MAWB mab = _mawbservice.FindMAWBByBarcode(Txt_MAWBBarCode.Text.Trim());
@@ -209,6 +273,7 @@ namespace GGGETSAdmin.MawbManage
                 txt_FLTNo.Focus();
             }
         }
+       
 
     }
 }

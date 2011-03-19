@@ -51,6 +51,10 @@ namespace GGGETSAdmin.MawbManage
                 }
             }
         }
+        /// <summary>
+        /// 页面控件赋值
+        /// </summary>
+        /// <param name="mawb"></param>
         protected void Evaluate(MAWB mawb)
         {
             lbl_MAWBBarCode.Text = mawb.BarCode;
@@ -66,15 +70,28 @@ namespace GGGETSAdmin.MawbManage
             gv_MAWB.DataSource = mawb.Packages;
             gv_MAWB.DataBind();
         }
+        /// <summary>
+        /// 前台行号显示方法
+        /// </summary>
+        /// <returns></returns>
         public int N()
         {
             return n++;
         }
+        /// <summary>
+        /// 返回按钮事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void But_Conel_Click(object sender, EventArgs e)
         {
             Response.Redirect(ViewState["UrlReferrer"].ToString());
         }
-
+        /// <summary>
+        /// 修改按钮事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void But_Next_Click(object sender, EventArgs e)
         {
             //if (txt_Status.Text == "打开")
@@ -84,12 +101,20 @@ namespace GGGETSAdmin.MawbManage
             //else
             //{ Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "show", "<script>alert('该总运单处于关闭状态，不能进行修改！')</script>"); }
         }
-
+        /// <summary>
+        /// 查看航班信息
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void lbtn_FLTNo_Click(object sender, EventArgs e)
         {
             Response.Redirect("../FlightManage/FlightManagement.aspx?FlightNo=" + lbtn_FLTNo.Text + "");
         }
-
+        /// <summary>
+        /// 导出总运单清单
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void btn_DeriveSince_Click(object sender, EventArgs e)
         {
             MAWB mawb = _mawbService.FindMAWBByBarcode(lbl_MAWBBarCode.Text);
@@ -117,7 +142,11 @@ namespace GGGETSAdmin.MawbManage
                 Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('该总运单下没有运单，不能导出!')</script>");
             }
         }
-
+        /// <summary>
+        /// 导出承运公司清单
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void btn_DeriveAccept_Click(object sender, EventArgs e)
         {
             MAWB mawb = _mawbService.FindMAWBByBarcode(lbl_MAWBBarCode.Text);
