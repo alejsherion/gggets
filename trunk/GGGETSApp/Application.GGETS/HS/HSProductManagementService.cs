@@ -71,8 +71,12 @@ namespace Application.GGETS
         /// <param name="pageIndex">页码</param>
         /// <param name="pageCount">一页显示个数</param>
         /// <returns></returns>
-        public IList<HSProduct> FindHSProductByCondition(string HSCode, string HSName,int pageIndex,int pageCount)
+        public IList<HSProduct> FindHSProductByCondition(string HSCode, string HSName,int pageIndex,int pageCount, ref int totalCount)
         {
+            IList<HSProduct> hsproducts = FindHSProductByCondition(HSCode, HSName);
+            if (hsproducts != null || hsproducts.Count!=0) totalCount = hsproducts.Count();
+            else totalCount = 0;
+
             return _HSProductRepository.FindHSProductByCondition(HSCode, HSName, pageIndex, pageCount);
         }
 
