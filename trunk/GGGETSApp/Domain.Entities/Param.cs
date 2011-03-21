@@ -14,7 +14,6 @@ using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Globalization;
 using System.Runtime.Serialization;
-using System.Data.Objects.DataClasses;
 
 #pragma warning disable 1591 // this is for supress no xml comments in public members warnings 
 
@@ -29,13 +28,11 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
     #if !SILVERLIGHT
     [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage()]
     #endif
-    public partial class Param: EntityObject,IObjectWithChangeTracker, INotifyPropertyChanged
+    public partial class Param: IObjectWithChangeTracker, INotifyPropertyChanged
     {
         #region Primitive Properties
     
         [DataMember]
-    			[EdmScalarProperty(EntityKeyProperty=true,IsNullable=false)]
-    			
         public System.Guid PID
         {
             get { return _pID; }
@@ -55,7 +52,6 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
         private System.Guid _pID;
     
         [DataMember]
-    			[EdmScalarProperty(EntityKeyProperty=false,IsNullable=true)]	
         public Nullable<System.Guid> TID
         {
             get { return _tID; }
@@ -79,8 +75,6 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
         private Nullable<System.Guid> _tID;
     
         [DataMember]
-    			[EdmScalarProperty(EntityKeyProperty=false,IsNullable=false)]
-    			
         public int Tag
         {
             get { return _tag; }
@@ -96,8 +90,6 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
         private int _tag;
     
         [DataMember]
-    			[EdmScalarProperty(EntityKeyProperty=false,IsNullable=false)]
-    			
         public string Key
         {
             get { return _key; }
@@ -113,8 +105,6 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
         private string _key;
     
         [DataMember]
-    			[EdmScalarProperty(EntityKeyProperty=false,IsNullable=false)]
-    			
         public string Value
         {
             get { return _value; }
@@ -130,8 +120,6 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
         private string _value;
     
         [DataMember]
-    			[EdmScalarProperty(EntityKeyProperty=false,IsNullable=false)]
-    			
         public int Top
         {
             get { return _top; }
@@ -147,8 +135,6 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
         private int _top;
     
         [DataMember]
-    			[EdmScalarProperty(EntityKeyProperty=false,IsNullable=false)]
-    			
         public int Left
         {
             get { return _left; }
@@ -164,8 +150,6 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
         private int _left;
     
         [DataMember]
-    			[EdmScalarProperty(EntityKeyProperty=false,IsNullable=false)]
-    			
         public int Height
         {
             get { return _height; }
@@ -181,8 +165,6 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
         private int _height;
     
         [DataMember]
-    			[EdmScalarProperty(EntityKeyProperty=false,IsNullable=false)]
-    			
         public int Width
         {
             get { return _width; }
@@ -198,7 +180,6 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
         private int _width;
     
         [DataMember]
-    			[EdmScalarProperty(EntityKeyProperty=false,IsNullable=true)]	
         public string FontName
         {
             get { return _fontName; }
@@ -214,7 +195,6 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
         private string _fontName;
     
         [DataMember]
-    			[EdmScalarProperty(EntityKeyProperty=false,IsNullable=true)]	
         public Nullable<int> FontSize
         {
             get { return _fontSize; }
@@ -230,7 +210,6 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
         private Nullable<int> _fontSize;
     
         [DataMember]
-    			[EdmScalarProperty(EntityKeyProperty=false,IsNullable=true)]	
         public Nullable<int> Alignment
         {
             get { return _alignment; }
@@ -246,7 +225,6 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
         private Nullable<int> _alignment;
     
         [DataMember]
-    			[EdmScalarProperty(EntityKeyProperty=false,IsNullable=true)]	
         public Nullable<int> Bold
         {
             get { return _bold; }
@@ -262,7 +240,6 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
         private Nullable<int> _bold;
     
         [DataMember]
-    			[EdmScalarProperty(EntityKeyProperty=false,IsNullable=true)]	
         public Nullable<int> Italic
         {
             get { return _italic; }
@@ -278,7 +255,6 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
         private Nullable<int> _italic;
     
         [DataMember]
-    			[EdmScalarProperty(EntityKeyProperty=false,IsNullable=true)]	
         public Nullable<int> Underline
         {
             get { return _underline; }
@@ -294,8 +270,6 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
         private Nullable<int> _underline;
     
         [DataMember]
-    			[EdmScalarProperty(EntityKeyProperty=false,IsNullable=false)]
-    			
         public string ParamType
         {
             get { return _paramType; }
@@ -311,7 +285,6 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
         private string _paramType;
     
         [DataMember]
-    			[EdmScalarProperty(EntityKeyProperty=false,IsNullable=true)]	
         public string DefaultValue
         {
             get { return _defaultValue; }

@@ -14,7 +14,6 @@ using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Globalization;
 using System.Runtime.Serialization;
-using System.Data.Objects.DataClasses;
 
 #pragma warning disable 1591 // this is for supress no xml comments in public members warnings 
 
@@ -29,13 +28,11 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
     #if !SILVERLIGHT
     [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage()]
     #endif
-    public partial class Privilege: EntityObject,IObjectWithChangeTracker, INotifyPropertyChanged
+    public partial class Privilege: IObjectWithChangeTracker, INotifyPropertyChanged
     {
         #region Primitive Properties
     
         [DataMember]
-    			[EdmScalarProperty(EntityKeyProperty=true,IsNullable=false)]
-    			
         public System.Guid PrivilegeID
         {
             get { return _privilegeID; }
@@ -55,7 +52,6 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
         private System.Guid _privilegeID;
     
         [DataMember]
-    			[EdmScalarProperty(EntityKeyProperty=false,IsNullable=true)]	
         public string DisplayName
         {
             get { return _displayName; }
@@ -71,7 +67,6 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
         private string _displayName;
     
         [DataMember]
-    			[EdmScalarProperty(EntityKeyProperty=false,IsNullable=true)]	
         public string Name
         {
             get { return _name; }
@@ -87,7 +82,6 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
         private string _name;
     
         [DataMember]
-    			[EdmScalarProperty(EntityKeyProperty=false,IsNullable=true)]	
         public Nullable<System.Guid> ModuleID
         {
             get { return _moduleID; }
@@ -111,7 +105,6 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
         private Nullable<System.Guid> _moduleID;
     
         [DataMember]
-    			[EdmScalarProperty(EntityKeyProperty=false,IsNullable=true)]	
         public string UrlAdress
         {
             get { return _urlAdress; }
@@ -127,7 +120,6 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
         private string _urlAdress;
     
         [DataMember]
-    			[EdmScalarProperty(EntityKeyProperty=false,IsNullable=true)]	
         public string PrivilegeDesc
         {
             get { return _privilegeDesc; }
@@ -143,7 +135,6 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
         private string _privilegeDesc;
     
         [DataMember]
-    			[EdmScalarProperty(EntityKeyProperty=false,IsNullable=true)]	
         public Nullable<System.DateTime> CreateTime
         {
             get { return _createTime; }
@@ -159,7 +150,6 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
         private Nullable<System.DateTime> _createTime;
     
         [DataMember]
-    			[EdmScalarProperty(EntityKeyProperty=false,IsNullable=true)]	
         public string Remark
         {
             get { return _remark; }

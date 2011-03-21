@@ -14,7 +14,6 @@ using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Globalization;
 using System.Runtime.Serialization;
-using System.Data.Objects.DataClasses;
 
 #pragma warning disable 1591 // this is for supress no xml comments in public members warnings 
 
@@ -30,13 +29,11 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
     #if !SILVERLIGHT
     [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage()]
     #endif
-    public partial class AddressBook: EntityObject,IObjectWithChangeTracker, INotifyPropertyChanged
+    public partial class AddressBook: IObjectWithChangeTracker, INotifyPropertyChanged
     {
         #region Primitive Properties
     
         [DataMember]
-    			[EdmScalarProperty(EntityKeyProperty=true,IsNullable=false)]
-    			
         public System.Guid AID
         {
             get { return _aID; }
@@ -56,7 +53,6 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
         private System.Guid _aID;
     
         [DataMember]
-    			[EdmScalarProperty(EntityKeyProperty=false,IsNullable=true)]	
         public Nullable<System.Guid> DID
         {
             get { return _dID; }
@@ -80,7 +76,6 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
         private Nullable<System.Guid> _dID;
     
         [DataMember]
-    			[EdmScalarProperty(EntityKeyProperty=false,IsNullable=true)]	
         public Nullable<System.Guid> UID
         {
             get { return _uID; }
@@ -104,7 +99,6 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
         private Nullable<System.Guid> _uID;
     
         [DataMember]
-    			[EdmScalarProperty(EntityKeyProperty=false,IsNullable=true)]	
         public Nullable<System.Guid> ReceiveAID
         {
             get { return _receiveAID; }
@@ -120,8 +114,6 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
         private Nullable<System.Guid> _receiveAID;
     
         [DataMember]
-    			[EdmScalarProperty(EntityKeyProperty=false,IsNullable=false)]
-    			
         public string Name
         {
             get { return _name; }
@@ -137,8 +129,6 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
         private string _name;
     
         [DataMember]
-    			[EdmScalarProperty(EntityKeyProperty=false,IsNullable=false)]
-    			
         public string ContactorName
         {
             get { return _contactorName; }
@@ -154,8 +144,6 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
         private string _contactorName;
     
         [DataMember]
-    			[EdmScalarProperty(EntityKeyProperty=false,IsNullable=false)]
-    			
         public string CountryCode
         {
             get { return _countryCode; }
@@ -171,8 +159,6 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
         private string _countryCode;
     
         [DataMember]
-    			[EdmScalarProperty(EntityKeyProperty=false,IsNullable=false)]
-    			
         public string Provience
         {
             get { return _provience; }
@@ -188,8 +174,6 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
         private string _provience;
     
         [DataMember]
-    			[EdmScalarProperty(EntityKeyProperty=false,IsNullable=false)]
-    			
         public string RegionCode
         {
             get { return _regionCode; }
@@ -205,8 +189,6 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
         private string _regionCode;
     
         [DataMember]
-    			[EdmScalarProperty(EntityKeyProperty=false,IsNullable=false)]
-    			
         public string Address
         {
             get { return _address; }
@@ -222,7 +204,6 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
         private string _address;
     
         [DataMember]
-    			[EdmScalarProperty(EntityKeyProperty=false,IsNullable=true)]	
         public string Fax
         {
             get { return _fax; }
@@ -238,7 +219,6 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
         private string _fax;
     
         [DataMember]
-    			[EdmScalarProperty(EntityKeyProperty=false,IsNullable=true)]	
         public string Phone
         {
             get { return _phone; }
@@ -254,8 +234,6 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
         private string _phone;
     
         [DataMember]
-    			[EdmScalarProperty(EntityKeyProperty=false,IsNullable=false)]
-    			
         public string PostCode
         {
             get { return _postCode; }
@@ -271,8 +249,6 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
         private string _postCode;
     
         [DataMember]
-    			[EdmScalarProperty(EntityKeyProperty=false,IsNullable=false)]
-    			
         public int AddressType
         {
             get { return _addressType; }
@@ -288,8 +264,6 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
         private int _addressType;
     
         [DataMember]
-    			[EdmScalarProperty(EntityKeyProperty=false,IsNullable=false)]
-    			
         public System.DateTime CreateTime
         {
             get { return _createTime; }
@@ -305,8 +279,6 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
         private System.DateTime _createTime;
     
         [DataMember]
-    			[EdmScalarProperty(EntityKeyProperty=false,IsNullable=false)]
-    			
         public System.DateTime UpdateTime
         {
             get { return _updateTime; }
@@ -322,8 +294,6 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
         private System.DateTime _updateTime;
     
         [DataMember]
-    			[EdmScalarProperty(EntityKeyProperty=false,IsNullable=false)]
-    			
         public string Operator
         {
             get { return _operator; }

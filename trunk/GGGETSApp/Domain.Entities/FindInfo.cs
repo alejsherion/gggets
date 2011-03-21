@@ -14,7 +14,6 @@ using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Globalization;
 using System.Runtime.Serialization;
-using System.Data.Objects.DataClasses;
 
 #pragma warning disable 1591 // this is for supress no xml comments in public members warnings 
 
@@ -28,12 +27,11 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
     #if !SILVERLIGHT
     [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage()]
     #endif
-    public partial class FindInfo: EntityObject,IObjectWithChangeTracker, INotifyPropertyChanged
+    public partial class FindInfo: IObjectWithChangeTracker, INotifyPropertyChanged
     {
         #region Primitive Properties
     
         [DataMember]
-    			[EdmScalarProperty(EntityKeyProperty=true,IsNullable=true)]	
         public string fieldname
         {
             get { return _fieldname; }
@@ -49,7 +47,6 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
         private string _fieldname;
     
         [DataMember]
-    			[EdmScalarProperty(EntityKeyProperty=false,IsNullable=true)]	
         public Nullable<int> identity
         {
             get { return _identity; }
@@ -65,8 +62,6 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
         private Nullable<int> _identity;
     
         [DataMember]
-    			[EdmScalarProperty(EntityKeyProperty=false,IsNullable=false)]
-    			
         public string primarykey
         {
             get { return _primarykey; }
@@ -86,7 +81,6 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
         private string _primarykey;
     
         [DataMember]
-    			[EdmScalarProperty(EntityKeyProperty=false,IsNullable=true)]	
         public string type
         {
             get { return _type; }
@@ -102,7 +96,6 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
         private string _type;
     
         [DataMember]
-    			[EdmScalarProperty(EntityKeyProperty=false,IsNullable=true)]	
         public Nullable<int> length
         {
             get { return _length; }
@@ -118,8 +111,6 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
         private Nullable<int> _length;
     
         [DataMember]
-    			[EdmScalarProperty(EntityKeyProperty=false,IsNullable=false)]
-    			
         public int @decimal
         {
             get { return _decimal; }
@@ -139,8 +130,6 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
         private int _decimal;
     
         [DataMember]
-    			[EdmScalarProperty(EntityKeyProperty=false,IsNullable=false)]
-    			
         public string isnull
         {
             get { return _isnull; }
@@ -160,8 +149,6 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
         private string _isnull;
     
         [DataMember]
-    			[EdmScalarProperty(EntityKeyProperty=false,IsNullable=false)]
-    			
         public string name
         {
             get { return _name; }
@@ -181,7 +168,6 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
         private string _name;
     
         [DataMember]
-    			[EdmScalarProperty(EntityKeyProperty=false,IsNullable=true)]	
         public string fielddesc
         {
             get { return _fielddesc; }

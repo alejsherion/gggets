@@ -14,7 +14,6 @@ using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Globalization;
 using System.Runtime.Serialization;
-using System.Data.Objects.DataClasses;
 
 #pragma warning disable 1591 // this is for supress no xml comments in public members warnings 
 
@@ -29,13 +28,11 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
     #if !SILVERLIGHT
     [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage()]
     #endif
-    public partial class HAWBItem: EntityObject,IObjectWithChangeTracker, INotifyPropertyChanged
+    public partial class HAWBItem: IObjectWithChangeTracker, INotifyPropertyChanged
     {
         #region Primitive Properties
     
         [DataMember]
-    			[EdmScalarProperty(EntityKeyProperty=true,IsNullable=false)]
-    			
         public System.Guid ItemID
         {
             get { return _itemID; }
@@ -55,7 +52,6 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
         private System.Guid _itemID;
     
         [DataMember]
-    			[EdmScalarProperty(EntityKeyProperty=false,IsNullable=true)]	
         public Nullable<System.Guid> HID
         {
             get { return _hID; }
@@ -79,8 +75,6 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
         private Nullable<System.Guid> _hID;
     
         [DataMember]
-    			[EdmScalarProperty(EntityKeyProperty=false,IsNullable=false)]
-    			
         public string Name
         {
             get { return _name; }
@@ -96,8 +90,6 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
         private string _name;
     
         [DataMember]
-    			[EdmScalarProperty(EntityKeyProperty=false,IsNullable=false)]
-    			
         public int Piece
         {
             get { return _piece; }
@@ -113,8 +105,6 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
         private int _piece;
     
         [DataMember]
-    			[EdmScalarProperty(EntityKeyProperty=false,IsNullable=false)]
-    			
         public decimal UnitAmount
         {
             get { return _unitAmount; }
@@ -130,8 +120,6 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
         private decimal _unitAmount;
     
         [DataMember]
-    			[EdmScalarProperty(EntityKeyProperty=false,IsNullable=false)]
-    			
         public decimal TotalAmount
         {
             get { return _totalAmount; }
@@ -147,7 +135,6 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
         private decimal _totalAmount;
     
         [DataMember]
-    			[EdmScalarProperty(EntityKeyProperty=false,IsNullable=true)]	
         public string Remark
         {
             get { return _remark; }

@@ -14,7 +14,6 @@ using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Globalization;
 using System.Runtime.Serialization;
-using System.Data.Objects.DataClasses;
 
 #pragma warning disable 1591 // this is for supress no xml comments in public members warnings 
 
@@ -29,13 +28,11 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
     #if !SILVERLIGHT
     [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage()]
     #endif
-    public partial class MAWB: EntityObject,IObjectWithChangeTracker, INotifyPropertyChanged
+    public partial class MAWB: IObjectWithChangeTracker, INotifyPropertyChanged
     {
         #region Primitive Properties
     
         [DataMember]
-    			[EdmScalarProperty(EntityKeyProperty=true,IsNullable=false)]
-    			
         public System.Guid MID
         {
             get { return _mID; }
@@ -55,8 +52,6 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
         private System.Guid _mID;
     
         [DataMember]
-    			[EdmScalarProperty(EntityKeyProperty=false,IsNullable=false)]
-    			
         public string BarCode
         {
             get { return _barCode; }
@@ -72,8 +67,6 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
         private string _barCode;
     
         [DataMember]
-    			[EdmScalarProperty(EntityKeyProperty=false,IsNullable=false)]
-    			
         public string From
         {
             get { return _from; }
@@ -89,8 +82,6 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
         private string _from;
     
         [DataMember]
-    			[EdmScalarProperty(EntityKeyProperty=false,IsNullable=false)]
-    			
         public string To
         {
             get { return _to; }
@@ -106,8 +97,6 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
         private string _to;
     
         [DataMember]
-    			[EdmScalarProperty(EntityKeyProperty=false,IsNullable=false)]
-    			
         public string FlightNo
         {
             get { return _flightNo; }
@@ -123,8 +112,6 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
         private string _flightNo;
     
         [DataMember]
-    			[EdmScalarProperty(EntityKeyProperty=false,IsNullable=false)]
-    			
         public System.DateTime CreateTime
         {
             get { return _createTime; }
@@ -140,7 +127,6 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
         private System.DateTime _createTime;
     
         [DataMember]
-    			[EdmScalarProperty(EntityKeyProperty=false,IsNullable=true)]	
         public Nullable<System.DateTime> LockedTime
         {
             get { return _lockedTime; }
@@ -156,8 +142,6 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
         private Nullable<System.DateTime> _lockedTime;
     
         [DataMember]
-    			[EdmScalarProperty(EntityKeyProperty=false,IsNullable=false)]
-    			
         public string Operator
         {
             get { return _operator; }
@@ -173,8 +157,6 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
         private string _operator;
     
         [DataMember]
-    			[EdmScalarProperty(EntityKeyProperty=false,IsNullable=false)]
-    			
         public decimal TotalWeight
         {
             get { return _totalWeight; }
@@ -190,8 +172,6 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
         private decimal _totalWeight;
     
         [DataMember]
-    			[EdmScalarProperty(EntityKeyProperty=false,IsNullable=false)]
-    			
         public decimal TotalVolume
         {
             get { return _totalVolume; }
@@ -207,8 +187,6 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
         private decimal _totalVolume;
     
         [DataMember]
-    			[EdmScalarProperty(EntityKeyProperty=false,IsNullable=false)]
-    			
         public int Status
         {
             get { return _status; }

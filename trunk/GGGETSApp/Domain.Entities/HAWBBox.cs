@@ -14,7 +14,6 @@ using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Globalization;
 using System.Runtime.Serialization;
-using System.Data.Objects.DataClasses;
 
 #pragma warning disable 1591 // this is for supress no xml comments in public members warnings 
 
@@ -29,13 +28,11 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
     #if !SILVERLIGHT
     [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage()]
     #endif
-    public partial class HAWBBox: EntityObject,IObjectWithChangeTracker, INotifyPropertyChanged
+    public partial class HAWBBox: IObjectWithChangeTracker, INotifyPropertyChanged
     {
         #region Primitive Properties
     
         [DataMember]
-    			[EdmScalarProperty(EntityKeyProperty=true,IsNullable=false)]
-    			
         public System.Guid BoxID
         {
             get { return _boxID; }
@@ -55,8 +52,6 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
         private System.Guid _boxID;
     
         [DataMember]
-    			[EdmScalarProperty(EntityKeyProperty=false,IsNullable=false)]
-    			
         public System.Guid HID
         {
             get { return _hID; }
@@ -80,8 +75,6 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
         private System.Guid _hID;
     
         [DataMember]
-    			[EdmScalarProperty(EntityKeyProperty=false,IsNullable=false)]
-    			
         public int BoxType
         {
             get { return _boxType; }
@@ -97,8 +90,6 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
         private int _boxType;
     
         [DataMember]
-    			[EdmScalarProperty(EntityKeyProperty=false,IsNullable=false)]
-    			
         public decimal Weight
         {
             get { return _weight; }
@@ -114,7 +105,6 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
         private decimal _weight;
     
         [DataMember]
-    			[EdmScalarProperty(EntityKeyProperty=false,IsNullable=true)]	
         public Nullable<decimal> Length
         {
             get { return _length; }
@@ -130,7 +120,6 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
         private Nullable<decimal> _length;
     
         [DataMember]
-    			[EdmScalarProperty(EntityKeyProperty=false,IsNullable=true)]	
         public Nullable<decimal> Width
         {
             get { return _width; }
@@ -146,7 +135,6 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
         private Nullable<decimal> _width;
     
         [DataMember]
-    			[EdmScalarProperty(EntityKeyProperty=false,IsNullable=true)]	
         public Nullable<decimal> Height
         {
             get { return _height; }
@@ -162,7 +150,6 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
         private Nullable<decimal> _height;
     
         [DataMember]
-    			[EdmScalarProperty(EntityKeyProperty=false,IsNullable=true)]	
         public Nullable<decimal> TransFee
         {
             get { return _transFee; }
@@ -178,8 +165,6 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
         private Nullable<decimal> _transFee;
     
         [DataMember]
-    			[EdmScalarProperty(EntityKeyProperty=false,IsNullable=false)]
-    			
         public int TransCurrency
         {
             get { return _transCurrency; }
@@ -195,8 +180,6 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
         private int _transCurrency;
     
         [DataMember]
-    			[EdmScalarProperty(EntityKeyProperty=false,IsNullable=false)]
-    			
         public int Piece
         {
             get { return _piece; }
