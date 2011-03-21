@@ -695,18 +695,6 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Repositories
             }
             return HAWBs.OrderByDescending(a => a.CreateTime).ToList();
         }
-
-        public void BatchUpdateHAWBs()
-        {
-            HAWB hawb = new HAWB();
-
-            EntityBatchUpdater<GGGETSUnitOfWork> batchContext = new EntityBatchUpdater<GGGETSUnitOfWork>();
-            batchContext.TrackEntity(hawb);
-            hawb.ShipperName = "沈先生";
-            batchContext.UpdateBatch(hawb,
-                batchContext.ObjectContext.HAWB.Where(a => a.ConsigneeName=="李宏"));            
-        }
-
         #endregion
     }
 }
