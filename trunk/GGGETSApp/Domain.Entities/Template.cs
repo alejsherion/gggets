@@ -14,6 +14,7 @@ using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Globalization;
 using System.Runtime.Serialization;
+using System.Data.Objects.DataClasses;
 
 #pragma warning disable 1591 // this is for supress no xml comments in public members warnings 
 
@@ -28,11 +29,13 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
     #if !SILVERLIGHT
     [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage()]
     #endif
-    public partial class Template: IObjectWithChangeTracker, INotifyPropertyChanged
+    public partial class Template: EntityObject,IObjectWithChangeTracker, INotifyPropertyChanged
     {
         #region Primitive Properties
     
         [DataMember]
+    			[EdmScalarProperty(EntityKeyProperty=true,IsNullable=false)]
+    			
         public System.Guid TID
         {
             get { return _tID; }
@@ -52,6 +55,8 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
         private System.Guid _tID;
     
         [DataMember]
+    			[EdmScalarProperty(EntityKeyProperty=false,IsNullable=false)]
+    			
         public string Name
         {
             get { return _name; }
@@ -67,6 +72,7 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
         private string _name;
     
         [DataMember]
+    			[EdmScalarProperty(EntityKeyProperty=false,IsNullable=true)]	
         public string Desc
         {
             get { return _desc; }
@@ -82,6 +88,8 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
         private string _desc;
     
         [DataMember]
+    			[EdmScalarProperty(EntityKeyProperty=false,IsNullable=false)]
+    			
         public string PaperType
         {
             get { return _paperType; }
@@ -97,6 +105,8 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
         private string _paperType;
     
         [DataMember]
+    			[EdmScalarProperty(EntityKeyProperty=false,IsNullable=false)]
+    			
         public System.DateTime CreateDate
         {
             get { return _createDate; }
@@ -112,6 +122,8 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
         private System.DateTime _createDate;
     
         [DataMember]
+    			[EdmScalarProperty(EntityKeyProperty=false,IsNullable=false)]
+    			
         public System.DateTime ModifyDate
         {
             get { return _modifyDate; }
@@ -127,6 +139,8 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
         private System.DateTime _modifyDate;
     
         [DataMember]
+    			[EdmScalarProperty(EntityKeyProperty=false,IsNullable=false)]
+    			
         public string Operator
         {
             get { return _operator; }
@@ -142,6 +156,8 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
         private string _operator;
     
         [DataMember]
+    			[EdmScalarProperty(EntityKeyProperty=false,IsNullable=false)]
+    			
         public string TemplateCode
         {
             get { return _templateCode; }
@@ -157,6 +173,7 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
         private string _templateCode;
     
         [DataMember]
+    			[EdmScalarProperty(EntityKeyProperty=false,IsNullable=true)]	
         public Nullable<int> PrintDirection
         {
             get { return _printDirection; }
@@ -172,6 +189,7 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
         private Nullable<int> _printDirection;
     
         [DataMember]
+    			[EdmScalarProperty(EntityKeyProperty=false,IsNullable=true)]	
         public Nullable<int> PagerWidth
         {
             get { return _pagerWidth; }
@@ -187,6 +205,7 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
         private Nullable<int> _pagerWidth;
     
         [DataMember]
+    			[EdmScalarProperty(EntityKeyProperty=false,IsNullable=true)]	
         public Nullable<int> PagerHeight
         {
             get { return _pagerHeight; }
@@ -202,6 +221,7 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
         private Nullable<int> _pagerHeight;
     
         [DataMember]
+    			[EdmScalarProperty(EntityKeyProperty=false,IsNullable=true)]	
         public Nullable<int> BatchHeight
         {
             get { return _batchHeight; }
@@ -217,6 +237,7 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
         private Nullable<int> _batchHeight;
     
         [DataMember]
+    			[EdmScalarProperty(EntityKeyProperty=false,IsNullable=true)]	
         public string CorrespondingTable
         {
             get { return _correspondingTable; }
@@ -232,6 +253,7 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
         private string _correspondingTable;
     
         [DataMember]
+    			[EdmScalarProperty(EntityKeyProperty=false,IsNullable=true)]	
         public string CorrespondingCN
         {
             get { return _correspondingCN; }
@@ -247,6 +269,7 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
         private string _correspondingCN;
     
         [DataMember]
+    			[EdmScalarProperty(EntityKeyProperty=false,IsNullable=true)]	
         public string IdentifyKey
         {
             get { return _identifyKey; }

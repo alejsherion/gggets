@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Objects.DataClasses;
 using System.Linq;
 using ETS.GGGETSApp.Infrastructure.Data.Core;
 using ETS.GGGETSApp.Infrastructure.Data.Core.Extensions;
@@ -9,6 +10,7 @@ using ETS.GGGETSApp.Domain.Application.Entities;
 using Domain.GGGETS;
 using System.Globalization;
 using ETS.GGGETSApp.Infrastructure.Data.Persistence.Resources;
+using System.Data.Objects;
 
 namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Repositories
 {
@@ -41,7 +43,7 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Repositories
         {
 
             IGGGETSAppUnitOfWork context = this.UnitOfWork as IGGGETSAppUnitOfWork;
-
+            
             if (context != null)
             {
                 if(context.HAWBItem.Count()!=0)
@@ -692,6 +694,17 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Repositories
                                                             GetType().Name));
             }
             return HAWBs.OrderByDescending(a => a.CreateTime).ToList();
+        }
+
+        public void BatchUpdateHAWBs()
+        {
+            HAWB hawb = new HAWB();
+
+            EntityBatchUpdater<GGGETSUnitOfWork> batchContext = new EntityBatchUpdater<GGGETSUnitOfWork>();
+            batchContext.TrackEntity(hawb);
+            hawb.ShipperName = "沈先生";
+            batchContext.UpdateBatch(hawb,
+                batchContext.ObjectContext.HAWB.Where(a => a.ConsigneeName=="李宏"));            
         }
 
         #endregion

@@ -30,7 +30,7 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Core
     /// </summary>
     /// <typeparam name="TEntity">Type of elements in repostory</typeparam>
     public class Repository<TEntity> : IRepository<TEntity>
-        where TEntity : class,IObjectWithChangeTracker
+        where TEntity : class, IObjectWithChangeTracker
     {
        
         #region Members
@@ -81,6 +81,8 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Core
                 return _CurrentUoW as IUnitOfWork;
             }
         }
+
+
 
         /// <summary>
         /// <see cref="GGGETS.GGGETSApp.Domain.Core.IRepository{TEntity}"/>
@@ -183,8 +185,8 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Core
                 item.MarkAsModified();
             }
             // Cache
-            _CurrentUoW.Cache = new AspNetCache();
-            _CurrentUoW.CachingPolicy = CachingPolicy.NoCaching;
+            //_CurrentUoW.Cache = new AspNetCache();
+            //_CurrentUoW.CachingPolicy = CachingPolicy.NoCaching;
             //apply changes for item object
             _CurrentUoW.RegisterChanges(item);
 
@@ -434,8 +436,8 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Core
         {
             if (_CurrentUoW != (IUnitOfWork)null)
             {
-                _CurrentUoW.Cache = new AspNetCache();
-                _CurrentUoW.CachingPolicy = CachingPolicy.NoCaching;
+                //_CurrentUoW.Cache = new AspNetCache();
+                //_CurrentUoW.CachingPolicy = CachingPolicy.NoCaching;
                 IObjectSet<TEntity> objectSet = _CurrentUoW.CreateSet<TEntity>();
                 
                 //set merge option to underlying ObjectQuery

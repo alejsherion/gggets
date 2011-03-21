@@ -240,8 +240,10 @@ namespace Application.GGETS.Tests
         {
             HAWB HAWBObj = _HAWBManagementService.FindHAWBByBarCode("2010");//根据条形码获取对应运单对象
             //HAWBObj.Carrier = "航空公司03";
-            HAWBBox HAWBBox = _HAWBManagementService.FindHAWBBoxByHID(HAWBObj.HID.ToString());
+            //HAWBBox HAWBBox = _HAWBManagementService.FindHAWBBoxByHID(HAWBObj.HID.ToString());
             //HAWBObj.RemoveHAWBBox(HAWBBox);
+            HAWBObj.SettleType = 0;
+            HAWBObj.ServiceType = 0;
             _HAWBManagementService.ChangeHAWB(HAWBObj);//修改
             //Assert.Inconclusive("无法验证不返回值的方法。");
         }
@@ -424,6 +426,15 @@ namespace Application.GGETS.Tests
         {
             get { throw new NotImplementedException(); }
         }
-        
+
+
+        /// <summary>
+        ///BatchUpdateHAWBs 的测试
+        ///</summary>
+        [TestMethod()]
+        public void BatchUpdateHAWBsTest()
+        {
+            _HAWBManagementService.BatchUpdateHAWBs();
+        }
     }
 }
