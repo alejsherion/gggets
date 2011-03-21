@@ -34,16 +34,28 @@ foreach (EntityType entity in ItemCollection.GetItems<EntityType>().OrderBy(e =>
 #if !SILVERLIGHT
 [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage()]
 #endif
-<#=Accessibility.ForType(entity)#> <#=code.SpaceAfter(code.AbstractOption(entity))#>partial class <#=code.Escape(entity)#><#=code.StringBefore(" : ", code.Escape(entity.BaseType))#><#=entity.BaseType == null ? ": " : ", "#>IObjectWithChangeTracker, INotifyPropertyChanged
+<#=Accessibility.ForType(entity)#> <#=code.SpaceAfter(code.AbstractOption(entity))#>partial class <#=code.Escape(entity)#><#=code.StringBefore(" : ", code.Escape(entity.BaseType))#><#=entity.BaseType == null ? ": " : ", "#>EntityObject,IObjectWithChangeTracker, INotifyPropertyChanged
 {
 <#
     region.Begin("Primitive Properties");
-
+	int ki=0;
     foreach (EdmProperty edmProperty in entity.Properties.Where(p => p.TypeUsage.EdmType is PrimitiveType && p.DeclaringType == entity))
     {
 #>
 
     [DataMember]
+	<#
+	    if(ki==0)
+		{#>
+		[EdmScalarProperty(EntityKeyProperty=true,IsNullable=<#if(edmProperty.Nullable)#>true)]<#else#>false)]
+		<#}
+		else
+		{#>
+		[EdmScalarProperty(EntityKeyProperty=false,IsNullable=<#if(edmProperty.Nullable)#>true)]<#else#>false)]
+		<#}
+		ki++;
+	#>
+	
     <#=Accessibility.ForProperty(edmProperty)#> <#=code.Escape(edmProperty.TypeUsage)#> <#=code.Escape(edmProperty)#>
     {
         <#=code.SpaceAfter(Accessibility.ForGetter(edmProperty))#>get { return <#=code.FieldName(edmProperty)#>; }
@@ -1293,6 +1305,7 @@ using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Globalization;
 using System.Runtime.Serialization;
+using System.Data.Objects.DataClasses;
 
 #pragma warning disable 1591 // this is for supress no xml comments in public members warnings 
 

@@ -14,6 +14,7 @@ using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Globalization;
 using System.Runtime.Serialization;
+using System.Data.Objects.DataClasses;
 
 #pragma warning disable 1591 // this is for supress no xml comments in public members warnings 
 
@@ -27,11 +28,13 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
     #if !SILVERLIGHT
     [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage()]
     #endif
-    public partial class RegionCode: IObjectWithChangeTracker, INotifyPropertyChanged
+    public partial class RegionCode: EntityObject,IObjectWithChangeTracker, INotifyPropertyChanged
     {
         #region Primitive Properties
     
         [DataMember]
+    			[EdmScalarProperty(EntityKeyProperty=true,IsNullable=false)]
+    			
         public int ID
         {
             get { return _iD; }
@@ -51,6 +54,8 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
         private int _iD;
     
         [DataMember]
+    			[EdmScalarProperty(EntityKeyProperty=false,IsNullable=false)]
+    			
         public string CountryCode
         {
             get { return _countryCode; }
@@ -66,6 +71,8 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
         private string _countryCode;
     
         [DataMember]
+    			[EdmScalarProperty(EntityKeyProperty=false,IsNullable=false)]
+    			
         public string RegionCode1
         {
             get { return _regionCode1; }
@@ -81,6 +88,8 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
         private string _regionCode1;
     
         [DataMember]
+    			[EdmScalarProperty(EntityKeyProperty=false,IsNullable=false)]
+    			
         public string RegionName
         {
             get { return _regionName; }

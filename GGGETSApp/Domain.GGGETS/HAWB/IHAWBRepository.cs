@@ -36,5 +36,6 @@ namespace Domain.GGGETS
                                                bool? isInternational, int pageIndex, int pageCount);
         IList<HAWB> FindHAWBsByMID(string MID);
         IList<HAWB> FindHAWBsByCondition(string barCode, DateTime? beginDate, DateTime? endDate);
+        void BatchUpdateHAWBs();
     }
 }

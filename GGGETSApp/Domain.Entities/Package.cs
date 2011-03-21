@@ -14,6 +14,7 @@ using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Globalization;
 using System.Runtime.Serialization;
+using System.Data.Objects.DataClasses;
 
 #pragma warning disable 1591 // this is for supress no xml comments in public members warnings 
 
@@ -29,11 +30,13 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
     #if !SILVERLIGHT
     [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage()]
     #endif
-    public partial class Package: IObjectWithChangeTracker, INotifyPropertyChanged
+    public partial class Package: EntityObject,IObjectWithChangeTracker, INotifyPropertyChanged
     {
         #region Primitive Properties
     
         [DataMember]
+    			[EdmScalarProperty(EntityKeyProperty=true,IsNullable=false)]
+    			
         public System.Guid PID
         {
             get { return _pID; }
@@ -53,6 +56,7 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
         private System.Guid _pID;
     
         [DataMember]
+    			[EdmScalarProperty(EntityKeyProperty=false,IsNullable=true)]	
         public Nullable<System.Guid> MID
         {
             get { return _mID; }
@@ -76,6 +80,8 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
         private Nullable<System.Guid> _mID;
     
         [DataMember]
+    			[EdmScalarProperty(EntityKeyProperty=false,IsNullable=false)]
+    			
         public string BarCode
         {
             get { return _barCode; }
@@ -91,6 +97,8 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
         private string _barCode;
     
         [DataMember]
+    			[EdmScalarProperty(EntityKeyProperty=false,IsNullable=false)]
+    			
         public string RegionCode
         {
             get { return _regionCode; }
@@ -106,6 +114,8 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
         private string _regionCode;
     
         [DataMember]
+    			[EdmScalarProperty(EntityKeyProperty=false,IsNullable=false)]
+    			
         public int Piece
         {
             get { return _piece; }
@@ -121,6 +131,8 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
         private int _piece;
     
         [DataMember]
+    			[EdmScalarProperty(EntityKeyProperty=false,IsNullable=false)]
+    			
         public decimal TotalWeight
         {
             get { return _totalWeight; }
@@ -136,6 +148,8 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
         private decimal _totalWeight;
     
         [DataMember]
+    			[EdmScalarProperty(EntityKeyProperty=false,IsNullable=false)]
+    			
         public System.DateTime CreateTime
         {
             get { return _createTime; }
@@ -151,6 +165,8 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
         private System.DateTime _createTime;
     
         [DataMember]
+    			[EdmScalarProperty(EntityKeyProperty=false,IsNullable=false)]
+    			
         public System.DateTime UpdateTime
         {
             get { return _updateTime; }
@@ -166,6 +182,8 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
         private System.DateTime _updateTime;
     
         [DataMember]
+    			[EdmScalarProperty(EntityKeyProperty=false,IsNullable=false)]
+    			
         public string Operator
         {
             get { return _operator; }
@@ -181,6 +199,8 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
         private string _operator;
     
         [DataMember]
+    			[EdmScalarProperty(EntityKeyProperty=false,IsNullable=false)]
+    			
         public int Status
         {
             get { return _status; }
@@ -196,6 +216,8 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
         private int _status;
     
         [DataMember]
+    			[EdmScalarProperty(EntityKeyProperty=false,IsNullable=false)]
+    			
         public bool IsMixed
         {
             get { return _isMixed; }
