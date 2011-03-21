@@ -199,7 +199,8 @@ namespace GGGETSAdmin.PrintManage
         protected void gvTemplate_RowDataBound(object sender, GridViewRowEventArgs e)
         {
             if (e.Row.RowType == DataControlRowType.DataRow)
-                ((LinkButton)e.Row.Cells[7].FindControl("lbDelete")).Attributes.Add("onclick", "javascript:return confirm('你确认要删除吗?删除将删除所有已经布局好的参数信息！')");
+                if (e.Row.Cells[7].FindControl("lbDelete")!=null)
+                    ((LinkButton)e.Row.Cells[7].FindControl("lbDelete")).Attributes.Add("onclick", "javascript:return confirm('你确认要删除吗?删除将删除所有已经布局好的参数信息！')");
         }
     }
 }
