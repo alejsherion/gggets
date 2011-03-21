@@ -45,5 +45,31 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
             }
             this.TotalWeight = Math.Ceiling(TotalWeight);
         }
+
+        /// <summary>
+        /// 判断包裹是否可以重复添加到同一个总运单中
+        /// </summary>
+        /// <param name="package">包裹信息</param>
+        /// <returns></returns>
+        public bool JudgePackage(Package package)
+        {
+            bool judge = true;//判断
+            //获取这个包裹的包号
+            if(package!=null)
+            {
+                string pid = package.PID.ToString();
+                if(this.Packages.Count!=0)//如果包裹集合有，那么这里就需要判断重复问题
+                {
+                    foreach(Package packageTemp in Packages)
+                    {
+                        if(packageTemp.PID.ToString().Equals(pid))
+                        {
+                            judge = false;
+                        }
+                    }
+                }
+            }
+            return judge;
+        }
     }
 }
