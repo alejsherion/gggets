@@ -14,7 +14,6 @@ using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Globalization;
 using System.Runtime.Serialization;
-using System.Data.Objects.DataClasses;
 
 #pragma warning disable 1591 // this is for supress no xml comments in public members warnings 
 
@@ -29,13 +28,11 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
     #if !SILVERLIGHT
     [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage()]
     #endif
-    public partial class HSProduct: EntityObject,IObjectWithChangeTracker, INotifyPropertyChanged
+    public partial class HSProduct: IObjectWithChangeTracker, INotifyPropertyChanged
     {
         #region Primitive Properties
     
         [DataMember]
-    			[EdmScalarProperty(EntityKeyProperty=true,IsNullable=false)]
-    			
         public System.Guid HSID
         {
             get { return _hSID; }
@@ -55,8 +52,6 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
         private System.Guid _hSID;
     
         [DataMember]
-    			[EdmScalarProperty(EntityKeyProperty=false,IsNullable=false)]
-    			
         public string HSCode
         {
             get { return _hSCode; }
@@ -72,8 +67,6 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
         private string _hSCode;
     
         [DataMember]
-    			[EdmScalarProperty(EntityKeyProperty=false,IsNullable=false)]
-    			
         public string HSName
         {
             get { return _hSName; }
@@ -89,8 +82,6 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
         private string _hSName;
     
         [DataMember]
-    			[EdmScalarProperty(EntityKeyProperty=false,IsNullable=false)]
-    			
         public decimal DiscountTax
         {
             get { return _discountTax; }
@@ -106,8 +97,6 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
         private decimal _discountTax;
     
         [DataMember]
-    			[EdmScalarProperty(EntityKeyProperty=false,IsNullable=false)]
-    			
         public decimal GeneralTax
         {
             get { return _generalTax; }
@@ -123,7 +112,6 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
         private decimal _generalTax;
     
         [DataMember]
-    			[EdmScalarProperty(EntityKeyProperty=false,IsNullable=true)]	
         public Nullable<decimal> ExportTax
         {
             get { return _exportTax; }
@@ -139,7 +127,6 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
         private Nullable<decimal> _exportTax;
     
         [DataMember]
-    			[EdmScalarProperty(EntityKeyProperty=false,IsNullable=true)]	
         public Nullable<decimal> ConsumeTax
         {
             get { return _consumeTax; }
@@ -155,8 +142,6 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
         private Nullable<decimal> _consumeTax;
     
         [DataMember]
-    			[EdmScalarProperty(EntityKeyProperty=false,IsNullable=false)]
-    			
         public decimal RiseTax
         {
             get { return _riseTax; }
@@ -172,7 +157,6 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
         private decimal _riseTax;
     
         [DataMember]
-    			[EdmScalarProperty(EntityKeyProperty=false,IsNullable=true)]	
         public string CertificateSign
         {
             get { return _certificateSign; }
@@ -188,7 +172,6 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
         private string _certificateSign;
     
         [DataMember]
-    			[EdmScalarProperty(EntityKeyProperty=false,IsNullable=true)]	
         public string PricingSign
         {
             get { return _pricingSign; }
@@ -204,7 +187,6 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
         private string _pricingSign;
     
         [DataMember]
-    			[EdmScalarProperty(EntityKeyProperty=false,IsNullable=true)]	
         public string TaxDemandSign
         {
             get { return _taxDemandSign; }
@@ -220,7 +202,6 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
         private string _taxDemandSign;
     
         [DataMember]
-    			[EdmScalarProperty(EntityKeyProperty=false,IsNullable=true)]	
         public string Remark
         {
             get { return _remark; }

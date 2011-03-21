@@ -14,7 +14,6 @@ using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Globalization;
 using System.Runtime.Serialization;
-using System.Data.Objects.DataClasses;
 
 #pragma warning disable 1591 // this is for supress no xml comments in public members warnings 
 
@@ -29,13 +28,11 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
     #if !SILVERLIGHT
     [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage()]
     #endif
-    public partial class AppModule: EntityObject,IObjectWithChangeTracker, INotifyPropertyChanged
+    public partial class AppModule: IObjectWithChangeTracker, INotifyPropertyChanged
     {
         #region Primitive Properties
     
         [DataMember]
-    			[EdmScalarProperty(EntityKeyProperty=true,IsNullable=false)]
-    			
         public System.Guid ModuleID
         {
             get { return _moduleID; }
@@ -55,7 +52,6 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
         private System.Guid _moduleID;
     
         [DataMember]
-    			[EdmScalarProperty(EntityKeyProperty=false,IsNullable=true)]	
         public string Description
         {
             get { return _description; }
@@ -71,7 +67,6 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
         private string _description;
     
         [DataMember]
-    			[EdmScalarProperty(EntityKeyProperty=false,IsNullable=true)]	
         public Nullable<System.DateTime> CreateTime
         {
             get { return _createTime; }
@@ -87,7 +82,6 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
         private Nullable<System.DateTime> _createTime;
     
         [DataMember]
-    			[EdmScalarProperty(EntityKeyProperty=false,IsNullable=true)]	
         public string Remark
         {
             get { return _remark; }

@@ -14,7 +14,6 @@ using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Globalization;
 using System.Runtime.Serialization;
-using System.Data.Objects.DataClasses;
 
 #pragma warning disable 1591 // this is for supress no xml comments in public members warnings 
 
@@ -32,13 +31,11 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
     #if !SILVERLIGHT
     [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage()]
     #endif
-    public partial class Department: EntityObject,IObjectWithChangeTracker, INotifyPropertyChanged
+    public partial class Department: IObjectWithChangeTracker, INotifyPropertyChanged
     {
         #region Primitive Properties
     
         [DataMember]
-    			[EdmScalarProperty(EntityKeyProperty=true,IsNullable=false)]
-    			
         public System.Guid DID
         {
             get { return _dID; }
@@ -58,7 +55,6 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
         private System.Guid _dID;
     
         [DataMember]
-    			[EdmScalarProperty(EntityKeyProperty=false,IsNullable=true)]	
         public Nullable<System.Guid> CID
         {
             get { return _cID; }
@@ -82,8 +78,6 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
         private Nullable<System.Guid> _cID;
     
         [DataMember]
-    			[EdmScalarProperty(EntityKeyProperty=false,IsNullable=false)]
-    			
         public string CompanyCode
         {
             get { return _companyCode; }
@@ -99,8 +93,6 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
         private string _companyCode;
     
         [DataMember]
-    			[EdmScalarProperty(EntityKeyProperty=false,IsNullable=false)]
-    			
         public string DepCode
         {
             get { return _depCode; }
@@ -116,7 +108,6 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
         private string _depCode;
     
         [DataMember]
-    			[EdmScalarProperty(EntityKeyProperty=false,IsNullable=true)]	
         public string DepName
         {
             get { return _depName; }
@@ -132,8 +123,6 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
         private string _depName;
     
         [DataMember]
-    			[EdmScalarProperty(EntityKeyProperty=false,IsNullable=false)]
-    			
         public int FeeDiscountType
         {
             get { return _feeDiscountType; }
@@ -149,8 +138,6 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
         private int _feeDiscountType;
     
         [DataMember]
-    			[EdmScalarProperty(EntityKeyProperty=false,IsNullable=false)]
-    			
         public decimal FeeDiscountRate
         {
             get { return _feeDiscountRate; }
@@ -166,8 +153,6 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
         private decimal _feeDiscountRate;
     
         [DataMember]
-    			[EdmScalarProperty(EntityKeyProperty=false,IsNullable=false)]
-    			
         public int WeightDiscountType
         {
             get { return _weightDiscountType; }
@@ -183,8 +168,6 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
         private int _weightDiscountType;
     
         [DataMember]
-    			[EdmScalarProperty(EntityKeyProperty=false,IsNullable=false)]
-    			
         public decimal WeightDiscountRate
         {
             get { return _weightDiscountRate; }
@@ -200,8 +183,6 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
         private decimal _weightDiscountRate;
     
         [DataMember]
-    			[EdmScalarProperty(EntityKeyProperty=false,IsNullable=false)]
-    			
         public int SettleType
         {
             get { return _settleType; }
@@ -217,8 +198,6 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
         private int _settleType;
     
         [DataMember]
-    			[EdmScalarProperty(EntityKeyProperty=false,IsNullable=false)]
-    			
         public int WeightCalType
         {
             get { return _weightCalType; }

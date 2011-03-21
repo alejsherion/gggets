@@ -14,7 +14,6 @@ using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Globalization;
 using System.Runtime.Serialization;
-using System.Data.Objects.DataClasses;
 
 #pragma warning disable 1591 // this is for supress no xml comments in public members warnings 
 
@@ -29,13 +28,11 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
     #if !SILVERLIGHT
     [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage()]
     #endif
-    public partial class HSProperty: EntityObject,IObjectWithChangeTracker, INotifyPropertyChanged
+    public partial class HSProperty: IObjectWithChangeTracker, INotifyPropertyChanged
     {
         #region Primitive Properties
     
         [DataMember]
-    			[EdmScalarProperty(EntityKeyProperty=true,IsNullable=false)]
-    			
         public System.Guid HSPID
         {
             get { return _hSPID; }
@@ -55,8 +52,6 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
         private System.Guid _hSPID;
     
         [DataMember]
-    			[EdmScalarProperty(EntityKeyProperty=false,IsNullable=false)]
-    			
         public string PropertyName
         {
             get { return _propertyName; }
@@ -72,7 +67,6 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
         private string _propertyName;
     
         [DataMember]
-    			[EdmScalarProperty(EntityKeyProperty=false,IsNullable=true)]	
         public string ChineseRemark
         {
             get { return _chineseRemark; }
@@ -88,7 +82,6 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
         private string _chineseRemark;
     
         [DataMember]
-    			[EdmScalarProperty(EntityKeyProperty=false,IsNullable=true)]	
         public Nullable<System.Guid> HSID
         {
             get { return _hSID; }
