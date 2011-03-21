@@ -276,10 +276,5 @@ namespace Application.GGETS
         {
             return _hawbRepository.FindHAWBsByCondition(barCode, beginDate, endDate);
         }
-
-        public void BatchUpdateHAWBs()
-        {
-            _hawbRepository.BatchUpdateHAWBs();
-        }
     }
 }

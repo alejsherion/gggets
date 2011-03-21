@@ -387,7 +387,7 @@ namespace Application.GGETS.Tests
         {
             string barCode = "2010"; // 运单号
             HAWB actual;
-            actual = _HAWBManagementService.FindHAWBByBarCode(barCode);
+            actual = _HAWBManagementService.LoadHAWBByBarCode(barCode);
         }
 
         /// <summary>
@@ -425,16 +425,6 @@ namespace Application.GGETS.Tests
         public override Expression<Func<HAWB, int>> OrderByExpression
         {
             get { throw new NotImplementedException(); }
-        }
-
-
-        /// <summary>
-        ///BatchUpdateHAWBs 的测试
-        ///</summary>
-        [TestMethod()]
-        public void BatchUpdateHAWBsTest()
-        {
-            _HAWBManagementService.BatchUpdateHAWBs();
         }
     }
 }
