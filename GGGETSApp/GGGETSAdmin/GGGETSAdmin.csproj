@@ -47,6 +47,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AjaxControlToolkit">
+      <HintPath>..\..\ShareLibs\AJAXControlToolKit\AjaxControlToolkit.dll</HintPath>
+    </Reference>
+    <Reference Include="DanLudwig.Controls.AspAjax.ListBox">
+      <HintPath>..\..\ShareLibs\Other\DanLudwig.Controls.AspAjax.ListBox.dll</HintPath>
+    </Reference>
     <Reference Include="AjaxControlToolkit, Version=1.0.20229.20821, Culture=neutral, PublicKeyToken=28f01b0e84b6d53e, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>DLLs\AjaxControlToolkit.dll</HintPath>
@@ -134,21 +140,8 @@
     <Content Include="App_Themes\logisitc\dataView.css" />
     <Content Include="App_Themes\logisitc\logistic.css" />
     <Content Include="AutoCountryCode.asmx" />
-    <Content Include="Common\WebForm1.aspx" />
     <Content Include="CountryZiMaManage\TwoZiMaAdd.aspx" />
     <Content Include="CountryZiMaManage\TwoZiMaManage.aspx" />
-    <Content Include="DLLs\AjaxControlToolkit.dll" />
-    <Content Include="DLLs\AutoCompleteExtra.dll" />
-    <Content Include="DLLs\Microsoft.Practices.ServiceLocation.dll" />
-    <Content Include="DLLs\NPOI.DDF.dll" />
-    <Content Include="DLLs\NPOI.dll" />
-    <Content Include="DLLs\NPOI.HPSF.dll" />
-    <Content Include="DLLs\NPOI.HSSF.dll" />
-    <Content Include="DLLs\NPOI.POIFS.dll" />
-    <Content Include="DLLs\NPOI.SS.dll" />
-    <Content Include="DLLs\NPOI.Util.dll" />
-    <Content Include="DLLs\SAFF.Client.dll" />
-    <Content Include="DLLs\Telerik.Web.UI.dll" />
     <Content Include="FlightManage\FlightManagement.aspx" />
     <Content Include="HAWBManage\Addresshistory.aspx" />
     <Content Include="HAWBManage\DeliverAdd.aspx" />
@@ -160,6 +153,20 @@
     <Content Include="MawbManage\MawbDetails.aspx" />
     <Content Include="MawbManage\MawbManagement.aspx" />
     <Content Include="MawbManage\MawbModify.aspx" />
+    <Content Include="My97DatePicker\calendar.js" />
+    <Content Include="My97DatePicker\config.js" />
+    <Content Include="My97DatePicker\lang\en.js" />
+    <Content Include="My97DatePicker\lang\zh-cn.js" />
+    <Content Include="My97DatePicker\lang\zh-tw.js" />
+    <Content Include="My97DatePicker\My97DatePicker.htm" />
+    <Content Include="My97DatePicker\skin\datePicker.gif" />
+    <Content Include="My97DatePicker\skin\default\datepicker.css" />
+    <Content Include="My97DatePicker\skin\default\img.gif" />
+    <Content Include="My97DatePicker\skin\WdatePicker.css" />
+    <Content Include="My97DatePicker\skin\whyGreen\bg.jpg" />
+    <Content Include="My97DatePicker\skin\whyGreen\datepicker.css" />
+    <Content Include="My97DatePicker\skin\whyGreen\img.gif" />
+    <Content Include="My97DatePicker\WdatePicker.js" />
     <Content Include="Navigation.aspx" />
     <Content Include="PackageManage\packageAdd.aspx" />
     <Content Include="PackageManage\PackageDetails.aspx" />
@@ -177,20 +184,28 @@
     <Content Include="PersonnelManage\UserManage\UserDetails.aspx" />
     <Content Include="PersonnelManage\UserManage\UserManagemnet.aspx" />
     <Content Include="PersonnelManage\UserManage\UserModify.aspx" />
-    <Content Include="ProductManage\ProductAdd.aspx" />
-    <Content Include="ProductManage\ProductDetails.aspx" />
-    <Content Include="ProductManage\ProductManagemnet.aspx" />
-    <Content Include="ProductManage\ProductModify.aspx" />
+    <Content Include="PrintManage\AddTemplate.aspx" />
+    <Content Include="PrintManage\BatchingPrint.aspx" />
+    <Content Include="PrintManage\HAWBPreview.aspx" />
+    <Content Include="PrintManage\install_lodop.exe" />
+    <Content Include="PrintManage\TemplateLodopManage.aspx" />
+    <Content Include="PrintManage\TemplateMaintain.aspx" />
+    <Content Include="PrintManage\TemplateParamManage.aspx" />
+    <Content Include="PrintManage\WebFormTest.aspx" />
     <Content Include="RegionZiMaManage\regionAdd.aspx" />
     <Content Include="RegionZiMaManage\regionManagement.aspx" />
     <Content Include="Resource\China.txt" />
     <Content Include="Resource\English.txt" />
     <Content Include="Scripts\calendar.js" />
+    <Content Include="Scripts\LodopFuncs.js" />
     <Content Include="Styles\Site.css" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\jquery-1.4.1-vsdoc.js" />
     <Content Include="Scripts\jquery-1.4.1.js" />
     <Content Include="Scripts\jquery-1.4.1.min.js" />
+    <Content Include="Styles\styles.css" />
+    <Content Include="Styles\sub.css" />
+    <Content Include="Styles\xtab.css" />
     <Content Include="UserMenu\a8a1b9e4-9402-455d-b109-91a155588689Menu.xml" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -264,13 +279,6 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Common\NPOIHelper.cs" />
-    <Compile Include="Common\WebForm1.aspx.cs">
-      <DependentUpon>WebForm1.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Common\WebForm1.aspx.designer.cs">
-      <DependentUpon>WebForm1.aspx</DependentUpon>
-    </Compile>
     <Compile Include="CountryZiMaManage\TwoZiMaAdd.aspx.cs">
       <DependentUpon>TwoZiMaAdd.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -485,33 +493,54 @@
     <Compile Include="PersonnelManage\UserManage\UserModify.aspx.designer.cs">
       <DependentUpon>UserModify.aspx</DependentUpon>
     </Compile>
-    <Compile Include="ProductManage\ProductAdd.aspx.cs">
-      <DependentUpon>ProductAdd.aspx</DependentUpon>
+    <Compile Include="PrintManage\AddTemplate.aspx.cs">
+      <DependentUpon>AddTemplate.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="ProductManage\ProductAdd.aspx.designer.cs">
-      <DependentUpon>ProductAdd.aspx</DependentUpon>
+    <Compile Include="PrintManage\AddTemplate.aspx.designer.cs">
+      <DependentUpon>AddTemplate.aspx</DependentUpon>
     </Compile>
-    <Compile Include="ProductManage\ProductDetails.aspx.cs">
-      <DependentUpon>ProductDetails.aspx</DependentUpon>
+    <Compile Include="PrintManage\BatchingPrint.aspx.cs">
+      <DependentUpon>BatchingPrint.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="ProductManage\ProductDetails.aspx.designer.cs">
-      <DependentUpon>ProductDetails.aspx</DependentUpon>
+    <Compile Include="PrintManage\BatchingPrint.aspx.designer.cs">
+      <DependentUpon>BatchingPrint.aspx</DependentUpon>
     </Compile>
-    <Compile Include="ProductManage\ProductManagemnet.aspx.cs">
-      <DependentUpon>ProductManagemnet.aspx</DependentUpon>
+    <Compile Include="PrintManage\HAWBPreview.aspx.cs">
+      <DependentUpon>HAWBPreview.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="ProductManage\ProductManagemnet.aspx.designer.cs">
-      <DependentUpon>ProductManagemnet.aspx</DependentUpon>
+    <Compile Include="PrintManage\HAWBPreview.aspx.designer.cs">
+      <DependentUpon>HAWBPreview.aspx</DependentUpon>
     </Compile>
-    <Compile Include="ProductManage\ProductModify.aspx.cs">
-      <DependentUpon>ProductModify.aspx</DependentUpon>
+    <Compile Include="PrintManage\TemplateLodopManage.aspx.cs">
+      <DependentUpon>TemplateLodopManage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="ProductManage\ProductModify.aspx.designer.cs">
-      <DependentUpon>ProductModify.aspx</DependentUpon>
+    <Compile Include="PrintManage\TemplateLodopManage.aspx.designer.cs">
+      <DependentUpon>TemplateLodopManage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PrintManage\TemplateMaintain.aspx.cs">
+      <DependentUpon>TemplateMaintain.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PrintManage\TemplateMaintain.aspx.designer.cs">
+      <DependentUpon>TemplateMaintain.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PrintManage\TemplateParamManage.aspx.cs">
+      <DependentUpon>TemplateParamManage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PrintManage\TemplateParamManage.aspx.designer.cs">
+      <DependentUpon>TemplateParamManage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PrintManage\WebFormTest.aspx.cs">
+      <DependentUpon>WebFormTest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PrintManage\WebFormTest.aspx.designer.cs">
+      <DependentUpon>WebFormTest.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RegionZiMaManage\regionAdd.aspx.cs">

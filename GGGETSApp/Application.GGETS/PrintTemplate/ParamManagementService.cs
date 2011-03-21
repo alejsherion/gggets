@@ -143,7 +143,7 @@ namespace Application.GGETS
             if(operateType!=0)
                 ResolveRadioBox(paramsListTemp, identifyKey, operateType, batchHeight, sb);
 
-            sb.Append("DisplayDesign();");
+            sb.Append("DisplayDesign("+operateType+");");
             sb.Append("}; ");
             sb.Append("</script>");
             page.RegisterClientScriptBlock("", sb.ToString());
@@ -156,7 +156,7 @@ namespace Application.GGETS
         private void ResolveProcess(Param paramTemp, string identifyKey, int operateType, int batchHeight,StringBuilder sb)
         {
             //开始处理对象，可能是一个，也可能是多个(批处理)......................................................
-            if (identifyKey.Contains(",") && operateType == 1)
+            if (identifyKey.Contains(",") && operateType != 0)
             {
                 string[] identifykeys = identifyKey.Split(new char[] { ',' });
                 int count = 0;//计数器
@@ -205,7 +205,7 @@ namespace Application.GGETS
                 //控制打印
                 if (paramTemp.ParamType.Equals("Text") || paramTemp.ParamType.Equals("RadioBox"))
                 {
-                    if (paramTemp.ParamType.Equals("RadioBox") && operateType == 1)
+                    if (paramTemp.ParamType.Equals("RadioBox") && operateType != 0)
                         output = "√";
                     sb.Append("LODOP.ADD_PRINT_TEXT(" + paramTemp.Top + "," + paramTemp.Left + ", " + paramTemp.Width + ", " + paramTemp.Height + ", '" + output + "');");//定义内容
                     sb.Append("LODOP.SET_PRINT_STYLEA(0,\"FontName\",'" + paramTemp.FontName + "');");//定义字体
@@ -282,7 +282,7 @@ namespace Application.GGETS
         /// <returns></returns>
         private string ResolveResult(string key, string value, string paramType, string identifyKey, int operateType)
         {
-            if (operateType != 0 && operateType != 1) throw new ArgumentException("OperateType Is Invalid!");
+            if (operateType != 0 && operateType != 1 && operateType != 2) throw new ArgumentException("OperateType Is Invalid!");
             //维护
             if (operateType == 0) return key;
             //非维护
