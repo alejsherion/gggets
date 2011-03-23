@@ -20,5 +20,6 @@ namespace Application.GGETS
         void ModifyProperty(HSProperty hsproperty);
         HSProperty FindHSPropertyByHSPID(string HSPID);
         void RemoveHSProperty(HSProperty hsproperty);
+        bool JudgeHSPropertyIsExist(string propertyName);
     }
 }
