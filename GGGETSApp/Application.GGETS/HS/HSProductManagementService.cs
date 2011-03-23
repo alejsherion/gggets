@@ -112,5 +112,49 @@ namespace Application.GGETS
             //complete changes in this unit of work
             unitOfWork.Commit();
         }
+
+        /// <summary>
+        /// 判断HSCode是否重复
+        /// </summary>
+        /// <param name="HSCode">海关编码</param>
+        /// <returns></returns>
+        public bool JudgeHSCodeIsExist(string HSCode)
+        {
+            bool judge = true;
+            IList<HSProduct> products = GetAll();//获取所有信息
+            if(products.Count!=0)
+            {
+                foreach(HSProduct product in products)
+                {
+                    if(product.HSCode.Equals(HSCode))
+                    {
+                        judge = false;
+                    }
+                }
+            }
+            return judge;
+        }
+
+        /// <summary>
+        /// 判断HSName是否重复
+        /// </summary>
+        /// <param name="HSName">海关商品名称</param>
+        /// <returns></returns>
+        public bool JudgeHSNameIsExist(string HSName)
+        {
+            bool judge = true;
+            IList<HSProduct> products = GetAll();//获取所有信息
+            if (products.Count != 0)
+            {
+                foreach (HSProduct product in products)
+                {
+                    if (product.HSName.Equals(HSName))
+                    {
+                        judge = false;
+                    }
+                }
+            }
+            return judge;
+        }
     }
 }

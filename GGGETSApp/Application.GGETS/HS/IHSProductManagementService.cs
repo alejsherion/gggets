@@ -22,5 +22,7 @@ namespace Application.GGETS
         IList<HSProduct> FindHSProductByCondition(string HSCode, string HSName);
         void ModifyHSProduct(HSProduct product);
         void AddHSProduct(HSProduct product);
+        bool JudgeHSCodeIsExist(string HSCode);
+        bool JudgeHSNameIsExist(string HSName);
     }
 }

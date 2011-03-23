@@ -8,6 +8,7 @@
 //************************************************************************
 using System;
 using System.Linq.Expressions;
+using System.Web;
 using Domain.GGGETS;
 using ETS.GGGETSApp.Domain.Application.Entities;
 using ETS.GGGETSApp.Infrastructure.CrossCutting.Logging;
@@ -109,6 +110,20 @@ namespace Application.GGETS.Tests
         public override Expression<Func<HSProperty, int>> OrderByExpression
         {
             get { throw new NotImplementedException(); }
+        }
+
+        /// <summary>
+        ///ModifyProperty 的测试
+        ///</summary>
+        [TestMethod()]
+        public void ModifyPropertyTest()
+        {
+            HSProperty hsproperty = null;
+            hsproperty = _HSPropertyManagementService.FindHSPropertyByHSPID("5430f0c9-3835-4d63-b343-000233b73908");
+            hsproperty.PropertyName = "test007";
+            hsproperty.ChineseRemark = "test007";
+            _HSPropertyManagementService.ModifyProperty(hsproperty);
+            //Assert.Inconclusive("无法验证不返回值的方法。");
         }
     }
 }
