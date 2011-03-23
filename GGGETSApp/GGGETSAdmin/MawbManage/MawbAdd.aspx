@@ -19,7 +19,7 @@
                                 <%--<input id="Txt_MAWBBarCode" name="Txt_MAWBBarCode" type="text" class="TextBox" runat="server" onblur="MAWBBarCode(this)" style="width:250px" />--%>
                                 <asp:TextBox ID="Txt_MAWBBarCode" runat="server" Width="250" CssClass="TextBox" TabIndex="1"
                                     Style="text-transform: uppercase" OnTextChanged="Txt_MAWBBarCode_TextChanged"
-                                    AutoPostBack="True" MaxLength="45"></asp:TextBox>
+                                    AutoPostBack="True" MaxLength="45" CssClass="TextBox"></asp:TextBox>
                             </td>
                             <td class="FieldHeader">
                                 <asp:Label ID="lbl_CreateTime" runat="server" Text="创建时间:"></asp:Label>
@@ -40,16 +40,16 @@
                             </td>
                             <td colspan="3">
                                 <asp:TextBox ID="txt_FLTNo" runat="server" MaxLength="45" Width="250" CssClass="TextBox" TabIndex="2"
-                                    Style="text-transform: uppercase"></asp:TextBox>
+                                    Style="text-transform: uppercase" CssClass="TextBox"></asp:TextBox>
                             </td>
                             <td class="FieldHeader">
                                 <asp:Label ID="lbl_AirportRegion" runat="server" Text="机场三字码:"></asp:Label>
                             </td>
                             <td>
                                 <asp:TextBox ID="txt_From" runat="server" Width="50" MaxLength="3" CssClass="TextBox"
-                                    TabIndex="3" Style="text-transform: uppercase"></asp:TextBox>To
+                                    TabIndex="3" Style="text-transform: uppercase" CssClass="TextBox"></asp:TextBox>To
                                 <asp:TextBox ID="txt_To" runat="server" Width="50" MaxLength="3" CssClass="TextBox"
-                                    TabIndex="4" Style="text-transform: uppercase"></asp:TextBox>
+                                    TabIndex="4" Style="text-transform: uppercase" CssClass="TextBox"></asp:TextBox>
                             </td>
                             <td class="FieldHeader">
                                 <asp:Label ID="lbl_Pice" runat="server" Text="件数:"></asp:Label>
@@ -86,7 +86,7 @@
                             </td>
                             <td colspan="3">
                                 <asp:TextBox ID="Txt_BagBarCode" runat="server" Width="250" CssClass="TextBox" TabIndex="5"
-                                    Style="text-transform: uppercase" onkeydown="Context()"></asp:TextBox>
+                                    Style="text-transform: uppercase" onkeydown="Context()" CssClass="TextBox"></asp:TextBox>
                             </td>
                             <td colspan="2">
                                 <asp:Button ID="btn_Add" runat="server" Text="添 加" CssClass="InputBtn" OnClick="btn_Add_Click"

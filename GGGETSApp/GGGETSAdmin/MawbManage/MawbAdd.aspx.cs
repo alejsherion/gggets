@@ -59,6 +59,10 @@ namespace GGGETSAdmin.MawbManage
             }
             else
             {
+                if (mawb == null)
+                {
+                    mawb = (MAWB)Session["mawb"];
+                }
                 package = _packageservice.FindPackageByBarcode(Txt_BagBarCode.Text.Trim());
                 
                 if (package != null)
@@ -66,24 +70,7 @@ namespace GGGETSAdmin.MawbManage
                     
                     if (_mawbservice.JudgeMIDIsNull(package.BarCode))//判断包裹是否已经存在总运单号
                     {
-                        mawb = (MAWB)Session["mawb"];
-                        if (mawb.Packages.Count == 0)
-                        {
-                            mawb.Packages.Add(package);
-                           
-                        }
-                        else
-                        {
-                            foreach (Package pack in mawb.Packages)
-                            {
-                                if (package.BarCode == pack.BarCode)
-                                {
-                                    ok = false;
-                                    break;
-                                }
-                            }
-                        }
-                        if (ok)
+                        if (mawb.JudgePackage(package))
                         {
                             mawb.Packages.Add(package);
                             Txt_TotalWeight.Text = mawb.TotalWeight.ToString();
@@ -98,6 +85,30 @@ namespace GGGETSAdmin.MawbManage
                         {
                             ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('该包已经添加，不能再次进行添加!')", true);
                         }
+                        //if (mawb.Packages.Count == 0)
+                        //{
+                        //    mawb.Packages.Add(package);
+                           
+                        //}
+                        //else
+                        //{
+                        //    foreach (Package pack in mawb.Packages)
+                        //    {
+                        //        if (package.BarCode == pack.BarCode)
+                        //        {
+                        //            ok = false;
+                        //            break;
+                        //        }
+                        //    }
+                        //}
+                        //if (ok)
+                        //{
+                            
+                        //}
+                        //else
+                        //{
+                            
+                        //}
                     }
                     else
                     {

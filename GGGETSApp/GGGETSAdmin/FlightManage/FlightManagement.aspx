@@ -19,13 +19,13 @@
                         <asp:Label ID="lbl_FlightNo" runat="server" Text="航班号:"></asp:Label>
                     </td>
                     <td>
-                        <asp:TextBox ID="Txt_FlightNo" TabIndex="1" runat="server" Width="250"></asp:TextBox>
+                        <asp:TextBox ID="Txt_FlightNo" Style="text-transform: uppercase" TabIndex="1" runat="server" Width="250" CssClass="TextBox"></asp:TextBox>
                     </td>
                      <td class="FieldHeader" style="width:160px">
                         <asp:Label ID="lbl_From" runat="server" Text="起飞三字码:"></asp:Label>
                     </td>
                     <td>
-                        <asp:TextBox ID="Txt_From" TabIndex="2" runat="server" Width="50"></asp:TextBox>
+                        <asp:TextBox ID="Txt_From" TabIndex="2" runat="server" Style="text-transform: uppercase" Width="50" CssClass="TextBox"></asp:TextBox>
                         <cc1:AutoCompleteExtraExtender runat="server" ID="autoFrom" ServiceMethod="GetCountryList"
                                         TargetControlID="Txt_From" AsyncPostback="false" AutoPostback="true"
                                         MinimumPrefixLength="1" CompletionSetCount="10" onitemselected="autoFrom_ItemSelected">
@@ -35,7 +35,7 @@
                         <asp:Label ID="lbl_To" runat="server" Text="到达三字码:"></asp:Label>
                     </td>
                     <td>
-                        <asp:TextBox ID="Txt_To" TabIndex="3" runat="server" Width="50"></asp:TextBox>
+                        <asp:TextBox ID="Txt_To" TabIndex="3" Style="text-transform: uppercase" runat="server" Width="50" CssClass="TextBox"></asp:TextBox>
                         <cc1:AutoCompleteExtraExtender runat="server" ID="autoTo" ServiceMethod="GetCountryList"
                                         TargetControlID="Txt_To" AsyncPostback="false" AutoPostback="true"
                                         MinimumPrefixLength="1" CompletionSetCount="10" onitemselected="autoTo_ItemSelected">
@@ -80,7 +80,7 @@
                         <asp:Label ID="lbl_from" runat="server" Text='<%# Eval("From") %>'></asp:Label>
                     </ItemTemplate>
                     <EditItemTemplate>
-                        <asp:TextBox ID="Txt_from" runat="server" TabIndex="3" Text='<%# Eval("From") %>' style="text-transform:uppercase"></asp:TextBox>
+                        <asp:TextBox ID="Txt_from" runat="server" TabIndex="3" Text='<%# Eval("From") %>' style="text-transform:uppercase" CssClass="TextBox"></asp:TextBox>
                         <cc1:AutoCompleteExtraExtender runat="server" ID="autoFrom" ServiceMethod="GetCountryList"
                                         TargetControlID="Txt_From" AsyncPostback="false" AutoPostback="true"
                                         MinimumPrefixLength="1" CompletionSetCount="10" onitemselected="autoFrom_ItemSelected">
@@ -94,7 +94,7 @@
                         <asp:Label ID="lbl_To" runat="server" Text='<%# Eval("To") %>'></asp:Label>
                     </ItemTemplate>
                     <EditItemTemplate>
-                        <asp:TextBox ID="Txt_To" runat="server" MaxLength="3" Text='<%# Eval("To") %>' style="text-transform:uppercase"></asp:TextBox>
+                        <asp:TextBox ID="Txt_To" runat="server" MaxLength="3" Text='<%# Eval("To") %>' style="text-transform:uppercase" CssClass="TextBox"></asp:TextBox>
                         <cc1:AutoCompleteExtraExtender runat="server" ID="autoTo" ServiceMethod="GetCountryList"
                                         TargetControlID="Txt_To" AsyncPostback="false" AutoPostback="true"
                                         MinimumPrefixLength="1" CompletionSetCount="10" onitemselected="autoTo_ItemSelected">

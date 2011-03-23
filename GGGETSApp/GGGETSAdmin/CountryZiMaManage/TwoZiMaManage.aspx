@@ -12,13 +12,13 @@
                     <asp:Label ID="lbl_CountryCode" runat="server" Text="国家二字码:"></asp:Label>
                 </td>
                 <td>
-                    <asp:TextBox ID="Txt_CountryCode" runat="server" Width="80" TabIndex="1" Style="text-transform: uppercase"></asp:TextBox>
+                    <asp:TextBox ID="Txt_CountryCode" runat="server" Width="80" TabIndex="1" Style="text-transform: uppercase" CssClass="TextBox"></asp:TextBox>
                 </td>
                 <td class="FieldHeader">
                     <asp:Label ID="lbl_CountryName" runat="server" Text="国家全称:"></asp:Label>
                 </td>
                 <td>
-                    <asp:TextBox ID="txt_CountryName" runat="server" Width="80" TabIndex="2" Style="text-transform: uppercase"></asp:TextBox>
+                    <asp:TextBox ID="txt_CountryName" runat="server" Width="80" TabIndex="2" Style="text-transform: uppercase" CssClass="TextBox"></asp:TextBox>
                 </td>
                 <td>
                     <asp:Button ID="btn_Demand" TabIndex="3" runat="server" Text="查 询" CssClass="InputBtn"
@@ -38,7 +38,7 @@
                         </ItemTemplate>
                         <EditItemTemplate>
                             <asp:TextBox ID="Txt_CountryCode" runat="server" MaxLength="2" Text='<%# Eval("CountryCode1") %>'
-                                Style="text-transform: uppercase"></asp:TextBox>
+                                Style="text-transform: uppercase" CssClass="TextBox"></asp:TextBox>
                         </EditItemTemplate>
                         <HeaderStyle HorizontalAlign="Center" />
                         <ItemStyle HorizontalAlign="Center" />
@@ -49,7 +49,7 @@
                         </ItemTemplate>
                         <EditItemTemplate>
                             <asp:TextBox ID="Txt_CountryName" MaxLength="50" runat="server" Text='<%# Eval("CountryName") %>'
-                                Style="text-transform: uppercase"></asp:TextBox>
+                                Style="text-transform: uppercase" CssClass="TextBox"></asp:TextBox>
                         </EditItemTemplate>
                         <HeaderStyle HorizontalAlign="Center" />
                         <ItemStyle HorizontalAlign="Center" />

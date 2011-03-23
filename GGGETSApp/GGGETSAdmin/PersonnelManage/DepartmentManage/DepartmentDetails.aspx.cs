@@ -86,7 +86,7 @@ namespace GGGETSAdmin.PersonnelManage.DepartmentManage
                 }
                 if (depar.WeightCalType == 0)
                 {
-                    Txt_WeightCalType.Text = "按照0.5KG标准";
+                    Txt_WeightCalType.Text = "按照零点五千克标准";
                 }
                 else
                 {

@@ -20,7 +20,7 @@
                         <asp:Label ID="lbl_MAWBBarCode" runat="server" Text="总运单号:"></asp:Label>
                     </td>
                     <td colspan="3">
-                        <asp:TextBox ID="Txt_MAWBBarCode" TabIndex="1" MaxLength="45" runat="server" Width="250" Style="text-transform: uppercase"></asp:TextBox>
+                        <asp:TextBox ID="Txt_MAWBBarCode" TabIndex="1" MaxLength="45" runat="server" Width="250" Style="text-transform: uppercase" CssClass="TextBox"></asp:TextBox>
                     </td>
                     <td class="FieldHeader">
                         <asp:Label ID="lbl_CreateTime" runat="server" Text="创建时间:"></asp:Label>
@@ -40,14 +40,14 @@
                         <asp:Label ID="lbl_FLTNo" runat="server" Text="航班号:"></asp:Label>
                     </td>
                     <td colspan="3">
-                        <asp:TextBox ID="txt_FLTNo" runat="server" MaxLength="45" Width="250" TabIndex="2" Style="text-transform: uppercase"></asp:TextBox>
+                        <asp:TextBox ID="txt_FLTNo" runat="server" MaxLength="45" Width="250" TabIndex="2" Style="text-transform: uppercase" CssClass="TextBox"></asp:TextBox>
                     </td>
                     <td class="FieldHeader" style="width:150px">
                         <asp:Label ID="lbl_AirportRegion" runat="server" Text="机场三字码:"></asp:Label>
                     </td>
                     <td>
-                        <asp:TextBox ID="txt_From" runat="server" Width="50" MaxLength="3" TabIndex="3" Style="text-transform: uppercase"></asp:TextBox>To
-                        <asp:TextBox ID="txt_To" runat="server" Width="50" MaxLength="3" TabIndex="4" Style="text-transform: uppercase"></asp:TextBox>
+                        <asp:TextBox ID="txt_From" runat="server" Width="50" MaxLength="3" TabIndex="3" Style="text-transform: uppercase" CssClass="TextBox"></asp:TextBox>To
+                        <asp:TextBox ID="txt_To" runat="server" Width="50" MaxLength="3" TabIndex="4" Style="text-transform: uppercase" CssClass="TextBox"></asp:TextBox>
                     </td>
                     <td class="FieldHeader">
                         <asp:Label ID="lbl_Status" runat="server" Text="当前状态:"></asp:Label>
@@ -83,7 +83,7 @@
                         <asp:Label ID="lbl_BagBarCode" runat="server" Text="包号:"></asp:Label>
                     </td>
                     <td colspan="3">
-                        <asp:TextBox ID="Txt_BagBarCode" TabIndex="5" runat="server" Width="250" Style="text-transform: uppercase" onkeydown="Context()"></asp:TextBox>
+                        <asp:TextBox ID="Txt_BagBarCode" TabIndex="5" runat="server" Width="250" Style="text-transform: uppercase" onkeydown="Context()" CssClass="TextBox"></asp:TextBox>
                     </td>
                     <td colspan="2">
                         <asp:Button ID="btn_Add" runat="server" TabIndex="6" Text="添 加" CssClass="InputBtn"

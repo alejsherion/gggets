@@ -10,7 +10,7 @@
                 </td>
                 <td>
                     <asp:TextBox ID="Txt_CountryCode" runat="server" Width="80" TabIndex="1" 
-                        style="text-transform:uppercase" MaxLength="2"></asp:TextBox>
+                        style="text-transform:uppercase" MaxLength="2" CssClass="TextBox"></asp:TextBox>
                 </td>
             </tr>
             <tr class="Row">
@@ -19,7 +19,7 @@
                 </td>
                 <td>
                     <asp:TextBox ID="txt_CountryName" runat="server"
-                        TabIndex="2" style="text-transform:uppercase" MaxLength="50"></asp:TextBox>
+                        TabIndex="2" style="text-transform:uppercase" MaxLength="50" CssClass="TextBox"></asp:TextBox>
                 </td>
                
             </tr>

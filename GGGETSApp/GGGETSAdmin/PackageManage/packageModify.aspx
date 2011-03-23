@@ -24,7 +24,7 @@
                                 <asp:Label ID="lbl_FLTNo" runat="server" Text="航班号:"></asp:Label>
                             </td>
                             <td colspan="3" align="left">
-                                <asp:TextBox ID="txt_FLTNo" TabIndex="1" MaxLength="45" runat="server" Width="250" Style="text-transform: uppercase"></asp:TextBox>
+                                <asp:TextBox ID="txt_FLTNo" TabIndex="1" MaxLength="45" runat="server" Width="250" Style="text-transform: uppercase" CssClass="TextBox"></asp:TextBox>
                             </td>
                         </tr>
                         <tr class="Row">
@@ -33,7 +33,7 @@
                             </td>
                             <td colspan="3" align="left">
                                 <asp:TextBox ID="Txt_MAWBCode" TabIndex="2" MaxLength="45" runat="server" Width="250" 
-                                    Style="text-transform: uppercase"></asp:TextBox>
+                                    Style="text-transform: uppercase" CssClass="TextBox"></asp:TextBox>
                             </td>
                             <td class="FieldHeader" align="right" style="width:150px">
                                 <asp:Label ID="lbl_CreateTime1" runat="server" Text="创建时间:"></asp:Label>
@@ -53,7 +53,7 @@
                                 <asp:Label ID="lbl_Destination" runat="server" Text="目的三字码:"></asp:Label>
                             </td>
                             <td align="left">
-                                <asp:TextBox ID="txt_Destination" runat="server" Width="50" TabIndex="3" MaxLength="3" Style="text-transform: uppercase"></asp:TextBox>
+                                <asp:TextBox ID="txt_Destination" runat="server" Width="50" TabIndex="3" MaxLength="3" Style="text-transform: uppercase" CssClass="TextBox"></asp:TextBox>
                                 <%--<cc1:AutoCompleteExtraExtender runat="server" ID="autocomplete" ServiceMethod="GetCountryList"
                                     TargetControlID="txt_Destination" AsyncPostback="false" AutoPostback="true" MinimumPrefixLength="1"
                                     CompletionSetCount="10" OnItemSelected="autocomplete_ItemSelected">
@@ -85,7 +85,7 @@
                                 <asp:Label ID="lbl_BarCode" runat="server" Text="运单号:"></asp:Label>
                             </td>
                             <td colspan="3" align="left">
-                                <asp:TextBox ID="txt_BarCode" TabIndex="4" runat="server" Width="250" Style="text-transform: uppercase" onkeydown="Context()"></asp:TextBox>
+                                <asp:TextBox ID="txt_BarCode" TabIndex="4" runat="server" Width="250" Style="text-transform: uppercase" onkeydown="Context()" CssClass="TextBox"></asp:TextBox>
                             </td>
                             <td colspan="2">
                                 <asp:Button ID="btn_Add" TabIndex="5" runat="server" Text="添 加" CssClass="InputBtn"

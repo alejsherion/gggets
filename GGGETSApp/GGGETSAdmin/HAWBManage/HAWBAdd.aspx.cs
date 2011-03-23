@@ -41,11 +41,13 @@ namespace GGGETSAdmin.HAWBManage
 
             if (!IsPostBack)
             {
+                DropDownList();
                 Txt_BarCode.Focus();
                 listcountry = _countryservice.FindAllCountries();
                 listregion = _regionservice.FindAllRegionCodes();
                 if (!string.IsNullOrEmpty(Request.QueryString["BarCode"]) && !string.IsNullOrEmpty(Request.QueryString["update"]))
                 {
+                    
                     Update = Convert.ToInt32(Request.QueryString["update"]);
                     ViewState["update"] = Update;
                     hawb = _hawbService.LoadHAWBByBarCode(Request.QueryString["BarCode"].ToString());
@@ -53,7 +55,6 @@ namespace GGGETSAdmin.HAWBManage
                     if (hawb.DeliverName != "" && hawb.DeliverName != null)
                     {
                         this.Deliver.Visible = true;
-                        //this.delivertitle.Visible = true;
                         this.lbtn_AddConsignee.Enabled = true;
                     }
                     Evaluate();
@@ -68,7 +69,6 @@ namespace GGGETSAdmin.HAWBManage
                         if (hawb.DeliverName != null && hawb.DeliverName != "")
                         {
                             this.Deliver.Visible = true;
-                            //this.delivertitle.Visible = true;
                             this.lbtn_AddConsignee.Enabled = false;
                             Txt_ConsigneeName.Focus();
                         }
@@ -80,6 +80,21 @@ namespace GGGETSAdmin.HAWBManage
                 }
             }
 
+        }
+        /// <summary>
+        /// 页面DropDownList绑定
+        /// </summary>
+        private void DropDownList()
+        {
+            EnumType type = new EnumType();//枚举类
+            DDl_SettleType.DataSource = type.GetName("SettleType");
+            DDl_SettleType.DataTextField = "Text";
+            DDl_SettleType.DataValueField = "Value";
+            DDl_SettleType.DataBind();
+            DDl_Status.DataSource = type.GetName("StatusType");
+            DDl_Status.DataTextField = "Text";
+            DDl_Status.DataValueField = "Value";
+            DDl_Status.DataBind();
         }
         /// <summary>
         /// HWAB赋值
@@ -108,7 +123,6 @@ namespace GGGETSAdmin.HAWBManage
             {
                 hawb.Status = int.Parse(DDl_Status.SelectedValue);
             }
-
             hawb.SettleType = int.Parse(DDl_SettleType.SelectedValue);
             hawb.BarCode = Txt_BarCode.Text.Trim().ToUpper();
 
@@ -694,8 +708,16 @@ namespace GGGETSAdmin.HAWBManage
         {
             if (Txt_Account1.Text.Trim() != "")
             {
-                CompanyEvaluate(Txt_Account1.Text.Trim());
-                Txt_ConsigneeName.Focus();
+                if (CompanyEvaluate(Txt_Account1.Text.Trim()))
+                {
+                    Txt_ConsigneeName.Focus();
+                }
+                else
+                {
+                    ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('用户账号不能为空!')", true);
+                //Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('用户账号不能为空！')</script>");
+                    Txt_Account1.Focus();
+                }
             }
             else
             {
@@ -705,12 +727,13 @@ namespace GGGETSAdmin.HAWBManage
                 //InitialControl(this.Controls);
             }
         }
-        protected void CompanyEvaluate(string code)
+        protected bool CompanyEvaluate(string code)
         {
+            bool ok = false;
             Company compay = _companyservice.FindCompanyByCompanyCode(code);
             if (compay != null)
             {
-                
+                ok = true;
                 Txt_Account2.Text = "00";
                 ShipAddressEvaluate(Txt_Account1.Text.Trim(),Txt_Account2.Text.Trim());
                 
@@ -723,6 +746,7 @@ namespace GGGETSAdmin.HAWBManage
                 Txt_Account1.Text = string.Empty;
                 Txt_Account1.Focus();
             }
+            return ok;
         }
         /// <summary>
         /// 部门账号验证

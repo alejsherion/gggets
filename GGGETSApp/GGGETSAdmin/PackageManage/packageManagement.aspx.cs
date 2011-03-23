@@ -13,8 +13,8 @@ namespace GGGETSAdmin.PackageManage
     public partial class packageManagement : System.Web.UI.Page
     {
         public int n = 1;
-        private static DateTime beginTime = new DateTime();
-        private static DateTime endTime = new DateTime();
+        private static DateTime beginTime = DateTime.Today.AddDays(-1);
+        private static DateTime endTime = DateTime.Today;
         private string BarCode = string.Empty;
         private string regionCode = string.Empty;
         private IList<HAWB> listHawb;

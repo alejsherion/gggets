@@ -33,8 +33,8 @@ namespace GGGETSAdmin.HAWBManage
         private string carrier = string.Empty;//承运公司
         private string contactor = string.Empty;//联系人
         private string HAWBOperator = string.Empty;//操作人
-        private DateTime beginTime = new DateTime();
-        private DateTime endTime = new DateTime();
+        private DateTime beginTime = DateTime.Today.AddDays(-1);
+        private DateTime endTime = DateTime.Today;
         private int settleType = -1;
         private int serviceType = -1;
         private bool isInternational;
@@ -46,6 +46,32 @@ namespace GGGETSAdmin.HAWBManage
         }
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!IsPostBack)
+            {
+                DropDownList();
+            }
+        }
+        protected void DropDownList()
+        {
+            EnumType type = new EnumType();//枚举类
+            List<EnumType> SettleTypeItem = type.GetName("SettleType");
+            List<EnumType> BoxTypeItem = type.GetName("BoxType");
+            EnumType item = new EnumType();
+            item.Text = "所有";
+            item.Value = -1;
+            SettleTypeItem.Insert(0, item);
+            BoxTypeItem.Insert(0, item);
+
+
+            DDl_SettleType.DataSource = SettleTypeItem;
+            DDl_SettleType.DataTextField = "Text";
+            DDl_SettleType.DataValueField = "Value";
+            DDl_SettleType.DataBind();
+
+            ddl_BoxType.DataSource = BoxTypeItem;
+            ddl_BoxType.DataTextField = "Text";
+            ddl_BoxType.DataValueField = "Value";
+            ddl_BoxType.DataBind();
         }
         /// <summary>
         /// 数据源绑定

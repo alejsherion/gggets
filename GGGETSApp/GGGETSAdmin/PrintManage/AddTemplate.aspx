@@ -41,7 +41,10 @@
                     <td>打印方向:</td>
                     <td>
                         <asp:DropDownList ID="ddlPrintDirection" runat="server" Width="150px">
-                         <asp:ListItem Value="0">由操作人员自行选择</asp:ListItem>                         <asp:ListItem Value="1">纵向打印,固定纸张</asp:ListItem>                         <asp:ListItem Value="2">横向打印,固定纸张</asp:ListItem>                         <asp:ListItem Value="3">纵向,宽度固定,高度自由</asp:ListItem>
+                         <asp:ListItem Value="0">由操作人员自行选择</asp:ListItem>
+                         <asp:ListItem Value="1">纵向打印,固定纸张</asp:ListItem>
+                         <asp:ListItem Value="2">横向打印,固定纸张</asp:ListItem>
+                         <asp:ListItem Value="3">纵向,宽度固定,高度自由</asp:ListItem>
                         </asp:DropDownList>
                     </td>
                 </tr>

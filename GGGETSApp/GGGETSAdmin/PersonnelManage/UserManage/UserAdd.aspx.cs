@@ -27,7 +27,36 @@ namespace GGGETSAdmin.PersonnelManage.UserManage
         }
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!IsPostBack)
+            {
+                DropDownList();
+            }
+        }
+        /// <summary>
+        /// 页面DropDownList控件绑定
+        /// </summary>
+        private void DropDownList()
+        {
+            EnumType enumtype = new EnumType();
+            ddl_WeightCalType.DataSource = enumtype.GetName("WeightCalType");
+            ddl_WeightCalType.DataTextField = "Text";
+            ddl_WeightCalType.DataValueField = "Value";
+            ddl_WeightCalType.DataBind();
 
+            ddl_SettleType.DataSource = enumtype.GetName("SettleType");
+            ddl_SettleType.DataTextField = "Text";
+            ddl_SettleType.DataValueField = "Value";
+            ddl_SettleType.DataBind();
+
+            ddl_WeightDiscountType.DataSource = enumtype.GetName("DiscountType");
+            ddl_WeightDiscountType.DataTextField = "Text";
+            ddl_WeightDiscountType.DataValueField = "Value";
+            ddl_WeightDiscountType.DataBind();
+
+            ddl_FeeDiscountType.DataSource = enumtype.GetName("DiscountType");
+            ddl_FeeDiscountType.DataTextField = "Text";
+            ddl_FeeDiscountType.DataValueField = "Value";
+            ddl_FeeDiscountType.DataBind();
         }
         /// <summary>
         /// 验证公司账号是否存在

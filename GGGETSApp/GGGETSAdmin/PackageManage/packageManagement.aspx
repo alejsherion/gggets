@@ -7,7 +7,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <script type="text/javascript" src="../Scripts/calendar.js"></script>
+    <script src="../My97DatePicker/WdatePicker.js" type="text/javascript"></script>
     <asp:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server">
     </asp:ToolkitScriptManager>
     <div>
@@ -18,20 +18,20 @@
                         <asp:Label ID="lbl_BagBarCode" runat="server" Text="包号:"></asp:Label>
                     </td>
                     <td align="left">
-                        <asp:TextBox ID="Txt_BagBarCode" runat="server" TabIndex="1" Width="250" Style="text-transform: uppercase"></asp:TextBox>
+                        <asp:TextBox ID="Txt_BagBarCode" runat="server" TabIndex="1" Width="250" Style="text-transform: uppercase" CssClass="TextBox"></asp:TextBox>
                     </td>
                     <td class="FieldHeader">
                         <asp:Label ID="lbl_CreateTime" runat="server" Text="创建时间:"></asp:Label>
                     </td>
                     <td align="left">
-                        <asp:TextBox ID="txt_UpCreateTime" TabIndex="2" runat="server" Width="75px" onfocusin="calendar()" Style="text-transform: uppercase"></asp:TextBox>-
-                        <asp:TextBox ID="txt_ToCreateTime" TabIndex="3" runat="server" Width="75px" onfocusin="calendar()" Style="text-transform: uppercase"></asp:TextBox>
+                        <asp:TextBox ID="txt_UpCreateTime" TabIndex="2" runat="server" Width="75px" onfocusin="WdatePicker()" Style="text-transform: uppercase" CssClass="TextBox"></asp:TextBox>-
+                        <asp:TextBox ID="txt_ToCreateTime" TabIndex="3" runat="server" Width="75px" onfocusin="WdatePicker()" Style="text-transform: uppercase" CssClass="TextBox"></asp:TextBox>
                     </td>
                     <td class="FieldHeader" style="width:200px">
                         <asp:Label ID="lbl_Destination" runat="server" Text="目的地三字码:"></asp:Label>
                     </td>
                     <td align="left">
-                        <asp:TextBox ID="txt_Destination" TabIndex="4" runat="server" Width="50" MaxLength="3" Style="text-transform: uppercase"></asp:TextBox>
+                        <asp:TextBox ID="txt_Destination" TabIndex="4" runat="server" Width="50" MaxLength="3" Style="text-transform: uppercase" CssClass="TextBox"></asp:TextBox>
                         <cc1:AutoCompleteExtraExtender runat="server" ID="autocomplete" ServiceMethod="GetCountryList"
                             TargetControlID="txt_Destination" AsyncPostback="false" AutoPostback="true" MinimumPrefixLength="1"
                             CompletionSetCount="10" OnItemSelected="autocomplete_ItemSelected">
