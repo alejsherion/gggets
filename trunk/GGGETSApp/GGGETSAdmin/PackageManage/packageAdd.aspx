@@ -19,7 +19,7 @@
                         </td>
                         <td colspan="3">
                             <asp:TextBox ID="Txt_BagBarCode" runat="server" Width="250" TabIndex="1" Style="text-transform: uppercase"
-                                OnTextChanged="Txt_BagBarCode_TextChanged" MaxLength="45" AutoPostBack="True"></asp:TextBox>
+                                OnTextChanged="Txt_BagBarCode_TextChanged" MaxLength="45" AutoPostBack="True" CssClass="TextBox"></asp:TextBox>
                         </td>
                         <td class="FieldHeader">
                             <asp:Label ID="lbl_CreateTime" runat="server" Text="创建时间:"></asp:Label>
@@ -44,7 +44,7 @@
                         </td>
                         <td style="width: 80px">
                             <asp:TextBox ID="Txt_Region" runat="server" TabIndex="2" Width="50" 
-                                MaxLength="3" AutoPostBack="true" OnTextChanged="Txt_Region_TextChanged" Style="text-transform: uppercase"></asp:TextBox>
+                                MaxLength="3" AutoPostBack="true" OnTextChanged="Txt_Region_TextChanged" Style="text-transform: uppercase" CssClass="TextBox"></asp:TextBox>
                            
                             <%--<cc1:AutoCompleteExtraExtender runat="server" ID="autocomplete" ServiceMethod="GetCountryList"
                                 TargetControlID="txt_Destination" AsyncPostback="false" AutoPostback="true" MinimumPrefixLength="1"
@@ -77,7 +77,7 @@
                             <asp:Label ID="lbl_BarCode" runat="server" Text="运单号:"></asp:Label>
                         </td>
                         <td colspan="3">
-                            <asp:TextBox ID="txt_BarCode" runat="server" Width="250" TabIndex="3" Style="text-transform: uppercase" onkeydown="Context()"></asp:TextBox>
+                            <asp:TextBox ID="txt_BarCode" runat="server" Width="250" TabIndex="3" Style="text-transform: uppercase" onkeydown="Context()" CssClass="TextBox"></asp:TextBox>
                         </td>
                         <td colspan="2">
                             <asp:Button ID="btn_Add" runat="server" CssClass="InputBtn" Text="添 加" OnClick="btn_Add_Click"

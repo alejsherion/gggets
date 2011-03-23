@@ -2,7 +2,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <script type="text/javascript" src="../Scripts/calendar.js"></script>
+     <script src="../My97DatePicker/WdatePicker.js" type="text/javascript"></script>
     <div>
         <table class="DataView">
             <tbody>
@@ -24,9 +24,9 @@
                         <asp:Label ID="lbl_CreateTime" runat="server" Text="创建时间:"></asp:Label>
                     </td>
                     <td>
-                        <asp:TextBox ID="Txt_GetUpTime" runat="server" CssClass="TextBox" TabIndex="2" onfocusin="calendar()" Width="70"></asp:TextBox>-
+                        <asp:TextBox ID="Txt_GetUpTime" runat="server" CssClass="TextBox" TabIndex="2" onfocusin="WdatePicker()" Width="70"></asp:TextBox>-
                         <asp:TextBox ID="Txt_StopTime" runat="server" TabIndex="3" 
-                            CssClass="TextBox" onfocusin="calendar()" Width="70"></asp:TextBox>
+                            CssClass="TextBox" onfocusin="WdatePicker()" Width="70"></asp:TextBox>
                     </td>
                     <td class="FieldHeader">
                         <asp:Button ID="btn_Demand" runat="server" Text="查 询" CssClass="InputBtn" 

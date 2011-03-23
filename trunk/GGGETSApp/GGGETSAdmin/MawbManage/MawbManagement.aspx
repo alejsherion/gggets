@@ -5,7 +5,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <script type="text/javascript" src="../Scripts/calendar.js"></script>
+    <script src="../My97DatePicker/WdatePicker.js" type="text/javascript"></script>
     <div>
         <table class="DataView">
             <tbody>
@@ -14,21 +14,21 @@
                         <asp:Label ID="lbl_MAWBBarCode" runat="server" Text="总运单号:"></asp:Label>
                     </td>
                     <td>
-                        <asp:TextBox ID="Txt_MAWBBarCode" TabIndex="1" runat="server" Width="250" Style="text-transform: uppercase"></asp:TextBox>
+                        <asp:TextBox ID="Txt_MAWBBarCode" TabIndex="1" runat="server" Width="250" Style="text-transform: uppercase" CssClass="TextBox"></asp:TextBox>
                     </td>
                     <td class="FieldHeader">
                         <asp:Label ID="lbl_CreateTime" runat="server" Text="创建时间:"></asp:Label>
                     </td>
                     <td style="width: 75px">
-                        <asp:TextBox ID="txt_UpCreateTime" TabIndex="2" runat="server" Width="75px" onfocusin="calendar()"
-                            Style="text-transform: uppercase"></asp:TextBox>
+                        <asp:TextBox ID="txt_UpCreateTime" TabIndex="2" runat="server" Width="75px" onfocusin="WdatePicker()"
+                            Style="text-transform: uppercase" CssClass="TextBox"></asp:TextBox>
                     </td>
                     <td class="FieldHeader" style="width: 5px">
                         <asp:Label ID="lbl_Status" runat="server" Text="-"></asp:Label>
                     </td>
                     <td>
-                        <asp:TextBox ID="txt_ToCreateTime" TabIndex="3" runat="server" Width="75px" onfocusin="calendar()"
-                            Style="text-transform: uppercase"></asp:TextBox>
+                        <asp:TextBox ID="txt_ToCreateTime" TabIndex="3" runat="server" Width="75px" onfocusin="WdatePicker()"
+                            Style="text-transform: uppercase" CssClass="TextBox"></asp:TextBox>
                     </td>
                     <td>
                         <asp:Button ID="btn_Demand" TabIndex="4" runat="server" Text="查 询" CssClass="InputBtn"

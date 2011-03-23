@@ -109,7 +109,7 @@
                     </td>
                     <td align="left" style="width:50px">
                         <asp:TextBox ID="Txt_ItemPiece" runat="server" Width="50px" TabIndex="1" 
-                            style="text-transform:uppercase" meta:resourcekey="Txt_ItemPieceResource1"></asp:TextBox>
+                            style="text-transform:uppercase" meta:resourcekey="Txt_ItemPieceResource1" CssClass="TextBox"></asp:TextBox>
                     </td>
                     <td class="FieldHeader" style="width:200px">
                         <asp:Label ID="lbl_ItemName" runat="server" Text="物品名称：" 
@@ -117,7 +117,7 @@
                     </td>
                     <td align="left" style="width:200px">
                         <asp:TextBox ID="Txt_ItemName" runat="server" Width="160px" TabIndex="2" 
-                            style="text-transform:uppercase" meta:resourcekey="Txt_ItemNameResource1"></asp:TextBox>
+                            style="text-transform:uppercase" meta:resourcekey="Txt_ItemNameResource1" CssClass="TextBox"></asp:TextBox>
                     </td>
                     <td class="FieldHeader" style="width:200px">
                         <asp:Label ID="lbl_ItemType" runat="server" Text="物品类型：" 
@@ -125,7 +125,7 @@
                     </td>
                     <td align="left" style="width:200px">
                         <asp:TextBox ID="Txt_ItemType" runat="server" Width="160px" TabIndex="3" 
-                            style="text-transform:uppercase" meta:resourcekey="Txt_ItemTypeResource1"></asp:TextBox>
+                            style="text-transform:uppercase" meta:resourcekey="Txt_ItemTypeResource1" CssClass="TextBox"></asp:TextBox>
                     </td>
                     <td class="FieldHeader" style="width:200px">
                         <asp:Label ID="lbl_ItemPice" runat="server" Text="物品价值：" 
@@ -133,7 +133,7 @@
                     </td>
                     <td align="left">
                         <asp:TextBox ID="Txt_ItemPice" runat="server" Width="50px" TabIndex="4" 
-                            style="text-transform:uppercase" meta:resourcekey="Txt_ItemPiceResource1"></asp:TextBox>
+                            style="text-transform:uppercase" meta:resourcekey="Txt_ItemPiceResource1" CssClass="TextBox"></asp:TextBox>
                     </td>
                     <td class="FieldHeader" colspan="3">
                         <asp:Button ID="but_AddItem" runat="server" Text="添加物品" TabIndex="5" 
@@ -157,7 +157,7 @@
                                     </ItemTemplate>
                                     <EditItemTemplate>
                                         <asp:TextBox ID="txt_ItemPiece" runat="server" Text='<%# Eval("Piece") %>' 
-                                            style="text-transform:uppercase" meta:resourcekey="txt_ItemPieceResource2"></asp:TextBox>
+                                            style="text-transform:uppercase" meta:resourcekey="txt_ItemPieceResource2" CssClass="TextBox"></asp:TextBox>
                                     </EditItemTemplate>
                                     <ControlStyle Width="90px" />
                                     <HeaderStyle HorizontalAlign="Center" />
@@ -170,7 +170,7 @@
                                     </ItemTemplate>
                                     <EditItemTemplate>
                                         <asp:TextBox ID="txt_ItemName" runat="server" Text='<%# Eval("Name") %>' 
-                                            style="text-transform:uppercase" meta:resourcekey="txt_ItemNameResource2"></asp:TextBox>
+                                            style="text-transform:uppercase" meta:resourcekey="txt_ItemNameResource2" CssClass="TextBox"></asp:TextBox>
                                     </EditItemTemplate>
                                     <ControlStyle Width="170px" />
                                     <HeaderStyle HorizontalAlign="Center" />
@@ -183,7 +183,7 @@
                                     </ItemTemplate>
                                     <EditItemTemplate>
                                         <asp:TextBox ID="txt_ItemType" runat="server" Text='<%# Eval("Remark") %>' 
-                                            style="text-transform:uppercase" meta:resourcekey="txt_ItemTypeResource2"></asp:TextBox>
+                                            style="text-transform:uppercase" meta:resourcekey="txt_ItemTypeResource2" CssClass="TextBox"></asp:TextBox>
                                     </EditItemTemplate>
                                     <ControlStyle Width="170px" />
                                     <HeaderStyle HorizontalAlign="Center" />
@@ -196,7 +196,7 @@
                                     </ItemTemplate>
                                     <EditItemTemplate>
                                         <asp:TextBox ID="txt_ItemPice" runat="server" Text='<%# Eval("UnitAmount") %>' 
-                                            style="text-transform:uppercase" meta:resourcekey="txt_ItemPiceResource2"></asp:TextBox>
+                                            style="text-transform:uppercase" meta:resourcekey="txt_ItemPiceResource2" CssClass="TextBox"></asp:TextBox>
                                     </EditItemTemplate>
                                     <ControlStyle Width="90px" />
                                     <HeaderStyle HorizontalAlign="Center" />
@@ -232,7 +232,7 @@
                     </td>
                     <td align="left" style="width:50px">
                         <asp:TextBox ID="txt_BoxPiece" runat="server" Width="50px" TabIndex="6" 
-                            style="text-transform:uppercase" meta:resourcekey="txt_BoxPieceResource1"></asp:TextBox>
+                            style="text-transform:uppercase" meta:resourcekey="txt_BoxPieceResource1" CssClass="TextBox"></asp:TextBox>
                     </td>
                     <td class="FieldHeader" style="width:200px">
                         <asp:Label ID="lbl_BoxWeight" runat="server" Text="重量(kg)：" 
@@ -240,7 +240,7 @@
                     </td>
                     <td align="left">
                         <asp:TextBox ID="Txt_BoxWeight" runat="server" Width="80px" TabIndex="7" 
-                            style="text-transform:uppercase" meta:resourcekey="Txt_BoxWeightResource1"></asp:TextBox>
+                            style="text-transform:uppercase" meta:resourcekey="Txt_BoxWeightResource1" CssClass="TextBox"></asp:TextBox>
                     </td>
                     <td class="FieldHeader" style="width:200px">
                         <asp:Label ID="lbl_BoxHeight" runat="server" Text="高度(cm)：" 
@@ -248,7 +248,7 @@
                     </td>
                     <td align="left">
                         <asp:TextBox ID="Txt_BoxHeight" runat="server" Width="80px" TabIndex="8" 
-                            style="text-transform:uppercase" meta:resourcekey="Txt_BoxHeightResource1"></asp:TextBox>
+                            style="text-transform:uppercase" meta:resourcekey="Txt_BoxHeightResource1" CssClass="TextBox"></asp:TextBox>
                     </td>
                     <td class="FieldHeader" style="width:200px">
                         <asp:Label ID="lbl_BoxLength" runat="server" Text="长度(cm)：" 
@@ -256,7 +256,7 @@
                     </td>
                     <td align="left">
                         <asp:TextBox ID="Txt_BoxLength" runat="server" Width="80px" TabIndex="9" 
-                            style="text-transform:uppercase" meta:resourcekey="Txt_BoxLengthResource1"></asp:TextBox>
+                            style="text-transform:uppercase" meta:resourcekey="Txt_BoxLengthResource1" CssClass="TextBox"></asp:TextBox>
                     </td>
                     <td class="FieldHeader" style="width:200px">
                         <asp:Label ID="lbl_BoxWidth" runat="server" Text="宽度(cm)：" 
@@ -264,7 +264,7 @@
                     </td>
                     <td align="left">
                         <asp:TextBox ID="Txt_BoxWidth" runat="server" Width="80px" TabIndex="10" 
-                            style="text-transform:uppercase" meta:resourcekey="Txt_BoxWidthResource1"></asp:TextBox>
+                            style="text-transform:uppercase" meta:resourcekey="Txt_BoxWidthResource1" CssClass="TextBox"></asp:TextBox>
                     </td>
                     <td class="FieldHeader" colspan="3">
                         <asp:Button ID="but_AddBox" runat="server" Text="添加包裹" TabIndex="11" 
@@ -287,7 +287,7 @@
                                     </ItemTemplate>
                                     <EditItemTemplate>
                                         <asp:TextBox ID="txt_BoxPiece" runat="server" Text='<%# Eval("Piece") %>' 
-                                            style="text-transform:uppercase" meta:resourcekey="txt_BoxPieceResource2"></asp:TextBox>
+                                            style="text-transform:uppercase" meta:resourcekey="txt_BoxPieceResource2" CssClass="TextBox"></asp:TextBox>
                                     </EditItemTemplate>
                                     <ControlStyle Width="110px" />
                                     <HeaderStyle HorizontalAlign="Center" />
@@ -301,7 +301,7 @@
                                     </ItemTemplate>
                                     <EditItemTemplate>
                                         <asp:TextBox ID="txt_BoxWeight" runat="server" Text='<%# Eval("Weight") %>' 
-                                            style="text-transform:uppercase" meta:resourcekey="txt_BoxWeightResource2"></asp:TextBox>
+                                            style="text-transform:uppercase" meta:resourcekey="txt_BoxWeightResource2" CssClass="TextBox"></asp:TextBox>
                                     </EditItemTemplate>
                                     <ControlStyle Width="110px" />
                                     <HeaderStyle HorizontalAlign="Center" />
@@ -315,7 +315,7 @@
                                     </ItemTemplate>
                                     <EditItemTemplate>
                                         <asp:TextBox ID="txt_BoxHeight" runat="server" Text='<%# Eval("Height") %>' 
-                                            style="text-transform:uppercase" meta:resourcekey="txt_BoxHeightResource2"></asp:TextBox>
+                                            style="text-transform:uppercase" meta:resourcekey="txt_BoxHeightResource2" CssClass="TextBox"></asp:TextBox>
                                     </EditItemTemplate>
                                     <ControlStyle Width="110px" />
                                     <HeaderStyle HorizontalAlign="Center" />
@@ -329,7 +329,7 @@
                                     </ItemTemplate>
                                     <EditItemTemplate>
                                         <asp:TextBox ID="txt_BoxLength" runat="server" Text='<%# Eval("Length") %>' 
-                                            style="text-transform:uppercase" meta:resourcekey="txt_BoxLengthResource2"></asp:TextBox>
+                                            style="text-transform:uppercase" meta:resourcekey="txt_BoxLengthResource2" CssClass="TextBox"></asp:TextBox>
                                     </EditItemTemplate>
                                     <ControlStyle Width="110px" />
                                     <HeaderStyle HorizontalAlign="Center" />
@@ -343,7 +343,7 @@
                                     </ItemTemplate>
                                     <EditItemTemplate>
                                         <asp:TextBox ID="txt_BoxWidth" runat="server" Text='<%# Eval("Width") %>' 
-                                            style="text-transform:uppercase" meta:resourcekey="txt_BoxWidthResource2"></asp:TextBox>
+                                            style="text-transform:uppercase" meta:resourcekey="txt_BoxWidthResource2" CssClass="TextBox"></asp:TextBox>
                                     </EditItemTemplate>
                                     <ControlStyle Width="110px" />
                                     <HeaderStyle HorizontalAlign="Center" />
@@ -410,7 +410,7 @@
                     <td align="left" colspan="7">
                         <asp:TextBox ID="txt_Remark" runat="server" Width="500px" Height="100px" 
                             TextMode="MultiLine" TabIndex="13" style="text-transform:uppercase" 
-                            meta:resourcekey="txt_RemarkResource1"></asp:TextBox>
+                            meta:resourcekey="txt_RemarkResource1" CssClass="TextBox"></asp:TextBox>
                     </td>
                 </tr>
                 <tr class="Row">
@@ -420,7 +420,7 @@
                     </td>
                     <td align="left" colspan="7">
                         <asp:TextBox ID="Txt_Carrier" runat="server" Width="422px" TabIndex="14"  MaxLength="40"
-                            style="text-transform:uppercase" meta:resourcekey="Txt_CarrierResource1"></asp:TextBox>
+                            style="text-transform:uppercase" meta:resourcekey="Txt_CarrierResource1" CssClass="TextBox"></asp:TextBox>
                     </td>
                 </tr>
                 <tr class="Row">
@@ -431,7 +431,7 @@
                     <td align="left" colspan="7">
                         <asp:TextBox ID="Txt_CarrierHAWBBarCode" runat="server" Width="422px" 
                             TabIndex="15" MaxLength="40" style="text-transform:uppercase" 
-                            meta:resourcekey="Txt_CarrierHAWBBarCodeResource1"></asp:TextBox>
+                            meta:resourcekey="Txt_CarrierHAWBBarCodeResource1" CssClass="TextBox"></asp:TextBox>
                     </td>
                 </tr>
             </tbody>

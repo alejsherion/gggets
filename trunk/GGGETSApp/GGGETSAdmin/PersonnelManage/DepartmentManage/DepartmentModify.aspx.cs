@@ -27,7 +27,7 @@ namespace GGGETSAdmin.PersonnelManage.DepartmentManage
             {
                 if (!string.IsNullOrEmpty(Request.QueryString["DeparCode"]) && !string.IsNullOrEmpty(Request.QueryString["CompanyCode"]))
                 {
-
+                    DropDownList();
                     string CompanyCode = Request.QueryString["CompanyCode"].ToString();
                     string DeparCode = Request.QueryString["DeparCode"].ToString();
                     Storage(DeparCode, CompanyCode);
@@ -42,6 +42,32 @@ namespace GGGETSAdmin.PersonnelManage.DepartmentManage
             }
         }
         /// <summary>
+        /// 页面DropDownList控件绑定
+        /// </summary>
+        private void DropDownList()
+        {
+            EnumType enumtype = new EnumType();
+            ddl_WeightCalType.DataSource = enumtype.GetName("WeightCalType");
+            ddl_WeightCalType.DataTextField = "Text";
+            ddl_WeightCalType.DataValueField = "Value";
+            ddl_WeightCalType.DataBind();
+
+            ddl_SettleType.DataSource = enumtype.GetName("SettleType");
+            ddl_SettleType.DataTextField = "Text";
+            ddl_SettleType.DataValueField = "Value";
+            ddl_SettleType.DataBind();
+
+            ddl_WeightDiscountType.DataSource = enumtype.GetName("DiscountType");
+            ddl_WeightDiscountType.DataTextField = "Text";
+            ddl_WeightDiscountType.DataValueField = "Value";
+            ddl_WeightDiscountType.DataBind();
+
+            ddl_FeeDiscountType.DataSource = enumtype.GetName("DiscountType");
+            ddl_FeeDiscountType.DataTextField = "Text";
+            ddl_FeeDiscountType.DataValueField = "Value";
+            ddl_FeeDiscountType.DataBind();
+        }
+        /// <summary>
         /// 页面控件赋值
         /// </summary>
         /// <param name="deparcode">部门账号</param>
@@ -54,39 +80,12 @@ namespace GGGETSAdmin.PersonnelManage.DepartmentManage
                 Txt_CompanyCode.Text = depar.CompanyCode;
                 Txt_DepCode.Text = depar.DepCode;
                 Txt_DepName.Text = depar.DepName;
-                if (depar.FeeDiscountType == 0)
-                {
-                    ddl_FeeDiscountType.Text = "灵活折扣";
-                }
-                else
-                {
-                    ddl_FeeDiscountType.Text = "固定折扣";
-                }
+                ddl_FeeDiscountType.SelectedValue = depar.FeeDiscountType.ToString();
                 Txt_FeeDiscountRate.Text = depar.FeeDiscountRate.ToString();
-                if (depar.WeightDiscountType == 0)
-                {
-                    ddl_WeightDiscountType.Text = "灵活折扣";
-                }
-                else
-                {
-                    ddl_WeightDiscountType.Text = "固定折扣";
-                }
+                ddl_WeightDiscountType.SelectedValue = depar.WeightDiscountType.ToString();
                 Txt_WeightDiscountRate.Text = depar.WeightDiscountRate.ToString();
-                switch (depar.SettleType)
-                {
-                    case 0:
-                        ddl_SettleType.Text = "预付月结";
-                        break;
-                    case 1:
-                        ddl_SettleType.Text = "预付现结";
-                        break;
-                    case 2:
-                        ddl_SettleType.Text = "到付月结";
-                        break;
-                    case 3:
-                        ddl_SettleType.Text = "到付现结";
-                        break;
-                }
+                ddl_SettleType.SelectedValue = depar.SettleType.ToString();
+                ddl_WeightCalType.SelectedValue = depar.WeightCalType.ToString();
                 Session["Department"] = depar;
             }
         }

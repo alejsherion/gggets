@@ -27,7 +27,7 @@
                             <td align="left" colspan="5">
                                 <asp:TextBox ID="Txt_BarCode" runat="server" MaxLength="15" Width="300px" TabIndex="1" OnTextChanged="Txt_BarCode_TextChanged"
                                     AutoPostBack="True" Style="text-transform: uppercase" 
-                                    meta:resourcekey="Txt_BarCodeResource1"></asp:TextBox><b style="color: Red">*</b>
+                                    meta:resourcekey="Txt_BarCodeResource1" CssClass="TextBox"></asp:TextBox><b style="color: Red">*</b>
                             </td>
                         </tr>
                         <tr class="AlternatingRow">
@@ -38,11 +38,11 @@
                             <td align="left">
                                 <asp:TextBox ID="Txt_Account1" runat="server" Width="80px" TabIndex="2" Style="text-transform: uppercase"
                                     AutoPostBack="True" MaxLength="45" OnTextChanged="Txt_Account1_TextChanged" 
-                                    meta:resourcekey="Txt_Account1Resource1"></asp:TextBox>
+                                    meta:resourcekey="Txt_Account1Resource1" CssClass="TextBox"></asp:TextBox>
                                 -
                                 <asp:TextBox ID="Txt_Account2" runat="server" Width="50px" TabIndex="3" Style="text-transform: uppercase"
                                     AutoPostBack="True" MaxLength="45" OnTextChanged="Txt_Account2_TextChanged" 
-                                    meta:resourcekey="Txt_Account2Resource1"></asp:TextBox>
+                                    meta:resourcekey="Txt_Account2Resource1" CssClass="TextBox"></asp:TextBox>
                                 <b style="color: Red">*</b>
                             </td>
                             <td class="FieldHeader">
@@ -52,10 +52,10 @@
                             <td align="left">
                                 <asp:DropDownList ID="DDl_SettleType" runat="server" 
                                     meta:resourcekey="DDl_SettleTypeResource1">
-                                    <asp:ListItem Value="0" Text="预付月结" meta:resourcekey="ListItemResource1"></asp:ListItem>
+                                   <%-- <asp:ListItem Value="0" Text="预付月结" meta:resourcekey="ListItemResource1"></asp:ListItem>
                                     <asp:ListItem Value="1" Text="预付现结" meta:resourcekey="ListItemResource2"></asp:ListItem>
                                     <asp:ListItem Value="2" Text="到付月结" meta:resourcekey="ListItemResource3"></asp:ListItem>
-                                    <asp:ListItem Value="3" Text="到付现结" meta:resourcekey="ListItemResource4"></asp:ListItem>
+                                    <asp:ListItem Value="3" Text="到付现结" meta:resourcekey="ListItemResource4"></asp:ListItem>--%>
                                 </asp:DropDownList>
                             </td>
                             <td class="FieldHeader">
@@ -65,11 +65,11 @@
                             <td align="left">
                                 <asp:DropDownList ID="DDl_Status" runat="server" 
                                     meta:resourcekey="DDl_StatusResource1">
-                                    <asp:ListItem Value="0" Text="待审核" meta:resourcekey="ListItemResource5"></asp:ListItem>
+                                    <%--<asp:ListItem Value="0" Text="待审核" meta:resourcekey="ListItemResource5"></asp:ListItem>
                                     <asp:ListItem Value="1" Text="取货" meta:resourcekey="ListItemResource6"></asp:ListItem>
                                     <asp:ListItem Value="2" Text="核单" meta:resourcekey="ListItemResource7"></asp:ListItem>
                                     <asp:ListItem Value="3" Text="派送" meta:resourcekey="ListItemResource8"></asp:ListItem>
-                                    <asp:ListItem Value="4" Text="in包" meta:resourcekey="ListItemResource9"></asp:ListItem>
+                                    <asp:ListItem Value="4" Text="in包" meta:resourcekey="ListItemResource9"></asp:ListItem>--%>
                                 </asp:DropDownList>
                             </td>
                         </tr>
@@ -104,7 +104,7 @@
                             <td align="left" colspan="5">
                                 <asp:TextBox ID="Txt_ShipperName" MaxLength="180" runat="server" Width="800px" TabIndex="5" Style="text-transform: uppercase"
                                     AutoPostBack="True" OnTextChanged="Txt_ShipperName_TextChanged" 
-                                    meta:resourcekey="Txt_ShipperNameResource1"></asp:TextBox><b
+                                    meta:resourcekey="Txt_ShipperNameResource1" CssClass="TextBox"></asp:TextBox><b
                                         style="color: Red">*</b>
                             </td>
                         </tr>
@@ -116,7 +116,7 @@
                             <td align="left" colspan="5">
                                 <asp:TextBox ID="Txt_ShipperAddress" runat="server" MaxLength="400" Width="800px" TabIndex="6" TextMode="MultiLine"
                                     Style="text-transform: uppercase" OnTextChanged="Txt_ShipperAddress_TextChanged"
-                                    AutoPostBack="True" meta:resourcekey="Txt_ShipperAddressResource1"></asp:TextBox><b style="color: Red">*</b>
+                                    AutoPostBack="True" meta:resourcekey="Txt_ShipperAddressResource1" CssClass="TextBox"></asp:TextBox><b style="color: Red">*</b>
                             </td>
                         </tr>
                         <tr class="Row">
@@ -128,7 +128,7 @@
                                 <asp:TextBox ID="Txt_ShipperCountry" runat="server" Width="80px" AutoPostBack="True"
                                     OnTextChanged="Txt_ShipperCountry_TextChanged" TabIndex="7" 
                                     Style="text-transform: uppercase" 
-                                    meta:resourcekey="Txt_ShipperCountryResource1"></asp:TextBox>
+                                    meta:resourcekey="Txt_ShipperCountryResource1" CssClass="TextBox"></asp:TextBox>
                                 <b style="color: Red">*</b>
                                 <cc1:AutoCompleteExtraExtender runat="server" ID="autocomplete" ServiceMethod="GetCountryList"
                                     TargetControlID="Txt_ShipperCountry" AutoPostback="True"
@@ -143,7 +143,7 @@
                             <td align="left">
                                 <asp:TextBox ID="Txt_ShipperProvince" runat="server" Width="80px" TabIndex="8" Style="text-transform: uppercase"
                                     OnTextChanged="Txt_ShipperProvince_TextChanged" AutoPostBack="True" 
-                                    meta:resourcekey="Txt_ShipperProvinceResource1"></asp:TextBox>
+                                    meta:resourcekey="Txt_ShipperProvinceResource1" CssClass="TextBox"></asp:TextBox>
                             </td>
                             <td class="FieldHeader">
                                 <asp:Label ID="lbl_ShipperRegion" runat="server" Text="城市：" 
@@ -152,7 +152,7 @@
                             <td align="left" class="style1">
                                 <asp:TextBox ID="Txt_ShipperRegion" runat="server" Width="80px" TabIndex="9" Style="text-transform: uppercase"
                                     AutoPostBack="True" OnTextChanged="Txt_ShipperRegion_TextChanged" 
-                                    meta:resourcekey="Txt_ShipperRegionResource1"></asp:TextBox>
+                                    meta:resourcekey="Txt_ShipperRegionResource1" CssClass="TextBox"></asp:TextBox>
                                 <b style="color: Red">*</b>
                                 <cc1:AutoCompleteExtraExtender runat="server" ID="autoRegion" ServiceMethod="GetRegionList"
                                     TargetControlID="Txt_ShipperRegion" MinimumPrefixLength="1" 
@@ -168,7 +168,7 @@
                             <td align="left" class="style2">
                                 <asp:TextBox ID="Txt_ShipperZipCode" runat="server" Width="80px" TabIndex="10" Style="text-transform: uppercase"
                                     OnTextChanged="Txt_ShipperZipCode_TextChanged" MaxLength="15" AutoPostBack="True" 
-                                    meta:resourcekey="Txt_ShipperZipCodeResource1"></asp:TextBox>
+                                    meta:resourcekey="Txt_ShipperZipCodeResource1" CssClass="TextBox"></asp:TextBox>
                                 <b style="color: Red">*</b>
                             </td>
                             <td class="FieldHeader">
@@ -179,7 +179,7 @@
                                 <asp:TextBox ID="Txt_ShipperContactor" runat="server" Width="80px" 
                                     TabIndex="11" Style="text-transform: uppercase"
                                     OnTextChanged="Txt_ShipperContactor_TextChanged" MaxLength="40" AutoPostBack="True" 
-                                    meta:resourcekey="Txt_ShipperContactorResource1"></asp:TextBox>
+                                    meta:resourcekey="Txt_ShipperContactorResource1" CssClass="TextBox"></asp:TextBox>
                                 <b style="color: Red">*</b>
                             </td>
                             <td class="FieldHeader">
@@ -191,7 +191,7 @@
                                     Width="80px" MaxLength="20" TabIndex="12"
                                     Style="text-transform: uppercase" 
                                     OnTextChanged="Txt_ShipperTel_TextChanged" 
-                                    meta:resourcekey="Txt_ShipperTelResource1"></asp:TextBox>
+                                    meta:resourcekey="Txt_ShipperTelResource1" CssClass="TextBox"></asp:TextBox>
                                 <b style="color: Red">*</b>
                                 <asp:Button ID="btn_Addressbox" runat="server" Text="保存新地址" ForeColor="Red" Visible="False"
                                     CssClass="InputBtn" OnClick="btn_Addressbox_Click" 
@@ -221,7 +221,7 @@
                             <td align="left" colspan="5">
                                 <asp:TextBox ID="Txt_DeliverName" runat="server" MaxLength="180" Width="800px" TabIndex="13" Style="text-transform: uppercase"
                                     OnTextChanged="Txt_DeliverName_TextChanged" AutoPostBack="True" 
-                                    meta:resourcekey="Txt_DeliverNameResource1"></asp:TextBox>
+                                    meta:resourcekey="Txt_DeliverNameResource1" CssClass="TextBox"></asp:TextBox>
                             </td>
                         </tr>
                         <tr class="Row">
@@ -232,7 +232,7 @@
                             <td align="left" colspan="5">
                                 <asp:TextBox ID="Txt_DeliverAddress" runat="server" MaxLength="400" Width="800px" TabIndex="14" TextMode="MultiLine"
                                     Style="text-transform: uppercase" OnTextChanged="Txt_DeliverAddress_TextChanged"
-                                    AutoPostBack="True" meta:resourcekey="Txt_DeliverAddressResource1"></asp:TextBox>
+                                    AutoPostBack="True" meta:resourcekey="Txt_DeliverAddressResource1" CssClass="TextBox"></asp:TextBox>
                             </td>
                         </tr>
                         <tr class="Row">
@@ -243,7 +243,7 @@
                             <td align="left" class="style2">
                                 <asp:TextBox ID="Txt_DeliverCountry" runat="server" AutoPostBack="True" OnTextChanged="Txt_DeliverCountry_TextChanged"
                                     Width="80px" TabIndex="24" Style="text-transform: uppercase" 
-                                    meta:resourcekey="Txt_DeliverCountryResource1"></asp:TextBox>
+                                    meta:resourcekey="Txt_DeliverCountryResource1" CssClass="TextBox"></asp:TextBox>
                                 <cc1:AutoCompleteExtraExtender runat="server" ID="autoDeliveCountry" ServiceMethod="GetCountryList"
                                     TargetControlID="Txt_DeliverCountry" AutoPostback="True"
                                     MinimumPrefixLength="1" OnItemSelected="autoDeliveCountry_ItemSelected" 
@@ -257,7 +257,7 @@
                             <td align="left">
                                 <asp:TextBox ID="Txt_DeliverProvince" runat="server" Width="80px" TabIndex="15" Style="text-transform: uppercase"
                                     OnTextChanged="Txt_DeliverProvince_TextChanged" AutoPostBack="True" 
-                                    meta:resourcekey="Txt_DeliverProvinceResource1"></asp:TextBox>
+                                    meta:resourcekey="Txt_DeliverProvinceResource1" CssClass="TextBox"></asp:TextBox>
                             </td>
                             <td class="FieldHeader">
                                 <asp:Label ID="lbl_DeliverRegion" runat="server" Text="城市：" 
@@ -266,7 +266,7 @@
                             <td align="left" class="style1">
                                 <asp:TextBox ID="Txt_DeliverRegion" runat="server" Width="80px" TabIndex="16" Style="text-transform: uppercase"
                                     OnTextChanged="Txt_DeliverRegion_TextChanged" AutoPostBack="True" 
-                                    meta:resourcekey="Txt_DeliverRegionResource1"></asp:TextBox>
+                                    meta:resourcekey="Txt_DeliverRegionResource1" CssClass="TextBox"></asp:TextBox>
                                 <cc1:AutoCompleteExtraExtender runat="server" ID="autoDeliverRegion" ServiceMethod="GetRegionList"
                                     TargetControlID="Txt_DeliverRegion" MinimumPrefixLength="1" 
                                     UseContextKey="True" DelimiterCharacters="" Enabled="True" ServicePath="">
@@ -281,7 +281,7 @@
                             <td align="left" class="style2">
                                 <asp:TextBox ID="Txt_DeliverZipCode" runat="server" MaxLength="15" Width="80px" TabIndex="17" Style="text-transform: uppercase"
                                     OnTextChanged="Txt_DeliverZipCode_TextChanged" AutoPostBack="True" 
-                                    meta:resourcekey="Txt_DeliverZipCodeResource1"></asp:TextBox>
+                                    meta:resourcekey="Txt_DeliverZipCodeResource1" CssClass="TextBox"></asp:TextBox>
                             </td>
                             <td class="FieldHeader">
                                 <asp:Label ID="lbl_DeliverContactor" runat="server" Text="姓名：" 
@@ -291,7 +291,7 @@
                                 <asp:TextBox ID="Txt_DeliverContactor" runat="server" MaxLength="40" Width="80px" 
                                     TabIndex="18" Style="text-transform: uppercase"
                                     OnTextChanged="Txt_DeliverContactor_TextChanged" AutoPostBack="True" 
-                                    meta:resourcekey="Txt_DeliverContactorResource1"></asp:TextBox>
+                                    meta:resourcekey="Txt_DeliverContactorResource1" CssClass="TextBox"></asp:TextBox>
                             </td>
                             <td class="FieldHeader">
                                 <asp:Label ID="lbl_DeliverTel" runat="server" Text="电话：" 
@@ -300,7 +300,7 @@
                             <td align="left">
                                 <asp:TextBox ID="Txt_DeliverTel" runat="server" Width="80px" MaxLength="20" TabIndex="19" Style="text-transform: uppercase"
                                     OnTextChanged="Txt_DeliverTel_TextChanged" AutoPostBack="True" 
-                                    meta:resourcekey="Txt_DeliverTelResource1"></asp:TextBox>
+                                    meta:resourcekey="Txt_DeliverTelResource1" CssClass="TextBox"></asp:TextBox>
                                 <asp:Button ID="btn_DeliverAddress" runat="server" Text="保存新地址" ForeColor="Red" Visible="False"
                                     CssClass="InputBtn" OnClick="btn_DeliverAddress_Click" 
                                     meta:resourcekey="btn_DeliverAddressResource1" />
@@ -346,7 +346,7 @@
                             <td align="left" colspan="5">
                                 <asp:TextBox ID="Txt_ConsigneeName" runat="server" Width="800px" 
                                     onchange="Context()" TabIndex="20" MaxLength="180" Style="text-transform: uppercase" 
-                                    meta:resourcekey="Txt_ConsigneeNameResource1"></asp:TextBox>
+                                    meta:resourcekey="Txt_ConsigneeNameResource1" CssClass="TextBox"></asp:TextBox>
                                 <asp:Button ID="btn_ConsigneeName" runat="server" 
                                     onclick="btn_ConsigneeName_Click" BackColor="White" BorderStyle="None" 
                                     EnableTheming="False" meta:resourcekey="btn_ConsigneeNameResource1"/>
@@ -362,7 +362,7 @@
                                 <asp:TextBox ID="Txt_ConsigneeAddress" runat="server" Width="800px" 
                                     TabIndex="21" TextMode="MultiLine" MaxLength="400"
                                     Style="text-transform: uppercase" OnTextChanged="Txt_ConsigneeAddress_TextChanged"
-                                    AutoPostBack="True" meta:resourcekey="Txt_ConsigneeAddressResource1"></asp:TextBox><b style="color: Red">*</b>
+                                    AutoPostBack="True" meta:resourcekey="Txt_ConsigneeAddressResource1" CssClass="TextBox"></asp:TextBox><b style="color: Red">*</b>
                             </td>
                         </tr>
                         <tr class="Row">
@@ -373,7 +373,7 @@
                             <td align="left" class="style2">
                                 <asp:TextBox ID="Txt_ConsigneeCountry" runat="server" Width="80px" OnTextChanged="Txt_ConsigneeCountry_TextChanged"
                                     AutoPostBack="True" TabIndex="22" Style="text-transform: uppercase" 
-                                    meta:resourcekey="Txt_ConsigneeCountryResource1"></asp:TextBox>
+                                    meta:resourcekey="Txt_ConsigneeCountryResource1" CssClass="TextBox"></asp:TextBox>
                                 <b style="color: Red">*</b>
                                 <cc1:AutoCompleteExtraExtender runat="server" ID="autoConsigneeCountry" ServiceMethod="GetCountryList"
                                     TargetControlID="Txt_ConsigneeCountry" AutoPostback="True"
@@ -389,7 +389,7 @@
                                 <asp:TextBox ID="Txt_ConsigneeProvince" runat="server" Width="80px" 
                                     TabIndex="23" Style="text-transform: uppercase"
                                     OnTextChanged="Txt_ConsigneeProvince_TextChanged" AutoPostBack="True" 
-                                    meta:resourcekey="Txt_ConsigneeProvinceResource1"></asp:TextBox>
+                                    meta:resourcekey="Txt_ConsigneeProvinceResource1" CssClass="TextBox"></asp:TextBox>
                             </td>
                             <td class="FieldHeader">
                                 <asp:Label ID="lbl_ConsigneeRegion" runat="server" Text="城市：" 
@@ -398,7 +398,7 @@
                             <td align="left" class="style1">
                                 <asp:TextBox ID="Txt_ConsigneeRegion" runat="server" Width="80px" TabIndex="24" Style="text-transform: uppercase"
                                     AutoPostBack="True" OnTextChanged="Txt_ConsigneeRegion_TextChanged" 
-                                    meta:resourcekey="Txt_ConsigneeRegionResource1"></asp:TextBox>
+                                    meta:resourcekey="Txt_ConsigneeRegionResource1" CssClass="TextBox"></asp:TextBox>
                                 <b style="color: Red">*</b>
                                 <cc1:AutoCompleteExtraExtender runat="server" ID="autoConsigneeRegion" ServiceMethod="GetRegionList"
                                     TargetControlID="Txt_ConsigneeRegion" MinimumPrefixLength="1" 
@@ -415,7 +415,7 @@
                                 <asp:TextBox ID="Txt_ConsigneeZipCode" runat="server" Width="80px" 
                                     TabIndex="25" Style="text-transform: uppercase"
                                     OnTextChanged="Txt_ConsigneeZipCode_TextChanged" MaxLength="15" AutoPostBack="True" 
-                                    meta:resourcekey="Txt_ConsigneeZipCodeResource1"></asp:TextBox>
+                                    meta:resourcekey="Txt_ConsigneeZipCodeResource1" CssClass="TextBox"></asp:TextBox>
                                 <b style="color: Red">*</b>
                             </td>
                             <td class="FieldHeader">
@@ -425,7 +425,7 @@
                             <td align="left" class="style1">
                                 <asp:TextBox ID="Txt_ConsigneeContactor" runat="server" MaxLength="40" Width="80px" TabIndex="26"
                                     Style="text-transform: uppercase" OnTextChanged="Txt_ConsigneeContactor_TextChanged"
-                                    AutoPostBack="True" meta:resourcekey="Txt_ConsigneeContactorResource1"></asp:TextBox>
+                                    AutoPostBack="True" meta:resourcekey="Txt_ConsigneeContactorResource1" CssClass="TextBox"></asp:TextBox>
                                 <b style="color: Red">*</b>
                             </td>
                             <td class="FieldHeader">
@@ -435,7 +435,7 @@
                             <td align="left">
                                 <asp:TextBox ID="Txt_ConsigneeTel" runat="server" Width="80px" TabIndex="27" Style="text-transform: uppercase"
                                     OnTextChanged="Txt_ConsigneeTel_TextChanged" AutoPostBack="True" 
-                                    meta:resourcekey="Txt_ConsigneeTelResource1" MaxLength="20"></asp:TextBox>
+                                    meta:resourcekey="Txt_ConsigneeTelResource1" MaxLength="20" CssClass="TextBox"></asp:TextBox>
                                 <b style="color: Red">*</b>
                                 <asp:Button ID="btn_ConsigneeAddress" runat="server" Text="保存新地址" ForeColor="Red"
                                     Visible="False" CssClass="InputBtn" OnClick="btn_ConsigneeAddress_Click" 

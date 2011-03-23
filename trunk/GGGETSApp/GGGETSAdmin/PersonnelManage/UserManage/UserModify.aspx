@@ -64,8 +64,8 @@
                     </td>
                     <td align="left">
                         <asp:DropDownList ID="ddl_FeeDiscountType" runat="server" TabIndex="9">
-                            <asp:ListItem Text="灵活折扣" Value="0"></asp:ListItem>
-                            <asp:ListItem Text="固定折扣" Value="1"></asp:ListItem>
+                            <%--<asp:ListItem Text="灵活折扣" Value="0"></asp:ListItem>
+                            <asp:ListItem Text="固定折扣" Value="1"></asp:ListItem>--%>
                         </asp:DropDownList>
                     </td>
                 </tr>
@@ -85,8 +85,8 @@
                     </td>
                     <td align="left">
                         <asp:DropDownList ID="ddl_WeightDiscountType" runat="server" TabIndex="11">
-                            <asp:ListItem Text="灵活折扣" Value="0"></asp:ListItem>
-                            <asp:ListItem Text="固定折扣" Value="1"></asp:ListItem>
+                            <%--<asp:ListItem Text="灵活折扣" Value="0"></asp:ListItem>
+                            <asp:ListItem Text="固定折扣" Value="1"></asp:ListItem>--%>
                         </asp:DropDownList>
                     </td>
                 </tr>
@@ -106,10 +106,10 @@
                     </td>
                     <td align="left">
                         <asp:DropDownList ID="ddl_SettleType" runat="server" TabIndex="13">
-                            <asp:ListItem Value="0" Text="预付月结"></asp:ListItem>
+                          <%--  <asp:ListItem Value="0" Text="预付月结"></asp:ListItem>
                             <asp:ListItem Value="1" Text="预付现结"></asp:ListItem>
                             <asp:ListItem Value="2" Text="到付月结"></asp:ListItem>
-                            <asp:ListItem Value="3" Text="到付现结"></asp:ListItem>
+                            <asp:ListItem Value="3" Text="到付现结"></asp:ListItem>--%>
                         </asp:DropDownList>
                     </td>
                 </tr>
@@ -119,8 +119,8 @@
                     </td>
                     <td align="left">
                         <asp:DropDownList ID="ddl_WeightCalType" runat="server" TabIndex="14">
-                            <asp:ListItem Value="0" Text="按照0.5KG标准"></asp:ListItem>
-                            <asp:ListItem Value="1" Text="按照分段标准"></asp:ListItem>
+                            <%--<asp:ListItem Value="0" Text="按照0.5KG标准"></asp:ListItem>
+                            <asp:ListItem Value="1" Text="按照分段标准"></asp:ListItem>--%>
                         </asp:DropDownList>
                     </td>
                 </tr>

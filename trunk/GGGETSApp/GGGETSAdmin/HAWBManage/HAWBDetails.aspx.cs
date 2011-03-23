@@ -44,7 +44,7 @@ namespace GGGETSAdmin.HAWBManage
                     {
                         ViewState["UrlReferrer"] = Request.UrlReferrer.ToString();
                     }
-                    Storage();
+                    Storage(hawb);
                 }
                 else
                 {
@@ -63,7 +63,7 @@ namespace GGGETSAdmin.HAWBManage
         /// <summary>
         /// 页面控件赋值
         /// </summary>
-        protected void Storage()
+        protected void Storage(HAWB hawb)
         {
             Txt_BarCode.Text = hawb.BarCode;
             Department depar = hawb.Department;

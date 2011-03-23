@@ -49,15 +49,15 @@ namespace GGGETSAdmin.FlightManage
         {
             if (Txt_FlightNo.Text.Trim() != "")
             {
-                BarCode = Txt_FlightNo.Text.Trim();
+                BarCode = Txt_FlightNo.Text.Trim().ToUpper();
             }
             if (Txt_From.Text.Trim() != "")
             {
-                From = Txt_From.Text.Trim();
+                From = Txt_From.Text.Trim().ToUpper();
             }
             if (Txt_To.Text.Trim() != "")
             {
-                to = Txt_To.Text.Trim();
+                to = Txt_To.Text.Trim().ToUpper();
             }
             gv_HAWB.DataSource = _mawbservice.FindMAWBByFlightCondition(BarCode, From, to);
             gv_HAWB.DataBind();

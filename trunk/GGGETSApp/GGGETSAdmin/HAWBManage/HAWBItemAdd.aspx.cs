@@ -203,12 +203,12 @@ namespace GGGETSAdmin.HAWBManage
                     Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('包裹重量只能输入整数或小数且小数点后保留2位！')</script>");
                     Txt_BoxWeight.Focus();
                 }
-                else if (Txt_BoxHeight.Text.Trim() != "")
+                if (Txt_BoxHeight.Text.Trim() != "")
                 {
                     if (!Regex.IsMatch(Txt_BoxHeight.Text.Trim(), decimalPattern))
                     {
                         Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('包裹高度只能输入整数或小数且小数点后保留2位！')</script>");
-                        Txt_BoxHeight.Focus();
+                        //Txt_BoxHeight.Focus();
                         ok = false;
                     }
                     else
@@ -220,7 +220,7 @@ namespace GGGETSAdmin.HAWBManage
                 }
                 if (Txt_BoxLength.Text.Trim() != "")
                 {
-                    if (Regex.IsMatch(Txt_BoxLength.Text.Trim(), decimalPattern))
+                    if (Regex.IsMatch(Txt_BoxLength.Text.Trim(), decimalPattern) && ok == true)
                     {
                         box.Length = decimal.Parse(Txt_BoxLength.Text.Trim());
                         ok = true;
@@ -228,13 +228,13 @@ namespace GGGETSAdmin.HAWBManage
                     else
                     {
                         Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('包裹长度只能输入整数或小数且小数点后保留2位！')</script>");
-                        Txt_BoxLength.Focus();
+                        //Txt_BoxLength.Focus();
                         ok = false;
                     }
                 }
                 if (Txt_BoxWidth.Text.Trim() != "")
                 {
-                    if (Regex.IsMatch(Txt_BoxWidth.Text.Trim(), decimalPattern))
+                    if (Regex.IsMatch(Txt_BoxWidth.Text.Trim(), decimalPattern) && ok == true)
                     {
                         box.Width = decimal.Parse(Txt_BoxWidth.Text.Trim());
                         ok = true;
@@ -242,7 +242,7 @@ namespace GGGETSAdmin.HAWBManage
                     else
                     {
                         Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('包裹宽度只能输入整数或小数且小数点后保留2位！')</script>");
-                        Txt_BoxWidth.Focus();
+                        //Txt_BoxWidth.Focus();
                         ok = false;
                     }
                 }

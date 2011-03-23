@@ -32,6 +32,7 @@ namespace GGGETSAdmin.PersonnelManage.UserManage
             {
                 if (!string.IsNullOrEmpty(Request.QueryString["LoginName"]))
                 {
+                    DropDownList();
                     string LoginName = Request.QueryString["LoginName"].ToString();
                     Storage(LoginName);
                     ViewState["Url"] = Request.UrlReferrer.ToString();
@@ -43,6 +44,32 @@ namespace GGGETSAdmin.PersonnelManage.UserManage
 
                 }
             }
+        }
+        /// <summary>
+        /// 页面DorpDownList控件绑定
+        /// </summary>
+        private void DropDownList()
+        {
+            EnumType enumtype = new EnumType();
+            ddl_WeightCalType.DataSource = enumtype.GetName("WeightCalType");
+            ddl_WeightCalType.DataTextField = "Text";
+            ddl_WeightCalType.DataValueField = "Value";
+            ddl_WeightCalType.DataBind();
+
+            ddl_SettleType.DataSource = enumtype.GetName("SettleType");
+            ddl_SettleType.DataTextField = "Text";
+            ddl_SettleType.DataValueField = "Value";
+            ddl_SettleType.DataBind();
+
+            ddl_WeightDiscountType.DataSource = enumtype.GetName("DiscountType");
+            ddl_WeightDiscountType.DataTextField = "Text";
+            ddl_WeightDiscountType.DataValueField = "Value";
+            ddl_WeightDiscountType.DataBind();
+
+            ddl_FeeDiscountType.DataSource = enumtype.GetName("DiscountType");
+            ddl_FeeDiscountType.DataTextField = "Text";
+            ddl_FeeDiscountType.DataValueField = "Value";
+            ddl_FeeDiscountType.DataBind();
         }
         /// <summary>
         /// 页面控件赋值
