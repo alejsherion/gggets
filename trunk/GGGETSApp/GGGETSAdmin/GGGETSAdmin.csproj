@@ -543,28 +543,24 @@
     </Compile>
     <Compile Include="ProductManage\ProductAdd.aspx.cs">
       <DependentUpon>ProductAdd.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="ProductManage\ProductAdd.aspx.designer.cs">
       <DependentUpon>ProductAdd.aspx</DependentUpon>
     </Compile>
     <Compile Include="ProductManage\ProductDetails.aspx.cs">
       <DependentUpon>ProductDetails.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="ProductManage\ProductDetails.aspx.designer.cs">
       <DependentUpon>ProductDetails.aspx</DependentUpon>
     </Compile>
     <Compile Include="ProductManage\ProductManagemnet.aspx.cs">
       <DependentUpon>ProductManagemnet.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="ProductManage\ProductManagemnet.aspx.designer.cs">
       <DependentUpon>ProductManagemnet.aspx</DependentUpon>
     </Compile>
     <Compile Include="ProductManage\ProductModify.aspx.cs">
       <DependentUpon>ProductModify.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="ProductManage\ProductModify.aspx.designer.cs">
       <DependentUpon>ProductModify.aspx</DependentUpon>
