@@ -97,5 +97,27 @@ namespace Application.GGETS
             _HSPropertyRepository.Remove(hsproperty);
             unitOfWork.Commit();
         }
+
+        /// <summary>
+        /// 判断品名是否重复
+        /// </summary>
+        /// <param name="propertyName">品名</param>
+        /// <returns></returns>
+        public bool JudgeHSPropertyIsExist(string propertyName)
+        {
+            bool judge = true;
+            IList<HSProperty> properties = GetAll();//获取所有信息
+            if (properties.Count != 0)
+            {
+                foreach (HSProperty property in properties)
+                {
+                    if (property.PropertyName.Equals(propertyName))
+                    {
+                        judge = false;
+                    }
+                }
+            }
+            return judge;
+        }
     }
 }
