@@ -20,7 +20,6 @@ using System.Runtime.Serialization;
 
 [assembly: EdmRelationshipAttribute("MYGGGETSModel", "FK_ADDRESSB_REFERENCE_DEPARTME", "Department", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(ETS.GGGETSApp.Infrastructure.Data.Persistence.Model.Department), "AddressBook", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ETS.GGGETSApp.Infrastructure.Data.Persistence.Model.AddressBook), true)]
 [assembly: EdmRelationshipAttribute("MYGGGETSModel", "FK_ADDRESSB_REFERENCE_USER", "User", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(ETS.GGGETSApp.Infrastructure.Data.Persistence.Model.User), "AddressBook", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ETS.GGGETSApp.Infrastructure.Data.Persistence.Model.AddressBook), true)]
-[assembly: EdmRelationshipAttribute("MYGGGETSModel", "FK_PRIVILEG_REFERENCE_APPMODUL", "AppModule", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(ETS.GGGETSApp.Infrastructure.Data.Persistence.Model.AppModule), "Privilege", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ETS.GGGETSApp.Infrastructure.Data.Persistence.Model.Privilege), true)]
 [assembly: EdmRelationshipAttribute("MYGGGETSModel", "FK_DEPARTME_REFERENCE_COMPANY", "Company", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(ETS.GGGETSApp.Infrastructure.Data.Persistence.Model.Company), "Department", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ETS.GGGETSApp.Infrastructure.Data.Persistence.Model.Department), true)]
 [assembly: EdmRelationshipAttribute("MYGGGETSModel", "FK_HAWB_REFERENCE_DEPARTME", "Department", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(ETS.GGGETSApp.Infrastructure.Data.Persistence.Model.Department), "HAWB", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ETS.GGGETSApp.Infrastructure.Data.Persistence.Model.HAWB), true)]
 [assembly: EdmRelationshipAttribute("MYGGGETSModel", "FK_USER_REFERENCE_DEPARTME", "Department", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(ETS.GGGETSApp.Infrastructure.Data.Persistence.Model.Department), "User", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ETS.GGGETSApp.Infrastructure.Data.Persistence.Model.User), true)]
@@ -31,6 +30,11 @@ using System.Runtime.Serialization;
 [assembly: EdmRelationshipAttribute("MYGGGETSModel", "FK_PACKAGE_REFERENCE_MAWB", "MAWB", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(ETS.GGGETSApp.Infrastructure.Data.Persistence.Model.MAWB), "Package", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ETS.GGGETSApp.Infrastructure.Data.Persistence.Model.Package), true)]
 [assembly: EdmRelationshipAttribute("MYGGGETSModel", "FK_PARAM_FK_PARAM__TEMPLATE", "Template", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(ETS.GGGETSApp.Infrastructure.Data.Persistence.Model.Template), "Param", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ETS.GGGETSApp.Infrastructure.Data.Persistence.Model.Param), true)]
 [assembly: EdmRelationshipAttribute("MYGGGETSModel", "FK_HSPROPER_FK_HSPROP_HSPRODUC", "HSProduct", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(ETS.GGGETSApp.Infrastructure.Data.Persistence.Model.HSProduct), "HSProperty", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ETS.GGGETSApp.Infrastructure.Data.Persistence.Model.HSProperty), true)]
+[assembly: EdmRelationshipAttribute("MYGGGETSModel", "FK_PRIVILEG_REFERENCE_APPMODUL", "AppModule", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(ETS.GGGETSApp.Infrastructure.Data.Persistence.Model.AppModule), "Role_Privilege", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ETS.GGGETSApp.Infrastructure.Data.Persistence.Model.Role_Privilege), true)]
+[assembly: EdmRelationshipAttribute("MYGGGETSModel", "FK_Role_Privilege_Role", "Role", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(ETS.GGGETSApp.Infrastructure.Data.Persistence.Model.Role), "Role_Privilege", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ETS.GGGETSApp.Infrastructure.Data.Persistence.Model.Role_Privilege), true)]
+[assembly: EdmRelationshipAttribute("MYGGGETSModel", "FK_SysUser_Role", "Role", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(ETS.GGGETSApp.Infrastructure.Data.Persistence.Model.Role), "SysUser", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ETS.GGGETSApp.Infrastructure.Data.Persistence.Model.SysUser), true)]
+[assembly: EdmRelationshipAttribute("MYGGGETSModel", "FK_SysUser_Role_Role", "Role", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(ETS.GGGETSApp.Infrastructure.Data.Persistence.Model.Role), "SysUser_Role", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ETS.GGGETSApp.Infrastructure.Data.Persistence.Model.SysUser_Role), true)]
+[assembly: EdmRelationshipAttribute("MYGGGETSModel", "FK_SysUser_Role_SysUser", "SysUser", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(ETS.GGGETSApp.Infrastructure.Data.Persistence.Model.SysUser), "SysUser_Role", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ETS.GGGETSApp.Infrastructure.Data.Persistence.Model.SysUser_Role), true)]
 
 #endregion
 
@@ -97,22 +101,6 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Model
             }
         }
         private ObjectSet<AddressBook> _AddressBook;
-    
-        /// <summary>
-        /// 没有元数据文档可用。
-        /// </summary>
-        public ObjectSet<AppModule> AppModule
-        {
-            get
-            {
-                if ((_AppModule == null))
-                {
-                    _AppModule = base.CreateObjectSet<AppModule>("AppModule");
-                }
-                return _AppModule;
-            }
-        }
-        private ObjectSet<AppModule> _AppModule;
     
         /// <summary>
         /// 没有元数据文档可用。
@@ -261,22 +249,6 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Model
         /// <summary>
         /// 没有元数据文档可用。
         /// </summary>
-        public ObjectSet<Privilege> Privilege
-        {
-            get
-            {
-                if ((_Privilege == null))
-                {
-                    _Privilege = base.CreateObjectSet<Privilege>("Privilege");
-                }
-                return _Privilege;
-            }
-        }
-        private ObjectSet<Privilege> _Privilege;
-    
-        /// <summary>
-        /// 没有元数据文档可用。
-        /// </summary>
         public ObjectSet<RegionCode> RegionCode
         {
             get
@@ -369,6 +341,86 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Model
             }
         }
         private ObjectSet<FindInfo> _FindInfo;
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        public ObjectSet<AppModule> AppModule
+        {
+            get
+            {
+                if ((_AppModule == null))
+                {
+                    _AppModule = base.CreateObjectSet<AppModule>("AppModule");
+                }
+                return _AppModule;
+            }
+        }
+        private ObjectSet<AppModule> _AppModule;
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        public ObjectSet<Role> Role
+        {
+            get
+            {
+                if ((_Role == null))
+                {
+                    _Role = base.CreateObjectSet<Role>("Role");
+                }
+                return _Role;
+            }
+        }
+        private ObjectSet<Role> _Role;
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        public ObjectSet<Role_Privilege> Role_Privilege
+        {
+            get
+            {
+                if ((_Role_Privilege == null))
+                {
+                    _Role_Privilege = base.CreateObjectSet<Role_Privilege>("Role_Privilege");
+                }
+                return _Role_Privilege;
+            }
+        }
+        private ObjectSet<Role_Privilege> _Role_Privilege;
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        public ObjectSet<SysUser> SysUser
+        {
+            get
+            {
+                if ((_SysUser == null))
+                {
+                    _SysUser = base.CreateObjectSet<SysUser>("SysUser");
+                }
+                return _SysUser;
+            }
+        }
+        private ObjectSet<SysUser> _SysUser;
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        public ObjectSet<SysUser_Role> SysUser_Role
+        {
+            get
+            {
+                if ((_SysUser_Role == null))
+                {
+                    _SysUser_Role = base.CreateObjectSet<SysUser_Role>("SysUser_Role");
+                }
+                return _SysUser_Role;
+            }
+        }
+        private ObjectSet<SysUser_Role> _SysUser_Role;
 
         #endregion
         #region AddTo 方法
@@ -379,14 +431,6 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Model
         public void AddToAddressBook(AddressBook addressBook)
         {
             base.AddObject("AddressBook", addressBook);
-        }
-    
-        /// <summary>
-        /// 用于向 AppModule EntitySet 添加新对象的方法，已弃用。请考虑改用关联的 ObjectSet&lt;T&gt; 属性的 .Add 方法。
-        /// </summary>
-        public void AddToAppModule(AppModule appModule)
-        {
-            base.AddObject("AppModule", appModule);
         }
     
         /// <summary>
@@ -462,14 +506,6 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Model
         }
     
         /// <summary>
-        /// 用于向 Privilege EntitySet 添加新对象的方法，已弃用。请考虑改用关联的 ObjectSet&lt;T&gt; 属性的 .Add 方法。
-        /// </summary>
-        public void AddToPrivilege(Privilege privilege)
-        {
-            base.AddObject("Privilege", privilege);
-        }
-    
-        /// <summary>
         /// 用于向 RegionCode EntitySet 添加新对象的方法，已弃用。请考虑改用关联的 ObjectSet&lt;T&gt; 属性的 .Add 方法。
         /// </summary>
         public void AddToRegionCode(RegionCode regionCode)
@@ -515,6 +551,46 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Model
         public void AddToFindInfo(FindInfo findInfo)
         {
             base.AddObject("FindInfo", findInfo);
+        }
+    
+        /// <summary>
+        /// 用于向 AppModule EntitySet 添加新对象的方法，已弃用。请考虑改用关联的 ObjectSet&lt;T&gt; 属性的 .Add 方法。
+        /// </summary>
+        public void AddToAppModule(AppModule appModule)
+        {
+            base.AddObject("AppModule", appModule);
+        }
+    
+        /// <summary>
+        /// 用于向 Role EntitySet 添加新对象的方法，已弃用。请考虑改用关联的 ObjectSet&lt;T&gt; 属性的 .Add 方法。
+        /// </summary>
+        public void AddToRole(Role role)
+        {
+            base.AddObject("Role", role);
+        }
+    
+        /// <summary>
+        /// 用于向 Role_Privilege EntitySet 添加新对象的方法，已弃用。请考虑改用关联的 ObjectSet&lt;T&gt; 属性的 .Add 方法。
+        /// </summary>
+        public void AddToRole_Privilege(Role_Privilege role_Privilege)
+        {
+            base.AddObject("Role_Privilege", role_Privilege);
+        }
+    
+        /// <summary>
+        /// 用于向 SysUser EntitySet 添加新对象的方法，已弃用。请考虑改用关联的 ObjectSet&lt;T&gt; 属性的 .Add 方法。
+        /// </summary>
+        public void AddToSysUser(SysUser sysUser)
+        {
+            base.AddObject("SysUser", sysUser);
+        }
+    
+        /// <summary>
+        /// 用于向 SysUser_Role EntitySet 添加新对象的方法，已弃用。请考虑改用关联的 ObjectSet&lt;T&gt; 属性的 .Add 方法。
+        /// </summary>
+        public void AddToSysUser_Role(SysUser_Role sysUser_Role)
+        {
+            base.AddObject("SysUser_Role", sysUser_Role);
         }
 
         #endregion
@@ -1079,10 +1155,12 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Model
         /// 创建新的 AppModule 对象。
         /// </summary>
         /// <param name="moduleID">ModuleID 属性的初始值。</param>
-        public static AppModule CreateAppModule(global::System.Guid moduleID)
+        /// <param name="isLeft">IsLeft 属性的初始值。</param>
+        public static AppModule CreateAppModule(global::System.Guid moduleID, global::System.Boolean isLeft)
         {
             AppModule appModule = new AppModule();
             appModule.ModuleID = moduleID;
+            appModule.IsLeft = isLeft;
             return appModule;
         }
 
@@ -1187,6 +1265,102 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Model
         private global::System.String _Remark;
         partial void OnRemarkChanging(global::System.String value);
         partial void OnRemarkChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Boolean IsLeft
+        {
+            get
+            {
+                return _IsLeft;
+            }
+            set
+            {
+                OnIsLeftChanging(value);
+                ReportPropertyChanging("IsLeft");
+                _IsLeft = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("IsLeft");
+                OnIsLeftChanged();
+            }
+        }
+        private global::System.Boolean _IsLeft;
+        partial void OnIsLeftChanging(global::System.Boolean value);
+        partial void OnIsLeftChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Guid> ParentId
+        {
+            get
+            {
+                return _ParentId;
+            }
+            set
+            {
+                OnParentIdChanging(value);
+                ReportPropertyChanging("ParentId");
+                _ParentId = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ParentId");
+                OnParentIdChanged();
+            }
+        }
+        private Nullable<global::System.Guid> _ParentId;
+        partial void OnParentIdChanging(Nullable<global::System.Guid> value);
+        partial void OnParentIdChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> PrivilegeDesc
+        {
+            get
+            {
+                return _PrivilegeDesc;
+            }
+            set
+            {
+                OnPrivilegeDescChanging(value);
+                ReportPropertyChanging("PrivilegeDesc");
+                _PrivilegeDesc = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("PrivilegeDesc");
+                OnPrivilegeDescChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _PrivilegeDesc;
+        partial void OnPrivilegeDescChanging(Nullable<global::System.Int32> value);
+        partial void OnPrivilegeDescChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String URL
+        {
+            get
+            {
+                return _URL;
+            }
+            set
+            {
+                OnURLChanging(value);
+                ReportPropertyChanging("URL");
+                _URL = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("URL");
+                OnURLChanged();
+            }
+        }
+        private global::System.String _URL;
+        partial void OnURLChanging(global::System.String value);
+        partial void OnURLChanged();
 
         #endregion
     
@@ -1198,18 +1372,18 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Model
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("MYGGGETSModel", "FK_PRIVILEG_REFERENCE_APPMODUL", "Privilege")]
-        public EntityCollection<Privilege> Privileges
+        [EdmRelationshipNavigationPropertyAttribute("MYGGGETSModel", "FK_PRIVILEG_REFERENCE_APPMODUL", "Role_Privilege")]
+        public EntityCollection<Role_Privilege> Role_Privilege
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Privilege>("MYGGGETSModel.FK_PRIVILEG_REFERENCE_APPMODUL", "Privilege");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Role_Privilege>("MYGGGETSModel.FK_PRIVILEG_REFERENCE_APPMODUL", "Role_Privilege");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Privilege>("MYGGGETSModel.FK_PRIVILEG_REFERENCE_APPMODUL", "Privilege", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Role_Privilege>("MYGGGETSModel.FK_PRIVILEG_REFERENCE_APPMODUL", "Role_Privilege", value);
                 }
             }
         }
@@ -5985,270 +6159,6 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Model
     /// <summary>
     /// 没有元数据文档可用。
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="MYGGGETSModel", Name="Privilege")]
-    [Serializable()]
-    [DataContractAttribute(IsReference=true)]
-    public partial class Privilege : EntityObject
-    {
-        #region 工厂方法
-    
-        /// <summary>
-        /// 创建新的 Privilege 对象。
-        /// </summary>
-        /// <param name="privilegeID">PrivilegeID 属性的初始值。</param>
-        public static Privilege CreatePrivilege(global::System.Guid privilegeID)
-        {
-            Privilege privilege = new Privilege();
-            privilege.PrivilegeID = privilegeID;
-            return privilege;
-        }
-
-        #endregion
-        #region 基元属性
-    
-        /// <summary>
-        /// 没有元数据文档可用。
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.Guid PrivilegeID
-        {
-            get
-            {
-                return _PrivilegeID;
-            }
-            set
-            {
-                if (_PrivilegeID != value)
-                {
-                    OnPrivilegeIDChanging(value);
-                    ReportPropertyChanging("PrivilegeID");
-                    _PrivilegeID = StructuralObject.SetValidValue(value);
-                    ReportPropertyChanged("PrivilegeID");
-                    OnPrivilegeIDChanged();
-                }
-            }
-        }
-        private global::System.Guid _PrivilegeID;
-        partial void OnPrivilegeIDChanging(global::System.Guid value);
-        partial void OnPrivilegeIDChanged();
-    
-        /// <summary>
-        /// 没有元数据文档可用。
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public global::System.String DisplayName
-        {
-            get
-            {
-                return _DisplayName;
-            }
-            set
-            {
-                OnDisplayNameChanging(value);
-                ReportPropertyChanging("DisplayName");
-                _DisplayName = StructuralObject.SetValidValue(value, true);
-                ReportPropertyChanged("DisplayName");
-                OnDisplayNameChanged();
-            }
-        }
-        private global::System.String _DisplayName;
-        partial void OnDisplayNameChanging(global::System.String value);
-        partial void OnDisplayNameChanged();
-    
-        /// <summary>
-        /// 没有元数据文档可用。
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public global::System.String Name
-        {
-            get
-            {
-                return _Name;
-            }
-            set
-            {
-                OnNameChanging(value);
-                ReportPropertyChanging("Name");
-                _Name = StructuralObject.SetValidValue(value, true);
-                ReportPropertyChanged("Name");
-                OnNameChanged();
-            }
-        }
-        private global::System.String _Name;
-        partial void OnNameChanging(global::System.String value);
-        partial void OnNameChanged();
-    
-        /// <summary>
-        /// 没有元数据文档可用。
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public Nullable<global::System.Guid> ModuleID
-        {
-            get
-            {
-                return _ModuleID;
-            }
-            set
-            {
-                OnModuleIDChanging(value);
-                ReportPropertyChanging("ModuleID");
-                _ModuleID = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("ModuleID");
-                OnModuleIDChanged();
-            }
-        }
-        private Nullable<global::System.Guid> _ModuleID;
-        partial void OnModuleIDChanging(Nullable<global::System.Guid> value);
-        partial void OnModuleIDChanged();
-    
-        /// <summary>
-        /// 没有元数据文档可用。
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public global::System.String UrlAdress
-        {
-            get
-            {
-                return _UrlAdress;
-            }
-            set
-            {
-                OnUrlAdressChanging(value);
-                ReportPropertyChanging("UrlAdress");
-                _UrlAdress = StructuralObject.SetValidValue(value, true);
-                ReportPropertyChanged("UrlAdress");
-                OnUrlAdressChanged();
-            }
-        }
-        private global::System.String _UrlAdress;
-        partial void OnUrlAdressChanging(global::System.String value);
-        partial void OnUrlAdressChanged();
-    
-        /// <summary>
-        /// 没有元数据文档可用。
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public global::System.String PrivilegeDesc
-        {
-            get
-            {
-                return _PrivilegeDesc;
-            }
-            set
-            {
-                OnPrivilegeDescChanging(value);
-                ReportPropertyChanging("PrivilegeDesc");
-                _PrivilegeDesc = StructuralObject.SetValidValue(value, true);
-                ReportPropertyChanged("PrivilegeDesc");
-                OnPrivilegeDescChanged();
-            }
-        }
-        private global::System.String _PrivilegeDesc;
-        partial void OnPrivilegeDescChanging(global::System.String value);
-        partial void OnPrivilegeDescChanged();
-    
-        /// <summary>
-        /// 没有元数据文档可用。
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public Nullable<global::System.DateTime> CreateTime
-        {
-            get
-            {
-                return _CreateTime;
-            }
-            set
-            {
-                OnCreateTimeChanging(value);
-                ReportPropertyChanging("CreateTime");
-                _CreateTime = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("CreateTime");
-                OnCreateTimeChanged();
-            }
-        }
-        private Nullable<global::System.DateTime> _CreateTime;
-        partial void OnCreateTimeChanging(Nullable<global::System.DateTime> value);
-        partial void OnCreateTimeChanged();
-    
-        /// <summary>
-        /// 没有元数据文档可用。
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public global::System.String Remark
-        {
-            get
-            {
-                return _Remark;
-            }
-            set
-            {
-                OnRemarkChanging(value);
-                ReportPropertyChanging("Remark");
-                _Remark = StructuralObject.SetValidValue(value, true);
-                ReportPropertyChanged("Remark");
-                OnRemarkChanged();
-            }
-        }
-        private global::System.String _Remark;
-        partial void OnRemarkChanging(global::System.String value);
-        partial void OnRemarkChanged();
-
-        #endregion
-    
-        #region 导航属性
-    
-        /// <summary>
-        /// 没有元数据文档可用。
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("MYGGGETSModel", "FK_PRIVILEG_REFERENCE_APPMODUL", "AppModule")]
-        public AppModule AppModule
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<AppModule>("MYGGGETSModel.FK_PRIVILEG_REFERENCE_APPMODUL", "AppModule").Value;
-            }
-            set
-            {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<AppModule>("MYGGGETSModel.FK_PRIVILEG_REFERENCE_APPMODUL", "AppModule").Value = value;
-            }
-        }
-        /// <summary>
-        /// 没有元数据文档可用。
-        /// </summary>
-        [BrowsableAttribute(false)]
-        [DataMemberAttribute()]
-        public EntityReference<AppModule> AppModuleReference
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<AppModule>("MYGGGETSModel.FK_PRIVILEG_REFERENCE_APPMODUL", "AppModule");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<AppModule>("MYGGGETSModel.FK_PRIVILEG_REFERENCE_APPMODUL", "AppModule", value);
-                }
-            }
-        }
-
-        #endregion
-    }
-    
-    /// <summary>
-    /// 没有元数据文档可用。
-    /// </summary>
     [EdmEntityTypeAttribute(NamespaceName="MYGGGETSModel", Name="RegionCode")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
@@ -6377,6 +6287,1256 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Model
 
         #endregion
     
+    }
+    
+    /// <summary>
+    /// 没有元数据文档可用。
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="MYGGGETSModel", Name="Role")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class Role : EntityObject
+    {
+        #region 工厂方法
+    
+        /// <summary>
+        /// 创建新的 Role 对象。
+        /// </summary>
+        /// <param name="roleID">RoleID 属性的初始值。</param>
+        /// <param name="status">Status 属性的初始值。</param>
+        public static Role CreateRole(global::System.Guid roleID, global::System.Int32 status)
+        {
+            Role role = new Role();
+            role.RoleID = roleID;
+            role.Status = status;
+            return role;
+        }
+
+        #endregion
+        #region 基元属性
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Guid RoleID
+        {
+            get
+            {
+                return _RoleID;
+            }
+            set
+            {
+                if (_RoleID != value)
+                {
+                    OnRoleIDChanging(value);
+                    ReportPropertyChanging("RoleID");
+                    _RoleID = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("RoleID");
+                    OnRoleIDChanged();
+                }
+            }
+        }
+        private global::System.Guid _RoleID;
+        partial void OnRoleIDChanging(global::System.Guid value);
+        partial void OnRoleIDChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Name
+        {
+            get
+            {
+                return _Name;
+            }
+            set
+            {
+                OnNameChanging(value);
+                ReportPropertyChanging("Name");
+                _Name = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Name");
+                OnNameChanged();
+            }
+        }
+        private global::System.String _Name;
+        partial void OnNameChanging(global::System.String value);
+        partial void OnNameChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 Status
+        {
+            get
+            {
+                return _Status;
+            }
+            set
+            {
+                OnStatusChanging(value);
+                ReportPropertyChanging("Status");
+                _Status = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Status");
+                OnStatusChanged();
+            }
+        }
+        private global::System.Int32 _Status;
+        partial void OnStatusChanging(global::System.Int32 value);
+        partial void OnStatusChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Description
+        {
+            get
+            {
+                return _Description;
+            }
+            set
+            {
+                OnDescriptionChanging(value);
+                ReportPropertyChanging("Description");
+                _Description = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Description");
+                OnDescriptionChanged();
+            }
+        }
+        private global::System.String _Description;
+        partial void OnDescriptionChanging(global::System.String value);
+        partial void OnDescriptionChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> CreateTime
+        {
+            get
+            {
+                return _CreateTime;
+            }
+            set
+            {
+                OnCreateTimeChanging(value);
+                ReportPropertyChanging("CreateTime");
+                _CreateTime = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("CreateTime");
+                OnCreateTimeChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _CreateTime;
+        partial void OnCreateTimeChanging(Nullable<global::System.DateTime> value);
+        partial void OnCreateTimeChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> LastUpdateTime
+        {
+            get
+            {
+                return _LastUpdateTime;
+            }
+            set
+            {
+                OnLastUpdateTimeChanging(value);
+                ReportPropertyChanging("LastUpdateTime");
+                _LastUpdateTime = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("LastUpdateTime");
+                OnLastUpdateTimeChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _LastUpdateTime;
+        partial void OnLastUpdateTimeChanging(Nullable<global::System.DateTime> value);
+        partial void OnLastUpdateTimeChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String UpdateId
+        {
+            get
+            {
+                return _UpdateId;
+            }
+            set
+            {
+                OnUpdateIdChanging(value);
+                ReportPropertyChanging("UpdateId");
+                _UpdateId = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("UpdateId");
+                OnUpdateIdChanged();
+            }
+        }
+        private global::System.String _UpdateId;
+        partial void OnUpdateIdChanging(global::System.String value);
+        partial void OnUpdateIdChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Remark
+        {
+            get
+            {
+                return _Remark;
+            }
+            set
+            {
+                OnRemarkChanging(value);
+                ReportPropertyChanging("Remark");
+                _Remark = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Remark");
+                OnRemarkChanged();
+            }
+        }
+        private global::System.String _Remark;
+        partial void OnRemarkChanging(global::System.String value);
+        partial void OnRemarkChanged();
+
+        #endregion
+    
+        #region 导航属性
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("MYGGGETSModel", "FK_Role_Privilege_Role", "Role_Privilege")]
+        public EntityCollection<Role_Privilege> Role_Privilege
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Role_Privilege>("MYGGGETSModel.FK_Role_Privilege_Role", "Role_Privilege");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Role_Privilege>("MYGGGETSModel.FK_Role_Privilege_Role", "Role_Privilege", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("MYGGGETSModel", "FK_SysUser_Role", "SysUser")]
+        public EntityCollection<SysUser> SysUser
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<SysUser>("MYGGGETSModel.FK_SysUser_Role", "SysUser");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<SysUser>("MYGGGETSModel.FK_SysUser_Role", "SysUser", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("MYGGGETSModel", "FK_SysUser_Role_Role", "SysUser_Role")]
+        public EntityCollection<SysUser_Role> SysUser_Role
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<SysUser_Role>("MYGGGETSModel.FK_SysUser_Role_Role", "SysUser_Role");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<SysUser_Role>("MYGGGETSModel.FK_SysUser_Role_Role", "SysUser_Role", value);
+                }
+            }
+        }
+
+        #endregion
+    }
+    
+    /// <summary>
+    /// 没有元数据文档可用。
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="MYGGGETSModel", Name="Role_Privilege")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class Role_Privilege : EntityObject
+    {
+        #region 工厂方法
+    
+        /// <summary>
+        /// 创建新的 Role_Privilege 对象。
+        /// </summary>
+        /// <param name="role_PrivilegeID">Role_PrivilegeID 属性的初始值。</param>
+        /// <param name="privilegeDesc">PrivilegeDesc 属性的初始值。</param>
+        /// <param name="createTime">CreateTime 属性的初始值。</param>
+        public static Role_Privilege CreateRole_Privilege(global::System.Guid role_PrivilegeID, global::System.Int32 privilegeDesc, global::System.DateTime createTime)
+        {
+            Role_Privilege role_Privilege = new Role_Privilege();
+            role_Privilege.Role_PrivilegeID = role_PrivilegeID;
+            role_Privilege.PrivilegeDesc = privilegeDesc;
+            role_Privilege.CreateTime = createTime;
+            return role_Privilege;
+        }
+
+        #endregion
+        #region 基元属性
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Guid Role_PrivilegeID
+        {
+            get
+            {
+                return _Role_PrivilegeID;
+            }
+            set
+            {
+                if (_Role_PrivilegeID != value)
+                {
+                    OnRole_PrivilegeIDChanging(value);
+                    ReportPropertyChanging("Role_PrivilegeID");
+                    _Role_PrivilegeID = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("Role_PrivilegeID");
+                    OnRole_PrivilegeIDChanged();
+                }
+            }
+        }
+        private global::System.Guid _Role_PrivilegeID;
+        partial void OnRole_PrivilegeIDChanging(global::System.Guid value);
+        partial void OnRole_PrivilegeIDChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Guid> ModuleID
+        {
+            get
+            {
+                return _ModuleID;
+            }
+            set
+            {
+                OnModuleIDChanging(value);
+                ReportPropertyChanging("ModuleID");
+                _ModuleID = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ModuleID");
+                OnModuleIDChanged();
+            }
+        }
+        private Nullable<global::System.Guid> _ModuleID;
+        partial void OnModuleIDChanging(Nullable<global::System.Guid> value);
+        partial void OnModuleIDChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 PrivilegeDesc
+        {
+            get
+            {
+                return _PrivilegeDesc;
+            }
+            set
+            {
+                OnPrivilegeDescChanging(value);
+                ReportPropertyChanging("PrivilegeDesc");
+                _PrivilegeDesc = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("PrivilegeDesc");
+                OnPrivilegeDescChanged();
+            }
+        }
+        private global::System.Int32 _PrivilegeDesc;
+        partial void OnPrivilegeDescChanging(global::System.Int32 value);
+        partial void OnPrivilegeDescChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.DateTime CreateTime
+        {
+            get
+            {
+                return _CreateTime;
+            }
+            set
+            {
+                OnCreateTimeChanging(value);
+                ReportPropertyChanging("CreateTime");
+                _CreateTime = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("CreateTime");
+                OnCreateTimeChanged();
+            }
+        }
+        private global::System.DateTime _CreateTime;
+        partial void OnCreateTimeChanging(global::System.DateTime value);
+        partial void OnCreateTimeChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Remark
+        {
+            get
+            {
+                return _Remark;
+            }
+            set
+            {
+                OnRemarkChanging(value);
+                ReportPropertyChanging("Remark");
+                _Remark = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Remark");
+                OnRemarkChanged();
+            }
+        }
+        private global::System.String _Remark;
+        partial void OnRemarkChanging(global::System.String value);
+        partial void OnRemarkChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Guid> RoleID
+        {
+            get
+            {
+                return _RoleID;
+            }
+            set
+            {
+                OnRoleIDChanging(value);
+                ReportPropertyChanging("RoleID");
+                _RoleID = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("RoleID");
+                OnRoleIDChanged();
+            }
+        }
+        private Nullable<global::System.Guid> _RoleID;
+        partial void OnRoleIDChanging(Nullable<global::System.Guid> value);
+        partial void OnRoleIDChanged();
+
+        #endregion
+    
+        #region 导航属性
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("MYGGGETSModel", "FK_PRIVILEG_REFERENCE_APPMODUL", "AppModule")]
+        public AppModule AppModule
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<AppModule>("MYGGGETSModel.FK_PRIVILEG_REFERENCE_APPMODUL", "AppModule").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<AppModule>("MYGGGETSModel.FK_PRIVILEG_REFERENCE_APPMODUL", "AppModule").Value = value;
+            }
+        }
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<AppModule> AppModuleReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<AppModule>("MYGGGETSModel.FK_PRIVILEG_REFERENCE_APPMODUL", "AppModule");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<AppModule>("MYGGGETSModel.FK_PRIVILEG_REFERENCE_APPMODUL", "AppModule", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("MYGGGETSModel", "FK_Role_Privilege_Role", "Role")]
+        public Role Role
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Role>("MYGGGETSModel.FK_Role_Privilege_Role", "Role").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Role>("MYGGGETSModel.FK_Role_Privilege_Role", "Role").Value = value;
+            }
+        }
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<Role> RoleReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Role>("MYGGGETSModel.FK_Role_Privilege_Role", "Role");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Role>("MYGGGETSModel.FK_Role_Privilege_Role", "Role", value);
+                }
+            }
+        }
+
+        #endregion
+    }
+    
+    /// <summary>
+    /// 没有元数据文档可用。
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="MYGGGETSModel", Name="SysUser")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class SysUser : EntityObject
+    {
+        #region 工厂方法
+    
+        /// <summary>
+        /// 创建新的 SysUser 对象。
+        /// </summary>
+        /// <param name="uID">UID 属性的初始值。</param>
+        /// <param name="loginName">LoginName 属性的初始值。</param>
+        /// <param name="password">Password 属性的初始值。</param>
+        /// <param name="realName">RealName 属性的初始值。</param>
+        /// <param name="updateTime">UpdateTime 属性的初始值。</param>
+        /// <param name="createTime">CreateTime 属性的初始值。</param>
+        /// <param name="operator">Operator 属性的初始值。</param>
+        /// <param name="status">Status 属性的初始值。</param>
+        public static SysUser CreateSysUser(global::System.Guid uID, global::System.String loginName, global::System.String password, global::System.String realName, global::System.DateTime updateTime, global::System.DateTime createTime, global::System.String @operator, global::System.Int32 status)
+        {
+            SysUser sysUser = new SysUser();
+            sysUser.UID = uID;
+            sysUser.LoginName = loginName;
+            sysUser.Password = password;
+            sysUser.RealName = realName;
+            sysUser.UpdateTime = updateTime;
+            sysUser.CreateTime = createTime;
+            sysUser.Operator = @operator;
+            sysUser.Status = status;
+            return sysUser;
+        }
+
+        #endregion
+        #region 基元属性
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Guid UID
+        {
+            get
+            {
+                return _UID;
+            }
+            set
+            {
+                if (_UID != value)
+                {
+                    OnUIDChanging(value);
+                    ReportPropertyChanging("UID");
+                    _UID = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("UID");
+                    OnUIDChanged();
+                }
+            }
+        }
+        private global::System.Guid _UID;
+        partial void OnUIDChanging(global::System.Guid value);
+        partial void OnUIDChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String LoginName
+        {
+            get
+            {
+                return _LoginName;
+            }
+            set
+            {
+                OnLoginNameChanging(value);
+                ReportPropertyChanging("LoginName");
+                _LoginName = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("LoginName");
+                OnLoginNameChanged();
+            }
+        }
+        private global::System.String _LoginName;
+        partial void OnLoginNameChanging(global::System.String value);
+        partial void OnLoginNameChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Password
+        {
+            get
+            {
+                return _Password;
+            }
+            set
+            {
+                OnPasswordChanging(value);
+                ReportPropertyChanging("Password");
+                _Password = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Password");
+                OnPasswordChanged();
+            }
+        }
+        private global::System.String _Password;
+        partial void OnPasswordChanging(global::System.String value);
+        partial void OnPasswordChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String RealName
+        {
+            get
+            {
+                return _RealName;
+            }
+            set
+            {
+                OnRealNameChanging(value);
+                ReportPropertyChanging("RealName");
+                _RealName = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("RealName");
+                OnRealNameChanged();
+            }
+        }
+        private global::System.String _RealName;
+        partial void OnRealNameChanging(global::System.String value);
+        partial void OnRealNameChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Email
+        {
+            get
+            {
+                return _Email;
+            }
+            set
+            {
+                OnEmailChanging(value);
+                ReportPropertyChanging("Email");
+                _Email = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Email");
+                OnEmailChanged();
+            }
+        }
+        private global::System.String _Email;
+        partial void OnEmailChanging(global::System.String value);
+        partial void OnEmailChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Phone
+        {
+            get
+            {
+                return _Phone;
+            }
+            set
+            {
+                OnPhoneChanging(value);
+                ReportPropertyChanging("Phone");
+                _Phone = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Phone");
+                OnPhoneChanged();
+            }
+        }
+        private global::System.String _Phone;
+        partial void OnPhoneChanging(global::System.String value);
+        partial void OnPhoneChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.DateTime UpdateTime
+        {
+            get
+            {
+                return _UpdateTime;
+            }
+            set
+            {
+                OnUpdateTimeChanging(value);
+                ReportPropertyChanging("UpdateTime");
+                _UpdateTime = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("UpdateTime");
+                OnUpdateTimeChanged();
+            }
+        }
+        private global::System.DateTime _UpdateTime;
+        partial void OnUpdateTimeChanging(global::System.DateTime value);
+        partial void OnUpdateTimeChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.DateTime CreateTime
+        {
+            get
+            {
+                return _CreateTime;
+            }
+            set
+            {
+                OnCreateTimeChanging(value);
+                ReportPropertyChanging("CreateTime");
+                _CreateTime = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("CreateTime");
+                OnCreateTimeChanged();
+            }
+        }
+        private global::System.DateTime _CreateTime;
+        partial void OnCreateTimeChanging(global::System.DateTime value);
+        partial void OnCreateTimeChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Operator
+        {
+            get
+            {
+                return _Operator;
+            }
+            set
+            {
+                OnOperatorChanging(value);
+                ReportPropertyChanging("Operator");
+                _Operator = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Operator");
+                OnOperatorChanged();
+            }
+        }
+        private global::System.String _Operator;
+        partial void OnOperatorChanging(global::System.String value);
+        partial void OnOperatorChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Remark
+        {
+            get
+            {
+                return _Remark;
+            }
+            set
+            {
+                OnRemarkChanging(value);
+                ReportPropertyChanging("Remark");
+                _Remark = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Remark");
+                OnRemarkChanged();
+            }
+        }
+        private global::System.String _Remark;
+        partial void OnRemarkChanging(global::System.String value);
+        partial void OnRemarkChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 Status
+        {
+            get
+            {
+                return _Status;
+            }
+            set
+            {
+                OnStatusChanging(value);
+                ReportPropertyChanging("Status");
+                _Status = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Status");
+                OnStatusChanged();
+            }
+        }
+        private global::System.Int32 _Status;
+        partial void OnStatusChanging(global::System.Int32 value);
+        partial void OnStatusChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Guid> DepartmentID
+        {
+            get
+            {
+                return _DepartmentID;
+            }
+            set
+            {
+                OnDepartmentIDChanging(value);
+                ReportPropertyChanging("DepartmentID");
+                _DepartmentID = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("DepartmentID");
+                OnDepartmentIDChanged();
+            }
+        }
+        private Nullable<global::System.Guid> _DepartmentID;
+        partial void OnDepartmentIDChanging(Nullable<global::System.Guid> value);
+        partial void OnDepartmentIDChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Guid> RoleID
+        {
+            get
+            {
+                return _RoleID;
+            }
+            set
+            {
+                OnRoleIDChanging(value);
+                ReportPropertyChanging("RoleID");
+                _RoleID = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("RoleID");
+                OnRoleIDChanged();
+            }
+        }
+        private Nullable<global::System.Guid> _RoleID;
+        partial void OnRoleIDChanging(Nullable<global::System.Guid> value);
+        partial void OnRoleIDChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String CountryCode
+        {
+            get
+            {
+                return _CountryCode;
+            }
+            set
+            {
+                OnCountryCodeChanging(value);
+                ReportPropertyChanging("CountryCode");
+                _CountryCode = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("CountryCode");
+                OnCountryCodeChanged();
+            }
+        }
+        private global::System.String _CountryCode;
+        partial void OnCountryCodeChanging(global::System.String value);
+        partial void OnCountryCodeChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String RegionCode
+        {
+            get
+            {
+                return _RegionCode;
+            }
+            set
+            {
+                OnRegionCodeChanging(value);
+                ReportPropertyChanging("RegionCode");
+                _RegionCode = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("RegionCode");
+                OnRegionCodeChanged();
+            }
+        }
+        private global::System.String _RegionCode;
+        partial void OnRegionCodeChanging(global::System.String value);
+        partial void OnRegionCodeChanged();
+
+        #endregion
+    
+        #region 导航属性
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("MYGGGETSModel", "FK_SysUser_Role", "Role")]
+        public Role Role
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Role>("MYGGGETSModel.FK_SysUser_Role", "Role").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Role>("MYGGGETSModel.FK_SysUser_Role", "Role").Value = value;
+            }
+        }
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<Role> RoleReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Role>("MYGGGETSModel.FK_SysUser_Role", "Role");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Role>("MYGGGETSModel.FK_SysUser_Role", "Role", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("MYGGGETSModel", "FK_SysUser_Role_SysUser", "SysUser_Role")]
+        public EntityCollection<SysUser_Role> SysUser_Role
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<SysUser_Role>("MYGGGETSModel.FK_SysUser_Role_SysUser", "SysUser_Role");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<SysUser_Role>("MYGGGETSModel.FK_SysUser_Role_SysUser", "SysUser_Role", value);
+                }
+            }
+        }
+
+        #endregion
+    }
+    
+    /// <summary>
+    /// 没有元数据文档可用。
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="MYGGGETSModel", Name="SysUser_Role")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class SysUser_Role : EntityObject
+    {
+        #region 工厂方法
+    
+        /// <summary>
+        /// 创建新的 SysUser_Role 对象。
+        /// </summary>
+        /// <param name="sysUser_RoleID">SysUser_RoleID 属性的初始值。</param>
+        public static SysUser_Role CreateSysUser_Role(global::System.Guid sysUser_RoleID)
+        {
+            SysUser_Role sysUser_Role = new SysUser_Role();
+            sysUser_Role.SysUser_RoleID = sysUser_RoleID;
+            return sysUser_Role;
+        }
+
+        #endregion
+        #region 基元属性
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Guid SysUser_RoleID
+        {
+            get
+            {
+                return _SysUser_RoleID;
+            }
+            set
+            {
+                if (_SysUser_RoleID != value)
+                {
+                    OnSysUser_RoleIDChanging(value);
+                    ReportPropertyChanging("SysUser_RoleID");
+                    _SysUser_RoleID = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("SysUser_RoleID");
+                    OnSysUser_RoleIDChanged();
+                }
+            }
+        }
+        private global::System.Guid _SysUser_RoleID;
+        partial void OnSysUser_RoleIDChanging(global::System.Guid value);
+        partial void OnSysUser_RoleIDChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Guid> RoleID
+        {
+            get
+            {
+                return _RoleID;
+            }
+            set
+            {
+                OnRoleIDChanging(value);
+                ReportPropertyChanging("RoleID");
+                _RoleID = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("RoleID");
+                OnRoleIDChanged();
+            }
+        }
+        private Nullable<global::System.Guid> _RoleID;
+        partial void OnRoleIDChanging(Nullable<global::System.Guid> value);
+        partial void OnRoleIDChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Guid> UID
+        {
+            get
+            {
+                return _UID;
+            }
+            set
+            {
+                OnUIDChanging(value);
+                ReportPropertyChanging("UID");
+                _UID = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("UID");
+                OnUIDChanged();
+            }
+        }
+        private Nullable<global::System.Guid> _UID;
+        partial void OnUIDChanging(Nullable<global::System.Guid> value);
+        partial void OnUIDChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> LastUpdateTime
+        {
+            get
+            {
+                return _LastUpdateTime;
+            }
+            set
+            {
+                OnLastUpdateTimeChanging(value);
+                ReportPropertyChanging("LastUpdateTime");
+                _LastUpdateTime = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("LastUpdateTime");
+                OnLastUpdateTimeChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _LastUpdateTime;
+        partial void OnLastUpdateTimeChanging(Nullable<global::System.DateTime> value);
+        partial void OnLastUpdateTimeChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Remark
+        {
+            get
+            {
+                return _Remark;
+            }
+            set
+            {
+                OnRemarkChanging(value);
+                ReportPropertyChanging("Remark");
+                _Remark = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Remark");
+                OnRemarkChanged();
+            }
+        }
+        private global::System.String _Remark;
+        partial void OnRemarkChanging(global::System.String value);
+        partial void OnRemarkChanged();
+
+        #endregion
+    
+        #region 导航属性
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("MYGGGETSModel", "FK_SysUser_Role_Role", "Role")]
+        public Role Role
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Role>("MYGGGETSModel.FK_SysUser_Role_Role", "Role").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Role>("MYGGGETSModel.FK_SysUser_Role_Role", "Role").Value = value;
+            }
+        }
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<Role> RoleReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Role>("MYGGGETSModel.FK_SysUser_Role_Role", "Role");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Role>("MYGGGETSModel.FK_SysUser_Role_Role", "Role", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("MYGGGETSModel", "FK_SysUser_Role_SysUser", "SysUser")]
+        public SysUser SysUser
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<SysUser>("MYGGGETSModel.FK_SysUser_Role_SysUser", "SysUser").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<SysUser>("MYGGGETSModel.FK_SysUser_Role_SysUser", "SysUser").Value = value;
+            }
+        }
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<SysUser> SysUserReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<SysUser>("MYGGGETSModel.FK_SysUser_Role_SysUser", "SysUser");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<SysUser>("MYGGGETSModel.FK_SysUser_Role_SysUser", "SysUser", value);
+                }
+            }
+        }
+
+        #endregion
     }
     
     /// <summary>

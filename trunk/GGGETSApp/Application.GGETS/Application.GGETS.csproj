@@ -86,6 +86,12 @@
     <Compile Include="PrintTemplate\ParamManagementService.cs" />
     <Compile Include="PrintTemplate\SQLHelper.cs" />
     <Compile Include="PrintTemplate\TemplateManagementService.cs" />
+    <Compile Include="Privilege\AppModuleManagementService.cs" />
+    <Compile Include="Privilege\IAppModuleManagementService.cs" />
+    <Compile Include="Privilege\IRoleManagementService.cs" />
+    <Compile Include="Privilege\ISysUserManagementService.cs" />
+    <Compile Include="Privilege\RoleManagementService.cs" />
+    <Compile Include="Privilege\SysUserManagementService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />

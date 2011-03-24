@@ -125,10 +125,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Account\AddUser.aspx" />
     <Content Include="Account\ChangePassword.aspx" />
     <Content Include="Account\ChangePasswordSuccess.aspx" />
     <Content Include="Account\Login.aspx" />
     <Content Include="Account\Register.aspx" />
+    <Content Include="Account\UserManager.aspx" />
     <Content Include="AddressBookManage\AddressBookAdd.aspx" />
     <Content Include="AddressBookManage\AddressBookDetails.aspx" />
     <Content Include="AddressBookManage\AddressBookManagemnet.aspx" />
@@ -204,6 +206,13 @@
     <Content Include="Scripts\jquery-1.4.1-vsdoc.js" />
     <Content Include="Scripts\jquery-1.4.1.js" />
     <Content Include="Scripts\jquery-1.4.1.min.js" />
+    <Content Include="SysManager\AddAppModule.aspx" />
+    <Content Include="SysManager\AddRole.aspx" />
+    <Content Include="SysManager\AddRolePrivilege.aspx" />
+    <Content Include="SysManager\AddRoleUser.aspx" />
+    <Content Include="SysManager\AddRole_Privilege.aspx" />
+    <Content Include="SysManager\AppModuleManagement.aspx" />
+    <Content Include="SysManager\RoleManagement.aspx" />
     <Content Include="UserMenu\a8a1b9e4-9402-455d-b109-91a155588689Menu.xml" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -216,6 +225,13 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Account\AddUser.aspx.cs">
+      <DependentUpon>AddUser.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\AddUser.aspx.designer.cs">
+      <DependentUpon>AddUser.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Account\ChangePassword.aspx.cs">
       <DependentUpon>ChangePassword.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -243,6 +259,13 @@
     </Compile>
     <Compile Include="Account\Register.aspx.designer.cs">
       <DependentUpon>Register.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\UserManager.aspx.cs">
+      <DependentUpon>UserManager.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\UserManager.aspx.designer.cs">
+      <DependentUpon>UserManager.aspx</DependentUpon>
     </Compile>
     <Compile Include="AddressBookManage\AddressBookAdd.aspx.cs">
       <DependentUpon>AddressBookAdd.aspx</DependentUpon>
@@ -276,6 +299,8 @@
       <DependentUpon>AutoCountryCode.asmx</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Common\DataBindHelper .cs" />
+    <Compile Include="Common\DataConversion .cs" />
     <Compile Include="Common\NPOIHelper.cs" />
     <Compile Include="CountryZiMaManage\TwoZiMaAdd.aspx.cs">
       <DependentUpon>TwoZiMaAdd.aspx</DependentUpon>
@@ -543,24 +568,28 @@
     </Compile>
     <Compile Include="ProductManage\ProductAdd.aspx.cs">
       <DependentUpon>ProductAdd.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="ProductManage\ProductAdd.aspx.designer.cs">
       <DependentUpon>ProductAdd.aspx</DependentUpon>
     </Compile>
     <Compile Include="ProductManage\ProductDetails.aspx.cs">
       <DependentUpon>ProductDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="ProductManage\ProductDetails.aspx.designer.cs">
       <DependentUpon>ProductDetails.aspx</DependentUpon>
     </Compile>
     <Compile Include="ProductManage\ProductManagemnet.aspx.cs">
       <DependentUpon>ProductManagemnet.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="ProductManage\ProductManagemnet.aspx.designer.cs">
       <DependentUpon>ProductManagemnet.aspx</DependentUpon>
     </Compile>
     <Compile Include="ProductManage\ProductModify.aspx.cs">
       <DependentUpon>ProductModify.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="ProductManage\ProductModify.aspx.designer.cs">
       <DependentUpon>ProductModify.aspx</DependentUpon>
@@ -587,7 +616,48 @@
     <Compile Include="Site1.Master.designer.cs">
       <DependentUpon>Site1.Master</DependentUpon>
     </Compile>
-    <Compile Include="xmlHelp.cs" />
+    <Compile Include="SysManager\AddAppModule.aspx.cs">
+      <DependentUpon>AddAppModule.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SysManager\AddAppModule.aspx.designer.cs">
+      <DependentUpon>AddAppModule.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SysManager\AddRole.aspx.cs">
+      <DependentUpon>AddRole.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SysManager\AddRole.aspx.designer.cs">
+      <DependentUpon>AddRole.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SysManager\AddRolePrivilege.aspx.cs">
+      <DependentUpon>AddRolePrivilege.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SysManager\AddRolePrivilege.aspx.designer.cs">
+      <DependentUpon>AddRolePrivilege.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SysManager\AddRoleUser.aspx.cs">
+      <DependentUpon>AddRoleUser.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SysManager\AddRoleUser.aspx.designer.cs">
+      <DependentUpon>AddRoleUser.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SysManager\AddRole_Privilege.aspx.cs">
+      <DependentUpon>AddRole_Privilege.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SysManager\AddRole_Privilege.aspx.designer.cs">
+      <DependentUpon>AddRole_Privilege.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SysManager\AppModuleManagement.aspx.cs">
+      <DependentUpon>AppModuleManagement.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SysManager\AppModuleManagement.aspx.designer.cs">
+      <DependentUpon>AppModuleManagement.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SysManager\RoleManagement.aspx.cs">
+      <DependentUpon>RoleManagement.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SysManager\RoleManagement.aspx.designer.cs">
+      <DependentUpon>RoleManagement.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

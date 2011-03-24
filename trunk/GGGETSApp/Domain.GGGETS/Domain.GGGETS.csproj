@@ -55,6 +55,9 @@
     <Compile Include="HS\IHSPropertyRepository.cs" />
     <Compile Include="PARAM\ICountryCodeRepository.cs" />
     <Compile Include="PARAM\IRegionCodeRepository.cs" />
+    <Compile Include="Privilege\IAppModuleRepository.cs" />
+    <Compile Include="Privilege\IRoleRepository.cs" />
+    <Compile Include="Privilege\ISysUserRepository.cs" />
     <Compile Include="TEMPLATE\IParamRepository.cs" />
     <Compile Include="TEMPLATE\ITemplateRepository.cs" />
   </ItemGroup>

@@ -151,8 +151,8 @@ namespace Application.GGETS.Tests
                 HSPID = Guid.NewGuid(),
                 PropertyName = "property10"
             };
-            product.HSProperty.Add(property01);
-            product.HSProperty.Add(property02);
+            //product.HSProperty.Add(property01);
+            //product.HSProperty.Add(property02);
             _HSProductManagementService.AddHSProduct(product);
         }
     }

@@ -41,9 +41,6 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.UnitOfWork
         IObjectSet<AddressBook> AddressBook{get;}
         
     
-        IObjectSet<AppModule> AppModule{get;}
-        
-    
         IObjectSet<Company> Company{get;}
         
     
@@ -71,9 +68,6 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.UnitOfWork
         IObjectSet<Param> Param{get;}
         
     
-        IObjectSet<Privilege> Privilege{get;}
-        
-    
         IObjectSet<RegionCode> RegionCode{get;}
         
     
@@ -90,6 +84,21 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.UnitOfWork
         
     
         IObjectSet<FindInfo> FindInfo{get;}
+        
+    
+        IObjectSet<AppModule> AppModule{get;}
+        
+    
+        IObjectSet<Role> Role{get;}
+        
+    
+        IObjectSet<Role_Privilege> Role_Privilege{get;}
+        
+    
+        IObjectSet<SysUser> SysUser{get;}
+        
+    
+        IObjectSet<SysUser_Role> SysUser_Role{get;}
         
 
         #endregion
