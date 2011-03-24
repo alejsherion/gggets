@@ -285,12 +285,6 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.UnitOfWork
         }
         private ObjectSet<AddressBook> _addressBook;
     
-        public IObjectSet<AppModule> AppModule
-        {
-            get { return _appModule  ?? (_appModule = CreateObjectSet<AppModule>("AppModule")); }
-        }
-        private ObjectSet<AppModule> _appModule;
-    
         public IObjectSet<Company> Company
         {
             get { return _company  ?? (_company = CreateObjectSet<Company>("Company")); }
@@ -345,12 +339,6 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.UnitOfWork
         }
         private ObjectSet<Param> _param;
     
-        public IObjectSet<Privilege> Privilege
-        {
-            get { return _privilege  ?? (_privilege = CreateObjectSet<Privilege>("Privilege")); }
-        }
-        private ObjectSet<Privilege> _privilege;
-    
         public IObjectSet<RegionCode> RegionCode
         {
             get { return _regionCode  ?? (_regionCode = CreateObjectSet<RegionCode>("RegionCode")); }
@@ -386,6 +374,36 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.UnitOfWork
             get { return _findInfo  ?? (_findInfo = CreateObjectSet<FindInfo>("FindInfo")); }
         }
         private ObjectSet<FindInfo> _findInfo;
+    
+        public IObjectSet<AppModule> AppModule
+        {
+            get { return _appModule  ?? (_appModule = CreateObjectSet<AppModule>("AppModule")); }
+        }
+        private ObjectSet<AppModule> _appModule;
+    
+        public IObjectSet<Role> Role
+        {
+            get { return _role  ?? (_role = CreateObjectSet<Role>("Role")); }
+        }
+        private ObjectSet<Role> _role;
+    
+        public IObjectSet<Role_Privilege> Role_Privilege
+        {
+            get { return _role_Privilege  ?? (_role_Privilege = CreateObjectSet<Role_Privilege>("Role_Privilege")); }
+        }
+        private ObjectSet<Role_Privilege> _role_Privilege;
+    
+        public IObjectSet<SysUser> SysUser
+        {
+            get { return _sysUser  ?? (_sysUser = CreateObjectSet<SysUser>("SysUser")); }
+        }
+        private ObjectSet<SysUser> _sysUser;
+    
+        public IObjectSet<SysUser_Role> SysUser_Role
+        {
+            get { return _sysUser_Role  ?? (_sysUser_Role = CreateObjectSet<SysUser_Role>("SysUser_Role")); }
+        }
+        private ObjectSet<SysUser_Role> _sysUser_Role;
 
         #endregion
     }

@@ -75,6 +75,7 @@
       <DependentUpon>GGGETSAppDataModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Repositories\AddressBookRepository.cs" />
+    <Compile Include="Repositories\AppModuleRepository.cs" />
     <Compile Include="Repositories\CompanyRepository.cs" />
     <Compile Include="Repositories\CountryCodeRepository.cs" />
     <Compile Include="Repositories\DepartmentRepository.cs" />
@@ -87,6 +88,8 @@
     <Compile Include="Repositories\PackageRepository.cs" />
     <Compile Include="Repositories\ParamRepository.cs" />
     <Compile Include="Repositories\RegionCodeRepository.cs" />
+    <Compile Include="Repositories\RoleRepository.cs" />
+    <Compile Include="Repositories\SysUserRepository.cs" />
     <Compile Include="Repositories\TemplateRepository.cs" />
     <Compile Include="Repositories\UserRepository.cs" />
     <Compile Include="UnitOfWork\GGGETSAppUnitOfWork.Context.Extensions.cs">

@@ -22,7 +22,7 @@ using ETS.GGGETSApp.Domain.Core.Entities;
 namespace ETS.GGGETSApp.Domain.Application.Entities
 {
     [DataContract(IsReference = true)]
-    [KnownType(typeof(Privilege))]
+    [KnownType(typeof(Role_Privilege))]
     [Serializable]
     [System.CodeDom.Compiler.GeneratedCode("STE-EF",".NET 4.0")]
     #if !SILVERLIGHT
@@ -95,44 +95,104 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
             }
         }
         private string _remark;
+    
+        [DataMember]
+        public bool IsLeft
+        {
+            get { return _isLeft; }
+            set
+            {
+                if (_isLeft != value)
+                {
+                    _isLeft = value;
+                    OnPropertyChanged("IsLeft");
+                }
+            }
+        }
+        private bool _isLeft;
+    
+        [DataMember]
+        public Nullable<System.Guid> ParentId
+        {
+            get { return _parentId; }
+            set
+            {
+                if (_parentId != value)
+                {
+                    _parentId = value;
+                    OnPropertyChanged("ParentId");
+                }
+            }
+        }
+        private Nullable<System.Guid> _parentId;
+    
+        [DataMember]
+        public Nullable<int> PrivilegeDesc
+        {
+            get { return _privilegeDesc; }
+            set
+            {
+                if (_privilegeDesc != value)
+                {
+                    _privilegeDesc = value;
+                    OnPropertyChanged("PrivilegeDesc");
+                }
+            }
+        }
+        private Nullable<int> _privilegeDesc;
+    
+        [DataMember]
+        public string URL
+        {
+            get { return _uRL; }
+            set
+            {
+                if (_uRL != value)
+                {
+                    _uRL = value;
+                    OnPropertyChanged("URL");
+                }
+            }
+        }
+        private string _uRL;
 
         #endregion
         #region Navigation Properties
     
         [DataMember]
-        public TrackableCollection<Privilege> Privileges
+        public TrackableCollection<Role_Privilege> Role_Privilege
         {
             get
             {
-                if (_privileges == null)
+                if (_role_Privilege == null)
                 {
-                    _privileges = new TrackableCollection<Privilege>();
-                    _privileges.CollectionChanged += FixupPrivileges;
+                    _role_Privilege = new TrackableCollection<Role_Privilege>();
+                    _role_Privilege.CollectionChanged += FixupRole_Privilege;
                 }
-                return _privileges;
+                return _role_Privilege;
             }
             set
             {
-                if (!ReferenceEquals(_privileges, value))
+                if (!ReferenceEquals(_role_Privilege, value))
                 {
                     if (ChangeTracker.ChangeTrackingEnabled)
                     {
                         throw new InvalidOperationException("Cannot set the FixupChangeTrackingCollection when ChangeTracking is enabled");
                     }
-                    if (_privileges != null)
+                    if (_role_Privilege != null)
                     {
-                        _privileges.CollectionChanged -= FixupPrivileges;
+                        _role_Privilege.CollectionChanged -= FixupRole_Privilege;
                     }
-                    _privileges = value;
-                    if (_privileges != null)
+                    _role_Privilege = value;
+                    if (_role_Privilege != null)
                     {
-                        _privileges.CollectionChanged += FixupPrivileges;
+                        _role_Privilege.CollectionChanged += FixupRole_Privilege;
                     }
-                    OnNavigationPropertyChanged("Privileges");
+                    OnNavigationPropertyChanged("Role_Privilege");
                 }
             }
         }
-        private TrackableCollection<Privilege> _privileges;
+        private TrackableCollection<Role_Privilege> _role_Privilege;
 
         #endregion
         #region ChangeTracking
@@ -212,13 +272,13 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
     
         protected virtual void ClearNavigationProperties()
         {
-            Privileges.Clear();
+            Role_Privilege.Clear();
         }
 
         #endregion
         #region Association Fixup
     
-        private void FixupPrivileges(object sender, NotifyCollectionChangedEventArgs e)
+        private void FixupRole_Privilege(object sender, NotifyCollectionChangedEventArgs e)
         {
             if (IsDeserializing)
             {
@@ -227,7 +287,7 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
     
             if (e.NewItems != null)
             {
-                foreach (Privilege item in e.NewItems)
+                foreach (Role_Privilege item in e.NewItems)
                 {
                     item.AppModule = this;
                     if (ChangeTracker.ChangeTrackingEnabled)
@@ -236,14 +296,14 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
                         {
                             item.StartTracking();
                         }
-                        ChangeTracker.RecordAdditionToCollectionProperties("Privileges", item);
+                        ChangeTracker.RecordAdditionToCollectionProperties("Role_Privilege", item);
                     }
                 }
             }
     
             if (e.OldItems != null)
             {
-                foreach (Privilege item in e.OldItems)
+                foreach (Role_Privilege item in e.OldItems)
                 {
                     if (ReferenceEquals(item.AppModule, this))
                     {
@@ -251,7 +311,7 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
                     }
                     if (ChangeTracker.ChangeTrackingEnabled)
                     {
-                        ChangeTracker.RecordRemovalFromCollectionProperties("Privileges", item);
+                        ChangeTracker.RecordRemovalFromCollectionProperties("Role_Privilege", item);
                     }
                 }
             }
