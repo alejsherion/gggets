@@ -80,13 +80,13 @@ namespace GGGETSAdmin.PersonnelManage.CompanyManage
             else if (Txt_Phone.Text.Trim() != ""&&!RTel.IsMatch(Txt_Phone.Text.Trim()))
             {
                 
-                Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('只能输入数字！')</script>");
+                Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('公司电话只能输入数字！')</script>");
                 ok = false;
                 Txt_Phone.Focus();
             }
             else if (!RTel.IsMatch(Txt_ContactorPhone.Text.Trim()))
             {
-                Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('只能输入数字！')</script>");
+                Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('联系人电话只能输入数字！')</script>");
                 ok = false;
                 Txt_ContactorPhone.Focus();
             }

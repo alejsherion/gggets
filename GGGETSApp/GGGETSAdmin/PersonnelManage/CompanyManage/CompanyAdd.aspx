@@ -81,7 +81,7 @@
                         <asp:Label ID="lbl_Address" runat="server" Text="地址:"></asp:Label>
                     </td>
                     <td align="left">
-                        <asp:TextBox ID="Txt_Address" runat="server" MaxLength="400" CssClass="TextBox" TabIndex="8" Width="300" TextMode="MultiLine" Style="text-transform: uppercase"></asp:TextBox>
+                        <asp:TextBox ID="Txt_Address" runat="server" MaxLength="190" CssClass="TextBox" TabIndex="8" Width="300" TextMode="MultiLine" Style="text-transform: uppercase"></asp:TextBox>
                         <b style="color: Red">*</b>
                     </td>
                 </tr>
