@@ -210,7 +210,6 @@
     <Content Include="SysManager\AddRole.aspx" />
     <Content Include="SysManager\AddRolePrivilege.aspx" />
     <Content Include="SysManager\AddRoleUser.aspx" />
-    <Content Include="SysManager\AddRole_Privilege.aspx" />
     <Content Include="SysManager\AppModuleManagement.aspx" />
     <Content Include="SysManager\RoleManagement.aspx" />
     <Content Include="UserMenu\a8a1b9e4-9402-455d-b109-91a155588689Menu.xml" />
@@ -618,42 +617,42 @@
     </Compile>
     <Compile Include="SysManager\AddAppModule.aspx.cs">
       <DependentUpon>AddAppModule.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="SysManager\AddAppModule.aspx.designer.cs">
       <DependentUpon>AddAppModule.aspx</DependentUpon>
     </Compile>
     <Compile Include="SysManager\AddRole.aspx.cs">
       <DependentUpon>AddRole.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="SysManager\AddRole.aspx.designer.cs">
       <DependentUpon>AddRole.aspx</DependentUpon>
     </Compile>
     <Compile Include="SysManager\AddRolePrivilege.aspx.cs">
       <DependentUpon>AddRolePrivilege.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="SysManager\AddRolePrivilege.aspx.designer.cs">
       <DependentUpon>AddRolePrivilege.aspx</DependentUpon>
     </Compile>
     <Compile Include="SysManager\AddRoleUser.aspx.cs">
       <DependentUpon>AddRoleUser.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="SysManager\AddRoleUser.aspx.designer.cs">
       <DependentUpon>AddRoleUser.aspx</DependentUpon>
     </Compile>
-    <Compile Include="SysManager\AddRole_Privilege.aspx.cs">
-      <DependentUpon>AddRole_Privilege.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="SysManager\AddRole_Privilege.aspx.designer.cs">
-      <DependentUpon>AddRole_Privilege.aspx</DependentUpon>
-    </Compile>
     <Compile Include="SysManager\AppModuleManagement.aspx.cs">
       <DependentUpon>AppModuleManagement.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="SysManager\AppModuleManagement.aspx.designer.cs">
       <DependentUpon>AppModuleManagement.aspx</DependentUpon>
     </Compile>
     <Compile Include="SysManager\RoleManagement.aspx.cs">
       <DependentUpon>RoleManagement.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="SysManager\RoleManagement.aspx.designer.cs">
       <DependentUpon>RoleManagement.aspx</DependentUpon>
