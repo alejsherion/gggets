@@ -44,6 +44,7 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
                 this.TotalWeight += package.TotalWeight;
             }
             this.TotalWeight = Math.Ceiling(TotalWeight);
+            this.TotalVolume = Math.Round(TotalWeight / 166, 2);//总体积赋值
         }
 
         /// <summary>

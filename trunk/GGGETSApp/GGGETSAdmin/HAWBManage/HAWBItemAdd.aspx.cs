@@ -304,7 +304,8 @@ namespace GGGETSAdmin.HAWBManage
                 ddl_WeightType.SelectedValue = hawb.WeightType.ToString();
                 txt_TotalWeight.Text = hawb.TotalWeight.ToString();
                 lbl_Piece.Text = hawb.Piece.ToString();
-                Txt_VolumeWeight.Text = hawb.VolumeWeight.Value.ToString();
+                if (hawb.VolumeWeight != null)
+                    Txt_VolumeWeight.Text = Convert.ToString(hawb.VolumeWeight.Value);
                 txt_Remark.Text = hawb.Remark;
                 Txt_Carrier.Text = hawb.Carrier;
                 Txt_CarrierHAWBBarCode.Text = hawb.CarrierHAWBBarCode;
