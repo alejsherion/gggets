@@ -7,14 +7,14 @@
             <tbody>
                 <tr class="AlternatingRow">
                     <td class="FieldHeader">
-                        <asp:Label ID="lbl_HSCode" runat="server" Text="HS编码:"></asp:Label>
+                        <asp:Label ID="lbl_HSCode" runat="server" Text="HS编码:" style="text-transform:uppercase"></asp:Label>
                     </td>
                     <td align="left">
                         <asp:TextBox ID="Txt_HSCode" runat="server" TabIndex="1" 
                             CssClass="TextBox" Style="text-transform: uppercase"></asp:TextBox>
                     </td>
                     <td class="FieldHeader">
-                        <asp:Label ID="lbl_HSName" runat="server" Text="商品名称:"></asp:Label>
+                        <asp:Label ID="lbl_HSName" runat="server" Text="商品名称:" style="text-transform:uppercase"></asp:Label>
                     </td>
                     <td align="left">
                         <asp:TextBox ID="Txt_HSName" runat="server" CssClass="TextBox" TabIndex="2" Style="text-transform: uppercase"></asp:TextBox>

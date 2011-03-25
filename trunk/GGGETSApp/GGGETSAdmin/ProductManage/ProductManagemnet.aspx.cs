@@ -42,11 +42,11 @@ namespace GGGETSAdmin.ProductManage
             int totalCount = 0;//总页数
             if (Txt_HSCode.Text.Trim() != "")
             {
-                HSCode = Txt_HSCode.Text.Trim();
+                HSCode = Txt_HSCode.Text.Trim().ToUpper();
             }
             if (Txt_HSName.Text.Trim() != "")
             {
-                HSName = Txt_HSName.Text.Trim();
+                HSName = Txt_HSName.Text.Trim().ToUpper();
             }
             listProduct = _HSProduct.FindHSProductByCondition(HSCode, HSName, pageIndex, pageCount,ref totalCount);
             ViewState["totalCount"] = totalCount;//返回总条数
