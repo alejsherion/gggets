@@ -80,5 +80,19 @@ namespace Application.GGETS
         /// </summary>
         /// <param name="item">系统用户</param>
         void Add(SysUser item);
+
+        /// <summary>
+        /// 获取权限集合
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <returns></returns>
+        IList<AppModule> GetAppModuleByUserid(Guid userId);
+
+        /// <summary>
+        /// 获取当前页面权限
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <returns></returns>
+        ModulePrivilege GetPrivilegeByUserid(Guid userId);
     }
 }
