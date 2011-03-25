@@ -11,7 +11,7 @@
                     </td>
                     <td align="left">
                         <asp:TextBox ID="Txt_CompanyCode" runat="server" TabIndex="1" 
-                            CssClass="TextBox" AutoPostBack="True" 
+                            CssClass="TextBox" AutoPostBack="True" MaxLength="35"
                             ontextchanged="Txt_CompanyCode_TextChanged" Style="text-transform: uppercase"></asp:TextBox>
                         <b style="color: Red">*</b>
                     </td>
