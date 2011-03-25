@@ -14,7 +14,7 @@ namespace GGGETSAdmin.PersonnelManage.DepartmentManage
     {
         private IDepartmentManagementService _deparService;
         private Department depar;
-        private static Regex Rnubel = new Regex(@"^(0|[1-9][0-9]*)$|^[0-9]+(.[0-9]{2})?$");
+        private static Regex Rnubel = new Regex(@"^[0]+(.[0-9]{2})?$");
         protected DepartmentModify()
         { }
         public DepartmentModify(IDepartmentManagementService deparservice)
@@ -131,12 +131,12 @@ namespace GGGETSAdmin.PersonnelManage.DepartmentManage
             {
                 if (!Rnubel.IsMatch(Txt_FeeDiscountRate.Text.Trim()))
                 {
-                    Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('只能输入整数或小数，且小数点保留2位！')</script>");
+                    Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('只能输入0-0.99的数字！')</script>");
                     Txt_FeeDiscountRate.Focus();
                 }
                 else if (!Rnubel.IsMatch(Txt_WeightDiscountRate.Text.Trim()))
                 {
-                    Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('只能输入整数或小数，且小数点保留2位！')</script>");
+                    Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('只能输入0-0.99的数字！')</script>");
                     Txt_WeightDiscountRate.Focus();
                 }
                 else
