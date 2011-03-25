@@ -16,7 +16,7 @@ namespace GGGETSAdmin.PersonnelManage.UserManage
         private IDepartmentManagementService _deparService;
         private ICompanyManagementService _companyService;
         private ETS.GGGETSApp.Domain.Application.Entities.User user;
-        private static Regex Rnubel = new Regex(@"^([1])$|^([0].[1-9][0-9])?$");
+        private static Regex Rnubel = new Regex(@"^([1])$|^([1].[0]{2})$|^([0].[1-9][0-9])?$");
         private static Regex REmail = new Regex(@"\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*");
         protected UserModify()
         { }
