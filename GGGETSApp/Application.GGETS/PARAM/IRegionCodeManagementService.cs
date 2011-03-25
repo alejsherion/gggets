@@ -23,5 +23,6 @@ namespace Application.GGETS
         IList<RegionCode> FindRegionCodesByCondition(string countryCode, string regioncode, string regionName);
         IList<RegionCode> FindRegionCodesByCondition(string countryCode, string regioncode, string regionName, int pageIndex, int pageCount,ref int totalCount);
         IList<RegionCode> FindAllRegionCodes();
+        int GetIdentifyID();
     }
 }

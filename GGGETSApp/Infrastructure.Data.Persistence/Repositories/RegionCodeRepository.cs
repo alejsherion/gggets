@@ -160,5 +160,21 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Repositories
             }
             return regions.Skip(pageIndex*pageCount).Take(pageCount).ToList();
         }
+
+        public IList<RegionCode> GetAll()
+        {
+            IGGGETSAppUnitOfWork context = UnitOfWork as IGGGETSAppUnitOfWork;
+            if (context != null)
+            {
+                context.Cache = new AspNetCache();
+                context.CachingPolicy = CachingPolicy.CacheAll;
+                return context.RegionCode.OrderBy(it => it.ID).ToList();
+            }
+            else
+                throw new InvalidOperationException(string.Format(
+                                                            CultureInfo.InvariantCulture,
+                                                            Messages.exception_InvalidStoreContext,
+                                                            GetType().Name));
+        }
     }
 }

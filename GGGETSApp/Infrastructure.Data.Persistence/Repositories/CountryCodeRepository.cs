@@ -37,7 +37,7 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Repositories
             {
                 context.Cache = new AspNetCache();
                 context.CachingPolicy = CachingPolicy.CacheAll;
-                return context.CountryCode.ToList();
+                return context.CountryCode.OrderBy(it=>it.ID).ToList();
             }   
             else
                 throw new InvalidOperationException(string.Format(

@@ -53,12 +53,13 @@ namespace GGGETSAdmin.CountryZiMaManage
             {
                 countrycode.CountryCode1 = Txt_CountryCode.Text.Trim().ToUpper();
                 countrycode.CountryName = txt_CountryName.Text.Trim().ToUpper();
+                countrycode.ID = _countryservice.GetIdentifyID();
                 _countryservice.AddCountryCode(countrycode);
                 Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('添加成功！')</script>");
                 Txt_CountryCode.Text = string.Empty;
                 txt_CountryName.Text = string.Empty;
             }
-
+            
         }
 
         protected void But_Conel_Click(object sender, EventArgs e)

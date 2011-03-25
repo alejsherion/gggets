@@ -131,5 +131,19 @@ namespace Application.GGETS
         {
             return _regionCodeRepository.GetAll().ToList();
         }
+
+        public int GetIdentifyID()
+        {
+            IList<RegionCode> regions = _regionCodeRepository.GetAll();
+            if (regions.Count == 0)
+            {
+                return 0;
+            }
+            else
+            {
+                RegionCode lastRegion = regions.Last();
+                return lastRegion.ID + 1;
+            }
+        }
     }
 }

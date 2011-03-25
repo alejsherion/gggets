@@ -20,5 +20,6 @@ namespace Domain.GGGETS
         RegionCode FindRegionByRegionCode(string regionCode);
         IList<RegionCode> FindRegionCodesByCondition(string countryCode, string regioncode, string regionName);
         IList<RegionCode> FindRegionCodesByCondition(string countryCode, string regioncode, string regionName, int pageIndex, int pageCount);
+        IList<RegionCode> GetAll();
     }
 }
