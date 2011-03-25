@@ -16,7 +16,7 @@ namespace GGGETSAdmin.PersonnelManage.UserManage
         private IDepartmentManagementService _deparService;
         private ICompanyManagementService _companyService;
         private ETS.GGGETSApp.Domain.Application.Entities.User user;
-        private static Regex Rnubel = new Regex(@"^(0|[1-9][0-9]*)$|^[0-9]+(.[0-9]{2})?$");
+        private static Regex Rnubel = new Regex(@"^[0]+(.[0-9]{2})?$");
         private static Regex REmail = new Regex(@"\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*");
         protected UserModify()
         { }
@@ -147,12 +147,12 @@ namespace GGGETSAdmin.PersonnelManage.UserManage
             {
                 if (!Rnubel.IsMatch(Txt_FeeDiscountRate.Text.Trim()))
                 {
-                    Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('只能输入整数或小数，且小数点保留2位！')</script>");
+                    Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('只能输入0-0.99的数字！')</script>");
                     Txt_FeeDiscountRate.Focus();
                 }
                 else if (!Rnubel.IsMatch(Txt_WeightDiscountRate.Text.Trim()))
                 {
-                    Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('只能输入整数或小数，且小数点保留2位！')</script>");
+                    Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('只能输入0-0.99的数字！')</script>");
                     Txt_WeightDiscountRate.Focus();
                 }
                 else if (Txt_Email.Text.Trim() != "" && !REmail.IsMatch(Txt_Email.Text.Trim()))
