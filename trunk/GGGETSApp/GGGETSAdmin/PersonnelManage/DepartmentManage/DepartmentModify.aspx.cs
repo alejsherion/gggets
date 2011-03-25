@@ -14,7 +14,7 @@ namespace GGGETSAdmin.PersonnelManage.DepartmentManage
     {
         private IDepartmentManagementService _deparService;
         private Department depar;
-        private static Regex Rnubel = new Regex(@"^([1])$|^([0].[1-9][0-9])?$");
+        private static Regex Rnubel = new Regex(@"^([1])$|^([1].[0]{2})$|^([0].[1-9][0-9])?$");
         protected DepartmentModify()
         { }
         public DepartmentModify(IDepartmentManagementService deparservice)
