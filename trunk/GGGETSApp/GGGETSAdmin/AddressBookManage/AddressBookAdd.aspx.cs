@@ -53,21 +53,26 @@ namespace GGGETSAdmin.AddressBookManage
         /// <param name="e"></param>
         protected void Txt_CompanyCode_TextChanged(object sender, EventArgs e)
         {
+            if (!CompCode())
+            {
+                ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('没有该公司，请重新输入!')", true);
+                //Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('没有该公司，请重新输入！')</script>");
+                Txt_CompanyCode.Focus();
+                Txt_CompanyCode.Text = "";
+            }
+        }
+        private bool CompCode()
+        {
+            bool ok = false;
             if (Txt_CompanyCode.Text.Trim() != "")
             {
                 Company company = _companyService.FindCompanyByCompanyCode(Txt_CompanyCode.Text.Trim());
-                if (company == null)
+                if (company != null)
                 {
-                    ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('没有该公司，请重新输入!')", true);
-                    //Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('没有该公司，请重新输入！')</script>");
-                    Txt_CompanyCode.Focus();
-                    Txt_CompanyCode.Text = "";
-                }
-                else
-                {
-                    Txt_Code.Focus();
+                    ok = true;
                 }
             }
+            return ok;
         }
         /// <summary>
         /// 验证是否已注册的部门账号
@@ -75,6 +80,12 @@ namespace GGGETSAdmin.AddressBookManage
         /// <param name="sender"></param>
         /// <param name="e"></param>
         protected void Txt_Code_TextChanged(object sender, EventArgs e)
+        {
+
+            DepCode();
+        }
+
+        private void DepCode()
         {
             if (Txt_CompanyCode.Text.Trim() != "")
             {
@@ -108,7 +119,6 @@ namespace GGGETSAdmin.AddressBookManage
                 ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('请重新输入公司账号!')", true);
                 Txt_CompanyCode.Focus();
             }
-            
         }
         /// <summary>
         /// 验证是否是已注册的个人账号
@@ -117,24 +127,30 @@ namespace GGGETSAdmin.AddressBookManage
         /// <param name="e"></param>
         protected void Txt_LoginName_TextChanged(object sender, EventArgs e)
         {
+            if (!LoginName())
+            {
+                ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('没有该用户名，请重新输入!')", true);
+                Txt_LoginName.Focus();
+                Txt_LoginName.Text = "";
+            }
+        }
+        private bool LoginName()
+        {
+            bool ok = false;
             if (Txt_LoginName.Text.Trim() != "")
             {
                 user = _userService.FindUserByLoginName(Txt_LoginName.Text.Trim());
-                if (user == null)
+                if (user != null)
                 {
-                    //Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('没有该用户名，请重新输入！')</script>");
-                    ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('没有该用户名，请重新输入!')", true);
-                    Txt_LoginName.Focus();
-                    Txt_LoginName.Text = "";
-                }
-                else
-                {
+                    ok = true;
                     Session["User"] = user.UID;
                     Txt_DeliverName.Focus();
+                    //Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('没有该用户名，请重新输入！')</script>");
+                    
                 }
             }
+            return ok;
         }
-
         /// <summary>
         /// 自动填充国家二字码
         /// </summary>
@@ -273,18 +289,39 @@ namespace GGGETSAdmin.AddressBookManage
                 ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('部门账号与用户名必须填写一个!')", true);
                 Txt_LoginName.Focus();
             }
+            else if (Txt_CompanyCode.Text.Trim() != "" && Txt_Code.Text.Trim() == "")
+            {
+                ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('部门账号必须填写!')", true);
+                Txt_Code.Focus();
+            }
+            else if (!CompCode())
+            {
+                ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('没有该公司，请重新输入!')", true);
+                //Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('没有该公司，请重新输入！')</script>");
+                Txt_CompanyCode.Focus();
+                Txt_CompanyCode.Text = "";
+            }
+            else if (!LoginName())
+            {
+                ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('没有该用户名，请重新输入!')", true);
+                Txt_LoginName.Focus();
+                Txt_LoginName.Text = "";
+            }
             else
             {
-                if (Session["User"] != null)
-                {
-                    Uid = Session["User"].ToString();
-                }
                 if (Session["Depar"] != null)
                 {
                     Did = Session["Depar"].ToString();
                 }
+                else
+                {
+                    DepCode();
+                    Did = Session["Depar"].ToString();
+                }
+                Uid = Session["User"].ToString();
                 AddRessBook(Uid, Did);
             }
+                           
         }
         /// <summary>
         /// 用户输入验证
@@ -372,6 +409,8 @@ namespace GGGETSAdmin.AddressBookManage
                     //Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('添加成功！')</script>");
                     ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('添加成功!')", true);
                     InitialControl(this.Controls);
+                    Session.Remove("User");
+                    Session.Remove("Depar");
                 }
             }
         }
