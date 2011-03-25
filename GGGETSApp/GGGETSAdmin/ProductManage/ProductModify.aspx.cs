@@ -243,6 +243,8 @@ namespace GGGETSAdmin.ProductManage
             {
                 ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('删除成功!')", true);
                 product = _HSProduct.LoadHSProductByHSCode(Request.QueryString["HSCode"]);
+                Session.Remove("product");
+                Session["product"] = product;
                 if (product.HSProperty.Count == 0)
                 {
                     btn_Close.Visible = false;
