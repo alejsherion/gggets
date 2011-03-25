@@ -11,7 +11,7 @@
                     </td>
                     <td align="left">
                         <asp:Label ID="Txt_CompanyCode" runat="server" TabIndex="1" 
-                            CssClass="TextBox" AutoPostBack="True" 
+                            CssClass="TextBox" AutoPostBack="True" MaxLength="35" 
                             ontextchanged="Txt_CompanyCode_TextChanged" Style="text-transform: uppercase"></asp:Label>
                     </td>
                 </tr>
@@ -20,7 +20,7 @@
                         <asp:Label ID="lbl_DepCode" runat="server" Text="部门账号:"></asp:Label>
                     </td>
                     <td align="left">
-                        <asp:Label ID="Txt_DepCode" runat="server" CssClass="TextBox" 
+                        <asp:Label ID="Txt_DepCode" runat="server" CssClass="TextBox" MaxLength="35" 
                             AutoPostBack="true" TabIndex="2" Style="text-transform: uppercase" 
                             ontextchanged="Txt_DepCode_TextChanged"></asp:Label>
                         &nbsp;</td>
@@ -30,7 +30,7 @@
                         <asp:Label ID="lbl_DepName" runat="server" Text="部门名称:"></asp:Label>
                     </td>
                     <td align="left">
-                        <asp:TextBox ID="Txt_DepName" runat="server" TabIndex="3" 
+                        <asp:TextBox ID="Txt_DepName" runat="server" TabIndex="3" MaxLength="35"
                             CssClass="TextBox" AutoPostBack="True" Style="text-transform: uppercase" 
                             ontextchanged="Txt_DepName_TextChanged"></asp:TextBox>
                         <b style="color: Red">*</b>
