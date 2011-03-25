@@ -114,13 +114,13 @@ namespace GGGETSWeb
         /// <param name="subMenu">子菜单数据</param>
         /// <param name="moduleArry"></param>
         /// <param name="privilegList"></param>
-        private static void GetSubMenu(Hashtable subMenu, IEnumerable<AppModule> moduleArry, IEnumerable<Privilege> privilegList)
+        private static void GetSubMenu(Hashtable subMenu, IEnumerable<AppModule> moduleArry, IEnumerable<AppModule> privilegList)
         {
             if (subMenu == null || moduleArry == null || privilegList == null) return;
             foreach (var appModule in moduleArry)
             {
                 var module = appModule;
-                var subMenuArry = privilegList.Where(p => p.ModuleID == module.ModuleID).ToList();
+                var subMenuArry = privilegList.Where(p => p.ParentId == module.ModuleID).ToList();
                 if (!subMenu.ContainsKey(module.Description))
                 {
                     subMenu.Add(module.Description, subMenuArry);
@@ -134,11 +134,11 @@ namespace GGGETSWeb
         /// 生成菜单XML
         /// </summary>
         /// <param name="privilegList">权限列表</param>
-        public void CreateUserMenuForXml(IList<Privilege> privilegList)
+        public void CreateUserMenuForXml(IList<AppModule> privilegList)
         {
             if (privilegList == null || privilegList.Count == 0) return;
             LoadXml();
-            var moduleArry = privilegList.Select(p => p.AppModule).Distinct().ToList();
+            var moduleArry = privilegList.Where(it=>it.IsLeft==false).ToList();
             if (moduleArry.Count == 0) return;
             CreateModele(moduleArry);
             var subMenu = new Hashtable();
@@ -146,7 +146,7 @@ namespace GGGETSWeb
             if (subMenu.Count == 0) return;
             foreach (var key in subMenu.Keys)
             {
-                var currentArry = (IList<Privilege>)subMenu[key];
+                var currentArry = (IList<AppModule>)subMenu[key];
                 var currentNode = _xmlDoc.SelectSingleNode(string.Format("//a[@title='{0}']", key));
                 if (currentNode == null) continue;
                 currentNode = currentNode.ParentNode;
@@ -156,8 +156,8 @@ namespace GGGETSWeb
                 {
                     var subItem = _xmlDoc.CreateElement("li");
                     var otherItem = _xmlDoc.CreateElement("a");
-                    otherItem.SetAttribute("href", privilege.UrlAdress);
-                    otherItem.InnerText = privilege.DisplayName;
+                    otherItem.SetAttribute("href", privilege.URL);
+                    otherItem.InnerText = privilege.Description;
                     otherItem.SetAttribute("Target", "_blank");
                     subItem.AppendChild(otherItem);
                     item.AppendChild(subItem);
