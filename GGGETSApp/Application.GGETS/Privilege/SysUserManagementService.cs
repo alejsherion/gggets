@@ -117,6 +117,28 @@ namespace Application.GGETS
             _sysUserRepository.Add(item);
             _sysUserRepository.UnitOfWork.Commit();
         }
+
+       /// <summary>
+       /// 获取权限集合
+       /// </summary>
+       /// <param name="userId"></param>
+       /// <returns></returns>
+        public IList<AppModule> GetAppModuleByUserid(Guid userId)
+        {
+            return _sysUserRepository.GetAppModuleByUserid(userId);
+        }
+
+
+        /// <summary>
+        /// 获取当前页面权限
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <returns></returns>
+        public ModulePrivilege GetPrivilegeByUserid(Guid userId)
+        {
+            return _sysUserRepository.GetPrivilegeByUserid(userId);
+        }
+
         #endregion
     }
 }
