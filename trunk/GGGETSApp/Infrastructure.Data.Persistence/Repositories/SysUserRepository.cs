@@ -98,9 +98,11 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Repositories
                 if (context != null)
                 {
                     var sysUser = context.SysUser.Where(it => it.LoginName == loginName)
-                        .Where(it => it.Password == password).SingleOrDefault();
-                    if (sysUser == null) return SysUser.EmptyUid;
-                    return sysUser.UID;
+                        .Where(it => it.Password == password).ToList();
+                    if (sysUser.Count==0) return SysUser.EmptyUid;
+                    if (sysUser.Count > 1) throw new Exception("存在两个一样账号名或密码");
+                    var tempUser = sysUser.SingleOrDefault();
+                    return tempUser.UID;
                 }
                 return SysUser.EmptyUid;
             }
@@ -218,9 +220,9 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Repositories
         public override void Modify(SysUser item)
         {
             if (item == null) throw new ArgumentNullException();
+            var context = UnitOfWork as IGGGETSAppUnitOfWork;
             if (item.SysUser_Role == null || item.SysUser_Role.Count == 0)
             {
-                var context = UnitOfWork as IGGGETSAppUnitOfWork;
                 if (context != null)
                 {
                     var tempSysUser = context.SysUser_Role.Where(it => it.UID == item.UID).ToList();
@@ -234,6 +236,12 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Repositories
                     }
 
                 }
+            }
+            if (context != null)
+            {
+                var tempSysUser = context.SysUser.Where(it => it.UID != item.UID)
+                                   .Where(it => it.LoginName == item.LoginName).ToList();
+                if (tempSysUser.Count > 0) throw new Exception("登录名重复");
             }
             base.Modify(item);
             UnitOfWork.CommitAndRefreshChanges();
@@ -365,6 +373,18 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Repositories
             return modulePrivilege;
         }
 
+        /// <summary>
+        /// 添加用户
+        /// </summary>
+        /// <param name="item"></param>
+        public override void Add(SysUser item)
+        {
+            if (item == null) throw new ArgumentNullException();
+            JudgeLoginName(item.LoginName);
+            base.Add(item);
+            UnitOfWork.Commit();
+        }
+
         #endregion
 
         #region 私有方法
@@ -400,6 +420,25 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Repositories
             }
             return null;
         }
+
+        /// <summary>
+        /// 判断是否有重复登录名
+        /// </summary>
+        /// <param name="lgoinName"></param>
+        private void JudgeLoginName(string lgoinName)
+        {
+            if(String.IsNullOrWhiteSpace(lgoinName))
+            {
+                throw new ArgumentNullException(lgoinName);
+            }
+            var context = UnitOfWork as IGGGETSAppUnitOfWork;
+            if (context == null) throw new Exception("系统出错");
+            var sysUserRole = context.SysUser.Where(it => it.LoginName == lgoinName).ToList();
+            if (sysUserRole != null) throw new Exception("已经存在这个登录名");
+        }
+        
+
+      
         #endregion
     }
 }
