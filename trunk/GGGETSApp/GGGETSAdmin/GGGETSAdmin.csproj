@@ -119,9 +119,8 @@
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
-    <Reference Include="Telerik.Web.UI, Version=2010.2.713.40, Culture=neutral, PublicKeyToken=121fae78165ba3d4, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\Telerik.Web.UI.dll</HintPath>
+    <Reference Include="Telerik.Web.UI">
+      <HintPath>DLLs\Telerik.Web.UI.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -142,6 +141,18 @@
     <Content Include="AutoCountryCode.asmx" />
     <Content Include="CountryZiMaManage\TwoZiMaAdd.aspx" />
     <Content Include="CountryZiMaManage\TwoZiMaManage.aspx" />
+    <Content Include="DLLs\AjaxControlToolkit.dll" />
+    <Content Include="DLLs\AutoCompleteExtra.dll" />
+    <Content Include="DLLs\Microsoft.Practices.ServiceLocation.dll" />
+    <Content Include="DLLs\NPOI.DDF.dll" />
+    <Content Include="DLLs\NPOI.dll" />
+    <Content Include="DLLs\NPOI.HPSF.dll" />
+    <Content Include="DLLs\NPOI.HSSF.dll" />
+    <Content Include="DLLs\NPOI.POIFS.dll" />
+    <Content Include="DLLs\NPOI.SS.dll" />
+    <Content Include="DLLs\NPOI.Util.dll" />
+    <Content Include="DLLs\SAFF.Client.dll" />
+    <Content Include="DLLs\Telerik.Web.UI.dll" />
     <Content Include="FlightManage\FlightManagement.aspx" />
     <Content Include="HAWBManage\Addresshistory.aspx" />
     <Content Include="HAWBManage\DeliverAdd.aspx" />
@@ -149,10 +160,12 @@
     <Content Include="HAWBManage\HAWBDetails.aspx" />
     <Content Include="HAWBManage\HAWBItemAdd.aspx" />
     <Content Include="HAWBManage\HAWBManagement.aspx" />
+    <Content Include="Login\Login.aspx" />
     <Content Include="MawbManage\MawbAdd.aspx" />
     <Content Include="MawbManage\MawbDetails.aspx" />
     <Content Include="MawbManage\MawbManagement.aspx" />
     <Content Include="MawbManage\MawbModify.aspx" />
+    <Content Include="Menu.aspx" />
     <Content Include="My97DatePicker\calendar.js" />
     <Content Include="My97DatePicker\config.js" />
     <Content Include="My97DatePicker\lang\en.js" />
@@ -212,6 +225,7 @@
     <Content Include="SysManager\AddRoleUser.aspx" />
     <Content Include="SysManager\AppModuleManagement.aspx" />
     <Content Include="SysManager\RoleManagement.aspx" />
+    <Content Include="TopMenu.ascx" />
     <Content Include="UserMenu\a8a1b9e4-9402-455d-b109-91a155588689Menu.xml" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -294,6 +308,11 @@
     <Compile Include="AddressBookManage\AddressBookModify.aspx.designer.cs">
       <DependentUpon>AddressBookModify.aspx</DependentUpon>
     </Compile>
+    <Compile Include="App_GlobalResources\Resource11.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resource1.resx</DependentUpon>
+    </Compile>
     <Compile Include="AutoCountryCode.asmx.cs">
       <DependentUpon>AutoCountryCode.asmx</DependentUpon>
       <SubType>Component</SubType>
@@ -369,6 +388,13 @@
     <Compile Include="HAWBManage\HAWBManagement.aspx.designer.cs">
       <DependentUpon>HAWBManagement.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Login\Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Login\Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
     <Compile Include="MawbManage\MawbAdd.aspx.cs">
       <DependentUpon>MawbAdd.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -396,6 +422,13 @@
     </Compile>
     <Compile Include="MawbManage\MawbModify.aspx.designer.cs">
       <DependentUpon>MawbModify.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Menu.aspx.cs">
+      <DependentUpon>Menu.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Menu.aspx.designer.cs">
+      <DependentUpon>Menu.aspx</DependentUpon>
     </Compile>
     <Compile Include="Navigation.aspx.cs">
       <DependentUpon>Navigation.aspx</DependentUpon>
@@ -657,6 +690,14 @@
     <Compile Include="SysManager\RoleManagement.aspx.designer.cs">
       <DependentUpon>RoleManagement.aspx</DependentUpon>
     </Compile>
+    <Compile Include="TopMenu.ascx.cs">
+      <DependentUpon>TopMenu.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TopMenu.ascx.designer.cs">
+      <DependentUpon>TopMenu.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="xmlHelp.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -717,6 +758,15 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="HAWBManage\App_LocalResources\HAWBItemAdd.aspx.en-us.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Login\App_LocalResources\Login.aspx.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_GlobalResources\Resource1.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Resource11.designer.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
