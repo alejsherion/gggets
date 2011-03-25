@@ -69,6 +69,7 @@ namespace GGGETSAdmin.RegionZiMaManage
                 regioncode.CountryCode = Txt_CountryCode.Text.Trim().ToUpper();
                 regioncode.RegionCode1 = txt_RegionCode.Text.Trim().ToUpper();
                 regioncode.RegionName = txt_RegionName.Text.Trim().ToUpper();
+                regioncode.ID = _regionservice.GetIdentifyID();
                 _regionservice.AddRegionCode(regioncode);
                 Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('添加成功！')</script>");
                 Txt_CountryCode.Text = string.Empty;

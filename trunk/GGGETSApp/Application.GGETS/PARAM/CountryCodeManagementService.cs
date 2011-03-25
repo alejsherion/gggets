@@ -118,5 +118,19 @@ namespace Application.GGETS
 
             return _countryCodeRepository.FindCountriesByCondition(countrycode, countryName, pageIndex, pageCount);
         }
+
+        public int GetIdentifyID()
+        {
+            IList<CountryCode> list = FindAllCountries();
+            if(list.Count==0)
+            {
+                return 0;
+            }
+            else
+            {
+                CountryCode lastCountry = list.Last();
+                return lastCountry.ID + 1;
+            }
+        }
     }
 }
