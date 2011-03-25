@@ -8,6 +8,7 @@
 //************************************************************************
 using System;
 using System.Collections.Generic;
+using System.Web;
 using Domain.GGGETS;
 using ETS.GGGETSApp.Domain.Application.Entities;
 using ETS.GGGETSApp.Infrastructure.CrossCutting.Logging;
@@ -26,6 +27,7 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Repositories
         #region 构造函数以及字段
 
         private readonly Repository<SysUser_Role> _sysUserRole;//角色和用户关联关系表操作
+
         ///<summary>
         ///</summary>
         ///<param name="unitOfWork"></param>
@@ -261,6 +263,108 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Repositories
                 return null;
             }
         }
+
+        /// <summary>
+        /// 获取权限集合
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <returns></returns>
+        public IList<AppModule> GetAppModuleByUserid(Guid userId)
+        {
+            var array = GetPrivilegeIdsByUers(userId);
+            if (array == null || array.Count == 0) return null;
+            var appMduleArry = new List<AppModule>();
+             var context = UnitOfWork as IGGGETSAppUnitOfWork;
+            if (context != null)
+            {
+               foreach(var key in array.Keys)
+               {
+                   Guid tempKey = key;
+                   var singleappModuel = context.AppModule.Where(it => it.ModuleID == tempKey).SingleOrDefault();
+                   if (singleappModuel != null)
+                   {
+                       appMduleArry.Add(singleappModuel);
+                       var parentId = singleappModuel.ParentId;
+                       if(parentId!=null)
+                       {
+                            var reuslt = appMduleArry.Where(it => it.ModuleID
+                                                        == parentId.Value).SingleOrDefault();
+                            if(reuslt==null)
+                            {
+                                var tempAppModuel = context.AppModule.Where(it => it.ModuleID
+                                                                            == parentId).SingleOrDefault();
+                                if (tempAppModuel!=null)
+                                appMduleArry.Add(tempAppModuel);
+                            }
+                       }
+                      
+                   }
+
+               }
+                return appMduleArry;
+            }
+            return null;
+        }
+
+        /// <summary>
+        /// 获取当前页面权限
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <returns></returns>
+        public ModulePrivilege GetPrivilegeByUserid(Guid userId)
+        {
+            var url = HttpContext.Current.Request.Url.ToString();
+            var pos = url.LastIndexOf("/");
+            string fileName;
+            if (url.LastIndexOf("?") != -1)
+            {
+                var endPos = url.IndexOf("?");
+                var length = endPos - pos;
+                fileName = url.Substring(pos + 1, length);
+            }
+            else
+            {
+                fileName = url.Substring(pos + 1);
+            }
+            if (string.IsNullOrWhiteSpace(fileName))
+            {
+                throw new Exception("获取当前页面地址失败");
+            }
+            var privilege = GetPrivilegeIdsByUers(userId);
+            if(privilege==null)
+            {
+                throw new Exception("获取权限失败");
+            }
+            var tempAppModule = GetModelByName(fileName);
+            if(tempAppModule==null)
+            {
+                throw new Exception("获取权限失败");
+            }
+            var modulePrivilege = new ModulePrivilege
+                                      {
+                                          Url = tempAppModule.URL,
+                                          ModuleName = tempAppModule.Description
+                                      };
+
+            var modelId = tempAppModule.ModuleID;
+            var result = privilege.ContainsKey(modelId);
+            if (!result) return modulePrivilege;
+            var privilegeValue = privilege[modelId];
+            modulePrivilege.QueryPrivilege =
+                (privilegeValue & (int)Privilege.查询) == (int)Privilege.查询 ? true : false;
+            modulePrivilege.AddPrivilege =
+                (privilegeValue & (int)Privilege.添加) == (int)Privilege.添加 ? true : false;
+            modulePrivilege.UpdatePrivilege =
+                (privilegeValue & (int)Privilege.修改) == (int)Privilege.修改 ? true : false;
+            modulePrivilege.DeletePrivilege =
+                (privilegeValue & (int)Privilege.删除) == (int)Privilege.删除 ? true : false;
+            modulePrivilege.ExportPrivilege =
+                (privilegeValue & (int)Privilege.导出) == (int)Privilege.导出 ? true : false;
+            modulePrivilege.PrintPrivilege =
+                (privilegeValue & (int)Privilege.打印) == (int)Privilege.打印 ? true : false;
+            return modulePrivilege;
+        }
+
         #endregion
 
         #region 私有方法
@@ -278,6 +382,23 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Repositories
                 _sysUserRole.Remove(item);
             }
             _sysUserRole.UnitOfWork.Commit();
+        }
+
+        /// <summary>
+        /// 根据地址名获取模块Id
+        /// </summary>
+        /// <param name="fileName"></param>
+        /// <returns></returns>
+        private AppModule GetModelByName(string fileName)
+        {
+            if (String.IsNullOrEmpty(fileName)) return null;
+             var context = UnitOfWork as IGGGETSAppUnitOfWork;
+            if (context != null)
+            {
+                var tempValue = context.AppModule.Where(it => it.URL.Contains(fileName)).SingleOrDefault();
+                return tempValue;
+            }
+            return null;
         }
         #endregion
     }
