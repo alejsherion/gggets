@@ -11,7 +11,7 @@
                     </td>
                     <td align="left">
                         <asp:TextBox ID="Txt_CompanyCode" runat="server" TabIndex="1" 
-                            CssClass="TextBox" AutoPostBack="True" 
+                            CssClass="TextBox" AutoPostBack="True" MaxLength="35"
                             ontextchanged="Txt_CompanyCode_TextChanged" Style="text-transform: uppercase"></asp:TextBox>
                         <b style="color: Red">*</b>
                     </td>
@@ -22,7 +22,7 @@
                     </td>
                     <td align="left">
                         <asp:TextBox ID="Txt_DepCode" runat="server" CssClass="TextBox" 
-                            AutoPostBack="true" TabIndex="2" Style="text-transform: uppercase" 
+                            AutoPostBack="true" TabIndex="2" MaxLength="35" Style="text-transform: uppercase" 
                             ontextchanged="Txt_DepCode_TextChanged"></asp:TextBox>
                         <b style="color: Red">*</b>
                     </td>
@@ -33,7 +33,7 @@
                     </td>
                     <td align="left">
                         <asp:TextBox ID="Txt_DepName" runat="server" TabIndex="3" 
-                            CssClass="TextBox" AutoPostBack="True" Style="text-transform: uppercase" 
+                            CssClass="TextBox" AutoPostBack="True" MaxLength="35" Style="text-transform: uppercase" 
                             ontextchanged="Txt_DepName_TextChanged"></asp:TextBox>
                         <b style="color: Red">*</b>
                     </td>

@@ -66,6 +66,14 @@ namespace GGGETSAdmin.PersonnelManage.DepartmentManage
             {
                 Response.Redirect("DepartmentModify.aspx?CompanyCode=" + CompanyCode + "&DeparCode=" + DepCode + "");
             }
+            else if (e.CommandName == "Del")
+            {
+                Department depar = _deparService.FindDepartmentByDepCodeAndCompanyCode(DepCode, CompanyCode);
+                if (depar != null)
+                {
+                    
+                }
+            }
         }
     }
 }

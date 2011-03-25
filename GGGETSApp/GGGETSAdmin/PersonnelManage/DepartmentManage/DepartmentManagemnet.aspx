@@ -89,7 +89,7 @@
                 </asp:TemplateField>
                 <asp:TemplateField >
                     <ItemTemplate>
-                        <asp:LinkButton ID="lbtn_Delete" CommandName="Del" runat="server" Text="删除" CommandArgument="<%# ((GridViewRow)Container).RowIndex %>" OnClientClick="javascript:return confirm('确定删除该条运单吗?');"></asp:LinkButton>
+                        <asp:LinkButton ID="lbtn_Delete" CommandName="Del" runat="server" Text="删除" CommandArgument="<%# ((GridViewRow)Container).RowIndex %>" OnClientClick="javascript:return confirm('确定删除该账号吗?');"></asp:LinkButton>
                     </ItemTemplate>
                 </asp:TemplateField>
             </Columns>
