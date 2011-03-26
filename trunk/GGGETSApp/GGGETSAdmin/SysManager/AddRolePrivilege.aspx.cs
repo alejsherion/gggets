@@ -47,6 +47,7 @@ namespace GGGETSAdmin.SysManager
                     else
                     {
                         var guidRoleId = new Guid(id);
+                        ViewState["Id"] = guidRoleId;
                         BindAppModule();
                         BindAppModuleById(guidRoleId);
                     }
@@ -84,7 +85,6 @@ namespace GGGETSAdmin.SysManager
             if (_roleManagementService == null) return;
             var currentRole = _roleManagementService.GetRoleByRoleId(id);
             if (currentRole == null) return;
-            Session["Role"] = currentRole;
             var rolePrivilege = currentRole.Role_Privilege;
             if (rolePrivilege == null || rolePrivilege.Count == 0) return;
             foreach (var item in rolePrivilege)
@@ -207,7 +207,8 @@ namespace GGGETSAdmin.SysManager
         /// <param name="e"></param>
         protected void btnSave_Click(object sender, EventArgs e)
         {
-            var role = (Role)Session["Role"];
+            var guidRoleId = new Guid(Convert.ToString(ViewState["Id"]));
+            var role = _roleManagementService.GetRoleByRoleId(guidRoleId);
             if (role == null)
             {
                 ScriptManager.RegisterStartupScript(this, GetType(), "", "alert('加载数据失败!');", true);
