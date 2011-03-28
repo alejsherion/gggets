@@ -1,5 +1,9 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="AddUser.aspx.cs" Inherits="GGGETSAdmin.Account.AddUser" %>
 
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc2" %>
+
+<%@ Register Assembly="AutoCompleteExtra" Namespace="AutoCompleteExtra" TagPrefix="cc1" %>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -12,7 +16,11 @@
 </head>
 <body>
     <form id="form1" runat="server">
-   <div style="text-align:center">
+    <cc2:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server">
+    </cc2:ToolkitScriptManager>
+    <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+        <ContentTemplate>
+            <div style="text-align:center">
         <table class="DataView" width="98%">
             <tbody>
                 <tr class="Row">
@@ -90,7 +98,12 @@
                         <asp:Label ID="lbl_CountryCode" runat="server" Text="国家二字码："></asp:Label>
                     </td>
                     <td align="left">
-                        <asp:TextBox ID="txtCountryCode" runat="server" MaxLength="2"></asp:TextBox>
+                        <asp:TextBox ID="txtCountryCode" runat="server" MaxLength="2" 
+                            AutoPostBack="true" ontextchanged="txtCountryCode_TextChanged"></asp:TextBox>
+                        <cc1:AutoCompleteExtraExtender runat="server" ID="autoCountry" ServiceMethod="GetCountryList"
+                            TargetControlID="txtCountryCode" AsyncPostback="false" AutoPostback="true"
+                            MinimumPrefixLength="1" CompletionSetCount="10" OnItemSelected="autoCountry_ItemSelected">
+                        </cc1:AutoCompleteExtraExtender>
                          <asp:RequiredFieldValidator ID="valeCountryCode" runat="server" ErrorMessage="必填" ControlToValidate="txtCountryCode">
                         </asp:RequiredFieldValidator>
                     </td>
@@ -100,9 +113,15 @@
                         <asp:Label ID="lbl_RegionCode" runat="server" Text="地区三字码："></asp:Label>
                     </td>
                     <td align="left">
-                        <asp:TextBox ID="txtRegionCode" runat="server" MaxLength="3"></asp:TextBox>
+                        <asp:TextBox ID="txtRegionCode" runat="server" 
+                            ontextchanged="txtRegionCode_TextChanged" AutoPostBack="true"></asp:TextBox>
                            <asp:RequiredFieldValidator ID="valeRegionCode" runat="server" ErrorMessage="必填" ControlToValidate="txtRegionCode">
                         </asp:RequiredFieldValidator>
+                        <cc1:AutoCompleteExtraExtender runat="server" ID="autoRegion" ServiceMethod="GetRegionList"
+                            TargetControlID="txtRegionCode" AsyncPostback="false" 
+                            MinimumPrefixLength="1" CompletionSetCount="10"
+                            UseContextKey="True">
+                        </cc1:AutoCompleteExtraExtender>
                     </td>
                 </tr>
                 <tr class="Row">
@@ -136,12 +155,15 @@
             </tbody>
         </table>
     </div>
-    <div>
+            <div>
         <asp:Button ID="btn_login" runat="server" Text="设 置" 
             onclick="btn_login_Click" /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <asp:Button ID="btn_cancel" runat="server" Text="返 回" 
             onclick="btn_cancel_Click" CausesValidation="false"/>
     </div>
+    </ContentTemplate>
+    </asp:UpdatePanel>
+    
     </form>
 </body>
 </html>
