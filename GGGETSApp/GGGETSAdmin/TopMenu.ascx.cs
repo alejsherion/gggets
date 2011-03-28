@@ -33,8 +33,8 @@ namespace GGGETSAdmin
         {
             if (!IsPostBack)
             {
-                Session["Id"] = "00000000-0000-0000-0000-000000000001";
-                var userCode = new Guid(Convert.ToString(Session["Id"]));
+                //Session["Id"] = "00000000-0000-0000-0000-000000000001";
+                var userCode = (Guid)Session["UserID"];
                 //var userCode = "234";
                 var directoryPath = Server.MapPath("~/UserMenu");
                 var absfilePath = string.Format("{0}\\{1}Menu.xml", directoryPath, userCode);
@@ -78,7 +78,7 @@ namespace GGGETSAdmin
         private void CreateMenu(XmlHelp xmlOp)
         {
             if (xmlOp == null) return;
-            var userCode = new Guid(Convert.ToString(Session["Id"]));
+            var userCode = (Guid)Session["UserID"];
             //var ids = new Guid[]
             //                  {
             //                      new Guid("9db6164c-de63-474f-aba9-49ad7e5b8c90"),

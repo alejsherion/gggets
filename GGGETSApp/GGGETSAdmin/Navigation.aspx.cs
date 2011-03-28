@@ -11,10 +11,10 @@ namespace GGGETSAdmin
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
-            {
-                Session.Clear();
-            }
+            //if (!IsPostBack)
+            //{
+            //    Session.Clear();
+            //}
         }
     }
 }

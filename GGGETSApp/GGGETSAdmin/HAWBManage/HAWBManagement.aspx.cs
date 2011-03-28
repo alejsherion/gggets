@@ -15,6 +15,7 @@ namespace GGGETSAdmin.HAWBManage
     {
         public int n = 1;
         private IHAWBManagementService _hawbService;
+        private ISysUserManagementService _SysUserManagementService;
         protected static Regex RCountry = new Regex(@"^[A-Za-z]{2}");
         private static Regex RRegion = new Regex(@"^[A-Za-z]{3}");
         private static string Rtime = @"^((((1[6-9]|[2-9]\d)\d{2})-(0?[13578]|1[02])-(0?[1-9]|[12]\d|3[01]))|(((1[6-9]|[2-9]\d)\d{2})-(0?[13456789]|1[012])-(0?[1-9]|[12]\d|30))|(((1[6-9]|[2-9]\d)\d{2})-0?2-(0?[1-9]|1\d|2[0-8]))|(((1[6-9]|[2-9]\d)(0[48]|[2468][048]|[13579][26])|((16|[2468][048]|[3579][26])00))-0?2-29))$";
@@ -40,16 +41,26 @@ namespace GGGETSAdmin.HAWBManage
         private bool isInternational;
         protected HAWBManagement()
         { }
-        public HAWBManagement(IHAWBManagementService hawbservice)
+        public HAWBManagement(IHAWBManagementService hawbservice, ISysUserManagementService SysUserManagementService)
         {
             _hawbService = hawbservice;
+            _SysUserManagementService = SysUserManagementService;
         }
         protected void Page_Load(object sender, EventArgs e)
         {
+            
             if (!IsPostBack)
             {
+                Txt_GetUpTime.Text = DateTime.Today.AddDays(-1).ToString();
+                Txt_StopTime.Text = DateTime.Today.ToString();
                 DropDownList();
+                if (Session["UserID"] != null)
+                {
+                    Guid id = (Guid)Session["UserID"];
+                    ModulePrivilege Authority = _SysUserManagementService.GetPrivilegeByUserid(id);
+                }
             }
+            
         }
         protected void DropDownList()
         {

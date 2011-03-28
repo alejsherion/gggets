@@ -7,27 +7,18 @@
 // </自动生成>
 //------------------------------------------------------------------------------
 
-namespace GGGETSAdmin.Account {
+namespace GGGETSAdmin {
     
     
-    public partial class Login {
+    public partial class HOME {
         
         /// <summary>
-        /// RegisterHyperLink 控件。
+        /// TopMenu1 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink RegisterHyperLink;
-        
-        /// <summary>
-        /// LoginUser 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Login LoginUser;
+        protected global::GGGETSAdmin.TopMenu TopMenu1;
     }
 }

@@ -15,7 +15,8 @@
                 <asp:Button ID="btn_China" runat="server" Text="中文" onclick="btn_China_Click" CssClass="InputBtn"/>
                 <asp:Button ID="btn_English" runat="server" Text="英文" CssClass="InputBtn" 
                     onclick="btn_English_Click" />
-                <asp:LinkButton ID="lbtn_Navigation" runat="server" Text="主页" PostBackUrl="~/Navigation.aspx" CssClass="InputBtn"></asp:LinkButton>
+                <asp:LinkButton ID="lbtn_Navigation" runat="server" Text="主页" 
+                    CssClass="InputBtn" onclick="lbtn_Navigation_Click"></asp:LinkButton>
             </div>
         </asp:ContentPlaceHolder>
         <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">

@@ -37,6 +37,11 @@ namespace GGGETSAdmin.MawbManage
         }
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!IsPostBack)
+            {
+                txt_UpCreateTime.Text = DateTime.Today.AddDays(-1).ToString();
+                txt_ToCreateTime.Text = DateTime.Today.ToString();
+            }
         }
         /// <summary>
         /// 数据源绑定
