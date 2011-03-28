@@ -434,7 +434,7 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Repositories
             var context = UnitOfWork as IGGGETSAppUnitOfWork;
             if (context == null) throw new Exception("系统出错");
             var sysUserRole = context.SysUser.Where(it => it.LoginName == lgoinName).ToList();
-            if (sysUserRole != null) throw new Exception("已经存在这个登录名");
+            if (sysUserRole.Count != 0) throw new Exception("已经存在这个登录名");//汪熙修改2011.03.28
         }
         
 
