@@ -17,7 +17,7 @@ namespace GGGETSAdmin.ProductManage
         private IHSPropertyManagementService _HSProperty;
         private HSProduct product;
         private HSProperty property;
-        private static string RTax = @"^(0|[1-9][0-9]*)$|^[0-9]+(.[0-9]{2})?$";
+        private static string RTax = @"^([1])$|^([1].[0]{2})$|^([0].[1-9][0-9])?$|^([0].[0-9][1-9])?$";
         protected ProductAdd()
         { }
         public ProductAdd(IHSProductManagementService HSProduct, IHSPropertyManagementService HSProperty)
@@ -100,27 +100,27 @@ namespace GGGETSAdmin.ProductManage
             {
                 if (!Regex.IsMatch(Txt_DiscountTax.Text.Trim(), RTax))
                 {
-                    ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('优惠税率只能输入整数或小数且小数点后保留2位!')", true);
+                    ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('优惠税率只能输入0.01-1的数字且小数点后保留2位!')", true);
                     Txt_DiscountTax.Focus();
                 }
                 else if (!Regex.IsMatch(Txt_GeneralTax.Text.Trim(), RTax))
                 {
-                    ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('普通税率只能输入整数或小数且小数点后保留2位!')", true);
+                    ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('普通税率只能输入0.01-1的数字且小数点后保留2位!')", true);
                     Txt_GeneralTax.Focus();
                 }
                 else if (!Regex.IsMatch(Txt_ExportTax.Text.Trim(), RTax))
                 {
-                    ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('出口税率只能输入整数或小数且小数点后保留2位!')", true);
+                    ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('出口税率只能输入0.01-1的数字且小数点后保留2位!')", true);
                     Txt_ExportTax.Focus();
                 }
                 else if (!Regex.IsMatch(Txt_ConsumeTax.Text.Trim(), RTax))
                 {
-                    ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('消费税率只能输入整数或小数且小数点后保留2位!')", true);
+                    ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('消费税率只能输入0.01-1的数字且小数点后保留2位!')", true);
                     Txt_ConsumeTax.Focus();
                 }
                 else if (!Regex.IsMatch(Txt_RiseTax.Text.Trim(), RTax))
                 {
-                    ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('增值税率只能输入整数或小数且小数点后保留2位!')", true);
+                    ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('增值税率只能输入0.01-1的数字且小数点后保留2位!')", true);
                     Txt_RiseTax.Focus();
                 }
                 else

@@ -31,5 +31,11 @@ namespace GGGETSAdmin
         {
             SetLanguage("en-us");
         }
+
+        protected void lbtn_Navigation_Click(object sender, EventArgs e)
+        {
+            Session.Clear();
+            Response.Redirect("../Navigation.aspx");
+        }
     }
 }

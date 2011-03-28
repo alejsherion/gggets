@@ -160,6 +160,7 @@
     <Content Include="HAWBManage\HAWBDetails.aspx" />
     <Content Include="HAWBManage\HAWBItemAdd.aspx" />
     <Content Include="HAWBManage\HAWBManagement.aspx" />
+    <Content Include="HOME.aspx" />
     <Content Include="Login\Login.aspx" />
     <Content Include="MawbManage\MawbAdd.aspx" />
     <Content Include="MawbManage\MawbDetails.aspx" />
@@ -226,7 +227,6 @@
     <Content Include="SysManager\AppModuleManagement.aspx" />
     <Content Include="SysManager\RoleManagement.aspx" />
     <Content Include="TopMenu.ascx" />
-    <Content Include="UserMenu\a8a1b9e4-9402-455d-b109-91a155588689Menu.xml" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -387,6 +387,13 @@
     </Compile>
     <Compile Include="HAWBManage\HAWBManagement.aspx.designer.cs">
       <DependentUpon>HAWBManagement.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="HOME.aspx.cs">
+      <DependentUpon>HOME.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="HOME.aspx.designer.cs">
+      <DependentUpon>HOME.aspx</DependentUpon>
     </Compile>
     <Compile Include="Login\Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
@@ -703,6 +710,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="bin\" />
     <Folder Include="Resources\" />
+    <Folder Include="UserMenu\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Account\Web.config" />
@@ -775,8 +783,8 @@
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
-          <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>2178</DevelopmentServerPort>
+          <AutoAssignPort>False</AutoAssignPort>
+          <DevelopmentServerPort>2149</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>
           </IISUrl>
