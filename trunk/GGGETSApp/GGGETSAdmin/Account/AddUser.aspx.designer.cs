@@ -22,6 +22,24 @@ namespace GGGETSAdmin.Account {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
+        /// ToolkitScriptManager1 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::AjaxControlToolkit.ToolkitScriptManager ToolkitScriptManager1;
+        
+        /// <summary>
+        /// UpdatePanel1 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel UpdatePanel1;
+        
+        /// <summary>
         /// lbl_LoginName 控件。
         /// </summary>
         /// <remarks>
@@ -211,6 +229,15 @@ namespace GGGETSAdmin.Account {
         protected global::System.Web.UI.WebControls.TextBox txtCountryCode;
         
         /// <summary>
+        /// autoCountry 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::AutoCompleteExtra.AutoCompleteExtraExtender autoCountry;
+        
+        /// <summary>
         /// valeCountryCode 控件。
         /// </summary>
         /// <remarks>
@@ -245,6 +272,15 @@ namespace GGGETSAdmin.Account {
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator valeRegionCode;
+        
+        /// <summary>
+        /// autoRegion 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::AutoCompleteExtra.AutoCompleteExtraExtender autoRegion;
         
         /// <summary>
         /// lbl_Status 控件。
