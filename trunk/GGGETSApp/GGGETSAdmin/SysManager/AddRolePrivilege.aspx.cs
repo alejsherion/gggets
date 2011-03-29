@@ -144,6 +144,7 @@ namespace GGGETSAdmin.SysManager
                     if (node.Nodes.Count == 0)
                     {
                         var parentNode = node.ParentNode;
+                        if (parentNode == null) continue;
                         var modelId = new Guid(parentNode.Value);
                         var rolePrivilege = role.Role_Privilege.Where(it => it.ModuleID == modelId).SingleOrDefault();
                         if (!node.Checked)
