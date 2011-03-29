@@ -1,8 +1,14 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="ProductManagemnet.aspx.cs" Inherits="GGGETSAdmin.ProductManage.ProductManagemnet" Theme="logisitc" %>
+
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div>
+    <cc1:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server">
+    </cc1:ToolkitScriptManager>
+    <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+        <ContentTemplate>  
+            <div>
         <table class="DataView">
             <tbody>
                 <tr class="AlternatingRow">
@@ -122,6 +128,8 @@
         <asp:Button ID="btn_lastpage" runat="server" Text="末页" CssClass="InputBtn" 
             onclick="btn_lastpage_Click" />
     </div>
+        </ContentTemplate>
+    </asp:UpdatePanel>
     <script type="text/javascript">
 
         function NumberCheck(name) {
