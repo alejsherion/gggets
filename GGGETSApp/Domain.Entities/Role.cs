@@ -22,9 +22,9 @@ using ETS.GGGETSApp.Domain.Core.Entities;
 namespace ETS.GGGETSApp.Domain.Application.Entities
 {
     [DataContract(IsReference = true)]
-    [KnownType(typeof(Role_Privilege))]
     [KnownType(typeof(SysUser))]
     [KnownType(typeof(SysUser_Role))]
+    [KnownType(typeof(Role_Privilege))]
     [Serializable]
     [System.CodeDom.Compiler.GeneratedCode("STE-EF",".NET 4.0")]
     #if !SILVERLIGHT
@@ -162,41 +162,6 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
         #region Navigation Properties
     
         [DataMember]
-        public TrackableCollection<Role_Privilege> Role_Privilege
-        {
-            get
-            {
-                if (_role_Privilege == null)
-                {
-                    _role_Privilege = new TrackableCollection<Role_Privilege>();
-                    _role_Privilege.CollectionChanged += FixupRole_Privilege;
-                }
-                return _role_Privilege;
-            }
-            set
-            {
-                if (!ReferenceEquals(_role_Privilege, value))
-                {
-                    if (ChangeTracker.ChangeTrackingEnabled)
-                    {
-                        throw new InvalidOperationException("Cannot set the FixupChangeTrackingCollection when ChangeTracking is enabled");
-                    }
-                    if (_role_Privilege != null)
-                    {
-                        _role_Privilege.CollectionChanged -= FixupRole_Privilege;
-                    }
-                    _role_Privilege = value;
-                    if (_role_Privilege != null)
-                    {
-                        _role_Privilege.CollectionChanged += FixupRole_Privilege;
-                    }
-                    OnNavigationPropertyChanged("Role_Privilege");
-                }
-            }
-        }
-        private TrackableCollection<Role_Privilege> _role_Privilege;
-    
-        [DataMember]
         public TrackableCollection<SysUser> SysUser
         {
             get
@@ -265,6 +230,41 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
             }
         }
         private TrackableCollection<SysUser_Role> _sysUser_Role;
+    
+        [DataMember]
+        public TrackableCollection<Role_Privilege> Role_Privilege
+        {
+            get
+            {
+                if (_role_Privilege == null)
+                {
+                    _role_Privilege = new TrackableCollection<Role_Privilege>();
+                    _role_Privilege.CollectionChanged += FixupRole_Privilege;
+                }
+                return _role_Privilege;
+            }
+            set
+            {
+                if (!ReferenceEquals(_role_Privilege, value))
+                {
+                    if (ChangeTracker.ChangeTrackingEnabled)
+                    {
+                        throw new InvalidOperationException("Cannot set the FixupChangeTrackingCollection when ChangeTracking is enabled");
+                    }
+                    if (_role_Privilege != null)
+                    {
+                        _role_Privilege.CollectionChanged -= FixupRole_Privilege;
+                    }
+                    _role_Privilege = value;
+                    if (_role_Privilege != null)
+                    {
+                        _role_Privilege.CollectionChanged += FixupRole_Privilege;
+                    }
+                    OnNavigationPropertyChanged("Role_Privilege");
+                }
+            }
+        }
+        private TrackableCollection<Role_Privilege> _role_Privilege;
 
         #endregion
         #region ChangeTracking
@@ -344,52 +344,13 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
     
         protected virtual void ClearNavigationProperties()
         {
-            Role_Privilege.Clear();
             SysUser.Clear();
             SysUser_Role.Clear();
+            Role_Privilege.Clear();
         }
 
         #endregion
         #region Association Fixup
-    
-        private void FixupRole_Privilege(object sender, NotifyCollectionChangedEventArgs e)
-        {
-            if (IsDeserializing)
-            {
-                return;
-            }
-    
-            if (e.NewItems != null)
-            {
-                foreach (Role_Privilege item in e.NewItems)
-                {
-                    item.Role = this;
-                    if (ChangeTracker.ChangeTrackingEnabled)
-                    {
-                        if (!item.ChangeTracker.ChangeTrackingEnabled)
-                        {
-                            item.StartTracking();
-                        }
-                        ChangeTracker.RecordAdditionToCollectionProperties("Role_Privilege", item);
-                    }
-                }
-            }
-    
-            if (e.OldItems != null)
-            {
-                foreach (Role_Privilege item in e.OldItems)
-                {
-                    if (ReferenceEquals(item.Role, this))
-                    {
-                        item.Role = null;
-                    }
-                    if (ChangeTracker.ChangeTrackingEnabled)
-                    {
-                        ChangeTracker.RecordRemovalFromCollectionProperties("Role_Privilege", item);
-                    }
-                }
-            }
-        }
     
         private void FixupSysUser(object sender, NotifyCollectionChangedEventArgs e)
         {
@@ -464,6 +425,45 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
                     if (ChangeTracker.ChangeTrackingEnabled)
                     {
                         ChangeTracker.RecordRemovalFromCollectionProperties("SysUser_Role", item);
+                    }
+                }
+            }
+        }
+    
+        private void FixupRole_Privilege(object sender, NotifyCollectionChangedEventArgs e)
+        {
+            if (IsDeserializing)
+            {
+                return;
+            }
+    
+            if (e.NewItems != null)
+            {
+                foreach (Role_Privilege item in e.NewItems)
+                {
+                    item.Role = this;
+                    if (ChangeTracker.ChangeTrackingEnabled)
+                    {
+                        if (!item.ChangeTracker.ChangeTrackingEnabled)
+                        {
+                            item.StartTracking();
+                        }
+                        ChangeTracker.RecordAdditionToCollectionProperties("Role_Privilege", item);
+                    }
+                }
+            }
+    
+            if (e.OldItems != null)
+            {
+                foreach (Role_Privilege item in e.OldItems)
+                {
+                    if (ReferenceEquals(item.Role, this))
+                    {
+                        item.Role = null;
+                    }
+                    if (ChangeTracker.ChangeTrackingEnabled)
+                    {
+                        ChangeTracker.RecordRemovalFromCollectionProperties("Role_Privilege", item);
                     }
                 }
             }
