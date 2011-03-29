@@ -5,12 +5,13 @@
 /* DataView */
 .DataView
 {
-    width: 100%;
+    width: 99%;
     color: #333333;
-    text-align:left;
+    text-align:inherit;
     background: #fff;
     border: 1px solid #c9c7b1;
     margin-top: 5px;
+    margin-left:5px;
 }
 .DataView td
 {
