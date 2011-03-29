@@ -33,10 +33,12 @@
                                     Style="text-transform: uppercase" CssClass="TextBox"></asp:TextBox>
                             </td>
                             <td class="FieldHeader" style="width: 200px">
-                                <asp:Label ID="lbl_Destination" runat="server" Text="目的地三字码:"></asp:Label>
+                                <asp:Label ID="lbl_Destination" runat="server" Text="起/终地三字码:"></asp:Label>
                             </td>
                             <td align="left">
-                                <asp:TextBox ID="txt_Destination" TabIndex="4" runat="server" Width="50" MaxLength="3"
+                                <asp:TextBox ID="Txt_OriginalRegionCode" TabIndex="4" runat="server" Width="50" MaxLength="3"
+                                    Style="text-transform: uppercase" CssClass="TextBox"></asp:TextBox>-
+                                    <asp:TextBox ID="Txt_DestinationRegionCode" TabIndex="4" runat="server" Width="50" MaxLength="3"
                                     Style="text-transform: uppercase" CssClass="TextBox"></asp:TextBox>
                                 <cc1:AutoCompleteExtraExtender runat="server" ID="autocomplete" ServiceMethod="GetCountryList"
                                     TargetControlID="txt_Destination" AsyncPostback="false" AutoPostback="true" MinimumPrefixLength="1"

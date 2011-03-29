@@ -12,11 +12,13 @@ namespace GGGETSAdmin.PersonnelManage.DepartmentManage
     public partial class DepartmentDetails : System.Web.UI.Page
     {
         private IDepartmentManagementService _deparService;
+        private ISysUserManagementService _SysUserManagementService;
         protected DepartmentDetails()
         { }
-        public DepartmentDetails(IDepartmentManagementService deparservice)
+        public DepartmentDetails(IDepartmentManagementService deparservice, ISysUserManagementService SysUserManagementService)
         {
             _deparService = deparservice;
+            _SysUserManagementService = SysUserManagementService;
         }
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -24,7 +26,16 @@ namespace GGGETSAdmin.PersonnelManage.DepartmentManage
             {
                 if (!string.IsNullOrEmpty(Request.QueryString["DeparCode"]) && !string.IsNullOrEmpty(Request.QueryString["CompanyCode"]))
                 {
+                    if (Session["UserID"] != null)
+                    {
+                        Guid id = (Guid)Session["UserID"];
+                        ModulePrivilege Mprivilege = _SysUserManagementService.GetPrivilegeByUserid(id);
+                        if (!(bool)Mprivilege.UpdatePrivilege)
+                        {
+                            But_Update.Enabled = false;
+                        }
 
+                    }
                     string CompanyCode = Request.QueryString["CompanyCode"].ToString();
                     string DeparCode = Request.QueryString["DeparCode"].ToString();
                     Storage(DeparCode,CompanyCode);

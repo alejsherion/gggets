@@ -30,11 +30,11 @@ using System.Runtime.Serialization;
 [assembly: EdmRelationshipAttribute("MYGGGETSModel", "FK_PACKAGE_REFERENCE_MAWB", "MAWB", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(ETS.GGGETSApp.Infrastructure.Data.Persistence.Model.MAWB), "Package", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ETS.GGGETSApp.Infrastructure.Data.Persistence.Model.Package), true)]
 [assembly: EdmRelationshipAttribute("MYGGGETSModel", "FK_PARAM_FK_PARAM__TEMPLATE", "Template", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(ETS.GGGETSApp.Infrastructure.Data.Persistence.Model.Template), "Param", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ETS.GGGETSApp.Infrastructure.Data.Persistence.Model.Param), true)]
 [assembly: EdmRelationshipAttribute("MYGGGETSModel", "FK_HSPROPER_FK_HSPROP_HSPRODUC", "HSProduct", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(ETS.GGGETSApp.Infrastructure.Data.Persistence.Model.HSProduct), "HSProperty", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ETS.GGGETSApp.Infrastructure.Data.Persistence.Model.HSProperty), true)]
-[assembly: EdmRelationshipAttribute("MYGGGETSModel", "FK_PRIVILEG_REFERENCE_APPMODUL", "AppModule", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(ETS.GGGETSApp.Infrastructure.Data.Persistence.Model.AppModule), "Role_Privilege", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ETS.GGGETSApp.Infrastructure.Data.Persistence.Model.Role_Privilege), true)]
-[assembly: EdmRelationshipAttribute("MYGGGETSModel", "FK_Role_Privilege_Role", "Role", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(ETS.GGGETSApp.Infrastructure.Data.Persistence.Model.Role), "Role_Privilege", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ETS.GGGETSApp.Infrastructure.Data.Persistence.Model.Role_Privilege), true)]
 [assembly: EdmRelationshipAttribute("MYGGGETSModel", "FK_SysUser_Role", "Role", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(ETS.GGGETSApp.Infrastructure.Data.Persistence.Model.Role), "SysUser", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ETS.GGGETSApp.Infrastructure.Data.Persistence.Model.SysUser), true)]
 [assembly: EdmRelationshipAttribute("MYGGGETSModel", "FK_SysUser_Role_Role", "Role", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(ETS.GGGETSApp.Infrastructure.Data.Persistence.Model.Role), "SysUser_Role", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ETS.GGGETSApp.Infrastructure.Data.Persistence.Model.SysUser_Role), true)]
 [assembly: EdmRelationshipAttribute("MYGGGETSModel", "FK_SysUser_Role_SysUser", "SysUser", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(ETS.GGGETSApp.Infrastructure.Data.Persistence.Model.SysUser), "SysUser_Role", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ETS.GGGETSApp.Infrastructure.Data.Persistence.Model.SysUser_Role), true)]
+[assembly: EdmRelationshipAttribute("MYGGGETSModel", "FK_PRIVILEG_REFERENCE_APPMODUL", "AppModule", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(ETS.GGGETSApp.Infrastructure.Data.Persistence.Model.AppModule), "Role_Privilege", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ETS.GGGETSApp.Infrastructure.Data.Persistence.Model.Role_Privilege), true)]
+[assembly: EdmRelationshipAttribute("MYGGGETSModel", "FK_Role_Privilege_Role", "Role", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(ETS.GGGETSApp.Infrastructure.Data.Persistence.Model.Role), "Role_Privilege", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ETS.GGGETSApp.Infrastructure.Data.Persistence.Model.Role_Privilege), true)]
 
 #endregion
 
@@ -377,22 +377,6 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Model
         /// <summary>
         /// 没有元数据文档可用。
         /// </summary>
-        public ObjectSet<Role_Privilege> Role_Privilege
-        {
-            get
-            {
-                if ((_Role_Privilege == null))
-                {
-                    _Role_Privilege = base.CreateObjectSet<Role_Privilege>("Role_Privilege");
-                }
-                return _Role_Privilege;
-            }
-        }
-        private ObjectSet<Role_Privilege> _Role_Privilege;
-    
-        /// <summary>
-        /// 没有元数据文档可用。
-        /// </summary>
         public ObjectSet<SysUser> SysUser
         {
             get
@@ -421,6 +405,22 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Model
             }
         }
         private ObjectSet<SysUser_Role> _SysUser_Role;
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        public ObjectSet<Role_Privilege> Role_Privilege
+        {
+            get
+            {
+                if ((_Role_Privilege == null))
+                {
+                    _Role_Privilege = base.CreateObjectSet<Role_Privilege>("Role_Privilege");
+                }
+                return _Role_Privilege;
+            }
+        }
+        private ObjectSet<Role_Privilege> _Role_Privilege;
 
         #endregion
         #region AddTo 方法
@@ -570,14 +570,6 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Model
         }
     
         /// <summary>
-        /// 用于向 Role_Privilege EntitySet 添加新对象的方法，已弃用。请考虑改用关联的 ObjectSet&lt;T&gt; 属性的 .Add 方法。
-        /// </summary>
-        public void AddToRole_Privilege(Role_Privilege role_Privilege)
-        {
-            base.AddObject("Role_Privilege", role_Privilege);
-        }
-    
-        /// <summary>
         /// 用于向 SysUser EntitySet 添加新对象的方法，已弃用。请考虑改用关联的 ObjectSet&lt;T&gt; 属性的 .Add 方法。
         /// </summary>
         public void AddToSysUser(SysUser sysUser)
@@ -591,6 +583,14 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Model
         public void AddToSysUser_Role(SysUser_Role sysUser_Role)
         {
             base.AddObject("SysUser_Role", sysUser_Role);
+        }
+    
+        /// <summary>
+        /// 用于向 Role_Privilege EntitySet 添加新对象的方法，已弃用。请考虑改用关联的 ObjectSet&lt;T&gt; 属性的 .Add 方法。
+        /// </summary>
+        public void AddToRole_Privilege(Role_Privilege role_Privilege)
+        {
+            base.AddObject("Role_Privilege", role_Privilege);
         }
 
         #endregion
@@ -6546,28 +6546,6 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Model
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("MYGGGETSModel", "FK_Role_Privilege_Role", "Role_Privilege")]
-        public EntityCollection<Role_Privilege> Role_Privilege
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Role_Privilege>("MYGGGETSModel.FK_Role_Privilege_Role", "Role_Privilege");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Role_Privilege>("MYGGGETSModel.FK_Role_Privilege_Role", "Role_Privilege", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// 没有元数据文档可用。
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("MYGGGETSModel", "FK_SysUser_Role", "SysUser")]
         public EntityCollection<SysUser> SysUser
         {
@@ -6602,6 +6580,28 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Model
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<SysUser_Role>("MYGGGETSModel.FK_SysUser_Role_Role", "SysUser_Role", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("MYGGGETSModel", "FK_Role_Privilege_Role", "Role_Privilege")]
+        public EntityCollection<Role_Privilege> Role_Privilege
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Role_Privilege>("MYGGGETSModel.FK_Role_Privilege_Role", "Role_Privilege");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Role_Privilege>("MYGGGETSModel.FK_Role_Privilege_Role", "Role_Privilege", value);
                 }
             }
         }

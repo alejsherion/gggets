@@ -15,16 +15,28 @@ namespace GGGETSAdmin.PersonnelManage.CompanyManage
         private IAddressBookManagementService _addressService;
         private static Regex RTel = new Regex(@"^[0-9]*$");
         private Company company;
-        //private AddressBook addbook;
+        private ISysUserManagementService _SysUserManagementService;
         protected CompanyAdd()
         { }
-        public CompanyAdd(ICompanyManagementService companyService, IAddressBookManagementService addressservice)
+        public CompanyAdd(ICompanyManagementService companyService, IAddressBookManagementService addressservice, ISysUserManagementService SysUserManagementService)
         {
             _companyService = companyService;
-            //_addressService = addressservice;
+            _SysUserManagementService = SysUserManagementService;
         }
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!IsPostBack)
+            {
+                if (Session["UserID"] != null)
+                {
+                    Guid id = (Guid)Session["UserID"];
+                    ModulePrivilege Mprivilege = _SysUserManagementService.GetPrivilegeByUserid(id);
+                    if (!(bool)Mprivilege.AddPrivilege)
+                    {
+                        btn_Add.Enabled = false;
+                    }
+                }
+            }
 
         }
         /// <summary>
@@ -41,6 +53,7 @@ namespace GGGETSAdmin.PersonnelManage.CompanyManage
                Txt_CompanyCode.Focus();
                ok = false;
             }
+            
             else if (Txt_FullName.Text.Trim() == "")
             {
                 Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('请输入公司全称！')</script>");
@@ -94,24 +107,33 @@ namespace GGGETSAdmin.PersonnelManage.CompanyManage
             {
                 if (ok == true)
                 {
-                    company = new Company();
-                    //addbook = new AddressBook();
-                    company.CID = Guid.NewGuid();
-                    company.CompanyCode = Txt_CompanyCode.Text.Trim().ToUpper();
-                    company.FullName = Txt_FullName.Text.Trim().ToUpper();
-                    company.ShortName = Txt_ShortName.Text.Trim().ToUpper();
-                    company.Contactor = Txt_Contactor.Text.Trim().ToUpper();
-                    company.ContactorPhone = Txt_ContactorPhone.Text.Trim();
-                    company.Phone = Txt_Phone.Text.Trim();
-                    company.Fax = Txt_Fax.Text.Trim();
-                    company.Address = Txt_Address.Text.Trim();
-                    company.PostCode = Txt_PostCode.Text.Trim();
-                    company.OrganizationCode = Txt_OrganizationCode.Text.Trim();
-                    company.Remark = Txt_Remark.Text.Trim();
-                    company.Status = 1;
-                    _companyService.AddCompany(company);
-                    Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('注册成功！')</script>");
-                    InitialControl(this.Controls);
+                    Company company = _companyService.FindCompanyByCompanyCode(Txt_CompanyCode.Text.Trim());
+                    if (company != null)
+                    {
+                        Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('该账号已存在，请重新输入！')</script>");
+                        Txt_CompanyCode.Focus();
+                    }
+                    else
+                    {
+                        company = new Company();
+                        //addbook = new AddressBook();
+                        company.CID = Guid.NewGuid();
+                        company.CompanyCode = Txt_CompanyCode.Text.Trim().ToUpper();
+                        company.FullName = Txt_FullName.Text.Trim().ToUpper();
+                        company.ShortName = Txt_ShortName.Text.Trim().ToUpper();
+                        company.Contactor = Txt_Contactor.Text.Trim().ToUpper();
+                        company.ContactorPhone = Txt_ContactorPhone.Text.Trim();
+                        company.Phone = Txt_Phone.Text.Trim();
+                        company.Fax = Txt_Fax.Text.Trim();
+                        company.Address = Txt_Address.Text.Trim();
+                        company.PostCode = Txt_PostCode.Text.Trim();
+                        company.OrganizationCode = Txt_OrganizationCode.Text.Trim();
+                        company.Remark = Txt_Remark.Text.Trim();
+                        company.Status = 1;
+                        _companyService.AddCompany(company);
+                        Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('注册成功！')</script>");
+                        InitialControl(this.Controls);
+                    }
                 }
             }
         }

@@ -20,14 +20,16 @@ namespace GGGETSAdmin.HAWBManage
         private static IList<RegionCode> listregion;
         private static ICountryCodeManagementService _countryservice;
         private static IRegionCodeManagementService _regionservice;
-        protected IHAWBManagementService _hawbService;
+        private IHAWBManagementService _hawbService;
+        private ISysUserManagementService _sysUserManagementService;
         protected HAWBDetails()
         { }
-        public HAWBDetails(IHAWBManagementService hawbService, ICountryCodeManagementService countryservice, IRegionCodeManagementService regionservice)
+        public HAWBDetails(IHAWBManagementService hawbService, ICountryCodeManagementService countryservice, IRegionCodeManagementService regionservice,ISysUserManagementService sysUserManagementService)
         {
             _hawbService = hawbService;
             _countryservice = countryservice;
             _regionservice = regionservice;
+            _sysUserManagementService = sysUserManagementService;
         }
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -44,7 +46,26 @@ namespace GGGETSAdmin.HAWBManage
                     {
                         ViewState["UrlReferrer"] = Request.UrlReferrer.ToString();
                     }
-                    Storage(hawb);
+                    if (Session["UserID"] != null)
+                    {
+                        Storage(hawb);
+                        Guid id = (Guid)Session["UserID"];
+                        ModulePrivilege Mprivilege = _sysUserManagementService.GetPrivilegeByUserid(id);
+                        if (!(bool)Mprivilege.UpdatePrivilege)
+                        {
+                            But_Update.Enabled = false;
+                        }
+                        if (!(bool)Mprivilege.ExportPrivilege)
+                        {
+                            btn_DeriveAccept.Enabled = false;
+                            btn_DeriveSince.Enabled = false;
+                        }
+                    }
+                    else
+                    {
+                        Response.Write("<script>alert('没有访问权限!');location='../HOME.aspx'</script>");
+                    }
+                    
                 }
                 else
                 {

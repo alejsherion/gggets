@@ -15,20 +15,31 @@ namespace GGGETSAdmin.ProductManage
     {
         private IHSProductManagementService _HSProduct;
         private IHSPropertyManagementService _HSProperty;
+        private ISysUserManagementService _SysUserManagementService;
         private HSProduct product;
         private HSProperty property;
         private static string RTax = @"^([1])$|^([1].[0]{2})$|^([0].[1-9][0-9])?$|^([0].[0-9][1-9])?$";
         protected ProductAdd()
         { }
-        public ProductAdd(IHSProductManagementService HSProduct, IHSPropertyManagementService HSProperty)
+        public ProductAdd(IHSProductManagementService HSProduct, IHSPropertyManagementService HSProperty, ISysUserManagementService SysUserManagementService)
         {
             _HSProduct = HSProduct;
             _HSProperty = HSProperty;
+            _SysUserManagementService = SysUserManagementService;
         }
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
+                if (Session["UserID"] != null)
+                {
+                    Guid id = (Guid)Session["UserID"];
+                    ModulePrivilege Mprivilege = _SysUserManagementService.GetPrivilegeByUserid(id);
+                    if (!(bool)Mprivilege.AddPrivilege)
+                    {
+                        btn_Add.Enabled = false;
+                    }
+                }
                 DVProperty.Visible = false;
             }
         }

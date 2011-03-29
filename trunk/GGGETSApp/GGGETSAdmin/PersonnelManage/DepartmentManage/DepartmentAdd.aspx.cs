@@ -14,18 +14,29 @@ namespace GGGETSAdmin.PersonnelManage.DepartmentManage
     {
         private ICompanyManagementService _companyService;
         private IDepartmentManagementService _deparService;
+        private ISysUserManagementService _SysUserManagementService;
         private static Regex Rnubel = new Regex(@"^([1])$|^([1].[0]{2})$|^([0].[1-9][0-9])$|^([0].[0-9][1-9])$");
         protected DepartmentAdd()
         { }
-        public DepartmentAdd(ICompanyManagementService companyService, IDepartmentManagementService deparservice)
+        public DepartmentAdd(ICompanyManagementService companyService, IDepartmentManagementService deparservice, ISysUserManagementService SysUserManagementService)
         {
             _companyService = companyService;
             _deparService = deparservice;
+            _SysUserManagementService = SysUserManagementService;
         }
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
+                if (Session["UserID"] != null)
+                {
+                    Guid id = (Guid)Session["UserID"];
+                    ModulePrivilege Mprivilege = _SysUserManagementService.GetPrivilegeByUserid(id);
+                    if (!(bool)Mprivilege.AddPrivilege)
+                    {
+                        btn_Add.Enabled = false;
+                    }
+                }
                 DropDownList();
             }
         }

@@ -25,9 +25,10 @@ namespace GGGETSAdmin.HAWBManage
         private ICompanyManagementService _companyservice;
         private IDepartmentManagementService _departmentservice;
         private IAddressBookManagementService _addressbookservice;
+        private ISysUserManagementService _sysUserManagementService;
         protected HAWBAdd()
         { }
-        public HAWBAdd(IHAWBManagementService hawbService, ICountryCodeManagementService countryservice, IRegionCodeManagementService regionservice, ICompanyManagementService companyservice, IDepartmentManagementService departmentservice, IAddressBookManagementService addressbookservice)
+        public HAWBAdd(IHAWBManagementService hawbService, ICountryCodeManagementService countryservice, IRegionCodeManagementService regionservice, ICompanyManagementService companyservice, IDepartmentManagementService departmentservice, IAddressBookManagementService addressbookservice, ISysUserManagementService sysUserManagementService)
         {
             _hawbService = hawbService;
             _countryservice = countryservice;
@@ -35,48 +36,65 @@ namespace GGGETSAdmin.HAWBManage
             _companyservice = companyservice;
             _departmentservice = departmentservice;
             _addressbookservice = addressbookservice;
+            _sysUserManagementService = sysUserManagementService;
         }
         protected void Page_Load(object sender, EventArgs e)
         {
 
             if (!IsPostBack)
             {
-                DropDownList();
-                Txt_BarCode.Focus();
-                listcountry = _countryservice.FindAllCountries();
-                listregion = _regionservice.FindAllRegionCodes();
-                if (!string.IsNullOrEmpty(Request.QueryString["BarCode"]) && !string.IsNullOrEmpty(Request.QueryString["update"]))
+                if (Session["UserID"] != null)
                 {
-                    
-                    Update = Convert.ToInt32(Request.QueryString["update"]);
-                    ViewState["update"] = Update;
-                    hawb = _hawbService.LoadHAWBByBarCode(Request.QueryString["BarCode"].ToString());
-                    Session["HAWB"] = hawb;
-                    if (hawb.DeliverName != "" && hawb.DeliverName != null)
+                    Guid id = (Guid)Session["UserID"];
+                    ModulePrivilege Mprivilege = _sysUserManagementService.GetPrivilegeByUserid(id);
+                    DropDownList();
+                    Txt_BarCode.Focus();
+                    listcountry = _countryservice.FindAllCountries();
+                    listregion = _regionservice.FindAllRegionCodes();
+                    if (!string.IsNullOrEmpty(Request.QueryString["BarCode"]) && !string.IsNullOrEmpty(Request.QueryString["update"]))
                     {
-                        this.Deliver.Visible = true;
-                        this.lbtn_AddConsignee.Enabled = true;
+                        if (!(bool)Mprivilege.UpdatePrivilege)
+                        {
+                            But_Next.Enabled = false;
+                        }
+                        Update = Convert.ToInt32(Request.QueryString["update"]);
+                        ViewState["update"] = Update;
+                        hawb = _hawbService.LoadHAWBByBarCode(Request.QueryString["BarCode"].ToString());
+                        Session["HAWB"] = hawb;
+                        if (hawb.DeliverName != "" && hawb.DeliverName != null)
+                        {
+                            this.Deliver.Visible = true;
+                            this.lbtn_AddConsignee.Enabled = true;
+                        }
+                        Evaluate();
+                        DDl_Status.Visible = true;
+                        lbl_Status.Visible = true;
                     }
-                    Evaluate();
-                    DDl_Status.Visible = true;
-                    lbl_Status.Visible = true;
+                    else
+                    {
+                        if (Session["HAWB"] != null)
+                        {
+                            if (!(bool)Mprivilege.AddPrivilege)
+                            {
+                                But_Next.Enabled = false;
+                            }
+                            hawb = (HAWB)Session["HAWB"];
+                            if (hawb.DeliverName != null && hawb.DeliverName != "")
+                            {
+                                this.Deliver.Visible = true;
+                                this.lbtn_AddConsignee.Enabled = false;
+                                Txt_ConsigneeName.Focus();
+                            }
+
+                        }
+                        Evaluate();
+                        DDl_Status.Visible = false;
+                        lbl_Status.Visible = false;
+                    }
                 }
                 else
                 {
-                    if (Session["HAWB"] != null)
-                    {
-                        hawb = (HAWB)Session["HAWB"];
-                        if (hawb.DeliverName != null && hawb.DeliverName != "")
-                        {
-                            this.Deliver.Visible = true;
-                            this.lbtn_AddConsignee.Enabled = false;
-                            Txt_ConsigneeName.Focus();
-                        }
-
-                    }
-                    Evaluate();
-                    DDl_Status.Visible = false;
-                    lbl_Status.Visible = false;
+                    Response.Write("<script>alert('没有访问权限!');location='../HOME.aspx'</script>");
                 }
             }
 

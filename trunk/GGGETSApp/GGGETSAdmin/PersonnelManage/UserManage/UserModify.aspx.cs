@@ -15,16 +15,18 @@ namespace GGGETSAdmin.PersonnelManage.UserManage
         private IUserManagementService _userService;
         private IDepartmentManagementService _deparService;
         private ICompanyManagementService _companyService;
+        private ISysUserManagementService _sysUserManagementService;
         private ETS.GGGETSApp.Domain.Application.Entities.User user;
         private static Regex Rnubel = new Regex(@"^([1])$|^([1].[0]{2})$|^([0].[0-9][1-9])?$|^([0].[1-9][0-9])?$");
         private static Regex REmail = new Regex(@"\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*");
         protected UserModify()
         { }
-        public UserModify(IUserManagementService userservice, IDepartmentManagementService deparservice, ICompanyManagementService companyservice)
+        public UserModify(IUserManagementService userservice, IDepartmentManagementService deparservice, ICompanyManagementService companyservice, ISysUserManagementService sysUserManagementService)
         {
             _userService = userservice;
             _deparService = deparservice;
             _companyService = companyservice;
+            _sysUserManagementService = sysUserManagementService;
         }
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -32,6 +34,15 @@ namespace GGGETSAdmin.PersonnelManage.UserManage
             {
                 if (!string.IsNullOrEmpty(Request.QueryString["LoginName"]))
                 {
+                    if (Session["UserID"] != null)
+                    {
+                        Guid id = (Guid)Session["UserID"];
+                        ModulePrivilege Mpriviege = _sysUserManagementService.GetPrivilegeByUserid(id);
+                        if (!(bool)Mpriviege.UpdatePrivilege)
+                        {
+                            btn_Update.Enabled = false;
+                        }
+                    }
                     DropDownList();
                     string LoginName = Request.QueryString["LoginName"].ToString();
                     Storage(LoginName);

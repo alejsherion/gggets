@@ -14,6 +14,7 @@ namespace GGGETSAdmin.MawbManage
     {
         protected IMAWBManagementService _mawbservice;
         protected IPackageManagementService _packageservice;
+        private ISysUserManagementService _sysUserManagementService;
         private static string RRegion = @"^[A-Za-z]{3}";
         private MAWB mawb;
         private Package package;
@@ -21,10 +22,11 @@ namespace GGGETSAdmin.MawbManage
         public int n = 1;
         protected MawbModify()
         { }
-        public MawbModify(IMAWBManagementService mawbservice, IPackageManagementService packageservice)
+        public MawbModify(IMAWBManagementService mawbservice, IPackageManagementService packageservice, ISysUserManagementService sysUserManagementService)
         {
             _mawbservice = mawbservice;
             _packageservice = packageservice;
+            _sysUserManagementService = sysUserManagementService;
         }
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -33,6 +35,31 @@ namespace GGGETSAdmin.MawbManage
                 Txt_MAWBBarCode.Focus();
                 if (Request.QueryString["BarCode"] != "" && Request.QueryString["BarCode"] != null)
                 {
+                    if (Session["UserID"] != null)
+                    {
+                        Guid id = (Guid)Session["UserID"];
+                        ModulePrivilege Mpriviege = _sysUserManagementService.GetPrivilegeByUserid(id);
+                        if (!(bool)Mpriviege.UpdatePrivilege)
+                        {
+                            btn_Add.Enabled = false;
+                            btn_Save.Enabled = false;
+                            btn_SaveAndClose.Enabled = false;
+                            btn_Close.Enabled = false;
+                        }
+                        else
+                        {
+                            if (txt_Status.Text != "打开")
+                            {
+                                if (!(bool)Mpriviege.DeblockingPrivilege)
+                                {
+                                    btn_Add.Enabled = false;
+                                    btn_Save.Enabled = false;
+                                    btn_SaveAndClose.Enabled = false;
+                                    btn_Close.Enabled = false;
+                                }
+                            }
+                        }
+                    }
                     ViewState["UrlReferrer"] = Request.UrlReferrer;
                     mawb = _mawbservice.FindMAWBByBarcode(Request.QueryString["BarCode"]);
                     if (mawb != null)

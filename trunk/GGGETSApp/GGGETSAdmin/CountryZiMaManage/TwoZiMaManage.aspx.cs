@@ -13,17 +13,31 @@ namespace GGGETSAdmin.CountryZiMaManage
     public partial class TwoZiMaManage : System.Web.UI.Page
     {
         private ICountryCodeManagementService _countryservice;
+        private ISysUserManagementService _sysUserManagementService;
         private CountryCode country = new CountryCode();
         private IList<CountryCode> listCountry;
         protected TwoZiMaManage()
         {}
-        public TwoZiMaManage(ICountryCodeManagementService countryservice)
+        public TwoZiMaManage(ICountryCodeManagementService countryservice, ISysUserManagementService SysUserManagementService)
         {
             _countryservice = countryservice;
+            _sysUserManagementService = SysUserManagementService;
         }
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!IsPostBack)
+            {
+                if (Session["UserID"] != null)
+                {
 
+                    Guid id = (Guid)Session["UserID"];
+                    ModulePrivilege Mprivlege = _sysUserManagementService.GetPrivilegeByUserid(id);
+                    if (!(bool)Mprivlege.QueryPrivilege)
+                    {
+                       btn_Demand.Enabled = false;
+                    }
+                }
+            }
         }
         /// <summary>
         /// 查询
@@ -124,6 +138,28 @@ namespace GGGETSAdmin.CountryZiMaManage
                 //listCountry.Remove(country);
                 gv_Country.DataSource = _countryservice.FindAllCountries();
                 gv_Country.DataBind();
+            }
+        }
+
+        protected void gv_Country_DataBound(object sender, EventArgs e)
+        {
+            if (Session["UserID"] != null)
+            {
+                Guid id = (Guid)Session["UserID"];
+                ModulePrivilege Authority = _sysUserManagementService.GetPrivilegeByUserid(id);
+                
+                foreach (GridViewRow row in gv_Country.Rows)
+                {
+                    if (!(bool)Authority.UpdatePrivilege)
+                    {
+                        ((LinkButton)row.FindControl("btn_Eidt") as LinkButton).Enabled = false;
+                    }
+                    if (!(bool)Authority.DeletePrivilege)
+                    {
+                        ((LinkButton)row.FindControl("btn_Delete") as LinkButton).Enabled = false;
+                    }
+
+                }
             }
         }
 

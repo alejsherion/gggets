@@ -13,13 +13,15 @@ namespace GGGETSAdmin.PersonnelManage.DepartmentManage
     public partial class DepartmentModify : System.Web.UI.Page
     {
         private IDepartmentManagementService _deparService;
+        private ISysUserManagementService _sysUserManagementService;
         private Department depar;
         private static Regex Rnubel = new Regex(@"^([1])$|^([1].[0]{2})$|^([0].[1-9][0-9])?$|^([0].[0-9][1-9])?$");
         protected DepartmentModify()
         { }
-        public DepartmentModify(IDepartmentManagementService deparservice)
+        public DepartmentModify(IDepartmentManagementService deparservice, ISysUserManagementService sysUserManagementService)
         {
             _deparService = deparservice;
+            _sysUserManagementService = sysUserManagementService;
         }
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -27,6 +29,15 @@ namespace GGGETSAdmin.PersonnelManage.DepartmentManage
             {
                 if (!string.IsNullOrEmpty(Request.QueryString["DeparCode"]) && !string.IsNullOrEmpty(Request.QueryString["CompanyCode"]))
                 {
+                    if (Session["UserID"] != null)
+                    {
+                        Guid id = (Guid)Session["UserID"];
+                        ModulePrivilege Mpriviege = _sysUserManagementService.GetPrivilegeByUserid(id);
+                        if (!(bool)Mpriviege.UpdatePrivilege)
+                        {
+                            btn_Update.Enabled = false;
+                        }
+                    }
                     DropDownList();
                     string CompanyCode = Request.QueryString["CompanyCode"].ToString();
                     string DeparCode = Request.QueryString["DeparCode"].ToString();

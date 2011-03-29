@@ -12,11 +12,13 @@ namespace GGGETSAdmin.ProductManage
     public partial class ProductDetails : System.Web.UI.Page
     {
         private IHSProductManagementService _HSProduct;
+        private ISysUserManagementService _SysUserManagementService;
         protected ProductDetails()
         { }
-        public ProductDetails(IHSProductManagementService HSProduct)
+        public ProductDetails(IHSProductManagementService HSProduct, ISysUserManagementService SysUserManagementService)
         {
             _HSProduct = HSProduct;
+            _SysUserManagementService = SysUserManagementService;
         }
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -24,6 +26,16 @@ namespace GGGETSAdmin.ProductManage
             {
                 if (!string.IsNullOrEmpty(Request.QueryString["HSCode"]))
                 {
+                    if (Session["UserID"] != null)
+                    {
+                        Guid id = (Guid)Session["UserID"];
+                        ModulePrivilege Mprivilege = _SysUserManagementService.GetPrivilegeByUserid(id);
+                        if (!(bool)Mprivilege.UpdatePrivilege)
+                        {
+                            btn_Update.Enabled = false;
+                        }
+
+                    }
                     string HSCode = Request.QueryString["HSCode"];
                     Evaluate(HSCode);
                 }

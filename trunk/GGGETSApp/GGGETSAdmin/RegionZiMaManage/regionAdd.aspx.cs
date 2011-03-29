@@ -15,17 +15,30 @@ namespace GGGETSAdmin.RegionZiMaManage
         private RegionCode regioncode=new RegionCode();
         protected IRegionCodeManagementService _regionservice;
         private static ICountryCodeManagementService _countryservice;
+        private ISysUserManagementService _sysUserManagementService;
         private static string RRegion = @"^[A-Za-z]";
         protected regionAdd()
         { }
-        public regionAdd(IRegionCodeManagementService regionservice,ICountryCodeManagementService countryservice)
+        public regionAdd(IRegionCodeManagementService regionservice, ICountryCodeManagementService countryservice, ISysUserManagementService sysUserManagementService)
         {
             _regionservice = regionservice;
             _countryservice = countryservice;
+            _sysUserManagementService = sysUserManagementService;
         }
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (!IsPostBack)
+            {
+                if (Session["UserID"] != null)
+                {
+                    Guid id = (Guid)Session["UserID"];
+                    ModulePrivilege Mprivilege = _sysUserManagementService.GetPrivilegeByUserid(id);
+                    if (!(bool)Mprivilege.AddPrivilege)
+                    {
+                        btn_Add.Enabled = false;
+                    }
+                }
+            }
         }
         /// <summary>
         /// 国家码添加

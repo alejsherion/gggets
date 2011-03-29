@@ -34,7 +34,8 @@
         </table>
         <div style="height: 350px;overflow-x:auto;overflow-y:auto;">
         <asp:GridView ID="gv_HS" runat="server" AutoGenerateColumns="False" PageSize="36" 
-                onrowcommand="gv_HS_RowCommand" onrowdeleting="gv_HS_RowDeleting">
+                onrowcommand="gv_HS_RowCommand" onrowdeleting="gv_HS_RowDeleting" 
+                ondatabound="gv_HS_DataBound">
             <Columns>
                 <asp:TemplateField HeaderText="行号">
                             <ItemTemplate>

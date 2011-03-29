@@ -13,13 +13,15 @@ namespace GGGETSAdmin.PersonnelManage.CompanyManage
     public partial class CompanyModify : System.Web.UI.Page
     {
         private ICompanyManagementService _companyService;
+        private ISysUserManagementService _sysUserManagementService;
         private Company company;
         private static Regex RTel = new Regex(@"^[0-9]*$");
         protected CompanyModify()
         { }
-        public CompanyModify(ICompanyManagementService companyservice)
+        public CompanyModify(ICompanyManagementService companyservice, ISysUserManagementService sysUserManagementService)
         {
             _companyService = companyservice;
+            _sysUserManagementService = sysUserManagementService;
         }
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -27,6 +29,15 @@ namespace GGGETSAdmin.PersonnelManage.CompanyManage
             {
                 if (!string.IsNullOrEmpty(Request.QueryString["CompanyCode"]))
                 {
+                    if (Session["UserID"] != null)
+                    {
+                        Guid id = (Guid)Session["UserID"];
+                        ModulePrivilege Mpriviege = _sysUserManagementService.GetPrivilegeByUserid(id);
+                        if (!(bool)Mpriviege.UpdatePrivilege)
+                        {
+                            btn_Update.Enabled = false;
+                        }
+                    }
                     string CompanyCode = Request.QueryString["CompanyCode"].ToString();
                     Storage(CompanyCode);
                     ViewState["Url"] = Request.UrlReferrer.ToString();

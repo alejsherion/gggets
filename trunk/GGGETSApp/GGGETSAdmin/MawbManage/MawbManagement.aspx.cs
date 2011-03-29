@@ -16,6 +16,7 @@ namespace GGGETSAdmin.MawbManage
     {
         private IMAWBManagementService _mawbService;
         private IHAWBManagementService _hawbService;
+        private ISysUserManagementService _sysUserManagementService;
         private IList<MAWB> listmawb;
         private readonly int PageCount = 35;//页面显示个数，固定不变。需要配置请修改此属性
         public int PageIndex //当期页码，会随着点击下一页，上一页进行动态变化
@@ -30,17 +31,27 @@ namespace GGGETSAdmin.MawbManage
         private static string Rtime = @"^((((1[6-9]|[2-9]\d)\d{2})-(0?[13578]|1[02])-(0?[1-9]|[12]\d|3[01]))|(((1[6-9]|[2-9]\d)\d{2})-(0?[13456789]|1[012])-(0?[1-9]|[12]\d|30))|(((1[6-9]|[2-9]\d)\d{2})-0?2-(0?[1-9]|1\d|2[0-8]))|(((1[6-9]|[2-9]\d)(0[48]|[2468][048]|[13579][26])|((16|[2468][048]|[3579][26])00))-0?2-29))$";
         protected MawbManagement()
         { }
-        public MawbManagement(IMAWBManagementService mawbservice,IHAWBManagementService hawbservice)
+        public MawbManagement(IMAWBManagementService mawbservice, IHAWBManagementService hawbservice, ISysUserManagementService sysUserManagementService)
         {
             _mawbService = mawbservice;
             _hawbService = hawbservice;
+            _sysUserManagementService = sysUserManagementService;
         }
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
-                txt_UpCreateTime.Text = DateTime.Today.AddDays(-1).ToString("yyyy-MM-dd");
-                txt_ToCreateTime.Text = DateTime.Today.ToString("yyyy-MM-dd");
+                if (Session["UserID"] != null)
+                {
+                    Guid id = (Guid)Session["UserID"];
+                    ModulePrivilege Mpriviege = _sysUserManagementService.GetPrivilegeByUserid(id);
+                    if (!(bool)Mpriviege.QueryPrivilege)
+                    {
+                        btn_Demand.Enabled = false;
+                    }
+                    txt_UpCreateTime.Text = DateTime.Today.AddDays(-1).ToString("yyyy-MM-dd");
+                    txt_ToCreateTime.Text = DateTime.Today.ToString("yyyy-MM-dd");
+                }
             }
         }
         /// <summary>
@@ -343,6 +354,24 @@ namespace GGGETSAdmin.MawbManage
                     {
                         ((TextBox)objControl).Text = String.Empty;
                     }
+                }
+            }
+        }
+
+        protected void gv_HAWB_DataBound(object sender, EventArgs e)
+        {
+            if (Session["UserID"] != null)
+            {
+                Guid id = (Guid)Session["UserID"];
+                ModulePrivilege Authority = _sysUserManagementService.GetPrivilegeByUserid(id);
+                foreach (GridViewRow row in gv_HAWB.Rows)
+                {
+                    if (!(bool)Authority.ExportPrivilege)
+                    {
+                        ((LinkButton)row.FindControl("lbtn_Derive") as LinkButton).Enabled = false;
+                        ((LinkButton)row.FindControl("lbtn_DeriveAccept") as LinkButton).Enabled = false;
+                    }
+
                 }
             }
         }

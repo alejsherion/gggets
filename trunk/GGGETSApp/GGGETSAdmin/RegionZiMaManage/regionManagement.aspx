@@ -36,13 +36,14 @@
             OnRowEditing="gv_Region_RowEditing" onrowupdating="gv_Region_RowUpdating" 
             DataKeyNames="ID" onrowcancelingedit="gv_Region_RowCancelingEdit" 
             onrowdeleting="gv_Region_RowDeleting" onrowcommand="gv_Region_RowCommand" 
-                PageSize="5000">
+                PageSize="5000" ondatabound="gv_Region_DataBound">
             <Columns>
                 <asp:TemplateField HeaderText="地区三字码">
                     <ItemTemplate>
                         <asp:Label ID="lbl_RegionCode" runat="server" Text='<%# Eval("RegionCode1") %>'></asp:Label>
                     </ItemTemplate>
                     <EditItemTemplate>
+                        <asp:Label ID="Txt_CountryCode" runat="server" Text='<%# Eval("CountryCode") %>' Visible="false"></asp:Label>
                         <asp:TextBox ID="Txt_RegionCode" runat="server" MaxLength="3" Text='<%# Eval("RegionCode1") %>' style="text-transform:uppercase"></asp:TextBox>
                     </EditItemTemplate>
                     <HeaderStyle HorizontalAlign="Center" />
@@ -58,8 +59,19 @@
                     <HeaderStyle HorizontalAlign="Center" />
                     <ItemStyle HorizontalAlign="Center" />
                 </asp:TemplateField>
-                <asp:CommandField ShowEditButton="True" />
                 <%--<asp:ButtonField CommandName="Delete" ButtonType="Link" Text="删除" />--%>
+                <asp:TemplateField ShowHeader="False">
+                    <ItemTemplate>
+                        <asp:LinkButton ID="lbtn_Eint" runat="server" CausesValidation="False" 
+                            CommandName="Edit" Text="编辑"></asp:LinkButton>
+                    </ItemTemplate>
+                    <EditItemTemplate>
+                        <asp:LinkButton ID="lbtn_Update" runat="server" CausesValidation="True" 
+                            CommandName="Update" Text="更新"></asp:LinkButton>
+                        &nbsp;<asp:LinkButton ID="Lbtn_Conel" runat="server" CausesValidation="False" 
+                            CommandName="Cancel" Text="取消"></asp:LinkButton>
+                    </EditItemTemplate>
+                </asp:TemplateField>
                 <asp:TemplateField>
                     <ItemTemplate>
                         <asp:LinkButton ID="btn_Delete" runat="server" CausesValidation="False" CommandName="Delete"

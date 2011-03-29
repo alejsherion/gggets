@@ -12,15 +12,28 @@ namespace GGGETSAdmin.PersonnelManage.DepartmentManage
     public partial class DepartmentManagemnet : System.Web.UI.Page
     {
         private IDepartmentManagementService _deparService;
+        private ISysUserManagementService _sysUserManagementService;
         protected DepartmentManagemnet()
         { }
-        public DepartmentManagemnet(IDepartmentManagementService deparservice)
+        public DepartmentManagemnet(IDepartmentManagementService deparservice, ISysUserManagementService sysUserManagementService)
         {
             _deparService = deparservice;
+            _sysUserManagementService = sysUserManagementService;
         }
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (!IsPostBack)
+            {
+                if (Session["UserID"] != null)
+                {
+                    Guid id = (Guid)Session["UserID"];
+                    ModulePrivilege Mpriviege = _sysUserManagementService.GetPrivilegeByUserid(id);
+                    if (!(bool)Mpriviege.QueryPrivilege)
+                    {
+                        btn_Demand.Enabled = false;
+                    }
+                }
+            }
         }
         /// <summary>
         /// 查询按钮
@@ -72,6 +85,27 @@ namespace GGGETSAdmin.PersonnelManage.DepartmentManage
                 if (depar != null)
                 {
                     
+                }
+            }
+        }
+
+        protected void gv_Depar_DataBound(object sender, EventArgs e)
+        {
+            if (Session["UserID"] != null)
+            {
+                Guid id = (Guid)Session["UserID"];
+                ModulePrivilege Authority = _sysUserManagementService.GetPrivilegeByUserid(id);
+                foreach (GridViewRow row in gv_Depar.Rows)
+                {
+                    if (!(bool)Authority.UpdatePrivilege)
+                    {
+                        ((LinkButton)row.FindControl("lbtn_Updata") as LinkButton).Enabled = false;
+                    }
+                    if (!(bool)Authority.DeletePrivilege)
+                    {
+                        ((LinkButton)row.FindControl("lbtn_Delete") as LinkButton).Enabled = false;
+                    }
+
                 }
             }
         }

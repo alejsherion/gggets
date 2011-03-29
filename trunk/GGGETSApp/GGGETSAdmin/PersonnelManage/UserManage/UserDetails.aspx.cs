@@ -13,12 +13,14 @@ namespace GGGETSAdmin.PersonnelManage.UserManage
     {
         private IDepartmentManagementService _deparService;
         private IUserManagementService _userService;
+        private ISysUserManagementService _SysUserManagementService;
         protected UserDetails()
         { }
-        public UserDetails(IDepartmentManagementService deparService, IUserManagementService userService)
+        public UserDetails(IDepartmentManagementService deparService, IUserManagementService userService, ISysUserManagementService SysUserManagementService)
         {
             _deparService = deparService;
             _userService = userService;
+            _SysUserManagementService = SysUserManagementService;
         }
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -26,6 +28,16 @@ namespace GGGETSAdmin.PersonnelManage.UserManage
             {
                 if (!string.IsNullOrEmpty(Request.QueryString["LoginName"]))
                 {
+                    if (Session["UserID"] != null)
+                    {
+                        Guid id = (Guid)Session["UserID"];
+                        ModulePrivilege Mprivilege = _SysUserManagementService.GetPrivilegeByUserid(id);
+                        if (!(bool)Mprivilege.UpdatePrivilege)
+                        {
+                            But_Update.Enabled = false;
+                        }
+
+                    }
                     string LoginName = Request.QueryString["LoginName"].ToString();
                     Storage(LoginName);
                     ViewState["Url"] = Request.UrlReferrer.ToString();

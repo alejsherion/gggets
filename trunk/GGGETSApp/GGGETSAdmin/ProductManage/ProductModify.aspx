@@ -146,14 +146,25 @@
                             <HeaderStyle HorizontalAlign="Center" />
                             <ItemStyle HorizontalAlign="Center" Width="550px" />
                         </asp:TemplateField>
-                        <asp:CommandField ShowEditButton="True" />
+                        <asp:TemplateField ShowHeader="False">
+                            <ItemTemplate>
+                                <asp:LinkButton ID="LinkButton1" runat="server" CausesValidation="False" 
+                                    CommandName="Edit" Text="编辑"></asp:LinkButton>
+                            </ItemTemplate>
+                            <EditItemTemplate>
+                                <asp:LinkButton ID="LinkButton1" runat="server" CausesValidation="True" 
+                                    CommandName="Update" Text="更新"></asp:LinkButton>
+                                &nbsp;<asp:LinkButton ID="LinkButton2" runat="server" CausesValidation="False" 
+                                    CommandName="Cancel" Text="取消"></asp:LinkButton>
+                            </EditItemTemplate>
+                        </asp:TemplateField>
                         <asp:TemplateField>
-                            <HeaderTemplate>
-                                <input id="CheckedAll" name="CheckedAll" type="checkbox" onclick="CheckAll(this,'<%=Gv_Productiy.ClientID %>',4)" />
-                            </HeaderTemplate>
                             <ItemTemplate>
                                 <asp:CheckBox ID="chkId" runat="server" />
                             </ItemTemplate>
+                            <HeaderTemplate>
+                                <input id="CheckedAll" name="CheckedAll" type="checkbox" onclick="CheckAll(this,'<%=Gv_Productiy.ClientID %>',4)" />
+                            </HeaderTemplate>
                             <ItemStyle HorizontalAlign="Center" />
                         </asp:TemplateField>
                     </Columns>

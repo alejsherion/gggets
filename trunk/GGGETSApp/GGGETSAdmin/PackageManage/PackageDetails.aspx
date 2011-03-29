@@ -35,11 +35,13 @@
                             meta:resourcekey="txt_UpdateTimeResource1"></asp:Label>
                     </td>
                     <td class="FieldHeader" style="width:200px">
-                        <asp:Label ID="lbl_Region" runat="server" Text="目的地三字码:" 
+                        <asp:Label ID="lbl_OriginalRegionCode" runat="server" Text="起/终地三字码:" 
                             meta:resourcekey="lbl_RegionResource1"></asp:Label>
                     </td>
                     <td align="left">
-                        <asp:Label ID="txt_Destination" runat="server" Width="50px" 
+                        <asp:Label ID="Txt_OriginalRegionCode" runat="server" Width="50px" 
+                            meta:resourcekey="txt_DestinationResource1"></asp:Label>-
+                            <asp:Label ID="Txt_DestinationRegionCode" runat="server" Width="50px" 
                             meta:resourcekey="txt_DestinationResource1"></asp:Label>
                     </td>
                 </tr>

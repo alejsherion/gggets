@@ -13,16 +13,29 @@ namespace GGGETSAdmin.PersonnelManage.CompanyManage
     public partial class CompanyManagemnet : System.Web.UI.Page
     {
         private ICompanyManagementService _companyService;
+        private ISysUserManagementService _sysUserManagementService;
         private static Regex RTel = new Regex(@"^[0-9]*$");
         protected CompanyManagemnet()
         { }
-        public CompanyManagemnet(ICompanyManagementService companyservice)
+        public CompanyManagemnet(ICompanyManagementService companyservice, ISysUserManagementService sysUserManagementService)
         {
             _companyService = companyservice;
+            _sysUserManagementService = sysUserManagementService;
         }
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (!IsPostBack)
+            {
+                if (Session["UserID"] != null)
+                {
+                    Guid id = (Guid)Session["UserID"];
+                    ModulePrivilege Mpriviege = _sysUserManagementService.GetPrivilegeByUserid(id);
+                    if (!(bool)Mpriviege.QueryPrivilege)
+                    {
+                        btn_Demand.Enabled = false;
+                    }
+                }
+            }
         }
         /// <summary>
         /// 查询按钮
@@ -95,6 +108,27 @@ namespace GGGETSAdmin.PersonnelManage.CompanyManage
             {
                 string CompanyCode = e.CommandArgument.ToString();
                 Response.Redirect("");
+            }
+        }
+
+        protected void gv_Company_DataBound(object sender, EventArgs e)
+        {
+            if (Session["UserID"] != null)
+            {
+                Guid id = (Guid)Session["UserID"];
+                ModulePrivilege Authority = _sysUserManagementService.GetPrivilegeByUserid(id);
+                foreach (GridViewRow row in gv_Company.Rows)
+                {
+                    if (!(bool)Authority.UpdatePrivilege)
+                    {
+                        ((LinkButton)row.FindControl("lbtn_Updata") as LinkButton).Enabled = false;
+                    }
+                    if (!(bool)Authority.DeletePrivilege)
+                    {
+                        ((LinkButton)row.FindControl("lbtn_Delete") as LinkButton).Enabled = false;
+                    }
+
+                }
             }
         }
 

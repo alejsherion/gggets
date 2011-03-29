@@ -19,18 +19,20 @@ namespace GGGETSAdmin.PackageManage
         private IHAWBManagementService _hawbservice;
         private static IRegionCodeManagementService _regionservice;
         private IMAWBManagementService _mawbservice;
+        private ISysUserManagementService _sysUserManagementService;
         private Package package;
         private HAWB hawb = new HAWB();
         private int n = 1;
         private List<Guid> list = new List<Guid>();
         protected packageModify()
         { }
-        public packageModify(IPackageManagementService packageservice, IHAWBManagementService hawbservice, IRegionCodeManagementService regionservice, IMAWBManagementService mawbservice)
+        public packageModify(IPackageManagementService packageservice, IHAWBManagementService hawbservice, IRegionCodeManagementService regionservice, IMAWBManagementService mawbservice, ISysUserManagementService sysUserManagementService)
         {
             _packageservice = packageservice;
             _hawbservice = hawbservice;
             _regionservice = regionservice;
             _mawbservice = mawbservice;
+            _sysUserManagementService = sysUserManagementService;
         }
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -39,6 +41,19 @@ namespace GGGETSAdmin.PackageManage
                 
                 if (Request.QueryString["BarCode"] != "" && Request.QueryString["BarCode"] != null)
                 {
+                    if (Session["UserID"] != null)
+                    {
+                        Guid id = (Guid)Session["UserID"];
+                        ModulePrivilege Mpriviege = _sysUserManagementService.GetPrivilegeByUserid(id);
+                        if (!(bool)Mpriviege.UpdatePrivilege)
+                        {
+                            btn_Add.Enabled = false;
+                            btn_Save.Enabled = false;
+                            btn_SaveAndClose.Enabled = false;
+                            btn_Close.Enabled = false;
+                        }
+                        
+                    }
                     ViewState["UrlReferrer"] = Request.UrlReferrer;
                     package = _packageservice.FindPackageByBarcode(Request.QueryString["BarCode"]);
                     if (package != null)
@@ -78,7 +93,7 @@ namespace GGGETSAdmin.PackageManage
                     txt_FLTNo.Text = mawb.FlightNo;
                 }
             }
-            txt_Destination.Text = package.RegionCode;
+            txt_Destination.Text = package.OriginalRegionCode;
             txt_Pice.Text = package.Piece.ToString();
             Txt_TotalWeight.Text = package.TotalWeight.ToString();
             
@@ -279,7 +294,7 @@ namespace GGGETSAdmin.PackageManage
                                     package.MID = mawb.MID;
                                     package.CreateTime = DateTime.Parse(txt_CreateTime.Text.Trim());
                                     package.UpdateTime = DateTime.Now;
-                                    package.RegionCode = txt_Destination.Text.Trim().ToUpper();
+                                    package.DestinationRegionCode = txt_Destination.Text.Trim().ToUpper();
                                     _packageservice.ModifyPackage(package);
                                     ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "Url()", true);
                                 }
@@ -307,7 +322,7 @@ namespace GGGETSAdmin.PackageManage
                         package.MID = null;
                         package.CreateTime = DateTime.Parse(txt_CreateTime.Text.Trim());
                         package.UpdateTime = DateTime.Now;
-                        package.RegionCode = txt_Destination.Text.Trim().ToUpper();
+                        package.DestinationRegionCode = txt_Destination.Text.Trim().ToUpper();
                         _packageservice.ModifyPackage(package);
                         ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "Url()", true);
 

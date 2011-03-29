@@ -25,7 +25,19 @@ namespace GGGETSAdmin.AddressBookManage
         }
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+            if(!IsPostBack)
+            {
+                if (Session["UserID"] != null)
+                {
+                    Guid id = (Guid)Session["UserID"];
+                    ModulePrivilege Authority = _SysUserManagementService.GetPrivilegeByUserid(id);
+                    if (!(bool)Authority.QueryPrivilege)
+                    {
+                        btn_Demand.Enabled = false;
+                    }
+
+                }
+            }
         }
         /// <summary>
         /// 绑定gridviw数据源控件
@@ -158,6 +170,27 @@ namespace GGGETSAdmin.AddressBookManage
         public int N()
         {
             return i++;
+        }
+
+        protected void gv_AddressBook_DataBound(object sender, EventArgs e)
+        {
+            if (Session["UserID"] != null)
+            {
+                Guid id = (Guid)Session["UserID"];
+                ModulePrivilege Authority = _SysUserManagementService.GetPrivilegeByUserid(id);
+                foreach (GridViewRow row in gv_AddressBook.Rows)
+                {
+                    if (!(bool)Authority.UpdatePrivilege)
+                    {
+                        ((LinkButton)row.FindControl("lbtn_Updata") as LinkButton).Enabled = false;
+                    }
+                    if (!(bool)Authority.DeletePrivilege)
+                    {
+                        ((LinkButton)row.FindControl("lbtn_Delete") as LinkButton).Enabled = false;
+                    }
+
+                }
+            }
         }
     }
 }

@@ -14,15 +14,28 @@ namespace GGGETSAdmin.PersonnelManage.UserManage
     {
         private static string Rtime = @"^((((1[6-9]|[2-9]\d)\d{2})-(0?[13578]|1[02])-(0?[1-9]|[12]\d|3[01]))|(((1[6-9]|[2-9]\d)\d{2})-(0?[13456789]|1[012])-(0?[1-9]|[12]\d|30))|(((1[6-9]|[2-9]\d)\d{2})-0?2-(0?[1-9]|1\d|2[0-8]))|(((1[6-9]|[2-9]\d)(0[48]|[2468][048]|[13579][26])|((16|[2468][048]|[3579][26])00))-0?2-29))$";
         private IUserManagementService _userService;
+        private ISysUserManagementService _sysUserManagementService;
         protected UserManagemnet()
         { }
-        public UserManagemnet(IUserManagementService userService)
+        public UserManagemnet(IUserManagementService userService, ISysUserManagementService sysUserManagementService)
         {
             _userService = userService;
+            _sysUserManagementService = sysUserManagementService;
         }
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (!IsPostBack)
+            {
+                if (Session["UserID"] != null)
+                {
+                    Guid id = (Guid)Session["UserID"];
+                    ModulePrivilege Mpriviege = _sysUserManagementService.GetPrivilegeByUserid(id);
+                    if (!(bool)Mpriviege.QueryPrivilege)
+                    {
+                        btn_Demand.Enabled = false;
+                    }
+                }
+            }
         }
         /// <summary>
         /// 查询
@@ -124,6 +137,27 @@ namespace GGGETSAdmin.PersonnelManage.UserManage
                     {
                         ((TextBox)objControl).Text = String.Empty;
                     }
+                }
+            }
+        }
+
+        protected void gv_User_DataBound(object sender, EventArgs e)
+        {
+            if (Session["UserID"] != null)
+            {
+                Guid id = (Guid)Session["UserID"];
+                ModulePrivilege Authority = _sysUserManagementService.GetPrivilegeByUserid(id);
+                foreach (GridViewRow row in gv_User.Rows)
+                {
+                    if (!(bool)Authority.UpdatePrivilege)
+                    {
+                        ((LinkButton)row.FindControl("lbtn_Updata") as LinkButton).Enabled = false;
+                    }
+                    if (!(bool)Authority.DeletePrivilege)
+                    {
+                        ((LinkButton)row.FindControl("lbtn_Delete") as LinkButton).Enabled = false;
+                    }
+
                 }
             }
         }

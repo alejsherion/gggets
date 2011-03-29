@@ -13,15 +13,17 @@ namespace GGGETSAdmin.ProductManage
     public partial class ProductModify : System.Web.UI.Page
     { private IHSProductManagementService _HSProduct;
         private IHSPropertyManagementService _HSProperty;
+        private ISysUserManagementService _sysUserManagementService;
         private HSProduct product;
         private HSProperty property;
         private static string RTax = @"^([1])$|^([1].[0]{2})$|^([0].[1-9][0-9])?$|^([0].[0-9][1-9])?$";
         protected ProductModify()
         { }
-        public ProductModify(IHSProductManagementService HSProduct, IHSPropertyManagementService HSProperty)
+        public ProductModify(IHSProductManagementService HSProduct, IHSPropertyManagementService HSProperty, ISysUserManagementService sysUserManagementService)
         {
             _HSProduct = HSProduct;
             _HSProperty = HSProperty;
+            _sysUserManagementService = sysUserManagementService;
         }
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -29,6 +31,17 @@ namespace GGGETSAdmin.ProductManage
             {
                 if (!string.IsNullOrEmpty(Request.QueryString["HSCode"]))
                 {
+                    if (Session["UserID"] != null)
+                    {
+                        Guid id = (Guid)Session["UserID"];
+                        ModulePrivilege Mpriviege = _sysUserManagementService.GetPrivilegeByUserid(id);
+                        if (!(bool)Mpriviege.UpdatePrivilege)
+                        {
+                            btn_Addparoduct.Enabled = false;
+                            btn_Add.Enabled = false;
+                            btn_Close.Enabled = false;
+                        }
+                    }
                     string HSCode = Request.QueryString["HSCode"];
                     ViewState["HSCode"] = HSCode;
                     Evaluate(HSCode);
