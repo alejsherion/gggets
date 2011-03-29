@@ -58,9 +58,10 @@ namespace GGGETSAdmin.ProductManage
             }
             else
             {
-                Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('没有相关记录！')</script>");
+                ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('没有相关记录!')", true);
                 gv_HS.DataSource = null;
                 gv_HS.DataBind();
+                
             }
 
         }
@@ -73,19 +74,27 @@ namespace GGGETSAdmin.ProductManage
         {
             PageIndex = 0;
             Band(PageIndex, PageCount);
-            if (ViewState["totalCount"] != null)
+            FenYe.Visible = true;
+            lbl_nuber.Text = "1";
+            DataBound();
+            if (gv_HS.Rows.Count < PageCount)//数据源总数小于总条数的时候分页不可用
             {
-                lbl_nuber.Text = "1";
-                lbl_sumnuber.Text = (((int)ViewState["totalCount"] + PageCount - 1) / PageCount).ToString();
-                DataBound();
-                if (gv_HS.Rows.Count < PageCount)
-                {
-                    FenYe.Visible = false;
-                }
-                else
-                {
-                    FenYe.Visible = true;
-                }
+                lbl_sumnuber.Text = "1";
+                btn_Up.Enabled = false;
+                btn_down.Enabled = false;
+                btn_Jumpto.Enabled = false;
+                btn_lastpage.Enabled = false;
+                btn_homepage.Enabled = false;
+            }
+            else
+            {
+                lbl_sumnuber.Text = (((int)ViewState["totalCount"] + PageCount - 1) / PageCount).ToString();//总页数
+                btn_Up.Enabled = true;
+                btn_down.Enabled = true;
+                btn_Jumpto.Enabled = true;
+                btn_lastpage.Enabled = true;
+                btn_homepage.Enabled = true;
+
             }
         }
 
@@ -159,12 +168,12 @@ namespace GGGETSAdmin.ProductManage
         {
             if (int.Parse(Txt_Jumpto.Text.Trim()) <= 0)
             {
-                Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('最小页数为1,请重新输入！')</script>");
+                ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('最小页数为1,请重新输入！')", true);
                 Txt_Jumpto.Focus();
             }
             else if (int.Parse(Txt_Jumpto.Text.Trim()) > int.Parse(lbl_sumnuber.Text))
             {
-                Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('超过最大页数请重新输入！')</script>");
+                ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('超过最大页数请重新输入！')", true);
                 Txt_Jumpto.Focus();
             }
             else
