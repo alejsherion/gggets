@@ -22,13 +22,14 @@ namespace GGGETSAdmin.AddressBookManage
         private static IRegionCodeManagementService _regionservice;
         private IUserManagementService _userService;
         private ICompanyManagementService _companyService;
+        private ISysUserManagementService _sysUserManagementService;
         private string type;
         private AddressBook address;
         private Department depar;
         private ETS.GGGETSApp.Domain.Application.Entities.User user;
         protected AddressBookAdd()
         { }
-        public AddressBookAdd(ICompanyManagementService companyservice,ICountryCodeManagementService countryservice, IRegionCodeManagementService regionservice, IDepartmentManagementService departmentservice, IAddressBookManagementService addressbookservice,IUserManagementService userservice)
+        public AddressBookAdd(ICompanyManagementService companyservice, ICountryCodeManagementService countryservice, IRegionCodeManagementService regionservice, IDepartmentManagementService departmentservice, IAddressBookManagementService addressbookservice, IUserManagementService userservice, ISysUserManagementService sysUserManagementService)
         {
             _departmentservice = departmentservice;
             _addressbookservice = addressbookservice;
@@ -36,14 +37,24 @@ namespace GGGETSAdmin.AddressBookManage
             _regionservice = regionservice;
             _userService = userservice;
             _companyService = companyservice;
+            _sysUserManagementService = sysUserManagementService;
         }
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
-                listcountry = _countryservice.FindAllCountries();//获取国家二字码
-                listregion = _regionservice.FindAllRegionCodes();//获取地区三字码
-                
+                if (Session["UserID"] != null)
+                {
+
+                    listcountry = _countryservice.FindAllCountries();//获取国家二字码
+                    listregion = _regionservice.FindAllRegionCodes();//获取地区三字码
+                    Guid id = (Guid)Session["UserID"];
+                    ModulePrivilege Mprivlege = _sysUserManagementService.GetPrivilegeByUserid(id);
+                    if (!(bool)Mprivlege.AddPrivilege)
+                    {
+                        btn_AddDeliver.Enabled = false;
+                    }
+                }
             }
         }
         /// <summary>

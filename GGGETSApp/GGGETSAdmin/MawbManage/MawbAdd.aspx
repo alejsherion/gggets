@@ -42,7 +42,7 @@
                                 <asp:TextBox ID="txt_FLTNo" runat="server" MaxLength="45" Width="250" CssClass="TextBox" TabIndex="2"
                                     Style="text-transform: uppercase"></asp:TextBox>
                             </td>
-                            <td class="FieldHeader">
+                            <td class="FieldHeader" style="width:150px">
                                 <asp:Label ID="lbl_AirportRegion" runat="server" Text="机场三字码:"></asp:Label>
                             </td>
                             <td>

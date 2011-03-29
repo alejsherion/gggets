@@ -67,22 +67,31 @@ namespace GGGETSAdmin.PackageManage {
         protected global::System.Web.UI.WebControls.Label txt_UpdateTime;
         
         /// <summary>
-        /// lbl_Region 控件。
+        /// lbl_OriginalRegionCode 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_Region;
+        protected global::System.Web.UI.WebControls.Label lbl_OriginalRegionCode;
         
         /// <summary>
-        /// txt_Destination 控件。
+        /// Txt_OriginalRegionCode 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label txt_Destination;
+        protected global::System.Web.UI.WebControls.Label Txt_OriginalRegionCode;
+        
+        /// <summary>
+        /// Txt_DestinationRegionCode 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Txt_DestinationRegionCode;
         
         /// <summary>
         /// lbl_MHAWb 控件。

@@ -17,26 +17,37 @@ namespace GGGETSAdmin.AddressBookManage
         private IRegionCodeManagementService _regionservice;
         private IUserManagementService _userService;
         private IAddressBookManagementService _AddressBookService;
+        private ISysUserManagementService _sysUserManagementService;
         protected AddressBookDetails()
         { }
-        public AddressBookDetails(IAddressBookManagementService addressservice,IDepartmentManagementService departmentservice, ICountryCodeManagementService countryservice, IRegionCodeManagementService regionservice, IUserManagementService userService)
+        public AddressBookDetails(IAddressBookManagementService addressservice, IDepartmentManagementService departmentservice, ICountryCodeManagementService countryservice, IRegionCodeManagementService regionservice, IUserManagementService userService, ISysUserManagementService sysUserManagementService)
         {
             _countryservice = countryservice;
             _regionservice = regionservice;
             _departmentservice = departmentservice;
             _userService = userService;
             _AddressBookService = addressservice;
+            _sysUserManagementService = sysUserManagementService;
         }
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
                 if (!string.IsNullOrEmpty(Request.QueryString["AID"]))
-                {                    
-                    AID = Request.QueryString["AID"].ToString();
-                    ViewState["Url"] = Request.UrlReferrer.ToString();
-                    ViewState["AID"] = AID;
-                    Storage(AID);
+                {
+                    if (Session["UserID"] != null)
+                    {
+                        Guid id = (Guid)Session["UserID"];
+                        ModulePrivilege Mprivlege = _sysUserManagementService.GetPrivilegeByUserid(id);
+                        if (!(bool)Mprivlege.UpdatePrivilege)
+                        {
+                            But_Update.Enabled = false;
+                        }
+                        AID = Request.QueryString["AID"].ToString();
+                        ViewState["Url"] = Request.UrlReferrer.ToString();
+                        ViewState["AID"] = AID;
+                        Storage(AID);
+                    }
                 }
                 else
                 {

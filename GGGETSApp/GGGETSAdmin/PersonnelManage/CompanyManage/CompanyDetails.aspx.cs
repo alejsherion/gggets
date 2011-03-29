@@ -11,11 +11,13 @@ namespace GGGETSAdmin.PersonnelManage.CompanyManage
     public partial class CompanyDetails : System.Web.UI.Page
     {
         private ICompanyManagementService _companyService;
+        private ISysUserManagementService _SysUserManagementService;
         protected CompanyDetails()
         { }
-        public CompanyDetails(ICompanyManagementService companyservice)
+        public CompanyDetails(ICompanyManagementService companyservice, ISysUserManagementService SysUserManagementService)
         {
             _companyService = companyservice;
+            _SysUserManagementService = SysUserManagementService;
         }
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -23,6 +25,16 @@ namespace GGGETSAdmin.PersonnelManage.CompanyManage
             {
                 if (!string.IsNullOrEmpty(Request.QueryString["CompanyCode"]))
                 {
+                    if (Session["UserID"] != null)
+                    {
+                        Guid id = (Guid)Session["UserID"];
+                        ModulePrivilege Mprivilege = _SysUserManagementService.GetPrivilegeByUserid(id);
+                        if (!(bool)Mprivilege.UpdatePrivilege)
+                        {
+                            But_Update.Enabled = false;
+                        }
+
+                    }
                     string CompanyCode = Request.QueryString["CompanyCode"].ToString();
                     Storage(CompanyCode);
                     ViewState["Url"] = Request.UrlReferrer.ToString();

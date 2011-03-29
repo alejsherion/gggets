@@ -48,7 +48,8 @@
         </table>
         <div style="height: 350px;overflow-x:auto;overflow-y:auto;">
         <asp:GridView ID="gv_Company" runat="server" AutoGenerateColumns="False" 
-            onrowcommand="gv_Company_RowCommand" DataKeyNames="CompanyCode" PageSize="2000">
+            onrowcommand="gv_Company_RowCommand" DataKeyNames="CompanyCode" 
+                PageSize="2000" ondatabound="gv_Company_DataBound">
             <Columns>
                 <asp:TemplateField HeaderText="公司账号">
                     <ItemTemplate>
@@ -87,12 +88,21 @@
                     <HeaderStyle HorizontalAlign="Center" />
                         <ItemStyle HorizontalAlign="Center" />
                 </asp:TemplateField>
-                <asp:ButtonField CommandName="Eidt" ButtonType="Link" Text="详细" />
-                <asp:ButtonField CommandName="Updata" ButtonType="Link" Text="修改" >
-                </asp:ButtonField>
                 <asp:TemplateField >
                     <ItemTemplate>
-                        <asp:LinkButton ID="lbtn_Delete" CommandArgument='<%# Eval("CompanyCode") %>' CommandName="Del" runat="server" Text="删除" OnClientClick="javascript:return confirm('确定删除该条运单吗?');"></asp:LinkButton>
+                        <asp:LinkButton ID="lbtn_Eidt" CommandName="Eidt" runat="server" Text="详细" CommandArgument="<%# ((GridViewRow)Container).RowIndex %>"></asp:LinkButton>
+                    </ItemTemplate>
+                    <HeaderStyle HorizontalAlign="Center" />
+                        <ItemStyle HorizontalAlign="Center" />
+                </asp:TemplateField>
+                <asp:TemplateField >
+                    <ItemTemplate>
+                        <asp:LinkButton ID="lbtn_Updata" CommandName="Updata" runat="server" Text="修改" CommandArgument="<%# ((GridViewRow)Container).RowIndex %>"></asp:LinkButton>
+                    </ItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField >
+                    <ItemTemplate>
+                        <asp:LinkButton ID="lbtn_Delete" CommandName="Del" runat="server" Text="删除" CommandArgument="<%# ((GridViewRow)Container).RowIndex %>" OnClientClick="javascript:return confirm('确定删除该账号吗?');"></asp:LinkButton>
                     </ItemTemplate>
                 </asp:TemplateField>
             </Columns>

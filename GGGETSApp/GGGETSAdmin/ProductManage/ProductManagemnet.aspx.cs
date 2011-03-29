@@ -12,6 +12,7 @@ namespace GGGETSAdmin.ProductManage
     public partial class ProductManagemnet : System.Web.UI.Page
     {
         private IHSProductManagementService _HSProduct;
+        private ISysUserManagementService _sysUserManagementService;
         private IList<HSProduct> listProduct;
         private string HSCode = string.Empty;
         private string HSName = string.Empty;
@@ -23,13 +24,25 @@ namespace GGGETSAdmin.ProductManage
         }
         protected ProductManagemnet()
         { }
-        public ProductManagemnet(IHSProductManagementService HSProduct)
+        public ProductManagemnet(IHSProductManagementService HSProduct, ISysUserManagementService sysUserManagementService)
         {
             _HSProduct = HSProduct;
+            _sysUserManagementService = sysUserManagementService;
         }
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (!IsPostBack)
+            {
+                if (Session["UserID"] != null)
+                {
+                    Guid id = (Guid)Session["UserID"];
+                    ModulePrivilege Mpriviege = _sysUserManagementService.GetPrivilegeByUserid(id);
+                    if (!(bool)Mpriviege.QueryPrivilege)
+                    {
+                        btn_Demand.Enabled = false;
+                    }
+                }
+            }
         }
         /// <summary>
         /// 数据源控件绑定
@@ -209,6 +222,27 @@ namespace GGGETSAdmin.ProductManage
         protected void gv_HS_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
 
+        }
+
+        protected void gv_HS_DataBound(object sender, EventArgs e)
+        {
+            if (Session["UserID"] != null)
+            {
+                Guid id = (Guid)Session["UserID"];
+                ModulePrivilege Authority = _sysUserManagementService.GetPrivilegeByUserid(id);
+                foreach (GridViewRow row in gv_HS.Rows)
+                {
+                    if (!(bool)Authority.UpdatePrivilege)
+                    {
+                        ((LinkButton)row.FindControl("lbtn_Updata") as LinkButton).Enabled = false;
+                    }
+                    if (!(bool)Authority.DeletePrivilege)
+                    {
+                        ((LinkButton)row.FindControl("lbtn_Delete") as LinkButton).Enabled = false;
+                    }
+
+                }
+            }
         }
     }
 }

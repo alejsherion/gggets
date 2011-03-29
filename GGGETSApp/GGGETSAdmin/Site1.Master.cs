@@ -34,8 +34,8 @@ namespace GGGETSAdmin
 
         protected void lbtn_Navigation_Click(object sender, EventArgs e)
         {
-            Session.Clear();
-            Response.Redirect("../Navigation.aspx");
+            Session.Remove("HAWB");
+            Response.Redirect("~/Navigation.aspx");
         }
     }
 }

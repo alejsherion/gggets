@@ -15,14 +15,16 @@ namespace GGGETSAdmin.MawbManage
     {
         private IMAWBManagementService _mawbService;
         private IHAWBManagementService _hawbService;
+        private ISysUserManagementService _SysUserManagementService;
         private MAWB mawb;
         public int n = 1;
         protected MawbDetails()
         { }
-        public MawbDetails(IMAWBManagementService mawbservice,IHAWBManagementService hawbservice)
+        public MawbDetails(IMAWBManagementService mawbservice, IHAWBManagementService hawbservice, ISysUserManagementService SysUserManagementService)
         {
             _mawbService = mawbservice;
             _hawbService = hawbservice;
+            _SysUserManagementService = SysUserManagementService;
         }
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -30,12 +32,46 @@ namespace GGGETSAdmin.MawbManage
             {
                 if (Request.QueryString["BarCode"] != ""&&Request.QueryString["BarCode"] !=null)
                 {
+                    
                     Uri url = Request.UrlReferrer;
                     ViewState["UrlReferrer"] = Request.UrlReferrer;
                     mawb = _mawbService.FindMAWBByBarcode(Request.QueryString["BarCode"]);
                     if (mawb != null)
                     {
                         Evaluate(mawb);
+                        if (Session["UserID"] != null)
+                        {
+                            Guid id = (Guid)Session["UserID"];
+                            ModulePrivilege Mprivilege = _SysUserManagementService.GetPrivilegeByUserid(id);
+                            if (!(bool)Mprivilege.UpdatePrivilege)
+                            {
+                                But_Update.Enabled = false;
+                            }
+                            else
+                            {
+                                if (txt_Status.Text != "打开")
+                                {
+                                    if (!(bool)Mprivilege.DeblockingPrivilege)
+                                    {
+                                        But_Update.Enabled = false;
+                                    }
+                                    //else
+                                    //{
+                                    //    But_Update.Enabled = true;
+                                    //}
+                                }
+                                //else
+                                //{
+                                //    But_Update.Enabled = true;
+                                //}
+                            }
+                            if (!(bool)Mprivilege.ExportPrivilege)
+                            {
+                                btn_DeriveAccept.Enabled = false;
+                                btn_DeriveSince.Enabled = false;
+                            }
+
+                        }
                     }
                     else
                     {

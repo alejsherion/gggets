@@ -57,7 +57,10 @@ namespace GGGETSAdmin.HAWBManage
                     BoxType();
                     ViewState["UrlReferrer"] = Request.UrlReferrer.ToString();
                 }
-
+                else
+                {
+                    Response.Write("<script>alert('请先填写用户信息!');location='HAWBAdd.aspx'</script>");
+                }
             }
         }
         /// <summary>

@@ -65,7 +65,10 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
      
        ///<summary>
        ///</summary>
-       打印 = 8
+       打印 = 8,
+       ///
+        ///
+       解锁=4
    }
 
     #endregion
@@ -114,6 +117,9 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
                        break;
                    case "部分查询":
                        result = SearcherPartialPrivilege;
+                       break;
+                   case "解锁":
+                       result = DeblockingPrivilege;
                        break;
 
                    
@@ -208,6 +214,14 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
        /// 权限字符集
        /// </summary>
        public int? Privilege
+       {
+           get;
+           set;
+       }
+       /// <summary>
+       /// 解锁权限
+       /// </summary>
+       public bool? DeblockingPrivilege
        {
            get;
            set;

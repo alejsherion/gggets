@@ -30,7 +30,8 @@
             <asp:GridView ID="gv_Country" runat="server" AutoGenerateColumns="False" OnRowEditing="gv_Country_RowEditing"
                 OnRowUpdating="gv_Country_RowUpdating" DataKeyNames="ID" OnRowCancelingEdit="gv_Country_RowCancelingEdit"
                 OnRowDeleting="gv_Country_RowDeleting" 
-                OnRowCommand="gv_Country_RowCommand" PageSize="5000">
+                OnRowCommand="gv_Country_RowCommand" PageSize="5000" 
+                ondatabound="gv_Country_DataBound">
                 <Columns>
                     <asp:TemplateField HeaderText="国家二字码">
                         <ItemTemplate>
@@ -54,9 +55,20 @@
                         <HeaderStyle HorizontalAlign="Center" />
                         <ItemStyle HorizontalAlign="Center" />
                     </asp:TemplateField>
-                    <asp:CommandField ShowEditButton="True" />
                     <%--
                 <asp:ButtonField CommandName="Delete" ButtonType="Link" Text="删除" />--%>
+                    <asp:TemplateField ShowHeader="False">
+                        <ItemTemplate>
+                            <asp:LinkButton ID="btn_Eidt" runat="server" CausesValidation="False" 
+                                CommandName="Edit" Text="编辑"></asp:LinkButton>
+                        </ItemTemplate>
+                        <EditItemTemplate>
+                            <asp:LinkButton ID="LinkButton1" runat="server" CausesValidation="True" 
+                                CommandName="Update" Text="更新"></asp:LinkButton>
+                            &nbsp;<asp:LinkButton ID="LinkButton2" runat="server" CausesValidation="False" 
+                                CommandName="Cancel" Text="取消"></asp:LinkButton>
+                        </EditItemTemplate>
+                    </asp:TemplateField>
                     <asp:TemplateField>
                         <ItemTemplate>
                             <asp:LinkButton ID="btn_Delete" runat="server" CausesValidation="False" CommandName="Delete"

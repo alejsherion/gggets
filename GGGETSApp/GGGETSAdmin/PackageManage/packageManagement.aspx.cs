@@ -29,19 +29,30 @@ namespace GGGETSAdmin.PackageManage
         private static string Rtime = @"^((((1[6-9]|[2-9]\d)\d{2})-(0?[13578]|1[02])-(0?[1-9]|[12]\d|3[01]))|(((1[6-9]|[2-9]\d)\d{2})-(0?[13456789]|1[012])-(0?[1-9]|[12]\d|30))|(((1[6-9]|[2-9]\d)\d{2})-0?2-(0?[1-9]|1\d|2[0-8]))|(((1[6-9]|[2-9]\d)(0[48]|[2468][048]|[13579][26])|((16|[2468][048]|[3579][26])00))-0?2-29))$";
         private IList<Package> listpackage;
         private static IRegionCodeManagementService _regionservice;
+        private ISysUserManagementService _sysUserManagementService;
         protected packageManagement()
         { }
-        public packageManagement(IPackageManagementService packageservice, IRegionCodeManagementService regionservice)
+        public packageManagement(IPackageManagementService packageservice, IRegionCodeManagementService regionservice, ISysUserManagementService sysUserManagementService)
         {
             _packageservice = packageservice;
             _regionservice = regionservice;
+            _sysUserManagementService = sysUserManagementService;
         }
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
-                txt_UpCreateTime.Text = DateTime.Today.AddDays(-1).ToString("yyyy-MM-dd");
-                txt_ToCreateTime.Text = DateTime.Today.ToString("yyyy-MM-dd");
+                if (Session["UserID"] != null)
+                {
+                    Guid id = (Guid)Session["UserID"];
+                    ModulePrivilege Mpriviege = _sysUserManagementService.GetPrivilegeByUserid(id);
+                    if (!(bool)Mpriviege.QueryPrivilege)
+                    {
+                        btn_Demand.Enabled = false;
+                    }
+                    txt_UpCreateTime.Text = DateTime.Today.AddDays(-1).ToString("yyyy-MM-dd");
+                    txt_ToCreateTime.Text = DateTime.Today.ToString("yyyy-MM-dd");
+                }
             }
         }
         /// <summary>
@@ -94,17 +105,31 @@ namespace GGGETSAdmin.PackageManage
                     }
                 }
             }
-            if (txt_Destination.Text.Trim() != "")
+            if (Txt_OriginalRegionCode.Text.Trim() != "")
             {
-                if (!RRegion.IsMatch(txt_Destination.Text))
+                if (!RRegion.IsMatch(Txt_OriginalRegionCode.Text))
                 {
                     ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('只能输入字母并为3位!')", true);
                     Ok = false;
-                    txt_Destination.Focus();
+                    Txt_OriginalRegionCode.Focus();
                 }
                 else
                 {
-                    regionCode = txt_Destination.Text.Trim().ToUpper();
+                    regionCode = Txt_OriginalRegionCode.Text.Trim().ToUpper();
+                    Ok = true;
+                }
+            }
+            if (Txt_DestinationRegionCode.Text.Trim() != "")
+            {
+                if (!RRegion.IsMatch(Txt_DestinationRegionCode.Text))
+                {
+                    ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('只能输入字母并为3位!')", true);
+                    Ok = false;
+                    Txt_DestinationRegionCode.Focus();
+                }
+                else
+                {
+                    regionCode = Txt_DestinationRegionCode.Text.Trim().ToUpper();
                     Ok = true;
                 }
             }
@@ -247,7 +272,7 @@ namespace GGGETSAdmin.PackageManage
 
         protected void autocomplete_ItemSelected(object sender, EventArgs e)
         {
-            txt_Destination.Text = ((AutoCompleteExtra.AutoCompleteExtraExtender)sender).SelectedValue;
+            //txt_Destination.Text = ((AutoCompleteExtra.AutoCompleteExtraExtender)sender).SelectedValue;
         }
         /// <summary>
         /// 上一页

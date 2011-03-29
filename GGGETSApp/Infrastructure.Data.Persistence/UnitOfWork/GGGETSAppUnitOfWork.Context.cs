@@ -387,12 +387,6 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.UnitOfWork
         }
         private ObjectSet<Role> _role;
     
-        public IObjectSet<Role_Privilege> Role_Privilege
-        {
-            get { return _role_Privilege  ?? (_role_Privilege = CreateObjectSet<Role_Privilege>("Role_Privilege")); }
-        }
-        private ObjectSet<Role_Privilege> _role_Privilege;
-    
         public IObjectSet<SysUser> SysUser
         {
             get { return _sysUser  ?? (_sysUser = CreateObjectSet<SysUser>("SysUser")); }
@@ -404,6 +398,12 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.UnitOfWork
             get { return _sysUser_Role  ?? (_sysUser_Role = CreateObjectSet<SysUser_Role>("SysUser_Role")); }
         }
         private ObjectSet<SysUser_Role> _sysUser_Role;
+    
+        public IObjectSet<Role_Privilege> Role_Privilege
+        {
+            get { return _role_Privilege  ?? (_role_Privilege = CreateObjectSet<Role_Privilege>("Role_Privilege")); }
+        }
+        private ObjectSet<Role_Privilege> _role_Privilege;
 
         #endregion
     }

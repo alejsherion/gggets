@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="MYGGGETSModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2005" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+    <Schema Namespace="MYGGGETSModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
         <EntityContainer Name="MYGGGETSModelStoreContainer">
           <EntitySet Name="AddressBook" EntityType="MYGGGETSModel.Store.AddressBook" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="AppModule" EntityType="MYGGGETSModel.Store.AppModule" store:Type="Tables" Schema="dbo" />
@@ -449,7 +449,7 @@
           <Property Name="Status" Type="int" Nullable="false" />
         </EntityType>
         <!--生成过程中发现错误:
-      警告 6002: 表/视图“MYGGGETS.dbo.FindInfo”未定义主键。已推断出该键，并将定义创建为只读的表/视图。
+      警告 6002: 表/视图“GGGETS.dbo.FindInfo”未定义主键。已推断出该键，并将定义创建为只读的表/视图。
       -->
         <EntityType Name="FindInfo">
           <Key>
@@ -755,17 +755,8 @@
           </AssociationSet>
           <EntitySet Name="AppModule" EntityType="MYGGGETSModel.AppModule" />
           <EntitySet Name="Role" EntityType="MYGGGETSModel.Role" />
-          <EntitySet Name="Role_Privilege" EntityType="MYGGGETSModel.Role_Privilege" />
           <EntitySet Name="SysUser" EntityType="MYGGGETSModel.SysUser" />
           <EntitySet Name="SysUser_Role" EntityType="MYGGGETSModel.SysUser_Role" />
-          <AssociationSet Name="FK_PRIVILEG_REFERENCE_APPMODUL" Association="MYGGGETSModel.FK_PRIVILEG_REFERENCE_APPMODUL">
-            <End Role="AppModule" EntitySet="AppModule" />
-            <End Role="Role_Privilege" EntitySet="Role_Privilege" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Role_Privilege_Role" Association="MYGGGETSModel.FK_Role_Privilege_Role">
-            <End Role="Role" EntitySet="Role" />
-            <End Role="Role_Privilege" EntitySet="Role_Privilege" />
-          </AssociationSet>
           <AssociationSet Name="FK_SysUser_Role" Association="MYGGGETSModel.FK_SysUser_Role">
             <End Role="Role" EntitySet="Role" />
             <End Role="SysUser" EntitySet="SysUser" />
@@ -777,6 +768,15 @@
           <AssociationSet Name="FK_SysUser_Role_SysUser" Association="MYGGGETSModel.FK_SysUser_Role_SysUser">
             <End Role="SysUser" EntitySet="SysUser" />
             <End Role="SysUser_Role" EntitySet="SysUser_Role" />
+          </AssociationSet>
+          <EntitySet Name="Role_Privilege" EntityType="MYGGGETSModel.Role_Privilege" />
+          <AssociationSet Name="FK_PRIVILEG_REFERENCE_APPMODUL" Association="MYGGGETSModel.FK_PRIVILEG_REFERENCE_APPMODUL">
+            <End Role="AppModule" EntitySet="AppModule" />
+            <End Role="Role_Privilege" EntitySet="Role_Privilege" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Role_Privilege_Role" Association="MYGGGETSModel.FK_Role_Privilege_Role">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="Role_Privilege" EntitySet="Role_Privilege" />
           </AssociationSet>
           </EntityContainer>
         <EntityType Name="AddressBook">
@@ -1267,22 +1267,9 @@
           <Property Type="DateTime" Name="LastUpdateTime" />
           <Property Type="String" Name="UpdateId" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="Remark" MaxLength="200" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Role_Privilege" Relationship="MYGGGETSModel.FK_Role_Privilege_Role" FromRole="Role" ToRole="Role_Privilege" />
           <NavigationProperty Name="SysUser" Relationship="MYGGGETSModel.FK_SysUser_Role" FromRole="Role" ToRole="SysUser" />
           <NavigationProperty Name="SysUser_Role" Relationship="MYGGGETSModel.FK_SysUser_Role_Role" FromRole="Role" ToRole="SysUser_Role" />
-        </EntityType>
-        <EntityType Name="Role_Privilege">
-          <Key>
-            <PropertyRef Name="Role_PrivilegeID" />
-          </Key>
-          <Property Type="Guid" Name="Role_PrivilegeID" Nullable="false" />
-          <Property Type="Guid" Name="ModuleID" />
-          <Property Type="Int32" Name="PrivilegeDesc" Nullable="false" />
-          <Property Type="DateTime" Name="CreateTime" Nullable="false" />
-          <Property Type="String" Name="Remark" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Type="Guid" Name="RoleID" />
-          <NavigationProperty Name="AppModule" Relationship="MYGGGETSModel.FK_PRIVILEG_REFERENCE_APPMODUL" FromRole="Role_Privilege" ToRole="AppModule" />
-          <NavigationProperty Name="Role" Relationship="MYGGGETSModel.FK_Role_Privilege_Role" FromRole="Role_Privilege" ToRole="Role" />
+          <NavigationProperty Name="Role_Privilege" Relationship="MYGGGETSModel.FK_Role_Privilege_Role" FromRole="Role" ToRole="Role_Privilege" />
         </EntityType>
         <EntityType Name="SysUser">
           <Key>
@@ -1318,30 +1305,6 @@
           <NavigationProperty Name="Role" Relationship="MYGGGETSModel.FK_SysUser_Role_Role" FromRole="SysUser_Role" ToRole="Role" />
           <NavigationProperty Name="SysUser" Relationship="MYGGGETSModel.FK_SysUser_Role_SysUser" FromRole="SysUser_Role" ToRole="SysUser" />
         </EntityType>
-        <Association Name="FK_PRIVILEG_REFERENCE_APPMODUL">
-          <End Type="MYGGGETSModel.AppModule" Role="AppModule" Multiplicity="0..1" />
-          <End Type="MYGGGETSModel.Role_Privilege" Role="Role_Privilege" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="AppModule">
-              <PropertyRef Name="ModuleID" />
-            </Principal>
-            <Dependent Role="Role_Privilege">
-              <PropertyRef Name="ModuleID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Role_Privilege_Role">
-          <End Type="MYGGGETSModel.Role" Role="Role" Multiplicity="0..1" />
-          <End Type="MYGGGETSModel.Role_Privilege" Role="Role_Privilege" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Role">
-              <PropertyRef Name="RoleID" />
-            </Principal>
-            <Dependent Role="Role_Privilege">
-              <PropertyRef Name="RoleID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_SysUser_Role">
           <End Type="MYGGGETSModel.Role" Role="Role" Multiplicity="0..1" />
           <End Type="MYGGGETSModel.SysUser" Role="SysUser" Multiplicity="*" />
@@ -1375,6 +1338,43 @@
             </Principal>
             <Dependent Role="SysUser_Role">
               <PropertyRef Name="UID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Role_Privilege">
+          <Key>
+            <PropertyRef Name="Role_PrivilegeID" />
+          </Key>
+          <Property Type="Guid" Name="Role_PrivilegeID" Nullable="false" />
+          <Property Type="Guid" Name="ModuleID" />
+          <Property Type="Int32" Name="PrivilegeDesc" Nullable="false" />
+          <Property Type="DateTime" Name="CreateTime" Nullable="false" />
+          <Property Type="String" Name="Remark" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="Guid" Name="RoleID" />
+          <NavigationProperty Name="AppModule" Relationship="MYGGGETSModel.FK_PRIVILEG_REFERENCE_APPMODUL" FromRole="Role_Privilege" ToRole="AppModule" />
+          <NavigationProperty Name="Role" Relationship="MYGGGETSModel.FK_Role_Privilege_Role" FromRole="Role_Privilege" ToRole="Role" />
+        </EntityType>
+        <Association Name="FK_PRIVILEG_REFERENCE_APPMODUL">
+          <End Type="MYGGGETSModel.AppModule" Role="AppModule" Multiplicity="0..1" />
+          <End Type="MYGGGETSModel.Role_Privilege" Role="Role_Privilege" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AppModule">
+              <PropertyRef Name="ModuleID" />
+            </Principal>
+            <Dependent Role="Role_Privilege">
+              <PropertyRef Name="ModuleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Role_Privilege_Role">
+          <End Type="MYGGGETSModel.Role" Role="Role" Multiplicity="0..1" />
+          <End Type="MYGGGETSModel.Role_Privilege" Role="Role_Privilege" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="RoleID" />
+            </Principal>
+            <Dependent Role="Role_Privilege">
+              <PropertyRef Name="RoleID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1663,18 +1663,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Role_Privilege">
-            <EntityTypeMapping TypeName="MYGGGETSModel.Role_Privilege">
-              <MappingFragment StoreEntitySet="Role_Privilege">
-                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
-                <ScalarProperty Name="Remark" ColumnName="Remark" />
-                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
-                <ScalarProperty Name="PrivilegeDesc" ColumnName="PrivilegeDesc" />
-                <ScalarProperty Name="ModuleID" ColumnName="ModuleID" />
-                <ScalarProperty Name="Role_PrivilegeID" ColumnName="Role_PrivilegeID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="SysUser">
             <EntityTypeMapping TypeName="MYGGGETSModel.SysUser">
               <MappingFragment StoreEntitySet="SysUser">
@@ -1704,6 +1692,18 @@
                 <ScalarProperty Name="UID" ColumnName="UID" />
                 <ScalarProperty Name="RoleID" ColumnName="RoleID" />
                 <ScalarProperty Name="SysUser_RoleID" ColumnName="SysUser_RoleID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Role_Privilege">
+            <EntityTypeMapping TypeName="MYGGGETSModel.Role_Privilege">
+              <MappingFragment StoreEntitySet="Role_Privilege">
+                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="PrivilegeDesc" ColumnName="PrivilegeDesc" />
+                <ScalarProperty Name="ModuleID" ColumnName="ModuleID" />
+                <ScalarProperty Name="Role_PrivilegeID" ColumnName="Role_PrivilegeID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1805,21 +1805,11 @@
         </AssociationConnector>
         <EntityTypeShape EntityType="MYGGGETSModel.AppModule" Width="1.5" PointX="16.5" PointY="0.5" Height="2.465312499999996" />
         <EntityTypeShape EntityType="MYGGGETSModel.Role" Width="1.5" PointX="16.5" PointY="4.375" Height="2.8025520833333246" />
-        <EntityTypeShape EntityType="MYGGGETSModel.Role_Privilege" Width="1.5" PointX="18.75" PointY="3.625" Height="2.2966927083333388" />
         <EntityTypeShape EntityType="MYGGGETSModel.SysUser" Width="1.5" PointX="18.75" PointY="6.875" Height="3.8142708333333388" />
         <EntityTypeShape EntityType="MYGGGETSModel.SysUser_Role" Width="1.5" PointX="21" PointY="6.5" Height="2.1280729166666665" />
-        <AssociationConnector Association="MYGGGETSModel.FK_PRIVILEG_REFERENCE_APPMODUL" >
-          <ConnectorPoint PointX="18" PointY="1.732656249999998" />
-          <ConnectorPoint PointX="19.5" PointY="1.732656249999998" />
-          <ConnectorPoint PointX="19.5" PointY="3.625" />
-        </AssociationConnector>
-        <AssociationConnector Association="MYGGGETSModel.FK_Role_Privilege_Role" >
-          <ConnectorPoint PointX="18" PointY="5.1483463541666694" />
-          <ConnectorPoint PointX="18.75" PointY="5.1483463541666694" />
-        </AssociationConnector>
         <AssociationConnector Association="MYGGGETSModel.FK_SysUser_Role" >
-          <ConnectorPoint PointX="18" PointY="7.0262760416666623" />
-          <ConnectorPoint PointX="18.75" PointY="7.0262760416666623" />
+          <ConnectorPoint PointX="18" PointY="7.0262760416666659" />
+          <ConnectorPoint PointX="18.75" PointY="7.0262760416666659" />
         </AssociationConnector>
         <AssociationConnector Association="MYGGGETSModel.FK_SysUser_Role_Role" >
           <ConnectorPoint PointX="18" PointY="6.65625" />
@@ -1828,6 +1818,16 @@
         <AssociationConnector Association="MYGGGETSModel.FK_SysUser_Role_SysUser" >
           <ConnectorPoint PointX="20.25" PointY="7.7515364583333337" />
           <ConnectorPoint PointX="21" PointY="7.7515364583333337" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="MYGGGETSModel.Role_Privilege" Width="1.5" PointX="18.75" PointY="2.75" Height="2.2966927083333388" />
+        <AssociationConnector Association="MYGGGETSModel.FK_PRIVILEG_REFERENCE_APPMODUL" >
+          <ConnectorPoint PointX="18" PointY="1.6249995000000002" />
+          <ConnectorPoint PointX="19.5" PointY="1.6249995000000002" />
+          <ConnectorPoint PointX="19.5" PointY="2.75" />
+        </AssociationConnector>
+        <AssociationConnector Association="MYGGGETSModel.FK_Role_Privilege_Role" >
+          <ConnectorPoint PointX="18" PointY="4.7108463541666694" />
+          <ConnectorPoint PointX="18.75" PointY="4.7108463541666694" />
         </AssociationConnector>
         </Diagram>
     </Diagrams>

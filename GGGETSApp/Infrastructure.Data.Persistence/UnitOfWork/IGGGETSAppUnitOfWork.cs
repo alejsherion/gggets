@@ -92,13 +92,13 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.UnitOfWork
         IObjectSet<Role> Role{get;}
         
     
-        IObjectSet<Role_Privilege> Role_Privilege{get;}
-        
-    
         IObjectSet<SysUser> SysUser{get;}
         
     
         IObjectSet<SysUser_Role> SysUser_Role{get;}
+        
+    
+        IObjectSet<Role_Privilege> Role_Privilege{get;}
         
 
         #endregion

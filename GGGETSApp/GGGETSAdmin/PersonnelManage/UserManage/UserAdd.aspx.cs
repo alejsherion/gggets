@@ -15,20 +15,31 @@ namespace GGGETSAdmin.PersonnelManage.UserManage
         private IUserManagementService _userService;
         private IDepartmentManagementService _deparService;
         private ICompanyManagementService _companyService;
+        private ISysUserManagementService _SysUserManagementService;
         private static Regex Rnubel = new Regex(@"^([1])$|^([1].[0]{2})$|^([0].[1-9][0-9])?$|^([0].[0-9][1-9])?$");
         private static Regex REmail = new Regex(@"\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*");
         protected UserAdd()
         { }
-        public UserAdd(IUserManagementService userservice,IDepartmentManagementService deparservice,ICompanyManagementService companyservice)
+        public UserAdd(IUserManagementService userservice, IDepartmentManagementService deparservice, ICompanyManagementService companyservice, ISysUserManagementService SysUserManagementService)
         {
             _userService = userservice;
             _deparService = deparservice;
             _companyService = companyservice;
+            _SysUserManagementService = SysUserManagementService;
         }
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
+                if (Session["UserID"] != null)
+                {
+                    Guid id = (Guid)Session["UserID"];
+                    ModulePrivilege Mprivilege = _SysUserManagementService.GetPrivilegeByUserid(id);
+                    if (!(bool)Mprivilege.AddPrivilege)
+                    {
+                        btn_Add.Enabled = false;
+                    }
+                }
                 DropDownList();
             }
         }

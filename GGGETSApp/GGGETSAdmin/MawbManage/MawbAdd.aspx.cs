@@ -14,6 +14,7 @@ namespace GGGETSAdmin.MawbManage
         private IMAWBManagementService _mawbservice;
         private IPackageManagementService _packageservice;
         private IHAWBManagementService _hawbservice;
+        private ISysUserManagementService _SysUserManagementService;
         private static string RRegion = @"^[A-Za-z]";
         private MAWB mawb;
         private Package package;
@@ -21,17 +22,29 @@ namespace GGGETSAdmin.MawbManage
         public int n = 1;
         protected MawbAdd()
         { }
-        public MawbAdd(IMAWBManagementService mawbservice,IPackageManagementService packageservice,IHAWBManagementService hawbservicr)
+        public MawbAdd(IMAWBManagementService mawbservice, IPackageManagementService packageservice, IHAWBManagementService hawbservicr, ISysUserManagementService SysUserManagementService)
         {
             _mawbservice = mawbservice;
             _packageservice = packageservice;
             _hawbservice = hawbservicr;
+            _SysUserManagementService = SysUserManagementService;
         }
         protected void Page_Load(object sender, EventArgs e)
         {
             txt_CreateTime.Text = time.ToString("yyyy-MM-dd HH:mm");
             if (!IsPostBack)
             {
+                if (Session["UserID"] != null)
+                {
+                    Guid id = (Guid)Session["UserID"];
+                    ModulePrivilege Mprivilege = _SysUserManagementService.GetPrivilegeByUserid(id);
+                    if (!(bool)Mprivilege.AddPrivilege)
+                    {
+                        btn_Add.Enabled = false;
+                        btn_Save.Enabled = false;
+                        btn_SaveAndClose.Enabled = false;
+                    }
+                }
                 Txt_MAWBBarCode.Focus();
                 mawb = new MAWB();
                 Session["mawb"] = mawb;

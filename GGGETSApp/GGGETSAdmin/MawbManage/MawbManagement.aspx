@@ -45,7 +45,8 @@
                 </table>
                 <div style="height: 350px; overflow-x: auto; overflow-y: auto;">
                     <asp:GridView ID="gv_HAWB" runat="server" CssClass="DataView" AutoGenerateColumns="False"
-                        OnRowCommand="gv_HAWB_RowCommand" PageSize="36">
+                        OnRowCommand="gv_HAWB_RowCommand" PageSize="36" 
+                        ondatabound="gv_HAWB_DataBound">
                         <Columns>
                             <asp:TemplateField HeaderText="行号">
                                 <ItemTemplate>

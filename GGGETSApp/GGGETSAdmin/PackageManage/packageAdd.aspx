@@ -40,18 +40,22 @@
                     </tr>
                     <tr class="Row">
                         <td class="FieldHeader" style="width:150px">
-                            <asp:Label ID="lbl_Region" runat="server" Text="目的地三字码:"></asp:Label>
+                            <asp:Label ID="lbl_Region" runat="server" Text="起/终三字码:"></asp:Label>
                         </td>
                         <td style="width: 80px">
-                            <asp:TextBox ID="Txt_Region" runat="server" TabIndex="2" Width="50" 
+                            <asp:TextBox ID="Txt_OriginalRegionCode" runat="server" TabIndex="2" Width="50" 
                                 MaxLength="3" AutoPostBack="true" OnTextChanged="Txt_Region_TextChanged" Style="text-transform: uppercase" CssClass="TextBox"></asp:TextBox>
+                                -
+                            <asp:TextBox ID="Txt_DestinationRegionCode" runat="server" TabIndex="2" Width="50" 
+                                MaxLength="3" AutoPostBack="true" Style="text-transform: uppercase" 
+                                CssClass="TextBox" ontextchanged="Txt_DestinationRegionCode_TextChanged"></asp:TextBox>
                            
                             <%--<cc1:AutoCompleteExtraExtender runat="server" ID="autocomplete" ServiceMethod="GetCountryList"
                                 TargetControlID="txt_Destination" AsyncPostback="false" AutoPostback="true" MinimumPrefixLength="1"
                                 CompletionSetCount="10" OnItemSelected="autocomplete_ItemSelected">
                             </cc1:AutoCompleteExtraExtender>--%>
                         </td>
-                        <td class="FieldHeader" style="width: 50px">
+                        <td class="FieldHeader" style="width: 30px">
                             <asp:Label ID="lbl_Pice" runat="server" Text="件数:"></asp:Label>
                         </td>
                         <td style="width: 80px">

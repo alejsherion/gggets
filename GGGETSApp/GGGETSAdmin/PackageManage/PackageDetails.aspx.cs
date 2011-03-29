@@ -13,15 +13,17 @@ namespace GGGETSAdmin.PackageManage
     {
         private IPackageManagementService _packageservice;
         private IMAWBManagementService _mawbservice;
+        private ISysUserManagementService _SysUserManagementService;
         private Package package;
 
         public int n = 1;
         protected PackageDetails()
         { }
-        public PackageDetails(IPackageManagementService packageservice,IMAWBManagementService mawbservice)
+        public PackageDetails(IPackageManagementService packageservice, IMAWBManagementService mawbservice, ISysUserManagementService SysUserManagementService)
         {
             _packageservice = packageservice;
             _mawbservice = mawbservice;
+            _SysUserManagementService = SysUserManagementService;
         }
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -30,12 +32,40 @@ namespace GGGETSAdmin.PackageManage
                 
                 if (Request.QueryString["BarCode"] != "" && Request.QueryString["BarCode"] != null)
                 {
+                   
                     ViewState["UrlReferrer"] = Request.UrlReferrer.ToString();
                     package = _packageservice.FindPackageByBarcode(Request.QueryString["BarCode"]);//根据包号获取包信息
                     if (package != null)
                     {
                         Evaluate(package);
-                        
+                        if (Session["UserID"] != null)
+                        {
+                            Guid id = (Guid)Session["UserID"];
+                            ModulePrivilege Mprivilege = _SysUserManagementService.GetPrivilegeByUserid(id);
+                            if (!(bool)Mprivilege.UpdatePrivilege)
+                            {
+                                But_Update.Enabled = false;
+                            }
+                            else
+                            {
+                                if (txt_Status.Text != "打开")
+                                {
+                                    if (!(bool)Mprivilege.DeblockingPrivilege)
+                                    {
+                                        But_Update.Enabled = false;
+                                    }
+                                    //else
+                                    //{
+                                    //    But_Update.Enabled = true;
+                                    //}
+                                }
+                                //else
+                                //{
+                                //    But_Update.Enabled = true;
+                                //}
+                            }
+
+                        }
                     }
                     else
                     {
@@ -63,7 +93,8 @@ namespace GGGETSAdmin.PackageManage
                 lbtn_MHAWb.Text = package.MAWB.BarCode;
                 
             }
-            txt_Destination.Text = package.RegionCode;
+            Txt_OriginalRegionCode.Text = package.OriginalRegionCode;
+            Txt_DestinationRegionCode.Text = package.DestinationRegionCode;
             txt_Pice.Text = package.Piece.ToString();
             Txt_TotalWeight.Text = package.TotalWeight.ToString();
             txt_Status.Text = package.Status.ToString().Replace("0","打开").Replace("1","关闭");

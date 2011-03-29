@@ -42,7 +42,6 @@ namespace GGGETSAdmin.AddressBookManage
                 if (!string.IsNullOrEmpty(Request.QueryString["AID"]))
                 {
                     AID = Request.QueryString["AID"].ToString();
-                    //ViewState["Url"] = Request.UrlReferrer.ToString();
                     Storage(AID);
                 }
                 else

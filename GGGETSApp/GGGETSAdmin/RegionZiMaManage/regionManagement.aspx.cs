@@ -15,16 +15,26 @@ namespace GGGETSAdmin.RegionZiMaManage
         private IList<RegionCode> listregion;
         private static ICountryCodeManagementService _countryservice;
         private IRegionCodeManagementService _regionservice;
+        private ISysUserManagementService _sysUserManagementService;
         protected regionManagement()
         { }
-        public regionManagement(IRegionCodeManagementService regionservice, ICountryCodeManagementService countryservice)
+        public regionManagement(IRegionCodeManagementService regionservice, ICountryCodeManagementService countryservice, ISysUserManagementService sysUserManagementService)
         {
             _regionservice = regionservice;
             _countryservice = countryservice;
+            _sysUserManagementService = sysUserManagementService;
         }
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (Session["UserID"] != null)
+            {
+                Guid id = (Guid)Session["UserID"];
+                ModulePrivilege Mpriviege = _sysUserManagementService.GetPrivilegeByUserid(id);
+                if (!(bool)Mpriviege.QueryPrivilege)
+                {
+                    btn_Demand.Enabled = false;
+                }
+            }
         }
         /// <summary>
         /// 查询
@@ -79,7 +89,7 @@ namespace GGGETSAdmin.RegionZiMaManage
         protected void gv_Region_RowUpdating(object sender, GridViewUpdateEventArgs e)
         {
             regioncode.ID = int.Parse(gv_Region.DataKeys[e.RowIndex].Value.ToString());
-            regioncode.CountryCode = ((TextBox)gv_Region.Rows[e.RowIndex].FindControl("Txt_CountryCode")).Text.Trim().ToUpper();
+            regioncode.CountryCode = ((Label)gv_Region.Rows[e.RowIndex].FindControl("Txt_CountryCode")).Text.Trim().ToUpper();
             regioncode.RegionCode1 = ((TextBox)gv_Region.Rows[e.RowIndex].FindControl("Txt_RegionCode")).Text.Trim().ToUpper();
             regioncode.RegionName = ((TextBox)gv_Region.Rows[e.RowIndex].FindControl("Txt_RegionName")).Text.Trim().ToUpper();
             _regionservice.ModifyRegionCode(regioncode);
@@ -135,6 +145,26 @@ namespace GGGETSAdmin.RegionZiMaManage
                 listregion.Remove(regioncode);
                 gv_Region.DataSource = _regionservice.FindAllRegionCodes();
                 gv_Region.DataBind();
+            }
+        }
+
+        protected void gv_Region_DataBound(object sender, EventArgs e)
+        {
+            if (Session["UserID"] != null)
+            {
+                Guid id = (Guid)Session["UserID"];
+                ModulePrivilege Authority = _sysUserManagementService.GetPrivilegeByUserid(id);
+                foreach (GridViewRow row in gv_Region.Rows)
+                {
+                    if (!(bool)Authority.UpdatePrivilege)
+                    {
+                        ((LinkButton)row.FindControl("lbtn_Eint") as LinkButton).Enabled = false;
+                    }
+                    if (!(bool)Authority.DeletePrivilege)
+                    {
+                        ((LinkButton)row.FindControl("btn_Delete") as LinkButton).Enabled = false;
+                    }
+                }
             }
         }
     }

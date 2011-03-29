@@ -67,6 +67,10 @@ namespace GGGETSAdmin.HAWBManage
                         btn_Demand.Enabled = false;
                     }
                 }
+                else
+                {
+                    Response.Write("<script>alert('没有访问权限!');location='../HOME.aspx'</script>");
+                }
             }
             
         }
@@ -314,8 +318,7 @@ namespace GGGETSAdmin.HAWBManage
             }
             else if (e.CommandName == "Updata")
             {
-                int index = Convert.ToInt32(e.CommandArgument);
-                string barCode = Gv_HAWB.DataKeys[index].Value.ToString();
+                string barCode = e.CommandArgument.ToString();
                 int Update = 1;
                 Response.Redirect("HAWBAdd.aspx?BarCode=" + barCode + "&update=" + Update + "");
             }
@@ -511,7 +514,48 @@ namespace GGGETSAdmin.HAWBManage
 
         protected void Gv_HAWB_DataBound(object sender, EventArgs e)
         {
+             if (Session["UserID"] != null)
+             {
+                 Guid id = (Guid)Session["UserID"];
+                 ModulePrivilege Authority = _SysUserManagementService.GetPrivilegeByUserid(id);
+                 foreach (GridViewRow row in Gv_HAWB.Rows)
+                 {
+                     if (!(bool)Authority.UpdatePrivilege)
+                     {
+                          ((LinkButton)row.FindControl("lbtn_Update") as LinkButton).Enabled = false;
+                     }
+                     if(!(bool)Authority.DeletePrivilege)
+                     {
+                         ((LinkButton)row.FindControl("lbtn_Delete") as LinkButton).Enabled = false;
+                     }
+                     if (!(bool)Authority.ExportPrivilege)
+                     {
+                         ((LinkButton)row.FindControl("lbtn_Derive") as LinkButton).Enabled = false;
+                         ((LinkButton)row.FindControl("lbtn_DeriveAccept") as LinkButton).Enabled = false;
+                     }
 
+                 }
+             }
         }
+
+        //protected void Gv_HAWB_DataBound(object sender, GridViewRowEventArgs e)
+        //{
+        //    if (Session["UserID"] != null)
+        //    {
+        //        Guid id = (Guid)Session["UserID"];
+        //        ModulePrivilege Authority = _SysUserManagementService.GetPrivilegeByUserid(id);
+        //        if ((bool)Authority.DeletePrivilege)
+        //        {
+        //            Label lbtn = (Label)e.Row.FindControl("lbl_BarCode");
+        //            lbtn.Enabled = true;
+        //        }
+        //        else
+        //        {
+        //            string lbtn = ((Label)e.Row.FindControl("lbl_BarCode") as Label).Text;
+        //            //lbtn.Enabled = false;
+        //        }
+
+        //    }
+        //}
     }
 }

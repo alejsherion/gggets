@@ -14,16 +14,30 @@ namespace GGGETSAdmin.CountryZiMaManage
     {
         private CountryCode countrycode;
         private ICountryCodeManagementService _countryservice;
+        private ISysUserManagementService _sysUserManagementService;
         private static string RRegion = @"^[A-Za-z]";
         protected TwoZiMaAdd()
         { }
-        public TwoZiMaAdd(ICountryCodeManagementService countryservice)
+        public TwoZiMaAdd(ICountryCodeManagementService countryservice, ISysUserManagementService SysUserManagementService)
         {
             _countryservice = countryservice;
+            _sysUserManagementService = SysUserManagementService;
         }
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!IsPostBack)
+            {
+                if (Session["UserID"] != null)
+                {
 
+                    Guid id = (Guid)Session["UserID"];
+                    ModulePrivilege Mprivlege = _sysUserManagementService.GetPrivilegeByUserid(id);
+                    if (!(bool)Mprivlege.AddPrivilege)
+                    {
+                        btn_Add.Enabled = false;
+                    }
+                }
+            }
         }
 
         protected void btn_Add_Click(object sender, EventArgs e)
