@@ -34,8 +34,8 @@ namespace GGGETSAdmin.HAWBManage
         private string carrier = string.Empty;//承运公司
         private string contactor = string.Empty;//联系人
         private string HAWBOperator = string.Empty;//操作人
-        private DateTime beginTime = DateTime.Today.AddDays(-1);
-        private DateTime endTime = DateTime.Today;
+        private DateTime beginTime = new DateTime();
+        private DateTime endTime = new DateTime();
         private int settleType = -1;
         private int serviceType = -1;
         private bool isInternational;
@@ -51,13 +51,21 @@ namespace GGGETSAdmin.HAWBManage
             
             if (!IsPostBack)
             {
-                Txt_GetUpTime.Text = DateTime.Today.AddDays(-1).ToString();
-                Txt_StopTime.Text = DateTime.Today.ToString();
+                Txt_GetUpTime.Text = DateTime.Today.Date.AddDays(-1).ToString("yyyy-MM-dd");
+                Txt_StopTime.Text = DateTime.Today.ToString("yyyy-MM-dd");
                 DropDownList();
                 if (Session["UserID"] != null)
                 {
                     Guid id = (Guid)Session["UserID"];
                     ModulePrivilege Authority = _SysUserManagementService.GetPrivilegeByUserid(id);
+                    if ((bool)Authority.QueryPrivilege)
+                    {
+                        btn_Demand.Enabled = true;
+                    }
+                    else
+                    {
+                        btn_Demand.Enabled = false;
+                    }
                 }
             }
             
@@ -97,7 +105,8 @@ namespace GGGETSAdmin.HAWBManage
             {
                 if (Txt_Account1.Text.Trim() == "")
                 {
-                    Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('请输入客户账号!')</script>");
+                    
+                    ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(),"", "alert('请输入客户账号!')", true);
                     Txt_Account1.Focus();
                 }
                 else
@@ -123,7 +132,7 @@ namespace GGGETSAdmin.HAWBManage
                 }
                 else
                 {
-                    Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('没有相关记录！')</script>");
+                    ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('没有相关记录!')", true);                    
                     Gv_HAWB.DataSource = null;
                     Gv_HAWB.DataBind();
                     InitialControl(this.Controls);
@@ -131,7 +140,8 @@ namespace GGGETSAdmin.HAWBManage
             }
             else
             {
-                Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('请按提示操作！')</script>");
+               
+                ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('请按提示操作!')", true);
             }
         }
         #region
@@ -150,7 +160,7 @@ namespace GGGETSAdmin.HAWBManage
             {
                 if (!RCountry.IsMatch(Txt_Country.Text))
                 {
-                    Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('只能输入字母并为2位！')</script>");
+                    ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('只能输入字母并为2位!')", true);
                     ok = false;
                     Txt_Country.Focus();
                 }
@@ -164,7 +174,7 @@ namespace GGGETSAdmin.HAWBManage
             {
                 if (!RRegion.IsMatch(Txt_Region.Text))
                 {
-                    Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('只能输入字母并为3位！')</script>");
+                    ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('只能输入字母并为3位!')", true);
                     ok = false;
                     Txt_Region.Focus();
                 }
@@ -211,7 +221,7 @@ namespace GGGETSAdmin.HAWBManage
             {
                 if (!Regex.IsMatch(Txt_GetUpTime.Text.Trim(), Rtime))
                 {
-                    Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('请输入正确的日期！如：2010-02-16！')</script>");
+
                     Txt_GetUpTime.Focus();
                     ok = false;
                 }
@@ -225,7 +235,7 @@ namespace GGGETSAdmin.HAWBManage
             {
                 if (!Regex.IsMatch(Txt_StopTime.Text.Trim(), Rtime))
                 {
-                    Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('请输入正确的日期！如：2010-02-16！')</script>");
+                    ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('请输入正确的时间格式！如2010-02-16！')", true);
                     Txt_StopTime.Focus();
                     ok = false;
                 }
@@ -234,7 +244,7 @@ namespace GGGETSAdmin.HAWBManage
                     endTime = DateTime.Parse(Txt_StopTime.Text.Trim().Trim());
                     if (beginTime.CompareTo(endTime) == 1)
                     {
-                        Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('起始日期不能大于结束日期！')</script>");
+                        ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('起始日期不能大于结束日期！')", true);
                         ok = false;
                         Txt_StopTime.Focus();
                     }
@@ -257,18 +267,36 @@ namespace GGGETSAdmin.HAWBManage
         {
             PageIndex = 0;
             Band(PageIndex, PageCount);
-            
-            lbl_nuber.Text = "1";
-            lbl_sumnuber.Text = (((int)ViewState["totalCount"] + PageCount - 1) / PageCount).ToString();//总页数
-            DataBound();
-            if (Gv_HAWB.Rows.Count < PageCount)//数据源总数小于总条数的时候分页不可用
+            FenYe.Visible = true;
+
+            if (Gv_HAWB.Rows.Count < PageCount && Gv_HAWB.Rows.Count != 0)//数据源总数小于总条数的时候分页不可用
             {
-                FenYe.Visible = false;
+                lbl_nuber.Text = "1";
+                lbl_sumnuber.Text = "1";
+                btn_Up.Enabled = false;
+                btn_down.Enabled = false;
+                btn_Jumpto.Enabled = false;
+                btn_lastpage.Enabled = false;
+                btn_homepage.Enabled = false;
+            }
+            else if (Gv_HAWB.Rows.Count == 0)
+            {
+                lbl_nuber.Text = "0";
+                lbl_sumnuber.Text = "0";
             }
             else
             {
-                FenYe.Visible = true;
+                lbl_nuber.Text = "1";
+                lbl_sumnuber.Text = (((int)ViewState["totalCount"] + PageCount - 1) / PageCount).ToString();//总页数
+                btn_Up.Enabled = true;
+                btn_down.Enabled = true;
+                btn_Jumpto.Enabled = true;
+                btn_lastpage.Enabled = true;
+                btn_homepage.Enabled = true;
+
             }
+            
+            DataBound();
         }
         /// <summary>
         /// 数据源操作
@@ -342,7 +370,7 @@ namespace GGGETSAdmin.HAWBManage
                 }
                 else
                 {
-                    Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('没有承运公司编号，不能导出!')</script>");
+                    ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('没有承运公司编号，不能导出！')", true);
                 }
             }
 
@@ -439,12 +467,12 @@ namespace GGGETSAdmin.HAWBManage
         {
             if (int.Parse(Txt_Jumpto.Text.Trim()) <= 0)
             {
-                Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('最小页数为1,请重新输入！')</script>");
+                ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('最小页数为1,请重新输入！')", true);
                 Txt_Jumpto.Focus();
             }
             else if (int.Parse(Txt_Jumpto.Text.Trim()) > int.Parse(lbl_sumnuber.Text))
             {
-                Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('超过最大页数请重新输入！')</script>");
+                ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('超过最大页数请重新输入！')", true);
                 Txt_Jumpto.Focus();
             }
             else
@@ -479,6 +507,11 @@ namespace GGGETSAdmin.HAWBManage
             Band(PageIndex, PageCount);
             lbl_nuber.Text = "1";
             DataBound();
+        }
+
+        protected void Gv_HAWB_DataBound(object sender, EventArgs e)
+        {
+
         }
     }
 }

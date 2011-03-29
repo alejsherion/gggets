@@ -1,5 +1,7 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="HAWBManagement.aspx.cs" Inherits="GGGETSAdmin.HAWBManage.HAWBManagement" Theme="logisitc" %>
 
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -21,11 +23,14 @@
 </head>
 <body>
     <form id="form1" runat="server">
-    <div style="text-align: right">
+    <cc1:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server">
+    </cc1:ToolkitScriptManager>
+    <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+        <ContentTemplate>        
+            <div style="text-align: right">
           <asp:LinkButton ID="lbtn_Navigation" runat="server" Text="主页" PostBackUrl="~/Navigation.aspx" CssClass="LinkBtn"></asp:LinkButton>
      </div>
-    <div>
-        <asp:PlaceHolder ID="phHawb" runat="server">
+             <div>
         <table class="DataView">
             <thead>
                 <tr class="Row">
@@ -125,16 +130,17 @@
                 </tr>                
             </thead>
         </table>
-    </asp:PlaceHolder>
     <div style="height: 350px;overflow-x:auto;overflow-y:auto;">
         <asp:GridView ID="Gv_HAWB" runat="server" AutoGenerateColumns="False" 
-            onrowcommand="Gv_HAWB_RowCommand" DataKeyNames="BarCode" PageSize="36">
+            onrowcommand="Gv_HAWB_RowCommand" DataKeyNames="BarCode" PageSize="36" 
+            CssClass="DataView" ondatabound="Gv_HAWB_DataBound">
             <Columns>
             <asp:TemplateField HeaderText="行号">
                     <ItemTemplate>
                         <asp:Label ID="lbl_Number" runat="server" Text='<%# N() %>'></asp:Label>
                     </ItemTemplate>
-                    <ItemStyle HorizontalAlign="Left" />
+                    <HeaderStyle HorizontalAlign="Center" Width="30px" />
+                    <ItemStyle HorizontalAlign="Center" Width="30px" />
                 </asp:TemplateField>
                 <asp:TemplateField HeaderText="运单号">
                     <ItemTemplate>
@@ -197,19 +203,23 @@
         </asp:GridView>
     </div>
     <div id="FenYe" runat="server" visible="false" class="DataView">
-        <asp:Button ID="btn_homepage" runat="server" Text="首页" CssClass="InputBtn" 
-            onclick="btn_homepage_Click" />&nbsp;&nbsp;&nbsp;&nbsp;
-        <asp:Button ID="btn_Up" runat="server" Text="上一页" onclick="btn_Up_Click" CssClass="InputBtn" />&nbsp;&nbsp;&nbsp;&nbsp;
-        <asp:Label ID="lbl_nuber" runat="server" ForeColor="Red"></asp:Label><b style="color: Red">/</b>
-        <asp:Label ID="lbl_sumnuber" runat="server" ForeColor="Red"></asp:Label>&nbsp;&nbsp;&nbsp;&nbsp;
-        <asp:Button ID="btn_Jumpto" runat="server" Text="跳转到" CssClass="InputBtn" 
-            onclick="btn_Jumpto_Click" /><asp:TextBox ID="Txt_Jumpto"
-            runat="server" Width="30" CssClass="TextBox" onblur="NumberCheck(this)"></asp:TextBox>
-        <asp:Button ID="btn_down" runat="server" Text="下一页" onclick="btn_down_Click" CssClass="InputBtn" />&nbsp;&nbsp;&nbsp;&nbsp;
-        <asp:Button ID="btn_lastpage" runat="server" Text="末页" CssClass="InputBtn" 
-            onclick="btn_lastpage_Click" />
+        <div style="text-align:center">
+            <asp:Button ID="btn_homepage" runat="server" Text="首页" CssClass="InputBtn" 
+                onclick="btn_homepage_Click" />&nbsp;&nbsp;&nbsp;&nbsp;
+            <asp:Button ID="btn_Up" runat="server" Text="上一页" onclick="btn_Up_Click" CssClass="InputBtn" />&nbsp;&nbsp;&nbsp;&nbsp;
+            <asp:Label ID="lbl_nuber" runat="server" ForeColor="Red"></asp:Label><b style="color: Red">/</b>
+            <asp:Label ID="lbl_sumnuber" runat="server" ForeColor="Red"></asp:Label>&nbsp;&nbsp;&nbsp;&nbsp;
+            <asp:Button ID="btn_Jumpto" runat="server" Text="跳转到" CssClass="InputBtn" 
+                onclick="btn_Jumpto_Click" /><asp:TextBox ID="Txt_Jumpto"
+                runat="server" Width="30" CssClass="TextBox" onblur="NumberCheck(this)"></asp:TextBox>
+            <asp:Button ID="btn_down" runat="server" Text="下一页" onclick="btn_down_Click" CssClass="InputBtn" />&nbsp;&nbsp;&nbsp;&nbsp;
+            <asp:Button ID="btn_lastpage" runat="server" Text="末页" CssClass="InputBtn" 
+                onclick="btn_lastpage_Click" />
+            </div>
     </div>
 </div>
+        </ContentTemplate>
+    </asp:UpdatePanel>
     </form>
 </body>
 </html>

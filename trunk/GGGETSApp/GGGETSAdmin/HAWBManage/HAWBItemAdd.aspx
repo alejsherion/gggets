@@ -394,12 +394,11 @@
                             meta:resourcekey="lbl_PieceResource1"></asp:Label>
                     </td>
                     <td class="FieldHeader">
-                        <asp:Label ID="lbl_VolumeWeight" runat="server" Text="体积重：" Visible="False" 
+                        <asp:Label ID="lbl_VolumeWeight" runat="server" Text="体积重："
                             meta:resourcekey="lbl_VolumeWeightResource1"></asp:Label>
                     </td>
                     <td align="left">
-                        <asp:Label ID="Txt_VolumeWeight" runat="server"
-                            Visible="False" meta:resourcekey="Txt_VolumeWeightResource1"></asp:Label>
+                        <asp:Label ID="Txt_VolumeWeight" runat="server" meta:resourcekey="Txt_VolumeWeightResource1"></asp:Label>
                     </td>
                 </tr>
                 <tr class="Row">
