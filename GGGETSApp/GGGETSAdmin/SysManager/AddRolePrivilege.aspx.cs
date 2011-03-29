@@ -129,20 +129,32 @@ namespace GGGETSAdmin.SysManager
             {
                 foreach (RadTreeNode node in nodes)
                 {
+                    if (node.Nodes.Count > 0)
+                    {
+                        var id = node.Value;
+                        if (!String.IsNullOrEmpty(id) && !node.Checked)
+                        {
+                            var modelId = new Guid(id);
+                            var rolePrivilege = role.Role_Privilege.Where(it => it.ModuleID == modelId).SingleOrDefault();
+                            if (rolePrivilege != null)
+                                role.Role_Privilege.Remove(rolePrivilege);
+                        }
+                        continue;
+                    }
                     if (node.Nodes.Count == 0)
                     {
                         var parentNode = node.ParentNode;
                         var modelId = new Guid(parentNode.Value);
                         var rolePrivilege = role.Role_Privilege.Where(it => it.ModuleID == modelId).SingleOrDefault();
-                        if(!node.Checked)
+                        if (!node.Checked)
                         {
-                            if(rolePrivilege!=null)
+                            if (rolePrivilege != null)
                             {
-                                role.Role_Privilege.Remove(rolePrivilege);
+                                rolePrivilege.PrivilegeDesc = rolePrivilege.PrivilegeDesc & (~(-Convert.ToInt32(node.Value)));
                             }
                             continue;
                         }
-                        if (rolePrivilege!=null)
+                        if (rolePrivilege != null)
                         {
                             rolePrivilege.PrivilegeDesc = rolePrivilege.PrivilegeDesc | Convert.ToInt32(node.Value);
                         }
@@ -158,7 +170,7 @@ namespace GGGETSAdmin.SysManager
                             rolePrivilege.CreateTime = DateTime.Now;
                             role.Role_Privilege.Add(rolePrivilege);
                         }
-                      
+
                     }
                 }
             }
