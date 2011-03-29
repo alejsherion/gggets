@@ -7,6 +7,7 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Reflection;
 using System.Web;
 using EFCachingProvider.Caching;
 using EFCachingProvider.Web;
@@ -493,6 +494,61 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Core
              );
 
             return Expression.Lambda<Func<TElement, bool>>(body, p);
+        }
+
+        /// <summary>
+        /// Lamdba表达式通用方法
+        /// </summary>
+        /// <typeparam name="TEntity"></typeparam>
+        /// <param name="fieldName"></param>
+        /// <param name="fieldValue"></param>
+        /// <param name="operate"></param>
+        /// <returns></returns>
+        public virtual Expression<Func<TEntity, bool>> GetExpression<TEntity>(string fieldName, string fieldValue, CompareOperate operate, bool judge=false)
+        {
+            ParameterExpression param = Expression.Parameter(typeof(TEntity), "it");
+            Expression left = null;
+            Expression right = null;
+            if(!judge)
+            {
+                left = Expression.Property(param, typeof(TEntity).GetProperty(fieldName));
+                right = Expression.Constant(fieldValue);
+            }
+            else
+            {
+                PropertyInfo propInfo = typeof(string).GetProperty("Length", BindingFlags.Instance | BindingFlags.Public);
+                left = Expression.Property(param, typeof(TEntity).GetProperty(fieldName));
+                left = Expression.Property(left, propInfo);
+                right = Expression.Constant(0);
+            }
+
+            Expression filter = null;
+            switch (operate)
+            {
+                case CompareOperate.Equal:
+                    filter = Expression.Equal(left, right);
+                    break;
+                case CompareOperate.GreaterThan:
+                    filter = Expression.GreaterThan(left, right);
+                    break;
+                case CompareOperate.LessThan:
+                    filter = Expression.LessThan(left, right);
+                    break;
+                case CompareOperate.LessThanOrEqual:
+                    filter = Expression.LessThanOrEqual(left, right);
+                    break;
+                case CompareOperate.GreaterThanOrEqual:
+                    filter = Expression.GreaterThanOrEqual(left, right);
+                    break;
+                case CompareOperate.NotEqual:
+                    filter = Expression.NotEqual(left, right);
+                    break;
+                default:
+                    filter = Expression.Equal(left, right);
+                    break;
+            }
+            Expression<Func<TEntity, bool>> pred = Expression.Lambda<Func<TEntity, bool>>(filter, param);
+            return pred;
         }
     }
 }

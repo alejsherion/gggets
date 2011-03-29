@@ -40,6 +40,11 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
        ///<summary>
        /// 查询
        ///</summary>
+       部分查询 = 512,
+
+       ///<summary>
+       /// 查询
+       ///</summary>
        查询 = 256,
        /// <summary>
        /// 修改
@@ -107,6 +112,10 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
                    case "打印":
                        result = PrintPrivilege;
                        break;
+                   case "部分查询":
+                       result = SearcherPartialPrivilege;
+                       break;
+
                    
                }
                return result;
@@ -180,6 +189,16 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
        /// 打印权限
        /// </summary>
        public bool? PrintPrivilege
+       {
+           get;
+           set;
+       }
+
+
+       /// <summary>
+       /// 查询部分权限
+       /// </summary>
+       public bool? SearcherPartialPrivilege
        {
            get;
            set;

@@ -112,6 +112,20 @@ namespace ETS.GGGETSApp.Domain.Core
         /// <returns>List of selected elements</returns>
         IEnumerable<TEntity> GetPagedElements<S>(int pageIndex, int pageCount, Expression<Func<TEntity, S>> orderByExpression, ISpecification<TEntity> specification, bool ascending);
 
-        
+        Expression<Func<TEntity, bool>> GetExpression<TEntity>(string fieldName, string fieldValue,
+                                                                              CompareOperate operate, bool judge);
+    }
+
+    /// <summary>
+    /// 操作符枚举
+    /// </summary>
+    public enum CompareOperate
+    {
+        Equal,
+        GreaterThan,
+        LessThan,
+        LessThanOrEqual,
+        GreaterThanOrEqual,
+        NotEqual
     }
 }

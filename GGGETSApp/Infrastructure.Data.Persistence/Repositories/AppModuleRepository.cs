@@ -222,6 +222,7 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Repositories
                 appModelPrivilege.DeletePrivilege = GetPrivilegeByPrivilege(appmodel.PrivilegeDesc, Privilege.删除);
                 appModelPrivilege.ExportPrivilege = GetPrivilegeByPrivilege(appmodel.PrivilegeDesc, Privilege.导出);
                 appModelPrivilege.PrintPrivilege = GetPrivilegeByPrivilege(appmodel.PrivilegeDesc, Privilege.打印);
+                appModelPrivilege.SearcherPartialPrivilege = GetPrivilegeByPrivilege(appmodel.PrivilegeDesc, Privilege.部分查询);
                 appModelPrivilege.Privilege = appmodel.PrivilegeDesc;
             }
             else

@@ -106,7 +106,7 @@ namespace Application.GGETS.Tests
             {
                 PID = Guid.NewGuid(),//包裹编号
                 BarCode = "p3",//条形码
-                RegionCode = "077",//地区三字码
+                DestinationRegionCode = "077",//地区目的地三字码
                 Piece = 15,//件数
                 TotalWeight = 15,//总重量
                 CreateTime = DateTime.Now,//创建日期
