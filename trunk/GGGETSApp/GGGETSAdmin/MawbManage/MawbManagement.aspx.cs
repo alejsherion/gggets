@@ -23,8 +23,8 @@ namespace GGGETSAdmin.MawbManage
             get { return (int)ViewState["pageIndex"]; }
             set { ViewState["pageIndex"] = value; }
         }
-        private DateTime beginTime = DateTime.Today.AddDays(-1);
-        private DateTime endTime = DateTime.Today;
+        private DateTime beginTime = new DateTime();
+        private DateTime endTime = new DateTime();
         private string BarCode = string.Empty;
         public int n = 1;
         private static string Rtime = @"^((((1[6-9]|[2-9]\d)\d{2})-(0?[13578]|1[02])-(0?[1-9]|[12]\d|3[01]))|(((1[6-9]|[2-9]\d)\d{2})-(0?[13456789]|1[012])-(0?[1-9]|[12]\d|30))|(((1[6-9]|[2-9]\d)\d{2})-0?2-(0?[1-9]|1\d|2[0-8]))|(((1[6-9]|[2-9]\d)(0[48]|[2468][048]|[13579][26])|((16|[2468][048]|[3579][26])00))-0?2-29))$";
@@ -39,8 +39,8 @@ namespace GGGETSAdmin.MawbManage
         {
             if (!IsPostBack)
             {
-                txt_UpCreateTime.Text = DateTime.Today.AddDays(-1).ToString();
-                txt_ToCreateTime.Text = DateTime.Today.ToString();
+                txt_UpCreateTime.Text = DateTime.Today.AddDays(-1).ToString("yyyy-MM-dd");
+                txt_ToCreateTime.Text = DateTime.Today.ToString("yyyy-MM-dd");
             }
         }
         /// <summary>
@@ -60,7 +60,7 @@ namespace GGGETSAdmin.MawbManage
             {
                 if (!Regex.IsMatch(txt_UpCreateTime.Text, Rtime))
                 {
-                    Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('请输入正确的日期！如：2010-02-16！')</script>");
+                    ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('请输入正确的时间格式！如2010-02-16！')", true);
                     txt_UpCreateTime.Focus();
                     Ok = false;
                 }
@@ -74,7 +74,7 @@ namespace GGGETSAdmin.MawbManage
             {
                 if (!Regex.IsMatch(txt_ToCreateTime.Text, Rtime))
                 {
-                    Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('请输入正确的日期！如：2010-02-16！')</script>");
+                    ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('请输入正确的时间格式！如2010-02-16！')", true);
                     txt_ToCreateTime.Focus();
                     Ok = false;
                 }
@@ -83,7 +83,7 @@ namespace GGGETSAdmin.MawbManage
                     endTime = DateTime.Parse(txt_ToCreateTime.Text.Trim());
                     if (beginTime.CompareTo(endTime) == 1)
                     {
-                        Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('起始日期不能大于结束日期！')</script>");
+                        ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('起始日期不能大于结束日期！')", true);
                         Ok = false;
                         txt_ToCreateTime.Focus();
                     }
@@ -104,14 +104,15 @@ namespace GGGETSAdmin.MawbManage
                 }
                 else
                 {
-                    Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('没有记录！')</script>");
+                    ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('没有相关记录!')", true);
                     gv_HAWB.DataSource = null;
                     gv_HAWB.DataBind();
+                    InitialControl(this.Controls);
                 }
             }
             else
             {
-                Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('请按提示操作！')</script>");
+                ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('请按提示操作!')", true);
             }
         }
         /// <summary>
@@ -123,17 +124,32 @@ namespace GGGETSAdmin.MawbManage
         {
             PageIndex = 0;
             Band(PageIndex, PageCount);
-            
+            FenYe.Visible = true;
             lbl_nuber.Text = "1";
-            lbl_sumnuber.Text = (((int)ViewState["totalCount"] + PageCount - 1) / PageCount).ToString();
             DataBound();
-            if (gv_HAWB.Rows.Count < PageCount)//判断数据源控件条数是否小于查询条数，true影藏分页控件
+            if (gv_HAWB.Rows.Count < PageCount && gv_HAWB.Rows.Count != 0)//数据源总数小于总条数的时候分页不可用
             {
-                FenYe.Visible = false;
+                lbl_sumnuber.Text = "1";
+                btn_Up.Enabled = false;
+                btn_down.Enabled = false;
+                btn_Jumpto.Enabled = false;
+                btn_lastpage.Enabled = false;
+                btn_homepage.Enabled = false;
+            }
+            else if (gv_HAWB.Rows.Count == 0)
+            {
+                lbl_nuber.Text = "0";
+                lbl_sumnuber.Text = "0";
             }
             else
             {
-                FenYe.Visible = true;
+                lbl_sumnuber.Text = (((int)ViewState["totalCount"] + PageCount - 1) / PageCount).ToString();//总页数
+                btn_Up.Enabled = true;
+                btn_down.Enabled = true;
+                btn_Jumpto.Enabled = true;
+                btn_lastpage.Enabled = true;
+                btn_homepage.Enabled = true;
+
             }
         }
         /// <summary>
@@ -176,7 +192,7 @@ namespace GGGETSAdmin.MawbManage
                 }
                 else
                 {
-                    Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('该总运单下没有运单，不能导出!')</script>");
+                    ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('该总运单下没有运单，不能导出！')", true);
                 }
             }
             else if (e.CommandName == "DeriveAccept")
@@ -204,7 +220,7 @@ namespace GGGETSAdmin.MawbManage
                 }
                 else
                 {
-                    Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('该总运单下没有运单，不能导出!')</script>");
+                    ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('该总运单下没有运单，不能导出！')", true);
                 }
             }
         }
@@ -291,12 +307,12 @@ namespace GGGETSAdmin.MawbManage
         {
             if (int.Parse(Txt_Jumpto.Text.Trim()) <= 0)
             {
-                Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('最小页数为1,请重新输入！')</script>");
+                ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('最小页数为1,请重新输入！')", true);
                 Txt_Jumpto.Focus();
             }
             else if (int.Parse(Txt_Jumpto.Text.Trim()) > int.Parse(lbl_sumnuber.Text))
             {
-                Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('超过最大页数请重新输入！')</script>");
+                ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('超过最大页数请重新输入！')", true);
                 Txt_Jumpto.Focus();
             }
             else
@@ -307,6 +323,28 @@ namespace GGGETSAdmin.MawbManage
                 DataBound();
             }
             Txt_Jumpto.Text = string.Empty;
+        }
+
+        /// <summary>
+        /// 清空条件查询条件
+        /// </summary>
+        /// <param name="objControlCollection"></param>
+        private void InitialControl(ControlCollection objControlCollection)
+        {
+            foreach (System.Web.UI.Control objControl in objControlCollection)
+            {
+                if (objControl.HasControls())
+                {
+                    InitialControl(objControl.Controls);
+                }
+                else
+                {
+                    if (objControl is System.Web.UI.WebControls.TextBox)
+                    {
+                        ((TextBox)objControl).Text = String.Empty;
+                    }
+                }
+            }
         }
     }
 }
