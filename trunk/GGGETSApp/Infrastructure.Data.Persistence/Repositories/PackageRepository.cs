@@ -9,6 +9,7 @@
 using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Linq.Expressions;
 using ETS.GGGETSApp.Infrastructure.Data.Core;
 using ETS.GGGETSApp.Infrastructure.Data.Core.Extensions;
 using ETS.GGGETSApp.Infrastructure.Data.Persistence.Resources;
@@ -20,7 +21,7 @@ using System.Linq;
 
 namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Repositories
 {
-    public class PackageRepository : Repository<Package>, IPackageRepository
+    public class PackageRepository : BaseRepository<Package>, IPackageRepository
     {
         public PackageRepository(IGGGETSAppUnitOfWork unitOfWork, ITraceManager traceManager) : base(unitOfWork, traceManager) { }
         /// <summary>
@@ -57,8 +58,12 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Repositories
                 {
                     //packages = context.Package.Include(p => p.HAWBs).Include(p => p.MAWB).Select(p => p);
                     packages = context.Package.Select(p => p);
+                    //权限引入
+                    Expression<Func<Package, bool>> predicate = GetCustomExpression<Package>("OriginalRegionCode", Domain.Core.CompareOperate.Equal);
+                    packages = packages.Where(predicate.Compile());
+
                     if (!string.IsNullOrEmpty(barCode)) packages = packages.Where(p => p.BarCode == barCode);
-                    if (!string.IsNullOrEmpty(destinationCode)) packages = packages.Where(p => p.RegionCode == destinationCode);
+                    if (!string.IsNullOrEmpty(destinationCode)) packages = packages.Where(p => p.DestinationRegionCode == destinationCode);
                     if (beginDate.HasValue)
                     {
                         if (beginDate.Value != DateTime.MinValue)
@@ -108,8 +113,12 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Repositories
             if (context != null)
             {
                 packages = context.Package.Select(p => p);
+                //权限引入
+                Expression<Func<Package, bool>> predicate = GetCustomExpression<Package>("OriginalRegionCode", Domain.Core.CompareOperate.Equal);
+                packages = packages.Where(predicate.Compile());
+
                 if (!string.IsNullOrEmpty(barCode)) packages = packages.Where(p => p.BarCode == barCode);
-                if (!string.IsNullOrEmpty(destinationCode)) packages = packages.Where(p => p.RegionCode == destinationCode);
+                if (!string.IsNullOrEmpty(destinationCode)) packages = packages.Where(p => p.DestinationRegionCode == destinationCode);
                 if (beginDate.HasValue)
                 {
                     if (beginDate.Value != DateTime.MinValue)
@@ -149,9 +158,15 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Repositories
         {
             if (string.IsNullOrEmpty(MID)) throw new ArgumentException("MID is null!");
             //Get Assemble's Context
+            IEnumerable<Package> packages = null;
             IGGGETSAppUnitOfWork context = UnitOfWork as IGGGETSAppUnitOfWork;
             //don't forget open package's load:HAWBs
-            return context.Package.Include(it => it.HAWBs).Where(p => p.MID == new Guid(MID)).ToList();
+            packages = context.Package.Include(it => it.HAWBs);
+            //权限引入
+            Expression<Func<Package, bool>> predicate = GetCustomExpression<Package>("OriginalRegionCode", Domain.Core.CompareOperate.Equal);
+            packages = packages.Where(predicate.Compile());
+
+            return packages.Where(p => p.MID == new Guid(MID)).ToList();
         }
 
         /// <summary>
@@ -165,9 +180,15 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Repositories
         {
             if (string.IsNullOrEmpty(MID)) throw new ArgumentException("MID is null!");
             //Get Assemble's Context
+            IEnumerable<Package> packages = null;
             IGGGETSAppUnitOfWork context = UnitOfWork as IGGGETSAppUnitOfWork;
+            packages = context.Package.Include(it => it.HAWBs);
             //don't forget open package's load:HAWBs
-            return context.Package.Include(it => it.HAWBs).Where(p => p.MID == new Guid(MID)).Skip(pageIndex*pageCount).Take(pageCount).ToList();
+            //权限引入
+            Expression<Func<Package, bool>> predicate = GetCustomExpression<Package>("OriginalRegionCode", Domain.Core.CompareOperate.Equal);
+            packages = packages.Where(predicate.Compile());
+
+            return packages.Where(p => p.MID == new Guid(MID)).Skip(pageIndex * pageCount).Take(pageCount).ToList();
         }
     }
 }

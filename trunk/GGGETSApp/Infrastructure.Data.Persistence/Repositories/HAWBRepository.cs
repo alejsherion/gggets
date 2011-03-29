@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data.Objects.DataClasses;
 using System.Linq;
+using System.Web;
 using ETS.GGGETSApp.Infrastructure.Data.Core;
 using ETS.GGGETSApp.Infrastructure.Data.Core.Extensions;
 using ETS.GGGETSApp.Infrastructure.Data.Persistence.UnitOfWork;
@@ -11,10 +12,11 @@ using Domain.GGGETS;
 using System.Globalization;
 using ETS.GGGETSApp.Infrastructure.Data.Persistence.Resources;
 using System.Data.Objects;
+using System.Linq.Expressions;
 
 namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Repositories
 {
-    public class HAWBRepository : Repository<HAWB>, IHAWBRepository
+    public class HAWBRepository : BaseRepository<HAWB>, IHAWBRepository
     {
         public HAWBRepository(IGGGETSAppUnitOfWork unitOfWork, ITraceManager traceManager) : base(unitOfWork, traceManager) { }
 
@@ -110,6 +112,10 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Repositories
             if (context != null)
             {
                 HAWBs = context.HAWB.Include(h=>h.Department).Select(h => h);
+                //权限引入
+                Expression<Func<HAWB,bool>> predicate = GetCustomExpression<HAWB>("ShipperRegion", Domain.Core.CompareOperate.Equal);
+                HAWBs = HAWBs.Where(predicate.Compile());
+
                 if (!string.IsNullOrEmpty(barCode)) HAWBs = HAWBs.Where(a => a.BarCode == barCode);
                 if (!string.IsNullOrEmpty(countryCode)) HAWBs = HAWBs.Where(a => a.ConsigneeCountry == countryCode);
                 if (!string.IsNullOrEmpty(regionCode)) HAWBs = HAWBs.Where(a => a.ConsigneeRegion == regionCode);
@@ -177,6 +183,10 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Repositories
             if (context != null)
             {
                 HAWBs = context.HAWB.Include(h => h.Department).Select(h => h);
+                //权限引入
+                Expression<Func<HAWB, bool>> predicate = GetCustomExpression<HAWB>("ShipperRegion", Domain.Core.CompareOperate.Equal);
+                HAWBs = HAWBs.Where(predicate.Compile());
+
                 if (!string.IsNullOrEmpty(barCode)) HAWBs = HAWBs.Where(a => a.BarCode == barCode);
                 if (!string.IsNullOrEmpty(countryCode)) HAWBs = HAWBs.Where(a => a.ConsigneeCountry == countryCode);
                 if (!string.IsNullOrEmpty(regionCode)) HAWBs = HAWBs.Where(a => a.ConsigneeRegion == regionCode);
@@ -561,7 +571,7 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Repositories
                     hawbs = (from he in context.HAWB.Include(h => h.Package) where he.Package!=null select he).ToList();
                     //hawbs = context.HAWB.Include(h => h.Package).Select(h => h).ToList().SkipWhile(h => h.Package == null);
                     if (!string.IsNullOrEmpty(barCode)) hawbs = hawbs.Where(h => h.Package.BarCode == barCode);
-                    if (!string.IsNullOrEmpty(destinationCode)) hawbs = hawbs.Where(h => h.Package.RegionCode == destinationCode);
+                    if (!string.IsNullOrEmpty(destinationCode)) hawbs = hawbs.Where(h => h.Package.DestinationRegionCode == destinationCode);
                     if (beginDate.HasValue)
                     {
                         if (beginDate.Value != DateTime.MinValue)

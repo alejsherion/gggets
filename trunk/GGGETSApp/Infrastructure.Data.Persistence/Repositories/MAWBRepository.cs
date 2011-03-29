@@ -9,6 +9,7 @@
 using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Linq.Expressions;
 using ETS.GGGETSApp.Infrastructure.Data.Core;
 using ETS.GGGETSApp.Infrastructure.Data.Core.Extensions;
 using ETS.GGGETSApp.Infrastructure.Data.Persistence.Resources;
@@ -20,7 +21,7 @@ using System.Linq;
 
 namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Repositories
 {
-    public class MAWBRepository : Repository<MAWB>, IMAWBRepository
+    public class MAWBRepository : BaseRepository<MAWB>, IMAWBRepository
     {
         public MAWBRepository(IGGGETSAppUnitOfWork unitOfWork, ITraceManager traceManager) : base(unitOfWork, traceManager) { }
         /// <summary>
@@ -39,6 +40,10 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Repositories
                 if (context != null)
                 {
                     mawb = context.MAWB.Select(m => m);
+                    //权限引入
+                    Expression<Func<MAWB, bool>> predicate = GetCustomExpression<MAWB>("From", Domain.Core.CompareOperate.Equal);
+                    mawb = mawb.Where(predicate.Compile());
+
                     if (!string.IsNullOrEmpty(barCode)) mawb = mawb.Where(m => m.BarCode == barCode);
                     if (beginDate.HasValue)
                     {
@@ -88,6 +93,10 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Repositories
             if (context != null)
             {
                 mawb = context.MAWB.Select(m => m);
+                //权限引入
+                Expression<Func<MAWB, bool>> predicate = GetCustomExpression<MAWB>("From", Domain.Core.CompareOperate.Equal);
+                mawb = mawb.Where(predicate.Compile());
+
                 if (!string.IsNullOrEmpty(barCode)) mawb = mawb.Where(m => m.BarCode == barCode);
                 if (beginDate.HasValue)
                 {
@@ -128,9 +137,14 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Repositories
         {
             if (string.IsNullOrEmpty(flightNo)) throw new ArgumentException("FlightNo is null!");
             //Get Assemble's Context
+            IEnumerable<MAWB> mawb = null;
             IGGGETSAppUnitOfWork context = UnitOfWork as IGGGETSAppUnitOfWork;
+            if (context != null) mawb = context.MAWB;
+            //权限引入
+            Expression<Func<MAWB, bool>> predicate = GetCustomExpression<MAWB>("From", Domain.Core.CompareOperate.Equal);
+            mawb = mawb.Where(predicate.Compile());
             //don't forget open package's load:HAWBs
-            return context.MAWB.Where(m => m.FlightNo == flightNo).ToList();
+            return mawb.Where(m => m.FlightNo == flightNo).ToList();
         }
 
         /// <summary>
@@ -144,9 +158,16 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Repositories
         {
             if (string.IsNullOrEmpty(flightNo)) throw new ArgumentException("FlightNo is null!");
             //Get Assemble's Context
+            IEnumerable<MAWB> mawb = null;
             IGGGETSAppUnitOfWork context = UnitOfWork as IGGGETSAppUnitOfWork;
-            //don't forget open package's load:HAWBs
-            return context.MAWB.Where(m => m.FlightNo == flightNo).Skip(pageIndex*pageCount).Take(pageCount).ToList();
+            if (context != null)
+            {
+                mawb = context.MAWB;
+                //权限引入
+                Expression<Func<MAWB, bool>> predicate = GetCustomExpression<MAWB>("From", Domain.Core.CompareOperate.Equal);
+                mawb = mawb.Where(predicate.Compile());
+            }
+            return mawb.Where(m => m.FlightNo == flightNo).Skip(pageIndex * pageCount).Take(pageCount).ToList();
         }
 
         /// <summary>
@@ -177,6 +198,10 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Repositories
             if (context != null)
             {
                 mawbs = context.MAWB.Select(m => m);
+                //权限引入
+                Expression<Func<MAWB, bool>> predicate = GetCustomExpression<MAWB>("From", Domain.Core.CompareOperate.Equal);
+                mawbs = mawbs.Where(predicate.Compile());
+
                 if (!string.IsNullOrEmpty(flightNo)) mawbs = mawbs.Where(m => m.FlightNo == flightNo);
                 if (!string.IsNullOrEmpty(from)) mawbs = mawbs.Where(m => m.From == from);
                 if (!string.IsNullOrEmpty(to)) mawbs = mawbs.Where(m => m.To == to);
@@ -207,6 +232,10 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Repositories
             if (context != null)
             {
                 mawbs = context.MAWB.Select(m => m);
+                //权限引入
+                Expression<Func<MAWB, bool>> predicate = GetCustomExpression<MAWB>("From", Domain.Core.CompareOperate.Equal);
+                mawbs = mawbs.Where(predicate.Compile());
+
                 if (!string.IsNullOrEmpty(flightNo)) mawbs = mawbs.Where(m => m.FlightNo == flightNo);
                 if (!string.IsNullOrEmpty(from)) mawbs = mawbs.Where(m => m.From == from);
                 if (!string.IsNullOrEmpty(to)) mawbs = mawbs.Where(m => m.To == to);

@@ -240,16 +240,16 @@ namespace Application.GGETS
             Package package = _hawbRepository.FindPackageByBarcode(packageBarcode);
             if(package!=null)
             {
-                if (package.RegionCode.Equals("JPX")) return true;//混包不用判断
+                if (package.DestinationRegionCode.Equals("JPX")) return true;//混包不用判断
                 if(hawb!=null)
                 {
                     if (!string.IsNullOrEmpty(hawb.DeliverRegion))//交付人三字码不为空
                     {
-                        if (package.RegionCode.Equals(hawb.DeliverRegion)) 
+                        if (package.DestinationRegionCode.Equals(hawb.DeliverRegion)) 
                             judge = true;//交付人字码和包裹字码相同，可以添加该包裹
                     }
                     else //交付人如果是空的，那么就依据收件人字码来计算
-                        if (package.RegionCode.Equals(hawb.ConsigneeRegion)) judge = true;
+                        if (package.DestinationRegionCode.Equals(hawb.ConsigneeRegion)) judge = true;
                 }
             }
             return judge;

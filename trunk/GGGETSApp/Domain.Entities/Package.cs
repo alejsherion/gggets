@@ -91,21 +91,6 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
         private string _barCode;
     
         [DataMember]
-        public string RegionCode
-        {
-            get { return _regionCode; }
-            set
-            {
-                if (_regionCode != value)
-                {
-                    _regionCode = value;
-                    OnPropertyChanged("RegionCode");
-                }
-            }
-        }
-        private string _regionCode;
-    
-        [DataMember]
         public int Piece
         {
             get { return _piece; }
@@ -209,6 +194,36 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
             }
         }
         private bool _isMixed;
+    
+        [DataMember]
+        public string OriginalRegionCode
+        {
+            get { return _originalRegionCode; }
+            set
+            {
+                if (_originalRegionCode != value)
+                {
+                    _originalRegionCode = value;
+                    OnPropertyChanged("OriginalRegionCode");
+                }
+            }
+        }
+        private string _originalRegionCode;
+    
+        [DataMember]
+        public string DestinationRegionCode
+        {
+            get { return _destinationRegionCode; }
+            set
+            {
+                if (_destinationRegionCode != value)
+                {
+                    _destinationRegionCode = value;
+                    OnPropertyChanged("DestinationRegionCode");
+                }
+            }
+        }
+        private string _destinationRegionCode;
 
         #endregion
         #region Navigation Properties

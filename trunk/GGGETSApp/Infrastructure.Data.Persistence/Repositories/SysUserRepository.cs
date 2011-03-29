@@ -370,6 +370,8 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Repositories
                 (privilegeValue & (int)Privilege.导出) == (int)Privilege.导出 ? true : false;
             modulePrivilege.PrintPrivilege =
                 (privilegeValue & (int)Privilege.打印) == (int)Privilege.打印 ? true : false;
+            modulePrivilege.SearcherPartialPrivilege =
+               (privilegeValue & (int)Privilege.部分查询) == (int)Privilege.部分查询 ? true : false;
             return modulePrivilege;
         }
 

@@ -5299,7 +5299,6 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Model
         /// </summary>
         /// <param name="pID">PID 属性的初始值。</param>
         /// <param name="barCode">BarCode 属性的初始值。</param>
-        /// <param name="regionCode">RegionCode 属性的初始值。</param>
         /// <param name="piece">Piece 属性的初始值。</param>
         /// <param name="totalWeight">TotalWeight 属性的初始值。</param>
         /// <param name="createTime">CreateTime 属性的初始值。</param>
@@ -5307,12 +5306,13 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Model
         /// <param name="operator">Operator 属性的初始值。</param>
         /// <param name="status">Status 属性的初始值。</param>
         /// <param name="isMixed">IsMixed 属性的初始值。</param>
-        public static Package CreatePackage(global::System.Guid pID, global::System.String barCode, global::System.String regionCode, global::System.Int32 piece, global::System.Decimal totalWeight, global::System.DateTime createTime, global::System.DateTime updateTime, global::System.String @operator, global::System.Int32 status, global::System.Boolean isMixed)
+        /// <param name="originalRegionCode">OriginalRegionCode 属性的初始值。</param>
+        /// <param name="destinationRegionCode">DestinationRegionCode 属性的初始值。</param>
+        public static Package CreatePackage(global::System.Guid pID, global::System.String barCode, global::System.Int32 piece, global::System.Decimal totalWeight, global::System.DateTime createTime, global::System.DateTime updateTime, global::System.String @operator, global::System.Int32 status, global::System.Boolean isMixed, global::System.String originalRegionCode, global::System.String destinationRegionCode)
         {
             Package package = new Package();
             package.PID = pID;
             package.BarCode = barCode;
-            package.RegionCode = regionCode;
             package.Piece = piece;
             package.TotalWeight = totalWeight;
             package.CreateTime = createTime;
@@ -5320,6 +5320,8 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Model
             package.Operator = @operator;
             package.Status = status;
             package.IsMixed = isMixed;
+            package.OriginalRegionCode = originalRegionCode;
+            package.DestinationRegionCode = destinationRegionCode;
             return package;
         }
 
@@ -5400,30 +5402,6 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Model
         private global::System.String _BarCode;
         partial void OnBarCodeChanging(global::System.String value);
         partial void OnBarCodeChanged();
-    
-        /// <summary>
-        /// 没有元数据文档可用。
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.String RegionCode
-        {
-            get
-            {
-                return _RegionCode;
-            }
-            set
-            {
-                OnRegionCodeChanging(value);
-                ReportPropertyChanging("RegionCode");
-                _RegionCode = StructuralObject.SetValidValue(value, false);
-                ReportPropertyChanged("RegionCode");
-                OnRegionCodeChanged();
-            }
-        }
-        private global::System.String _RegionCode;
-        partial void OnRegionCodeChanging(global::System.String value);
-        partial void OnRegionCodeChanged();
     
         /// <summary>
         /// 没有元数据文档可用。
@@ -5592,6 +5570,54 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Model
         private global::System.Boolean _IsMixed;
         partial void OnIsMixedChanging(global::System.Boolean value);
         partial void OnIsMixedChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String OriginalRegionCode
+        {
+            get
+            {
+                return _OriginalRegionCode;
+            }
+            set
+            {
+                OnOriginalRegionCodeChanging(value);
+                ReportPropertyChanging("OriginalRegionCode");
+                _OriginalRegionCode = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("OriginalRegionCode");
+                OnOriginalRegionCodeChanged();
+            }
+        }
+        private global::System.String _OriginalRegionCode;
+        partial void OnOriginalRegionCodeChanging(global::System.String value);
+        partial void OnOriginalRegionCodeChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String DestinationRegionCode
+        {
+            get
+            {
+                return _DestinationRegionCode;
+            }
+            set
+            {
+                OnDestinationRegionCodeChanging(value);
+                ReportPropertyChanging("DestinationRegionCode");
+                _DestinationRegionCode = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("DestinationRegionCode");
+                OnDestinationRegionCodeChanged();
+            }
+        }
+        private global::System.String _DestinationRegionCode;
+        partial void OnDestinationRegionCodeChanging(global::System.String value);
+        partial void OnDestinationRegionCodeChanged();
 
         #endregion
     
