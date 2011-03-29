@@ -63,10 +63,10 @@ namespace GGGETSAdmin.Login
                 else if (result == null) labError.Text = Resource1.SysError;
                 else
                 {
-                    //labError.Text = "";
+                    labError.Text = "";
                     Session["UserID"] = result;
-                    //Response.Redirect("../HOME.aspx");
                     Response.Redirect("../Navigation.aspx");
+                    //Response.Redirect("../HOME.aspx");
                 }
                
             }
