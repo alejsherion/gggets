@@ -9,7 +9,7 @@
 using System;
 using System.Collections.Generic;
 using System.Web;
-using Domain.GGGETS;
+using Domain.GGGETS.CRM;
 using ETS.GGGETSApp.Domain.Application.Entities;
 using ETS.GGGETSApp.Infrastructure.CrossCutting.Logging;
 using ETS.GGGETSApp.Infrastructure.Data.Core;
@@ -27,7 +27,6 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Repositories
         #region 构造函数以及字段
 
         private readonly Repository<SysUser_Role> _sysUserRole;//角色和用户关联关系表操作
-
         ///<summary>
         ///</summary>
         ///<param name="unitOfWork"></param>
@@ -98,11 +97,9 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Repositories
                 if (context != null)
                 {
                     var sysUser = context.SysUser.Where(it => it.LoginName == loginName)
-                        .Where(it => it.Password == password).ToList();
-                    if (sysUser.Count==0) return SysUser.EmptyUid;
-                    if (sysUser.Count > 1) throw new Exception("存在两个一样账号名或密码");
-                    var tempUser = sysUser.SingleOrDefault();
-                    return tempUser.UID;
+                        .Where(it => it.Password == password).SingleOrDefault();
+                    if (sysUser == null) return SysUser.EmptyUid;
+                    return sysUser.UID;
                 }
                 return SysUser.EmptyUid;
             }
@@ -220,9 +217,9 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Repositories
         public override void Modify(SysUser item)
         {
             if (item == null) throw new ArgumentNullException();
-            var context = UnitOfWork as IGGGETSAppUnitOfWork;
             if (item.SysUser_Role == null || item.SysUser_Role.Count == 0)
             {
+                var context = UnitOfWork as IGGGETSAppUnitOfWork;
                 if (context != null)
                 {
                     var tempSysUser = context.SysUser_Role.Where(it => it.UID == item.UID).ToList();
@@ -236,12 +233,6 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Repositories
                     }
 
                 }
-            }
-            if (context != null)
-            {
-                var tempSysUser = context.SysUser.Where(it => it.UID != item.UID)
-                                   .Where(it => it.LoginName == item.LoginName).ToList();
-                if (tempSysUser.Count > 0) throw new Exception("登录名重复");
             }
             base.Modify(item);
             UnitOfWork.CommitAndRefreshChanges();
@@ -273,48 +264,6 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Repositories
         }
 
         /// <summary>
-        /// 获取权限集合
-        /// </summary>
-        /// <param name="userId"></param>
-        /// <returns></returns>
-        public IList<AppModule> GetAppModuleByUserid(Guid userId)
-        {
-            var array = GetPrivilegeIdsByUers(userId);
-            if (array == null || array.Count == 0) return null;
-            var appMduleArry = new List<AppModule>();
-             var context = UnitOfWork as IGGGETSAppUnitOfWork;
-            if (context != null)
-            {
-               foreach(var key in array.Keys)
-               {
-                   Guid tempKey = key;
-                   var singleappModuel = context.AppModule.Where(it => it.ModuleID == tempKey).SingleOrDefault();
-                   if (singleappModuel != null)
-                   {
-                       appMduleArry.Add(singleappModuel);
-                       var parentId = singleappModuel.ParentId;
-                       if(parentId!=null)
-                       {
-                            var reuslt = appMduleArry.Where(it => it.ModuleID
-                                                        == parentId.Value).SingleOrDefault();
-                            if(reuslt==null)
-                            {
-                                var tempAppModuel = context.AppModule.Where(it => it.ModuleID
-                                                                            == parentId).SingleOrDefault();
-                                if (tempAppModuel!=null)
-                                appMduleArry.Add(tempAppModuel);
-                            }
-                       }
-                      
-                   }
-
-               }
-                return appMduleArry;
-            }
-            return null;
-        }
-
-        /// <summary>
         /// 获取当前页面权限
         /// </summary>
         /// <param name="userId"></param>
@@ -339,39 +288,32 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Repositories
                 throw new Exception("获取当前页面地址失败");
             }
             var privilege = GetPrivilegeIdsByUers(userId);
-            if(privilege==null)
+            if (privilege == null)
             {
                 throw new Exception("获取权限失败");
             }
             var tempAppModule = GetModelByName(fileName);
-            if(tempAppModule==null)
+            if (tempAppModule == null)
             {
                 throw new Exception("获取权限失败");
             }
             var modulePrivilege = new ModulePrivilege
-                                      {
-                                          Url = tempAppModule.URL,
-                                          ModuleName = tempAppModule.Description
-                                      };
+            {
+                Url = tempAppModule.URL,
+                ModuleName = tempAppModule.Description
+            };
 
             var modelId = tempAppModule.ModuleID;
             var result = privilege.ContainsKey(modelId);
             if (!result) return modulePrivilege;
             var privilegeValue = privilege[modelId];
-            modulePrivilege.QueryPrivilege =
-                (privilegeValue & (int)Privilege.查询) == (int)Privilege.查询 ? true : false;
-            modulePrivilege.AddPrivilege =
-                (privilegeValue & (int)Privilege.添加) == (int)Privilege.添加 ? true : false;
-            modulePrivilege.UpdatePrivilege =
-                (privilegeValue & (int)Privilege.修改) == (int)Privilege.修改 ? true : false;
-            modulePrivilege.DeletePrivilege =
-                (privilegeValue & (int)Privilege.删除) == (int)Privilege.删除 ? true : false;
-            modulePrivilege.ExportPrivilege =
-                (privilegeValue & (int)Privilege.导出) == (int)Privilege.导出 ? true : false;
-            modulePrivilege.PrintPrivilege =
-                (privilegeValue & (int)Privilege.打印) == (int)Privilege.打印 ? true : false;
-            modulePrivilege.SearcherPartialPrivilege =
-               (privilegeValue & (int)Privilege.部分查询) == (int)Privilege.部分查询 ? true : false;
+            var names = Enum.GetNames(typeof(Privilege));
+            foreach (var name in names)
+            {
+                var value = (int)Enum.Parse(typeof(Privilege), name);
+                var resultValue = (privilegeValue & value) == value ? true : false;
+                modulePrivilege.SetPrivilege(resultValue, name);
+            }
             return modulePrivilege;
         }
 
@@ -386,7 +328,6 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Repositories
             base.Add(item);
             UnitOfWork.Commit();
         }
-
         #endregion
 
         #region 私有方法
@@ -414,7 +355,7 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Repositories
         private AppModule GetModelByName(string fileName)
         {
             if (String.IsNullOrEmpty(fileName)) return null;
-             var context = UnitOfWork as IGGGETSAppUnitOfWork;
+            var context = UnitOfWork as IGGGETSAppUnitOfWork;
             if (context != null)
             {
                 var tempValue = context.AppModule.Where(it => it.URL.Contains(fileName)).SingleOrDefault();
@@ -429,7 +370,7 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Repositories
         /// <param name="lgoinName"></param>
         private void JudgeLoginName(string lgoinName)
         {
-            if(String.IsNullOrWhiteSpace(lgoinName))
+            if (String.IsNullOrWhiteSpace(lgoinName))
             {
                 throw new ArgumentNullException(lgoinName);
             }
@@ -438,9 +379,9 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Repositories
             var sysUserRole = context.SysUser.Where(it => it.LoginName == lgoinName).ToList();
             if (sysUserRole.Count != 0) throw new Exception("已经存在这个登录名");//汪熙修改2011.03.28
         }
-        
 
-      
+
+
         #endregion
     }
 }
