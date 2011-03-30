@@ -160,7 +160,6 @@
     <Content Include="HAWBManage\HAWBDetails.aspx" />
     <Content Include="HAWBManage\HAWBItemAdd.aspx" />
     <Content Include="HAWBManage\HAWBManagement.aspx" />
-    <Content Include="HOME.aspx" />
     <Content Include="Login\Login.aspx" />
     <Content Include="MawbManage\MawbAdd.aspx" />
     <Content Include="MawbManage\MawbDetails.aspx" />
@@ -387,13 +386,6 @@
     </Compile>
     <Compile Include="HAWBManage\HAWBManagement.aspx.designer.cs">
       <DependentUpon>HAWBManagement.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="HOME.aspx.cs">
-      <DependentUpon>HOME.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="HOME.aspx.designer.cs">
-      <DependentUpon>HOME.aspx</DependentUpon>
     </Compile>
     <Compile Include="Login\Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
