@@ -10,7 +10,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Domain.GGGETS;
+using Domain.GGGETS.CRM;
 using ETS.GGGETSApp.Domain.Application.Entities;
 using ETS.GGGETSApp.Infrastructure.CrossCutting.Logging;
 using ETS.GGGETSApp.Infrastructure.Data.Core;
@@ -211,23 +211,23 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Repositories
         {
             var appmodel = GetSingleModuleByModuleId(moduleId);
             if (appmodel == null) return null;
-            var appModelPrivilege = new ModulePrivilege {ModuleName = appmodel.Description};
+            var appModelPrivilege = new ModulePrivilege { ModuleName = appmodel.Description };
             if (appmodel.IsLeft)
             {
                 if (appmodel.PrivilegeDesc == null) appmodel.PrivilegeDesc = 0;
                 appModelPrivilege.Url = appmodel.URL;
-                appModelPrivilege.QueryPrivilege = GetPrivilegeByPrivilege(appmodel.PrivilegeDesc, Privilege.查询);
-                appModelPrivilege.AddPrivilege = GetPrivilegeByPrivilege(appmodel.PrivilegeDesc, Privilege.添加);
-                appModelPrivilege.UpdatePrivilege = GetPrivilegeByPrivilege(appmodel.PrivilegeDesc, Privilege.修改);
-                appModelPrivilege.DeletePrivilege = GetPrivilegeByPrivilege(appmodel.PrivilegeDesc, Privilege.删除);
-                appModelPrivilege.ExportPrivilege = GetPrivilegeByPrivilege(appmodel.PrivilegeDesc, Privilege.导出);
-                appModelPrivilege.PrintPrivilege = GetPrivilegeByPrivilege(appmodel.PrivilegeDesc, Privilege.打印);
-                appModelPrivilege.SearcherPartialPrivilege = GetPrivilegeByPrivilege(appmodel.PrivilegeDesc, Privilege.部分查询);
-                appModelPrivilege.Privilege = appmodel.PrivilegeDesc;
+                appModelPrivilege.PrivilegeDesc = appmodel.PrivilegeDesc;
+                var names = Enum.GetNames(typeof(Privilege));
+                foreach (var name in names)
+                {
+                    var value = (int)Enum.Parse(typeof(Privilege), name);
+                    var result = GetPrivilegeByPrivilege(appmodel.PrivilegeDesc, value);
+                    appModelPrivilege.SetPrivilege(result, name);
+                }
             }
             else
             {
-                appModelPrivilege.Privilege = 0;
+                appModelPrivilege.PrivilegeDesc = 0;
             }
             return appModelPrivilege;
         }
@@ -256,11 +256,11 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Repositories
         /// <param name="currentPrivilege"></param>
         /// <param name="privilegeType"></param>
         /// <returns></returns>
-        private static bool? GetPrivilegeByPrivilege(int? currentPrivilege,Privilege privilegeType)
+        private static bool? GetPrivilegeByPrivilege(int? currentPrivilege, int privilegeType)
         {
             if (currentPrivilege == null) return false;
-            var tempPrivilege = currentPrivilege & (int)privilegeType;
-            return tempPrivilege==(int)privilegeType;
+            var tempPrivilege = currentPrivilege & privilegeType;
+            return tempPrivilege == privilegeType;
         }
 
         #endregion
