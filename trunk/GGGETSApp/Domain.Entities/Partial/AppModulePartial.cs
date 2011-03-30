@@ -10,6 +10,8 @@
 using System;
 using System.Collections;
 using System.Linq;
+using System.Collections.Generic;
+using System.Reflection;
 
 namespace ETS.GGGETSApp.Domain.Application.Entities
 {
@@ -84,6 +86,26 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
    /// </summary>
    public class ModulePrivilege
    {
+
+       private static readonly Dictionary<string, string> _array = new Dictionary<string, string>();
+
+       /// <summary>
+       /// 构造函数
+       /// </summary>
+       static ModulePrivilege()
+       {
+           if (_array.Count == 0)
+           {
+               _array.Add(Privilege.查询.ToString(), "QueryPrivilege");
+               _array.Add(Privilege.部分查询.ToString(), "SearcherPartialPrivilege");
+               _array.Add(Privilege.打印.ToString(), "PrintPrivilege");
+               _array.Add(Privilege.导出.ToString(), "ExportPrivilege");
+               _array.Add(Privilege.删除.ToString(), "DeletePrivilege");
+               _array.Add(Privilege.添加.ToString(), "AddPrivilege");
+               _array.Add(Privilege.修改.ToString(), "UpdatePrivilege");
+               _array.Add(Privilege.解锁.ToString(), "DeblockingPrivilege");
+           }
+       }
        ///<summary>
        /// 索引
        ///</summary>
@@ -148,7 +170,7 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
        /// <summary>
        /// 查询权限
        /// </summary>
-       public bool? QueryPrivilege
+       private bool? QueryPrivilege
        {
            get;
            set;
@@ -158,7 +180,7 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
        /// <summary>
        /// 删除权限
        /// </summary>
-       public bool? DeletePrivilege
+       private bool? DeletePrivilege
        {
            get;
            set;
@@ -167,7 +189,7 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
        /// <summary>
        /// 修改权限
        /// </summary>
-       public bool? UpdatePrivilege
+       private bool? UpdatePrivilege
        {
            get;
            set;
@@ -176,7 +198,7 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
        /// <summary>
        /// 添加权限
        /// </summary>
-       public bool? AddPrivilege
+       private bool? AddPrivilege
        {
            get;
            set;
@@ -185,7 +207,7 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
        /// <summary>
        /// 导出权限
        /// </summary>
-       public bool? ExportPrivilege
+       private bool? ExportPrivilege
        {
            get;
            set;
@@ -194,7 +216,7 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
        /// <summary>
        /// 打印权限
        /// </summary>
-       public bool? PrintPrivilege
+       private bool? PrintPrivilege
        {
            get;
            set;
@@ -204,7 +226,7 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
        /// <summary>
        /// 查询部分权限
        /// </summary>
-       public bool? SearcherPartialPrivilege
+       private bool? SearcherPartialPrivilege
        {
            get;
            set;
@@ -213,7 +235,7 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
        /// <summary>
        /// 权限字符集
        /// </summary>
-       public int? Privilege
+       public int? PrivilegeDesc
        {
            get;
            set;
@@ -221,10 +243,24 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
        /// <summary>
        /// 解锁权限
        /// </summary>
-       public bool? DeblockingPrivilege
+       private bool? DeblockingPrivilege
        {
            get;
            set;
+       }
+
+       /// <summary>
+       /// 设置权限的值
+       /// </summary>
+       /// <param name="value">值</param>
+       /// <param name="name">名字</param>
+       public void SetPrivilege(bool? value, string name)
+       {
+           if (!_array.ContainsKey(name)) return;
+           var filedName = _array[name];
+           var type = GetType();
+           var property = type.GetProperty(filedName, BindingFlags.NonPublic | BindingFlags.IgnoreCase);
+           property.SetValue(this, value, null);
        }
    }
 }

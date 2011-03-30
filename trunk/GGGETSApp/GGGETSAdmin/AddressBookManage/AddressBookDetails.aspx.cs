@@ -39,7 +39,7 @@ namespace GGGETSAdmin.AddressBookManage
                     {
                         Guid id = (Guid)Session["UserID"];
                         ModulePrivilege Mprivlege = _sysUserManagementService.GetPrivilegeByUserid(id);
-                        if (!(bool)Mprivlege.UpdatePrivilege)
+                        if (!(bool)Mprivlege[Privilege.修改.ToString()])
                         {
                             But_Update.Enabled = false;
                         }

@@ -9,7 +9,7 @@
 using System;
 using System.Collections.Generic;
 using System.Web;
-using Domain.GGGETS.CRM;
+using Domain.GGGETS;
 using ETS.GGGETSApp.Domain.Application.Entities;
 using ETS.GGGETSApp.Infrastructure.CrossCutting.Logging;
 using ETS.GGGETSApp.Infrastructure.Data.Core;
@@ -383,5 +383,11 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Repositories
 
 
         #endregion
+
+
+        public IList<AppModule> GetAppModuleByUserid(Guid userId)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

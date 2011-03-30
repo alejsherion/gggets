@@ -35,7 +35,7 @@ namespace GGGETSAdmin.ProductManage
                     {
                         Guid id = (Guid)Session["UserID"];
                         ModulePrivilege Mpriviege = _sysUserManagementService.GetPrivilegeByUserid(id);
-                        if (!(bool)Mpriviege.UpdatePrivilege)
+                        if (!(bool)Mpriviege[Privilege.修改.ToString()])
                         {
                             btn_Addparoduct.Enabled = false;
                             btn_Add.Enabled = false;

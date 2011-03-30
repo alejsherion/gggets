@@ -31,7 +31,7 @@ namespace GGGETSAdmin.AddressBookManage
                 {
                     Guid id = (Guid)Session["UserID"];
                     ModulePrivilege Authority = _SysUserManagementService.GetPrivilegeByUserid(id);
-                    if (!(bool)Authority.QueryPrivilege)
+                    if (!(bool)Authority[Privilege.查询.ToString()])
                     {
                         btn_Demand.Enabled = false;
                     }
@@ -180,11 +180,11 @@ namespace GGGETSAdmin.AddressBookManage
                 ModulePrivilege Authority = _SysUserManagementService.GetPrivilegeByUserid(id);
                 foreach (GridViewRow row in gv_AddressBook.Rows)
                 {
-                    if (!(bool)Authority.UpdatePrivilege)
+                    if (!(bool)Authority[Privilege.修改.ToString()])
                     {
                         ((LinkButton)row.FindControl("lbtn_Updata") as LinkButton).Enabled = false;
                     }
-                    if (!(bool)Authority.DeletePrivilege)
+                    if (!(bool)Authority[Privilege.删除.ToString()])
                     {
                         ((LinkButton)row.FindControl("lbtn_Delete") as LinkButton).Enabled = false;
                     }

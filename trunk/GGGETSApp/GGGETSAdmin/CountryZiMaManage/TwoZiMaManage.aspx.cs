@@ -32,7 +32,7 @@ namespace GGGETSAdmin.CountryZiMaManage
 
                     Guid id = (Guid)Session["UserID"];
                     ModulePrivilege Mprivlege = _sysUserManagementService.GetPrivilegeByUserid(id);
-                    if (!(bool)Mprivlege.QueryPrivilege)
+                    if (!(bool)Mprivlege[Privilege.查询.ToString()])
                     {
                        btn_Demand.Enabled = false;
                     }
@@ -150,11 +150,11 @@ namespace GGGETSAdmin.CountryZiMaManage
                 
                 foreach (GridViewRow row in gv_Country.Rows)
                 {
-                    if (!(bool)Authority.UpdatePrivilege)
+                    if (!(bool)Authority[Privilege.修改.ToString()])
                     {
                         ((LinkButton)row.FindControl("btn_Eidt") as LinkButton).Enabled = false;
                     }
-                    if (!(bool)Authority.DeletePrivilege)
+                    if (!(bool)Authority[Privilege.删除.ToString()])
                     {
                         ((LinkButton)row.FindControl("btn_Delete") as LinkButton).Enabled = false;
                     }

@@ -30,7 +30,7 @@ namespace GGGETSAdmin.PersonnelManage.DepartmentManage
                     {
                         Guid id = (Guid)Session["UserID"];
                         ModulePrivilege Mprivilege = _SysUserManagementService.GetPrivilegeByUserid(id);
-                        if (!(bool)Mprivilege.UpdatePrivilege)
+                        if (!(bool)Mprivilege[Privilege.修改.ToString()])
                         {
                             But_Update.Enabled = false;
                         }

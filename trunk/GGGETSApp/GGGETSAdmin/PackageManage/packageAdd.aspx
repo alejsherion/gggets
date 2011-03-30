@@ -153,8 +153,10 @@
         function Context()//响应Enter事件
         {
             if (event.keyCode == 13) {
-                document.all("ContentPlaceHolder1_btn_Add").click(); //设置要响应的的button
-                event.returnValue = false;
+                if (document.getElementById("ContentPlaceHolder1_btn_Add").disabled) {
+                    document.all("ContentPlaceHolder1_btn_Add").click(); //设置要响应的的button
+                    event.returnValue = false;
+                }
             }
             else
                 event.returnValue = true;

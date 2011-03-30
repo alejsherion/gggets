@@ -43,7 +43,7 @@ namespace GGGETSAdmin.MawbManage
                         {
                             Guid id = (Guid)Session["UserID"];
                             ModulePrivilege Mprivilege = _SysUserManagementService.GetPrivilegeByUserid(id);
-                            if (!(bool)Mprivilege.UpdatePrivilege)
+                            if (!(bool)Mprivilege[Privilege.修改.ToString()])
                             {
                                 But_Update.Enabled = false;
                             }
@@ -51,7 +51,7 @@ namespace GGGETSAdmin.MawbManage
                             {
                                 if (txt_Status.Text != "打开")
                                 {
-                                    if (!(bool)Mprivilege.DeblockingPrivilege)
+                                    if (!(bool)Mprivilege[Privilege.解锁.ToString()])
                                     {
                                         But_Update.Enabled = false;
                                     }
@@ -65,7 +65,7 @@ namespace GGGETSAdmin.MawbManage
                                 //    But_Update.Enabled = true;
                                 //}
                             }
-                            if (!(bool)Mprivilege.ExportPrivilege)
+                            if (!(bool)Mprivilege[Privilege.导出.ToString()])
                             {
                                 btn_DeriveAccept.Enabled = false;
                                 btn_DeriveSince.Enabled = false;
