@@ -50,7 +50,7 @@ namespace GGGETSAdmin.AddressBookManage
                     listregion = _regionservice.FindAllRegionCodes();//获取地区三字码
                     Guid id = (Guid)Session["UserID"];
                     ModulePrivilege Mprivlege = _sysUserManagementService.GetPrivilegeByUserid(id);
-                    if (!(bool)Mprivlege.AddPrivilege)
+                    if (!(bool)Mprivlege[Privilege.添加.ToString()])
                     {
                         btn_AddDeliver.Enabled = false;
                     }

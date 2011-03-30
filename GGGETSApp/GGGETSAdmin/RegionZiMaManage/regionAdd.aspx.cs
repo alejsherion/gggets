@@ -33,7 +33,7 @@ namespace GGGETSAdmin.RegionZiMaManage
                 {
                     Guid id = (Guid)Session["UserID"];
                     ModulePrivilege Mprivilege = _sysUserManagementService.GetPrivilegeByUserid(id);
-                    if (!(bool)Mprivilege.AddPrivilege)
+                    if (!(bool)Mprivilege[Privilege.添加.ToString()])
                     {
                         btn_Add.Enabled = false;
                     }

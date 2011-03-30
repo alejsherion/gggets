@@ -39,7 +39,7 @@ namespace GGGETSAdmin.MawbManage
                     {
                         Guid id = (Guid)Session["UserID"];
                         ModulePrivilege Mpriviege = _sysUserManagementService.GetPrivilegeByUserid(id);
-                        if (!(bool)Mpriviege.UpdatePrivilege)
+                        if (!(bool)Mpriviege[Privilege.修改.ToString()])
                         {
                             btn_Add.Enabled = false;
                             btn_Save.Enabled = false;
@@ -50,7 +50,7 @@ namespace GGGETSAdmin.MawbManage
                         {
                             if (txt_Status.Text != "打开")
                             {
-                                if (!(bool)Mpriviege.DeblockingPrivilege)
+                                if (!(bool)Mpriviege[Privilege.解锁.ToString()])
                                 {
                                     btn_Add.Enabled = false;
                                     btn_Save.Enabled = false;

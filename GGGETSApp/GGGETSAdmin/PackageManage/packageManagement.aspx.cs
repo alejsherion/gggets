@@ -46,7 +46,7 @@ namespace GGGETSAdmin.PackageManage
                 {
                     Guid id = (Guid)Session["UserID"];
                     ModulePrivilege Mpriviege = _sysUserManagementService.GetPrivilegeByUserid(id);
-                    if (!(bool)Mpriviege.QueryPrivilege)
+                    if (!(bool)Mpriviege[Privilege.查询.ToString()])
                     {
                         btn_Demand.Enabled = false;
                     }

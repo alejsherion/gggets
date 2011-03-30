@@ -32,7 +32,7 @@ namespace GGGETSAdmin.CountryZiMaManage
 
                     Guid id = (Guid)Session["UserID"];
                     ModulePrivilege Mprivlege = _sysUserManagementService.GetPrivilegeByUserid(id);
-                    if (!(bool)Mprivlege.AddPrivilege)
+                    if (!(bool)Mprivlege[Privilege.添加.ToString()])
                     {
                         btn_Add.Enabled = false;
                     }

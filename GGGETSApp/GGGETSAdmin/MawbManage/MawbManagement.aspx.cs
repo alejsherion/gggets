@@ -45,7 +45,7 @@ namespace GGGETSAdmin.MawbManage
                 {
                     Guid id = (Guid)Session["UserID"];
                     ModulePrivilege Mpriviege = _sysUserManagementService.GetPrivilegeByUserid(id);
-                    if (!(bool)Mpriviege.QueryPrivilege)
+                    if (!(bool)Mpriviege[Privilege.查询.ToString()])
                     {
                         btn_Demand.Enabled = false;
                     }
@@ -366,7 +366,7 @@ namespace GGGETSAdmin.MawbManage
                 ModulePrivilege Authority = _sysUserManagementService.GetPrivilegeByUserid(id);
                 foreach (GridViewRow row in gv_HAWB.Rows)
                 {
-                    if (!(bool)Authority.ExportPrivilege)
+                    if (!(bool)Authority[Privilege.导出.ToString()])
                     {
                         ((LinkButton)row.FindControl("lbtn_Derive") as LinkButton).Enabled = false;
                         ((LinkButton)row.FindControl("lbtn_DeriveAccept") as LinkButton).Enabled = false;

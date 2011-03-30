@@ -53,7 +53,7 @@ namespace GGGETSAdmin.HAWBManage
                     listregion = _regionservice.FindAllRegionCodes();
                     if (!string.IsNullOrEmpty(Request.QueryString["BarCode"]) && !string.IsNullOrEmpty(Request.QueryString["update"]))
                     {
-                        if (!(bool)Mprivilege.UpdatePrivilege)
+                        if (!(bool)Mprivilege[Privilege.修改.ToString()])
                         {
                             But_Next.Enabled = false;
                         }
@@ -74,7 +74,7 @@ namespace GGGETSAdmin.HAWBManage
                     {
                         if (Session["HAWB"] != null)
                         {
-                            if (!(bool)Mprivilege.AddPrivilege)
+                            if (!(bool)Mprivilege[Privilege.添加.ToString()])
                             {
                                 But_Next.Enabled = false;
                             }

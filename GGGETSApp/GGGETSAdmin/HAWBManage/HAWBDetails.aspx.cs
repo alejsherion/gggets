@@ -51,11 +51,11 @@ namespace GGGETSAdmin.HAWBManage
                         Storage(hawb);
                         Guid id = (Guid)Session["UserID"];
                         ModulePrivilege Mprivilege = _sysUserManagementService.GetPrivilegeByUserid(id);
-                        if (!(bool)Mprivilege.UpdatePrivilege)
+                        if (!(bool)Mprivilege[Privilege.修改.ToString()])
                         {
                             But_Update.Enabled = false;
                         }
-                        if (!(bool)Mprivilege.ExportPrivilege)
+                        if (!(bool)Mprivilege[Privilege.导出.ToString()])
                         {
                             btn_DeriveAccept.Enabled = false;
                             btn_DeriveSince.Enabled = false;

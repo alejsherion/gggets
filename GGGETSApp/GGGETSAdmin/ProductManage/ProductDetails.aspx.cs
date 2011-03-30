@@ -30,7 +30,7 @@ namespace GGGETSAdmin.ProductManage
                     {
                         Guid id = (Guid)Session["UserID"];
                         ModulePrivilege Mprivilege = _SysUserManagementService.GetPrivilegeByUserid(id);
-                        if (!(bool)Mprivilege.UpdatePrivilege)
+                        if (!(bool)Mprivilege[Privilege.修改.ToString()])
                         {
                             btn_Update.Enabled = false;
                         }

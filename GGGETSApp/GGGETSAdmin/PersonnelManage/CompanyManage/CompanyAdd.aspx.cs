@@ -31,7 +31,7 @@ namespace GGGETSAdmin.PersonnelManage.CompanyManage
                 {
                     Guid id = (Guid)Session["UserID"];
                     ModulePrivilege Mprivilege = _SysUserManagementService.GetPrivilegeByUserid(id);
-                    if (!(bool)Mprivilege.AddPrivilege)
+                    if (!(bool)Mprivilege[Privilege.添加.ToString()])
                     {
                         btn_Add.Enabled = false;
                     }

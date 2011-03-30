@@ -30,7 +30,7 @@ namespace GGGETSAdmin.PersonnelManage.UserManage
                 {
                     Guid id = (Guid)Session["UserID"];
                     ModulePrivilege Mpriviege = _sysUserManagementService.GetPrivilegeByUserid(id);
-                    if (!(bool)Mpriviege.QueryPrivilege)
+                    if (!(bool)Mpriviege[Privilege.查询.ToString()])
                     {
                         btn_Demand.Enabled = false;
                     }
@@ -149,11 +149,11 @@ namespace GGGETSAdmin.PersonnelManage.UserManage
                 ModulePrivilege Authority = _sysUserManagementService.GetPrivilegeByUserid(id);
                 foreach (GridViewRow row in gv_User.Rows)
                 {
-                    if (!(bool)Authority.UpdatePrivilege)
+                    if (!(bool)Authority[Privilege.修改.ToString()])
                     {
                         ((LinkButton)row.FindControl("lbtn_Updata") as LinkButton).Enabled = false;
                     }
-                    if (!(bool)Authority.DeletePrivilege)
+                    if (!(bool)Authority[Privilege.删除.ToString()])
                     {
                         ((LinkButton)row.FindControl("lbtn_Delete") as LinkButton).Enabled = false;
                     }

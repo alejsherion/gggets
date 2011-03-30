@@ -41,7 +41,7 @@
                                     <asp:TextBox ID="Txt_DestinationRegionCode" TabIndex="4" runat="server" Width="50" MaxLength="3"
                                     Style="text-transform: uppercase" CssClass="TextBox"></asp:TextBox>
                                 <cc1:AutoCompleteExtraExtender runat="server" ID="autocomplete" ServiceMethod="GetCountryList"
-                                    TargetControlID="txt_Destination" AsyncPostback="false" AutoPostback="true" MinimumPrefixLength="1"
+                                    TargetControlID="Txt_OriginalRegionCode" AsyncPostback="false" AutoPostback="true" MinimumPrefixLength="1"
                                     CompletionSetCount="10" OnItemSelected="autocomplete_ItemSelected">
                                 </cc1:AutoCompleteExtraExtender>
                             </td>
