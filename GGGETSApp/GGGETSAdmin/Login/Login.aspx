@@ -20,7 +20,6 @@
 	    font-size:14px;
     }
     .page{
-	    background:url(../Image/login_bg.jpg) no-repeat center;
 	    margin-left:auto;
 	    margin-right:auto;
 	    width:1004px;
@@ -32,8 +31,25 @@
 	    left: 456px;
 	    top: 275px;
 		height:25px;
+		
+		
     }
-  
+    .lable1{
+	    position:absolute;
+	    left: 395px;
+	    top: 280px;
+		height:25px;
+		color:White;
+		font-size:14px;
+    }
+    .lable2{
+	    position:absolute;
+	    left: 400px;
+	    top: 319px;
+		height:25px;
+		color:White;
+		font-size:14px;
+    }
     .input2{
 	    position:absolute;
 	    left: 456px;
@@ -50,7 +66,6 @@
 	    position:absolute;
 	    width:92px;
 	    height:31px;
-	    background:url(../Image/butt.jpg) no-repeat;
 	    border:0;
 	    left: 463px;
 	    top: 369px;
@@ -82,11 +97,13 @@
     <form id="form1" runat="server">
     <telerik:RadScriptManager ID="RadScriptManager1" runat="server">
     </telerik:RadScriptManager>
+    <asp:Label ID="lbuser" runat="server" Text="登录名：" CssClass="lable1"></asp:Label>
     <asp:TextBox ID="txtuser" runat="server" class="input1" 
         meta:resourcekey="txtuserResource2"></asp:TextBox>
     <asp:RequiredFieldValidator
         ID="valruser" runat="server" ErrorMessage="请填写登录名" 
         ControlToValidate="txtuser" Display="None" meta:resourcekey="valruserResource2"></asp:RequiredFieldValidator>
+    <asp:Label ID="lbpwd" runat="server" Text="密码：" CssClass="lable2"></asp:Label>
     <asp:TextBox ID="txtpwd"  runat="server" class="input2" TextMode="Password" 
         meta:resourcekey="txtpwdResource2"></asp:TextBox>
     <asp:RequiredFieldValidator
@@ -96,8 +113,7 @@
     <CaptchaImage ImageCssClass="imageClass" />
     </telerik:RadCaptcha>
      <asp:TextBox ID="txtRadCaptcha"  runat="server" class="input3" MaxLength="5"></asp:TextBox>--%>
-    <asp:Button ID="Btnlogin" runat="server" OnClick="BtnLoginClick"
-         class="butt" meta:resourcekey="BtnloginResource2" />
+    <asp:Button ID="Btnlogin" runat="server" OnClick="BtnLoginClick" class="butt" meta:resourcekey="BtnloginResource2" Text="登  录"/>
          <asp:Label ID="labError" runat="server"
              Text="" Font-Size="12px" ForeColor="Red"  class="lab1"></asp:Label>
     <asp:ValidationSummary ID="valsError" runat="server"  CssClass="val1" ShowMessageBox="True"
