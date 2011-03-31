@@ -258,8 +258,8 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
        {
            if (!_array.ContainsKey(name)) return;
            var filedName = _array[name];
-           var type = GetType();
-           var property = type.GetProperty(filedName, BindingFlags.NonPublic | BindingFlags.IgnoreCase);
+           var type = typeof(ModulePrivilege);
+           var property = type.GetProperty(filedName, BindingFlags.NonPublic | BindingFlags.IgnoreCase | BindingFlags.Instance);
            property.SetValue(this, value, null);
        }
    }
