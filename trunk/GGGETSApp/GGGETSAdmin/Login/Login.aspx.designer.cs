@@ -31,6 +31,15 @@ namespace GGGETSAdmin.Login {
         protected global::Telerik.Web.UI.RadScriptManager RadScriptManager1;
         
         /// <summary>
+        /// lbuser 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbuser;
+        
+        /// <summary>
         /// txtuser 控件。
         /// </summary>
         /// <remarks>
@@ -47,6 +56,15 @@ namespace GGGETSAdmin.Login {
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator valruser;
+        
+        /// <summary>
+        /// lbpwd 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbpwd;
         
         /// <summary>
         /// txtpwd 控件。
