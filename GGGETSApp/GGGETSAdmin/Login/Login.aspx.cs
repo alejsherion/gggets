@@ -65,8 +65,8 @@ namespace GGGETSAdmin.Login
                 {
                     labError.Text = "";
                     Session["UserID"] = result;
-                    Response.Redirect("../Navigation.aspx");
-                    //Response.Redirect("../HOME.aspx");
+                    //Response.Redirect("../Navigation.aspx");
+                    Response.Redirect("../HOME.aspx");
                 }
                
             }

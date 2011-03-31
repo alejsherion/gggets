@@ -385,9 +385,47 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Repositories
         #endregion
 
 
+        /// <summary>
+        /// 获取权限集合
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <returns></returns>
         public IList<AppModule> GetAppModuleByUserid(Guid userId)
         {
-            throw new NotImplementedException();
+            var array = GetPrivilegeIdsByUers(userId);
+            if (array == null || array.Count == 0) return null;
+            var appMduleArry = new List<AppModule>();
+            var context = UnitOfWork as IGGGETSAppUnitOfWork;
+            if (context != null)
+            {
+                foreach (var key in array.Keys)
+                {
+                    Guid tempKey = key;
+                    var singleappModuel = context.AppModule.Where(it => it.ModuleID == tempKey).SingleOrDefault();
+                    if (singleappModuel != null)
+                    {
+                        appMduleArry.Add(singleappModuel);
+                        var parentId = singleappModuel.ParentId;
+                        if (parentId != null)
+                        {
+                            var reuslt = appMduleArry.Where(it => it.ModuleID
+                                                        == parentId.Value).SingleOrDefault();
+                            if (reuslt == null)
+                            {
+                                var tempAppModuel = context.AppModule.Where(it => it.ModuleID
+                                                                            == parentId).SingleOrDefault();
+                                if (tempAppModuel != null)
+                                    appMduleArry.Add(tempAppModuel);
+                            }
+                        }
+
+                    }
+
+                }
+                return appMduleArry;
+            }
+            return null;
         }
+
     }
 }
