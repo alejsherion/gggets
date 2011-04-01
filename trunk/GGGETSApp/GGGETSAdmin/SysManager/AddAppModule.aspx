@@ -55,14 +55,14 @@
                             RepeatDirection="Horizontal">
                         </asp:CheckBoxList> </td>
                 </tr>
-                 <tr class="Row" runat="server" id="trRoleID" visible="false">
+                 <%--<tr class="Row" runat="server" id="trRoleID" visible="false">
                     <td class="FieldHeader" align="right" width="20%">
                            角色:</td>
                     <td class="FieldHeader" align="left">
                           <asp:CheckBoxList ID="chkRoleID" runat="server" RepeatColumns="3" 
                               RepeatDirection="Horizontal">
                         </asp:CheckBoxList></td>
-                </tr>
+                </tr>--%>
                 <tr class="Row">
                     <td class="FieldHeader" align="right" width="20%">
                          <asp:Label ID="lblDescription" runat="server" Text="描述：" style="text-transform:uppercase"></asp:Label></td>
