@@ -130,24 +130,6 @@ namespace GGGETSAdmin.SysManager {
         protected global::System.Web.UI.WebControls.CheckBoxList chklPrivilegeDesc;
         
         /// <summary>
-        /// trRoleID 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTableRow trRoleID;
-        
-        /// <summary>
-        /// chkRoleID 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBoxList chkRoleID;
-        
-        /// <summary>
         /// lblDescription 控件。
         /// </summary>
         /// <remarks>

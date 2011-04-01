@@ -7,7 +7,6 @@
 // 改版内容				创建并且修改
 //************************************************************************
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -41,7 +40,7 @@ namespace GGGETSAdmin.SysManager
                 var appModelId = Request["Id"];
                 BindPrivilegeDesc();
                 BinddropParentId();
-                BindRoleId();
+                //BindRoleId();
                 if(String.IsNullOrEmpty(appModelId))
                 {
                     ViewState["OpStatus"] = "Add";
@@ -83,14 +82,14 @@ namespace GGGETSAdmin.SysManager
                 trParentDirectory.Visible = false;
                 trURl.Visible = false;
                 trPrivilegeDesc.Visible = false;
-                trRoleID.Visible = false;
+                //trRoleID.Visible = false;
             }
             else
             {
                 trParentDirectory.Visible = true;
                 trURl.Visible = true;
                 trPrivilegeDesc.Visible = true;
-                trRoleID.Visible = true;
+                //trRoleID.Visible = true;
             }
 
         }
@@ -171,19 +170,19 @@ namespace GGGETSAdmin.SysManager
             chklPrivilegeDesc.DataBind();
         }
 
-        /// <summary>
-        /// 绑定角色
-        /// </summary>
-        private void BindRoleId()
-        {
-            var dataSouce = _roleManagementService.GetAllRole();
-            if (dataSouce!=null)
-            Cache["RoleArry"] = dataSouce;
-            chkRoleID.DataSource = dataSouce;
-            chkRoleID.DataTextField = "Name";
-            chkRoleID.DataValueField = "RoleID";
-            chkRoleID.DataBind();
-        }
+        ///// <summary>
+        ///// 绑定角色
+        ///// </summary>
+        //private void BindRoleId()
+        //{
+        //    var dataSouce = _roleManagementService.GetAllRole();
+        //    if (dataSouce!=null)
+        //    Cache["RoleArry"] = dataSouce;
+        //    chkRoleID.DataSource = dataSouce;
+        //    chkRoleID.DataTextField = "Name";
+        //    chkRoleID.DataValueField = "RoleID";
+        //    chkRoleID.DataBind();
+        //}
 
         /// <summary>
         /// 获取页面数据
@@ -203,7 +202,7 @@ namespace GGGETSAdmin.SysManager
                 appmodule.URL = txtURL.Text;
                 var privileges = GetPrivileges();
                 appmodule.PrivilegeDesc = DataConversion.GetCurrentPrivilege(privileges);
-                GetRoles(appmodule);
+                //GetRoles(appmodule);
             } 
         }
 
@@ -217,29 +216,29 @@ namespace GGGETSAdmin.SysManager
             return (from ListItem item in items where item.Selected select                                 Convert.ToInt32(item.Value)).ToArray();
         }
 
-        /// <summary>
-        /// 获取角色
-        /// </summary>
-        /// <param name="appmodule"></param>
-        private void GetRoles(AppModule appmodule)
-        {
-            if (appmodule == null) return;
-            var items = chkRoleID.Items;
-            appmodule.Role_Privilege.Clear();
-            foreach(ListItem item in items)
-            {
-                if (!item.Selected) continue;
-                var rp = new Role_Privilege
-                             {
-                                 Role_PrivilegeID = Guid.NewGuid(),
-                                 ModuleID = appmodule.ModuleID,
-                                 RoleID = new Guid(item.Value),
-                                 CreateTime = DateTime.Now,
-                                 PrivilegeDesc = 0
-                             };
-                appmodule.Role_Privilege.Add(rp);
-            }
-        }
+        ///// <summary>
+        ///// 获取角色
+        ///// </summary>
+        ///// <param name="appmodule"></param>
+        //private void GetRoles(AppModule appmodule)
+        //{
+        //    if (appmodule == null) return;
+        //    var items = chkRoleID.Items;
+        //    appmodule.Role_Privilege.Clear();
+        //    foreach(ListItem item in items)
+        //    {
+        //        if (!item.Selected) continue;
+        //        var rp = new Role_Privilege
+        //                     {
+        //                         Role_PrivilegeID = Guid.NewGuid(),
+        //                         ModuleID = appmodule.ModuleID,
+        //                         RoleID = new Guid(item.Value),
+        //                         CreateTime = DateTime.Now,
+        //                         PrivilegeDesc = 0
+        //                     };
+        //        appmodule.Role_Privilege.Add(rp);
+        //    }
+        //}
 
         /// <summary>
         /// 页面数据验证
@@ -300,7 +299,7 @@ namespace GGGETSAdmin.SysManager
                     dropParentId.SelectedValue = appmodule.ParentId.ToString();
                     txtURL.Text = appmodule.URL;
                     BindPrivilegeDescFormModel(appmodule);
-                    BindRoleIdFormModel(appmodule);
+                    //BindRoleIdFormModel(appmodule);
                 }
             }
         }
@@ -326,27 +325,27 @@ namespace GGGETSAdmin.SysManager
             }
         }
 
-        /// <summary>
-        /// 读取数据绑定权限
-        /// </summary>
-        /// <param name="appmodule">模块实体</param>
-        private void BindRoleIdFormModel(AppModule appmodule)
-        {
-            if (appmodule == null) return;
-            chkRoleID.ClearSelection();
-            var items = chkRoleID.Items;
-            if (items == null || items.Count == 0) return;
-            for (var i = 0; i < items.Count; i++)
-            {
-                var item = items[i];
-                var value = new Guid(item.Value);
-                var temprp = appmodule.Role_Privilege.Where(it => it.RoleID == value);
-                if(temprp!=null&&temprp.Count()>0)
-                {
-                    item.Selected = true;
-                }
-            }
-        }
+        ///// <summary>
+        ///// 读取数据绑定权限
+        ///// </summary>
+        ///// <param name="appmodule">模块实体</param>
+        //private void BindRoleIdFormModel(AppModule appmodule)
+        //{
+        //    if (appmodule == null) return;
+        //    chkRoleID.ClearSelection();
+        //    var items = chkRoleID.Items;
+        //    if (items == null || items.Count == 0) return;
+        //    for (var i = 0; i < items.Count; i++)
+        //    {
+        //        var item = items[i];
+        //        var value = new Guid(item.Value);
+        //        var temprp = appmodule.Role_Privilege.Where(it => it.RoleID == value);
+        //        if(temprp!=null&&temprp.Count()>0)
+        //        {
+        //            item.Selected = true;
+        //        }
+        //    }
+        //}
         #endregion
 
      
