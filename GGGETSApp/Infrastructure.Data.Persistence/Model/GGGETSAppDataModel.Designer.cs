@@ -421,6 +421,22 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Model
             }
         }
         private ObjectSet<Role_Privilege> _Role_Privilege;
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        public ObjectSet<OrganizationChart> OrganizationChart
+        {
+            get
+            {
+                if ((_OrganizationChart == null))
+                {
+                    _OrganizationChart = base.CreateObjectSet<OrganizationChart>("OrganizationChart");
+                }
+                return _OrganizationChart;
+            }
+        }
+        private ObjectSet<OrganizationChart> _OrganizationChart;
 
         #endregion
         #region AddTo 方法
@@ -591,6 +607,14 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Model
         public void AddToRole_Privilege(Role_Privilege role_Privilege)
         {
             base.AddObject("Role_Privilege", role_Privilege);
+        }
+    
+        /// <summary>
+        /// 用于向 OrganizationChart EntitySet 添加新对象的方法，已弃用。请考虑改用关联的 ObjectSet&lt;T&gt; 属性的 .Add 方法。
+        /// </summary>
+        public void AddToOrganizationChart(OrganizationChart organizationChart)
+        {
+            base.AddObject("OrganizationChart", organizationChart);
         }
 
         #endregion
@@ -5282,6 +5306,181 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Model
         }
 
         #endregion
+    }
+    
+    /// <summary>
+    /// 没有元数据文档可用。
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="MYGGGETSModel", Name="OrganizationChart")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class OrganizationChart : EntityObject
+    {
+        #region 工厂方法
+    
+        /// <summary>
+        /// 创建新的 OrganizationChart 对象。
+        /// </summary>
+        /// <param name="dID">DID 属性的初始值。</param>
+        public static OrganizationChart CreateOrganizationChart(global::System.Guid dID)
+        {
+            OrganizationChart organizationChart = new OrganizationChart();
+            organizationChart.DID = dID;
+            return organizationChart;
+        }
+
+        #endregion
+        #region 基元属性
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Guid DID
+        {
+            get
+            {
+                return _DID;
+            }
+            set
+            {
+                if (_DID != value)
+                {
+                    OnDIDChanging(value);
+                    ReportPropertyChanging("DID");
+                    _DID = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("DID");
+                    OnDIDChanged();
+                }
+            }
+        }
+        private global::System.Guid _DID;
+        partial void OnDIDChanging(global::System.Guid value);
+        partial void OnDIDChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String OrganizationCode
+        {
+            get
+            {
+                return _OrganizationCode;
+            }
+            set
+            {
+                OnOrganizationCodeChanging(value);
+                ReportPropertyChanging("OrganizationCode");
+                _OrganizationCode = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("OrganizationCode");
+                OnOrganizationCodeChanged();
+            }
+        }
+        private global::System.String _OrganizationCode;
+        partial void OnOrganizationCodeChanging(global::System.String value);
+        partial void OnOrganizationCodeChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String OrganizationName
+        {
+            get
+            {
+                return _OrganizationName;
+            }
+            set
+            {
+                OnOrganizationNameChanging(value);
+                ReportPropertyChanging("OrganizationName");
+                _OrganizationName = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("OrganizationName");
+                OnOrganizationNameChanged();
+            }
+        }
+        private global::System.String _OrganizationName;
+        partial void OnOrganizationNameChanging(global::System.String value);
+        partial void OnOrganizationNameChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Guid> ParentDID
+        {
+            get
+            {
+                return _ParentDID;
+            }
+            set
+            {
+                OnParentDIDChanging(value);
+                ReportPropertyChanging("ParentDID");
+                _ParentDID = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ParentDID");
+                OnParentDIDChanged();
+            }
+        }
+        private Nullable<global::System.Guid> _ParentDID;
+        partial void OnParentDIDChanging(Nullable<global::System.Guid> value);
+        partial void OnParentDIDChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> CreateTime
+        {
+            get
+            {
+                return _CreateTime;
+            }
+            set
+            {
+                OnCreateTimeChanging(value);
+                ReportPropertyChanging("CreateTime");
+                _CreateTime = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("CreateTime");
+                OnCreateTimeChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _CreateTime;
+        partial void OnCreateTimeChanging(Nullable<global::System.DateTime> value);
+        partial void OnCreateTimeChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Remark
+        {
+            get
+            {
+                return _Remark;
+            }
+            set
+            {
+                OnRemarkChanging(value);
+                ReportPropertyChanging("Remark");
+                _Remark = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Remark");
+                OnRemarkChanged();
+            }
+        }
+        private global::System.String _Remark;
+        partial void OnRemarkChanging(global::System.String value);
+        partial void OnRemarkChanged();
+
+        #endregion
+    
     }
     
     /// <summary>

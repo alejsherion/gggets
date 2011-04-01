@@ -182,10 +182,6 @@
     <Content Include="My97DatePicker\skin\whyGreen\img.gif" />
     <Content Include="My97DatePicker\WdatePicker.js" />
     <Content Include="Navigation.aspx" />
-    <Content Include="PackageManage\packageAdd.aspx" />
-    <Content Include="PackageManage\PackageDetails.aspx" />
-    <Content Include="PackageManage\packageManagement.aspx" />
-    <Content Include="PackageManage\packageModify.aspx" />
     <Content Include="PersonnelManage\CompanyManage\CompanyAdd.aspx" />
     <Content Include="PersonnelManage\CompanyManage\CompanyDetails.aspx" />
     <Content Include="PersonnelManage\CompanyManage\CompanyManagemnet.aspx" />
@@ -224,12 +220,15 @@
     <Content Include="Scripts\jquery-1.4.1.js" />
     <Content Include="Scripts\jquery-1.4.1.min.js" />
     <Content Include="SysManager\AddAppModule.aspx" />
+    <Content Include="SysManager\AddOrganization.aspx" />
     <Content Include="SysManager\AddRole.aspx" />
     <Content Include="SysManager\AddRolePrivilege.aspx" />
     <Content Include="SysManager\AddRoleUser.aspx" />
     <Content Include="SysManager\AppModuleManagement.aspx" />
+    <Content Include="SysManager\OrganizationManagement.aspx" />
     <Content Include="SysManager\RoleManagement.aspx" />
     <Content Include="TopMenu.ascx" />
+    <Content Include="UserMenu\a8a1b9e4-9402-455d-b109-91a155588689Menu.xml" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -447,34 +446,6 @@
     <Compile Include="Navigation.aspx.designer.cs">
       <DependentUpon>Navigation.aspx</DependentUpon>
     </Compile>
-    <Compile Include="PackageManage\packageAdd.aspx.cs">
-      <DependentUpon>packageAdd.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="PackageManage\packageAdd.aspx.designer.cs">
-      <DependentUpon>packageAdd.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="PackageManage\PackageDetails.aspx.cs">
-      <DependentUpon>PackageDetails.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="PackageManage\PackageDetails.aspx.designer.cs">
-      <DependentUpon>PackageDetails.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="PackageManage\packageManagement.aspx.cs">
-      <DependentUpon>packageManagement.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="PackageManage\packageManagement.aspx.designer.cs">
-      <DependentUpon>packageManagement.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="PackageManage\packageModify.aspx.cs">
-      <DependentUpon>packageModify.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="PackageManage\packageModify.aspx.designer.cs">
-      <DependentUpon>packageModify.aspx</DependentUpon>
-    </Compile>
     <Compile Include="PersonnelManage\CompanyManage\CompanyAdd.aspx.cs">
       <DependentUpon>CompanyAdd.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -665,6 +636,13 @@
     <Compile Include="SysManager\AddAppModule.aspx.designer.cs">
       <DependentUpon>AddAppModule.aspx</DependentUpon>
     </Compile>
+    <Compile Include="SysManager\AddOrganization.aspx.cs">
+      <DependentUpon>AddOrganization.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SysManager\AddOrganization.aspx.designer.cs">
+      <DependentUpon>AddOrganization.aspx</DependentUpon>
+    </Compile>
     <Compile Include="SysManager\AddRole.aspx.cs">
       <DependentUpon>AddRole.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -693,6 +671,13 @@
     <Compile Include="SysManager\AppModuleManagement.aspx.designer.cs">
       <DependentUpon>AppModuleManagement.aspx</DependentUpon>
     </Compile>
+    <Compile Include="SysManager\OrganizationManagement.aspx.cs">
+      <DependentUpon>OrganizationManagement.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SysManager\OrganizationManagement.aspx.designer.cs">
+      <DependentUpon>OrganizationManagement.aspx</DependentUpon>
+    </Compile>
     <Compile Include="SysManager\RoleManagement.aspx.cs">
       <DependentUpon>RoleManagement.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -713,7 +698,6 @@
     <Folder Include="App_Data\" />
     <Folder Include="bin\" />
     <Folder Include="Resources\" />
-    <Folder Include="UserMenu\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Account\Web.config" />
@@ -750,15 +734,6 @@
     <None Include="Template\MAWB.XLS" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="PackageManage\App_LocalResources\PackageDetails.aspx.resx" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="PackageManage\App_LocalResources\WebForm1.aspx.resx" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="PackageManage\App_LocalResources\WebForm1.aspx.en-us.resx" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="HAWBManage\App_LocalResources\HAWBAdd.aspx.resx" />
   </ItemGroup>
   <ItemGroup>
@@ -787,7 +762,7 @@
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
           <AutoAssignPort>False</AutoAssignPort>
-          <DevelopmentServerPort>2149</DevelopmentServerPort>
+          <DevelopmentServerPort>2178</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>
           </IISUrl>
@@ -798,6 +773,7 @@
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
+      <UserProperties UseAjaxifiedTemplates="False" UseJQuerySupport="False" />
     </VisualStudio>
   </ProjectExtensions>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

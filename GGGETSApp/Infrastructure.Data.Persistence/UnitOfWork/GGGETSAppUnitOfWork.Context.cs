@@ -404,6 +404,12 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.UnitOfWork
             get { return _role_Privilege  ?? (_role_Privilege = CreateObjectSet<Role_Privilege>("Role_Privilege")); }
         }
         private ObjectSet<Role_Privilege> _role_Privilege;
+    
+        public IObjectSet<OrganizationChart> OrganizationChart
+        {
+            get { return _organizationChart  ?? (_organizationChart = CreateObjectSet<OrganizationChart>("OrganizationChart")); }
+        }
+        private ObjectSet<OrganizationChart> _organizationChart;
 
         #endregion
     }
