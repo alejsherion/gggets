@@ -100,6 +100,9 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.UnitOfWork
     
         IObjectSet<Role_Privilege> Role_Privilege{get;}
         
+    
+        IObjectSet<OrganizationChart> OrganizationChart{get;}
+        
 
         #endregion
     

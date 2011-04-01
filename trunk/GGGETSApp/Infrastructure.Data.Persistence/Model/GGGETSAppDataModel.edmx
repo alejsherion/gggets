@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="MYGGGETSModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+    <Schema Namespace="MYGGGETSModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2005" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
         <EntityContainer Name="MYGGGETSModelStoreContainer">
           <EntitySet Name="AddressBook" EntityType="MYGGGETSModel.Store.AddressBook" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="AppModule" EntityType="MYGGGETSModel.Store.AppModule" store:Type="Tables" Schema="dbo" />
@@ -17,6 +17,7 @@
           <EntitySet Name="HSProduct" EntityType="MYGGGETSModel.Store.HSProduct" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="HSProperty" EntityType="MYGGGETSModel.Store.HSProperty" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="MAWB" EntityType="MYGGGETSModel.Store.MAWB" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="OrganizationChart" EntityType="MYGGGETSModel.Store.OrganizationChart" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Package" EntityType="MYGGGETSModel.Store.Package" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Param" EntityType="MYGGGETSModel.Store.Param" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="RegionCode" EntityType="MYGGGETSModel.Store.RegionCode" store:Type="Tables" Schema="dbo" />
@@ -303,6 +304,17 @@
           <Property Name="TotalVolume" Type="decimal" Nullable="false" Precision="10" Scale="2" />
           <Property Name="Status" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="OrganizationChart">
+          <Key>
+            <PropertyRef Name="DID" />
+          </Key>
+          <Property Name="DID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="OrganizationCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="OrganizationName" Type="nvarchar" MaxLength="200" />
+          <Property Name="ParentDID" Type="uniqueidentifier" />
+          <Property Name="CreateTime" Type="datetime" />
+          <Property Name="Remark" Type="nvarchar" MaxLength="200" />
+        </EntityType>
         <EntityType Name="Package">
           <Key>
             <PropertyRef Name="PID" />
@@ -449,7 +461,7 @@
           <Property Name="Status" Type="int" Nullable="false" />
         </EntityType>
         <!--生成过程中发现错误:
-      警告 6002: 表/视图“GGGETS.dbo.FindInfo”未定义主键。已推断出该键，并将定义创建为只读的表/视图。
+      警告 6002: 表/视图“MYGGGETS.dbo.FindInfo”未定义主键。已推断出该键，并将定义创建为只读的表/视图。
       -->
         <EntityType Name="FindInfo">
           <Key>
@@ -778,6 +790,7 @@
             <End Role="Role" EntitySet="Role" />
             <End Role="Role_Privilege" EntitySet="Role_Privilege" />
           </AssociationSet>
+          <EntitySet Name="OrganizationChart" EntityType="MYGGGETSModel.OrganizationChart" />
           </EntityContainer>
         <EntityType Name="AddressBook">
           <Key>
@@ -1378,6 +1391,17 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="OrganizationChart">
+          <Key>
+            <PropertyRef Name="DID" />
+          </Key>
+          <Property Type="Guid" Name="DID" Nullable="false" />
+          <Property Type="String" Name="OrganizationCode" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="OrganizationName" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="Guid" Name="ParentDID" />
+          <Property Type="DateTime" Name="CreateTime" />
+          <Property Type="String" Name="Remark" MaxLength="200" FixedLength="false" Unicode="true" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1707,6 +1731,18 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="OrganizationChart">
+            <EntityTypeMapping TypeName="MYGGGETSModel.OrganizationChart">
+              <MappingFragment StoreEntitySet="OrganizationChart">
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="ParentDID" ColumnName="ParentDID" />
+                <ScalarProperty Name="OrganizationName" ColumnName="OrganizationName" />
+                <ScalarProperty Name="OrganizationCode" ColumnName="OrganizationCode" />
+                <ScalarProperty Name="DID" ColumnName="DID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -1727,7 +1763,7 @@
     </Options>
     <!-- Diagram content (shape and connector positions) -->
     <Diagrams>
-      <Diagram Name="GGGETSAppDataModel">
+      <Diagram Name="GGGETSAppDataModel" ZoomLevel="40">
         <EntityTypeShape EntityType="MYGGGETSModel.AddressBook" Width="1.5" PointX="7.5" PointY="18.875" Height="4.6443082682291674" IsExpanded="true" />
         <EntityTypeShape EntityType="MYGGGETSModel.Company" Width="1.5" PointX="0.75" PointY="10.875" Height="3.6892097981770817" IsExpanded="true" />
         <EntityTypeShape EntityType="MYGGGETSModel.CountryCode" Width="1.5" PointX="5.75" PointY="4.75" Height="1.5879931640624996" IsExpanded="true" />
@@ -1829,6 +1865,7 @@
           <ConnectorPoint PointX="18" PointY="4.7108463541666694" />
           <ConnectorPoint PointX="18.75" PointY="4.7108463541666694" />
         </AssociationConnector>
+        <EntityTypeShape EntityType="MYGGGETSModel.OrganizationChart" Width="1.5" PointX="5.375" PointY="0.75" Height="1.9594531250000067" />
         </Diagram>
     </Diagrams>
   </Designer>
