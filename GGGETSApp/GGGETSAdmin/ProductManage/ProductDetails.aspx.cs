@@ -26,16 +26,6 @@ namespace GGGETSAdmin.ProductManage
             {
                 if (!string.IsNullOrEmpty(Request.QueryString["HSCode"]))
                 {
-                    if (Session["UserID"] != null)
-                    {
-                        Guid id = (Guid)Session["UserID"];
-                        ModulePrivilege Mprivilege = _SysUserManagementService.GetPrivilegeByUserid(id);
-                        if (!(bool)Mprivilege[Privilege.修改.ToString()])
-                        {
-                            btn_Update.Enabled = false;
-                        }
-
-                    }
                     string HSCode = Request.QueryString["HSCode"];
                     Evaluate(HSCode);
                 }
@@ -79,7 +69,7 @@ namespace GGGETSAdmin.ProductManage
         /// <param name="e"></param>
         protected void btn_Update_Click(object sender, EventArgs e)
         {
-            Response.Redirect("ProductModify.aspx?HSCode=" + Txt_HSCode.Text + "");
+            Response.Redirect("ProductModify.aspx?HSCode=" + Txt_HSCode.Text + "&Privilege=" + Request.QueryString["Privilege"] + "");
         }
         /// <summary>
         /// 返回

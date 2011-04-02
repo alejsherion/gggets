@@ -96,7 +96,7 @@
                 </asp:TemplateField>
                 <asp:TemplateField >
                     <ItemTemplate>
-                        <asp:LinkButton ID="lbtn_Eidt" CommandName="Eidt" runat="server" Text="详细" PostBackUrl='<%# "ProductDetails.aspx?HSCode="+Eval("HSCode") %>'></asp:LinkButton>
+                        <asp:LinkButton ID="lbtn_Eidt" CommandName="Eidt" runat="server" Text="详细" CommandArgument='<%# Eval("HSCode") %>'></asp:LinkButton>
                     </ItemTemplate>
                     <HeaderStyle HorizontalAlign="Center" />
                         <ItemStyle HorizontalAlign="Center" />

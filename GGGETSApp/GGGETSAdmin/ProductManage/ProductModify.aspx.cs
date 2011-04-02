@@ -31,11 +31,9 @@ namespace GGGETSAdmin.ProductManage
             {
                 if (!string.IsNullOrEmpty(Request.QueryString["HSCode"]))
                 {
-                    if (Session["UserID"] != null)
+                    if (!string.IsNullOrEmpty(Request.QueryString["Privilege"]))
                     {
-                        Guid id = (Guid)Session["UserID"];
-                        ModulePrivilege Mpriviege = _sysUserManagementService.GetPrivilegeByUserid(id);
-                        if (!(bool)Mpriviege[Privilege.修改.ToString()])
+                        if (!bool.Parse(Request.QueryString["Privilege"]))
                         {
                             btn_Addparoduct.Enabled = false;
                             btn_Add.Enabled = false;

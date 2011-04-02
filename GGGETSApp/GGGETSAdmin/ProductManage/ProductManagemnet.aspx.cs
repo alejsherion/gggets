@@ -213,9 +213,11 @@ namespace GGGETSAdmin.ProductManage
 
         protected void gv_HS_RowCommand(object sender, GridViewCommandEventArgs e)
         {
-            if (e.CommandName == "Del")
+            Guid id = (Guid)Session["UserID"];
+            ModulePrivilege Mpriviege = _sysUserManagementService.GetPrivilegeByUserid(id);
+            if (e.CommandName == "Eidt")
             {
-                
+                Response.Redirect("ProductDetails.aspx?HSCode=" + e.CommandArgument + "&Privilege=" + (bool)Mpriviege[Privilege.修改.ToString()] + "");
             }
         }
 
