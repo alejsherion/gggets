@@ -64,7 +64,7 @@
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="总运单号">
                                 <ItemTemplate>
-                                    <asp:LinkButton ID="lbtn_FLTNo" runat="server" PostBackUrl='<%# "MawbDetails.aspx?BarCode="+Eval("BarCode") %>'
+                                    <asp:LinkButton ID="lbtn_FLTNo" runat="server" CommandName="Eidt" CommandArgument='<%# Eval("BarCode") %>'
                                         Text='<%# Eval("BarCode") %>'></asp:LinkButton>
                                 </ItemTemplate>
                                 <ControlStyle Width="150px" />

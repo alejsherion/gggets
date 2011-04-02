@@ -39,38 +39,26 @@ namespace GGGETSAdmin.MawbManage
                     if (mawb != null)
                     {
                         Evaluate(mawb);
-                        if (Session["UserID"] != null)
+                        
+                        if (!bool.Parse(Request.QueryString["Privilege"]))
                         {
-                            Guid id = (Guid)Session["UserID"];
-                            ModulePrivilege Mprivilege = _SysUserManagementService.GetPrivilegeByUserid(id);
-                            if (!(bool)Mprivilege[Privilege.修改.ToString()])
+                            But_Update.Enabled = false;
+                        }
+                        else
+                        {
+                            if (txt_Status.Text != "打开")
                             {
-                                But_Update.Enabled = false;
-                            }
-                            else
-                            {
-                                if (txt_Status.Text != "打开")
+                                if (!bool.Parse(Request.QueryString["aPrivilege1"]))
                                 {
-                                    if (!(bool)Mprivilege[Privilege.解锁.ToString()])
-                                    {
-                                        But_Update.Enabled = false;
-                                    }
-                                    //else
-                                    //{
-                                    //    But_Update.Enabled = true;
-                                    //}
+                                    But_Update.Enabled = false;
                                 }
-                                //else
-                                //{
-                                //    But_Update.Enabled = true;
-                                //}
                             }
-                            if (!(bool)Mprivilege[Privilege.导出.ToString()])
-                            {
-                                btn_DeriveAccept.Enabled = false;
-                                btn_DeriveSince.Enabled = false;
-                            }
-
+                                
+                        }
+                        if (!bool.Parse(Request.QueryString["aPrivilege2"]))
+                        {
+                            btn_DeriveAccept.Enabled = false;
+                            btn_DeriveSince.Enabled = false;
                         }
                     }
                     else
@@ -130,12 +118,8 @@ namespace GGGETSAdmin.MawbManage
         /// <param name="e"></param>
         protected void But_Next_Click(object sender, EventArgs e)
         {
-            //if (txt_Status.Text == "打开")
-            //{
-                Response.Redirect("MawbModify.aspx?BarCode=" + lbl_MAWBBarCode.Text + "");
-            //}
-            //else
-            //{ Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "show", "<script>alert('该总运单处于关闭状态，不能进行修改！')</script>"); }
+            Response.Redirect("MawbModify.aspx?BarCode=" + lbl_MAWBBarCode.Text + "&Privilege=" + Request.QueryString["Privilege"] + "&aPrivilege=" + Request.QueryString["aPrivilege1"] + "");
+          
         }
         /// <summary>
         /// 查看航班信息
