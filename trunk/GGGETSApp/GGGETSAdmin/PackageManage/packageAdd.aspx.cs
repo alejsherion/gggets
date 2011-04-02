@@ -165,7 +165,7 @@ namespace GGGETSAdmin.PackageManage
             bool ok = false;
             if (Txt_BagBarCode.Text.Trim() != "")
             {
-                if (Txt_OriginalRegionCode.Text.Trim() != "")
+                if (Txt_OriginalRegionCode.Text.Trim() != ""&&Txt_DestinationRegionCode.Text.Trim()!="")
                 {
                     package.OriginalRegionCode = Txt_OriginalRegionCode.Text.Trim().ToUpper();
                     if (txt_Pice.Text.Trim() != "")
@@ -221,13 +221,13 @@ namespace GGGETSAdmin.PackageManage
                     }
                     else
                     {
-                        ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('目的地三字码只能输入字母!')", true);
+                        ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('起/终地三字码只能输入字母!')", true);
                         Txt_OriginalRegionCode.Focus();
                     }
                 }
                 else
                 {
-                    ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('目的地三字码不能为空!')", true);
+                    ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('起/终地三字码不能为空!')", true);
                     Txt_OriginalRegionCode.Focus();
                 }
             }

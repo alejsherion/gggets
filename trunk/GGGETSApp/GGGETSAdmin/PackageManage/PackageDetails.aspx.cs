@@ -38,34 +38,6 @@ namespace GGGETSAdmin.PackageManage
                     if (package != null)
                     {
                         Evaluate(package);
-                        if (Session["UserID"] != null)
-                        {
-                            Guid id = (Guid)Session["UserID"];
-                            ModulePrivilege Mprivilege = _SysUserManagementService.GetPrivilegeByUserid(id);
-                            if (!(bool)Mprivilege[Privilege.修改.ToString()])
-                            {
-                                But_Update.Enabled = false;
-                            }
-                            else
-                            {
-                                if (txt_Status.Text != "打开")
-                                {
-                                    if (!(bool)Mprivilege[Privilege.解锁.ToString()])
-                                    {
-                                        But_Update.Enabled = false;
-                                    }
-                                    //else
-                                    //{
-                                    //    But_Update.Enabled = true;
-                                    //}
-                                }
-                                //else
-                                //{
-                                //    But_Update.Enabled = true;
-                                //}
-                            }
-
-                        }
                     }
                     else
                     {
@@ -127,7 +99,7 @@ namespace GGGETSAdmin.PackageManage
         {
             //if (txt_Status.Text == "打开")
             //{
-                Response.Redirect("packageModify.aspx?BarCode=" + txt_BagBarCode.Text + "");
+            Response.Redirect("packageModify.aspx?BarCode=" + txt_BagBarCode.Text + "&Privilege=" + Request.QueryString["Privilege"] + "&Privilege1="+Request.QueryString["Privilege1"]+"");
             //}
             //else
             //{
