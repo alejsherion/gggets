@@ -52,7 +52,6 @@ function initMenus() {
 		    var checkElement = $(this).next();
 		    var parent = this.parentNode.parentNode.id;
 		    if (parent == "" || parent == undefined) return true;
-		    debugger;
 		    if ($('#' + parent).hasClass('noaccordion')) {
 		        $(this).next().slideToggle('normal');
 		        return false;
