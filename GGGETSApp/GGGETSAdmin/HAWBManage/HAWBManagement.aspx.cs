@@ -309,12 +309,15 @@ namespace GGGETSAdmin.HAWBManage
         /// <param name="e"></param>
         protected void Gv_HAWB_RowCommand(object sender, GridViewCommandEventArgs e)
         {
-            
+            Guid id = (Guid)Session["UserID"];
+            ModulePrivilege Authority = _SysUserManagementService.GetPrivilegeByUserid(id);           
             if (e.CommandName == "Eidt")
             {
+                bool aPrivilege = (bool)Authority[Privilege.修改.ToString()];
+                bool aPrivilege1 = (bool)Authority[Privilege.导出.ToString()];
                 int index = Convert.ToInt32(e.CommandArgument);
                 string barCode = Gv_HAWB.DataKeys[index].Value.ToString();
-                Response.Redirect("HAWBDetails.aspx?BarCode=" + barCode + "");
+                Response.Redirect("HAWBDetails.aspx?BarCode=" + barCode + "&Privilege=" + aPrivilege + "&Privilege1=" + aPrivilege1 + "");
             }
             else if (e.CommandName == "Updata")
             {
