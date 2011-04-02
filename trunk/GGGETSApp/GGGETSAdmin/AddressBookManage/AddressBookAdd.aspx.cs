@@ -157,8 +157,14 @@ namespace GGGETSAdmin.AddressBookManage
                     Session["User"] = user.UID;
                     Txt_DeliverName.Focus();
                     //Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('没有该用户名，请重新输入！')</script>");
-                    
+
                 }
+                else
+                { ok = false; }
+            }
+            else
+            {
+                ok = true;
             }
             return ok;
         }
@@ -329,7 +335,10 @@ namespace GGGETSAdmin.AddressBookManage
                     DepCode();
                     Did = Session["Depar"].ToString();
                 }
-                Uid = Session["User"].ToString();
+                if (Session["User"] != null)
+                {
+                    Uid = Session["User"].ToString();
+                }
                 AddRessBook(Uid, Did);
             }
                            
