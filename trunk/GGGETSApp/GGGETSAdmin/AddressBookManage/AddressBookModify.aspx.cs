@@ -39,14 +39,24 @@ namespace GGGETSAdmin.AddressBookManage
         {
             if (!IsPostBack)
             {
-                if (!string.IsNullOrEmpty(Request.QueryString["AID"]))
+                if (!string.IsNullOrEmpty(Request.QueryString["AID"]) && !string.IsNullOrEmpty(Request.QueryString["Privilege"]))
                 {
                     AID = Request.QueryString["AID"].ToString();
                     Storage(AID);
+                    bool Privilege = bool.Parse(Request.QueryString["Privilege"].ToString());
+                    if (Privilege)
+                    {
+                        But_Update.Enabled = true;
+                    }
+                    else
+                    {
+                        But_Update.Enabled = false;
+                    }
+                    ViewState["Url"] = Request.UrlReferrer.ToString();
                 }
                 else
                 {
-                    Response.Redirect("../../Navigation.aspx");
+                    Response.Redirect("../Menu.aspx");
                 }
             }
         }
