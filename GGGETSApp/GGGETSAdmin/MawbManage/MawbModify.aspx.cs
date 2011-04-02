@@ -35,11 +35,8 @@ namespace GGGETSAdmin.MawbManage
                 Txt_MAWBBarCode.Focus();
                 if (Request.QueryString["BarCode"] != "" && Request.QueryString["BarCode"] != null)
                 {
-                    if (Session["UserID"] != null)
-                    {
-                        Guid id = (Guid)Session["UserID"];
-                        ModulePrivilege Mpriviege = _sysUserManagementService.GetPrivilegeByUserid(id);
-                        if (!(bool)Mpriviege[Privilege.修改.ToString()])
+                    
+                        if (!bool.Parse(Request.QueryString["Privilege"]))
                         {
                             btn_Add.Enabled = false;
                             btn_Save.Enabled = false;
@@ -50,7 +47,7 @@ namespace GGGETSAdmin.MawbManage
                         {
                             if (txt_Status.Text != "打开")
                             {
-                                if (!(bool)Mpriviege[Privilege.解锁.ToString()])
+                                if (!bool.Parse(Request.QueryString["Privilege1"]))
                                 {
                                     btn_Add.Enabled = false;
                                     btn_Save.Enabled = false;
@@ -59,7 +56,6 @@ namespace GGGETSAdmin.MawbManage
                                 }
                             }
                         }
-                    }
                     ViewState["UrlReferrer"] = Request.UrlReferrer;
                     mawb = _mawbservice.FindMAWBByBarcode(Request.QueryString["BarCode"]);
                     if (mawb != null)

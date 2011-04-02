@@ -178,6 +178,15 @@ namespace GGGETSAdmin.MawbManage
         /// <param name="e"></param>
         protected void gv_HAWB_RowCommand(object sender, GridViewCommandEventArgs e)
         {
+            if (e.CommandName == "Eidt")
+            {
+                Guid id = (Guid)Session["UserID"];
+                ModulePrivilege Authority = _sysUserManagementService.GetPrivilegeByUserid(id);
+                bool aPrivilege = (bool)Authority[Privilege.修改.ToString()];
+                bool aPrivilege2 = (bool)Authority[Privilege.导出.ToString()];
+                bool aPrivilege1 = (bool)Authority[Privilege.解锁.ToString()];
+                Response.Redirect("MawbDetails.aspx?Privilege=" + aPrivilege + "&BarCode=" + e.CommandArgument + "&aPrivilege1=" + aPrivilege1 + "&aPrivilege2=" + aPrivilege2 + "");
+            }
             if (e.CommandName == "Derive")
             {
                 string barcode = e.CommandArgument.ToString();
