@@ -35,7 +35,7 @@ namespace GGGETSAdmin.AddressBookManage
                     {
                         btn_Demand.Enabled = false;
                     }
-
+                    //ViewState["Privilege"] = Authority;
                 }
             }
         }
@@ -121,22 +121,33 @@ namespace GGGETSAdmin.AddressBookManage
         /// <param name="e"></param>
         protected void gv_AddressBook_RowCommand(object sender, GridViewCommandEventArgs e)
         {
+            Guid id = (Guid)Session["UserID"];
+            ModulePrivilege Authority = _SysUserManagementService.GetPrivilegeByUserid(id);
             if (e.CommandName == "Eidt")
             {
-                Response.Redirect("AddressBookDetails.aspx?AID=" + e.CommandArgument + "");
+                bool aPrivilege = (bool)Authority[Privilege.修改.ToString()];
+                Response.Redirect("AddressBookDetails.aspx?AID=" + e.CommandArgument + "&Privilege=" + aPrivilege + "");
             }
             else if (e.CommandName == "Updata")
             {
-                Response.Redirect("AddressBookModify.aspx?AID=" + e.CommandArgument + "");
+                bool aPrivilege = (bool)Authority[Privilege.修改.ToString()];
+                Response.Redirect("AddressBookModify.aspx?AID=" + e.CommandArgument + "&Privilege=" + aPrivilege + "");
             }
             else if (e.CommandName == "Del")
             {
-                AddressBook address = _AddressService.FindAddressBookByAID(e.CommandArgument.ToString());
-                if (address != null)
+                if ((bool)Authority[Privilege.删除.ToString()])
                 {
-                    //_AddressService.RemoveAddressBook(address);                    
-                    //Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('删除成功！')</script>");
-                    //Band();
+                    AddressBook address = _AddressService.FindAddressBookByAID(e.CommandArgument.ToString());
+                    if (address != null)
+                    {
+                        //_AddressService.RemoveAddressBook(address);                    
+                        //Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('删除成功！')</script>");
+                        //Band();
+                    }
+                }
+                else
+                {
+                    Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('对不起！权限不够，不能删除')</script>");
                 }
             }
         }
