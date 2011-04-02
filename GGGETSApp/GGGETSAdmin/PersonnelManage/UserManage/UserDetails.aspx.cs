@@ -28,16 +28,6 @@ namespace GGGETSAdmin.PersonnelManage.UserManage
             {
                 if (!string.IsNullOrEmpty(Request.QueryString["LoginName"]))
                 {
-                    if (Session["UserID"] != null)
-                    {
-                        Guid id = (Guid)Session["UserID"];
-                        ModulePrivilege Mprivilege = _SysUserManagementService.GetPrivilegeByUserid(id);
-                        if (!(bool)Mprivilege[Privilege.修改.ToString()])
-                        {
-                            But_Update.Enabled = false;
-                        }
-
-                    }
                     string LoginName = Request.QueryString["LoginName"].ToString();
                     Storage(LoginName);
                     ViewState["Url"] = Request.UrlReferrer.ToString();
@@ -137,7 +127,7 @@ namespace GGGETSAdmin.PersonnelManage.UserManage
         protected void But_Next_Click(object sender, EventArgs e)
         {
 
-            Response.Redirect("UserModify.aspx?LoginName=" + Txt_LoginName.Text.Trim() + "");
+            Response.Redirect("UserModify.aspx?LoginName=" + Txt_LoginName.Text.Trim() + "&Privilege=" + Request.QueryString["Privilege"] + "");
         }
         /// <summary>
         /// 返回

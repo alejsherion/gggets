@@ -29,11 +29,9 @@ namespace GGGETSAdmin.PersonnelManage.CompanyManage
             {
                 if (!string.IsNullOrEmpty(Request.QueryString["CompanyCode"]))
                 {
-                    if (Session["UserID"] != null)
+                    if (!string.IsNullOrEmpty(Request.QueryString["Privilege"]))
                     {
-                        Guid id = (Guid)Session["UserID"];
-                        ModulePrivilege Mpriviege = _sysUserManagementService.GetPrivilegeByUserid(id);
-                        if (!(bool)Mpriviege[Privilege.修改.ToString()])
+                        if (!bool.Parse(Request.QueryString["Privilege"]))
                         {
                             btn_Update.Enabled = false;
                         }

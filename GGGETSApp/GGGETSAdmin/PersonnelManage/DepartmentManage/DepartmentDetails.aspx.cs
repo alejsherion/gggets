@@ -26,16 +26,6 @@ namespace GGGETSAdmin.PersonnelManage.DepartmentManage
             {
                 if (!string.IsNullOrEmpty(Request.QueryString["DeparCode"]) && !string.IsNullOrEmpty(Request.QueryString["CompanyCode"]))
                 {
-                    if (Session["UserID"] != null)
-                    {
-                        Guid id = (Guid)Session["UserID"];
-                        ModulePrivilege Mprivilege = _SysUserManagementService.GetPrivilegeByUserid(id);
-                        if (!(bool)Mprivilege[Privilege.修改.ToString()])
-                        {
-                            But_Update.Enabled = false;
-                        }
-
-                    }
                     string CompanyCode = Request.QueryString["CompanyCode"].ToString();
                     string DeparCode = Request.QueryString["DeparCode"].ToString();
                     Storage(DeparCode,CompanyCode);
@@ -112,7 +102,7 @@ namespace GGGETSAdmin.PersonnelManage.DepartmentManage
         /// <param name="e"></param>
         protected void But_Next_Click(object sender, EventArgs e)
         {
-            Response.Redirect("DepartmentModify.aspx?DeparCode=" + Txt_DepCode.Text.Trim() + "&CompanyCode=" + Txt_CompanyCode.Text + "");
+            Response.Redirect("DepartmentModify.aspx?DeparCode=" + Txt_DepCode.Text.Trim() + "&CompanyCode=" + Txt_CompanyCode.Text + "&Privilege=" + Request.QueryString["Privilege"] + "");
         }
         /// <summary>
         /// 返回

@@ -67,13 +67,16 @@ namespace GGGETSAdmin.PersonnelManage.DepartmentManage
         /// <param name="e"></param>
         protected void gv_Depar_RowCommand(object sender, GridViewCommandEventArgs e)
         {
+            Guid id = (Guid)Session["UserID"];
+            ModulePrivilege Mpriviege = _sysUserManagementService.GetPrivilegeByUserid(id);
             int index = int.Parse(e.CommandArgument.ToString());
             GridViewRow row = gv_Depar.Rows[index];
             string CompanyCode = ((Label)row.FindControl("lbl_CompanyCode") as Label).Text;
             string DepCode = ((Label)row.FindControl("lbl_DepCode") as Label).Text;
             if (e.CommandName == "Eidt")
             {
-                Response.Redirect("DepartmentDetails.aspx?CompanyCode=" + CompanyCode + "&DeparCode=" + DepCode + "");
+                bool privilege = (bool)Mpriviege[Privilege.修改.ToString()];
+                Response.Redirect("DepartmentDetails.aspx?CompanyCode=" + CompanyCode + "&DeparCode=" + DepCode + "&Privilege=" + privilege + "");
             }
             else if (e.CommandName == "Updata")
             {

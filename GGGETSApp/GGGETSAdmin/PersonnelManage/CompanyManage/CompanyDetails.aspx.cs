@@ -25,16 +25,6 @@ namespace GGGETSAdmin.PersonnelManage.CompanyManage
             {
                 if (!string.IsNullOrEmpty(Request.QueryString["CompanyCode"]))
                 {
-                    if (Session["UserID"] != null)
-                    {
-                        Guid id = (Guid)Session["UserID"];
-                        ModulePrivilege Mprivilege = _SysUserManagementService.GetPrivilegeByUserid(id);
-                        if (!(bool)Mprivilege[Privilege.修改.ToString()])
-                        {
-                            But_Update.Enabled = false;
-                        }
-
-                    }
                     string CompanyCode = Request.QueryString["CompanyCode"].ToString();
                     Storage(CompanyCode);
                     ViewState["Url"] = Request.UrlReferrer.ToString();
@@ -84,7 +74,7 @@ namespace GGGETSAdmin.PersonnelManage.CompanyManage
         /// <param name="e"></param>
         protected void But_Next_Click(object sender, EventArgs e)
         {
-            Response.Redirect("CompanyModify.aspx?CompanyCode=" + Txt_CompanyCode.Text.Trim() + "");
+            Response.Redirect("CompanyModify.aspx?CompanyCode=" + Txt_CompanyCode.Text.Trim() + "&Privilege="+Request.QueryString["Privilege"]+"");
         }
         /// <summary>
         /// 取消

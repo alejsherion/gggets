@@ -103,12 +103,15 @@ namespace GGGETSAdmin.PersonnelManage.UserManage
         /// <param name="e"></param>
         protected void gv_User_RowCommand(object sender, GridViewCommandEventArgs e)
         {
+            Guid id = (Guid)Session["UserID"];
+            ModulePrivilege Mpriviege = _sysUserManagementService.GetPrivilegeByUserid(id);
             int index = int.Parse(e.CommandArgument.ToString());
             GridViewRow row = gv_User.Rows[index];
             string loginName = ((Label)row.FindControl("lbl_LoginName") as Label).Text;
             if (e.CommandName == "Eidt")
             {
-                Response.Redirect("UserDetails.aspx?LoginName=" + loginName + "");
+                bool privilege = (bool)Mpriviege[Privilege.修改.ToString()];
+                Response.Redirect("UserDetails.aspx?LoginName=" + loginName + "&Privilege=" + privilege + "");
             }
             else if (e.CommandName == "Updata")
             {

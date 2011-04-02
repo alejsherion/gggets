@@ -92,11 +92,14 @@ namespace GGGETSAdmin.PersonnelManage.CompanyManage
         /// <param name="e"></param>
         protected void gv_Company_RowCommand(object sender, GridViewCommandEventArgs e)
         {
+            Guid id = (Guid)Session["UserID"];
+            ModulePrivilege Mpriviege = _sysUserManagementService.GetPrivilegeByUserid(id);
             if (e.CommandName == "Eidt")
             {
+                bool privilege = (bool)Mpriviege[Privilege.修改.ToString()];
                 int index = Convert.ToInt32(e.CommandArgument);
                 string CompanyCode = gv_Company.DataKeys[index].Value.ToString();
-                Response.Redirect("CompanyDetails.aspx?CompanyCode=" + CompanyCode + "");
+                Response.Redirect("CompanyDetails.aspx?CompanyCode=" + CompanyCode + "&Privilege=" + privilege + "");
             }
             else if (e.CommandName == "Updata")
             {
