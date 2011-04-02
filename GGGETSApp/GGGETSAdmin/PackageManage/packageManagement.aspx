@@ -54,27 +54,34 @@
                 </table>
                 <div style="height: 350px; overflow-x: auto; overflow-y: auto;">
                     <asp:GridView ID="gv_HAWB" runat="server" CssClass="DataView" AutoGenerateColumns="False"
-                        PageSize="36">
+                        PageSize="36" onrowcommand="gv_HAWB_RowCommand">
                         <Columns>
                             <asp:TemplateField HeaderText="行号">
                                 <ItemTemplate>
                                     <asp:Label ID="lbl_Number" runat="server" Text='<%# N() %>'></asp:Label>
                                 </ItemTemplate>
-                                <HeaderStyle HorizontalAlign="Center" Width="30px" />
-                                <ItemStyle HorizontalAlign="Center" Width="30px" />
+                                <HeaderStyle HorizontalAlign="Center" Width="20px" />
+                                <ItemStyle HorizontalAlign="Center" Width="20px" />
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="包号">
                                 <ItemTemplate>
-                                    <asp:LinkButton ID="lbtn_BagBarCoder" runat="server" PostBackUrl='<%# "PackageDetails.aspx?BarCode="+Eval("BarCode") %>'
+                                    <asp:LinkButton ID="lbtn_BagBarCoder" runat="server" CommandName="Eidt" CommandArgument='<%# Eval("BarCode") %>'
                                         Text='<%# Eval("BarCode") %>'></asp:LinkButton>
                                 </ItemTemplate>
                                 <ControlStyle Width="120px" />
                                 <HeaderStyle HorizontalAlign="Center" />
                                 <ItemStyle HorizontalAlign="Center" />
                             </asp:TemplateField>
+                            <asp:TemplateField HeaderText="起始地三字码">
+                                <ItemTemplate>
+                                    <asp:Label ID="lbl_OriginalRegionCode" runat="server" Text='<%# Eval("OriginalRegionCode") %>'></asp:Label>
+                                </ItemTemplate>
+                                <HeaderStyle HorizontalAlign="Center" />
+                                <ItemStyle HorizontalAlign="Center" />
+                            </asp:TemplateField>
                             <asp:TemplateField HeaderText="目的地三字码">
                                 <ItemTemplate>
-                                    <asp:Label ID="lbl_RegionCode" runat="server" Text='<%# Eval("RegionCode") %>'></asp:Label>
+                                    <asp:Label ID="lbl_DestinationRegionCode" runat="server" Text='<%# Eval("DestinationRegionCode") %>'></asp:Label>
                                 </ItemTemplate>
                                 <HeaderStyle HorizontalAlign="Center" />
                                 <ItemStyle HorizontalAlign="Center" />

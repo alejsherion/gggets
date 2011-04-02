@@ -49,7 +49,7 @@ namespace GGGETSAdmin.PackageManage
                     if (!(bool)Mpriviege[Privilege.查询.ToString()])
                     {
                         btn_Demand.Enabled = false;
-                    }
+                    }                    
                     txt_UpCreateTime.Text = DateTime.Today.AddDays(-1).ToString("yyyy-MM-dd");
                     txt_ToCreateTime.Text = DateTime.Today.ToString("yyyy-MM-dd");
                 }
@@ -393,6 +393,18 @@ namespace GGGETSAdmin.PackageManage
                         ((TextBox)objControl).Text = String.Empty;
                     }
                 }
+            }
+        }
+
+        protected void gv_HAWB_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            if (e.CommandName == "Eidt")
+            {
+                Guid id = (Guid)Session["UserID"];
+                ModulePrivilege Mpriviege = _sysUserManagementService.GetPrivilegeByUserid(id);
+                bool privilege =(bool)Mpriviege[Privilege.修改.ToString()];
+                bool aprivilege = (bool)Mpriviege[Privilege.解锁.ToString()];
+                Response.Redirect("PackageDetails.aspx?BarCode=" + e.CommandArgument + "&Privilege=" + privilege + "&Privilege1="+aprivilege+"");
             }
         }
     }

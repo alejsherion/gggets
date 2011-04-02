@@ -41,19 +41,15 @@ namespace GGGETSAdmin.PackageManage
                 
                 if (Request.QueryString["BarCode"] != "" && Request.QueryString["BarCode"] != null)
                 {
-                    if (Session["UserID"] != null)
+
+                    if (!bool.Parse(Request.QueryString["Privilege"]) || !bool.Parse(Request.QueryString["Privilege1"]))
                     {
-                        Guid id = (Guid)Session["UserID"];
-                        ModulePrivilege Mpriviege = _sysUserManagementService.GetPrivilegeByUserid(id);
-                        if (!(bool)Mpriviege[Privilege.修改.ToString()])
-                        {
-                            btn_Add.Enabled = false;
-                            btn_Save.Enabled = false;
-                            btn_SaveAndClose.Enabled = false;
-                            btn_Close.Enabled = false;
-                        }
-                        
+                        btn_Add.Enabled = false;
+                        btn_Save.Enabled = false;
+                        btn_SaveAndClose.Enabled = false;
+                        btn_Close.Enabled = false;
                     }
+                   
                     ViewState["UrlReferrer"] = Request.UrlReferrer;
                     package = _packageservice.FindPackageByBarcode(Request.QueryString["BarCode"]);
                     if (package != null)
