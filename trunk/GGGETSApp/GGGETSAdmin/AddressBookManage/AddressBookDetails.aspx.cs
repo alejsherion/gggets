@@ -33,21 +33,21 @@ namespace GGGETSAdmin.AddressBookManage
         {
             if (!IsPostBack)
             {
-                if (!string.IsNullOrEmpty(Request.QueryString["AID"]))
+                if (!string.IsNullOrEmpty(Request.QueryString["AID"]) && !string.IsNullOrEmpty(Request.QueryString["Privilege"]))
                 {
-                    if (Session["UserID"] != null)
+                    string Aid = Request.QueryString["AID"];
+                    Storage(Aid);
+                    bool Privilege = bool.Parse(Request.QueryString["Privilege"].ToString());
+                    if (Privilege)
                     {
-                        Guid id = (Guid)Session["UserID"];
-                        ModulePrivilege Mprivlege = _sysUserManagementService.GetPrivilegeByUserid(id);
-                        if (!(bool)Mprivlege[Privilege.修改.ToString()])
-                        {
-                            But_Update.Enabled = false;
-                        }
-                        AID = Request.QueryString["AID"].ToString();
-                        ViewState["Url"] = Request.UrlReferrer.ToString();
-                        ViewState["AID"] = AID;
-                        Storage(AID);
+                        But_Update.Enabled = true;
                     }
+                    else
+                    {
+                        But_Update.Enabled = false;
+                    }
+                    ViewState["Url"] = Request.UrlReferrer.ToString();
+                    
                 }
                 else
                 {
@@ -61,7 +61,7 @@ namespace GGGETSAdmin.AddressBookManage
         /// <param name="Aid"></param>
         protected void Storage(string Aid)
         {
-            AddressBook address = _AddressBookService.FindAddressBookByAID(AID);
+            AddressBook address = _AddressBookService.FindAddressBookByAID(Aid);
             if (address!=null)
             {
                 if (address.AddressType == 0)
@@ -156,9 +156,10 @@ namespace GGGETSAdmin.AddressBookManage
         {
             if (string.IsNullOrEmpty(AID))
             {
-                AID = ViewState["AID"].ToString();
+                AID = Request.QueryString["AID"];
             }
-            Response.Redirect("AddressBookModify.aspx?AID=" + AID + "");
+            bool aPrivilege = bool.Parse(Request.QueryString["Privilege"]);
+            Response.Redirect("AddressBookModify.aspx?AID=" + AID + "&Privilege=" + aPrivilege + "");
         }
     }
 }
