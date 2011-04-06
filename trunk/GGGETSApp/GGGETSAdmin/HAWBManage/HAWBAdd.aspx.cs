@@ -51,7 +51,7 @@ namespace GGGETSAdmin.HAWBManage
                     Txt_BarCode.Focus();
                     listcountry = _countryservice.FindAllCountries();
                     listregion = _regionservice.FindAllRegionCodes();
-                    if (!string.IsNullOrEmpty(Request.QueryString["BarCode"]) && !string.IsNullOrEmpty(Request.QueryString["update"]))
+                    if (!string.IsNullOrEmpty(Request.QueryString["BarCode"]))
                     {
                         if (!(bool)Mprivilege[Privilege.修改.ToString()])
                         {
@@ -74,10 +74,7 @@ namespace GGGETSAdmin.HAWBManage
                     {
                         if (Session["HAWB"] != null)
                         {
-                            if (!(bool)Mprivilege[Privilege.添加.ToString()])
-                            {
-                                But_Next.Enabled = false;
-                            }
+                            
                             hawb = (HAWB)Session["HAWB"];
                             if (hawb.DeliverName != null && hawb.DeliverName != "")
                             {
@@ -86,6 +83,10 @@ namespace GGGETSAdmin.HAWBManage
                                 Txt_ConsigneeName.Focus();
                             }
 
+                        }
+                        if (!(bool)Mprivilege[Privilege.添加.ToString()])
+                        {
+                            But_Next.Enabled = false;
                         }
                         Evaluate();
                         DDl_Status.Visible = false;
