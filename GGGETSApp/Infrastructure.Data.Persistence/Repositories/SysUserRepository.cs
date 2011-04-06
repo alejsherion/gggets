@@ -276,7 +276,7 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Repositories
             if (url.LastIndexOf("?") != -1)
             {
                 var endPos = url.IndexOf("?");
-                var length = endPos - pos;
+                var length = endPos - pos-1;
                 fileName = url.Substring(pos + 1, length);
             }
             else
