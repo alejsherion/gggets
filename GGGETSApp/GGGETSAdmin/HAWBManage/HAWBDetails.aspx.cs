@@ -49,8 +49,6 @@ namespace GGGETSAdmin.HAWBManage
                     if (Session["UserID"] != null)
                     {
                         Storage(hawb);
-                        Guid id = (Guid)Session["UserID"];
-                        ModulePrivilege Mprivilege = _sysUserManagementService.GetPrivilegeByUserid(id);
                         if (!bool.Parse(Request.QueryString["Privilege"]))
                         {
                             But_Update.Enabled = false;
