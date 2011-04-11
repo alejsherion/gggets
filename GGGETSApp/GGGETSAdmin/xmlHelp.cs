@@ -151,6 +151,8 @@ namespace GGGETSWeb
                 if (currentNode == null) continue;
                 currentNode = currentNode.ParentNode;
                 var item = _xmlDoc.CreateElement("ul");
+                item.SetAttribute("class", "main");
+                item.SetAttribute("id", "accordion");//控制样式
                 currentNode.AppendChild(item);
                 foreach (var privilege in currentArry)
                 {
@@ -158,7 +160,7 @@ namespace GGGETSWeb
                     var otherItem = _xmlDoc.CreateElement("a");
                     otherItem.SetAttribute("href", privilege.URL);
                     otherItem.InnerText = privilege.Description;
-                    otherItem.SetAttribute("Target", "_blank");
+                    otherItem.SetAttribute("Target", "mainFrame");
                     subItem.AppendChild(otherItem);
                     item.AppendChild(subItem);
                 }

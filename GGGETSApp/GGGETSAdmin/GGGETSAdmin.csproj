@@ -161,6 +161,10 @@
     <Content Include="HAWBManage\HAWBItemAdd.aspx" />
     <Content Include="HAWBManage\HAWBManagement.aspx" />
     <Content Include="HOME.aspx" />
+    <Content Include="Images\In.gif" />
+    <Content Include="Images\left_bg.jpg" />
+    <Content Include="Images\Out.gif" />
+    <Content Include="Index.aspx" />
     <Content Include="Login\Login.aspx" />
     <Content Include="MawbManage\MawbAdd.aspx" />
     <Content Include="MawbManage\MawbDetails.aspx" />
@@ -214,15 +218,19 @@
     <Content Include="RegionZiMaManage\regionManagement.aspx" />
     <Content Include="Resource\China.txt" />
     <Content Include="Resource\English.txt" />
+    <Content Include="Right.aspx" />
     <Content Include="Scripts\calendar.js" />
     <Content Include="Scripts\login.js" />
     <Content Include="Scripts\menu.js" />
     <Content Include="Scripts\style.css" />
+    <Content Include="Styles\LeftMenu.css" />
     <Content Include="Styles\Site.css" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\jquery-1.4.1-vsdoc.js" />
     <Content Include="Scripts\jquery-1.4.1.js" />
     <Content Include="Scripts\jquery-1.4.1.min.js" />
+    <Content Include="Images\welcome_bg.gif" />
+    <Content Include="Switch.aspx" />
     <Content Include="SysManager\AddAppModule.aspx" />
     <Content Include="SysManager\AddRole.aspx" />
     <Content Include="SysManager\AddRolePrivilege.aspx" />
@@ -397,6 +405,13 @@
     </Compile>
     <Compile Include="HOME.aspx.designer.cs">
       <DependentUpon>HOME.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Index.aspx.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Index.aspx.designer.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
     </Compile>
     <Compile Include="Login\Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
@@ -651,12 +666,26 @@
     <Compile Include="RegionZiMaManage\regionManagement.aspx.designer.cs">
       <DependentUpon>regionManagement.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Right.aspx.cs">
+      <DependentUpon>Right.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Right.aspx.designer.cs">
+      <DependentUpon>Right.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Site1.Master.cs">
       <DependentUpon>Site1.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Site1.Master.designer.cs">
       <DependentUpon>Site1.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Switch.aspx.cs">
+      <DependentUpon>Switch.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Switch.aspx.designer.cs">
+      <DependentUpon>Switch.aspx</DependentUpon>
     </Compile>
     <Compile Include="SysManager\AddAppModule.aspx.cs">
       <DependentUpon>AddAppModule.aspx</DependentUpon>
