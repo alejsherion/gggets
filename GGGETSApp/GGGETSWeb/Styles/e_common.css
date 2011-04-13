@@ -1,0 +1,129 @@
+* {
+	PADDING-BOTTOM: 0px; FONT-STYLE: normal; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+BODY {
+	LINE-HEIGHT: 1.4em; BACKGROUND-COLOR: #FEEBE9; FONT-FAMILY: Arial, Helvetica, sans-serif; COLOR: #454545; FONT-SIZE: 100%
+}
+IMG {
+	BORDER-BOTTOM: 0px; BORDER-LEFT: 0px; VERTICAL-ALIGN: bottom; BORDER-TOP: 0px; BORDER-RIGHT: 0px
+}
+HR {
+	DISPLAY: none
+}
+UL {
+	LIST-STYLE-TYPE: none; LIST-STYLE-IMAGE: none
+}
+A:link {
+	COLOR: #007ed0; TEXT-DECORATION: underline
+}
+A:visited {
+	COLOR: #007ed0; TEXT-DECORATION: underline
+}
+A:hover {
+	COLOR: #666666; TEXT-DECORATION: none
+}
+A:active {
+	COLOR: #666666; TEXT-DECORATION: none
+}
+.red {
+	COLOR: #ff0000
+}
+DIV#head_bg {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; BACKGROUND: url(../Images/e_head_bg.jpg) repeat-x left bottom; HEIGHT: 71px; PADDING-TOP: 0px
+}
+DIV#head_bg TABLE {
+	PADDING-BOTTOM: 0px; MARGIN: 0px auto; PADDING-LEFT: 0px; WIDTH: 800px; PADDING-RIGHT: 0px; HEIGHT: 55px; PADDING-TOP: 0px
+}
+DIV#head_bg TABLE TD {
+	VERTICAL-ALIGN: bottom
+}
+DIV#head_bg TABLE TD#head_left IMG {
+	MARGIN-BOTTOM: 2px
+}
+DIV#head_bg TABLE TD#head_right {
+	TEXT-ALIGN: right
+}
+DIV#head_bg TABLE TD#head_right UL {
+	FONT-SIZE: 83%
+}
+DIV#head_bg UL LI {
+	DISPLAY: inline
+}
+DIV#head_bg UL LI IMG {
+	VERTICAL-ALIGN: middle
+}
+DIV#global_bg {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; BACKGROUND: url(../Images/e_global_bg.jpg) repeat-x left top; HEIGHT: 51px; CLEAR: both; PADDING-TOP: 0px
+}
+DIV#global_bg TABLE {
+	PADDING-BOTTOM: 0px; MARGIN: 0px auto; PADDING-LEFT: 0px; WIDTH: 802px; PADDING-RIGHT: 0px; HEIGHT: 33px; PADDING-TOP: 0px
+}
+DIV#global_bg TABLE TD {
+	TEXT-ALIGN: center; PADDING-LEFT: 2px; VERTICAL-ALIGN: top; PADDING-TOP: 8px
+}
+DIV#global_bg LI {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FLOAT: left; PADDING-TOP: 0px
+}
+DIV#global_bg LI.global_margin {
+	MARGIN-RIGHT: 5px
+}
+DIV#foot {
+	PADDING-BOTTOM: 20px; BACKGROUND-COLOR: #FEE1DE; MARGIN: 0px auto; PADDING-LEFT: 0px; WIDTH: 800px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+TABLE#foot_bnr {
+	PADDING-BOTTOM: 0px; BACKGROUND-COLOR: #d9ebf7; MARGIN: 0px auto; PADDING-LEFT: 0px; WIDTH: 770px; PADDING-RIGHT: 0px; HEIGHT: 62px; PADDING-TOP: 0px
+}
+TABLE#foot_bnr UL {
+	MARGIN: 0px; PADDING-LEFT: 11px
+}
+TABLE#foot_bnr LI {
+	PADDING-BOTTOM: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FLOAT: left; MARGIN-RIGHT: 5px; PADDING-TOP: 0px
+}
+TABLE#foot_navi {
+	BACKGROUND-COLOR: #FB0000; MARGIN: 25px 0px 5px; WIDTH: 100%
+}
+TABLE#foot_navi TD {
+	PADDING-BOTTOM: 7px; PADDING-LEFT: 15px; PADDING-RIGHT: 0px; PADDING-TOP: 7px
+}
+TABLE#foot_navi LI {
+	DISPLAY: inline; COLOR: #fdcb0a; FONT-SIZE: 0.7em
+}
+TABLE#header_navi {
+	BACKGROUND-COLOR: #FB0000; MARGIN: 0px 0px 5px; WIDTH: 800px; height:50px
+}
+TABLE#header_navi TD {
+	PADDING-BOTTOM: 7px; PADDING-LEFT: 15px; PADDING-RIGHT: 0px; PADDING-TOP: 7px
+}
+TABLE#header_navi LI {
+	DISPLAY: inline; COLOR: #fdcb0a; FONT-SIZE: 0.7em
+}
+TABLE#foot_navi A:link {
+	COLOR: #fdcb0a; TEXT-DECORATION: underline
+}
+TABLE#foot_navi A:visited {
+	COLOR: #ccccff; TEXT-DECORATION: underline
+}
+TABLE#foot_navi A:hover {
+	COLOR: #ffffff; TEXT-DECORATION: none
+}
+TABLE#foot_navi A:active {
+	COLOR: #ffffff; TEXT-DECORATION: none
+}
+TABLE#foot_copy {
+	MARGIN: 0px auto; WIDTH: 770px; HEIGHT: 14px
+}
+TABLE#foot_copy TD#copy_right {
+	TEXT-ALIGN: right
+}
+TABLE#contents {
+	PADDING-BOTTOM: 0px; MARGIN: 0px auto; PADDING-LEFT: 0px; WIDTH: 800px; PADDING-RIGHT: 0px; BACKGROUND: url(../common_images/e_contents_bg.gif) #ffffff repeat-x left top; PADDING-TOP: 0px; background-color: #FFFFFF
+}
+.textStrong {
+	FONT-WEIGHT: bold
+}
+UL.listSquare LI {
+	LIST-STYLE-TYPE: square
+}
+#contents #main2 .listBoxA P {
+	FONT-SIZE: 0.8em
+}

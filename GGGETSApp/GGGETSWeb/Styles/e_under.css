@@ -1,0 +1,528 @@
+TD#main {
+	PADDING-BOTTOM: 0px; PADDING-LEFT: 15px; WIDTH: 565px; PADDING-RIGHT: 15px; VERTICAL-ALIGN: top; PADDING-TOP: 0px
+}
+TD#sContents {
+	WIDTH: 190px; VERTICAL-ALIGN: top
+}
+#topBg {
+	BACKGROUND-IMAGE: url(../common_images/e_top_bg.jpg); BORDER-BOTTOM: #c3d4f2 1px solid; PADDING-BOTTOM: 25px; MARGIN-TOP: -15px; BACKGROUND-REPEAT: no-repeat; BACKGROUND-POSITION: right top; PADDING-TOP: 15px
+}
+#topBg H3 {
+	MARGIN-LEFT: 10px
+}
+#topBg #text_box P {
+	LINE-HEIGHT: 125%; MARGIN-LEFT: 12px
+}
+#contents P {
+	MARGIN-BOTTOM: 15px
+}
+#contents H2 {
+	MARGIN-BOTTOM: 15px
+}
+#contents H3 {
+	MARGIN-BOTTOM: 15px
+}
+#contents H4 {
+	TEXT-ALIGN: left; PADDING-BOTTOM: 9px; LINE-HEIGHT: 110%; PADDING-LEFT: 20px; PADDING-RIGHT: 10px; FONT-FAMILY: "Times New Roman", Times, serif; MARGIN-BOTTOM: 5px; BACKGROUND: url(../common_images/e_h4_title.gif) no-repeat left 0.1em; COLOR: #000000; FONT-SIZE: 100%; VERTICAL-ALIGN: top; PADDING-TOP: 7px
+}
+#contents H5 {
+	MARGIN-TOP: 10px; MARGIN-BOTTOM: 10px; COLOR: #003366; MARGIN-LEFT: 15px; FONT-SIZE: 90%
+}
+#contents H6 {
+	MARGIN-TOP: 10px; MARGIN-BOTTOM: 10px; COLOR: #004b97; MARGIN-LEFT: 20px; FONT-SIZE: 80%
+}
+#topicPath {
+	PADDING-BOTTOM: 0px; MARGIN: 0px 15px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-SIZE: 0.8em; PADDING-TOP: 0px
+}
+#topicPath LI {
+	LINE-HEIGHT: 21px; DISPLAY: inline; FONT-SIZE: 83%
+}
+DIV#contentNavi {
+	TEXT-ALIGN: right; MARGIN-BOTTOM: 5px
+}
+DIV#contentNavi LI {
+	PADDING-BOTTOM: 3px; LINE-HEIGHT: 1em; PADDING-LEFT: 15px; PADDING-RIGHT: 0px; DISPLAY: inline; BACKGROUND: url(../common_images/e_arrow_under.gif) no-repeat 0.3em 50%; MARGIN-LEFT: 10px; PADDING-TOP: 3px
+}
+DIV#contentNavi02 {
+	MARGIN-BOTTOM: 5px
+}
+DIV#contentNavi02 LI {
+	PADDING-BOTTOM: 3px; LINE-HEIGHT: 1em; PADDING-LEFT: 15px; PADDING-RIGHT: 5px; DISPLAY: inline; BACKGROUND: url(../common_images/e_arrow_under.gif) no-repeat 0.3em 50%; MARGIN-LEFT: 5px; PADDING-TOP: 3px
+}
+DIV.right {
+	TEXT-ALIGN: right
+}
+P.PageTop {
+	TEXT-ALIGN: right; PADDING-BOTTOM: 0px; LINE-HEIGHT: 1em; MARGIN: 0px 0px 10px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-SIZE: 83%; VERTICAL-ALIGN: bottom !important; PADDING-TOP: 0px
+}
+P.PageTop IMG {
+	MARGIN-RIGHT: 2px
+}
+P.PageTop02 {
+	TEXT-ALIGN: right; PADDING-BOTTOM: 0px; LINE-HEIGHT: 1em; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; MARGIN-BOTTOM: 15px; FONT-SIZE: 83%; VERTICAL-ALIGN: bottom !important; PADDING-TOP: 0px
+}
+P.PageTop02 IMG {
+	MARGIN-RIGHT: 2px
+}
+UL#right_navi LI {
+	MARGIN-BOTTOM: 1px; MARGIN-RIGHT: 2px
+}
+HTML:first-child UL#right_navi {
+	FONT-SIZE: 83%
+}
+UL#sNavi {
+	BORDER-BOTTOM: #dde5fc 1px solid; MARGIN-BOTTOM: 1px; FONT-SIZE: 0.75em
+}
+UL#sNavi LI {
+	LINE-HEIGHT: 22px; TEXT-INDENT: 1.8em; DISPLAY: block; COLOR: #333333
+}
+UL#sNavi LI.third_visit {
+	BACKGROUND: url(../common_images/glb_menu/e_smenu_act.gif) no-repeat left top
+}
+#sNavi LI A {
+	PADDING-RIGHT: 3px; DISPLAY: block; BACKGROUND: url(../common_images/glb_menu/e_smenu_off.gif) no-repeat left top; COLOR: #007ed0; FONT-WEIGHT: normal; TEXT-DECORATION: underline
+}
+#sNavi LI A:hover {
+	DISPLAY: block; BACKGROUND: url(../common_images/glb_menu/e_smenu_on.gif) no-repeat left top; TEXT-DECORATION: none
+}
+UL#sNavi LI A.third_under {
+	BACKGROUND: url(../common_images/glb_menu/e_smenu_under_off.gif) no-repeat left top
+}
+UL#sNavi LI A.third_under:hover {
+	BACKGROUND: url(../common_images/glb_menu/e_smenu_under_on.gif) no-repeat left top
+}
+.third_two {
+	LINE-HEIGHT: 14px !important; TEXT-INDENT: 0px !important; WIDTH: 168px; BACKGROUND: none transparent scroll repeat 0% 0%
+}
+HTML:first-child .third_two {
+	WIDTH: 190px
+}
+.third_two A {
+	PADDING-BOTTOM: 5px; PADDING-LEFT: 1.8em; WIDTH: 100%; PADDING-RIGHT: 0px; BACKGROUND: url(../common_images/glb_menu/e_smenu02_off.gif) no-repeat left top; HEIGHT: 100%; PADDING-TOP: 5px
+}
+.third_two A:hover {
+	BACKGROUND: url(../common_images/glb_menu/e_smenu02_on.gif) no-repeat left top
+}
+LI.third_two_act {
+	PADDING-BOTTOM: 5px; LINE-HEIGHT: 14px !important; TEXT-INDENT: -3px !important; PADDING-LEFT: 1.8em; PADDING-RIGHT: 0px; BACKGROUND: url(../common_images/glb_menu/e_smenu02_in.gif) no-repeat left top; PADDING-TOP: 5px
+}
+LI.third_two_visit {
+	PADDING-BOTTOM: 5px; LINE-HEIGHT: 14px !important; TEXT-INDENT: 0px !important; PADDING-LEFT: 1.8em; PADDING-RIGHT: 0px; BACKGROUND: url(../common_images/glb_menu/e_smenu02_act.gif) no-repeat left top; COLOR: #333333; PADDING-TOP: 5px
+}
+UL#sNavi LI A.third_two_under {
+	PADDING-BOTTOM: 5px; LINE-HEIGHT: 14px !important; TEXT-INDENT: -3px !important; PADDING-LEFT: 1.8em; WIDTH: 167px; PADDING-RIGHT: 0px; BACKGROUND: url(../common_images/glb_menu/e_smenu02_under_off.gif) no-repeat left top; HEIGHT: 100%; PADDING-TOP: 5px
+}
+UL#sNavi LI A.third_two_under:hover {
+	BACKGROUND: url(../common_images/glb_menu/e_smenu02_under_on.gif) no-repeat left top
+}
+UL#sNavi_fourth {
+	MARGIN-BOTTOM: 0px
+}
+UL#sNavi_fourth LI {
+	LINE-HEIGHT: 22px; TEXT-INDENT: 2.3em; DISPLAY: block; MARGIN-BOTTOM: 0px; BACKGROUND: url(../common_images/glb_menu/e_smenu_03_in.gif) no-repeat left top; COLOR: #333333
+}
+UL#sNavi_fourth LI.fourth_visit {
+	BACKGROUND: url(../common_images/glb_menu/e_smenu_03_act.gif) no-repeat left top
+}
+#sNavi_fourth LI A {
+	DISPLAY: block; BACKGROUND: url(../common_images/glb_menu/e_smenu_03_off.gif) no-repeat left top; COLOR: #007ed0; FONT-WEIGHT: normal; TEXT-DECORATION: underline
+}
+#sNavi_fourth LI A:hover {
+	DISPLAY: block; BACKGROUND: url(../common_images/glb_menu/e_smenu_03_on.gif) no-repeat left top; TEXT-DECORATION: none
+}
+UL#sNavi_fourth02 {
+	MARGIN: 0px 0px -5px -1.8em
+}
+UL#sNavi_fourth02 LI {
+	LINE-HEIGHT: 22px; TEXT-INDENT: 2.3em; DISPLAY: block; MARGIN-BOTTOM: 0px; BACKGROUND: url(../common_images/glb_menu/e_smenu_03_in.gif) no-repeat left top; COLOR: #333333
+}
+UL#sNavi_fourth02 LI.fourth_visit {
+	BACKGROUND: url(../common_images/glb_menu/e_smenu_03_act.gif) no-repeat left top
+}
+#sNavi_fourth02 LI A {
+	DISPLAY: block; BACKGROUND: url(../common_images/glb_menu/e_smenu_03_off.gif) no-repeat left top; COLOR: #007ed0; FONT-WEIGHT: normal; TEXT-DECORATION: underline
+}
+#sNavi_fourth02 LI A:hover {
+	DISPLAY: block; BACKGROUND: url(../common_images/glb_menu/e_smenu_03_on.gif) no-repeat left top; TEXT-DECORATION: none
+}
+UL#sNavi LI A.fourth_under {
+	BACKGROUND: url(../common_images/glb_menu/e_smenu_03_under_off.gif) no-repeat left top
+}
+UL#sNavi LI A.fourth_under:hover {
+	BACKGROUND: url(../common_images/glb_menu/e_smenu_03_under_on.gif) no-repeat left top
+}
+.fourth_two {
+	LINE-HEIGHT: 14px !important; TEXT-INDENT: 0px !important; WIDTH: 161px; BACKGROUND: none transparent scroll repeat 0% 0%
+}
+.fourth_two A {
+	PADDING-BOTTOM: 5px; PADDING-LEFT: 2.3em; WIDTH: 100%; PADDING-RIGHT: 0px; BACKGROUND: url(../common_images/glb_menu/e_smenu_03_02_off.gif) no-repeat left top; HEIGHT: 100%; PADDING-TOP: 5px
+}
+.fourth_two A:hover {
+	BACKGROUND: url(../common_images/glb_menu/e_smenu_03_02_on.gif) no-repeat left top
+}
+.fourth_two_act {
+	PADDING-BOTTOM: 5px; LINE-HEIGHT: 14px !important; TEXT-INDENT: 0px !important; PADDING-LEFT: 2.3em; PADDING-RIGHT: 0px; BACKGROUND: url(../common_images/glb_menu/e_smenu_03_02_in.gif) no-repeat left top; PADDING-TOP: 5px
+}
+.fourth_two_visit {
+	PADDING-BOTTOM: 5px; LINE-HEIGHT: 14px !important; TEXT-INDENT: 0px !important; PADDING-LEFT: 2.3em; PADDING-RIGHT: 0px; BACKGROUND: url(../common_images/glb_menu/e_smenu_03_02_act.gif) no-repeat left top; COLOR: #333333; PADDING-TOP: 5px
+}
+UL#sNavi_fourth_two {
+	MARGIN-BOTTOM: 0px
+}
+UL#sNavi_fourth_two LI {
+	PADDING-BOTTOM: 5px; LINE-HEIGHT: 14px; TEXT-INDENT: 0px; PADDING-LEFT: 2.3em; WIDTH: 161px; PADDING-RIGHT: 0px; DISPLAY: block; MARGIN-BOTTOM: 0px; BACKGROUND: url(../common_images/glb_menu/e_smenu_03_02_act.gif) no-repeat left top; COLOR: #333333; PADDING-TOP: 5px
+}
+UL#sNavi_fifth {
+	MARGIN-BOTTOM: 0px
+}
+UL#sNavi_fifth LI {
+	LINE-HEIGHT: 22px; TEXT-INDENT: 2.6em; DISPLAY: block; MARGIN-BOTTOM: 0px; BACKGROUND: url(../common_images/glb_menu/e_smenu_04_act.gif) no-repeat left top; COLOR: #333333
+}
+UL#sNavi_fifth LI A {
+	DISPLAY: block; BACKGROUND: url(../common_images/glb_menu/e_smenu_04_off.gif) no-repeat left top; COLOR: #007ed0; FONT-WEIGHT: normal; TEXT-DECORATION: underline
+}
+UL#sNavi_fifth LI A:hover {
+	DISPLAY: block; BACKGROUND: url(../common_images/glb_menu/e_smenu_04_on.gif) no-repeat left top; TEXT-DECORATION: none
+}
+LI.fifth_two {
+	LINE-HEIGHT: 14px !important; TEXT-INDENT: 0px !important; BACKGROUND: none transparent scroll repeat 0% 0%
+}
+LI.fifth_two A {
+	PADDING-BOTTOM: 5px; PADDING-LEFT: 2.6em; WIDTH: 159px; PADDING-RIGHT: 0px; BACKGROUND: url(../common_images/glb_menu/e_smenu_04_02_off.gif) no-repeat left top; HEIGHT: 100%; PADDING-TOP: 5px
+}
+LI.fifth_two A:hover {
+	BACKGROUND: url(../common_images/glb_menu/e_smenu_04_02_on.gif) no-repeat left top
+}
+.fifth_two_visit {
+	PADDING-BOTTOM: 5px; LINE-HEIGHT: 14px !important; TEXT-INDENT: 0px !important; PADDING-LEFT: 2.6em; PADDING-RIGHT: 0px; BACKGROUND: url(../common_images/glb_menu/e_smenu_04_02_act.gif) no-repeat left top; COLOR: #333333; PADDING-TOP: 5px
+}
+#bnBox {
+	MARGIN-TOP: 10px
+}
+#bnBox IMG {
+	MARGIN-BOTTOM: 6px
+}
+#contents #main .text_box {
+	MARGIN-TOP: -5px
+}
+#contents #main .text_box P {
+	LINE-HEIGHT: 1.4em; MARGIN: 0px 10px 10px 20px; FONT-SIZE: 0.8em
+}
+#contents #topBg #main #text_box P {
+	LINE-HEIGHT: 1.4em; FONT-SIZE: 0.8em
+}
+#contents #main .text_box H5 {
+	BACKGROUND-IMAGE: url(../common_images/e_listHeard_f01.jpg); PADDING-LEFT: 11px; BACKGROUND-REPEAT: no-repeat; BACKGROUND-POSITION: left 0.5em
+}
+#contents #main .text_box DL {
+	MARGIN: 0px 10px 10px 20px
+}
+#contents #main .text_box DT {
+	FONT-WEIGHT: bold
+}
+#contents #main .text_box DD {
+	MARGIN-LEFT: 1em
+}
+#contents #main .text_box DL.other_type DD {
+	MARGIN-LEFT: 0px
+}
+#contents #main .text_box DL.other_type02 DD {
+	MARGIN-LEFT: 1.2em
+}
+#contents #main .text_box DL.other_type02 IMG {
+	MARGIN-RIGHT: 0.2em
+}
+#contents #main .text_box UL {
+	MARGIN: 0px 10px 10px 20px
+}
+#contents #main .text_box UL LI {
+	LINE-HEIGHT: 160%; LIST-STYLE-TYPE: disc; MARGIN-LEFT: 1.5em
+}
+#contents #main .text_box UL.kome LI {
+	LIST-STYLE-TYPE: none; MARGIN-LEFT: 1em
+}
+#contents #main .text_box OL {
+	MARGIN: 0px 0px 10px 20px
+}
+#contents #main DIV.text_box OL LI {
+	LINE-HEIGHT: 160%; LIST-STYLE-TYPE: decimal; MARGIN-LEFT: 2em
+}
+#contents #main .text_box OL LI OL LI {
+	LIST-STYLE-TYPE: lower-alpha; MARGIN-LEFT: 1em
+}
+DIV.text_box TABLE {
+	BACKGROUND-COLOR: #dde5fc; MARGIN: 0px auto 5px 20px; WIDTH: 544px
+}
+DIV.text_box TABLE TH {
+	PADDING-BOTTOM: 3px; BACKGROUND-COLOR: #f7f8fd; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; VERTICAL-ALIGN: top; FONT-WEIGHT: normal; PADDING-TOP: 3px
+}
+DIV.text_box TABLE TH.art_post_type {
+	WIDTH: 20% !important
+}
+DIV.text_box TABLE TD {
+	TEXT-ALIGN: center; PADDING-BOTTOM: 3px; LINE-HEIGHT: 1.2em; BACKGROUND-COLOR: #ffffff; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; PADDING-TOP: 3px
+}
+DIV.text_box TABLE.type02 {
+	BACKGROUND-COLOR: #dde5fc
+}
+DIV.text_box TABLE.type02 TH {
+	TEXT-ALIGN: left; BACKGROUND-COLOR: #f7f8fd; FONT-WEIGHT: normal
+}
+DIV.text_box TABLE.type02 TD {
+	TEXT-ALIGN: left; PADDING-BOTTOM: 3px; LINE-HEIGHT: 1.2em; BACKGROUND-COLOR: #ffffff; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; PADDING-TOP: 3px
+}
+DIV.text_box TABLE.type02B {
+	BACKGROUND-COLOR: #dde5fc; WIDTH: 100%
+}
+DIV.text_box TABLE.type02B TH {
+	TEXT-ALIGN: center; PADDING-BOTTOM: 3px; BACKGROUND-COLOR: #f7f8fd; PADDING-LEFT: 3px; PADDING-RIGHT: 3px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal; PADDING-TOP: 3px
+}
+DIV.text_box TABLE.type02B TD {
+	TEXT-ALIGN: left; PADDING-BOTTOM: 3px; LINE-HEIGHT: 1.2em; BACKGROUND-COLOR: #ffffff; PADDING-LEFT: 3px; PADDING-RIGHT: 3px; PADDING-TOP: 3px
+}
+DIV.text_box TABLE.type03 {
+	BACKGROUND-COLOR: #dde5fc; MARGIN-TOP: 10px; WIDTH: 100%
+}
+DIV.text_box TABLE.type03 TH {
+	PADDING-BOTTOM: 3px; BACKGROUND-COLOR: #f7f8fd; PADDING-LEFT: 3px; WIDTH: 25%; PADDING-RIGHT: 3px; FONT-WEIGHT: normal; PADDING-TOP: 3px
+}
+DIV.text_box TABLE.type03 TD {
+	PADDING-BOTTOM: 3px; LINE-HEIGHT: 1.2em; BACKGROUND-COLOR: #ffffff; PADDING-LEFT: 3px; PADDING-RIGHT: 3px; PADDING-TOP: 3px
+}
+TABLE.img_box {
+	PADDING-BOTTOM: 0px; MARGIN: 0px 0px 10px 40px; PADDING-LEFT: 0px; WIDTH: 496px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+TABLE.img_box IMG {
+	PADDING-BOTTOM: 1px; PADDING-LEFT: 1px; PADDING-RIGHT: 1px; BACKGROUND: #bababa; PADDING-TOP: 1px
+}
+TABLE.img_box TD {
+	TEXT-ALIGN: center; MARGIN: 0px; VERTICAL-ALIGN: top; PADDING-TOP: 10px
+}
+TABLE.img_box P {
+	MARGIN: 5px 0px 0px
+}
+DIV.img_box {
+	PADDING-BOTTOM: 0px; MARGIN: 0px 0px 15px 10px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+DIV.img_box P {
+	MARGIN: 0px 10px 5px 1em
+}
+DIV.btn_box {
+	TEXT-ALIGN: right; MARGIN: 0px 0px 15px; PADDING-RIGHT: 10px
+}
+#contents #main .listBoxA {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+#contents #main .listBoxA TABLE {
+	WIDTH: 544px
+}
+#contents #main .listBoxA TD {
+	PADDING-BOTTOM: 3px; PADDING-LEFT: 3px; PADDING-RIGHT: 3px; VERTICAL-ALIGN: top; PADDING-TOP: 3px
+}
+#contents #main .listBoxA UL {
+	PADDING-BOTTOM: 0px; MARGIN: 0px 0px 20px 20px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+#contents #main .listBoxA UL LI {
+	PADDING-LEFT: 14px; BACKGROUND: url(../common_images/e_allow_yellow.gif) no-repeat left 0.4em; FONT-SIZE: 0.8em
+}
+#contents #main .listBoxA OL {
+	PADDING-BOTTOM: 0px; MARGIN: 0px 0px 20px 20px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+#contents #main .listBoxA OL LI {
+	MARGIN: 0px 10px 10px 20px
+}
+#contents #main .listBoxA P {
+	LINE-HEIGHT: 130%; MARGIN: 0px 10px 7px 20px; FONT-SIZE: 0.8em
+}
+#contents #main .listBoxA DL {
+	PADDING-BOTTOM: 0px; MARGIN: 0px 0px 20px 5px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+#contents #main .listBoxA DT {
+	MARGIN-BOTTOM: 0.5em; FONT-WEIGHT: bold
+}
+#contents #main .listBoxA DT A {
+	LINE-HEIGHT: 1.5em; PADDING-LEFT: 14px; BACKGROUND: url(../common_images/e_allow_yellow.gif) no-repeat 0px 0.1em; MARGIN-LEFT: 20px; FONT-WEIGHT: normal
+}
+#contents #main .listBoxA DT A.listTypeFolder {
+	LINE-HEIGHT: 1.5em; PADDING-LEFT: 18px; BACKGROUND: url(../common_images/e_brank_icon.gif) no-repeat 0px 0.1em; MARGIN-LEFT: 16px; FONT-WEIGHT: normal
+}
+#contents #main .listBoxA DD {
+	MARGIN-BOTTOM: 1em; MARGIN-LEFT: 1.5em
+}
+#contents #main2 .listBoxA {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+#contents #main2 .listBoxA TD UL LI {
+	PADDING-LEFT: 14px; BACKGROUND: url(../common_images/e_allow_yellow.gif) no-repeat left 0.4em
+}
+#contents #main2 .listBoxA TABLE {
+	WIDTH: 768px
+}
+#contents #main2 .listBoxA TD {
+	PADDING-BOTTOM: 3px; PADDING-LEFT: 3px; PADDING-RIGHT: 3px; VERTICAL-ALIGN: top; PADDING-TOP: 3px
+}
+TABLE.service_layout {
+	PADDING-BOTTOM: 0px; MARGIN: 0px 0px 10px 20px; PADDING-LEFT: 0px; WIDTH: 544px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+TABLE.service_layout IMG {
+	BORDER-BOTTOM: #bababa 1px solid; BORDER-LEFT: #bababa 1px solid; BORDER-TOP: #bababa 1px solid; BORDER-RIGHT: #bababa 1px solid
+}
+TABLE.service_layout02 {
+	PADDING-BOTTOM: 0px; MARGIN: 0px 0px 10px 20px; PADDING-LEFT: 0px; WIDTH: 544px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+TABLE.service_layout TD {
+	TEXT-ALIGN: left; PADDING-BOTTOM: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; VERTICAL-ALIGN: top; PADDING-TOP: 0px
+}
+TABLE.service_layout P {
+	MARGIN: 0px 10px 10px
+}
+TABLE.service_layout IMG {
+	MARGIN: 0px 10px 10px 0px
+}
+TABLE.service_layout DL {
+	MARGIN: 0px 10px 10px
+}
+TABLE.service_layout DT {
+	FONT-WEIGHT: bold
+}
+TABLE.service_layout DD {
+	MARGIN-LEFT: 1em
+}
+DIV#pop_page {
+	TEXT-ALIGN: center; WIDTH: 520px; HEIGHT: 480px
+}
+#pop_page IMG {
+	MARGIN: 20px
+}
+DIV#pop_page DIV#access {
+	TEXT-ALIGN: left; LINE-HEIGHT: 1.1em; MARGIN: -10px 20px 16px; WIDTH: 480px
+}
+DIV#pop_page TABLE#address {
+	LINE-HEIGHT: 1.1em; MARGIN: 0px auto -3px
+}
+TABLE#address TD {
+	TEXT-ALIGN: left
+}
+TABLE.type01 {
+	BACKGROUND-COLOR: #dde5fc; MARGIN: 0px auto 15px 20px; WIDTH: 530px
+}
+TABLE.type01 TH {
+	TEXT-ALIGN: center; PADDING-BOTTOM: 3px; BACKGROUND-COLOR: #f7f8fd; PADDING-LEFT: 3px; PADDING-RIGHT: 3px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal; PADDING-TOP: 3px
+}
+TABLE.type01 TD {
+	TEXT-ALIGN: left; PADDING-BOTTOM: 3px; LINE-HEIGHT: 1.2em; BACKGROUND-COLOR: #ffffff; PADDING-LEFT: 3px; PADDING-RIGHT: 3px; PADDING-TOP: 3px
+}
+.td20 TD {
+	WIDTH: 20%
+}
+.td25 TD {
+	WIDTH: 25%
+}
+.td33 TD {
+	WIDTH: 33%
+}
+.td50 TD {
+	WIDTH: 50%
+}
+.th25 TH {
+	WIDTH: 25%
+}
+.th30 TH {
+	WIDTH: 30%
+}
+.th35 TH {
+	WIDTH: 35%
+}
+.th40 TH {
+	WIDTH: 40%
+}
+.th45 TH {
+	WIDTH: 45%
+}
+LI.yellow_arrow {
+	PADDING-LEFT: 14px; BACKGROUND: url(../common_images/e_allow_yellow.gif) no-repeat left 0.3em
+}
+A.yellow_arrow {
+	LINE-HEIGHT: 1.5em; PADDING-LEFT: 14px; BACKGROUND: url(../common_images/e_allow_yellow.gif) no-repeat 0px 0.1em
+}
+.detail {
+	PADDING-LEFT: 15px; BACKGROUND: url(../service/common_images/detail_icon.gif) no-repeat
+}
+DIV.text_box UL.listTypePdf {
+	PADDING-BOTTOM: 0px; LIST-STYLE-TYPE: none; MARGIN: 0px 0px 20px 20px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+DIV.text_box UL.listTypePdf LI {
+	LINE-HEIGHT: 2em; LIST-STYLE-TYPE: none; MARGIN: 0px 0px 0px 10px; PADDING-LEFT: 20px; BACKGROUND: url(../common_images/e_pdf_mini.gif) no-repeat 0px 0.3em
+}
+DIV.text_box UL.listTypeFolder {
+	LIST-STYLE-TYPE: none
+}
+DIV.text_box UL.listTypeFolder LI {
+	LINE-HEIGHT: 2em; LIST-STYLE-TYPE: none; PADDING-LEFT: 17px; BACKGROUND: url(../common_images/e_brank_icon.gif) no-repeat 0px 0.1em; FONT-WEIGHT: normal
+}
+DIV.text_box UL.listTypeSquare {
+	PADDING-BOTTOM: 0px; MARGIN: 0px 0px 10px 20px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+DIV.text_box UL.listTypeSquare LI {
+	LIST-STYLE-TYPE: square; MARGIN: 0px 0px 0px 1.5em; BACKGROUND: url(none)
+}
+DIV.text_box H5.h5HeadNon {
+	BACKGROUND-IMAGE: none; MARGIN: 0px 10px 7px 20px; PADDING-LEFT: 0px
+}
+DIV.text_box H6.h6TypeH5 {
+	BACKGROUND-IMAGE: url(../common_images/e_listHeard_f01.jpg); MARGIN: 0px 10px 7px 20px; PADDING-LEFT: 11px; BACKGROUND-REPEAT: no-repeat; BACKGROUND-POSITION: left 0.5em
+}
+.td14 TD {
+	WIDTH: 14%
+}
+TD#main2 {
+	PADDING-BOTTOM: 0px; PADDING-LEFT: 15px; WIDTH: 770px; PADDING-RIGHT: 15px; VERTICAL-ALIGN: top; PADDING-TOP: 0px
+}
+TABLE#outline {
+	BACKGROUND-COLOR: #dde5fc; MARGIN: 0px 0px 10px 30px; WIDTH: 505px
+}
+TABLE#outline TH {
+	TEXT-ALIGN: left; PADDING-BOTTOM: 3px; BACKGROUND-COLOR: #f7f8fd; PADDING-LEFT: 5px; WIDTH: 25%; PADDING-RIGHT: 5px; WHITE-SPACE: nowrap; FONT-SIZE: 0.8em; VERTICAL-ALIGN: top; FONT-WEIGHT: normal; PADDING-TOP: 3px
+}
+TABLE#outline TD {
+	PADDING-BOTTOM: 3px; BACKGROUND-COLOR: #ffffff; PADDING-LEFT: 5px; PADDING-RIGHT: 5px; FONT-SIZE: 0.8em; VERTICAL-ALIGN: top; PADDING-TOP: 3px
+}
+#contents #main .boxTypeA {
+	BORDER-BOTTOM: #6699ff 1px solid; BORDER-LEFT: #6699ff 1px solid; PADDING-BOTTOM: 10px; MARGIN: 10px 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; BORDER-TOP: #6699ff 1px solid; BORDER-RIGHT: #6699ff 1px solid; PADDING-TOP: 0px
+}
+#contents #main .boxTypeA H5 {
+	PADDING-BOTTOM: 3px; BACKGROUND-COLOR: #b3cbff; MARGIN: 0px 0px 10px; PADDING-LEFT: 15px; PADDING-RIGHT: 15px; PADDING-TOP: 3px
+}
+#contents #main .text_box LI {
+	FONT-SIZE: 0.8em
+}
+#contents #main2 .text_box {
+	MARGIN-TOP: 15px
+}
+#contents #main2 .text_box P {
+	LINE-HEIGHT: 1.4em; MARGIN: 0px 10px 10px 20px; FONT-SIZE: 0.8em
+}
+#contents #main2 .text_box OL {
+	
+}
+#contents #main2 DIV.text_box OL LI {
+	LINE-HEIGHT: 1.4em; LIST-STYLE-TYPE: decimal; MARGIN-LEFT: 25px; FONT-SIZE: 0.8em; MARGIN-RIGHT: 10px
+}
+#contents #main2 .text_box UL {
+	MARGIN: 0px 10px 10px 20px
+}
+#contents #main2 .text_box UL LI {
+	LINE-HEIGHT: 160%; LIST-STYLE-TYPE: disc; MARGIN-LEFT: 1.5em
+}
+#contents #main .boxTypeA P {
+	PADDING-BOTTOM: 0px; MARGIN: 10px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+#contents #main2 .listBoxA TD H3 {
+	TEXT-ALIGN: left; PADDING-BOTTOM: 9px; LINE-HEIGHT: 110%; PADDING-LEFT: 20px; PADDING-RIGHT: 10px; FONT-FAMILY: "Times New Roman", Times, serif; MARGIN-BOTTOM: 0px; BACKGROUND: url(../common_images/e_h4_title.gif) no-repeat left 0.1em; COLOR: #000000; FONT-SIZE: 100%; VERTICAL-ALIGN: top; PADDING-TOP: 7px
+}
+#contents #main2 .listBoxA TD UL {
+	MARGIN-TOP: 0px; MARGIN-BOTTOM: 10px; MARGIN-LEFT: 20px; FONT-SIZE: 0.8em
+}
+#contents #main2 .listBoxA TD UL UL {
+	MARGIN-TOP: 0px; MARGIN-BOTTOM: 10px; MARGIN-LEFT: 20px; FONT-SIZE: 1em
+}
