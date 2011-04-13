@@ -23,15 +23,18 @@
       <UL>
         <LI>
         <img src="images/cn.png">
-        <asp:LinkButton ID="lbCN" runat="server" meta:resourcekey="lbCNResource1" OnClick="lbCN_Click">中国</asp:LinkButton>| 
+        <asp:LinkButton ID="lbCN" runat="server" meta:resourcekey="lbCNResource1" 
+                OnClick="lbCN_Click" Text="中国"></asp:LinkButton>| 
         </LI>
         <LI>
         <img src="images/jp.png">
-        <asp:LinkButton ID="lbJP" runat="server" meta:resourcekey="lbJPResource1" OnClick="lbJP_Click">日本</asp:LinkButton> |
+        <asp:LinkButton ID="lbJP" runat="server" meta:resourcekey="lbJPResource1" 
+                OnClick="lbJP_Click" Text="日本"></asp:LinkButton> |
         </LI>
         <LI>
         <img src="images/us.png">
-        <asp:LinkButton ID="lbUSA" runat="server" meta:resourcekey="lbUSAResource1" OnClick="lbUSA_Click">美国</asp:LinkButton>
+        <asp:LinkButton ID="lbUSA" runat="server" meta:resourcekey="lbUSAResource1" 
+                OnClick="lbUSA_Click" Text="美国"></asp:LinkButton>
         </LI></UL><!-- InstanceEndEditable --></TD></TR></TBODY></TABLE></DIV>
 
         <DIV id="global_bg">

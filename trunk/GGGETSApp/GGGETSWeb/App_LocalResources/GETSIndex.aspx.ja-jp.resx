@@ -117,17 +117,8 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Button1Resource1.Text" xml:space="preserve">
-    <value>中文</value>
-  </data>
-  <data name="Button1Resource1.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="Button2Resource1.Text" xml:space="preserve">
     <value>英文</value>
-  </data>
-  <data name="Button2Resource1.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="lbCNResource1.Text" xml:space="preserve">
     <value>中国</value>
@@ -142,31 +133,31 @@
     <value />
   </data>
   <data name="lblCaseStudyResource1.Text" xml:space="preserve">
-    <value>服务费税表</value>
+    <value>ケーススタディ</value>
   </data>
   <data name="lblCaseStudyResource1.ToolTip" xml:space="preserve">
     <value />
   </data>
   <data name="lblCompanyResource1.Text" xml:space="preserve">
-    <value>关于我们</value>
+    <value>会社概要</value>
   </data>
   <data name="lblCompanyResource1.ToolTip" xml:space="preserve">
     <value />
   </data>
   <data name="lblHomeResource1.Text" xml:space="preserve">
-    <value>首页</value>
+    <value>ホーム</value>
   </data>
   <data name="lblHomeResource1.ToolTip" xml:space="preserve">
     <value />
   </data>
   <data name="lblNetworkResource1.Text" xml:space="preserve">
-    <value>营业网络</value>
+    <value>ネットワーク</value>
   </data>
   <data name="lblNetworkResource1.ToolTip" xml:space="preserve">
     <value />
   </data>
   <data name="lblNoticeResource1.Text" xml:space="preserve">
-    <value>通知</value>
+    <value>通知してください</value>
   </data>
   <data name="lblNoticeResource1.ToolTip" xml:space="preserve">
     <value />
@@ -178,18 +169,18 @@
     <value />
   </data>
   <data name="lblServicesResource1.Text" xml:space="preserve">
-    <value>服务</value>
+    <value>サービス</value>
   </data>
   <data name="lblServicesResource1.ToolTip" xml:space="preserve">
     <value />
   </data>
   <data name="lbUSAResource1.Text" xml:space="preserve">
-    <value>美国</value>
+    <value>ワシントン</value>
   </data>
   <data name="lbUSAResource1.ToolTip" xml:space="preserve">
     <value />
   </data>
   <data name="PageResource1.Title" xml:space="preserve">
-    <value>国家快递欢迎您</value>
+    <value>GETS!あなたを歓迎します</value>
   </data>
 </root>
