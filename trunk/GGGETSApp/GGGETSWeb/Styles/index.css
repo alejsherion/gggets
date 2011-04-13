@@ -1,0 +1,189 @@
+@charset "Shift_JIS";					/*使用する文字コード*/
+
+
+
+/* -----------------------------------
+ main_image
+----------------------------------- */
+table#main_image {
+	background: url(../images/main_img_bg.jpg) repeat-x left top ;
+	width: 100%;
+	height: 263px;
+	margin: 0 auto;
+	padding: 0;
+	text-align: center;
+}
+table#main_image td {
+	vertical-align: top;
+}
+div#mainFlash {
+	width: 800px;
+	height: 260px;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 0;
+	background-image: url(../fla/top.jpg);
+	background-repeat: no-repeat;
+	text-align: right;
+	vertical-align: top;
+}
+
+/* -----------------------------------
+ contents
+----------------------------------- */
+/* -- 1段目 -- */
+table#top_contents {
+	background: #FFFFFF;
+	width: 800px;
+	margin: 0 auto;
+	padding: 0;
+}
+table#top_contents td {
+    vertical-align: top;
+}
+table#category {
+    width: 770px;
+	margin: 15px auto 0;
+	padding: 0;
+}
+table#category td.main {
+    width: 247px;
+}
+table#category td.bg { background: url(../images/section_bg.gif) no-repeat left bottom; 
+}
+table#category h2 {
+   margin-bottom: 3px;
+}
+table#category h3 {
+   background: url(../images/section_h3_bg.gif) no-repeat left top;
+   font-size: small;
+   text-indent: 1.6em;
+}
+table#category ul {
+	margin: 5px 0px 10px 20px;
+	padding: 0;
+}
+table#category ul li {
+	background: url(../common_images/allow_yellow.gif) no-repeat left 0.3em;
+	text-indent: 1.2em;
+}
+table#other {
+    width: 100%
+}
+table#category ul.type02 {
+	margin: 5px 10px 10px;
+	padding: 0;
+}
+table#category .outside {
+	background: url(../service/common_images/detail_icon.gif) no-repeat left;
+	text-indent: 1em;
+	margin-left:1px;
+}
+table#category ul.type03 {
+	margin: 0 10px;
+	padding-left: 10px;
+}
+table#category ul.type03_b {
+	margin: 0 10px 10px;
+	padding-left: 10px;
+}
+.margin_b10 { margin-bottom: 10px;}
+
+/* -- 2段目 -- */
+table#topic {
+    width: 770px;
+	margin: 15px auto 0;
+	padding: 0;
+}
+table#topic dl {
+    margin: 10px 20px;
+}
+table#topic dt {
+    background: url(../common_images/allow_blue.gif) no-repeat left;
+	text-indent: 1em;
+    font-weight: bold;
+}
+table#topic a {
+    font-weight: normal;
+}
+table#topic dd {
+    margin-bottom: 10px;
+}
+
+
+/* -- 3段目 -- */
+table#biz_info {
+    width: 770px;
+	margin: 15px auto 0;
+	padding: 0;
+	border: solid 1px #C6C6C6;
+}
+table#biz_info td{
+	padding: 8px;
+}
+table#biz_info img {
+    float: left;
+	margin-right: 10px;
+}
+table#biz_info p {
+    line-height: 1.3em;
+	margin-top: 5px;
+}
+
+
+
+/* -- バナーの指定 -- */
+#bnBox_top {
+	width: 226px;
+	background: #D9EBF7;
+	padding: 10px;
+}
+#bnBox_top img.bt { margin-bottom: 5px; 
+}
+
+
+/* -- 追加 -- */
+table#category td.bgw {
+	background: url(../images/section_bg_w.gif) no-repeat left bottom;
+	margin: 0px;
+	padding: 0px;
+}
+
+
+table#category dl {
+	margin: 0px 0px 10px 1em;
+	padding: 0;
+}
+
+table#category dl dt {
+	text-indent: 0em;
+	margin-top: 0px;
+	background-image: url(../common_images/allow_yellow.gif);
+	background-repeat: no-repeat;
+	background-position: left 0.2em;
+	display: block;
+	padding-left: 14px;
+	line-height: 120%;
+	margin-right: 0px;
+	margin-bottom: 0.3em;
+	margin-left: 0px;
+}
+
+table#category dl dd {
+	margin-left: 1.5em;
+	line-height: 110%;
+	margin-top: 0em;
+	margin-bottom: 0.3em;
+	margin-right: 0em;
+	font-size: 83%;
+}
+
+td.bgw table {
+	margin: 0px;
+	padding: 0px;
+	border-top-style: none;
+	border-right-style: none;
+	border-bottom-style: none;
+	border-left-style: none;
+	width: 100%;
+}
