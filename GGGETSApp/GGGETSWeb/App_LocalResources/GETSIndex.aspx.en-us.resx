@@ -118,66 +118,66 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="lbCNResource1.Text" xml:space="preserve">
-    <value>中国</value>
+    <value>China</value>
   </data>
   <data name="lbCNResource1.ToolTip" xml:space="preserve">
     <value />
   </data>
   <data name="lbJPResource1.Text" xml:space="preserve">
-    <value>日本</value>
+    <value>Japan</value>
   </data>
   <data name="lbJPResource1.ToolTip" xml:space="preserve">
     <value />
   </data>
   <data name="lblCaseStudyResource1.Text" xml:space="preserve">
-    <value>ケーススタディ</value>
+    <value>CASE STUDY</value>
   </data>
   <data name="lblCaseStudyResource1.ToolTip" xml:space="preserve">
     <value />
   </data>
   <data name="lblCompanyResource1.Text" xml:space="preserve">
-    <value>会社概要</value>
+    <value>COMPANY INFO</value>
   </data>
   <data name="lblCompanyResource1.ToolTip" xml:space="preserve">
     <value />
   </data>
   <data name="lblHomeResource1.Text" xml:space="preserve">
-    <value>ホーム</value>
+    <value>HOME</value>
   </data>
   <data name="lblHomeResource1.ToolTip" xml:space="preserve">
     <value />
   </data>
   <data name="lblNetworkResource1.Text" xml:space="preserve">
-    <value>ネットワーク</value>
+    <value>NETWORK</value>
   </data>
   <data name="lblNetworkResource1.ToolTip" xml:space="preserve">
     <value />
   </data>
   <data name="lblNoticeResource1.Text" xml:space="preserve">
-    <value>通知してください</value>
+    <value>Notify</value>
   </data>
   <data name="lblNoticeResource1.ToolTip" xml:space="preserve">
     <value />
   </data>
   <data name="lblPolicyResource1.Text" xml:space="preserve">
-    <value>政策</value>
+    <value>Policy</value>
   </data>
   <data name="lblPolicyResource1.ToolTip" xml:space="preserve">
     <value />
   </data>
   <data name="lblServicesResource1.Text" xml:space="preserve">
-    <value>サービス</value>
+    <value>SERVICES</value>
   </data>
   <data name="lblServicesResource1.ToolTip" xml:space="preserve">
     <value />
   </data>
   <data name="lbUSAResource1.Text" xml:space="preserve">
-    <value>ワシントン</value>
+    <value>USA</value>
   </data>
   <data name="lbUSAResource1.ToolTip" xml:space="preserve">
     <value />
   </data>
   <data name="PageResource1.Title" xml:space="preserve">
-    <value />
+    <value>Welcome To GETS</value>
   </data>
 </root>
