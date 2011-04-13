@@ -5,11 +5,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
+    <script src="Scripts/jquery-1.4.1.min.js" type="text/javascript"></script>
     <script src="Scripts/navi.js" type="text/javascript"></script>
     <script src="Scripts/swap.js" type="text/javascript"></script>
+    <script src="Scripts/Ad.js" type="text/javascript"></script>
     <link href="Styles/e_common.css" rel="stylesheet" type="text/css" />
     <link href="Styles/e_under.css" rel="stylesheet" type="text/css" />
     <link href="Styles/index.css" rel="stylesheet" type="text/css" />
+    <link href="Styles/Ad.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
     <form id="form1" runat="server">
@@ -69,7 +72,7 @@
                     <asp:Label ID="lblCompany" runat="server" Text="关于我们" 
                         meta:resourcekey="lblCompanyResource1" /></p></A></LI></UL></TD></TR></TBODY></TABLE><DIV></DIV></DIV>
         <!--Flash-->
-        <table id="main_image" summary="マインイメージ" border="0" cellpadding="0" cellspacing="0">
+        <%--<table id="main_image" summary="マインイメージ" border="0" cellpadding="0" cellspacing="0">
         <tbody><tr>
         <td>
         <script src="Scripts/swfobject.js" type="text/javascript"></script>
@@ -81,6 +84,26 @@
             so.write("mainFlash");
         // ]]>
         </script>
+        </td>
+        </tr>
+        </tbody></table>--%>
+        <!--广告-->
+        <table id="main_image" summary="マインイメージ" border="0" cellpadding="0" cellspacing="0">
+        <tbody><tr>
+        <td>
+        <div id="mainFlash">
+        <div class="vouchimg relative">
+			<a title="广告名01" target="_blank" id="picswitch" href="#"><img src="Images/ad/ad01.jpg" width="800px" height="260px" alt="" /></a>
+			<div class="picswitch absolute" style="display:none;">
+                <!-- a标签的title和href需要动态绑定 -->
+			    <a title="广告名01" target="_blank" href="#"><span id="0" picurl="Images/ad/ad01.jpg" class="choose">广告名01</span></a>
+                <a title="广告名02" target="_blank" href="#"><span id="1" picurl="Images/ad/ad02.jpg" class="unchoose">广告名02</span></a>
+			    <a title="广告名03" target="_blank" href="#"><span id="2" picurl="Images/ad/ad03.jpg" class="unchoose">广告名03</span></a>
+                <a title="广告名04" target="_blank" href="#"><span id="3" picurl="Images/ad/ad04.jpg" class="unchoose">广告名04</span></a>
+			    <a title="广告名05" target="_blank" href="#"><span id="4" picurl="Images/ad/ad05.jpg" class="unchoose">广告名05</span></a>
+		    </div>
+        </div>
+        </div>
         </td>
         </tr>
         </tbody></table>

@@ -60,6 +60,11 @@
     <Content Include="App_Themes\logisitc\dataView.css" />
     <Content Include="App_Themes\logisitc\logistic.css" />
     <Content Include="Home.aspx" />
+    <Content Include="Images\ad\ad01.jpg" />
+    <Content Include="Images\ad\ad02.jpg" />
+    <Content Include="Images\ad\ad03.jpg" />
+    <Content Include="Images\ad\ad04.jpg" />
+    <Content Include="Images\ad\ad05.jpg" />
     <Content Include="Images\cn.png" />
     <Content Include="Images\copy.jpg" />
     <Content Include="Images\e_bnr_foot01.jpg" />
@@ -78,9 +83,11 @@
     <Content Include="Images\jp.png" />
     <Content Include="Images\top.swf" />
     <Content Include="Images\us.png" />
+    <Content Include="Scripts\Ad.js" />
     <Content Include="Scripts\navi.js" />
     <Content Include="Scripts\swap.js" />
     <Content Include="Scripts\swfobject.js" />
+    <Content Include="Styles\Ad.css" />
     <Content Include="Styles\e_common.css" />
     <Content Include="Styles\e_under.css" />
     <Content Include="Styles\index.css" />
