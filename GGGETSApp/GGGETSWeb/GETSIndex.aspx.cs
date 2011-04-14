@@ -44,7 +44,9 @@ namespace GGGETSWeb
                 CultureInfo culture = new CultureInfo(Language);
                 Thread.CurrentThread.CurrentUICulture = culture;
             }
+            
             base.InitializeCulture();
+            //ScriptManager.RegisterStartupScript(this, GetType(), "", "BindUrl();", true);//根据国际化绑定对应地址
         }
 
         /// <summary>
