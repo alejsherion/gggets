@@ -180,4 +180,19 @@
   <data name="PageResource1.Title" xml:space="preserve">
     <value>Welcome To GETS</value>
   </data>
+  <data name="HFCaseStudyResource1.Text" xml:space="preserve">
+    <value>Casestudy_USA.aspx</value>
+  </data>
+  <data name="HFCompanyInfoResource1.Text" xml:space="preserve">
+    <value>Companyinfo_USA.aspx</value>
+  </data>
+  <data name="HFHomeResource1.Text" xml:space="preserve">
+    <value>Home_USA.aspx</value>
+  </data>
+  <data name="HFNetworkResource1.Text" xml:space="preserve">
+    <value>Network_USA.aspx</value>
+  </data>
+  <data name="HFServicesResource1.Text" xml:space="preserve">
+    <value>Services_USA.aspx</value>
+  </data>
 </root>

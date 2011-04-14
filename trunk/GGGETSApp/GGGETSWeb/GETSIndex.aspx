@@ -13,6 +13,39 @@
     <link href="Styles/e_under.css" rel="stylesheet" type="text/css" />
     <link href="Styles/index.css" rel="stylesheet" type="text/css" />
     <link href="Styles/Ad.css" rel="stylesheet" type="text/css" />
+    <script>
+        function DynamicAd(path) {
+            debugger;
+            //var frameObj = document.all.GGGETContent;
+            var frameObj = document.getElementById("GGGETContent");
+            if (path == "Home")
+                frameObj.src = document.getElementById('<%= HFHome.ClientID %>').innerHTML;
+            if (path == "Services")
+                frameObj.src = document.getElementById('<%= HFServices.ClientID %>').innerHTML;
+            if (path == "Casestudy")
+                frameObj.src = document.getElementById('<%= HFCaseStudy.ClientID %>').innerHTML;
+            if (path == "Network")
+                frameObj.src = document.getElementById('<%= HFNetwork.ClientID %>').innerHTML;
+            if (path == "CompanyInfo")
+                frameObj.src = document.getElementById('<%= HFCompanyInfo.ClientID %>').innerHTML;
+
+//            if (path.indexOf("Home") >= 0)
+//                $("#main_image").fadeIn(2000); 
+//            else
+//                $("#main_image").fadeOut(2000);
+
+        }
+
+        //根据国家化绑定超链标签
+        function BindUrl() {
+            //debugger;
+            document.getElementById("LinkHome").href = document.getElementById('<%= HFHome.ClientID %>').innerText;
+            document.getElementById("LinkServices").href = document.getElementById('<%= HFServices.ClientID %>').innerText;
+            document.getElementById("LinkCaseStudy").href = document.getElementById('<%= HFCaseStudy.ClientID %>').innerText;
+            document.getElementById("LinkNetwork").href = document.getElementById('<%= HFNetwork.ClientID %>').innerText;
+            document.getElementById("LinkCompanyInfo").href = document.getElementById('<%= HFCompanyInfo.ClientID %>').innerText;
+        }
+    </script>
 </head>
 <body>
     <form id="form1" runat="server">
@@ -46,31 +79,31 @@
           <TR>
             <TD>
               <UL>
-                <LI class="global_margin" title="HOME"><A href="#">
+                <LI class="global_margin" title="HOME">
                 <%--<IMG id="Image9" border="0" name="Image9" alt="HOME" src="Images/e_n_home.jpg" width="155" height="33">--%>
-                <p onmouseover="this.style.color='#FFFFFF'" onmouseout="this.style.color='#fdcb0a'" style="width:140px ; background:#FB0000; border-color: #F55000; color:#fdcb0a; border-style: solid; border-width: 1px; font-size: 0.9em; padding: 5px; float:left">
+                <p onclick="DynamicAd('Home')" onmouseover="this.style.color='#FFFFFF'" onmouseout="this.style.color='#fdcb0a'" style="width:140px ; cursor:pointer; background:#FB0000; border-color: #F55000; color:#fdcb0a; border-style: solid; border-width: 1px; font-size: 0.9em; padding: 5px; float:left">
                     <asp:Label ID="lblHome" runat="server" Text="首页" 
-                        meta:resourcekey="lblHomeResource1" /></p></A></LI>
-                <LI class="global_margin" title="guide"><A href="#">
+                        meta:resourcekey="lblHomeResource1" /></p></LI>
+                <LI class="global_margin" title="guide">
                 <%--<IMG id="Image10" border="0" name="Image10" alt="サービスガイド" src="Images/e_n_services.jpg" width="155" height="33">--%>
-                <p onmouseover="this.style.color='#FFFFFF'" onmouseout="this.style.color='#fdcb0a'" style="width:140px ; background:#FB0000; border-color: #F55000; color:#fdcb0a; border-style: solid; border-width: 1px; font-size: 0.9em; padding: 5px; float:left">
+                <p onclick="DynamicAd('Services')" onmouseover="this.style.color='#FFFFFF'" onmouseout="this.style.color='#fdcb0a'" style="width:140px ; cursor:pointer; background:#FB0000; border-color: #F55000; color:#fdcb0a; border-style: solid; border-width: 1px; font-size: 0.9em; padding: 5px; float:left">
                     <asp:Label ID="lblServices" runat="server" Text="服务" 
-                        meta:resourcekey="lblServicesResource1" /></p></A></LI>
-                <LI class="global_margin" title="cases"><A href="#">
+                        meta:resourcekey="lblServicesResource1" /></p></LI>
+                <LI class="global_margin" title="cases">
                 <%--<IMG id="Image11" border="0" name="Image11" alt="cases" src="Images/e_n_casestudy.jpg" width="155" height="33">--%>
-                <p onmouseover="this.style.color='#FFFFFF'" onmouseout="this.style.color='#fdcb0a'" style="width:145px ; background:#FB0000; border-color: #F55000; color:#fdcb0a; border-style: solid; border-width: 1px; font-size: 0.9em; padding: 5px; float:left">
+                <p onclick="DynamicAd('Casestudy')" onmouseover="this.style.color='#FFFFFF'" onmouseout="this.style.color='#fdcb0a'" style="width:145px ; cursor:pointer; background:#FB0000; border-color: #F55000; color:#fdcb0a; border-style: solid; border-width: 1px; font-size: 0.9em; padding: 5px; float:left">
                     <asp:Label ID="lblCaseStudy" runat="server" Text="服务费税表" 
-                        meta:resourcekey="lblCaseStudyResource1" /></p></A></LI>
-                <LI class="global_margin" title="network"><A href="#">
+                        meta:resourcekey="lblCaseStudyResource1" /></p></LI>
+                <LI class="global_margin" title="network">
                 <%--<IMG id="Image12" border="0" name="Image12" alt="network" src="Images/e_n_network.jpg" width="155" height="33">--%>
-                <p onmouseover="this.style.color='#FFFFFF'" onmouseout="this.style.color='#fdcb0a'" style="width:145px ; background:#FB0000; border-color: #F55000; color:#fdcb0a; border-style: solid; border-width: 1px; font-size: 0.9em; padding: 5px; float:left">
+                <p onclick="DynamicAd('Network')" onmouseover="this.style.color='#FFFFFF'" onmouseout="this.style.color='#fdcb0a'" style="width:145px ; cursor:pointer; background:#FB0000; border-color: #F55000; color:#fdcb0a; border-style: solid; border-width: 1px; font-size: 0.9em; padding: 5px; float:left">
                     <asp:Label ID="lblNetwork" runat="server" Text="营业网络" 
-                        meta:resourcekey="lblNetworkResource1" /></p></A></LI>
-                <LI class="global_margin" title="company"><A href="#">
+                        meta:resourcekey="lblNetworkResource1" /></p></LI>
+                <LI class="global_margin" title="company">
                 <%--<IMG border=0 name=Image13 alt=company src="Images/e_n_company.jpg" width=155 height=33>--%>
-                <p onmouseover="this.style.color='#FFFFFF'" onmouseout="this.style.color='#fdcb0a'" style="width:145px ; background:#FB0000; border-color: #F55000; color:#fdcb0a; border-style: solid; border-width: 1px; font-size: 0.9em; padding: 5px; float:left">
+                <p onclick="DynamicAd('CompanyInfo')" onmouseover="this.style.color='#FFFFFF'" onmouseout="this.style.color='#fdcb0a'" style="width:145px ; cursor:pointer; background:#FB0000; border-color: #F55000; color:#fdcb0a; border-style: solid; border-width: 1px; font-size: 0.9em; padding: 5px; float:left">
                     <asp:Label ID="lblCompany" runat="server" Text="关于我们" 
-                        meta:resourcekey="lblCompanyResource1" /></p></A></LI></UL></TD></TR></TBODY></TABLE><DIV></DIV></DIV>
+                        meta:resourcekey="lblCompanyResource1" /></p></LI></UL></TD></TR></TBODY></TABLE><DIV></DIV></DIV>
         <!--Flash-->
         <%--<table id="main_image" summary="マインイメージ" border="0" cellpadding="0" cellspacing="0">
         <tbody><tr>
@@ -130,6 +163,18 @@
             <p style="font-size: xx-small; color: #808080">Copyright(C) 2011 CHINA INTERNATIONAL GETS CO.,LTD. All rights reserved.</p>
             </TD></TR></TBODY></TABLE>
     </DIV>
+    <!--Tips-->
+    <div style="display:none;">
+    <asp:Label ID="HFHome" runat="server" Text="Companyinfo.aspx" 
+        meta:resourcekey="HFHomeResource1"></asp:Label>
+    <asp:Label ID="HFServices" runat="server" Text="Services.aspx" 
+        meta:resourcekey="HFServicesResource1"></asp:Label>
+    <asp:Label ID="HFCaseStudy" runat="server" Text="Casestudy.aspx" 
+        meta:resourcekey="HFCaseStudyResource1"></asp:Label>
+    <asp:Label ID="HFNetwork" runat="server" Text="Network.aspx" 
+        meta:resourcekey="HFNetworkResource1"></asp:Label>
+    <asp:Label ID="HFCompanyInfo" runat="server" Text="Companyinfo.aspx" 
+        meta:resourcekey="HFCompanyInfoResource1"></asp:Label></div>
     </form>
 </body>
 </html>

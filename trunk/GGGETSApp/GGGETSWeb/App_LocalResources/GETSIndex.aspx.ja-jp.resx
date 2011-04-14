@@ -183,4 +183,19 @@
   <data name="PageResource1.Title" xml:space="preserve">
     <value>GETS!あなたを歓迎します</value>
   </data>
+  <data name="HFCaseStudyResource1.Text" xml:space="preserve">
+    <value>Casestudy_JP.aspx</value>
+  </data>
+  <data name="HFCompanyInfoResource1.Text" xml:space="preserve">
+    <value>Companyinfo_JP.aspx</value>
+  </data>
+  <data name="HFHomeResource1.Text" xml:space="preserve">
+    <value>Home_JP.aspx</value>
+  </data>
+  <data name="HFNetworkResource1.Text" xml:space="preserve">
+    <value>Network_JP.aspx</value>
+  </data>
+  <data name="HFServicesResource1.Text" xml:space="preserve">
+    <value>Services_JP.aspx</value>
+  </data>
 </root>
