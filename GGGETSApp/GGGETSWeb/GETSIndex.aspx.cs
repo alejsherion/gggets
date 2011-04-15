@@ -46,7 +46,7 @@ namespace GGGETSWeb
             }
             
             base.InitializeCulture();
-            //ScriptManager.RegisterStartupScript(this, GetType(), "", "BindUrl();", true);//根据国际化绑定对应地址
+            ScriptManager.RegisterStartupScript(this, GetType(), "", "BindInitUrl();", true);//根据国际化绑定对应地址
         }
 
         /// <summary>

@@ -15,7 +15,7 @@
     <link href="Styles/Ad.css" rel="stylesheet" type="text/css" />
     <script>
         function DynamicAd(path) {
-            debugger;
+            //debugger;
             //var frameObj = document.all.GGGETContent;
             var frameObj = document.getElementById("GGGETContent");
             if (path == "Home")
@@ -33,17 +33,16 @@
 //                $("#main_image").fadeIn(2000); 
 //            else
 //                $("#main_image").fadeOut(2000);
+               if (path.indexOf("Home") == -1)
+                    $("#main_image").hide(); 
 
         }
 
         //根据国家化绑定超链标签
-        function BindUrl() {
+        function BindInitUrl() {
             //debugger;
-            document.getElementById("LinkHome").href = document.getElementById('<%= HFHome.ClientID %>').innerText;
-            document.getElementById("LinkServices").href = document.getElementById('<%= HFServices.ClientID %>').innerText;
-            document.getElementById("LinkCaseStudy").href = document.getElementById('<%= HFCaseStudy.ClientID %>').innerText;
-            document.getElementById("LinkNetwork").href = document.getElementById('<%= HFNetwork.ClientID %>').innerText;
-            document.getElementById("LinkCompanyInfo").href = document.getElementById('<%= HFCompanyInfo.ClientID %>').innerText;
+            var frameObj = document.getElementById("GGGETContent");
+            frameObj.src = document.getElementById('<%= HFHome.ClientID %>').innerHTML;
         }
     </script>
 </head>
