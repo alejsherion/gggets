@@ -37,23 +37,40 @@
         <TR>
           <TD id="main">
             <DIV id="text_box">
-            <H3><IMG alt="Careful handling like a mother cat carries her kitty" src="Images/flash_e_services.jpg" width="640" height="208"></H3>
-            <H4>YAMATO GLOBAL LOGISTICS JAPAN CO.,LTD. INFORMATION</H4>
+            <H4>サービスの紹介</H4>
             <!--内容填充区域-->
-            <P>We have become a member of the Yamato Group, led by the largest 
-            door-to-door parcel delivery company in Japan, and have changed our 
-            corporate name to Yamato Global Logistics Japan Co., Ltd. <BR>We 
-            will develop comprehensive door-to-door transport services, making 
-            use the networks of Yamato Transport Co., Ltd., along with 
-            high-level information systems.</P>
-            <P>Yamato Global Logistics Japan aims to provide the best transport 
-            modes and services, always catering to customer needs, offering 
-            sales support to customers, contributing to customers' logistic 
-            costs reduction and growing together with customers. We would 
-            appreciate your continued patronage.</P>
-            <P>Internet Explorer 7.0(IE 7.0)is not available for browsing this 
-            page.<BR>We are now checking if there are any problem. 
-    <BR></P></DIV><!-- goodsBox end --></TD><!-- right navi start --></TR></TBODY></TABLE>
+    <TABLE id="contents0" border="0" cellSpacing="0" summary="contents" cellPadding="0">
+    <TBODY>
+    <TR>
+    <TD><!-- InstanceBeginEditable name="Main" -->
+    <DIV id="topBg0">
+    <TABLE border="0" cellSpacing="0" summary="company" cellPadding="0">
+        <TBODY>
+        <TR>
+          <TD id="main0">
+            <DIV id="text_box0">
+           <%-- <H3><IMG alt="Careful handling like a mother cat carries her kitty" src="Images/flash_e_services.jpg" width="640" height="208"></H3>--%>
+            <P align="left">
+                高度な情報ネットワークとグローバルネットワーク。多様化する各国顧客のニーズを一早く取り入れ、独自の優れたサービスと、どこにも負けない価格をご提供しています。お客さまの企業活動をバックアップし、コスト削減と収益チャンスの拡大を力強くサポートいたします。インターネットで登録或はお電話1本でご指定の場所に取りに伺います。また、配送中は荷物追跡システムにより、お荷物の輸送状況を管理しております。さまざまなニーズにお応えするため、豊富な商品ラインナップを取り揃えております。</P>
+            <!--内容填充区域-->
+            <H4>サービス内容</H4>
+            <H5>国際航空貨物輸送</H5>
+            <P>輸出様々なご要望にお答えするため各種サービスをご用意しております。また輸出にかかわる他方令関係への対応・集荷・梱包・書類作成・保険の手配など、何でもご相談下さい。輸出貨物混載サービス全世界100都市以上のポイントに当社独自の混載サービスでお届けします。 
+                情報システムによる貨物情報管理の徹底。 他法令関係等様々な内容の貨物にきめ細かく対応いたします。 集荷、梱包、書類作成、保険手配などご対応できます。 
+                危険品その他特殊貨物に関してもご相談ください。 安定した納期を実現いたします。 
+                輸入早く確実にお届けするためお客様のご要望を理解した専門のスタッフが輸入通関の手配、配送をいたします。また必要に応じ一時保管などの関連サービスもご利用いただいております。さらに使いやすく便利にリニューアルしました！世界の主要都市から最短3日間でお届け 
+                GETSの海外現地法人から日本各地へ、 GETSの一貫輸送で、最短3日のお届けを実現します。 日本全国どこでも、最低のパック料金でご提供します 
+                商品パンフレットは、こちらからダウンロードできます。 </P>
+            <H5>通関業</H5>
+                <P>海外から送られてくるすべての貨物は荷受人への配達に先立って 通関が必要となります。 お客様が当社以外の者を通関業者に指定した場合を除いて 
+                    当社は税関その他関係機関に対して 通関のために海外提携代理店からの貨物を提出します。<BR></P></DIV><!-- goodsBox end --></TD><!-- right navi start --></TR></TBODY></TABLE>
+    </DIV>
+    </TD>
+    </TR>
+    </TBODY>
+    </TABLE>
+              </DIV><!-- goodsBox end -->
+            </TD><!-- right navi start --></TR></TBODY></TABLE>
     </DIV>
     </TD>
     </TR>
