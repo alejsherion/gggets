@@ -13,6 +13,16 @@
     <META name="robots" content="ALL"><!-- InstanceBeginEditable name="head" --><!-- InstanceEndEditable -->
     <link href="Styles/e_common.css" rel="stylesheet" type="text/css" />
     <link href="Styles/e_under.css" rel="stylesheet" type="text/css" />
+    <style type="text/css">
+        .style1
+        {
+            height: 30px;
+        }
+        .style2
+        {
+            height: 6px;
+        }
+    </style>
 </head>
 <body>
     <form id="form1" runat="server">
@@ -37,60 +47,53 @@
         <TR>
           <TD id="main">
             <DIV id="text_box">
-            <H3><IMG alt="Careful handling like a mother cat carries her kitty" src="Images/flash_e_company.jpg" width="640" height="208"></H3>
-            <H4>Company Info</H4>
+            <H4>公司信息</H4>
             <!--内容填充区域-->
             <P>
             <table cellspacing="1" cellpadding="0" border="0" width="561" summary="会社情報" id="outline">
               <tbody><tr>
-                <th width="198">Company Name</th>
-                            <td width="360">Yamato Global Logistics Japan Co., Ltd.</td>
+                <th width="198">公司名称</th>
+                            <td width="360">盖世 有限公司 （GETS CO.,LTD.）</td>
                </tr>
                <tr>
-                            <th height="82">Head Office</th>
-                            <td><p>New River Bldg., 6th Fl, 1-10-14, Shinkawa, Chuo-ku, Tokyo 
-                                104-0034 Japan<br>
-                              TEL: 03-5542-8600<br>
-                              TEL: 03-5542-8653<br>
-                  
-                              </p></td>
+                            <th class="style1">总公司地址</th>
+                            <td class="style1">〒286－0048 千葉県成田市公津の杜2-34-4<br>
+                                TEL: 04-7626-3898<br>
+                                FAX: 04-7626-3898</td>
                </tr>
                <tr>
-                <th>Date of Establishment</th>
-                            <td>17-Nov-99</td>
+                <th>设立年月日</th>
+                            <td>2010年</td>
                </tr>
                <tr>
-                <th>Office Opening Date</th>
-                            <td>1-Apr-00</td>
+                <th>营业开始</th>
+                            <td>2010年</td>
                </tr>
                <tr>
-                <th>Capital</th>
-                            <td>¥1.88　billion</td>
+                <th>资本金</th>
+                            <td>500万</td>
                </tr>
                <tr>
-                <th>Representative</th>
-                            <td>Shinichi Tsukamoto, President &amp; Chief Executive Officer<p></p></td>
+                <th class="style2">法人代表</th>
+                            <td class="style2">代表取締役社長　陳　聡</td>
                </tr>
                <tr>
-                <th>Officers</th>
-                            <td>Takashi Isobe, Managing Excutive Officer <br>
-                              Masaki Yamauchi, Director <br>
-                              Atsushi Ichino, Director<br>
-                              Kiyoshi Okatani, Auditor<br>
-                              Shiro Sasaki, Auditor<br>
-                              Matsumaru Hiroshi, Auditor<p></p></td>
+                <th>董事</th>
+                            <td>取締役　　大熊　辰</td>
                </tr>
                <tr>
-                <th>Offices</th>
-                            <td>32 in Japan, 7 in Overseas (As of April 2010)</td>
+                <th>行业种类</th>
+                            <td>物流</td>
                </tr>
                <tr>
-                <th>Employees</th>
-                            <td>559 (As of April 2010)</td>
-               </tr>
-               <tr>
-                <th>Vehicles</th>
-                            <td>114 (As of April 2010)</td>
+                <th>营业范围</th>
+                            <td>（1）海运，陆运，空运 
+                                <br />
+                                （2）国内外的快递业务<br />
+                                （3）清关，仓库，货物车辆运输业 
+                                <br />
+                                （4）出入口贸易及其代理业务<br />
+                                （5）网络，通信机器等系统开发，软件开发及维护</td>
                </tr>
               </tbody></table>
     <BR></P></DIV><!-- goodsBox end --></TD><!-- right navi start --></TR></TBODY></TABLE>

@@ -29,10 +29,11 @@
             if (path == "CompanyInfo")
                 frameObj.src = document.getElementById('<%= HFCompanyInfo.ClientID %>').innerHTML;
 
-//            if (path.indexOf("Home") >= 0)
-//                $("#main_image").fadeIn(2000); 
-//            else
-//                $("#main_image").fadeOut(2000);
+            if (path.indexOf("Home") >= 0)
+            //$("#main_image").fadeIn(2000); 
+                $("#main_image").hide();
+            else
+                $("#main_image").fadeOut(2000);
                if (path.indexOf("Home") == -1)
                     $("#main_image").hide(); 
 

@@ -38,21 +38,12 @@
           <TD id="main">
             <DIV id="text_box">
             <H3><IMG alt="Careful handling like a mother cat carries her kitty" src="Images/flash_e_top.jpg" width="640" height="208"></H3>
-            <H4>YAMATO GLOBAL LOGISTICS JAPAN CO.,LTD. INFORMATION</H4>
-            <P>We have become a member of the Yamato Group, led by the largest 
-            door-to-door parcel delivery company in Japan, and have changed our 
-            corporate name to Yamato Global Logistics Japan Co., Ltd. <BR>We 
-            will develop comprehensive door-to-door transport services, making 
-            use the networks of Yamato Transport Co., Ltd., along with 
-            high-level information systems.</P>
-            <P>Yamato Global Logistics Japan aims to provide the best transport 
-            modes and services, always catering to customer needs, offering 
-            sales support to customers, contributing to customers' logistic 
-            costs reduction and growing together with customers. We would 
-            appreciate your continued patronage.</P>
-            <P>Internet Explorer 7.0(IE 7.0)is not available for browsing this 
-            page.<BR>We are now checking if there are any problem. 
-    <BR></P></DIV><!-- goodsBox end --></TD><!-- right navi start --></TR></TBODY></TABLE>
+            <H4>GETS理念</H4>
+            <P>GETS依托先进的网络化管理本着安全，准确，快捷，是包裹递送为生命的服务理念，为广大客户提供高品质快件服务，谋求更广阔的共赢空间。科学管理 服务增值 互惠互利 
+                共赢发展。<BR></P>
+            <H4>GETS目标</H4>
+                <P>立行业新标 创产业辉煌</P>
+              </DIV><!-- goodsBox end --></TD><!-- right navi start --></TR></TBODY></TABLE>
     </DIV>
     </TD>
     </TR>
