@@ -47,6 +47,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AjaxPro.2">
+      <HintPath>..\..\ShareLibs\Other\AjaxPro.2.dll</HintPath>
+    </Reference>
     <Reference Include="DanLudwig.Controls.AspAjax.ListBox">
       <HintPath>..\..\ShareLibs\Other\DanLudwig.Controls.AspAjax.ListBox.dll</HintPath>
     </Reference>
@@ -103,11 +106,15 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>DLLs\SAFF.Client.dll</HintPath>
     </Reference>
+    <Reference Include="SWFUploadAPI">
+      <HintPath>..\..\ShareLibs\Other\SWFUploadAPI.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Drawing" />
@@ -141,6 +148,8 @@
     <Content Include="AutoCountryCode.asmx" />
     <Content Include="CountryZiMaManage\TwoZiMaAdd.aspx" />
     <Content Include="CountryZiMaManage\TwoZiMaManage.aspx" />
+    <Content Include="CustomsClearance\ClearanceImport.aspx" />
+    <Content Include="CustomsClearance\ClearanceManage.aspx" />
     <Content Include="DLLs\AjaxControlToolkit.dll" />
     <Content Include="DLLs\AutoCompleteExtra.dll" />
     <Content Include="DLLs\Microsoft.Practices.ServiceLocation.dll" />
@@ -230,6 +239,17 @@
     <Content Include="Scripts\jquery-1.4.1.js" />
     <Content Include="Scripts\jquery-1.4.1.min.js" />
     <Content Include="Images\welcome_bg.gif" />
+    <Content Include="Styles\sub.css" />
+    <Content Include="SWFUpload\css\swfupload.css" />
+    <Content Include="SWFUpload\images\icon.gif" />
+    <Content Include="SWFUpload\images\swfupload_uploadBtn.png" />
+    <Content Include="SWFUpload\js\handlers.js" />
+    <Content Include="SWFUpload\js\json2.js" />
+    <Content Include="SWFUpload\js\swfupload.js" />
+    <Content Include="SWFUpload\js\swfupload.queue.js" />
+    <Content Include="SWFUpload\swf\swfupload.swf" />
+    <Content Include="SWFUpload\UC_SWFUpload.ascx" />
+    <Content Include="SWFUpload\upload.aspx" />
     <Content Include="Switch.aspx" />
     <Content Include="SysManager\AddAppModule.aspx" />
     <Content Include="SysManager\AddRole.aspx" />
@@ -328,9 +348,11 @@
       <DependentUpon>AutoCountryCode.asmx</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Common\CookiesHelp.cs" />
     <Compile Include="Common\DataBindHelper .cs" />
     <Compile Include="Common\DataConversion .cs" />
     <Compile Include="Common\NPOIHelper.cs" />
+    <Compile Include="Common\OleDbAccessHelper.cs" />
     <Compile Include="CountryZiMaManage\TwoZiMaAdd.aspx.cs">
       <DependentUpon>TwoZiMaAdd.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -344,6 +366,20 @@
     </Compile>
     <Compile Include="CountryZiMaManage\TwoZiMaManage.aspx.designer.cs">
       <DependentUpon>TwoZiMaManage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CustomsClearance\ClearanceImport.aspx.cs">
+      <DependentUpon>ClearanceImport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CustomsClearance\ClearanceImport.aspx.designer.cs">
+      <DependentUpon>ClearanceImport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CustomsClearance\ClearanceManage.aspx.cs">
+      <DependentUpon>ClearanceManage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CustomsClearance\ClearanceManage.aspx.designer.cs">
+      <DependentUpon>ClearanceManage.aspx</DependentUpon>
     </Compile>
     <Compile Include="EnumType.cs" />
     <Compile Include="Extensions\IoCPageHandlerFactory.cs" />
@@ -680,6 +716,20 @@
     <Compile Include="Site1.Master.designer.cs">
       <DependentUpon>Site1.Master</DependentUpon>
     </Compile>
+    <Compile Include="SWFUpload\UC_SWFUpload.ascx.cs">
+      <DependentUpon>UC_SWFUpload.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SWFUpload\UC_SWFUpload.ascx.designer.cs">
+      <DependentUpon>UC_SWFUpload.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="SWFUpload\upload.aspx.cs">
+      <DependentUpon>upload.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SWFUpload\upload.aspx.designer.cs">
+      <DependentUpon>upload.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Switch.aspx.cs">
       <DependentUpon>Switch.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -741,6 +791,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="bin\" />
+    <Folder Include="Excel\b\" />
     <Folder Include="Resources\" />
     <Folder Include="UserMenu\" />
   </ItemGroup>

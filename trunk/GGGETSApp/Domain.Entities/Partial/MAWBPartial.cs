@@ -15,6 +15,14 @@ using ETS.GGGETSApp.Domain.Core.Entities;
 
 namespace ETS.GGGETSApp.Domain.Application.Entities
 {
+    #region 枚举
+    public enum MAWBStatus
+    {
+        未起飞,
+        起飞 = 1,
+        抵达 = 2
+    }
+    #endregion
     public partial class MAWB
     {
         public MAWB()

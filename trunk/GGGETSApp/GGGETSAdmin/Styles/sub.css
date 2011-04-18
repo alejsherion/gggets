@@ -1,0 +1,133 @@
+﻿@charset "utf-8";
+/* CSS Document */
+
+body{
+	padding:0;
+	margin:0;
+	background:#e6edef;
+	font-size:12px;
+}
+p{
+	padding:0;
+	margin:0;
+}
+
+.table_1{
+	border-top:1px solid #acd1dc;
+	border-left:1px solid #acd1dc;
+	background:#fff;
+	width:98%; margin-left:auto; margin-right:auto; line-height:30px; margin-top:30px;
+}
+
+.table_1 td{
+	border-right:1px solid #acd1dc;
+	border-bottom:1px solid #acd1dc;
+}
+
+.table2{
+	padding:10px 0;
+}
+
+.table2_left{ padding-right:10px; text-align:right; font-weight:bold; }
+
+.lf2
+{
+    text-align:right;
+    padding-right:10px;
+    font-weight:bold;
+	width:150px;
+}
+.lf3{
+    text-align:right;
+    padding-right:10px;
+    font-weight:bold;
+	width:120px;
+}
+
+
+/*详细页面样式*/
+.table3{
+	border:1px solid #acd1dc;
+	width:98%;
+	margin-left:auto;
+	margin-right:auto;
+	margin-top:10px;
+	background:#fff;
+}
+.table3 .title{
+	line-height:30px;
+	background:#467eb6;
+	font-size:14px;
+	color:#fff;
+	padding-left:10px;
+	margin:0;
+}
+.table3 .lf
+{
+    text-align:right;
+    padding-right:10px;
+    font-weight:bold;
+	line-height:30px;
+	
+}
+
+.search{
+	border-top:1px solid #acd1dc;
+	border-left:1px solid #acd1dc;
+	background:#f3fafc;
+	width:98%;
+	margin-left:auto; 
+	margin-right:auto;
+	margin-top:15px;
+}
+
+.nav{
+	display:block;
+	margin-top:10px;
+	margin-left:auto;
+	margin-right:auto;
+	width:97%;
+	line-height:38px;
+	background:#f3fafc;
+	border:1px solid #acd1dc;
+	font-size:16px;
+	font-weight:bold;
+	padding-left:10px;
+}
+
+.suce{
+	display:block;
+	margin-top:10px;
+	margin-left:auto;
+	margin-right:auto;
+	width:97%;
+	line-height:25px;
+	background:#f3fafc;
+	border:1px solid #acd1dc;
+	font-size:12px;
+	font-weight:bold;
+	padding-left:10px;
+	padding-top:10px;
+}
+
+
+.butt{
+	background:url(../Images/qr/butt_bg.gif) repeat-x;
+	border:1px solid #389bb8;
+	font-size:12px;
+	font-weight:bold;
+	color:#2861a1;
+	margin:0;
+	padding:4px;
+}
+
+/*链接样式*/
+.link_nav a{
+	color:#000;
+	text-decoration:none;
+}
+
+.link_nav a:hover{
+	color:#f60;
+	text-decoration:underline;
+}
