@@ -7,13 +7,17 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>导入报关文件</title>
+    <script src="../Scripts/jquery-1.4.1.min.js" type="text/javascript"></script>
+    <script src="../Scripts/jquery.cookie.min.js" type="text/javascript"></script>
     <script>
         //判断状态是否存在于cookie中
         function IsExistCookieStatus() {
+            //debugger;
             if (getCookie("uploadStatus") == '200') {
                 //删除cookie
                 alert("报关文件已经上传到服务器，请点击获取数据！");
-                TeleMallAdmin.PickupTicket.ExcelImport.DeleteCookie();
+                //GGGETSAdmin.CustomsClearance.ClearanceImport.DeleteCookie();
+                $.cookie("uploadStatus", null, { path: '/' });
                 document.getElementById("divBtn").style.display = "block";
                 document.getElementById("divSwf").style.display = "none";
                 clearInterval(id);
@@ -65,6 +69,11 @@
               <asp:Label ID="lblFlightNo" runat="server" Text=""></asp:Label></td>
       </tr>
       <tr>
+        <td class="lf">总运单编号：</td>
+           <td nowrap="nowrap">
+              <asp:Label ID="lblMAWBCode" runat="server" Text=""></asp:Label></td>
+      </tr>
+      <tr>
         <td class="lf">运单数量：</td>
            <td nowrap="nowrap" align="left"><asp:Label ID="lblHAWBNum" runat="server" Text=""></asp:Label></td>
       </tr>
@@ -79,7 +88,7 @@
         <td nowrap="nowrap" style=" width:20%;height:30px;">
           </td>
            <td height="50" nowrap="nowrap">
-                <asp:Button ID="btnConfirm" runat="server" Text="返回" class="butt" onclick="btnConfirm_Click" Visible="false"/>&nbsp;
+                <asp:Button ID="btnConfirm" runat="server" Text="返回" class="butt" onclick="btnConfirm_Click" />&nbsp;
                 <div id="result" runat="server" style=" color:Red;" />
           </td>
       </tr>

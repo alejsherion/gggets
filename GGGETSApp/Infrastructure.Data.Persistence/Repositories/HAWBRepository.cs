@@ -473,7 +473,7 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Repositories
         /// <returns></returns>
         public Package FindPackageByBarcode(string barcode)
         {
-            if (string.IsNullOrEmpty(barcode)) throw new ArgumentException("barcode is null!");
+            //if (string.IsNullOrEmpty(barcode)) throw new ArgumentException("barcode is null!");
             IGGGETSAppUnitOfWork context = UnitOfWork as IGGGETSAppUnitOfWork;
             if (context != null)
             {

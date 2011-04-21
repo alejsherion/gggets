@@ -15,6 +15,26 @@ using ETS.GGGETSApp.Domain.Core.Entities;
 namespace ETS.GGGETSApp.Domain.Application.Entities
 {
     #region 枚举
+    public enum Currency
+    {
+        RMB,
+        日币=1,
+        美元=2
+    }
+
+    public enum Project
+    {
+        项目1,
+        项目2=1,
+        项目3=2
+    }
+
+    public enum HAWBStatus
+    {
+        未打包,
+        已打包=1
+    }
+
     public enum ServiceType
     {
         文件,

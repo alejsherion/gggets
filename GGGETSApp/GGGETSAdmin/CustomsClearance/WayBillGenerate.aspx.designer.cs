@@ -10,7 +10,7 @@
 namespace GGGETSAdmin.CustomsClearance {
     
     
-    public partial class ClearanceImport {
+    public partial class WayBillGenerate {
         
         /// <summary>
         /// form1 控件。
@@ -31,84 +31,66 @@ namespace GGGETSAdmin.CustomsClearance {
         protected global::System.Web.UI.ScriptManager ScriptManager1;
         
         /// <summary>
-        /// UC_SWFUpload1 控件。
+        /// lblWayBill 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::SWFUpload_UC_SWFUpload UC_SWFUpload1;
+        protected global::System.Web.UI.WebControls.Label lblWayBill;
         
         /// <summary>
-        /// btn 控件。
+        /// txtWayBill 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btn;
+        protected global::System.Web.UI.WebControls.TextBox txtWayBill;
         
         /// <summary>
-        /// lblFlightNo 控件。
+        /// lbSearch 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblFlightNo;
+        protected global::System.Web.UI.WebControls.LinkButton lbSearch;
         
         /// <summary>
-        /// lblMAWBCode 控件。
+        /// lblBarCode 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblMAWBCode;
+        protected global::System.Web.UI.WebControls.Label lblBarCode;
         
         /// <summary>
-        /// lblHAWBNum 控件。
+        /// txtBarCode 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblHAWBNum;
+        protected global::System.Web.UI.WebControls.TextBox txtBarCode;
         
         /// <summary>
-        /// trMessage 控件。
+        /// btnCertain 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTableRow trMessage;
+        protected global::System.Web.UI.WebControls.Button btnCertain;
         
         /// <summary>
-        /// RGGetData 控件。
+        /// RVWayBills 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::Telerik.Web.UI.RadGrid RGGetData;
-        
-        /// <summary>
-        /// btnConfirm 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnConfirm;
-        
-        /// <summary>
-        /// result 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl result;
+        protected global::Microsoft.Reporting.WebForms.ReportViewer RVWayBills;
     }
 }

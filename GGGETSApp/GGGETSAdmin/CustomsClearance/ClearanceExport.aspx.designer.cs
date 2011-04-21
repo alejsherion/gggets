@@ -10,7 +10,7 @@
 namespace GGGETSAdmin.CustomsClearance {
     
     
-    public partial class ClearanceImport {
+    public partial class ClearanceExport {
         
         /// <summary>
         /// form1 控件。
@@ -31,24 +31,6 @@ namespace GGGETSAdmin.CustomsClearance {
         protected global::System.Web.UI.ScriptManager ScriptManager1;
         
         /// <summary>
-        /// UC_SWFUpload1 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::SWFUpload_UC_SWFUpload UC_SWFUpload1;
-        
-        /// <summary>
-        /// btn 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btn;
-        
-        /// <summary>
         /// lblFlightNo 控件。
         /// </summary>
         /// <remarks>
@@ -58,57 +40,57 @@ namespace GGGETSAdmin.CustomsClearance {
         protected global::System.Web.UI.WebControls.Label lblFlightNo;
         
         /// <summary>
-        /// lblMAWBCode 控件。
+        /// lblFlightNoData 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblMAWBCode;
+        protected global::System.Web.UI.WebControls.Label lblFlightNoData;
         
         /// <summary>
-        /// lblHAWBNum 控件。
+        /// lblPackageNum 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblHAWBNum;
+        protected global::System.Web.UI.WebControls.Label lblPackageNum;
         
         /// <summary>
-        /// trMessage 控件。
+        /// lblPackageNumData 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTableRow trMessage;
+        protected global::System.Web.UI.WebControls.Label lblPackageNumData;
         
         /// <summary>
-        /// RGGetData 控件。
+        /// RGMAWB 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::Telerik.Web.UI.RadGrid RGGetData;
+        protected global::Telerik.Web.UI.RadGrid RGMAWB;
         
         /// <summary>
-        /// btnConfirm 控件。
+        /// btnExport 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnConfirm;
+        protected global::System.Web.UI.WebControls.Button btnExport;
         
         /// <summary>
-        /// result 控件。
+        /// btnReturn 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl result;
+        protected global::System.Web.UI.WebControls.Button btnReturn;
     }
 }

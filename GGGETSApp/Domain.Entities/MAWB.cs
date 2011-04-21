@@ -200,6 +200,21 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
             }
         }
         private int _status;
+    
+        [DataMember]
+        public Nullable<int> ImportStatus
+        {
+            get { return _importStatus; }
+            set
+            {
+                if (_importStatus != value)
+                {
+                    _importStatus = value;
+                    OnPropertyChanged("ImportStatus");
+                }
+            }
+        }
+        private Nullable<int> _importStatus;
 
         #endregion
         #region Navigation Properties

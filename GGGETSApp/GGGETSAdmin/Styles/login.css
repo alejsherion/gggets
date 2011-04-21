@@ -1,0 +1,214 @@
+body,div,ul,li,form,input,textarea,p,table,tr,td{
+	margin:0;
+    padding:0;
+	font-size:12px;
+	font-family:Arial, Sans-Serif;
+ }
+.cButton {
+	cursor:hand }
+body {background-image: url(../images/content_bg.gif)}
+
+.cTbList{
+	border:1px solid #7f9db9;
+	text-align:center;
+	}
+.cTrTiltle{
+	background: #d0e0fe;
+	border:1px solid #fff;
+    color: #152d42;
+	text-align:center;
+	vertical-align:center;
+	height:20px;}
+TR.cTrListThick{
+	background: #efefef;
+	COLOR: #000000;
+	text-align:center;
+	vertical-align:center;
+	height:18px;}
+td.cTdTitle{
+	BORDER-BOTTOM: #cbcbcb 1px solid;
+	BORDER-Right: #cbcbcb 1px solid;
+	padding:2px;
+	text-align:center;}
+.cLabel1 {
+	color: #225888;
+}
+.cSelectnosize {
+	background: #fff;
+	border:#7f9db9 1px solid;
+	COLOR: #000000;
+	}
+.titlestyle{
+	background:url(../images/title_bg.gif) repeat-x;
+	height:29px;
+	width:100%;
+	color:#003047;
+	padding:5px 0 0 12px;
+	font-family:微软雅黑;
+	font-size:14px;
+	font-weight:bold;
+	overflow:hidden;
+	text-align:left;}
+hr{color: #a5a5a5;}
+.red{color: red }
+.mainpadding{
+
+  margin:12px 0 0 12px;
+  display:inline;
+
+  }
+.bodycss{
+padding:0 0 0 10px}
+/*帮助页面*/
+.helpmain{
+	width:98%;}
+.helpmain-l{
+	width:20%;
+	float:left;
+	text-align:center;
+	}
+.helpmain-r{
+	width:77%;
+	float:right;}
+.helpmain-r li{
+	height:28px;
+	line-height:28px;
+	font-size:14px;
+	font-weight:bold;
+	background:url(../images/icon_help.gif) no-repeat left center;
+	padding-left:20px;}
+.helpmain a,.helpm a{
+	color:#003047;
+	text-decoration:none;
+	}
+.helpmain a:hover,.helpm a:hover{
+	color:#ff5c00;
+	}
+
+.helpm{
+	width:90%;
+	margin:30px auto 0 auto;}
+.helpms{
+	width:98%;
+	margin:0 auto;
+	border-bottom:1px dotted #cdcdcd;
+	padding-bottom:10px;
+	margin-bottom:10px;}
+.helpms img{
+	border:0;
+	margin-right:5px;}
+
+.helpms h1{
+	font-size:14px;}
+
+/*帮助页面---结束*/
+
+
+
+.font_red {  font-family: "宋体"; font-size: 9pt; line-height: 12pt; text-decoration: none; color: red }
+.font_black {  font-family: "宋体"; font-size: 9pt; line-height: 16pt; text-decoration: none; color: #000000 }
+.font_white {  font-family: "宋体"; font-size: 9pt; line-height: normal; text-decoration: none; color: #FFFFFF }
+.font_gray  {  font-family: "宋体"; font-size: 9pt; line-height: normal; text-decoration: none; color: #C1C1C1 }
+.font_blue  {	font: bold ;  font-family: "宋体"; font-size: 12pt;color: #00008C }
+
+.form1 {  BACKGROUND-COLOR: #FFFFFF; BORDER-BOTTOM: #162CA4 1px solid; BORDER-LEFT: #162CA4 1px solid; BORDER-RIGHT: #162CA4 1px solid; BORDER-TOP: #162CA4 1px solid; COLOR: #000000; FONT-FAMILY: "宋体"; FONT-SIZE: 9pt ; cursor:hand }
+.form2 {  BACKGROUND-COLOR: #162CA4; BORDER-BOTTOM: #DBEDFB 2px solid; BORDER-LEFT: #DBEDFB 1px solid; BORDER-RIGHT: #DBEDFB 2px solid; BORDER-TOP: #DBEDFB 1px solid; COLOR:#ffffff ; FONT-FAMILY: "宋体"; FONT-SIZE: 9pt ; cursor:hand }
+.form3 {  BACKGROUND-COLOR: #97CBFF; BORDER-BOTTOM: #FFCCFF 2px solid; BORDER-LEFT: #FFCCFF 2px solid; BORDER-RIGHT: #FFCCFF 2px solid; BORDER-TOP: #FFCCFF 2px solid; COLOR: #FF0000; FONT-FAMILY: "宋体"; FONT-SIZE: 9pt ;}
+.cText {  BACKGROUND-COLOR: #EBF5FC; BORDER-BOTTOM: #162CA4 2px solid; BORDER-LEFT: #162CA4 1px solid; BORDER-RIGHT: #162CA4 2px solid; BORDER-TOP: #162CA4 1px solid; COLOR: #000000; FONT-FAMILY: "宋体"; FONT-SIZE: 9pt ; cursor:hand }
+
+.cBox {  BACKGROUND-COLOR: #EAF8FD; BORDER-BOTTOM: #162CA4 1px solid; BORDER-LEFT: #162CA4 1px solid; BORDER-RIGHT: #162CA4 1px solid; BORDER-TOP: #162CA4 1px solid; COLOR: #000000; FONT-FAMILY: "宋体"; FONT-SIZE: 9pt ; width:140px}
+.cBoxnosize {  BACKGROUND-COLOR: #EAF8FD; BORDER-BOTTOM: #162CA4 1px solid; BORDER-LEFT: #162CA4 1px solid; BORDER-RIGHT: #162CA4 1px solid; BORDER-TOP: #162CA4 1px solid; COLOR: #000000; FONT-FAMILY: "宋体"; FONT-SIZE: 9pt ;}
+.cBoxnosize1 {  BACKGROUND-COLOR: #EAF8FD; BORDER-BOTTOM: #162CA4 1px solid; BORDER-LEFT: #162CA4 1px solid; BORDER-RIGHT: #162CA4 1px solid; BORDER-TOP: #162CA4 1px solid; COLOR: #000000; FONT-FAMILY: "宋体"; FONT-SIZE: 9pt ;text-align: right;}
+.cFile {  BACKGROUND-COLOR: #ffffff; BORDER-BOTTOM: #0647AD 1px solid; BORDER-LEFT: #0647AD 1px solid; BORDER-RIGHT: #0647AD 1px solid; BORDER-TOP: #0647AD 1px solid; COLOR: #000000; FONT-FAMILY: "宋体"; FONT-SIZE: 9pt ; width:140px}
+.cFilenosize {  BACKGROUND-COLOR: #EAF8FD; BORDER-BOTTOM: #162CA4 1px solid; BORDER-LEFT: #162CA4 1px solid; BORDER-RIGHT: #162CA4 1px solid; BORDER-TOP: #162CA4 1px solid; COLOR: #000000; FONT-FAMILY: "宋体"; FONT-SIZE: 9pt ;}
+.cSelect {  BACKGROUND-COLOR: #EAF8FD; BORDER-BOTTOM: #162CA4 1px solid; BORDER-LEFT: #162CA4 1px solid; BORDER-RIGHT: #162CA4 1px solid; BORDER-TOP: #162CA4 1px solid; COLOR: #000000; FONT-FAMILY: "宋体"; FONT-SIZE: 9pt ; width:140px}
+
+.cTimeBox {  BACKGROUND-COLOR: #EAF8FD; BORDER-BOTTOM: #162CA4 1px solid; BORDER-LEFT: #162CA4 1px solid; BORDER-RIGHT: #162CA4 1px solid; BORDER-TOP: #162CA4 1px solid; COLOR: #000000; FONT-FAMILY: "宋体"; FONT-SIZE: 9pt ; width:30px}
+.cTimeBoxnosize {  BACKGROUND-COLOR: #EAF8FD; BORDER-BOTTOM: #162CA4 1px solid; BORDER-LEFT: #162CA4 1px solid; BORDER-RIGHT: #162CA4 1px solid; BORDER-TOP: #162CA4 1px solid; COLOR: #000000; FONT-FAMILY: "宋体"; FONT-SIZE: 9pt ; }
+.cGOBox {  BACKGROUND-COLOR: #EAF8FD; BORDER-BOTTOM: #162CA4 1px solid; BORDER-LEFT: #162CA4 1px solid; BORDER-RIGHT: #162CA4 1px solid; BORDER-TOP: #162CA4 1px solid; COLOR: #000000; FONT-FAMILY: "宋体"; FONT-SIZE: 9pt ; width:30px}
+.cGOBoxnosize {  BACKGROUND-COLOR: #EAF8FD; BORDER-BOTTOM: #162CA4 1px solid; BORDER-LEFT: #162CA4 1px solid; BORDER-RIGHT: #162CA4 1px solid; BORDER-TOP: #162CA4 1px solid; COLOR: #000000; FONT-FAMILY: "宋体"; FONT-SIZE: 9pt ;}
+.cCheckBox {  BACKGROUND-COLOR: #EAF8FD; BORDER-BOTTOM: #162CA4 1px solid; BORDER-LEFT: #162CA4 1px solid; BORDER-RIGHT: #162CA4 1px solid; BORDER-TOP: #162CA4 1px solid; COLOR: #000000; FONT-FAMILY: "宋体"; FONT-SIZE: 9pt ; cursor:hand; width:30px}
+.cCheckBoxnosize {  BACKGROUND-COLOR: #EAF8FD; BORDER-BOTTOM: #162CA4 1px solid; BORDER-LEFT: #162CA4 1px solid; BORDER-RIGHT: #162CA4 1px solid; BORDER-TOP: #162CA4 1px solid; COLOR: #000000; FONT-FAMILY: "宋体"; FONT-SIZE: 9pt ; cursor:hand;}
+.cRadio {  BACKGROUND-COLOR: #EAF8FD; BORDER-BOTTOM: #162CA4 1px solid; BORDER-LEFT: #162CA4 1px solid; BORDER-RIGHT: #162CA4 1px solid; BORDER-TOP: #162CA4 1px solid; COLOR: #000000; FONT-FAMILY: "宋体"; FONT-SIZE: 9pt ; cursor:hand; width:30px}
+.cRadionosize {  BACKGROUND-COLOR: #EAF8FD; BORDER-BOTTOM: #162CA4 1px solid; BORDER-LEFT: #162CA4 1px solid; BORDER-RIGHT: #162CA4 1px solid; BORDER-TOP: #162CA4 1px solid; COLOR: #000000; FONT-FAMILY: "宋体"; FONT-SIZE: 9pt ; cursor:hand;}
+.cTextBox {  BACKGROUND-COLOR: #EAF8FD; BORDER-BOTTOM: #162CA4 1px solid; BORDER-LEFT: #162CA4 1px solid; BORDER-RIGHT: #162CA4 1px solid; BORDER-TOP: #162CA4 1px solid; COLOR: #000000; FONT-FAMILY: "宋体"; FONT-SIZE: 9pt ; width:470px}
+.cTextBoxnosize {  BACKGROUND-COLOR: #EAF8FD; BORDER-BOTTOM: #162CA4 1px solid; BORDER-LEFT: #162CA4 1px solid; BORDER-RIGHT: #162CA4 1px solid; BORDER-TOP: #162CA4 1px solid; COLOR: #000000; FONT-FAMILY: "宋体"; FONT-SIZE: 9pt ;}
+
+table.LeftMenu { background:#EFF3FF  font-family: "宋体"; font-size: 9pt;color: #1D57C7}
+table.LeftMenuClick { background:#799FE6  font-family: "宋体"; font-size: 9pt;color: #FFFFFF}
+BODY {
+SCROLLBAR-FACE-COLOR: #EFF3FF;
+	SCROLLBAR-HIGHLIGHT-COLOR: #ffffff;
+	SCROLLBAR-SHADOW-COLOR: #0048B4;
+	SCROLLBAR-3DLIGHT-COLOR: #43ACFD;
+	SCROLLBAR-ARROW-COLOR: #0050A4;
+	SCROLLBAR-TRACK-COLOR:#EFF3FF;
+	SCROLLBAR-DARKSHADOW-COLOR: #43ACFD
+oncontextmenu=self.event.returnValue=false
+}
+.link-02 {  font-size: 9pt; line-height: 130%; color: #333333; text-decoration: none}
+.link-01 {  font-size: 9pt; line-height: 130%; color: #CC0000; text-decoration: none}
+.pages {font: bold; color:red}
+.cTrWeakMouseOut{ background-color: #ffffff border-collapse:collapse;cursor:hand;}
+.cTrWeakMouseOver{background-color:#D3F5FE;cursor:hand;}
+.cTrThickMouseOut{ background-color: #EFEFEF;cursor:hand;}
+.cTrThickMouseOver{background-color:#D3F5FE;cursor:hand;}
+
+.cTitlebar{	font: bold 14px/20px;	font-family:"Arial";	color: #162CA4;	background-color: #D; 	width: 100%;	padding-top: 2px;	padding-Left: 10px;	margin-bottom:5px;}
+.titleStat{	font: bold 14px/20px;	font-family:"Arial";	color: #162CA4;	background-color: #D; 	width: 100%;	padding-top: 2px;	padding-Left: 10px;	margin-bottom:5px;}
+.cDalogTbTitle{	font: bold ;  font-family:'宋体';  font-size:16;  color:#1E326C;	background:#DFDFDF	; border-width: 1px;    border-color:#000000;	text-align:center;}
+TABLE.cTbInfo{    background-color: #D;    margin-top: 0px;    border-style: solid;    border-width: 1px;    border-color:#1067AF;    border-collapse:collapse	text-align:center;    }
+
+TABLE.cDalogTbTitle{    background-color: #D;    margin-top: 0px;    border-style: solid;    border-width: 1px;    border-color:#1067AF;    border-collapse:collapse	text-align:center;    }
+TR.TrPages{	font: none 14px/20px;	font-family:"Arial";	color: red;	background-color: #D; 	width: 100%;	padding-top: 2px;	padding-Left: 10px;	margin-bottom:5px;	text-align:center;}
+TR.TrButton{	text-align:center;}
+TR.Listtitle{    font: none ;    FONT-FAMILY: 宋体;    FONT-SIZE: 9pt;    BACKGROUND: #ffffff;	border-width:0px    BORDER-BOTTOM: #000000 0px solid;    BORDER-TOP: #000000 1px solid;	 BORDER-left: #000000 1px solid;    BORDER-right: #000000 0px solid;    COLOR: #000000;    text-align:center;   height:18px;}
+TR.cTrListWeak{    FONT-FAMILY: 宋体;    FONT-SIZE: 9pt;    BACKGROUND: #;    BORDER-BOTTOM: #7C9CCF 0px solid;    BORDER-TOP: #7C9CCF 0px solid;    BORDER-Left: #7C9CCF 0px solid;    BORDER-Right: #7C9CCF 0px solid;    COLOR: #000000;    text-align:center;    vertical-align:center;    height:18px;}
+
+TR.Listrow2{    FONT-FAMILY: Arial;    FONT-SIZE: 9pt;    BACKGROUND: #EBF1FA;}
+TR.Listrow1{    FONT-FAMILY: Arial;    FONT-SIZE: 9pt;    BACKGROUND: #F1F1F1;}
+TR.Listrow1_1{    FONT-FAMILY: Arial;    FONT-SIZE: 9pt;    BACKGROUND: #dFdFdF;}
+TR.Listrow3{    FONT-FAMILY: Arial;    FONT-SIZE: 9pt;    BACKGROUND: #ffffff;}
+TR.cTrPage{text-align:center;    vertical-align:baseline}
+
+
+td.cTdTitle2{  border-style: solid;	border-width: 10px 0px 1px 0px;	BORDER-BOTTOM: #7C9CCF 1px solid;    BORDER-TOP: #7C9CCF 0px solid;    BORDER-Left: #7C9CCF 0px solid;    BORDER-Right: #7C9CCF 1px solid;	padding:2px 2px 2px 2px;text-align:right;}
+td.cTdTitle_red{  border-style: solid;	border-width: 10px 0px 1px 0px;	BORDER-BOTTOM: #7C9CCF 1px solid;    BORDER-TOP: #7C9CCF 0px solid;    BORDER-Left: #7C9CCF 0px solid;    BORDER-Right: #7C9CCF 1px solid;	padding:2px 2px 2px 2px;text-align:center;color:red; }
+
+td.cPopoutFont{  font: bold ;  FONT-FAMILY: Arial;    FONT-SIZE: 9pt;	border-style: solid;	border-width: 0px;	padding:0px 4px 0px 4px;	 COLOR: red;	 text-align:center;    }
+td.cTdInfo{  width:"21%"   FONT-FAMILY: Arial;    FONT-SIZE: 9pt;	border-style: solid;	border-width: 0px;	padding:0px 4px 0px 4px;	 COLOR: #000000;	 text-align:right;    }
+.cTdButton{ Text-align:right;	vertical-align:top;    }
+Td.listtail{    FONT-SIZE: 9pt;    BACKGROUND: #C6D7EF;    BORDER-BOTTOM: #999999 1px solid;}
+TABLE.InputFrameMain{  MARGIN-TOP:15px;  margin-BOTTOM:5px;	background-color: #F7FBFF;	border-style: solid;	border-width: 1px;	border-color:#9C9C9C;	border-collapse:collapse;}
+TR.InputFrameLine{	padding-top: 1px;	padding-bottom: 1px;	font-family:'Arial';  font-size:9pt;}
+TR.InputFrameButtonLine{	padding-top: 5px;	padding-bottom: 1px;	font-family:'Arial';  font-size:9pt;}
+TD.InputLabelCell{	font: bold ;  font-family:'宋体';  font-size:9pt;  color:black;  padding-top: 5px;  padding-left: 5px;	padding-right: 10px;	Text-align:right;	vertical-align:top;	border-style: solid;	border-width: 0px;	border-color:#9C9C9C;}
+TD.InputAreaCell{	border-style: solid;	border-width: 0px 0px 1px 0px;	border-color:#9C9C9C;}
+form{font-family: "宋体"; font-size:9pt}
+input{font-family: "宋体"; font-size:9pt ; background:"transfer"}
+SELECT{font-family: "宋体"; font-size:9pt}
+TEXTAREA{font-family: "宋体"; font-size:9pt ; background:"transfer"}
+
+
+.coolBar {background: #EAF8FF;border-top: 0px solid buttonhighlight;	border-left: 0px solid buttonhighlight;	border-bottom: 0px solid buttonshadow; border-right: 0px solid buttonshadow; padding: 0px; font: menu;}
+.coolButton {border: 2px solid buttonface; padding: 2px; text-align: center; cursor: Hand;}
+.coolButton IMG	{filter: gray();}
+
+A {COLOR: #003047; TEXT-DECORATION: none}
+A:hover {	COLOR: #000; TEXT-DECORATION: none}
+@media print {
+	.ipt {display:none}
+	.bk {page-break-before: always;}
+}
+.logbutton-b{
+	width:75px;
+	height:25px;
+	border:0;
+	cursor:pointer;
+	padding:0px;
+	*padding:3px 0 0 0;
+	color:#00769d;
+	font-size:14px;
+	font-weight:bold;
+	margin-right:32px;
+	background:url(../images/button-003.gif);}

@@ -723,6 +723,36 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
             }
         }
         private Nullable<int> _billTax;
+    
+        [DataMember]
+        public string CustomsClearanceState
+        {
+            get { return _customsClearanceState; }
+            set
+            {
+                if (_customsClearanceState != value)
+                {
+                    _customsClearanceState = value;
+                    OnPropertyChanged("CustomsClearanceState");
+                }
+            }
+        }
+        private string _customsClearanceState;
+    
+        [DataMember]
+        public byte[] ProjectResolve
+        {
+            get { return _projectResolve; }
+            set
+            {
+                if (_projectResolve != value)
+                {
+                    _projectResolve = value;
+                    OnPropertyChanged("ProjectResolve");
+                }
+            }
+        }
+        private byte[] _projectResolve;
 
         #endregion
         #region Navigation Properties
