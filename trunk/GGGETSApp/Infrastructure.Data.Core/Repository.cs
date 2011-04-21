@@ -56,7 +56,7 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Core
 
             if (traceManager == (ITraceManager)null)
                 throw new ArgumentNullException("traceManager", Resources.Messages.exception_TraceManagerCannotBeNull);
-
+            
             //set internal values
             _CurrentUoW = unitOfWork;
             _TraceManager = traceManager;

@@ -13,13 +13,26 @@ using System.Runtime.Serialization.Json;
 using System.Web;
 using System.Web.UI;
 using AjaxPro;
+using Application.GGETS;
+using ETS.GGGETSApp.Domain.Application.Entities;
 using GGGETSAdmin.Common;
 using IMMENSITY.SWFUploadAPI;
 
 namespace GGGETSAdmin.CustomsClearance
 {
+    //todo 需要提供导入文件格式
     public partial class ClearanceImport : System.Web.UI.Page
     {
+        //ioc regester
+        private IHAWBManagementService _hawbService;
+        private IMAWBManagementService _mawbService;
+        protected ClearanceImport()
+        { }
+        public ClearanceImport(IHAWBManagementService hawbService,IMAWBManagementService mawbService)
+        {
+            _hawbService = hawbService;
+            _mawbService = mawbService;
+        }
         #region 属性
         private static string _saveFilePath;//文件保存路径
         static readonly object Padlock = new object();//保证线程安全
@@ -65,6 +78,7 @@ namespace GGGETSAdmin.CustomsClearance
             RGGetData.Visible = false;
             lblHAWBNum.Text = "0 单";
             lblFlightNo.Text = Request["FlightNo"];
+            lblMAWBCode.Text = Request["MAWBCode"];
             #endregion
         }
 
@@ -81,7 +95,7 @@ namespace GGGETSAdmin.CustomsClearance
             try
             {
                 OleDbAccessHelper oleDbObj = new OleDbAccessHelper();
-                string sql = "select * from [Sheet0$]";
+                string sql = "select * from [Sheet1$]";
                 var excelTable = oleDbObj.OleDbQuery(sql, SaveFilePath);
                 if (excelTable == null)
                 {
@@ -90,26 +104,63 @@ namespace GGGETSAdmin.CustomsClearance
                 }
                 else
                 {
-                    var Resutl = Excelformat(excelTable);//验证
-                    if (String.IsNullOrEmpty(Resutl))
-                    {
-                        if (excelTable.Rows.Count > 0)
-                        {
-                            lblHAWBNum.Text = Convert.ToString(excelTable.Rows.Count);
-                            Bind(excelTable);
-                        }
-                    }
+                    lblHAWBNum.Text = Convert.ToString(excelTable.Rows.Count);//获取运单总数量
+                    Bind(excelTable);
+                    //todo --判断导入文件是不是该总运单的数据
+                    bool judge=JudgeImportData(excelTable);
+                    //todo 一一批量更新运单状态,以及总运单中ImportStatus状态，表示是否已经导入过文件，防止重复导入，性能影响
+                    if (judge)
+                        BatchUpdateStatus(excelTable);
                     else
-                    {
-                        result.InnerHtml = Resutl;
-                    }
-
+                        ScriptManager.RegisterStartupScript(this, GetType(), "", "alert('获取数据错误，请获取指定总运单的数据文件');", true);
                 }
             }
-            catch
+            catch(Exception ex)
             {
-                result.InnerHtml = "系统错误";
+                if (ex.Message.Contains("Sheet1$"))
+                {
+                    result.InnerHtml = "请修改EXCEL的sheet为sheet1";
+                    return;
+                }
+                if (ex.Message.Contains("不属于表"))
+                {
+                    result.InnerHtml = string.Format("该EXCEL中没有{0}列", COLUMEHAWBBARCODE);
+                    return;
+                }
+                result.InnerHtml = "系统错误,请联系管理员!";
             }
+        }
+
+        /// <summary>
+        /// 判断导入文件是不是该总运单的数据
+        /// </summary>
+        /// <param name="dt"></param>
+        /// <returns></returns>
+        private bool JudgeImportData(DataTable dt)
+        {
+            bool judge = true;
+            //获取该总运单下所有运单集合
+            MAWB mawb = _mawbService.FindMAWBByBarcode(Request["MAWBCode"]);
+            var HAWBLists = _hawbService.FindHAWBsByMID(Convert.ToString(mawb.MID));
+            foreach (var hawb in HAWBLists)
+            {
+                foreach (DataRow row in dt.Rows)
+                {
+                    if (!row[COLUMEHAWBBARCODE].Equals(hawb.BarCode))
+                    {
+                        return false;
+                    }
+                }
+            }
+            return judge;
+        }
+
+        /// <summary>
+        /// 批量更新运单状态
+        /// </summary>
+        private void BatchUpdateStatus(DataTable dt)
+        {
+            
         }
 
         /// <summary>
@@ -119,13 +170,6 @@ namespace GGGETSAdmin.CustomsClearance
         private void Bind(DataTable dt)
         {
             ViewState["bind"] = dt;
-            //获取参数传递过来的总运单号和航班号
-            string FlightNo = Request["FlightNo"];
-            string MAWBCode = Request["MAWBCode"];
-            if (!string.IsNullOrEmpty(FlightNo) && !string.IsNullOrEmpty(MAWBCode))
-            {
-                
-            }
             //bind source
             if (dt == null) return;
             RGGetData.Visible = true;
@@ -134,51 +178,13 @@ namespace GGGETSAdmin.CustomsClearance
         }
 
         /// <summary>
-        /// 确认方法
+        /// 返回方法
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         protected void btnConfirm_Click(object sender, EventArgs e)
         {
-            //跳转到提货卷系统导入页面进行插入数据库
-            ScriptManager.RegisterStartupScript(this, GetType(), "", "CloseRadWindow()", true);
-        }
-
-        /// <summary>
-        /// 判断Excel表中数据
-        /// </summary>
-        /// <param name="tb"></param>
-        /// <returns></returns>
-        private string Excelformat(DataTable tb)
-        {
-            if (tb == null || tb.Rows.Count == 0) return "";
-            var Reuslt = "";
-            foreach (DataRow row in tb.Rows)
-            {
-                var Key = Convert.ToString(row["劵号"]);
-                var Value = Convert.ToString(row["密码"]);
-                if (string.IsNullOrEmpty(Key) && string.IsNullOrEmpty(Value))
-                {
-                    Reuslt = "Excel表中含有空记录,请重新导入";
-                    break;
-                }
-                if (string.IsNullOrEmpty(Key))
-                {
-                    Reuslt = "Excel表中含有空劵号,请重新导入";
-                    break;
-                }
-                if (Key.Length != 10)
-                {
-                    Reuslt = "劵号: " + Key + " 不是10位数字和字母组成的字符!您可以在Excel表中使用“Ctrl+F”快捷键寻找后进行修改";
-                    break;
-                }
-                if (Value.Length != 6)
-                {
-                    Reuslt = "劵号: " + Key + " 所对应的密码不是6位数字和字母组成的字符!您可以在Excel表中使用“Ctrl+F”快捷键寻找后进行修改";
-                    break;
-                }
-            }
-            return Reuslt;
+            Response.Redirect("~/CustomsClearance/ClearanceManage.aspx");
         }
 
         #region AjaxPro

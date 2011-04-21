@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ClearanceManage.aspx.cs" Inherits="GGGETSAdmin.CustomsClearance.ClearanceManage" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ClearanceManage.aspx.cs" Inherits="GGGETSAdmin.CustomsClearance.ClearanceManage" Theme="logisitc" %>
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 
@@ -15,16 +15,16 @@
     <div>
     <fieldset>
     <legend>航班查询</legend>
-        <table style="width: 100%;">
-            <tr>
-                <td width="16%" align="center"><asp:Label ID="lblFlightNo" runat="server" Text="航班号:" /></td>
+        <table style="width: 100%;" class="DataView">
+            <tr class="Row">
+                <td width="16%" align="center" class="FieldHeader"><asp:Label ID="lblFlightNo" runat="server" Text="航班号:" /></td>
                 <td width="50%">
                     <asp:TextBox ID="txtFlightNo" runat="server" Width="300px"></asp:TextBox>
                     <!-- 过滤，只能输入2个字母，其他特殊符号，中文，数字都过滤掉-->
                     <asp:FilteredTextBoxExtender ID="ftbeCountry" runat="server" TargetControlID="txtFlightNo" FilterType="LowercaseLetters, UppercaseLetters, Custom, Numbers" ValidChars=" " />
                 </td>
                 <td align="center">
-                    <asp:Button ID="btnQuery" runat="server" Text="查 询" onclick="btnQuery_Click" />
+                    <asp:Button ID="btnQuery" runat="server" Text="查 询" CssClass="InputBtn" onclick="btnQuery_Click" />
                 </td>
             </tr>
             </table>
@@ -33,7 +33,7 @@
     <div align="center">
     <!--GRID-->
         <telerik:RadGrid ID="RGMAWB" runat="server" AutoGenerateColumns="False" 
-            GridLines="None">
+            GridLines="None" CssClass="DataView">
         <MasterTableView NoMasterRecordsText="无记录">
         <CommandItemSettings ExportToPdfText="Export to Pdf"></CommandItemSettings>
 
@@ -62,9 +62,9 @@
                 </telerik:GridTemplateColumn>
                 <telerik:GridTemplateColumn UniqueName="column" HeaderText="操作">
                     <ItemTemplate>
-                        <asp:LinkButton ID="lbExport" runat="server" onclick="lbExport_Click">导出报关文件</asp:LinkButton>
+                        <asp:LinkButton ID="lbExport" runat="server" PostBackUrl='<%# string.Format("~/CustomsClearance/ClearanceExport.aspx?FlightNo={0}&MAWBCode={1}",Eval("FlightNo"),Eval("BarCode")) %>'>导出报关文件</asp:LinkButton>
                         &nbsp;|&nbsp;
-                        <asp:LinkButton ID="lbImport" runat="server" PostBackUrl='<%# "~/CustomsClearance/ClearanceImport.aspx?FlightNo="+Eval("FlightNo")+"&MAWBCode"+Eval("BarCode") %>'>导入报关文件</asp:LinkButton>
+                        <asp:LinkButton ID="lbImport" runat="server" PostBackUrl='<%# string.Format("~/CustomsClearance/ClearanceImport.aspx?FlightNo={0}&MAWBCode={1}",Eval("FlightNo"),Eval("BarCode")) %>'>导入报关文件</asp:LinkButton>
                     </ItemTemplate>
                 </telerik:GridTemplateColumn>
             </Columns>

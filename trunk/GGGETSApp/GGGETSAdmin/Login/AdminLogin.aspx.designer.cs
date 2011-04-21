@@ -7,10 +7,10 @@
 // </自动生成>
 //------------------------------------------------------------------------------
 
-namespace GGGETSAdmin.CustomsClearance {
+namespace GGGETSAdmin.Login {
     
     
-    public partial class ClearanceImport {
+    public partial class AdminLogin {
         
         /// <summary>
         /// form1 控件。
@@ -22,93 +22,84 @@ namespace GGGETSAdmin.CustomsClearance {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
-        /// ScriptManager1 控件。
+        /// lblUserID 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.ScriptManager ScriptManager1;
+        protected global::System.Web.UI.WebControls.Label lblUserID;
         
         /// <summary>
-        /// UC_SWFUpload1 控件。
+        /// txtuser 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::SWFUpload_UC_SWFUpload UC_SWFUpload1;
+        protected global::System.Web.UI.WebControls.TextBox txtuser;
         
         /// <summary>
-        /// btn 控件。
+        /// valruser 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btn;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator valruser;
         
         /// <summary>
-        /// lblFlightNo 控件。
+        /// lblPwd 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblFlightNo;
+        protected global::System.Web.UI.WebControls.Label lblPwd;
         
         /// <summary>
-        /// lblMAWBCode 控件。
+        /// txtpwd 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblMAWBCode;
+        protected global::System.Web.UI.WebControls.TextBox txtpwd;
         
         /// <summary>
-        /// lblHAWBNum 控件。
+        /// valrpwd 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblHAWBNum;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator valrpwd;
         
         /// <summary>
-        /// trMessage 控件。
+        /// Btnlogin 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTableRow trMessage;
+        protected global::System.Web.UI.WebControls.Button Btnlogin;
         
         /// <summary>
-        /// RGGetData 控件。
+        /// labError 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::Telerik.Web.UI.RadGrid RGGetData;
+        protected global::System.Web.UI.WebControls.Label labError;
         
         /// <summary>
-        /// btnConfirm 控件。
+        /// valsError 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnConfirm;
-        
-        /// <summary>
-        /// result 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl result;
+        protected global::System.Web.UI.WebControls.ValidationSummary valsError;
     }
 }

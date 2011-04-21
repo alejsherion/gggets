@@ -3710,6 +3710,54 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Model
         private Nullable<global::System.Int32> _BillTax;
         partial void OnBillTaxChanging(Nullable<global::System.Int32> value);
         partial void OnBillTaxChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String CustomsClearanceState
+        {
+            get
+            {
+                return _CustomsClearanceState;
+            }
+            set
+            {
+                OnCustomsClearanceStateChanging(value);
+                ReportPropertyChanging("CustomsClearanceState");
+                _CustomsClearanceState = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("CustomsClearanceState");
+                OnCustomsClearanceStateChanged();
+            }
+        }
+        private global::System.String _CustomsClearanceState;
+        partial void OnCustomsClearanceStateChanging(global::System.String value);
+        partial void OnCustomsClearanceStateChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.Byte[] ProjectResolve
+        {
+            get
+            {
+                return StructuralObject.GetValidValue(_ProjectResolve);
+            }
+            set
+            {
+                OnProjectResolveChanging(value);
+                ReportPropertyChanging("ProjectResolve");
+                _ProjectResolve = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("ProjectResolve");
+                OnProjectResolveChanged();
+            }
+        }
+        private global::System.Byte[] _ProjectResolve;
+        partial void OnProjectResolveChanging(global::System.Byte[] value);
+        partial void OnProjectResolveChanged();
 
         #endregion
     
@@ -5278,6 +5326,30 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Model
         private global::System.Int32 _Status;
         partial void OnStatusChanging(global::System.Int32 value);
         partial void OnStatusChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> ImportStatus
+        {
+            get
+            {
+                return _ImportStatus;
+            }
+            set
+            {
+                OnImportStatusChanging(value);
+                ReportPropertyChanging("ImportStatus");
+                _ImportStatus = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ImportStatus");
+                OnImportStatusChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _ImportStatus;
+        partial void OnImportStatusChanging(Nullable<global::System.Int32> value);
+        partial void OnImportStatusChanged();
 
         #endregion
     

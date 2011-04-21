@@ -234,6 +234,8 @@
           <Property Name="IsInternational" Type="bit" Nullable="false" />
           <Property Name="SpecialInstruction" Type="nvarchar" MaxLength="500" />
           <Property Name="BillTax" Type="int" />
+          <Property Name="ProjectResolve" Type="varbinary(max)" />
+          <Property Name="CustomsClearanceState" Type="char" MaxLength="1" />
         </EntityType>
         <EntityType Name="HAWBBox">
           <Key>
@@ -303,6 +305,7 @@
           <Property Name="TotalWeight" Type="decimal" Nullable="false" Precision="10" Scale="2" />
           <Property Name="TotalVolume" Type="decimal" Nullable="false" Precision="10" Scale="2" />
           <Property Name="Status" Type="int" Nullable="false" />
+          <Property Name="ImportStatus" Type="int" />
         </EntityType>
         <EntityType Name="OrganizationChart">
           <Key>
@@ -916,6 +919,8 @@
           <NavigationProperty Name="User" Relationship="MYGGGETSModel.FK_HAWB_REFERENCE_USER" FromRole="HAWB" ToRole="User" />
           <NavigationProperty Name="HAWBBoxes" Relationship="MYGGGETSModel.FK_HAWBBOX_REFERENCE_HAWB" FromRole="HAWB" ToRole="HAWBBox" />
           <NavigationProperty Name="HAWBItems" Relationship="MYGGGETSModel.FK_HAWBITEM_REFERENCE_HAWB" FromRole="HAWB" ToRole="HAWBItem" />
+          <Property Type="String" Name="CustomsClearanceState" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Type="Binary" Name="ProjectResolve" MaxLength="Max" FixedLength="false" />
         </EntityType>
         <EntityType Name="HAWBBox">
           <Key>
@@ -962,6 +967,7 @@
           <Property Name="TotalVolume" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
           <Property Name="Status" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Packages" Relationship="MYGGGETSModel.FK_PACKAGE_REFERENCE_MAWB" FromRole="MAWB" ToRole="Package" />
+          <Property Type="Int32" Name="ImportStatus" />
         </EntityType>
         <EntityType Name="Package">
           <Key>
@@ -1461,7 +1467,9 @@
             <ScalarProperty Name="WeightCalType" ColumnName="WeightCalType" />
           </MappingFragment></EntityTypeMapping></EntitySetMapping>
           <EntitySetMapping Name="HAWB"><EntityTypeMapping TypeName="MYGGGETSModel.HAWB"><MappingFragment StoreEntitySet="HAWB">
-            <ScalarProperty Name="HID" ColumnName="HID" />
+            <ScalarProperty Name="ProjectResolve" ColumnName="ProjectResolve" />
+                <ScalarProperty Name="CustomsClearanceState" ColumnName="CustomsClearanceState" />
+                <ScalarProperty Name="HID" ColumnName="HID" />
             <ScalarProperty Name="PID" ColumnName="PID" />
             <ScalarProperty Name="UID" ColumnName="UID" />
             <ScalarProperty Name="DID" ColumnName="DID" />
@@ -1528,7 +1536,8 @@
             <ScalarProperty Name="Remark" ColumnName="Remark" />
           </MappingFragment></EntityTypeMapping></EntitySetMapping>
           <EntitySetMapping Name="MAWB"><EntityTypeMapping TypeName="MYGGGETSModel.MAWB"><MappingFragment StoreEntitySet="MAWB">
-            <ScalarProperty Name="MID" ColumnName="MID" />
+            <ScalarProperty Name="ImportStatus" ColumnName="ImportStatus" />
+                <ScalarProperty Name="MID" ColumnName="MID" />
             <ScalarProperty Name="BarCode" ColumnName="BarCode" />
             <ScalarProperty Name="From" ColumnName="From" />
             <ScalarProperty Name="To" ColumnName="To" />
@@ -1763,7 +1772,7 @@
     </Options>
     <!-- Diagram content (shape and connector positions) -->
     <Diagrams>
-      <Diagram Name="GGGETSAppDataModel" ZoomLevel="40">
+      <Diagram Name="GGGETSAppDataModel" ZoomLevel="77">
         <EntityTypeShape EntityType="MYGGGETSModel.AddressBook" Width="1.5" PointX="7.5" PointY="18.875" Height="4.6443082682291674" IsExpanded="true" />
         <EntityTypeShape EntityType="MYGGGETSModel.Company" Width="1.5" PointX="0.75" PointY="10.875" Height="3.6892097981770817" IsExpanded="true" />
         <EntityTypeShape EntityType="MYGGGETSModel.CountryCode" Width="1.5" PointX="5.75" PointY="4.75" Height="1.5879931640624996" IsExpanded="true" />
