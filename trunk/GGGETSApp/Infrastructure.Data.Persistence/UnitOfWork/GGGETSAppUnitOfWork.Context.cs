@@ -412,6 +412,76 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.UnitOfWork
         private ObjectSet<OrganizationChart> _organizationChart;
 
         #endregion
+        #region Function Imports
+        public virtual ObjectResult<Nullable<short>> BatchUpdateCustomsClearanceState(string xmldata, string mawbCode)
+        {
+    
+            ObjectParameter xmldataParameter;
+    
+            if (xmldata != null)
+            {
+                xmldataParameter = new ObjectParameter("xmldata", xmldata);
+            }
+            else
+            {
+                xmldataParameter = new ObjectParameter("xmldata", typeof(string));
+            }
+    
+            ObjectParameter mawbCodeParameter;
+    
+            if (mawbCode != null)
+            {
+                mawbCodeParameter = new ObjectParameter("mawbCode", mawbCode);
+            }
+            else
+            {
+                mawbCodeParameter = new ObjectParameter("mawbCode", typeof(string));
+            }
+            return base.ExecuteFunction<Nullable<short>>("BatchUpdateCustomsClearanceState", xmldataParameter, mawbCodeParameter);
+        }
+        public virtual ObjectResult<Nullable<short>> BatchUpdateHAWBPackageState(string xmlStr)
+        {
+    
+            ObjectParameter xmlStrParameter;
+    
+            if (xmlStr != null)
+            {
+                xmlStrParameter = new ObjectParameter("xmlStr", xmlStr);
+            }
+            else
+            {
+                xmlStrParameter = new ObjectParameter("xmlStr", typeof(string));
+            }
+            return base.ExecuteFunction<Nullable<short>>("BatchUpdateHAWBPackageState", xmlStrParameter);
+        }
+        public virtual ObjectResult<Nullable<short>> BatchUpdateWayBillCode(string xmldata, string waybillcode)
+        {
+    
+            ObjectParameter xmldataParameter;
+    
+            if (xmldata != null)
+            {
+                xmldataParameter = new ObjectParameter("xmldata", xmldata);
+            }
+            else
+            {
+                xmldataParameter = new ObjectParameter("xmldata", typeof(string));
+            }
+    
+            ObjectParameter waybillcodeParameter;
+    
+            if (waybillcode != null)
+            {
+                waybillcodeParameter = new ObjectParameter("waybillcode", waybillcode);
+            }
+            else
+            {
+                waybillcodeParameter = new ObjectParameter("waybillcode", typeof(string));
+            }
+            return base.ExecuteFunction<Nullable<short>>("BatchUpdateWayBillCode", xmldataParameter, waybillcodeParameter);
+        }
+
+        #endregion
     }
     
 }

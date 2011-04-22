@@ -276,5 +276,15 @@ namespace Application.GGETS
         {
             return _hawbRepository.FindHAWBsByCondition(barCode, beginDate, endDate);
         }
+
+        /// <summary>
+        /// 通过路单编号获取所有的运单信息
+        /// </summary>
+        /// <param name="billWayCode">路单编号</param>
+        /// <returns></returns>
+        public IList<HAWB> FindHAWBsByBillWayCode(string billWayCode)
+        {
+            return _hawbRepository.FindHAWBsByBillWayCode(billWayCode);
+        }
     }
 }

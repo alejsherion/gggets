@@ -92,6 +92,7 @@
     <Compile Include="Repositories\ParamRepository.cs" />
     <Compile Include="Repositories\RegionCodeRepository.cs" />
     <Compile Include="Repositories\RoleRepository.cs" />
+    <Compile Include="Repositories\SPRepository.cs" />
     <Compile Include="Repositories\SysUserRepository.cs" />
     <Compile Include="Repositories\TemplateRepository.cs" />
     <Compile Include="Repositories\UserRepository.cs" />

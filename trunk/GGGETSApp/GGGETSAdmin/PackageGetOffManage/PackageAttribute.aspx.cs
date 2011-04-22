@@ -117,6 +117,7 @@ namespace GGGETSAdmin.PackageGetOffManage
                             }
                             if (_packageservice.JudgePIDIsNull(hawb.BarCode))//判断该运单是否已经打包
                             {
+                                hawb.Status = 1;//已打包
                                 package.HAWBs.Add(hawb);
                                 txt_Pice.Text = package.Piece.ToString();
                                 Txt_TotalWeight.Text = package.TotalWeight.ToString();
@@ -180,6 +181,12 @@ namespace GGGETSAdmin.PackageGetOffManage
                         }
                     }
                     package.HAWBs.Remove(hawb);
+
+                    //特殊操作，SESSION里面加成员保存没有问题，但是如果是减成员就会没有任何效果
+                    hawb.PID = null;
+                    hawb.Status = 0;
+                    _hawbservice.ChangeHAWB(hawb);
+
                     txt_Pice.Text = package.Piece.ToString();
                     Txt_TotalWeight.Text = package.TotalWeight.ToString();
                 }

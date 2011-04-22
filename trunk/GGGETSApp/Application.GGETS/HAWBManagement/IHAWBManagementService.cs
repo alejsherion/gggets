@@ -38,5 +38,6 @@ namespace Application.GGETS
         bool JudgeHAWBOfPackageRepeat(string HAWBBarcode, string packageBarcode);
         IList<HAWB> FindHAWBsByMID(string MID);
         IList<HAWB> FindHAWBsByCondition(string barCode, DateTime? beginDate, DateTime? endDate);
+        IList<HAWB> FindHAWBsByBillWayCode(string billWayCode);
     }
 }

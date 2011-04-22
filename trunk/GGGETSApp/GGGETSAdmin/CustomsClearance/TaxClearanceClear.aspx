@@ -88,7 +88,7 @@
                         </telerik:GridTemplateColumn>
                         <telerik:GridTemplateColumn HeaderText="金额">
                             <ItemTemplate>
-                                <asp:Label ID="Label3" runat="server" Text='<%# Eval("Tax") %>'></asp:Label>
+                                <asp:Label ID="lblExprense" runat="server" Text='<%# Eval("Tax") %>'></asp:Label>
                             </ItemTemplate>
                         </telerik:GridTemplateColumn>
                         <telerik:GridTemplateColumn HeaderText="删除">

@@ -59,6 +59,7 @@
     <Compile Include="Privilege\IOrganizationRepository.cs" />
     <Compile Include="Privilege\IRoleRepository.cs" />
     <Compile Include="Privilege\ISysUserRepository.cs" />
+    <Compile Include="StoredProcedure\ISPRepository.cs" />
     <Compile Include="TEMPLATE\IParamRepository.cs" />
     <Compile Include="TEMPLATE\ITemplateRepository.cs" />
   </ItemGroup>

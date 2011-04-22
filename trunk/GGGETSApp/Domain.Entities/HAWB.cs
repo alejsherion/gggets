@@ -753,6 +753,21 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
             }
         }
         private byte[] _projectResolve;
+    
+        [DataMember]
+        public string BillWayCode
+        {
+            get { return _billWayCode; }
+            set
+            {
+                if (_billWayCode != value)
+                {
+                    _billWayCode = value;
+                    OnPropertyChanged("BillWayCode");
+                }
+            }
+        }
+        private string _billWayCode;
 
         #endregion
         #region Navigation Properties

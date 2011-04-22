@@ -94,6 +94,8 @@
     <Compile Include="Privilege\OrganizationManagementService.cs" />
     <Compile Include="Privilege\RoleManagementService.cs" />
     <Compile Include="Privilege\SysUserManagementService.cs" />
+    <Compile Include="SP\ISPManagementService.cs" />
+    <Compile Include="SP\SPManagementService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
