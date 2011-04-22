@@ -705,6 +705,27 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Repositories
             }
             return HAWBs.OrderByDescending(a => a.CreateTime).ToList();
         }
+
+        /// <summary>
+        /// 通过路单编号获取所有的运单信息
+        /// </summary>
+        /// <param name="billWayCode">路单编号</param>
+        /// <returns></returns>
+        public IList<HAWB> FindHAWBsByBillWayCode(string billWayCode)
+        {
+            IGGGETSAppUnitOfWork context = UnitOfWork as IGGGETSAppUnitOfWork;
+
+            if (context != null)
+            {
+                return context.HAWB.Include(it=>it.HAWBItems).Where(it => it.BillWayCode == billWayCode).Select(h => h).ToList();
+            }
+            else
+                throw new InvalidOperationException(string.Format(
+                                                                CultureInfo.InvariantCulture,
+                                                                Messages.exception_InvalidStoreContext,
+                                                                GetType().Name));
+        }
+
         #endregion
     }
 }

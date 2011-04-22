@@ -16,9 +16,10 @@
     <table style="width: 100%;" class="DataView">
         <tr class="Row" height="40px">
             <td width="15%" class="FieldHeader">&nbsp;<asp:Label ID="lblWayBill" runat="server" Text="路单编号:"></asp:Label></td>
-            <td width="50%"><asp:TextBox ID="txtWayBill" runat="server" Width="300px"></asp:TextBox></td>
+            <td width="50%"><asp:TextBox ID="txtWayBill" runat="server" Width="300px" 
+                    AutoPostBack="True" ontextchanged="txtWayBill_TextChanged"></asp:TextBox></td>
             <td align="center">
-                <asp:LinkButton ID="lbSearch" runat="server" CssClass="InputBtn">确 认</asp:LinkButton>
+                
             </td>
         </tr>
         <tr class="Row" height="40px">
@@ -30,10 +31,15 @@
             </td>
         </tr>
     </table>
+    
     <div>
         <!--ReportViewer-->
         <rsweb:ReportViewer ID="RVWayBills" runat="server" Width="100%" Height="100%">
         </rsweb:ReportViewer>
+    </div>
+    <div align="center" style="padding-top: 20px">
+        <asp:LinkButton ID="lbSave" runat="server" CssClass="InputBtn" 
+            onclick="lbSave_Click">保 存</asp:LinkButton>
     </div>
     </form>
 </body>

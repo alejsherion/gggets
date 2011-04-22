@@ -618,6 +618,88 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Model
         }
 
         #endregion
+        #region 函数导入
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        /// <param name="xmldata">没有元数据文档可用。</param>
+        /// <param name="mawbCode">没有元数据文档可用。</param>
+        public ObjectResult<Nullable<global::System.Int16>> BatchUpdateCustomsClearanceState(global::System.String xmldata, global::System.String mawbCode)
+        {
+            ObjectParameter xmldataParameter;
+            if (xmldata != null)
+            {
+                xmldataParameter = new ObjectParameter("xmldata", xmldata);
+            }
+            else
+            {
+                xmldataParameter = new ObjectParameter("xmldata", typeof(global::System.String));
+            }
+    
+            ObjectParameter mawbCodeParameter;
+            if (mawbCode != null)
+            {
+                mawbCodeParameter = new ObjectParameter("mawbCode", mawbCode);
+            }
+            else
+            {
+                mawbCodeParameter = new ObjectParameter("mawbCode", typeof(global::System.String));
+            }
+    
+            return base.ExecuteFunction<Nullable<global::System.Int16>>("BatchUpdateCustomsClearanceState", xmldataParameter, mawbCodeParameter);
+        }
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        /// <param name="xmlStr">没有元数据文档可用。</param>
+        public ObjectResult<Nullable<global::System.Int16>> BatchUpdateHAWBPackageState(global::System.String xmlStr)
+        {
+            ObjectParameter xmlStrParameter;
+            if (xmlStr != null)
+            {
+                xmlStrParameter = new ObjectParameter("xmlStr", xmlStr);
+            }
+            else
+            {
+                xmlStrParameter = new ObjectParameter("xmlStr", typeof(global::System.String));
+            }
+    
+            return base.ExecuteFunction<Nullable<global::System.Int16>>("BatchUpdateHAWBPackageState", xmlStrParameter);
+        }
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        /// <param name="xmldata">没有元数据文档可用。</param>
+        /// <param name="waybillcode">没有元数据文档可用。</param>
+        public ObjectResult<Nullable<global::System.Int16>> BatchUpdateWayBillCode(global::System.String xmldata, global::System.String waybillcode)
+        {
+            ObjectParameter xmldataParameter;
+            if (xmldata != null)
+            {
+                xmldataParameter = new ObjectParameter("xmldata", xmldata);
+            }
+            else
+            {
+                xmldataParameter = new ObjectParameter("xmldata", typeof(global::System.String));
+            }
+    
+            ObjectParameter waybillcodeParameter;
+            if (waybillcode != null)
+            {
+                waybillcodeParameter = new ObjectParameter("waybillcode", waybillcode);
+            }
+            else
+            {
+                waybillcodeParameter = new ObjectParameter("waybillcode", typeof(global::System.String));
+            }
+    
+            return base.ExecuteFunction<Nullable<global::System.Int16>>("BatchUpdateWayBillCode", xmldataParameter, waybillcodeParameter);
+        }
+
+        #endregion
     }
     
 
@@ -3758,6 +3840,30 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Model
         private global::System.Byte[] _ProjectResolve;
         partial void OnProjectResolveChanging(global::System.Byte[] value);
         partial void OnProjectResolveChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String BillWayCode
+        {
+            get
+            {
+                return _BillWayCode;
+            }
+            set
+            {
+                OnBillWayCodeChanging(value);
+                ReportPropertyChanging("BillWayCode");
+                _BillWayCode = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("BillWayCode");
+                OnBillWayCodeChanged();
+            }
+        }
+        private global::System.String _BillWayCode;
+        partial void OnBillWayCodeChanging(global::System.String value);
+        partial void OnBillWayCodeChanged();
 
         #endregion
     

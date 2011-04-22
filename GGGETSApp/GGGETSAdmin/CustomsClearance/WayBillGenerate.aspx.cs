@@ -40,12 +40,14 @@ namespace GGGETSAdmin.CustomsClearance
         #region IOC Register
 
         private IHAWBManagementService _hawbService;
+        private ISPManagementService _spService;//存储过程BLL
         protected WayBillGenerate()
         {
         }
-        public WayBillGenerate(IHAWBManagementService hawbService)
+        public WayBillGenerate(IHAWBManagementService hawbService,ISPManagementService spService)
         {
             _hawbService = hawbService;
+            _spService = spService;
         }
         #endregion
         protected void Page_Load(object sender, EventArgs e)
@@ -74,11 +76,21 @@ namespace GGGETSAdmin.CustomsClearance
             RVWayBills.LocalReport.ReportPath = MapPath("Source/WayBillSource.rdlc");
             //绑定数据源
             DataSet ds = ConvertToDataSet<TrimedHAWB>(HAWBList);
-            //注意dataset1必须和你报表所引用的table 一致
-            ReportDataSource rds = new ReportDataSource("DataSet1", ds.Tables[0]);//注意这里的name和报表中的一致
-            RVWayBills.LocalReport.DataSources.Clear();
-            RVWayBills.LocalReport.DataSources.Add(rds);
-            RVWayBills.LocalReport.Refresh();
+            if(ds!=null)
+            {
+                //注意dataset1必须和你报表所引用的table 一致
+                RVWayBills.Visible = true;
+                ReportDataSource rds = new ReportDataSource("DataSet1", ds.Tables[0]);//注意这里的name和报表中的一致
+                RVWayBills.LocalReport.DataSources.Clear();
+                RVWayBills.LocalReport.DataSources.Add(rds);
+                RVWayBills.LocalReport.Refresh();
+            }
+            else
+            {
+                RVWayBills.LocalReport.DataSources.Clear();
+                RVWayBills.LocalReport.Refresh();
+                RVWayBills.Visible = false;
+            }
         }
 
         /// <summary>
@@ -96,6 +108,41 @@ namespace GGGETSAdmin.CustomsClearance
             if (!regexRegular.IsMatch(str))
             {
                 ScriptManager.RegisterStartupScript(this, GetType(), "", "alert('运单编号只能是数字和字母组成!');", true);
+                return false;
+            }
+            return true;
+        }
+
+        /// <summary>
+        /// 验证规范化
+        /// </summary>
+        /// <returns></returns>
+        private bool JudgeRegex2()
+        {
+            string str = txtWayBill.Text.Trim();
+            if (string.IsNullOrEmpty(str))
+            {
+                ScriptManager.RegisterStartupScript(this, GetType(), "", "alert('路单编号不能为空!');", true);
+                return false;
+            }
+            if (!regexRegular.IsMatch(str))
+            {
+                ScriptManager.RegisterStartupScript(this, GetType(), "", "alert('路单编号只能是数字和字母组成!');", true);
+                return false;
+            }
+            return true;
+        }
+
+        /// <summary>
+        /// 验证规范化
+        /// </summary>
+        /// <returns></returns>
+        private bool JudgeRegex3()
+        {
+            string str = txtWayBill.Text.Trim();
+            if (!regexRegular.IsMatch(str))
+            {
+                ScriptManager.RegisterStartupScript(this, GetType(), "", "alert('路单编号只能是数字和字母组成!');", true);
                 return false;
             }
             return true;
@@ -194,9 +241,18 @@ namespace GGGETSAdmin.CustomsClearance
             {
                 //读取扫描后的运单编号
                 HAWB hawb = _hawbService.FindHAWBByBarCode(txtBarCode.Text.Trim());
+
                 TrimedHAWB trimedHawb = new TrimedHAWB();
                 if(hawb!=null)
                 {
+                    //路单是否已经分配
+                    if (!string.IsNullOrEmpty(hawb.BillWayCode))
+                    {
+                        string message = string.Format("该运单已经被分配过,路单编号为{0}", hawb.BillWayCode);
+                        ScriptManager.RegisterStartupScript(this, GetType(), "", "alert('" + message + "!');", true);
+                        return;
+                    }
+
                     bool judge2 = true;
                     TrimedHAWB trimedHAWB = (TrimedHAWB)PropertyCopy(hawb, trimedHawb);//对象属性复制
                     //判断重复
@@ -222,7 +278,80 @@ namespace GGGETSAdmin.CustomsClearance
                 }
             }
         }
+
+        /// <summary>
+        /// 保存的同时批量分配运单的路单编号
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void lbSave_Click(object sender, EventArgs e)
+        {
+            //首先验证路单编号的合法性
+            bool judge = JudgeRegex3();
+            if(judge)
+            {
+                if(HAWBList==null || HAWBList.Count==0)
+                {
+                    ScriptManager.RegisterStartupScript(this, GetType(), "", "alert('请先分配运单!');", true);
+                    return;
+                }
+                //批处理更新
+                //首先获取XML连接字符串
+                var hawbCodes = new XElement("Root",
+                                             from hawb in HAWBList
+                                             select new XElement("Hawb",
+                                                 new XElement("barcode", hawb.BarCode))).ToString();
+                //批量更新操作
+                int count = _spService.UseBatchUpdateWayBillCode(hawbCodes, txtWayBill.Text.Trim());
+                if(count==1)
+                {
+                    txtBarCode.Text = "";
+                    txtWayBill.Text = "";
+                    HAWBList = new List<TrimedHAWB>();
+                    Bind();
+
+                    ScriptManager.RegisterStartupScript(this, GetType(), "", "alert('操作成功!');", true);
+                }
+                else
+                {
+                    ScriptManager.RegisterStartupScript(this, GetType(), "", "alert('操作失败!');", true);
+                }
+            }
+        }
+
+        /// <summary>
+        /// 动态获取路单下的运单信息，如果不存在，就认为是一个新的路单编号
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void txtWayBill_TextChanged(object sender, EventArgs e)
+        {
+            string wayBillCode = txtWayBill.Text.Trim();//获取路单信息
+            //验证路单编号的合法性
+            bool judge = JudgeRegex2();
+            if(judge)//验证通过
+            {
+                IList<HAWB> hawbs = _hawbService.FindHAWBsByBillWayCode(wayBillCode);
+                if(hawbs!=null && hawbs.Count!=0)//需要赋值给瘦身后的运单
+                {
+                    
+                    foreach(var hawb in hawbs)
+                    {
+                        TrimedHAWB trimedHawbModel = new TrimedHAWB();
+                        TrimedHAWB trimedHAWB = (TrimedHAWB)PropertyCopy(hawb, trimedHawbModel);//对象属性复制
+                        HAWBList.Add(trimedHAWB);//添加成功
+                    }
+                    
+                }
+                else
+                {
+                    HAWBList = new List<TrimedHAWB>();
+                }
+                Bind();
+            }
+        }
         #endregion
+
     }
 
     #region Object Block

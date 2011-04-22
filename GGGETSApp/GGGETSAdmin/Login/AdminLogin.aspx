@@ -15,7 +15,7 @@
 			<div class="login">
 			    <ul>
 			        <li><p>
-                        <asp:Label ID="lblUserID" runat="server" Text="管理员ID:" /></p>
+                        <asp:Label ID="lblUserID" runat="server" Text="管理员账号：" /></p>
                         <asp:TextBox ID="txtuser" runat="server" CssClass="loginput" autocomplete="off" Width="182px" Height="22px"></asp:TextBox>
                         <asp:RequiredFieldValidator ID="valruser" runat="server" ErrorMessage="请填写登录名" ControlToValidate="txtuser" Display="None"></asp:RequiredFieldValidator>
                     </li>

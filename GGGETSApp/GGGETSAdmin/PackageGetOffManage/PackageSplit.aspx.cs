@@ -13,6 +13,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Xml.Linq;
 using Application.GGETS;
 using ETS.GGGETSApp.Domain.Application.Entities;
 
@@ -37,12 +38,14 @@ namespace GGGETSAdmin.PackageGetOffManage
         }
         //ioc register
         private IPackageManagementService _packageService;
+        private ISPManagementService _spService;//批量存储过程执行BLL
         protected PackageSplit()
         {
         }
-        public PackageSplit(IPackageManagementService packageService)
+        public PackageSplit(IPackageManagementService packageService, ISPManagementService spService)
         {
             _packageService = packageService;
+            _spService = spService;
         }
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -150,7 +153,29 @@ namespace GGGETSAdmin.PackageGetOffManage
             bool judge = JudgeIsBatchUpdate();
             if(judge)
             {
-                //todo 批量更新
+                //将IDIRECTORY封装成ILIST集合
+                IList<string> list = new List<string>();
+                foreach(var item in BarCodeList.Keys)
+                {
+                    list.Add(item.ToString());
+                }
+                //获取运单XML解析字符串
+                var xmlStr = new XElement("Root",
+                                          from barcode in list
+                                          select new XElement("Hawb",
+                                                              new XElement("barcode", barcode))).ToString();
+                //批量更新运单的PID=NULL 以及状态为未打包
+                int count = _spService.UseUseBatchUpdateHAWBPackageState(xmlStr);
+                if(count==1)
+                {
+                    ScriptManager.RegisterStartupScript(this, GetType(), "", "alert('操作成功!');", true);
+                    return;
+                }
+                else
+                {
+                    ScriptManager.RegisterStartupScript(this, GetType(), "", "alert('操作失败!');", true);
+                    return;
+                }
             }
             else
             {

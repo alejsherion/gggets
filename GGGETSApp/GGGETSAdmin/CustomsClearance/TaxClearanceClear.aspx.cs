@@ -21,6 +21,7 @@ using System.Web.UI.WebControls;
 using System.Xml.Linq;
 using Application.GGETS;
 using ETS.GGGETSApp.Domain.Application.Entities;
+using Telerik.Web.UI;
 
 namespace GGGETSAdmin.CustomsClearance
 {
@@ -51,6 +52,7 @@ namespace GGGETSAdmin.CustomsClearance
         #endregion
         protected void Page_Load(object sender, EventArgs e)
         {
+           
             //todo 获取参数传递过来的运单号
             if (!IsPostBack)
             {
@@ -75,9 +77,28 @@ namespace GGGETSAdmin.CustomsClearance
             {
                 btnSave.Visible = true;
             }
+            CalcuExpense();//计算费用
         }
 
         #region Private Block
+        /// <summary>
+        /// 计算费用
+        /// </summary>
+        private void CalcuExpense()
+        {
+            int count = RGProjects.MasterTableView.Items.Count;
+            decimal num = 0;
+            if(count>0)
+            {
+                foreach(GridDataItem item in RGProjects.MasterTableView.Items)
+                {
+                    num = num + Convert.ToDecimal(((Label) (item.FindControl("lblExprense"))).Text);
+                }
+                
+            }
+            lblBindExpense.Text = num.ToString();
+        }
+
         /// <summary>
         /// 将XML字符串转化为对象或集合
         /// </summary>
@@ -331,6 +352,7 @@ namespace GGGETSAdmin.CustomsClearance
 
                 //绑定数据源
                 XMLBind(XMLStr);
+                CalcuExpense();//计算费用
             }
             
         }
@@ -386,6 +408,7 @@ namespace GGGETSAdmin.CustomsClearance
 
                 //重新绑定
                 XMLBind(XMLStr);
+                CalcuExpense();//计算费用
             }
         }
         #endregion

@@ -550,5 +550,48 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Core
             Expression<Func<TEntity, bool>> pred = Expression.Lambda<Func<TEntity, bool>>(filter, param);
             return pred;
         }
+
+        //public T ExecuteFunction<T>(string functionName, System.Data.EntityClient.EntityParameter[] parameters) where T : struct
+        //{
+
+        //    System.Data.EntityClient.EntityCommand cmd = ((System.Data.EntityClient.EntityConnection)this.Connection).CreateCommand();
+
+        //    cmd.CommandType = System.Data.CommandType.StoredProcedure;
+
+        //    cmd.Parameters.AddRange(parameters);
+
+        //    cmd.CommandText = this.DefaultContainerName + "." + functionName;
+
+        //    try
+
+        //    {
+
+        //        if (cmd.Connection.State != System.Data.ConnectionState.Open)
+
+        //            cmd.Connection.Open();
+
+        //        var obj = cmd.ExecuteScalar();
+
+        //        return (T)obj;
+
+        //    }
+
+        //    catch (System.Exception)
+
+        //    {
+
+        //        throw;
+
+        //    }
+
+        //    finally
+
+        //    {
+
+        //        cmd.Connection.Close();
+
+        //    }
+
+        //}
     }
 }

@@ -235,6 +235,7 @@
           <Property Name="SpecialInstruction" Type="nvarchar" MaxLength="500" />
           <Property Name="BillTax" Type="int" />
           <Property Name="ProjectResolve" Type="varbinary(max)" />
+          <Property Name="BillWayCode" Type="nvarchar" MaxLength="20" />
           <Property Name="CustomsClearanceState" Type="char" MaxLength="1" />
         </EntityType>
         <EntityType Name="HAWBBox">
@@ -699,6 +700,17 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="BatchUpdateCustomsClearanceState" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="xmldata" Type="varchar" Mode="In" />
+          <Parameter Name="mawbCode" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="BatchUpdateHAWBPackageState" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="xmlStr" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="BatchUpdateWayBillCode" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="xmldata" Type="varchar" Mode="In" />
+          <Parameter Name="waybillcode" Type="nvarchar" Mode="In" />
+        </Function>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
@@ -794,6 +806,17 @@
             <End Role="Role_Privilege" EntitySet="Role_Privilege" />
           </AssociationSet>
           <EntitySet Name="OrganizationChart" EntityType="MYGGGETSModel.OrganizationChart" />
+          <FunctionImport Name="BatchUpdateCustomsClearanceState" ReturnType="Collection(Int16)">
+            <Parameter Name="xmldata" Mode="In" Type="String" />
+            <Parameter Name="mawbCode" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="BatchUpdateHAWBPackageState" ReturnType="Collection(Int16)">
+          <Parameter Name="xmlStr" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="BatchUpdateWayBillCode" ReturnType="Collection(Int16)">
+            <Parameter Name="xmldata" Mode="In" Type="String" />
+            <Parameter Name="waybillcode" Mode="In" Type="String" />
+          </FunctionImport>
           </EntityContainer>
         <EntityType Name="AddressBook">
           <Key>
@@ -921,6 +944,7 @@
           <NavigationProperty Name="HAWBItems" Relationship="MYGGGETSModel.FK_HAWBITEM_REFERENCE_HAWB" FromRole="HAWB" ToRole="HAWBItem" />
           <Property Type="String" Name="CustomsClearanceState" MaxLength="1" FixedLength="true" Unicode="false" />
           <Property Type="Binary" Name="ProjectResolve" MaxLength="Max" FixedLength="false" />
+          <Property Type="String" Name="BillWayCode" MaxLength="20" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="HAWBBox">
           <Key>
@@ -1467,7 +1491,8 @@
             <ScalarProperty Name="WeightCalType" ColumnName="WeightCalType" />
           </MappingFragment></EntityTypeMapping></EntitySetMapping>
           <EntitySetMapping Name="HAWB"><EntityTypeMapping TypeName="MYGGGETSModel.HAWB"><MappingFragment StoreEntitySet="HAWB">
-            <ScalarProperty Name="ProjectResolve" ColumnName="ProjectResolve" />
+            <ScalarProperty Name="BillWayCode" ColumnName="BillWayCode" />
+                <ScalarProperty Name="ProjectResolve" ColumnName="ProjectResolve" />
                 <ScalarProperty Name="CustomsClearanceState" ColumnName="CustomsClearanceState" />
                 <ScalarProperty Name="HID" ColumnName="HID" />
             <ScalarProperty Name="PID" ColumnName="PID" />
@@ -1752,6 +1777,9 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="BatchUpdateCustomsClearanceState" FunctionName="MYGGGETSModel.Store.BatchUpdateCustomsClearanceState" />
+          <FunctionImportMapping FunctionImportName="BatchUpdateHAWBPackageState" FunctionName="MYGGGETSModel.Store.BatchUpdateHAWBPackageState" />
+          <FunctionImportMapping FunctionImportName="BatchUpdateWayBillCode" FunctionName="MYGGGETSModel.Store.BatchUpdateWayBillCode" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -1772,7 +1800,7 @@
     </Options>
     <!-- Diagram content (shape and connector positions) -->
     <Diagrams>
-      <Diagram Name="GGGETSAppDataModel" ZoomLevel="77">
+      <Diagram Name="GGGETSAppDataModel" ZoomLevel="42">
         <EntityTypeShape EntityType="MYGGGETSModel.AddressBook" Width="1.5" PointX="7.5" PointY="18.875" Height="4.6443082682291674" IsExpanded="true" />
         <EntityTypeShape EntityType="MYGGGETSModel.Company" Width="1.5" PointX="0.75" PointY="10.875" Height="3.6892097981770817" IsExpanded="true" />
         <EntityTypeShape EntityType="MYGGGETSModel.CountryCode" Width="1.5" PointX="5.75" PointY="4.75" Height="1.5879931640624996" IsExpanded="true" />
