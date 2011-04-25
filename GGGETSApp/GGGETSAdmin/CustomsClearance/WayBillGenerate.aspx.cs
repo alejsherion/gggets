@@ -248,6 +248,8 @@ namespace GGGETSAdmin.CustomsClearance
                     //路单是否已经分配
                     if (!string.IsNullOrEmpty(hawb.BillWayCode))
                     {
+                        txtBarCode.Text = "";
+                        txtBarCode.Focus();
                         string message = string.Format("该运单已经被分配过,路单编号为{0}", hawb.BillWayCode);
                         ScriptManager.RegisterStartupScript(this, GetType(), "", "alert('" + message + "!');", true);
                         return;
@@ -262,8 +264,13 @@ namespace GGGETSAdmin.CustomsClearance
                             judge2 = false;
                     }
                     if(judge2)
+                    {
                         //添加进HAWB集合中
                         HAWBList.Add(trimedHAWB);
+
+                        txtBarCode.Text = "";
+                        txtBarCode.Focus();
+                    }
                     else
                     {
                         ScriptManager.RegisterStartupScript(this, GetType(), "", "alert('请不要重复添加运单!');", true);
@@ -343,11 +350,17 @@ namespace GGGETSAdmin.CustomsClearance
                     }
                     
                 }
-                else
-                {
-                    HAWBList = new List<TrimedHAWB>();
-                }
+                //else
+                //{
+                //    HAWBList = new List<TrimedHAWB>();
+                //}
                 Bind();
+                txtBarCode.Focus();
+            }
+            else
+            {
+                txtWayBill.Text = "";
+                txtWayBill.Focus();
             }
         }
         #endregion
