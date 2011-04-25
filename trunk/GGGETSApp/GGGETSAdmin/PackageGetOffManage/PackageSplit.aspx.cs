@@ -86,6 +86,8 @@ namespace GGGETSAdmin.PackageGetOffManage
                 {
                     BarCodeList.Add(item.BarCode, item.CustomsClearanceState);
                 }
+
+                txtScanner.Focus();
             }
             else
             {
@@ -147,7 +149,7 @@ namespace GGGETSAdmin.PackageGetOffManage
         {
             if(Index==0 && RGHAWBs.MasterTableView.Items.Count==0)
             {
-                ScriptManager.RegisterStartupScript(this, GetType(), "", "alert('无记录');", true);
+                ScriptManager.RegisterStartupScript(this, GetType(), "", "alert('无记录!');", true);
                 return;
             }
             bool judge = JudgeIsBatchUpdate();
@@ -180,6 +182,7 @@ namespace GGGETSAdmin.PackageGetOffManage
             else
             {
                 ScriptManager.RegisterStartupScript(this, GetType(), "", "alert('请扫描为标记的运单，以免发生遗漏和损失');", true);
+                txtScanner.Focus();
                 return;
             }
         }

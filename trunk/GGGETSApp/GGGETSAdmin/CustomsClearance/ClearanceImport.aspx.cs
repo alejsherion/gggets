@@ -1,12 +1,4 @@
-﻿//************************************************************************
-// 用户名				GGGETS国际综合快递
-// 系统名				管理后台
-// 子系统名		        报关文件导入
-// 作成者				ZhiWei.Shen
-// 改版日				2011.04.18
-// 改版内容				创建并且修改
-//************************************************************************
-using System;
+﻿using System;
 using System.Data;
 using System.IO;
 using System.Runtime.Serialization.Json;
@@ -107,7 +99,8 @@ namespace GGGETSAdmin.CustomsClearance
                     lblHAWBNum.Text = Convert.ToString(excelTable.Rows.Count);//获取运单总数量
                     Bind(excelTable);
                     //todo --判断导入文件是不是该总运单的数据
-                    bool judge=JudgeImportData(excelTable);
+                    //bool judge=JudgeImportData(excelTable);
+                    bool judge = true;
                     //todo 一一批量更新运单状态,以及总运单中ImportStatus状态，表示是否已经导入过文件，防止重复导入，性能影响
                     if (judge)
                         BatchUpdateStatus(excelTable);
@@ -160,7 +153,8 @@ namespace GGGETSAdmin.CustomsClearance
         /// </summary>
         private void BatchUpdateStatus(DataTable dt)
         {
-            
+            //todo 将DataTable处理为XML解析字符串
+        
         }
 
         /// <summary>
