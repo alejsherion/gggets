@@ -65,16 +65,35 @@
     <Content Include="Companyinfo.aspx" />
     <Content Include="Companyinfo_JP.aspx" />
     <Content Include="Companyinfo_USA.aspx" />
+    <Content Include="GETS_Main.aspx" />
+    <Content Include="GETS_Service.aspx" />
     <Content Include="Home.aspx" />
     <Content Include="Home_JP.aspx" />
     <Content Include="Home_USA.aspx" />
+    <Content Include="Images\main.swf" />
+    <Content Include="Images\1000_desc_70x50.jpg" />
+    <Content Include="Images\1013_express_70x50.jpg" />
+    <Content Include="Images\1016_express_70x50.jpg" />
+    <Content Include="Images\1062_general_70x50.jpg" />
+    <Content Include="Images\9013_general_220x100.jpg" />
     <Content Include="Images\ad\ad01.jpg" />
     <Content Include="Images\ad\ad02.jpg" />
     <Content Include="Images\ad\ad03.jpg" />
     <Content Include="Images\ad\ad04.jpg" />
     <Content Include="Images\ad\ad05.jpg" />
+    <Content Include="Images\arrow.gif" />
+    <Content Include="Images\arrow_navi.gif" />
+    <Content Include="Images\arrow_navi_on.gif" />
+    <Content Include="Images\arrow_up.gif" />
+    <Content Include="Images\bg_navi_drop.jpg" />
+    <Content Include="Images\blank.gif" />
     <Content Include="Images\cn.png" />
     <Content Include="Images\copy.jpg" />
+    <Content Include="Images\corner_bl.gif" />
+    <Content Include="Images\corner_br.gif" />
+    <Content Include="Images\corner_tl.gif" />
+    <Content Include="Images\corner_tr.gif" />
+    <Content Include="Images\dhl_logo.gif" />
     <Content Include="Images\e_bnr_foot01.jpg" />
     <Content Include="Images\e_bnr_foot03.jpg" />
     <Content Include="Images\e_cace_title_01.jpg" />
@@ -116,7 +135,9 @@
     <Content Include="Styles\Ad.css" />
     <Content Include="Styles\e_common.css" />
     <Content Include="Styles\e_under.css" />
+    <Content Include="Styles\global.css" />
     <Content Include="Styles\index.css" />
+    <Content Include="Styles\page.css" />
     <Content Include="Styles\Site.css" />
     <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
@@ -218,6 +239,20 @@
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
     <Compile Include="Extensions\IoCPageHandlerFactory.cs" />
+    <Compile Include="GETS_Main.aspx.cs">
+      <DependentUpon>GETS_Main.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GETS_Main.aspx.designer.cs">
+      <DependentUpon>GETS_Main.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="GETS_Service.aspx.cs">
+      <DependentUpon>GETS_Service.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GETS_Service.aspx.designer.cs">
+      <DependentUpon>GETS_Service.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
