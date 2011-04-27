@@ -888,6 +888,7 @@
     <None Include="SAFFClient.pfx" />
     <None Include="SAFFSSO.cer" />
     <Content Include="Site1.Master" />
+    <None Include="Template\ClearanceImport.xls" />
     <None Include="Template\Invoice.xls" />
     <None Include="Template\MAWB.XLS" />
   </ItemGroup>
