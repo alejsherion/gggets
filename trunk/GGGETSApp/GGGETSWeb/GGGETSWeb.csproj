@@ -50,7 +50,6 @@
     <Reference Include="System.Web.ApplicationServices" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="About.aspx" />
     <Content Include="Account\ChangePassword.aspx" />
     <Content Include="Account\ChangePasswordSuccess.aspx" />
     <Content Include="Account\Login.aspx" />
@@ -59,17 +58,14 @@
     <Content Include="App_Themes\logisitc\component.css" />
     <Content Include="App_Themes\logisitc\dataView.css" />
     <Content Include="App_Themes\logisitc\logistic.css" />
-    <Content Include="Casestudy.aspx" />
-    <Content Include="Casestudy_JP.aspx" />
-    <Content Include="Casestudy_USA.aspx" />
-    <Content Include="Companyinfo.aspx" />
-    <Content Include="Companyinfo_JP.aspx" />
-    <Content Include="Companyinfo_USA.aspx" />
     <Content Include="GETS_Main.aspx" />
-    <Content Include="GETS_Service.aspx" />
-    <Content Include="Home.aspx" />
-    <Content Include="Home_JP.aspx" />
-    <Content Include="Home_USA.aspx" />
+    <Content Include="Images\ad\mainAd2.jpg" />
+    <Content Include="Images\ad\mainAd3.jpg" />
+    <Content Include="Images\ad\mainAd4.jpg" />
+    <Content Include="Images\ad\mainAd5.jpg" />
+    <Content Include="Images\favicon.gif" />
+    <Content Include="Images\GTES-logo.jpg" />
+    <Content Include="Images\logo.jpg" />
     <Content Include="Images\main.swf" />
     <Content Include="Images\1000_desc_70x50.jpg" />
     <Content Include="Images\1013_express_70x50.jpg" />
@@ -120,18 +116,13 @@
     <Content Include="Images\flash_e_services.jpg" />
     <Content Include="Images\flash_e_top.jpg" />
     <Content Include="Images\jp.png" />
+    <Content Include="Images\ad\mainAd.jpg" />
     <Content Include="Images\top.swf" />
     <Content Include="Images\us.png" />
-    <Content Include="Network.aspx" />
-    <Content Include="Network_JP.aspx" />
-    <Content Include="Network_USA.aspx" />
     <Content Include="Scripts\Ad.js" />
     <Content Include="Scripts\navi.js" />
     <Content Include="Scripts\swap.js" />
     <Content Include="Scripts\swfobject.js" />
-    <Content Include="Services.aspx" />
-    <Content Include="Services_JP.aspx" />
-    <Content Include="Services_USA.aspx" />
     <Content Include="Styles\Ad.css" />
     <Content Include="Styles\e_common.css" />
     <Content Include="Styles\e_under.css" />
@@ -139,7 +130,6 @@
     <Content Include="Styles\index.css" />
     <Content Include="Styles\page.css" />
     <Content Include="Styles\Site.css" />
-    <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\jquery-1.4.1-vsdoc.js" />
     <Content Include="Scripts\jquery-1.4.1.js" />
@@ -151,16 +141,8 @@
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
-    <Content Include="GETSIndex.aspx" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="About.aspx.cs">
-      <DependentUpon>About.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="About.aspx.designer.cs">
-      <DependentUpon>About.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Account\ChangePassword.aspx.cs">
       <DependentUpon>ChangePassword.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -189,56 +171,16 @@
     <Compile Include="Account\Register.aspx.designer.cs">
       <DependentUpon>Register.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Casestudy.aspx.cs">
-      <DependentUpon>Casestudy.aspx</DependentUpon>
+    <Compile Include="App_Data\CommonCulture.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Casestudy.aspx.designer.cs">
-      <DependentUpon>Casestudy.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Casestudy_JP.aspx.cs">
-      <DependentUpon>Casestudy_JP.aspx</DependentUpon>
+    <Compile Include="GETS.Master.cs">
+      <DependentUpon>GETS.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Casestudy_JP.aspx.designer.cs">
-      <DependentUpon>Casestudy_JP.aspx</DependentUpon>
+    <Compile Include="GETS.Master.designer.cs">
+      <DependentUpon>GETS.Master</DependentUpon>
     </Compile>
-    <Compile Include="Casestudy_USA.aspx.cs">
-      <DependentUpon>Casestudy_USA.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Casestudy_USA.aspx.designer.cs">
-      <DependentUpon>Casestudy_USA.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Companyinfo.aspx.cs">
-      <DependentUpon>Companyinfo.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Companyinfo.aspx.designer.cs">
-      <DependentUpon>Companyinfo.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Companyinfo_JP.aspx.cs">
-      <DependentUpon>Companyinfo_JP.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Companyinfo_JP.aspx.designer.cs">
-      <DependentUpon>Companyinfo_JP.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Companyinfo_USA.aspx.cs">
-      <DependentUpon>Companyinfo_USA.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Companyinfo_USA.aspx.designer.cs">
-      <DependentUpon>Companyinfo_USA.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Default.aspx.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Default.aspx.designer.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Extensions\IoCPageHandlerFactory.cs" />
     <Compile Include="GETS_Main.aspx.cs">
       <DependentUpon>GETS_Main.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -246,102 +188,14 @@
     <Compile Include="GETS_Main.aspx.designer.cs">
       <DependentUpon>GETS_Main.aspx</DependentUpon>
     </Compile>
-    <Compile Include="GETS_Service.aspx.cs">
-      <DependentUpon>GETS_Service.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="GETS_Service.aspx.designer.cs">
-      <DependentUpon>GETS_Service.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Home.aspx.cs">
-      <DependentUpon>Home.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Home.aspx.designer.cs">
-      <DependentUpon>Home.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Home_JP.aspx.cs">
-      <DependentUpon>Home_JP.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Home_JP.aspx.designer.cs">
-      <DependentUpon>Home_JP.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Home_USA.aspx.cs">
-      <DependentUpon>Home_USA.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Home_USA.aspx.designer.cs">
-      <DependentUpon>Home_USA.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Network.aspx.cs">
-      <DependentUpon>Network.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Network.aspx.designer.cs">
-      <DependentUpon>Network.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Network_JP.aspx.cs">
-      <DependentUpon>Network_JP.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Network_JP.aspx.designer.cs">
-      <DependentUpon>Network_JP.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Network_USA.aspx.cs">
-      <DependentUpon>Network_USA.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Network_USA.aspx.designer.cs">
-      <DependentUpon>Network_USA.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services.aspx.cs">
-      <DependentUpon>Services.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Services.aspx.designer.cs">
-      <DependentUpon>Services.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Services_JP.aspx.cs">
-      <DependentUpon>Services_JP.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Services_JP.aspx.designer.cs">
-      <DependentUpon>Services_JP.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Services_USA.aspx.cs">
-      <DependentUpon>Services_USA.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Services_USA.aspx.designer.cs">
-      <DependentUpon>Services_USA.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Site.Master.cs">
-      <DependentUpon>Site.Master</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Site.Master.designer.cs">
-      <DependentUpon>Site.Master</DependentUpon>
-    </Compile>
-    <Compile Include="GETSIndex.aspx.cs">
-      <DependentUpon>GETSIndex.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="GETSIndex.aspx.designer.cs">
-      <DependentUpon>GETSIndex.aspx</DependentUpon>
-    </Compile>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-    <Folder Include="HAWB\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="Account\Web.config" />
-    <Content Include="Site.Master" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Application.GGETS\Application.GGETS.csproj">
@@ -365,13 +219,16 @@
     <Content Include="App_Themes\logisitc\logistic.skin" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_LocalResources\GETSIndex.aspx.resx" />
+    <Content Include="GETS.Master" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_LocalResources\GETSIndex.aspx.en-us.resx" />
+    <Content Include="App_LocalResources\GETS.Master.resx" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_LocalResources\GETSIndex.aspx.ja-jp.resx" />
+    <Content Include="App_LocalResources\GETS.Master.en-us.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_LocalResources\GETS.Master.ja-jp.resx" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

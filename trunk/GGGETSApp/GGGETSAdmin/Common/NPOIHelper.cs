@@ -55,6 +55,18 @@ namespace GGGETSAdmin.Common
             _hawbDataSources = dataSource2;
             _hawbtype=hawbtype;
         }
+
+        /// <summary>
+        /// 导出电子出口清单
+        /// </summary>
+        /// <param name="dataSource">总运单对象信息</param>
+        /// <param name="dataSource2">子运单集合信息(用户选中)</param>
+        public NpoiHelper(MAWB dataSource, IList<HAWB> dataSource2)
+        {
+            if (dataSource == null) throw new ArgumentNullException("dataSource", @"总运单不能为空");
+            _mawbDataSource = dataSource;
+            _hawbDataSources = dataSource2;
+        }
         #endregion
 
         #region 公有方法
@@ -87,6 +99,9 @@ namespace GGGETSAdmin.Common
             WriteToFile();
         }
 
+        /// <summary>
+        /// 导出总运单
+        /// </summary>
         public void ExportMAWB()
         {
             InitializeWorkbook("~/Template/MAWB.xls");
@@ -203,6 +218,73 @@ namespace GGGETSAdmin.Common
 
             }
             sheet.GetRow(2).GetCell(6).SetCellValue(count);
+            WriteToFile();
+        }
+
+        /// <summary>
+        /// 导出电子出口清单(报关单)
+        /// </summary>
+        public void ExportClearance()
+        {
+            //初始化HSSFWorkBook
+            InitializeWorkbook("~/Template/ClearanceImport.xls");
+            //获取第一个sheet
+            var sheet = _hssfworkbook.GetSheet("Sheet1");
+
+            //格式处理
+            HSSFCellStyle cellStyle = _hssfworkbook.CreateCellStyle();
+            HSSFDataFormat format = _hssfworkbook.CreateDataFormat();
+            cellStyle.DataFormat = format.GetFormat("yyyymmdd");
+            sheet.GetRow(3).GetCell(6).CellStyle = cellStyle;
+
+            //开始处理
+            #region 总运单信息
+            sheet.GetRow(3).GetCell(1).SetCellValue(_mawbDataSource.BarCode.ToUpper());//总运单编号
+            sheet.GetRow(3).GetCell(2).SetCellValue(_mawbDataSource.FlightNo.ToUpper());//航班编号
+            sheet.GetRow(3).GetCell(4).SetCellValue(_mawbDataSource.TotalWeight.ToString());//总重量
+            //sheet.GetRow(3).GetCell(5).SetCellValue(_mawbDataSource.Packages.Count());//总件数，使用区域求和
+            sheet.GetRow(3).GetCell(6).SetCellFormula("TODAY()");//今天日期,使用yyyymmdd格式
+            sheet.GetRow(3).GetCell(8).SetCellValue("起始地编号");//todo 起始地编号,需要提供
+            #endregion
+
+            #region 子运单信息
+            int i = 5;
+            foreach(HAWB hawb in _hawbDataSources)
+            {
+                sheet.GetRow(i).GetCell(1).SetCellValue(hawb.BarCode.ToUpper());//子运单编号
+                sheet.GetRow(i).GetCell(2).SetCellValue(hawb.ShipperName.ToUpper());//子运单发货人姓名
+                sheet.GetRow(i).GetCell(3).SetCellValue(hawb.ConsigneeName.ToUpper());//子运单交付人姓名
+                sheet.GetRow(i).GetCell(4).CellStyle = sheet.GetRow(5).GetCell(4).CellStyle;//样式复制
+                sheet.GetRow(i).GetCell(4).SetCellValue(hawb.ConsigneeAddress.ToUpper());//子运单交付人地址
+                sheet.GetRow(i).GetCell(5).SetCellValue(hawb.Remark.ToUpper());//子运单备注
+                sheet.GetRow(i).GetCell(6).SetCellValue(Convert.ToDouble(hawb.TotalWeight));//子运单重量
+                //处理子运单总价格
+                //处理子运单总件数
+                decimal tempAmount = 0;
+                int tempPiece = 0;
+                foreach(HAWBItem item in hawb.HAWBItems)
+                {
+                    if (!string.IsNullOrEmpty(Convert.ToString(item.TotalAmount)) && !string.IsNullOrEmpty(Convert.ToString(item.Piece)))
+                    {
+                        tempAmount = tempAmount + item.TotalAmount;
+                        tempPiece = tempPiece + item.Piece;
+                    }
+                }
+                sheet.GetRow(i).GetCell(7).SetCellValue(Convert.ToDouble(tempAmount));//子运单价格
+                sheet.GetRow(i).GetCell(8).SetCellValue(hawb.Package.BarCode);//子运单包号
+                sheet.GetRow(i).GetCell(9).SetCellValue(tempPiece);//子运单总件数
+
+                i++;
+            }
+            #endregion
+
+            //区域求和，计算总件数
+            HSSFName range = _hssfworkbook.CreateName();
+            range.Reference = "Sheet1!$J3:$J60000";
+            range.NameName = "range1";
+            sheet.GetRow(3).GetCell(5).SetCellFormula("sum(range1)");
+            //处理结束
+            //创建一个虚拟的XLS文件，用于后续读取写入到stream流中
             WriteToFile();
         }
 

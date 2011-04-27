@@ -125,7 +125,6 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>GGGETSAppDataModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="ClassDiagram1.cd" />
     <None Include="UnitOfWork\IGGGETSAppUnitOfWork.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>IGGGETSAppUnitOfWork.cs</LastGenOutput>

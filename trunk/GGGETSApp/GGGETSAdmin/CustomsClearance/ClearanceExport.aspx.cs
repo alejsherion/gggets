@@ -9,6 +9,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Web;
@@ -16,6 +17,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Application.GGETS;
 using ETS.GGGETSApp.Domain.Application.Entities;
+using GGGETSAdmin.Common;
 using Telerik.Web.UI;
 
 namespace GGGETSAdmin.CustomsClearance
@@ -118,8 +120,24 @@ namespace GGGETSAdmin.CustomsClearance
                 }
 
             }
-            //todo 进行EXCEL导出
 
+            //todo 进行EXCEL导出
+            MAWB mawb = _mawbService.FindMAWBByBarcode(MAWBNo);
+            var NpoiHelper = new NpoiHelper(mawb, hawbs);
+            NpoiHelper.ExportClearance();
+            var str = (MemoryStream)NpoiHelper.RenderToExcel();
+            if (str == null) return;
+            var data = str.ToArray();
+            var resp = Page.Response;
+            resp.Buffer = true;
+            resp.Clear();
+            resp.Charset = "utf-8";
+            resp.ContentEncoding = System.Text.Encoding.UTF8;
+            resp.ContentType = "application/ms-excel";
+            HttpContext.Current.Response.AddHeader("Content-Disposition", "attachment; filename=" + HttpUtility.UrlEncode(String.Format("{0}.xls", "电子出口清单"), System.Text.Encoding.UTF8));
+            HttpContext.Current.Response.BinaryWrite(data);
+            HttpContext.Current.Response.Flush();
+            HttpContext.Current.Response.End();
         }
 
         /// <summary>
