@@ -18,8 +18,9 @@
             <td width="15%" class="FieldHeader">&nbsp;<asp:Label ID="lblWayBill" runat="server" Text="路单编号:"></asp:Label></td>
             <td width="50%"><asp:TextBox ID="txtWayBill" runat="server" Width="300px" 
                     AutoPostBack="True" ontextchanged="txtWayBill_TextChanged"></asp:TextBox></td>
-            <td align="center">
-                
+            <td align="left">
+                <asp:LinkButton ID="lbCertain" runat="server" CssClass="InputBtn" 
+                    onclick="lbCertain_Click">确 认</asp:LinkButton>
             </td>
         </tr>
         <tr class="Row" height="40px">
