@@ -253,6 +253,7 @@
     <Content Include="Scripts\login.js" />
     <Content Include="Scripts\menu.js" />
     <Content Include="Scripts\style.css" />
+    <Content Include="Styles\btn.css" />
     <Content Include="Styles\LeftMenu.css" />
     <Content Include="Styles\login.css" />
     <Content Include="Styles\login_admin.css" />

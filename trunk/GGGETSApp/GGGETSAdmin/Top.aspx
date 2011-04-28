@@ -5,6 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>首页顶部</title>
+    <link href="Styles/btn.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
     <form id="form1" runat="server">
@@ -15,6 +16,8 @@
             <asp:Label ID="lblLoginInfo" runat="server" Font-Names="微软雅黑" Font-Size="Small"></asp:Label>&nbsp;&nbsp;
             <asp:Label ID="lblRole" runat="server" Font-Names="微软雅黑" Font-Size="Small" Text="当前角色:"></asp:Label>
             <asp:Label ID="lblRoleInfo" runat="server" Font-Names="微软雅黑" Font-Size="Small"></asp:Label>&nbsp;&nbsp;
+            <asp:LinkButton ID="lbExit" runat="server" Font-Names="微软雅黑" CssClass="btn" 
+                ForeColor="Red" onclick="lbExit_Click">退出系统</asp:LinkButton>
         </div>
     </div>
     </form>

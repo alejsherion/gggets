@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Web;
+using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Application.GGETS;
@@ -44,6 +45,20 @@ namespace GGGETSAdmin
                 }
                 lblRoleInfo.Text = sb.ToString();
             }
+        }
+
+        /// <summary>
+        /// 系统退出
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void lbExit_Click(object sender, EventArgs e)
+        {
+            FormsAuthentication.SignOut();
+            Request.Cookies.Clear();
+            Session.Abandon();
+            Session.Clear();
+            Response.Write("<script>top.window.location.href= 'Login/AdminLogin.aspx';</script>");
         }
     }
 }
