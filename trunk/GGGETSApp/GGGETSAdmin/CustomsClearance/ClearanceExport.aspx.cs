@@ -121,7 +121,6 @@ namespace GGGETSAdmin.CustomsClearance
 
             }
 
-            //todo 进行EXCEL导出
             MAWB mawb = _mawbService.FindMAWBByBarcode(MAWBNo);
             var NpoiHelper = new NpoiHelper(mawb, hawbs);
             NpoiHelper.ExportClearance();
