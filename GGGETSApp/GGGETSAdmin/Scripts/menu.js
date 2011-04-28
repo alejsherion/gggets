@@ -57,9 +57,9 @@ function initMenus() {
 		        return false;
 		    }
 		    if ((checkElement.is('ul')) && (checkElement.is(':visible'))) {
-		        if ($('#' + parent).hasClass('collapsible')) {
+		        //if ($('#' + parent).hasClass('collapsible')) {
 		            $('#' + parent + ' ul:visible').slideUp('normal');
-		        }
+		        //}
 		        return false;
 		    }
 		    if ((checkElement.is('ul')) && (!checkElement.is(':visible'))) {
