@@ -45,7 +45,7 @@
                         <td class="FieldHeader" style="width:150px">
                             &nbsp;<asp:Label ID="lbl_Region" runat="server" Text="起/终三字码:"></asp:Label>
                         </td>
-                        <td style="width: 80px">
+                        <td style="width: 150px">
                             <asp:TextBox ID="Txt_OriginalRegionCode" runat="server" TabIndex="2" Width="50" 
                                 MaxLength="3" AutoPostBack="true" OnTextChanged="Txt_Region_TextChanged" Style="text-transform: uppercase" CssClass="TextBox"></asp:TextBox>
                      <%--       <asp:FilteredTextBoxExtender ID="FilteredTextBoxExtender1" runat="server" 
