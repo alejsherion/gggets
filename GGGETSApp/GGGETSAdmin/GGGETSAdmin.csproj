@@ -183,6 +183,7 @@
     <Content Include="Images\button.gif" />
     <Content Include="Images\c01.gif" />
     <Content Include="Images\c02.gif" />
+    <Content Include="Images\exit.jpg" />
     <Content Include="Images\In.gif" />
     <Content Include="Images\left_bg.jpg" />
     <Content Include="Images\login.jpg" />

@@ -363,6 +363,44 @@ namespace GGGETSAdmin.CustomsClearance
                 txtWayBill.Focus();
             }
         }
+
+        /// <summary>
+        /// 路单编号确认
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void lbCertain_Click(object sender, EventArgs e)
+        {
+            string wayBillCode = txtWayBill.Text.Trim();//获取路单信息
+            //验证路单编号的合法性
+            bool judge = JudgeRegex2();
+            if (judge)//验证通过
+            {
+                IList<HAWB> hawbs = _hawbService.FindHAWBsByBillWayCode(wayBillCode);
+                if (hawbs != null && hawbs.Count != 0)//需要赋值给瘦身后的运单
+                {
+
+                    foreach (var hawb in hawbs)
+                    {
+                        TrimedHAWB trimedHawbModel = new TrimedHAWB();
+                        TrimedHAWB trimedHAWB = (TrimedHAWB)PropertyCopy(hawb, trimedHawbModel);//对象属性复制
+                        HAWBList.Add(trimedHAWB);//添加成功
+                    }
+
+                }
+                //else
+                //{
+                //    HAWBList = new List<TrimedHAWB>();
+                //}
+                Bind();
+                txtBarCode.Focus();
+            }
+            else
+            {
+                txtWayBill.Text = "";
+                txtWayBill.Focus();
+            }
+        }
         #endregion
 
     }
