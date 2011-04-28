@@ -227,12 +227,13 @@ namespace GGGETSAdmin.PackageGetOffManage
             {
                 if (barcode.Equals(RGHAWBs.MasterTableView.DataKeyValues[i]["BarCode"].ToString()))
                 {
-                    if (customsClearanceState.Equals("c"))
+                    var tempColor = Convert.ToString(RGHAWBs.MasterTableView.Items[i].Style["background-color"]);//定义背景色
+                    if (customsClearanceState.Equals("c") && string.IsNullOrEmpty(tempColor))
                     {
                         RGHAWBs.MasterTableView.Items[i].Style.Add(HtmlTextWriterStyle.BackgroundColor, "#B9D7FF");
                         Index++;
-                    }  
-                    else
+                    }
+                    if (!customsClearanceState.Equals("c") && string.IsNullOrEmpty(tempColor))
                     {
                         RGHAWBs.MasterTableView.Items[i].Style.Add(HtmlTextWriterStyle.BackgroundColor, "#FFBCA6");
                         Index++;
