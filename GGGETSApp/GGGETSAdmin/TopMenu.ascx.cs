@@ -47,6 +47,13 @@ namespace GGGETSAdmin
                 //                  new Guid("51cec8c8-e29d-4019-99f0-bf679a11871c"),
                 //                  new Guid("77f71775-8748-4e1a-910e-cf3777712abc")
                 //              };
+                
+                if(File.Exists(absfilePath))
+                {
+                    //首先删除原来的XLS文件
+                    File.Delete(absfilePath);
+                }
+
                 string menuStr;
                 if (!File.Exists(absfilePath))
                 {
