@@ -150,6 +150,7 @@
     <Content Include="App_Themes\logisitc\dataView.css" />
     <Content Include="App_Themes\logisitc\logistic.css" />
     <Content Include="AutoCountryCode.asmx" />
+    <Content Include="Bottom.aspx" />
     <Content Include="CountryZiMaManage\TwoZiMaAdd.aspx" />
     <Content Include="CountryZiMaManage\TwoZiMaManage.aspx" />
     <Content Include="CustomsClearance\ClearanceExport.aspx" />
@@ -177,6 +178,7 @@
     <Content Include="HAWBManage\HAWBItemAdd.aspx" />
     <Content Include="HAWBManage\HAWBManagement.aspx" />
     <Content Include="HOME.aspx" />
+    <Content Include="Images\banner-r.gif" />
     <Content Include="Images\bg.gif" />
     <Content Include="Images\button.gif" />
     <Content Include="Images\c01.gif" />
@@ -277,6 +279,7 @@
     <Content Include="SysManager\AddRoleUser.aspx" />
     <Content Include="SysManager\AppModuleManagement.aspx" />
     <Content Include="SysManager\RoleManagement.aspx" />
+    <Content Include="Top.aspx" />
     <Content Include="TopMenu.ascx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -367,6 +370,13 @@
     <Compile Include="AutoCountryCode.asmx.cs">
       <DependentUpon>AutoCountryCode.asmx</DependentUpon>
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Bottom.aspx.cs">
+      <DependentUpon>Bottom.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Bottom.aspx.designer.cs">
+      <DependentUpon>Bottom.aspx</DependentUpon>
     </Compile>
     <Compile Include="Common\CookiesHelp.cs" />
     <Compile Include="Common\DataBindHelper .cs" />
@@ -840,6 +850,13 @@
     </Compile>
     <Compile Include="SysManager\RoleManagement.aspx.designer.cs">
       <DependentUpon>RoleManagement.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Top.aspx.cs">
+      <DependentUpon>Top.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Top.aspx.designer.cs">
+      <DependentUpon>Top.aspx</DependentUpon>
     </Compile>
     <Compile Include="TopMenu.ascx.cs">
       <DependentUpon>TopMenu.ascx</DependentUpon>
