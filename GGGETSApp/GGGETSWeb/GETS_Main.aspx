@@ -1,13 +1,21 @@
 ﻿<%@ Page Title="WELCOME TO GETS" Language="C#" MasterPageFile="~/GETS.Master" AutoEventWireup="true" CodeBehind="GETS_Main.aspx.cs" Inherits="GGGETSWeb.GETS_Main" culture="auto" meta:resourcekey="PageResource1" uiculture="auto" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link href="Styles/panning-slideshow.css" rel="stylesheet" type="text/css" />
-    <script src="Scripts/jquery-1.4.1.min.js" type="text/javascript"></script>
+   <%-- <script src="Scripts/jquery-1.4.1.min.js" type="text/javascript"></script>
     <script src="Scripts/jquery.easing.1.3.js" type="text/javascript"></script>
     <script src="Scripts/jquery.timer.js" type="text/javascript"></script>
-    <script src="Scripts/image-rotator.js" type="text/javascript"></script>
+    <script src="Scripts/image-rotator.js" type="text/javascript"></script>--%>
   <%--  <script src="Scripts/Ad.js" type="text/javascript"></script>--%>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+    <asp:ScriptManager ID="ScriptManager1" runat="server">
+    <Scripts>
+        <asp:ScriptReference Path="~/Scripts/jquery-1.4.1.min.js" />
+        <asp:ScriptReference Path="~/Scripts/jquery.easing.1.3.js" />
+        <asp:ScriptReference Path="~/Scripts/jquery.timer.js" />
+        <asp:ScriptReference Path="~/Scripts/image-rotator.js" />
+    </Scripts>
+    </asp:ScriptManager>
 <!--main content-->
 <div class="content_main">
                     <a id="content_main"></a>

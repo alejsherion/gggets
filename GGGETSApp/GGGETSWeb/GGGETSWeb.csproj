@@ -58,12 +58,28 @@
     <Content Include="App_Themes\logisitc\component.css" />
     <Content Include="App_Themes\logisitc\dataView.css" />
     <Content Include="App_Themes\logisitc\logistic.css" />
+    <Content Include="GETS_About.aspx" />
+    <Content Include="GETS_Contact.aspx" />
     <Content Include="GETS_Main.aspx" />
+    <Content Include="GETS_Fee.aspx" />
+    <Content Include="GETS_Treaty.aspx" />
+    <Content Include="Images\about\1017_Express_230x305.jpg" />
+    <Content Include="Images\about\1100_General_220x100.jpg" />
+    <Content Include="Images\about\image.png" />
     <Content Include="Images\ad\mainAd2.jpg" />
     <Content Include="Images\ad\mainAd3.jpg" />
     <Content Include="Images\ad\mainAd4.jpg" />
     <Content Include="Images\ad\mainAd5.jpg" />
+    <Content Include="Images\Contact\1000_Contact_70x50.jpg" />
+    <Content Include="Images\Contact\1049_General_70x50.jpg" />
+    <Content Include="Images\Contact\image.jpg" />
     <Content Include="Images\favicon.gif" />
+    <Content Include="Images\Fee\1005_General_70x50.jpg" />
+    <Content Include="Images\Fee\1020_General_70x50.jpg" />
+    <Content Include="Images\Fee\1028_General_220x100.jpg" />
+    <Content Include="Images\Fee\1063_General_70x50.jpg" />
+    <Content Include="Images\Fee\9013_General_70x50.jpg" />
+    <Content Include="Images\Fee\image.png" />
     <Content Include="Images\GTES-logo.jpg" />
     <Content Include="Images\logo.jpg" />
     <Content Include="Images\main.swf" />
@@ -118,6 +134,10 @@
     <Content Include="Images\jp.png" />
     <Content Include="Images\ad\mainAd.jpg" />
     <Content Include="Images\top.swf" />
+    <Content Include="Images\treaty\1003_Express_70x50.jpg" />
+    <Content Include="Images\treaty\1032_Express_220x100.jpg" />
+    <Content Include="Images\treaty\image.png" />
+    <Content Include="Images\treaty\treaty.jpg" />
     <Content Include="Images\us.png" />
     <Content Include="Scripts\Ad.js" />
     <Content Include="Scripts\image-rotator.js" />
@@ -127,6 +147,8 @@
     <Content Include="Scripts\swap.js" />
     <Content Include="Scripts\swfobject.js" />
     <Content Include="Styles\Ad.css" />
+    <Content Include="Styles\css.css" />
+    <Content Include="Styles\defalut.css" />
     <Content Include="Styles\e_common.css" />
     <Content Include="Styles\e_under.css" />
     <Content Include="Styles\global.css" />
@@ -185,12 +207,40 @@
     <Compile Include="GETS.Master.designer.cs">
       <DependentUpon>GETS.Master</DependentUpon>
     </Compile>
+    <Compile Include="GETS_About.aspx.cs">
+      <DependentUpon>GETS_About.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GETS_About.aspx.designer.cs">
+      <DependentUpon>GETS_About.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="GETS_Contact.aspx.cs">
+      <DependentUpon>GETS_Contact.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GETS_Contact.aspx.designer.cs">
+      <DependentUpon>GETS_Contact.aspx</DependentUpon>
+    </Compile>
     <Compile Include="GETS_Main.aspx.cs">
       <DependentUpon>GETS_Main.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="GETS_Main.aspx.designer.cs">
       <DependentUpon>GETS_Main.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="GETS_Fee.aspx.cs">
+      <DependentUpon>GETS_Fee.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GETS_Fee.aspx.designer.cs">
+      <DependentUpon>GETS_Fee.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="GETS_Treaty.aspx.cs">
+      <DependentUpon>GETS_Treaty.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GETS_Treaty.aspx.designer.cs">
+      <DependentUpon>GETS_Treaty.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
