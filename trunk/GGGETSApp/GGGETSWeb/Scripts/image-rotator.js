@@ -5,7 +5,7 @@ $(document).ready(function(){
 	//Controlling the duration of animation by variable will simplify changes
 	var animation_duration = 2500;
 	
-	$.timer(6000, function (timer) {
+	$.timer(3000, function (timer) {
 		//Determine the current location, and transition to next panel
 		switch(current_panel){
 			case 1:
