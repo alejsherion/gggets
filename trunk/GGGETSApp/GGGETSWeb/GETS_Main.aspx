@@ -1,20 +1,23 @@
 ﻿<%@ Page Title="WELCOME TO GETS" Language="C#" MasterPageFile="~/GETS.Master" AutoEventWireup="true" CodeBehind="GETS_Main.aspx.cs" Inherits="GGGETSWeb.GETS_Main" culture="auto" meta:resourcekey="PageResource1" uiculture="auto" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <link href="Styles/panning-slideshow.css" rel="stylesheet" type="text/css" />
     <script src="Scripts/jquery-1.4.1.min.js" type="text/javascript"></script>
-    <script src="Scripts/Ad.js" type="text/javascript"></script>
+    <script src="Scripts/jquery.easing.1.3.js" type="text/javascript"></script>
+    <script src="Scripts/jquery.timer.js" type="text/javascript"></script>
+    <script src="Scripts/image-rotator.js" type="text/javascript"></script>
+  <%--  <script src="Scripts/Ad.js" type="text/javascript"></script>--%>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 <!--main content-->
 <div class="content_main">
                     <a id="content_main"></a>
                     <div class="content_left">
-                        <div class="container_title">
-                            <div class="headlineflashimage parbase">
+                        <%--<div class="container_title">--%>
+                           <%-- <div class="headlineflashimage parbase">
                                 <div id="headlineflashimage_placeholder">
-                                    <%--<div class="cq-dd-flash" style="width: 380px; height: 245px; background: url(&quot;Images/ad/mainAd.jpg&quot;) no-repeat scroll center center transparent;">
-                                    </div>--%>
-                                    <div id="mainFlash" style="width: 380px; height: 245px;">
-                                    <div class="vouchimg relative">
+                                    <div id="mainFlash" style="width: 380px; height: 245px;">--%>
+                                    <div id="window" style="width: 380px; height: 245px;">
+                                    <%--<div class="vouchimg relative">
 			                            <a title="广告名01" target="_blank" id="picswitch" href="#"><img src="Images/ad/mainAd.jpg" alt="" /></a>
 			                            <div class="picswitch absolute" style="display:none;">
                                             <!-- a标签的title和href需要动态绑定 -->
@@ -24,11 +27,18 @@
                                             <a title="广告名04" target="_blank" href="#"><span id="3" picurl="Images/ad/mainAd4.jpg" class="unchoose">广告名04</span></a>
                                             <a title="广告名02" target="_blank" href="#"><span id="4" picurl="Images/ad/mainAd5.jpg" class="unchoose">广告名05</span></a>
 		                                </div>
+                                    </div>--%>
+                                    <ul id="slideshow">
+			                            <li class="box1"><img alt="WELCOME GETS" src="Images/ad/mainAd.jpg" /></li>
+			                            <li class="box2"><img alt="WELCOME GETS" src="Images/ad/mainAd3.jpg" /></li>
+			                            <li class="box3"><img alt="WELCOME GETS" src="Images/ad/mainAd4.jpg" /></li>
+			                            <li class="box4"><img alt="WELCOME GETS" src="Images/ad/mainAd5.jpg" /></li>
+		                            </ul>
                                     </div>
-                                    </div>
+                         <%--           </div>
                                 </div>
-                            </div>
-                        </div>
+                            </div>--%>
+                     <%--   </div>--%>
                         <div class="contentleftpar parsys">
                             <a name="contentleftpar_contentteaser" style="visibility: hidden;"></a>
                             <div class="contentteaser section standardarticle">

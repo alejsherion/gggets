@@ -1,0 +1,23 @@
+/*
+	Panning Slideshow with jQuery
+	Build Internet Tutorial (www.buildinternet.com)
+	Written by Zach Dunn
+*/
+
+*{margin:0; padding:0;}
+
+body{background:eight; height:100%;}
+
+#window
+{
+    clear:both; 
+    width:ght:245px; 
+    background:White; 
+    overflow:hidden; 
+    position:relative; 
+    /*margin:10px auto 10px auto;*/
+}
+
+#slideshow{width:760px; height:490px; overflow:hidden; position:relative;}
+	#slideshow li{width:380px; height:245px; float:lefpx; float:left; display:inline;}
+		
