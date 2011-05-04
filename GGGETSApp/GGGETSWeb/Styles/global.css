@@ -199,7 +199,7 @@ hr { margin: 0pt 2em 1.2em; }
 .content_right { padding-top: 2.2em; width: 32.9em; max-width: 47%; min-width: 329px; float: left; overflow: hidden; }shadow_content_title_right.png') no-repeat scroll 100% 0pt transparent; }
 .content_right { padding-top: 2.2em; width: 32.9em; max-width: 47%; min-width: 329px; float: left; overflow: hidden; }
 .content_right .module { margin: 0pt 1em 1.1em; }
-.container_title { padding: 0pt; height: auto; background: none repeat scroll 0% 0% rgb(255, 204, 0); margin: 0pt 0pt 1.2em; }
+.container_title { padding: 0pt; height: auto; background: none repeat scroll 0% 0% #FF0000; margin: 0pt 0pt 1.2em; }
 .localHome .container_title { margin: 0pt 0pt 1.2em; }
 .content_cross_reference { margin-left: 0pt; }
 .spacer {  }

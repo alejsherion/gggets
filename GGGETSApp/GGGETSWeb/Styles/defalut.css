@@ -134,7 +134,7 @@ display:block;
 /*** header styles ***/
 
 .header {
-	background: #fc0;
+	background: FF0000;
 	/*height: 7em;*/
 	padding-left: 1.5em;
 }
@@ -169,7 +169,7 @@ display:block;
 }
 
 .header div.servicelinks a {
-	color: #000;
+	color: Yellow;
 	padding-left: .5em;
 	background: url(/img/meta/servicelink_separator.gif) no-repeat 0 .5em;
 }
@@ -301,7 +301,7 @@ display:block;
 	overflow: hidden;
 }
 .container_title_main {
-	background: #fc0;
+	background: #FF0000;
 	margin-bottom: 2.2em;
 	padding: 1em 20px 2.2em;
 	overflow: hidden;
@@ -348,14 +348,14 @@ display:block;
 
 .container_title h1 {
 	font-size: 2em;
-	color: #000;
+	color: Yellow;
 	font-weight: normal;
 	margin-bottom: .2em;
 }
 
 .container_title_main h1 {
 	font-size: 2em;
-	color: #C00;
+	color: Yellow;
 	font-weight: normal;
 	margin-bottom: .2em;
 }
@@ -425,7 +425,7 @@ display:block;
 
 .footer div.container {
 	padding: 1em 1em .5em;
-	background: #fc0;
+	background: #FF0000;
 	width: 70em;
 	max-width:96%;
 	margin-bottom: 0;
@@ -4168,7 +4168,7 @@ margin-bottom: -1px!important;
 **********************/
 .navigation_main {
 	background: url(/img/meta/main_navigation_bg.gif) repeat-x;
-	background-color: #c00;
+	background-color: #FFF100;
 	padding: .5em 1em .5em 2em;
 	position: relative;
 	/*white-space: nowrap;*/
@@ -4182,7 +4182,7 @@ margin-bottom: -1px!important;
 .navigation_main a {
 	font-size: 1.2em;
 	font-weight: normal;
-	color: #fff;
+	color: #E60012;
 	/*padding-right: 3em;*/
 }
 
@@ -4206,11 +4206,11 @@ margin-bottom: -1px!important;
 
 #nav a.nav_top {
 	display: block;
-	color: #fff;
+	color: #E60012;
 	font-weight: bold;
 	text-decoration: none;
 	padding: .15em 29px .15em 0;
-	background-color:#c00;
+	background-color:#FFF100;
 }
 
 #nav a.nav_top_active {
@@ -4238,7 +4238,7 @@ margin-bottom: -1px!important;
 	font-weight: normal;
 	margin: 0 0 0 -2em;
 	padding: 1.5em 0 1.5em 1em;
-	background: #c00 url(/img/meta/bg_navi_drop.jpg) 0 .5em no-repeat;
+	background: #FFF100 url(/img/meta/bg_navi_drop.jpg) 0 .5em no-repeat;
 	width: 15.8em;
 	z-index:900;
 	white-space:normal;
@@ -4274,18 +4274,18 @@ margin-bottom: -1px!important;
 a.navi, a.navi:link,  a.navi:visited {
 	padding: 4px 14px;
 	display: block;
-	background: url(/img/common/arrow_navi.gif) no-repeat .3em .5em;
+	background: url("../Images/arrow_navi.gif") no-repeat .3em .5em;
 }
 
 a.navi:hover{
 	color: #ffcd00;
-	background: url(/img/common/arrow_navi_on.gif) .3em .5em no-repeat;
+	background: url("../Images/arrow_navi.gif") .3em .5em no-repeat;
 }
 
 a.naviTrans,  a.naviTrans:link,  a.naviTrans:visited {
 	color: #fff;
 	padding: .32em 1.2em;
-	background: url(/img/common/arrow_naviTrans.gif) 0 .4em no-repeat;
+	background: url("../Images/arrow_navi.gif") 0 .4em no-repeat;
 	display: block;
 }
 a.naviTrans:hover {
@@ -8153,7 +8153,7 @@ html .menu .toplevel h2{
 
 
 #nav a.navi, #nav a.navi:link, #nav a.navi:visited {
-	*/background: url(/img/common/arrow_navi.gif) no-repeat .3em .4em;
+	*/background: url(Images/arrow_navi.gif) no-repeat .3em .4em;
 }
 
 #nav a.navi:hover{
