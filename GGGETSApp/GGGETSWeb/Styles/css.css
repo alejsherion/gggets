@@ -10224,9 +10224,6 @@ head~body .paperwork textarea.notes {
 /* /apps/dhl/docroot/css/font_alternate.css */@charset "utf-8";
 /* CSS Document */
 
-* {
-	font-family: meiryo, ms ui gothic, ms gothic,  arial, sans-serif!important;
-}
 .clpt_tracking_results .tophead th,
 .clpt_tracking_results th,
 .clpt_tracking_results td {

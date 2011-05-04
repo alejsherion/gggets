@@ -1,5 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/GETS.Master" AutoEventWireup="true" CodeBehind="GETS_Fee.aspx.cs" Inherits="GGGETSWeb.GETS_Fee" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <link href="Styles/global.css" rel="stylesheet" type="text/css" />
     <link href="Styles/css.css" rel="stylesheet" type="text/css" />
     <link href="Styles/defalut.css" rel="stylesheet" type="text/css" />
 </asp:Content>

@@ -221,6 +221,10 @@ html .module {  }
 .taskcenter .fast_track {  }
 .taskcenter .fast_track_container .wrap8 {  }
 .taskcenter .error {  }
-* { font-family: meiryo,ms ui gothic,ms gothic,arial,sans-serif ! important; color: Black }
+*  
+{
+    /*font-family: meiryo,ms ui gothic,ms gothic,arial,sans-serif ! important;*/ 
+    color: Black 
+}
 .footerSpan{ color:#FEFF04; }
 #headlineflashimage_swf { visibility: hidden; }
