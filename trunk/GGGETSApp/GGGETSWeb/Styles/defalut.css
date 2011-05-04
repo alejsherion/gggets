@@ -2,6 +2,13 @@
 
 /*** default basis styles ***/
 
+.container_title {
+    background: none repeat scroll 0 0 #FF0000;
+    height: auto;
+    margin: 0 0 1.2em;
+    padding: 0;
+}
+
 * {
 	margin: 0;
 	padding: 0;
@@ -945,7 +952,7 @@ line-height:1.5em;
     font-size: 1.2em;
     font-weight: bold;
     margin-bottom: .5em;
-    margin-top:-.25em;
+    
 }
 
 .transaction_teaser_headline h2{
@@ -10224,9 +10231,6 @@ head~body .paperwork textarea.notes {
 /* /apps/dhl/docroot/css/font_alternate.css */@charset "utf-8";
 /* CSS Document */
 
-* {
-	font-family: meiryo, ms ui gothic, ms gothic,  arial, sans-serif!important;
-}
 .clpt_tracking_results .tophead th,
 .clpt_tracking_results th,
 .clpt_tracking_results td {
