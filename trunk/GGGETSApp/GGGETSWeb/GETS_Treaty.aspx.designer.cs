@@ -10,6 +10,6 @@
 namespace GGGETSWeb {
     
     
-    public partial class GETS_Treaty1 {
+    public partial class GETS_Treaty {
     }
 }

@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/GETS.Master" AutoEventWireup="true" CodeBehind="GETS_Treaty.aspx.cs" Inherits="GGGETSWeb.GETS_Treaty1" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/GETS.Master" AutoEventWireup="true" CodeBehind="GETS_Treaty.aspx.cs" Inherits="GGGETSWeb.GETS_Treaty" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link href="Styles/css.css" rel="stylesheet" type="text/css" />
     <link href="Styles/defalut.css" rel="stylesheet" type="text/css" />
