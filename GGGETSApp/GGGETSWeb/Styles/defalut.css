@@ -1566,7 +1566,12 @@ display: inline;
     border-bottom: 1px solid #d1d1d1;
 }
 .spreadsheet td {
-    background: #fff;
+    background: none repeat scroll 0 0 #E8E8E4;
+    border-bottom: 1px solid #D1D1D1;
+    border-right: 3px solid #FFFFFF;
+    font-size: 1.1em;
+    padding: 0.2em 0.6em;
+    vertical-align: top;
 }
 .spreadsheet .rowGrey {
     background: #f2f2ed;
