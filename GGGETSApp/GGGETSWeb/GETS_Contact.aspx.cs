@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace GGGETSWeb
 {
-    public partial class GETS_Contact : System.Web.UI.Page
+    public partial class GETS_Contact : CommonCulture
     {
         protected void Page_Load(object sender, EventArgs e)
         {

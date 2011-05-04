@@ -50,6 +50,9 @@
     <Reference Include="AjaxPro.2">
       <HintPath>..\..\ShareLibs\Other\AjaxPro.2.dll</HintPath>
     </Reference>
+    <Reference Include="AutoMapper">
+      <HintPath>..\..\ShareLibs\DataBus\AutoMapper.dll</HintPath>
+    </Reference>
     <Reference Include="DanLudwig.Controls.AspAjax.ListBox">
       <HintPath>..\..\ShareLibs\Other\DanLudwig.Controls.AspAjax.ListBox.dll</HintPath>
     </Reference>
@@ -60,6 +63,12 @@
     <Reference Include="AutoCompleteExtra, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>DLLs\AutoCompleteExtra.dll</HintPath>
+    </Reference>
+    <Reference Include="DataBusDomain">
+      <HintPath>..\..\ShareLibs\DataBus\DataBusDomain.dll</HintPath>
+    </Reference>
+    <Reference Include="DataBusTest">
+      <HintPath>..\..\ShareLibs\DataBus\DataBusTest.dll</HintPath>
     </Reference>
     <Reference Include="EFCachingProvider">
       <HintPath>..\..\ShareLibs\EFCache\EFCachingProvider.dll</HintPath>
@@ -73,9 +82,21 @@
     <Reference Include="EFTracingProvider">
       <HintPath>..\..\ShareLibs\EFCache\EFTracingProvider.dll</HintPath>
     </Reference>
+    <Reference Include="ExHandling">
+      <HintPath>..\..\ShareLibs\DataBus\ExHandling.dll</HintPath>
+    </Reference>
+    <Reference Include="FormulaDomain">
+      <HintPath>..\..\ShareLibs\DataBus\FormulaDomain.dll</HintPath>
+    </Reference>
+    <Reference Include="Infrastructure">
+      <HintPath>..\..\ShareLibs\DataBus\Infrastructure.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.ReportViewer.WebForms, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\..\ShareLibs\DataBus\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="NPOI, Version=1.2.2.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>

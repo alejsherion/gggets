@@ -130,10 +130,10 @@ namespace GGGETSAdmin.CustomsClearance
             var resp = Page.Response;
             resp.Buffer = true;
             resp.Clear();
-            resp.Charset = "gb2312";
-            resp.ContentEncoding = System.Text.Encoding.Default;
+            resp.Charset = "utf-8";
+            resp.ContentEncoding = System.Text.Encoding.GetEncoding("GB2312");
             resp.ContentType = "application/ms-excel";
-            HttpContext.Current.Response.AddHeader("Content-Disposition", "attachment; filename=" + String.Format("{0}.xls", "电子出口清单"));
+            HttpContext.Current.Response.AddHeader("Content-Disposition", "attachment; filename=" + HttpUtility.UrlEncode("电子出口清单.xls", Encoding.UTF8));
             HttpContext.Current.Response.BinaryWrite(data);
             HttpContext.Current.Response.Flush();
             HttpContext.Current.Response.End();
