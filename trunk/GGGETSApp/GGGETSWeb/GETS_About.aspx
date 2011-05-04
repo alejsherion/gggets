@@ -23,11 +23,11 @@
     
     <div class="leftmenunav">
 <a id="navigation_content"></a>
-<div class="menu">
+<%--<div class="menu">
     <div class="toplevel">
 	<h2>关于我们</h2>
 	<hr>
-</div><ul>	<li><a href="#" id="938097" class="menuItem1">公司介绍</a></li>	<li><a href="#" id="938098" class="menuItem1">体验GETS</a></li>	<li><a href="#" id="938099" class="menuItem1">快递业务集团</a></li>	<li><a href="#" id="938100" class="menuItem1">GETS全球货运，运输业务集团</a></li>	<li><a href="#" id="938101" class="menuItem1">供应链业务集团</a></li>	<li><a href="#" id="938102" class="menuItem1">邮递业务集团</a></li>	<li><a href="#" id="938103" class="menuItem1">全球客户方案</a></li>	<li><a href="#" id="938104" class="menuItem1">创新</a></li>	<li><a href="#" id="938105" class="menuItem1">责任</a></li>	<li><a href="#" id="938106" class="menuItem1">GETS中国</a></li>	<li><a href="#" id="938107" class="menuItem1">联络我们</a></li></ul></div>
+</div><ul>	<li><a href="#" id="938097" class="menuItem1">公司介绍</a></li>	<li><a href="#" id="938098" class="menuItem1">体验GETS</a></li>	<li><a href="#" id="938099" class="menuItem1">快递业务集团</a></li>	<li><a href="#" id="938100" class="menuItem1">GETS全球货运，运输业务集团</a></li>	<li><a href="#" id="938101" class="menuItem1">供应链业务集团</a></li>	<li><a href="#" id="938102" class="menuItem1">邮递业务集团</a></li>	<li><a href="#" id="938103" class="menuItem1">全球客户方案</a></li>	<li><a href="#" id="938104" class="menuItem1">创新</a></li>	<li><a href="#" id="938105" class="menuItem1">责任</a></li>	<li><a href="#" id="938106" class="menuItem1">GETS中国</a></li>	<li><a href="#" id="938107" class="menuItem1">联络我们</a></li></ul></div>--%>
 </div>
 
     

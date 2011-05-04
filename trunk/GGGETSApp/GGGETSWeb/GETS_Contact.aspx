@@ -5,42 +5,26 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <div class="main_area">
-        
-
-
-
-
-
-
 <div class="navigation_content">
     
     <div class="headlineflashimage parbase">
 		<div id="flash_teaser_small" style="MARGIN-BOTTOM: -4px">
 		
 		<a alt="" title="" target="" href="#">
-	
-		
+			
 <img width="200" height="120" class="cq-dd-flash" title="" alt="" src="Images/Contact/image.jpg">
         </a>   
 		</div>
-
-</div>
-
-    
-    
+</div> 
     <div class="leftmenunav">
 <a id="navigation_content"></a>
-<div class="menu">
+<%--<div class="menu">
     <div class="toplevel">
 	<h2>联络中心</h2>
 	<hr>
-</div><ul>	<li><a href="#" id="403937" class="menuItem1">GETS快递</a></li>	<li><a href="#" id="403938" class="menuItem1">GETS全球货运</a></li>	<li><a href="#" id="403939" class="menuItem1">GETS全球邮递</a></li>	<li><a href="#" id="403940" class="menuItem1">GETS供应链</a></li></ul></div>
+</div><ul>	<li><a href="#" id="403937" class="menuItem1">GETS快递</a></li>	<li><a href="#" id="403938" class="menuItem1">GETS全球货运</a></li>	<li><a href="#" id="403939" class="menuItem1">GETS全球邮递</a></li>	<li><a href="#" id="403940" class="menuItem1">GETS供应链</a></li></ul></div>--%>
 </div>
 
-    
-
-
-    
     <div class="favoritesselector">
 
 

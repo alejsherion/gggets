@@ -21,11 +21,12 @@
 
     <div class="leftmenunav">
 <a id="navigation_content"></a>
-<div class="menu">
+<!--菜单-->
+<%--<div class="menu">
     <div class="toplevel">
 	<h2>快递</h2>
 	<hr>
-</div><ul>	<li><a href="#" id="275613" class="menuItem1">发件</a></li>	<li><a href="#" id="275614" class="menuItem1">跟踪</a></li><li><a href="#" id="275618" class="menuItem1">进口服务</a></li>	<li><a href="#" id="275619" class="menuItem1">国内服务</a></li>	<li><a href="#" id="275620" class="menuItem1">可选服务</a></li>	<li><a href="#" id="275621" class="menuItem1">行业解决方案</a></li>	<li><a href="#" id="275622" class="menuItem1">资源中心</a></li></ul></div>
+</div><ul>	<li><a href="#" id="275613" class="menuItem1">发件</a></li>	<li><a href="#" id="275614" class="menuItem1">跟踪</a></li><li><a href="#" id="275618" class="menuItem1">进口服务</a></li>	<li><a href="#" id="275619" class="menuItem1">国内服务</a></li>	<li><a href="#" id="275620" class="menuItem1">可选服务</a></li>	<li><a href="#" id="275621" class="menuItem1">行业解决方案</a></li>	<li><a href="#" id="275622" class="menuItem1">资源中心</a></li></ul></div>--%>
 </div>
 
     
