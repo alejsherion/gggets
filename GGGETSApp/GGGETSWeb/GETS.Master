@@ -11,14 +11,14 @@
     <!-- include webtrends tags -->
     <title>GETS | 中国 | 简体中文</title>
     <link rel="shortcut icon" href="Images/logo.jpg" type="image/jpg">
+    <link rel="stylesheet" type="text/css" href="Styles/global.css" media="all">
     <!--[if IE 6]>
-        <div id="emhelper" style="width:1em;height:1em;"></div>
+        <div id="emhelper" style="width:973px;height:1em; background:#E70012;"></div>
         <link href="/css/ie6_optimization_home.css" rel="stylesheet" type="text/css" />
         <![endif]-->
     <!--[if IE 7]>
-        <div id="emhelper" style="width:1em;height:1em;"></div>
+        <div id="emhelper" style="width:973px;height:1em;background:#E70012;"></div>
         <![endif]-->
-    <link rel="stylesheet" type="text/css" href="Styles/global.css" media="all">
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
@@ -55,8 +55,7 @@
                     <div class="image">
                         <img src="Images/GTES-logo.jpg" alt="返回主页" class="logo" id="logo" height="42" width="134" onclick="location.href='GETS_Main.aspx';" style="cursor:pointer;" />
                     </div>
-                    <div class="clear">
-                        &nbsp;</div>
+        
                 </div>
                 <div style="float: right;">
                     <div class="headerservicelinks">

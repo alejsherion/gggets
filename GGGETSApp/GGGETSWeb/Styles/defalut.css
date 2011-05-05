@@ -3,7 +3,7 @@
 /*** default basis styles ***/
 
 .container_title {
-    background: none repeat scroll 0 0 #FF0000;
+    background: none repeat scroll 0 0 #EF0012;
     height: auto;
     margin: 0 0 1.2em;
     padding: 0;
@@ -308,7 +308,7 @@ display:block;
 	overflow: hidden;
 }
 .container_title_main {
-	background: #FF0000;
+	background: #E70012;
 	margin-bottom: 2.2em;
 	padding: 1em 20px 2.2em;
 	overflow: hidden;
@@ -427,12 +427,12 @@ display:block;
 
 .footer p {
 	font-size: 1em;
-	color: #000;
+	color: #FEFF04;
 }
 
 .footer div.container {
 	padding: 1em 1em .5em;
-	background: #FF0000;
+	background: #E70012;
 	width: 70em;
 	max-width:96%;
 	margin-bottom: 0;
@@ -8072,7 +8072,7 @@ padding-bottom:2.3em;
 }
 * +html .footer div.container {
 	padding: 1em 1em .5em;
-	background: #fc0;
+	background: #E70012;
 	width: 71.5em;
 	max-width:96%;
 }

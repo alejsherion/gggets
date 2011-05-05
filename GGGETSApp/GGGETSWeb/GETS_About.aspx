@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/GETS.Master" AutoEventWireup="true" CodeBehind="GETS_About.aspx.cs" Inherits="GGGETSWeb.GETS_About" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/GETS.Master" AutoEventWireup="true" CodeBehind="GETS_About.aspx.cs" Inherits="GGGETSWeb.GETS_About" culture="auto" meta:resourcekey="PageResource1" uiculture="auto" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link href="Styles/css.css" rel="stylesheet" type="text/css" />
     <link href="Styles/defalut.css" rel="stylesheet" type="text/css" />
@@ -29,48 +29,7 @@
 	<hr>
 </div><ul>	<li><a href="#" id="938097" class="menuItem1">公司介绍</a></li>	<li><a href="#" id="938098" class="menuItem1">体验GETS</a></li>	<li><a href="#" id="938099" class="menuItem1">快递业务集团</a></li>	<li><a href="#" id="938100" class="menuItem1">GETS全球货运，运输业务集团</a></li>	<li><a href="#" id="938101" class="menuItem1">供应链业务集团</a></li>	<li><a href="#" id="938102" class="menuItem1">邮递业务集团</a></li>	<li><a href="#" id="938103" class="menuItem1">全球客户方案</a></li>	<li><a href="#" id="938104" class="menuItem1">创新</a></li>	<li><a href="#" id="938105" class="menuItem1">责任</a></li>	<li><a href="#" id="938106" class="menuItem1">GETS中国</a></li>	<li><a href="#" id="938107" class="menuItem1">联络我们</a></li></ul></div>--%>
 </div>
-
-    
-
-
-    
     <div class="favoritesselector">
-
-
-<script type="text/javascript">
-/* &lt;![CDATA[ */
-function bookmark_us(url, title) {
-	/*
-	if (window.sidebar) { // firefox
-	    window.sidebar.addPanel(title, url, "");
-	} else
-    */
-    
-    if(window.opera &amp;&amp; window.print) { // opera
-	    var elem = document.createElement('a');
-	    elem.setAttribute('href',url);
-	    elem.setAttribute('title',title);
-	    elem.setAttribute('rel','sidebar');
-	    elem.click();
-	} else if(document.all) { // ie
-	    window.external.AddFavorite(url, title);
-	}
-}
-/* ]]&gt; */    
-</script>
-
-			<script type="text/javascript">
-            /* &lt;![CDATA[ */
-			// simply check to see if 'favorites' is supported by the browser (not displaying for firefox)
-			if( (document.all || (window.opera &amp;&amp; window.print)) &amp;&amp; !window.sidebar) {
-				document.write( "&lt;div id=\"startpageSelect\" class=\"startpageSelect\"&gt;" );
-				document.write( "\t&lt;a class=\"favLink\" href=\"javascript:bookmark_us('http://www.cn.dhl.com/content/cn/zh/about_us.html','关于我们');\"&gt;Bookmark Us&lt;/a&gt;" );
-				document.write( "&lt;/div&gt;" );
-			}	
-			/* ]]&gt; */
-			</script>
-	
-	
 </div>
 
 </div>
@@ -330,25 +289,10 @@ function bookmark_us(url, title) {
 </div>
 </div>
 <!-- Added for DHL-1941 -->
-<script type="text/javascript">
-    /* &lt;![CDATA[ */
-    var errorMessage = "Please select a country.";
-    /* ]]&gt; */
-</script></div>
-</div></div>
 </div>
-
-		    
-        
-        
-        
-        
-        
-        
-        
+</div></div>
+</div>      
     </div>
-    
-
 </div>    
     </div>
 </asp:Content>

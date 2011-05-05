@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/GETS.Master" AutoEventWireup="true" CodeBehind="GETS_Contact.aspx.cs" Inherits="GGGETSWeb.GETS_Contact" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/GETS.Master" AutoEventWireup="true" CodeBehind="GETS_Contact.aspx.cs" Inherits="GGGETSWeb.GETS_Contact" culture="auto" meta:resourcekey="PageResource1" uiculture="auto" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link href="Styles/global.css" rel="stylesheet" type="text/css" />
     <link href="Styles/css.css" rel="stylesheet" type="text/css" />
@@ -27,34 +27,9 @@
 </div>
 
     <div class="favoritesselector">
-
-
-<script type="text/javascript">
-/* &lt;![CDATA[ */
-function bookmark_us(url, title) {
-	/*
-	if (window.sidebar) { // firefox
-	    window.sidebar.addPanel(title, url, "");
-	} else
-    */
-    
-    if(window.opera &amp;&amp; window.print) { // opera
-	    var elem = document.createElement('a');
-	    elem.setAttribute('href',url);
-	    elem.setAttribute('title',title);
-	    elem.setAttribute('rel','sidebar');
-	    elem.click();
-	} else if(document.all) { // ie
-	    window.external.AddFavorite(url, title);
-	}
-}
-/* ]]&gt; */    
-</script>
-
 		<div class="startpageSelect" id="startpageSelect">
 
 		</div>
-	
 	
 </div>
 
@@ -116,11 +91,11 @@ function bookmark_us(url, title) {
                             <div class="wrap7">
                                 <div class="wrap8">
                                     <div class="transaction_teaser_white">
-                                        <div class="transaction_teaser_headline">
+                                       <%-- <div class="transaction_teaser_headline">
 
 											
 
-                                        </div>
+                                        </div>--%>
 										<div class="transparsys parsys">
 <a style="visibility:hidden" name="containerleftpar_transactionteaser_transparsys_contentteaser"></a><div class="contentteaser section standardarticle">
 
@@ -155,21 +130,13 @@ function bookmark_us(url, title) {
 
 	</a></div>
 <a style="visibility:hidden" name="containerleftpar_transactionteaser_transparsys_standardlink_2"></a><div class="section standardlink">
-	<a title="" class="arrowLink" href="#">
+	                                            <a class="arrowLink" href="#" title="">货运：海运</a><a title="" class="arrowLink" href="#">
 
-		仓储及分拨
-
-	</a></div>
+		</a></div>
 <a style="visibility:hidden" name="containerleftpar_transactionteaser_transparsys_standardlink_3"></a><div class="section standardlink">
 	<a title="" class="arrowLink" href="#">
 
-		供应链解决方案 
-
-	</a></div>
-<a style="visibility:hidden" name="containerleftpar_transactionteaser_transparsys_standardlink_4"></a><div class="section standardlink">
-	<a title="" class="arrowLink" href="#">
-
-		国际邮递解决方案
+		清关
 
 	</a></div>
 
@@ -202,11 +169,11 @@ function bookmark_us(url, title) {
                             <div class="wrap7">
                                 <div class="wrap8">
                                     <div class="transaction_teaser_white">
-                                        <div class="transaction_teaser_headline">
+                                        <%--<div class="transaction_teaser_headline">
 
 											
 
-                                        </div>
+                                        </div>--%>
 										<div class="transparsys parsys">
 <a style="visibility:hidden" name="containerleftpar_transactionteaser_transparsys_contentteaser"></a><div class="contentteaser section standardarticle">
 
@@ -287,11 +254,11 @@ function bookmark_us(url, title) {
                             <div class="wrap7">
                                 <div class="wrap8">
                                     <div class="transaction_teaser_white">
-                                        <div class="transaction_teaser_headline">
+                                       <%-- <div class="transaction_teaser_headline">
 
 											
 
-                                        </div>
+                                        </div>--%>
 										<div class="transparsys parsys">
 <a style="visibility:hidden" name="containerleftpar_transactionteaser_transparsys_contentteaser"></a><div class="contentteaser section standardarticle">
 
@@ -318,7 +285,8 @@ function bookmark_us(url, title) {
 	<div class="dijitTitlePane dijitContentPane" id="dijit_IOTitlePane_0" title="" widgetid="dijit_IOTitlePane_0">
 	<div dojoattachpoint="focusNode" class="dijitTitlePaneTitle dijitClosed" wairole="button" tabindex="0" dojoattachevent="onclick:toggle,onkeypress: _onTitleKey,onfocus:_handleFocus,onblur:_handleFocus" role="button" aria-haspopup="true">
 		<div class="dijitInline dijitArrowNode" dojoattachpoint="arrowNode"><span class="dijitArrowNodeInner" dojoattachpoint="arrowNodeInner">+</span></div>
-		<div class="dijitTitlePaneTextNode" dojoattachpoint="titleNode" style="-moz-user-select: none;">GETS Express查询</div>
+		<div class="dijitTitlePaneTextNode" dojoattachpoint="titleNode" style="-moz-user-select: none;">
+            GETS建设中</div>
 	</div>
 	<div dojoattachpoint="hideNode" class="dijitTitlePaneContentOuter" style="display: none;">
 		<div dojoattachpoint="wipeNode" class="dijitReset" style="display: none;">
@@ -359,57 +327,13 @@ function bookmark_us(url, title) {
 	</div>
 
 </div>
-<a style="visibility:hidden" name="containerleftpar_transactionteaser_transparsys_expandablelink_1"></a><div class="section expandablelink">
-	<div id="containerleftpar_transactionteaser_transparsys_expandablelink_1">
-
-
-	<div class="dijitTitlePane dijitContentPane" id="dijit_IOTitlePane_1" title="" widgetid="dijit_IOTitlePane_1">
-	<div dojoattachpoint="focusNode" class="dijitTitlePaneTitle dijitClosed" wairole="button" tabindex="0" dojoattachevent="onclick:toggle,onkeypress: _onTitleKey,onfocus:_handleFocus,onblur:_handleFocus" role="button" aria-haspopup="true">
-		<div class="dijitInline dijitArrowNode" dojoattachpoint="arrowNode"><span class="dijitArrowNodeInner" dojoattachpoint="arrowNodeInner">+</span></div>
-		<div class="dijitTitlePaneTextNode" dojoattachpoint="titleNode" style="-moz-user-select: none;">GETS Global Forwarding查询</div>
-	</div>
-	<div dojoattachpoint="hideNode" class="dijitTitlePaneContentOuter" style="display: none;">
-		<div dojoattachpoint="wipeNode" class="dijitReset" style="display: none;">
-			<div tabindex="-1" wairole="region" dojoattachpoint="containerNode" class="dijitTitlePaneContentInner" role="region" aria-labelledby="">
-				<!-- nested divs because wipeIn()/wipeOut() doesn't work right on node w/padding etc.  Put padding on inner div. -->
-			
-	
-<div class="transaction_teaser_txt">
-
-		<div class="parsys insideparsys">
-<a style="visibility:hidden" name="containerleftpar_transactionteaser_transparsys_expandablelink_1_insideparsys_standardlink"></a><div class="section standardlink">
-	<a target="_self" title="" class="arrowLink" href="/zh/logistics/customer_resource_area/freight_tracking_and_applications.html">
-
-		空运及海运货物追踪
-
-	</a></div>
-
-</div>
-
-	
-			<div class="insidestdparsys ngwstandardparsys parsys">
-
-</div>
-
-</div>
-
-	</div>
-		</div>
-	</div>
-</div>
-
-	</div>
-
-</div>
+<a style="visibility:hidden" name="containerleftpar_transactionteaser_transparsys_expandablelink_1"></a>
 <a style="visibility:hidden" name="containerleftpar_transactionteaser_transparsys_expandablelink"></a><div class="section expandablelink">
 	<div id="containerleftpar_transactionteaser_transparsys_expandablelink">
 
 
 	<div class="dijitTitlePane dijitContentPane" id="dijit_IOTitlePane_2" title="" widgetid="dijit_IOTitlePane_2">
-	<div dojoattachpoint="focusNode" class="dijitTitlePaneTitle dijitClosed" wairole="button" tabindex="0" dojoattachevent="onclick:toggle,onkeypress: _onTitleKey,onfocus:_handleFocus,onblur:_handleFocus" role="button" aria-haspopup="true">
-		<div class="dijitInline dijitArrowNode" dojoattachpoint="arrowNode"><span class="dijitArrowNodeInner" dojoattachpoint="arrowNodeInner">+</span></div>
-		<div class="dijitTitlePaneTextNode" dojoattachpoint="titleNode" style="-moz-user-select: none;">GETS Global Mail查询</div>
-	</div>
+	
 	<div dojoattachpoint="hideNode" class="dijitTitlePaneContentOuter" style="display: none;">
 		<div dojoattachpoint="wipeNode" class="dijitReset" style="display: none;">
 			<div tabindex="-1" wairole="region" dojoattachpoint="containerNode" class="dijitTitlePaneContentInner" role="region" aria-labelledby="">
@@ -487,7 +411,7 @@ function bookmark_us(url, title) {
 
     </div>
 
-    <div class="richtext">如果你对工作或职业有任何问题，我们非常乐意帮助你。<br><a title="Careers at DHL" href="#" class="arrowLink">联络GETS发展团队</a><br></div>
+    <div class="richtext">如果你对工作或职业有任何问题，我们非常乐意帮助你。<br><a title="Careers at DHL" href="#" class="arrowLink">建设中</a><br></div>
 
 </div>
 <div style="clear:both"></div>
@@ -526,7 +450,7 @@ function bookmark_us(url, title) {
 <img width="70" height="50" class="cq-dd-image shadow_img" title="" alt="" src="Images/Contact/1049_General_70x50.jpg">
         </a>&nbsp;</div>
 
-    <div class="richtext">有关本集团股份以及其它资本市场相关的问题，请登录我们的企业网站。<br><a href="#" class="arrowLinkUp">联络GETS 中国</a></div>
+    <div class="richtext">有关本集团股份以及其它资本市场相关的问题，请登录我们的企业网站。<br><a href="GETS_Main.aspx" class="arrowLinkUp">联络GETS 中国</a></div>
 
 </div>
 <div style="clear:both"></div>

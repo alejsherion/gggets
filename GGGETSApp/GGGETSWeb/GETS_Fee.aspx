@@ -1,11 +1,11 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/GETS.Master" AutoEventWireup="true" CodeBehind="GETS_Fee.aspx.cs" Inherits="GGGETSWeb.GETS_Fee" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/GETS.Master" AutoEventWireup="true" CodeBehind="GETS_Fee.aspx.cs" Inherits="GGGETSWeb.GETS_Fee" culture="auto" meta:resourcekey="PageResource1" uiculture="auto" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link href="Styles/global.css" rel="stylesheet" type="text/css" />
     <link href="Styles/css.css" rel="stylesheet" type="text/css" />
     <link href="Styles/defalut.css" rel="stylesheet" type="text/css" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-<div class="main_area">
+    <div class="main_area">
 <div class="navigation_content">
     
     <div class="headlineflashimage parbase">
@@ -78,6 +78,9 @@
     <div class="spreadsheet">
         <div class="tableborder">
             <img src="Images/treaty/treaty.jpg" width="500px" />
+        </div>
+        <div class="tableborder">
+            <img src="Images/treaty/Fee_img.jpg" width="500px" />
         </div>
     </div>
 </div>
