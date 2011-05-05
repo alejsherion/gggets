@@ -19,7 +19,7 @@ img { border: medium none; }
 .main { width: 98em; max-width: 99%; min-width: 766px; padding-right: 0.8em; background: url('../Images/ain_right.gif') no-repeat scroll 98em 0pt transparent; position: relative; }
 .main_area { width: 98em; padding-right: 0.8em; position: relative; max-width: 100%; min-width: 766px; }
 .hide { position: absolute; left: -5000px; }
-.header { background: none repeat scroll 0% 0% #FF0000; padding-left: 1.5em; }
+.header { background: none repeat scroll 0% 0% #E70012; padding-left: 1.5em; }
 .header img.logo { margin-top: 1.9em; margin-bottom: 0.9em; float: left; }
 .header div.servicelinks { padding-right: 0.7em; padding-top: 1em; float: right; text-align: right; }
 .header div.servicelinks li { display: inline; padding-right: 0.25em; }
@@ -39,8 +39,8 @@ img { border: medium none; }
 .content_cross_reference { width: 26em; border-top: 1px solid rgb(221, 221, 221); float: left; padding-top: 2.2em; margin-top: -1px; }
 .content_cross_reference hr { margin-right: 1em; margin-left: 2em; }
 .footer { width: 73em; max-width: 99%; min-width: 730px; padding-top: 5em; background: url('../Images/shadow_footer_right.gif') no-repeat scroll 100% 100% transparent; clear: left; }
-.footer p { font-size: 1em; color: rgb(0, 0, 0); }
-.footer div.container { padding: 1em 1em 0.5em; background: none repeat scroll 0% 0% #FF0000; width: 70em; max-width: 96%; margin-bottom: 0pt; }
+.footer p { font-size: 1em; color: #FEFF04; }
+.footer div.container { padding: 1em 1em 0.5em; background: none repeat scroll 0% 0% #E70012; width: 70em; max-width: 96%; margin-bottom: 0pt; }
 .footer .logo { float: left; }
 .footer .footer_navigation { float: right; text-align: right; }
 .footer .footer_navigation li { display: inline; padding-right: 0.28em; padding-left: 0.5em; background: url('../Images/servicelink_separator.gif') no-repeat scroll 0pt 0.4em transparent; }
@@ -183,7 +183,7 @@ a.navi:hover { color: rgb(255, 205, 0); background: url('../Images/arrow_navi_on
 #mainTaskCTabContainer { width: 30em; }
 .taskcenter input.go { background-color: rgb(204, 2, 2); border: 1px solid rgb(204, 2, 1); font-size: 1.1em; color: rgb(255, 255, 255); vertical-align: middle; cursor: pointer; }
 .taskcenter input.track_e:hover, .taskcenter input.track_l:hover, .taskcenter input.go:hover, .taskcenter input.cancel:hover { color: rgb(255, 204, 0); }
-.header div.servicelinks li.firstItem { background: none repeat scroll 0% 0% transparent; color: rgb(178, 142, 0); }
+.header div.servicelinks li.firstItem { background: none repeat scroll 0% 0% transparent; color: #E70012; }
 .footer .footer_navigation li {  }
 .footer .footer_navigation li.firstItem, .footer .footer_navigation li.firstItem a { background: none repeat scroll 0% 0% transparent; }
 .transaction_teaser_white { background: none repeat scroll 0pt 0pt rgb(255, 255, 255); padding: 0pt; }

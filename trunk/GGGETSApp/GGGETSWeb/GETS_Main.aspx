@@ -18,7 +18,7 @@
     </asp:ScriptManager>
 <!--main content-->
 <div class="content_main">
-                    <a id="content_main"></a>
+                   
                     <div class="content_left">
                         <%--<div class="container_title">--%>
                            <%-- <div class="headlineflashimage parbase">
@@ -217,7 +217,7 @@
 <input />
 <br/> 
 <br/>      
-<label for="country">密&nbsp;&nbsp;&nbsp;码</label>&nbsp;&nbsp;&nbsp;
+<label for="country">密&nbsp;&nbsp;&nbsp;&nbsp;码</label>&nbsp;&nbsp;&nbsp;
 <input />
                       
 <input type="submit" class="go" onclick="javascript:return CheckCountrySelector(&quot;countrylistform_containerleftpar_transactionteaser_transparsys_countryselector_9a67&quot; ,&quot;Choose a location&quot;,&quot;true&quot;,&quot;g0&quot;, &quot;countryselector_containerleftpar_transactionteaser_transparsys_countryselector_9a67&quot;)" id="" value="Go">
