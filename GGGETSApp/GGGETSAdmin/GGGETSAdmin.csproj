@@ -895,6 +895,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="bin\" />
     <Folder Include="Excel\b\" />
+    <Folder Include="PackageManage\App_LocalResources\" />
     <Folder Include="Resources\" />
     <Folder Include="UserMenu\" />
   </ItemGroup>
@@ -932,15 +933,6 @@
     <None Include="Template\ClearanceImport.xls" />
     <None Include="Template\Invoice.xls" />
     <None Include="Template\MAWB.XLS" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="PackageManage\App_LocalResources\PackageDetails.aspx.resx" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="PackageManage\App_LocalResources\WebForm1.aspx.resx" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="PackageManage\App_LocalResources\WebForm1.aspx.en-us.resx" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="HAWBManage\App_LocalResources\HAWBAdd.aspx.resx" />

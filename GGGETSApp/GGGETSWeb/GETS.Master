@@ -1,7 +1,7 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="GETS.master.cs" Inherits="GGGETSWeb.GETS" meta:resourcekey="PageResource1" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="GETS.master.cs" Inherits="GGGETSWeb.GETS"
+    meta:resourcekey="PageResource1" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -48,14 +48,15 @@
     <!-- additional layer for local home page, because different style is needed -->
     <div class="localHome">
         <div class="main">
-            <div class="content_main_shadow">&nbsp;</div>
+            <div class="content_main_shadow">
+                &nbsp;</div>
             <!--header-->
             <div id="header" class="header">
                 <div class="siteid">
                     <div class="image">
-                        <img src="Images/GTES-logo.jpg" alt="返回主页" class="logo" id="logo" height="42" width="134" onclick="location.href='GETS_Main.aspx';" style="cursor:pointer;" />
+                        <img src="Images/GTES-logo.jpg" alt="返回主页" class="logo" id="logo" height="42" width="134"
+                            onclick="location.href='GETS_Main.aspx';" style="cursor: pointer;" />
                     </div>
-        
                 </div>
                 <div style="float: right;">
                     <div class="headerservicelinks">
@@ -83,63 +84,71 @@
                     <a id="navigation_main"></a>
                     <ul id="nav">
                         <li>
-                            <asp:LinkButton ID="lbService" runat="server" CssClass="nav_top" 
-                                meta:resourcekey="lbServiceResource1" PostBackUrl="~/GETS_Main.aspx">我们的服务</asp:LinkButton>
+                            <asp:LinkButton ID="lbService" runat="server" CssClass="nav_top" meta:resourcekey="lbServiceResource1"
+                                PostBackUrl="~/GETS_Main.aspx">我们的服务</asp:LinkButton>
                             <ul>
-                                <li><asp:LinkButton ID="lbServiceContent" runat="server" CssClass="navi" 
-                                        meta:resourcekey="lbServiceContentResource1">服务内容</asp:LinkButton></li>
-                                <li><asp:LinkButton ID="lbUsedMethod" runat="server" CssClass="navi" 
-                                        meta:resourcekey="lbUsedMethodResource1">使用方法</asp:LinkButton></li>
+                                <li>
+                                    <asp:LinkButton ID="lbServiceContent" runat="server" CssClass="navi" meta:resourcekey="lbServiceContentResource1">服务内容</asp:LinkButton></li>
+                                <li>
+                                    <asp:LinkButton ID="lbUsedMethod" runat="server" CssClass="navi" meta:resourcekey="lbUsedMethodResource1">使用方法</asp:LinkButton></li>
                             </ul>
                         </li>
-                        <li><asp:LinkButton ID="lbContact" runat="server" CssClass="nav_top" 
-                                meta:resourcekey="lbContactResource1" PostBackUrl="~/GETS_Contact.aspx">联系我们</asp:LinkButton></li>
-                        <li><asp:LinkButton ID="lbFee" runat="server" CssClass="nav_top" 
-                                meta:resourcekey="lbFeeResource1" PostBackUrl="~/GETS_Fee.aspx">服务费率表</asp:LinkButton></li>
-                        <li><asp:LinkButton ID="lblTreaty" runat="server" CssClass="nav_top" 
-                                meta:resourcekey="lblTreatyResource1" PostBackUrl="~/GETS_Treaty.aspx">国际快件条约</asp:LinkButton></li>
-                        <li><asp:LinkButton ID="lbAbout" runat="server" CssClass="nav_top" 
-                                meta:resourcekey="lbAboutResource1" PostBackUrl="~/GETS_About.aspx">关于我们</asp:LinkButton>
+                        <li>
+                            <asp:LinkButton ID="lbContact" runat="server" CssClass="nav_top" meta:resourcekey="lbContactResource1"
+                                PostBackUrl="~/GETS_Contact.aspx">联系我们</asp:LinkButton></li>
+                        <li>
+                            <asp:LinkButton ID="lbFee" runat="server" CssClass="nav_top" meta:resourcekey="lbFeeResource1"
+                                PostBackUrl="~/GETS_Fee.aspx">服务费率表</asp:LinkButton></li>
+                        <li>
+                            <asp:LinkButton ID="lblTreaty" runat="server" CssClass="nav_top" meta:resourcekey="lblTreatyResource1"
+                                PostBackUrl="~/GETS_Treaty.aspx">国际快件条约</asp:LinkButton></li>
+                        <li>
+                            <asp:LinkButton ID="lbAbout" runat="server" CssClass="nav_top" meta:resourcekey="lbAboutResource1"
+                                PostBackUrl="~/GETS_About.aspx">关于我们</asp:LinkButton>
                             <ul>
-                                <li><asp:LinkButton ID="lblAddress" runat="server" CssClass="navi" 
-                                        meta:resourcekey="lblAddressResource1">总经理致词</asp:LinkButton></li>
-                                <li><asp:LinkButton ID="lbIdea" runat="server" CssClass="navi" 
-                                        meta:resourcekey="lbIdeaResource1">公司理念</asp:LinkButton></li>
-                                <li><asp:LinkButton ID="lbTarget" runat="server" CssClass="navi" 
-                                        meta:resourcekey="lbTargetResource1">公司目标</asp:LinkButton></li>
-                                <li><asp:LinkButton ID="lbInfo" runat="server" CssClass="navi" 
-                                        meta:resourcekey="lbInfoResource1">公司简介</asp:LinkButton></li>
-                                <li><asp:LinkButton ID="lbNetwork" runat="server" CssClass="navi" 
-                                        meta:resourcekey="lbNetworkResource1">营业网络</asp:LinkButton></li>
+                                <li>
+                                    <asp:LinkButton ID="lblAddress" runat="server" CssClass="navi" meta:resourcekey="lblAddressResource1">总经理致词</asp:LinkButton></li>
+                                <li>
+                                    <asp:LinkButton ID="lbInfo" runat="server" CssClass="navi" meta:resourcekey="lbInfoResource1">公司概要</asp:LinkButton></li>
+                                <li>
+                                    <asp:LinkButton ID="lbIdea" runat="server" CssClass="navi" meta:resourcekey="lbIdeaResource1">公司理念</asp:LinkButton></li>
+                                <li>
+                                    <asp:LinkButton ID="lbTarget" runat="server" CssClass="navi" meta:resourcekey="lbTargetResource1">公司目标</asp:LinkButton></li>
+                                <li>
+                                    <asp:LinkButton ID="lbNetwork" runat="server" CssClass="navi" meta:resourcekey="lbNetworkResource1">营业网络</asp:LinkButton></li>
                             </ul>
                         </li>
                     </ul>
                 </div>
-                <div class="clearAll">&nbsp;</div>
+                <div class="clearAll">
+                    &nbsp;</div>
             </div>
             <!--content-->
             <div class="main_area">
-              <asp:ContentPlaceHolder ID="MainContent" runat="server"/>
+                <asp:ContentPlaceHolder ID="MainContent" runat="server" />
             </div>
             <!--footer-->
             <div class="standardtemplatefooter">
-                    <div class="footer">
-                        <a id="footer"></a>
-                        <div class="container">
-                            <div class="logo">
-                                <a href="#" title="Deutsche Post DHL" target="_top">&nbsp;<img src="Images/blank.gif" alt="External Link / New Window: Deutsche Post DHL"></a>
-                            </div>
-                            <div class="footer_navigation">
-                                <p>
-                                    <asp:Label ID="lblCopyRight" runat="server" Text="版权© 2011 GETS CO.,LTD. 版权所有" 
-                                        meta:resourcekey="lblCopyRightResource1" CssClass="footerSpan"></asp:Label>
-                                </p>
-                            </div>
-                            <div class="clearAll">&nbsp;</div>
+                <div class="footer">
+                    <a id="footer"></a>
+                    <div class="container">
+                        <div class="logo">
+                            <a href="#" title="Deutsche Post DHL" target="_top">&nbsp;<img src="Images/blank.gif"
+                                alt="External Link / New Window: Deutsche Post DHL"></a>
                         </div>
+                        <div class="footer_navigation">
+                            <p>
+                                <asp:Label ID="lblCopyRight" runat="server" Text="版权© 2011 GETS CO.,LTD. 版权所有" meta:resourcekey="lblCopyRightResource1"
+                                    CssClass="footerSpan"></asp:Label>
+                            </p>
+                        </div>
+                        <div class="clearAll">
+                            &nbsp;</div>
                     </div>
                 </div>
-            <div class="navigation_main_shadow">&nbsp;</div>
+            </div>
+            <div class="navigation_main_shadow">
+                &nbsp;</div>
         </div>
     </div>
     </form>
