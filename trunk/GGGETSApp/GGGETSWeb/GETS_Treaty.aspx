@@ -255,7 +255,7 @@
         <img width="220" height="100" class="cq-dd-image shadow_img" title="" alt="" src="Images/Fee/1028_General_220x100.jpg">
         </a>&nbsp;</div>
 
-    <div class="richtext">访问我们的全球网站。<br><a href="GETS_Main.aspx" class="arrowLinkUp">GETS首页</a></div>
+    <div class="richtext"></div>
 
 </div>
 <div style="clear:both"></div>
@@ -263,32 +263,9 @@
 </div>
 </div>
 </div></div>
-<a style="visibility:hidden" name="crossrefpar_componentseparator"></a><div class="componentseparator section parbase"><div class="spacer"><hr></div></div>
+<a style="visibility:hidden" name="crossrefpar_componentseparator"></a>
 <a style="visibility:hidden" name="crossrefpar_referenceparagraph_0"></a><div class="section reference parbase referenceparagraph">
-          	  <div class="cq-dd-paragraph" style="display:inline;"><div class="contentteaser standardarticle">
-
-<!-- start contentteaser -->
-	<div class="module dhl content_teaser">
-
-<div>
-    <h2>
-
-        我们的业务集团介绍
-
-    </h2>
-
-
-    <div class="ct_image">
-    <img width="70" height="50" class="cq-dd-image shadow_img" title="" alt="" src="Images/Fee/1005_General_70x50.jpg">
-    </div>
-
-    <div class="richtext">我们的业务集团聚集了各领域的行业专家，为您提供各类专业运输解决方案。包括空运、海运、陆运，紧急货件或非紧急货件，或大或小，一次性发件或供应链解决方案。<br></div>
-
-</div>
-<div style="clear:both"></div>
-
-</div>
-</div>
+          	  <div class="cq-dd-paragraph" style="display:inline;">
 </div></div>
 
 </div>    

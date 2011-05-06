@@ -37,42 +37,12 @@
     <a id="content_main"></a>
     <!--if index page without yellow header, use content_main_index-->
     <div class="content_main_index">
-        <div class="container_title">
-        
-        
-        	
-            <div class="breadcrumb">
-
-
-
-
-	<div class="breadcrumb" style="">
-	    &nbsp;<a href="#">GETS&nbsp;中国</a>&nbsp;<span class="separator">|</span> &nbsp;<a href="#">快递</a>&nbsp;<span class="separator">|</span> <strong>费用</strong>
-
-</div>
-</div>
-
-              
-            <div class="pagetitle"><h1>GETS--服务费率表</h1>
-<div class="richtext">GETS提供的向其他国家发送快件的服务。派送选择多样化且可靠，包括针对紧急快件的当日快递、有时间保障的次日达快递以及时间宽松的限日快递。</div></div>
-
-        </div>
      
         
         <div class="container">
             <div class="containerpar parsys">
-<a style="visibility:hidden" name="containerpar_standardarticle"></a><div class="section standardarticle">
-
-<!-- Standard Article -->
-<div class="standard_article dhl">
-<div>
-
-</div>
-<div style="clear:both"></div>
-
-</div>
-</div>
-<a style="visibility:hidden" name="containerpar_componentseparator"></a><div class="componentseparator section parbase"><div class="spacer"><hr></div></div>
+<a style="visibility:hidden" name="containerpar_standardarticle"></a>
+<a style="visibility:hidden" name="containerpar_componentseparator"></a>
 <a style="visibility:hidden" name="containerpar_productlist_0"></a><div class="section productlist"><div class="dhl">
     <h2>国际快递费用表</h2>
     <div class="spreadsheet">
@@ -120,13 +90,6 @@
 	<div class="module dhl content_teaser">
 
 <div>
-    <h2>
-
-        <a href="#" title="">
-
-            在线发件
-
-        </a>&nbsp;</h2>
 
 
     <div class="ct_image img_large">
@@ -140,18 +103,8 @@
 
 </div>
 </div>
-<a style="visibility:hidden" name="containerleftpar_transactionteaser_transparsys_standardlink"></a><div class="section standardlink">
-	<a title="立即发件" class="arrowLinkUp" href="#">
-
-		立即发件
-		<span class="secret">立即发件:</span>
-	</a></div>
-<a style="visibility:hidden" name="containerleftpar_transactionteaser_transparsys_standardlink_0"></a><div class="section standardlink">
-	<a title="" class="arrowLink" href="#">
-
-		了解更多GETS网上发件系统
-
-	</a></div>
+<a style="visibility:hidden" name="containerleftpar_transactionteaser_transparsys_standardlink"></a>
+<a style="visibility:hidden" name="containerleftpar_transactionteaser_transparsys_standardlink_0"></a>
 
 </div>
 
