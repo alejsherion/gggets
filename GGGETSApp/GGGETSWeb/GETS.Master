@@ -95,7 +95,7 @@
                         </li>
                         <li>
                             <asp:LinkButton ID="lbContact" runat="server" CssClass="nav_top" meta:resourcekey="lbContactResource1"
-                                PostBackUrl="~/GETS_Contact.aspx">联系我们</asp:LinkButton></li>
+                                onclick="lbContact_Click">联系我们</asp:LinkButton></li>
                         <li>
                             <asp:LinkButton ID="lbFee" runat="server" CssClass="nav_top" meta:resourcekey="lbFeeResource1"
                                 PostBackUrl="~/GETS_Fee.aspx">服务费率表</asp:LinkButton></li>
@@ -104,7 +104,7 @@
                                 PostBackUrl="~/GETS_Treaty.aspx">国际快件条约</asp:LinkButton></li>
                         <li>
                             <asp:LinkButton ID="lbAbout" runat="server" CssClass="nav_top" meta:resourcekey="lbAboutResource1"
-                                PostBackUrl="~/GETS_About.aspx">关于我们</asp:LinkButton>
+                                PostBackUrl="~/GETS_About.aspx" onclick="lbAbout_Click">关于我们</asp:LinkButton>
                             <ul>
                                 <li>
                                     <asp:LinkButton ID="lblAddress" runat="server" CssClass="navi" meta:resourcekey="lblAddressResource1">总经理致词</asp:LinkButton></li>

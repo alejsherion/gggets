@@ -1,4 +1,4 @@
-﻿<%@ Page Title="WELCOME TO GETS" Language="C#" MasterPageFile="~/GETS.Master" AutoEventWireup="true" CodeBehind="GETS_Main.aspx.cs" Inherits="GGGETSWeb.GETS_Main" culture="auto" meta:resourcekey="PageResource1" uiculture="auto" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/GETS.Master" AutoEventWireup="true" CodeBehind="GETS_Main_JP.aspx.cs" Inherits="GGGETSWeb.GETS_Main_JP" culture="auto" meta:resourcekey="PageResource1" uiculture="auto" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link href="Styles/panning-slideshow.css" rel="stylesheet" type="text/css" />
 </asp:Content>

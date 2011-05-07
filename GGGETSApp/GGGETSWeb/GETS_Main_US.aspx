@@ -1,6 +1,6 @@
-﻿<%@ Page Title="WELCOME TO GETS" Language="C#" MasterPageFile="~/GETS.Master" AutoEventWireup="true" CodeBehind="GETS_Main.aspx.cs" Inherits="GGGETSWeb.GETS_Main" culture="auto" meta:resourcekey="PageResource1" uiculture="auto" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/GETS.Master" AutoEventWireup="true" CodeBehind="GETS_Main_US.aspx.cs" Inherits="GGGETSWeb.GETS_Main_US" culture="auto" meta:resourcekey="PageResource1" uiculture="auto" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <link href="Styles/panning-slideshow.css" rel="stylesheet" type="text/css" />
+<link href="Styles/panning-slideshow.css" rel="stylesheet" type="text/css" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <asp:ScriptManager ID="ScriptManager1" runat="server">
