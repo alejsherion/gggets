@@ -75,5 +75,46 @@ namespace GGGETSWeb
             DynamicLanguage("en-us");//USA
         }
         #endregion
+
+        #region Service Block
+        /// <summary>
+        /// 公司概要
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void lbInfo_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(Language)) Language = "zh-cn";
+            switch(Language)
+            {
+                case "zh-cn":
+                    Response.Redirect("~/GETS_CompanyInfo.aspx");
+                    break;
+                case "ja-jp":
+                    Response.Redirect("~/GETS_CompanyInfo_JP.aspx");
+                    break;
+            }
+        }
+
+        /// <summary>
+        /// 营业网络
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void lbNetwork_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(Language)) Language = "zh-cn";
+            switch (Language)
+            {
+                case "zh-cn":
+                    Response.Redirect("~/GETS_NetWork.aspx");
+                    break;
+                case "ja-jp":
+                    Response.Redirect("~/GETS_NetWork_JP.aspx");
+                    break;
+            }
+        }
+        #endregion
+
     }
 }
