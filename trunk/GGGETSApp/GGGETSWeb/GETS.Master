@@ -109,13 +109,15 @@
                                 <li>
                                     <asp:LinkButton ID="lblAddress" runat="server" CssClass="navi" meta:resourcekey="lblAddressResource1">总经理致词</asp:LinkButton></li>
                                 <li>
-                                    <asp:LinkButton ID="lbInfo" runat="server" CssClass="navi" meta:resourcekey="lbInfoResource1">公司概要</asp:LinkButton></li>
+                                    <asp:LinkButton ID="lbInfo" runat="server" CssClass="navi" 
+                                        meta:resourcekey="lbInfoResource1" onclick="lbInfo_Click">公司概要</asp:LinkButton></li>
                                 <li>
                                     <asp:LinkButton ID="lbIdea" runat="server" CssClass="navi" meta:resourcekey="lbIdeaResource1">公司理念</asp:LinkButton></li>
                                 <li>
                                     <asp:LinkButton ID="lbTarget" runat="server" CssClass="navi" meta:resourcekey="lbTargetResource1">公司目标</asp:LinkButton></li>
                                 <li>
-                                    <asp:LinkButton ID="lbNetwork" runat="server" CssClass="navi" meta:resourcekey="lbNetworkResource1">营业网络</asp:LinkButton></li>
+                                    <asp:LinkButton ID="lbNetwork" runat="server" CssClass="navi" 
+                                        meta:resourcekey="lbNetworkResource1" onclick="lbNetwork_Click">营业网络</asp:LinkButton></li>
                             </ul>
                         </li>
                     </ul>

@@ -59,9 +59,13 @@
     <Content Include="App_Themes\logisitc\dataView.css" />
     <Content Include="App_Themes\logisitc\logistic.css" />
     <Content Include="GETS_About.aspx" />
+    <Content Include="GETS_CompanyInfo.aspx" />
+    <Content Include="GETS_CompanyInfo_JP.aspx" />
     <Content Include="GETS_Contact.aspx" />
     <Content Include="GETS_Main.aspx" />
     <Content Include="GETS_Fee.aspx" />
+    <Content Include="GETS_NetWork.aspx" />
+    <Content Include="GETS_NetWork_JP.aspx" />
     <Content Include="GETS_Treaty.aspx" />
     <Content Include="Images\about\1017_Express_230x305.jpg" />
     <Content Include="Images\about\1100_General_220x100.jpg" />
@@ -71,6 +75,8 @@
     <Content Include="Images\ad\mainAd4.jpg" />
     <Content Include="Images\ad\mainAd5.jpg" />
     <Content Include="Images\Client.jpg" />
+    <Content Include="Images\CompanyInfo\1097_General_220x100.jpg" />
+    <Content Include="Images\CompanyInfo\image.jpg" />
     <Content Include="Images\Contact\1000_Contact_70x50.jpg" />
     <Content Include="Images\Contact\1049_General_70x50.jpg" />
     <Content Include="Images\Contact\image.jpg" />
@@ -87,6 +93,8 @@
     <Content Include="Images\mainAd.jpg" />
     <Content Include="Images\main_navigation_bg%28copy%29 %282%29.gif" />
     <Content Include="Images\main_navigation_bg.gif" />
+    <Content Include="Images\Network\image.jpg" />
+    <Content Include="Images\Network\ourPeople_Students_220x100.JPG" />
     <Content Include="Images\new2dhl_part1.swf" />
     <Content Include="Images\servicelink_separator.gif" />
     <Content Include="Images\shadow_b.gif" />
@@ -240,6 +248,20 @@
     <Compile Include="GETS_About.aspx.designer.cs">
       <DependentUpon>GETS_About.aspx</DependentUpon>
     </Compile>
+    <Compile Include="GETS_CompanyInfo.aspx.cs">
+      <DependentUpon>GETS_CompanyInfo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GETS_CompanyInfo.aspx.designer.cs">
+      <DependentUpon>GETS_CompanyInfo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="GETS_CompanyInfo_JP.aspx.cs">
+      <DependentUpon>GETS_CompanyInfo_JP.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GETS_CompanyInfo_JP.aspx.designer.cs">
+      <DependentUpon>GETS_CompanyInfo_JP.aspx</DependentUpon>
+    </Compile>
     <Compile Include="GETS_Contact.aspx.cs">
       <DependentUpon>GETS_Contact.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -260,6 +282,20 @@
     </Compile>
     <Compile Include="GETS_Fee.aspx.designer.cs">
       <DependentUpon>GETS_Fee.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="GETS_NetWork.aspx.cs">
+      <DependentUpon>GETS_NetWork.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GETS_NetWork.aspx.designer.cs">
+      <DependentUpon>GETS_NetWork.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="GETS_NetWork_JP.aspx.cs">
+      <DependentUpon>GETS_NetWork_JP.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GETS_NetWork_JP.aspx.designer.cs">
+      <DependentUpon>GETS_NetWork_JP.aspx</DependentUpon>
     </Compile>
     <Compile Include="GETS_Treaty.aspx.cs">
       <DependentUpon>GETS_Treaty.aspx</DependentUpon>
