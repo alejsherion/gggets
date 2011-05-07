@@ -41,9 +41,70 @@ namespace GGGETSWeb
             Language = tempLanguage;
             CultureInfo culture = new CultureInfo(Language);
             Thread.CurrentThread.CurrentUICulture = culture;
-            Server.Transfer(Request.Path);
+            //组织需要的语言页面路径
+            string path = TransferPath(Request.Path);
+            Server.Transfer(path);
         }
 
+        /// <summary>
+        /// 转化对应的语言页面
+        /// </summary>
+        /// <param name="path"></param>
+        /// <returns></returns>
+        private string TransferPath(string path)
+        {
+            //模糊查询
+            string newPath = VaguePath(path);
+            switch(Language)
+            {
+                case "zh-cn":
+                    break;
+                case "ja-jp":
+                    newPath = string.Format("{0}_JP.aspx", newPath.Substring(0, newPath.IndexOf(".aspx")));
+                    break;
+                case "en-us":
+                    newPath = string.Format("{0}_US.aspx", newPath.Substring(0, newPath.IndexOf(".aspx")));
+                    break;
+            }
+            return newPath;
+        }
+
+        /// <summary>
+        /// 通过模糊查询获取第一个中文地址进行解析
+        /// </summary>
+        /// <returns></returns>
+        private string VaguePath(string path)
+        {
+            if(path.Contains("Main"))//首页
+            {
+                path = "GETS_Main.aspx";
+            }
+            else if(path.Contains("Contact"))//联系我们
+            {
+                path = "GETS_Contact.aspx";
+            }
+            else if (path.Contains("Fee"))//服务费
+            {
+                path = "GETS_Fee.aspx";
+            }
+            else if (path.Contains("CompanyInfo"))//公司概要
+            {
+                path = "GETS_CompanyInfo.aspx";
+            }
+            else if (path.Contains("Treaty"))//条约
+            {
+                path = "GETS_Treaty.aspx";
+            }
+            else if (path.Contains("NetWork"))//营业网点
+            {
+                path = "GETS_NetWork.aspx";
+            }
+            else
+            {
+                path = "GETS_About.aspx";//关于我们
+            }
+            return path;
+        }
         #region International Block
         /// <summary>
         /// China International
@@ -85,13 +146,17 @@ namespace GGGETSWeb
         protected void lbInfo_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(Language)) Language = "zh-cn";
+            
             switch(Language)
             {
                 case "zh-cn":
-                    Response.Redirect("~/GETS_CompanyInfo.aspx");
+                    Server.Transfer("~/GETS_CompanyInfo.aspx");
                     break;
                 case "ja-jp":
-                    Response.Redirect("~/GETS_CompanyInfo_JP.aspx");
+                    Server.Transfer("~/GETS_CompanyInfo_JP.aspx");
+                    break;
+                case "en-us":
+                    Server.Transfer("~/GETS_CompanyInfo_US.aspx");
                     break;
             }
         }
@@ -104,17 +169,70 @@ namespace GGGETSWeb
         protected void lbNetwork_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(Language)) Language = "zh-cn";
+            CultureInfo culture = new CultureInfo(Language);
+            Thread.CurrentThread.CurrentUICulture = culture;
             switch (Language)
             {
                 case "zh-cn":
-                    Response.Redirect("~/GETS_NetWork.aspx");
+                    Server.Transfer("~/GETS_NetWork.aspx");
                     break;
                 case "ja-jp":
-                    Response.Redirect("~/GETS_NetWork_JP.aspx");
+                    Server.Transfer("~/GETS_NetWork_JP.aspx");
+                    break;
+                case "en-us":
+                    Server.Transfer("~/GETS_NetWork_US.aspx");
                     break;
             }
         }
-        #endregion
 
+        /// <summary>
+        /// 联系我们
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void lbContact_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(Language)) Language = "zh-cn";
+            CultureInfo culture = new CultureInfo(Language);
+            Thread.CurrentThread.CurrentUICulture = culture;
+            switch (Language)
+            {
+                case "zh-cn":
+                    Server.Transfer("~/GETS_Contact.aspx");
+                    break;
+                case "ja-jp":
+                    Server.Transfer("~/GETS_Contact_JP.aspx");
+                    break;
+                case "en-us":
+                    Server.Transfer("~/GETS_Contact_US.aspx");
+                    break;
+            }
+        }
+
+        /// <summary>
+        /// 关于我们
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void lbAbout_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(Language)) Language = "zh-cn";
+            CultureInfo culture = new CultureInfo(Language);
+            Thread.CurrentThread.CurrentUICulture = culture;
+            switch (Language)
+            {
+                case "zh-cn":
+                    Server.Transfer("~/GETS_About.aspx");
+                    break;
+                case "ja-jp":
+                    Server.Transfer("~/GETS_About_JP.aspx");
+                    break;
+                case "en-us":
+                    Server.Transfer("~/GETS_About_US.aspx");
+                    break;
+            }
+        }
+
+        #endregion
     }
 }

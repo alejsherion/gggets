@@ -1,6 +1,6 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/GETS.Master" AutoEventWireup="true" CodeBehind="GETS_NetWork.aspx.cs" Inherits="GGGETSWeb.GETS_NetWork" culture="auto" meta:resourcekey="PageResource1" uiculture="auto" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/GETS.Master" AutoEventWireup="true" CodeBehind="GETS_About_JP.aspx.cs" Inherits="GGGETSWeb.GETS_About_JP" culture="auto" meta:resourcekey="PageResource1" uiculture="auto" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <link href="Styles/css.css" rel="stylesheet" type="text/css" />
+ <link href="Styles/css.css" rel="stylesheet" type="text/css" />
     <link href="Styles/defalut.css" rel="stylesheet" type="text/css" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
@@ -13,7 +13,7 @@
 		<a alt="" title="" target="" href="#">
 	
 		
-<img width="200" height="120" class="cq-dd-flash" title="" alt="" src="Images/Network/image.jpg">
+<img width="200" height="120" class="cq-dd-flash" title="" alt="" src="Images/about/image.png">
         </a>   
 		</div>
 
@@ -48,14 +48,14 @@
 
 
 	<div class="breadcrumb" style="">
-	    &nbsp;<a href="#">GETS&nbsp;中国</a>&nbsp;<span class="separator">|</span> <strong>关于我们</strong>
+	    &nbsp;<a href="#">GETS&nbsp;中国</a>&nbsp;<span class="separator">|</span> <strong>サービス案内</strong>
 
 </div>
 </div>
 
             
-            <div class="pagetitle"><h1>营业网络</h1>
-<div class="richtext">GETS是全球物流行业的规范倡导者<br><b><i>The </i>Logistics company for the world</b>.</div></div>
+            <div class="pagetitle"><h1>サービス案内</h1>
+<div class="richtext">GETS 物流の世界的なマーケットリーダー業界<br><b><i>The </i>Logistics company for the world</b>.</div></div>
 
         </div>
         
@@ -76,14 +76,104 @@
 <div class="standard_article dhl">
 <div>
     <h2>
-        营业网络</h2>
+
+        サービス案内</h2>
+
+
 </div>
 <div style="clear:both"></div>
 
 </div>
 </div>
 <a style="visibility:hidden" name="containerpar_componentseparator"></a><div class="componentseparator section parbase"><div class="spacer"><hr></div></div>
+<a style="visibility:hidden" name="containerpar_productlist_0"></a><div class="section productlist"><div class="dhl">
+    <h2>●会社概要</h2>
+    <div class="spreadsheet">
+        <div class="tableborder">
+            <table border="0">
+                <tbody>
+                    <tr>
+                        <th width="30%" axis="length" scope="col">会社名</th>
+                        <th width="50%" axis="length" scope="col">GETS株式会社</th>
+                    </tr>
+                        
+                    
+                    <tr>
+                        <th rowspan="4">本社所在地</th>
+                        <th>〒286－0048<br></th>
+                    </tr>
+                    
+                    <tr>
+                        <th>千葉県成田市公津の杜2-34-4<br></th>
+                    </tr>
+
+                    <tr>
+                        <th>TEL： 04-7626-3898<br></th>
+                    </tr>
+
+                    <tr>
+                        <th>FAX： 04-7626-3898　<br></th>
+                    </tr>
+
+                    <tr>
+                        <th width="30%" axis="length" scope="col">設立年月日</th>
+                        <th width="50%" axis="length" scope="col">2010年</th>
+                    </tr>
+
+                    <tr>
+                        <th width="30%" axis="length" scope="col">営業開始日</th>
+                        <th width="50%" axis="length" scope="col">2010年</th>
+                    </tr>
+
+                    <tr>
+                        <th width="30%" axis="length" scope="col">资本金</th>
+                        <th width="50%" axis="length" scope="col">500万</th>
+                    </tr>
+
+                    <tr>
+                        <th width="30%" axis="length" scope="col">代表者</th>
+                        <th width="50%" axis="length" scope="col">代表取締役社長　陳　さとし</th>
+                    </tr>
+
+                    <tr>
+                        <th width="30%" axis="length" scope="col">役員</th>
+                        <th width="50%" axis="length" scope="col">取締役　　大熊　辰</th>
+                    </tr>
+
+                    <tr>
+                        <th width="30%" axis="length" scope="col">業種</th>
+                        <th width="50%" axis="length" scope="col">物 流</th>
+                    </tr>
+
+                    <tr>
+                        <th width="30%" axis="length" scope="col">法人代表</th>
+                        <th width="50%" axis="length" scope="col">代表取締役社長　陳　聡</th>
+                    </tr>
+                    <tr>
+                        <th width="30%" axis="length" scope="col" rowspan="5">事業内容</th>
+                        <th width="50%" axis="length" scope="col">海上運送業、陸上運送業、航空運送業</th>
+                    </tr>
+                     <tr>
+                        <th width="50%" axis="length" scope="col">国内外の宅配事業</th>
+                    </tr>
+                    <tr>
+                        <th width="50%" axis="length" scope="col">通関業、倉庫業、貨物自動車運送事業</th>
+                    </tr>
+                    <tr>
+                        <th width="50%" axis="length" scope="col">輸出入貿易業およびその代理業</th>
+                    </tr>
+                    <tr>
+                        <th width="50%" axis="length" scope="col">
+                            コンピュータネットワーク、通信機器等のシステム開発、ソフトウエア開発及び保守作業</th>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</div>
 <a style="visibility:hidden" name="containerpar_productlist_1"></a><div class="section productlist"><div class="dhl">
+    <h2>●営業ネットワーク</h2>
     <div class="spreadsheet">
         <div class="tableborder">
             <table border="0">
@@ -93,7 +183,7 @@
                         <th width="50%" axis="length" scope="col">盖世国际物流（上海）有限公司</th>
                     </tr>
                     <tr>
-                        <th width="50%" axis="length" scope="col">地址：上海市长寿路181弄1号1902室</th>
+                        <th width="50%" axis="length" scope="col">住所：上海市长寿路181弄1号1902室</th>
                     </tr>   
                     <tr>
                         <th width="50%" axis="length" scope="col">TEL：021-5252-0098</th>
@@ -105,10 +195,10 @@
                         <th width="50%" axis="length" scope="col">&nbsp;</th>
                     </tr>
                     <tr>
-                        <th width="50%" axis="length" scope="col">盖世国际物流（上海）有限公司　报关部</th>
+                        <th width="50%" axis="length" scope="col">盖世国际物流（上海）有限公司 通関部</th>
                     </tr>
                     <tr>
-                        <th width="50%" axis="length" scope="col">地址：上海市海天5路600号浦东机场快件报关中心C25库</th>
+                        <th width="50%" axis="length" scope="col">住所：上海市海天5路600号浦东机场快件报关中心C25库</th>
                     </tr>
                     <tr>
                         <th width="50%" axis="length" scope="col">TEL：021-</th>
@@ -120,10 +210,10 @@
                         <th width="50%" axis="length" scope="col">&nbsp;</th>
                     </tr>
                     <tr>
-                        <th width="50%" axis="length" scope="col">盖世国际物流（上海）有限公司 虹桥机场操作部</th>
+                        <th width="50%" axis="length" scope="col">盖世国际物流（上海）有限公司 虹橋空港操作部</th>
                     </tr>
                     <tr>
-                        <th width="50%" axis="length" scope="col">地址：上海市闵行区沪青平公路415号</th>
+                        <th width="50%" axis="length" scope="col">住所：上海市闵行区沪青平公路415号</th>
                     </tr>
                     <tr>
                         <th width="50%" axis="length" scope="col">TEL：021-6420-5797</th>
@@ -136,7 +226,7 @@
                         <th width="50%" axis="length" scope="col">日本本社</th>
                     </tr>
                     <tr>
-                        <th width="50%" axis="length" scope="col">地址：千葉県成田市公津の杜2-34-4</th>
+                        <th width="50%" axis="length" scope="col">住所：千葉県成田市公津の杜2-34-4</th>
                     </tr>
                     <tr>
                         <th width="50%" axis="length" scope="col">TEL：04-7626-3898</th>
@@ -160,6 +250,8 @@
 		<span class="secret">Learn more about our specialized division</span>
 		
 	</a></div>
+<a style="visibility:hidden" name="containerpar_standardlink_e103"></a>
+<a style="visibility:hidden" name="containerpar_componentseparator_0"></a><div class="componentseparator section parbase"><div class="spacer"><hr></div></div>
 
 </div>
 
@@ -175,13 +267,13 @@
 <div>
     <h2>
         <a title="" href="#">
-            GETS-我们的员工
+            GETS グローバル
         </a>&nbsp;</h2>
     <div class="ct_image img_large">
         <a title="" href="#">
-            <img width="220" height="100" class="cq-dd-image shadow_img" title="" alt="" src="Images/Network/ourPeople_Students_220x100.JPG">
+            <img width="220" height="100" class="cq-dd-image shadow_img" title="" alt="" src="Images/about/1100_General_220x100.jpg">
         </a>&nbsp;</div>
-    <div class="richtext">我们的员工是我们成功的关键。他们是一群来自世界各地的充满热情和斗志昂扬的员工。</div>
+    <div class="richtext">●会社理念<br><a href="#" class="arrowLinkUp">GETS先進的なグローバルネットワークに基づき、安全、正確、スピード、そして生命ためのサービスを考え、さまざまな取引先に提供するための中日速達サービスである、もっと幅広く共に利益を獲得を追求する</a></div>
 </div>
 <div style="clear:both"></div>
 </div>
@@ -194,13 +286,13 @@
 <!--right block-->
 <div class="link_list_white">
     <h2>
-        ●公司目标
+        ●会社目标
     </h2>
     <form onsubmit="goTo(this.elements['country'].options[this.elements['country'].selectedIndex].value); return false;" method="get" action="#" id="countrylistform_crossrefpar_countryselector" name="countrylistform_crossrefpar_countryselector">
         <fieldset>
             <legend>GETS全球</legend>
-            <p>立行业新标</p>
-            <p>创产业辉煌</p>
+            <p>新基準造り</p>
+            <p>光り輝く</p>
             <div class="clearAll"></div>
         </fieldset>
     </form>

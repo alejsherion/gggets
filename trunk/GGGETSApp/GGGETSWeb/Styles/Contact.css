@@ -1,0 +1,32 @@
+﻿element.style {
+    background-image: url("http://images.12ha.com/images/title2.gif");
+    margin-top: 0;
+}
+div.title {
+    background-image: url("title.gif");
+    color: #666666;
+    font-weight: bold;
+    line-height: 27px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    text-indent: 10px;
+}
+
+element.style {
+    border: 1px solid #EFEFEF;
+}
+.padding {
+    padding: 10px;
+}
+
+.line_h {
+    line-height: 24px;
+}
+
+.red2 {
+    color: #EB6000;
+}
+
+.btn {  
+BORDER-RIGHT: #7b9ebd 1px solid; PADDING-RIGHT: 2px; BORDER-TOP: #7b9ebd 1px solid; PADDING-LEFT: 2px; FONT-SIZE: 12px; FILTER: progid:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr=#ffffff, EndColorStr=#cecfde); BORDER-LEFT: #7b9ebd 1px solid; CURSOR: hand; COLOR: black; PADDING-TOP: 2px; BORDER-BOTTOM: #7b9ebd 1px solid  
+}  
