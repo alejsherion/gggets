@@ -34,7 +34,7 @@
         <div class="container_title_main">
             <div class="breadcrumb">
 	<div class="breadcrumb" style="">
-	    &nbsp;<a href="#">GETS&nbsp;中国</a>&nbsp;<span class="separator">|</span> <strong>お問い合わせ</strong>
+	    &nbsp;<a href="#">GETS&nbsp;日本</a>&nbsp;<span class="separator">|</span> <strong>お問い合わせ</strong>
 
 </div>
 </div>         

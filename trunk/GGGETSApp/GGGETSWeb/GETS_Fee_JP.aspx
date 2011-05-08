@@ -44,7 +44,7 @@
 <a style="visibility:hidden" name="containerpar_standardarticle"></a>
 <a style="visibility:hidden" name="containerpar_componentseparator"></a>
 <a style="visibility:hidden" name="containerpar_productlist_0"></a><div class="section productlist"><div class="dhl">
-    <h2>国际快递费用表</h2>
+    <h2>サービス料金表</h2>
     <div class="spreadsheet">
         <div class="tableborder">
             <img src="Images/treaty/treaty.jpg" width="500px" />
@@ -142,7 +142,7 @@
 
             <span class="secret">快递</span>
 
-            快递行业解决方案
+            Expressの業種別ソリューション
 
         </a>
 
@@ -157,7 +157,7 @@
 
     </div>
 
-    <div class="richtext">我们会与您通力合作，提供复杂的行业解决方案。<br><a title="快递行业解决方案" href="#" class="arrowLink">了解更多行业解决方案<span class="secret"> 快递</span></a></div>
+    <div class="richtext">我々は、業界のための複雑なソリューションを提供するために連携することで動作します。</div>
 
 </div>
 </div>

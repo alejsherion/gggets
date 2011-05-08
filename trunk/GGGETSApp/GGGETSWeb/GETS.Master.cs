@@ -169,8 +169,8 @@ namespace GGGETSWeb
         protected void lbNetwork_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(Language)) Language = "zh-cn";
-            CultureInfo culture = new CultureInfo(Language);
-            Thread.CurrentThread.CurrentUICulture = culture;
+            //CultureInfo culture = new CultureInfo(Language);
+            //Thread.CurrentThread.CurrentUICulture = culture;
             switch (Language)
             {
                 case "zh-cn":
@@ -193,8 +193,8 @@ namespace GGGETSWeb
         protected void lbContact_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(Language)) Language = "zh-cn";
-            CultureInfo culture = new CultureInfo(Language);
-            Thread.CurrentThread.CurrentUICulture = culture;
+            //CultureInfo culture = new CultureInfo(Language);
+            //Thread.CurrentThread.CurrentUICulture = culture;
             switch (Language)
             {
                 case "zh-cn":
@@ -217,8 +217,8 @@ namespace GGGETSWeb
         protected void lbAbout_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(Language)) Language = "zh-cn";
-            CultureInfo culture = new CultureInfo(Language);
-            Thread.CurrentThread.CurrentUICulture = culture;
+            //CultureInfo culture = new CultureInfo(Language);
+            //Thread.CurrentThread.CurrentUICulture = culture;
             switch (Language)
             {
                 case "zh-cn":
@@ -233,6 +233,77 @@ namespace GGGETSWeb
             }
         }
 
+        /// <summary>
+        /// 首页
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void lbService_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(Language)) Language = "zh-cn";
+            //CultureInfo culture = new CultureInfo(Language);
+            //Thread.CurrentThread.CurrentUICulture = culture;
+            switch (Language)
+            {
+                case "zh-cn":
+                    Server.Transfer("~/GETS_Main.aspx");
+                    break;
+                case "ja-jp":
+                    Server.Transfer("~/GETS_Main_JP.aspx");
+                    break;
+                case "en-us":
+                    Server.Transfer("~/GETS_Main_US.aspx");
+                    break;
+            }
+        }
+
+        /// <summary>
+        /// 费用
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void lbFee_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(Language)) Language = "zh-cn";
+            //CultureInfo culture = new CultureInfo(Language);
+            //Thread.CurrentThread.CurrentUICulture = culture;
+            switch (Language)
+            {
+                case "zh-cn":
+                    Server.Transfer("~/GETS_Fee.aspx");
+                    break;
+                case "ja-jp":
+                    Server.Transfer("~/GETS_Fee_JP.aspx");
+                    break;
+                case "en-us":
+                    Server.Transfer("~/GETS_Fee_US.aspx");
+                    break;
+            }
+        }
+
+        /// <summary>
+        /// 条约
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void lblTreaty_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(Language)) Language = "zh-cn";
+            //CultureInfo culture = new CultureInfo(Language);
+            //Thread.CurrentThread.CurrentUICulture = culture;
+            switch (Language)
+            {
+                case "zh-cn":
+                    Server.Transfer("~/GETS_Treaty.aspx");
+                    break;
+                case "ja-jp":
+                    Server.Transfer("~/GETS_Treaty_JP.aspx");
+                    break;
+                case "en-us":
+                    Server.Transfer("~/GETS_Treaty_US.aspx");
+                    break;
+            }
+        }
         #endregion
     }
 }
