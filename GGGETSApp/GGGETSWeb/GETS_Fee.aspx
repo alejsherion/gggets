@@ -157,7 +157,7 @@
 
     </div>
 
-    <div class="richtext">我们会与您通力合作，提供复杂的行业解决方案。<br><a title="快递行业解决方案" href="#" class="arrowLink">了解更多行业解决方案<span class="secret"> 快递</span></a></div>
+    <div class="richtext">我们会与您通力合作，提供复杂的行业解决方案。</div>
 
 </div>
 </div>

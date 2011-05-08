@@ -43,12 +43,12 @@
         	
             <div class="breadcrumb">
 	<div class="breadcrumb" style="">
-	    &nbsp;<a href="#">GETS&nbsp;中国</a>&nbsp;<span class="separator">|</span> <strong>条约</strong>
+	    &nbsp;<a href="#">GETS&nbsp;USA</a>&nbsp;<span class="separator">|</span> <strong>TREATY</strong>
 
 </div>
 </div>      
-            <div class="pagetitle"><h1>国际快件条约</h1>
-<div class="richtext">欢迎访问GETS国际快件条约版块。</div></div>
+            <div class="pagetitle"><h1>International Express treaty</h1>
+<div class="richtext">Welcome to GETS international express treaty section.</div></div>
 
         </div>
         <div class="container">
@@ -244,7 +244,7 @@
 
         <a title="" href="#">
 
-            GETS全球条约
+            GETS Global Treaty
 
         </a>&nbsp;</h2>
 

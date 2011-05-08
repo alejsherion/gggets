@@ -62,7 +62,7 @@
                                                 <h2>
                                                     公司新闻</h2>
                                                 <div class="ct_image">
-                                                    <a href="http://www.cn.dhl.com/zh/logistics/industry_sector_solutions.html" title=""
+                                                    <a href="#" title=""
                                                         target="_self">
                                                         <img src="Images/1000_desc_70x50.jpg" alt="" title="" class="cq-dd-image shadow_img"
                                                             height="50" width="70">

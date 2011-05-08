@@ -60,16 +60,16 @@
                                         <div class="module dhl content_teaser">
                                             <div>
                                                 <h2>
-                                                    公司新闻</h2>
+                                                    Company News</h2>
                                                 <div class="ct_image">
-                                                    <a href="http://www.cn.dhl.com/zh/logistics/industry_sector_solutions.html" title=""
+                                                    <a href="#" title=""
                                                         target="_self">
                                                         <img src="Images/1000_desc_70x50.jpg" alt="" title="" class="cq-dd-image shadow_img"
                                                             height="50" width="70">
                                                     </a>
                                                 </div>
                                                 <div class="richtext">
-                                                    GETS对所选行业的专注，代表着客户能受惠于与我们的专家合作；所涉领域不仅包括物流，亦涵盖客户所处的特定市场。凭借我们行业领先的解决方案，提供客户真正的竞争优势。<br>
+                                                    GETS focus on selected industries, representing clients benefit from our experts; areas covered include not only logistics, but also covers customers in a specific market. With our industry-leading solutions that provide customers a real competitive advantage.<br>
                                                    </div>
                                             </div>
                                             <div style="clear: both;">
@@ -94,7 +94,7 @@
                                         <div class="fast_track">
                                         
                                         
-                                           	<div class="fast_track_headline">&nbsp;国际运单查询</div>
+                                           	<div class="fast_track_headline">&nbsp;International HAWB inquiry</div>
                                             <form onsubmit="this.elements['AWB_containerleftpar_fasttrack'].value = (this.elements['AWB_containerleftpar_fasttrack'].value=='Enter your tracking number(s)')?'':this.elements['AWB_containerleftpar_fasttrack'].value;" action="/content/g0/en/express/tracking.shtml" method="get" id="trackingIndex_fast_containerleftpar_fasttrack" name="trackingIndex_fast_containerleftpar_fasttrack">
                                                 <fieldset>
                                                 <legend>Tracking</legend>
@@ -104,7 +104,7 @@
                                                 
                                                 	<textarea onkeypress="fnFTCheckEntercontainerleftpar_fasttrack(event,'containerleftpar_fasttrack',this);" onblur="this.value=(fnFTstrip(this.value)=='')?'Enter your tracking number(s)':this.value;" onfocus="this.value=(this.value==fnFTstrip('Enter your tracking number(s)'))?'':this.value;" wrap="soft" class="code" id="AWB_containerleftpar_fasttrack" rows="3" cols="30" name="AWB"></textarea>
        								
-                                                <input type="button" onclick="javascript:fnCheckExtURLcontainerleftpar_fasttrack(this,'containerleftpar_fasttrack');" value="查询" class="track" id="trackbut_containerleftpar_fasttrack">
+                                                <input type="button" onclick="javascript:fnCheckExtURLcontainerleftpar_fasttrack(this,'containerleftpar_fasttrack');" value="Query" class="track" id="trackbut_containerleftpar_fasttrack">
                             
                                                 </fieldset>
                                             </form>
@@ -127,7 +127,7 @@
 
 <div>
     <h2>
-       重要通告
+       Important Notice
     </h2>
 
 
@@ -139,7 +139,7 @@
 
     </div>
 
-    <div class="richtext">服务公告使您随时了解GETS业务的事件<br><a href="#" class="arrowLink">东京电力系统恢复工作</a><br></div>
+    <div class="richtext">Service announcements to your business to keep abreast of events GETS<br><a href="#" class="arrowLink">Tokyo Electric Power system restoration</a><br></div>
 
 </div>
 <div style="clear: both;"></div>
@@ -208,11 +208,11 @@
 <div class="error" id="countryselector_containerleftpar_transactionteaser_transparsys_countryselector_9a67" style="display: none;">
 </div>
         
-<label for="worldwide">用户名</label>&nbsp;&nbsp;&nbsp;
+<label for="worldwide">Username</label>&nbsp;&nbsp;&nbsp;
 <input />
 <br/> 
 <br/>      
-<label for="country">密&nbsp;&nbsp;&nbsp;&nbsp;码</label>&nbsp;&nbsp;&nbsp;
+<label for="country">Password</label>&nbsp;&nbsp;&nbsp;
 <input />
                       
 <input type="submit" class="go" onclick="javascript:return CheckCountrySelector(&quot;countrylistform_containerleftpar_transactionteaser_transparsys_countryselector_9a67&quot; ,&quot;Choose a location&quot;,&quot;true&quot;,&quot;g0&quot;, &quot;countryselector_containerleftpar_transactionteaser_transparsys_countryselector_9a67&quot;)" id="" value="Go">

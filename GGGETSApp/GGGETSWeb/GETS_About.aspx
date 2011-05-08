@@ -131,7 +131,7 @@
                     </tr>
 
                     <tr>
-                        <th width="30%" axis="length" scope="col">法人代表</th>
+                        <th width="30%" axis="length" scope="col">代表</th>
                         <th width="50%" axis="length" scope="col">代表取締役社長　陳　聡</th>
                     </tr>
 
@@ -178,11 +178,11 @@
             <table border="0">
                 <tbody>
                     <tr>
-                        <th width="30%" axis="length" scope="col" rowspan="12">中国</th>
-                        <th width="50%" axis="length" scope="col">上海公司</th>
+                        <th width="30%" axis="length" scope="col" rowspan="14">中国</th>
+                        <th width="50%" axis="length" scope="col">盖世国际物流（上海）有限公司</th>
                     </tr>
                     <tr>
-                        <th width="50%" axis="length" scope="col">住所：上海市长寿路118弄1号1901室</th>
+                        <th width="50%" axis="length" scope="col">地址：上海市长寿路181弄1号1902室</th>
                     </tr>   
                     <tr>
                         <th width="50%" axis="length" scope="col">TEL：021-5252-0098</th>
@@ -191,10 +191,13 @@
                         <th width="50%" axis="length" scope="col">FAX：021-6299-2248</th>
                     </tr>
                     <tr>
-                        <th width="50%" axis="length" scope="col">报关科办公室</th>
+                        <th width="50%" axis="length" scope="col">&nbsp;</th>
                     </tr>
                     <tr>
-                        <th width="50%" axis="length" scope="col">住所：上海市海天5路600号浦东机场快件报关中心C25库</th>
+                        <th width="50%" axis="length" scope="col">盖世国际物流（上海）有限公司　报关部</th>
+                    </tr>
+                    <tr>
+                        <th width="50%" axis="length" scope="col">地址：上海市海天5路600号浦东机场快件报关中心C25库</th>
                     </tr>
                     <tr>
                         <th width="50%" axis="length" scope="col">TEL：021-</th>
@@ -203,10 +206,13 @@
                         <th width="50%" axis="length" scope="col">FAX：021-</th>
                     </tr>
                     <tr>
-                        <th width="50%" axis="length" scope="col">虹桥机场办公室</th>
+                        <th width="50%" axis="length" scope="col">&nbsp;</th>
                     </tr>
                     <tr>
-                        <th width="50%" axis="length" scope="col">住所：上海市闵行区航东路606弄1号101室</th>
+                        <th width="50%" axis="length" scope="col">盖世国际物流（上海）有限公司 虹桥机场操作部</th>
+                    </tr>
+                    <tr>
+                        <th width="50%" axis="length" scope="col">地址：上海市闵行区沪青平公路415号</th>
                     </tr>
                     <tr>
                         <th width="50%" axis="length" scope="col">TEL：021-6420-5797</th>
@@ -215,8 +221,11 @@
                         <th width="50%" axis="length" scope="col">FAX：021-6420-0805</th>
                     </tr>
                     <tr>
-                        <th width="30%" axis="length" scope="col" rowspan="3">日本</th>
-                        <th width="50%" axis="length" scope="col">住所：千葉県成田市公津の杜2-34-4</th>
+                        <th width="30%" axis="length" scope="col" rowspan="4">日本</th>
+                        <th width="50%" axis="length" scope="col">日本本社</th>
+                    </tr>
+                    <tr>
+                        <th width="50%" axis="length" scope="col">地址：千葉県成田市公津の杜2-34-4</th>
                     </tr>
                     <tr>
                         <th width="50%" axis="length" scope="col">TEL：04-7626-3898</th>
@@ -263,7 +272,7 @@
         <a title="" href="#">
             <img width="220" height="100" class="cq-dd-image shadow_img" title="" alt="" src="Images/about/1100_General_220x100.jpg">
         </a>&nbsp;</div>
-    <div class="richtext">●会社理念<br><a href="#" class="arrowLinkUp">GETS依托先进的网络化管理本着安全，准确，快捷，是包裹递送为生命的服务理念，为广大客户提供高品质快件服务，谋求更广阔的共赢空间。</a><br><a href="#" class="arrowLinkUp">科学管理 服务增值 互惠互利 共赢发展</a></div>
+    <div class="richtext">●公司理念<br><a href="#" class="arrowLinkUp">GETS依托先进的网络化管理本着安全，准确，快捷，是包裹递送为生命的服务理念，为广大客户提供高品质快件服务，谋求更广阔的共赢空间。</a><br><a href="#" class="arrowLinkUp">科学管理 服务增值 互惠互利 共赢发展</a></div>
 </div>
 <div style="clear:both"></div>
 </div>
@@ -276,7 +285,7 @@
 <!--right block-->
 <div class="link_list_white">
     <h2>
-        ●会社目标
+        ●公司目标
     </h2>
     <form onsubmit="goTo(this.elements['country'].options[this.elements['country'].selectedIndex].value); return false;" method="get" action="#" id="countrylistform_crossrefpar_countryselector" name="countrylistform_crossrefpar_countryselector">
         <fieldset>

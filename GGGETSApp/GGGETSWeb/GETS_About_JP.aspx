@@ -48,7 +48,7 @@
 
 
 	<div class="breadcrumb" style="">
-	    &nbsp;<a href="#">GETS&nbsp;中国</a>&nbsp;<span class="separator">|</span> <strong>サービス案内</strong>
+	    &nbsp;<a href="#">GETS&nbsp;日本</a>&nbsp;<span class="separator">|</span> <strong>サービス案内</strong>
 
 </div>
 </div>
