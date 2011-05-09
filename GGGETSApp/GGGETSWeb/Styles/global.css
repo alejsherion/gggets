@@ -18,7 +18,7 @@ input, textarea { max-width: 100%; }
 img { border: medium none; }
 .main { width: 98em; max-width: 99%; min-width: 766px; padding-right: 0.8em; background: url('../Images/ain_right.gif') no-repeat scroll 98em 0pt transparent; position: relative; }
 .main_area { width: 98em; padding-right: 0.8em; position: relative; max-width: 100%; min-width: 766px; }
-.hide { position: absolute; left: -5000px; }
+/*.hide { position: absolute; left: -5000px; }*/
 .header { background: none repeat scroll 0% 0% #E70012; padding-left: 1.5em; }
 .header img.logo { margin-top: 1.9em; margin-bottom: 0.9em; float: left; }
 .header div.servicelinks { padding-right: 0.7em; padding-top: 1em; float: right; text-align: right; }
@@ -119,7 +119,10 @@ html:not([dummy]) .shipment_tracking input.track { height: 1.6em; background: no
 .navigation_main a { font-size: 1.2em; font-weight: normal; color: rgb(230, 0, 18); }
 .navigation_main a:hover { color: rgb(255, 204, 0); }
 #nav li:hover, #nav li.hover { position: static; }
-#nav, #nav ul { position: relative; float: left; list-style: none outside none; line-height: 1; font-weight: normal; padding: 0pt; margin: 0pt; z-index: 900; }
+#nav, #nav ul { position: relative; float: left; list-style: none outside none; line-height: 1; font-weight: normal; padding: 0pt; margin: 0pt; z-index: 900;
+    top: 0px;
+    left: 0px;
+}
 #nav a.nav_top { display: block; color: rgb(230, 0, 18); font-weight: bold; text-decoration: none; padding: 0.15em 29px 0.15em 0pt; background-color: rgb(255, 241, 0); }
 #nav a.nav_top:hover, #nav a.nav_top_active:hover { color: rgb(252, 114, 99); }
 #nav li { float: left; padding: 0pt; }
