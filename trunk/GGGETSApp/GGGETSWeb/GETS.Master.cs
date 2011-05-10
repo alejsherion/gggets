@@ -99,6 +99,10 @@ namespace GGGETSWeb
             {
                 path = "GETS_NetWork.aspx";
             }
+            else if (path.Contains("CompanyIdea"))//公司理念
+            {
+                path = "GETS_CompanyIdea.aspx";
+            }
             else
             {
                 path = "GETS_About.aspx";//关于我们
@@ -304,6 +308,29 @@ namespace GGGETSWeb
                     break;
             }
         }
+
+        /// <summary>
+        /// 公司理念
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void lbIdea_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(Language)) Language = "zh-cn";
+            switch (Language)
+            {
+                case "zh-cn":
+                    Server.Transfer("~/GETS_CompanyIdea.aspx");
+                    break;
+                case "ja-jp":
+                    Server.Transfer("~/GETS_CompanyIdea_JP.aspx");
+                    break;
+                case "en-us":
+                    Server.Transfer("~/GETS_CompanyIdea_US.aspx");
+                    break;
+            }
+        }
         #endregion
+
     }
 }

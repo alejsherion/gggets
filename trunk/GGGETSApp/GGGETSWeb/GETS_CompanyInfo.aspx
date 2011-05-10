@@ -90,7 +90,7 @@
                 <tbody>
                     <tr>
                         <th width="30%" axis="length" scope="col">公司名</th>
-                        <th width="50%" axis="length" scope="col">盖世 有限公司</th>
+                        <th width="50%" axis="length" scope="col">GETS株式会社</th>
                     </tr>
                         
                     
@@ -128,7 +128,7 @@
 
                     <tr>
                         <th width="30%" axis="length" scope="col">代表</th>
-                        <th width="50%" axis="length" scope="col">代表取締役社長　陳　聡</th>
+                        <th width="50%" axis="length" scope="col">代表取締役社長　陳　骢</th>
                     </tr>
 
                     <tr>
@@ -143,7 +143,7 @@
 
                     <tr>
                         <th width="30%" axis="length" scope="col">法人代表</th>
-                        <th width="50%" axis="length" scope="col">代表取締役社長　陳　聡</th>
+                        <th width="50%" axis="length" scope="col">代表取締役社長　陳　骢</th>
                     </tr>
                     <tr>
                         <th width="30%" axis="length" scope="col" rowspan="5">营业范围</th>
