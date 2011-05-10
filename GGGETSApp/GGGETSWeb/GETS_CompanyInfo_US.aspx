@@ -100,7 +100,7 @@
                     </tr>
                     
                     <tr>
-                        <th>千葉県成田市公津の杜2-34-4<br></th>
+                        <th>2-34-4 Koutsunomori Naritashi Chibaken<br></th>
                     </tr>
 
                     <tr>
@@ -133,7 +133,7 @@
 
                     <tr>
                         <th width="30%" axis="length" scope="col">Director</th>
-                        <th width="50%" axis="length" scope="col">大熊　辰</th>
+                        <th width="50%" axis="length" scope="col">OOkuma shin</th>
                     </tr>
 
                     <tr>

@@ -1564,6 +1564,7 @@ display: inline;
     vertical-align: top;
     border-right: 3px solid #fff;
     border-bottom: 1px solid #d1d1d1;
+    text-align:left;
 }
 .spreadsheet td {
     background: none repeat scroll 0 0 #E8E8E4;
