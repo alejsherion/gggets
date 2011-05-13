@@ -48,7 +48,7 @@
 </div>
 </div>      
             <div class="pagetitle"><h1>International Express treaty</h1>
-<div class="richtext">Welcome to GETS international express treaty section.</div></div>
+<div class="richtext"></div></div>
 
         </div>
         <div class="container">

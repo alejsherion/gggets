@@ -48,7 +48,7 @@
 </div>
 </div>      
             <div class="pagetitle"><h1>国际快件条约</h1>
-<div class="richtext">欢迎访问GETS国际快件条约版块。</div></div>
+<div class="richtext"></div></div>
 
         </div>
         <div class="container">
