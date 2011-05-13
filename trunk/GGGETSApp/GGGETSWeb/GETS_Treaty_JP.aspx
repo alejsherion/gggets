@@ -48,7 +48,7 @@
 </div>
 </div>      
             <div class="pagetitle"><h1>国際エクスプレス約款</h1>
-<div class="richtext">ようこそジェ国際エクスプレス約款を参照してください。</div></div>
+<div class="richtext"></div></div>
 
         </div>
         <div class="container">
