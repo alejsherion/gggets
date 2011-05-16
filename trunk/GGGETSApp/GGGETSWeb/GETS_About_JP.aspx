@@ -291,8 +291,8 @@
     <form onsubmit="goTo(this.elements['country'].options[this.elements['country'].selectedIndex].value); return false;" method="get" action="#" id="countrylistform_crossrefpar_countryselector" name="countrylistform_crossrefpar_countryselector">
         <fieldset>
             <legend>GETS全球</legend>
-            <p>新基準造り</p>
-            <p>光り輝く</p>
+            <p>盖世物流</p>
+            <p>货通全球</p>
             <div class="clearAll"></div>
         </fieldset>
     </form>

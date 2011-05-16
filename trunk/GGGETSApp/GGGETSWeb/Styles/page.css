@@ -98,7 +98,7 @@ html:not([dummy]) .shipment_tracking input.track { height: 1.6em; background: no
 .contentteaser .content_teaser .richtext br { display: none; }
 .richtext a {  }
 .contentteaser .content_teaser .richtext a.arrowLink, .contentteaser .content_teaser .richtext a.arrowLinkUp {  }
-.navigation_main { background:rgb(255, 241, 0); padding: 0.5em 1em 0.5em 2em; position: relative; z-index: 100; }
+.navigation_main { background:rgb(255, 241, 0); padding: 0; position: relative; z-index: 100; }
 .navigation_main li { display: inline; }
 .navigation_main a { font-size: 1.2em; font-weight: normal; color: rgb(230, 0, 18); }
 .navigation_main a:hover { color: rgb(255, 204, 0); }

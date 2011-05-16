@@ -58,7 +58,7 @@
         <!--条约内容-->
         <div class="richtext">
         <b>CompanyIdea</b><br>GETS Relying on advanced network management in a safe, accurate, fast, is the package delivery service for the life of ideas, providing our customers with high-quality express services, seeking to win a broader space.。<br>Scientific management to add value and mutual benefit and win-win development。<br><br><b>
-            Company Objectives</b><br>Set new industry standards<br>Brilliant creative industries<br>     
+            Company Objectives</b><br>GETS Express<br>Goods through the global<br>     
         </div>
     </div>
 </div>

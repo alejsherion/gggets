@@ -4169,7 +4169,7 @@ margin-bottom: -1px!important;
 .navigation_main {
 	background: url(/img/meta/main_navigation_bg.gif) repeat-x;
 	background-color: #c00;
-	padding: .5em 1em .5em 2em;
+	padding: 0;
 	position: relative;
 	/*white-space: nowrap;*/
 	z-index: 100;

@@ -55,27 +55,7 @@
                                 style="visibility: hidden;"></a>
                             <div class="section reference parbase referenceparagraph">
                                 <div style="display: inline;" class="cq-dd-paragraph">
-                                    <div class="contentteaser standardarticle">
-                                        <!-- start contentteaser -->
-                                        <div class="module dhl content_teaser">
-                                            <div>
-                                                <h2>
-                                                    ニュース</h2>
-                                                <div class="ct_image">
-                                                    <a href="#" title=""
-                                                        target="_self">
-                                                        <img src="Images/1000_desc_70x50.jpg" alt="" title="" class="cq-dd-image shadow_img"
-                                                            height="50" width="70">
-                                                    </a>
-                                                </div>
-                                                <div class="richtext">
-                                                    ジェは、我々の専門家の恩恵を受けるクライアントを表すと、選択した業種に焦点を当てる;対象地域は、物流は含まれてだけでなく、特定の市場の顧客をカバーしています。お客様に本当の競争上の優位性を提供する業界最先端のソリューションを。<br>
-                                                   </div>
-                                            </div>
-                                            <div style="clear: both;">
-                                            </div>
-                                        </div>
-                                    </div>
+                                    
                                 </div>
                             </div>
                         </div>
@@ -120,7 +100,7 @@
         <div class="clearAll"></div>
     </div>
 </div>
-<div class="contentteaser section standardarticle">
+<%--<div class="contentteaser section standardarticle">
 
 <!-- start contentteaser -->
 	<div class="module dhl content_teaser">
@@ -145,7 +125,28 @@
 <div style="clear: both;"></div>
 
 </div>
-</div>
+</div>--%>
+<div class="contentteaser standardarticle">
+                                        <!-- start contentteaser -->
+                                        <div class="module dhl content_teaser">
+                                            <div>
+                                                <h2>
+                                                    ニュース</h2>
+                                                <div class="ct_image">
+                                                    <a href="#" title=""
+                                                        target="_self">
+                                                        <img src="Images/1000_desc_70x50.jpg" alt="" title="" class="cq-dd-image shadow_img"
+                                                            height="50" width="70">
+                                                    </a>
+                                                </div>
+                                                <div class="richtext">
+                                                    ジェは、我々の専門家の恩恵を受けるクライアントを表すと、選択した業種に焦点を当てる;対象地域は、物流は含まれてだけでなく、特定の市場の顧客をカバーしています。お客様に本当の競争上の優位性を提供する業界最先端のソリューションを。<br>
+                                                   </div>
+                                            </div>
+                                            <div style="clear: both;">
+                                            </div>
+                                        </div>
+                                    </div>
                     </div>
                     <div class="clearAll">
                         &nbsp;</div>
@@ -208,11 +209,11 @@
 <div class="error" id="countryselector_containerleftpar_transactionteaser_transparsys_countryselector_9a67" style="display: none;">
 </div>
         
-<label for="worldwide">ユーザー名</label>&nbsp;&nbsp;&nbsp;
+<label for="worldwide">ユーザー名</label>
 <input />
 <br/> 
 <br/>      
-<label for="country">&nbsp;パスワード</label>&nbsp;&nbsp;&nbsp;
+<label for="country">パスワード</label>
 <input />
                       
 <input type="submit" class="go" onclick="javascript:return CheckCountrySelector(&quot;countrylistform_containerleftpar_transactionteaser_transparsys_countryselector_9a67&quot; ,&quot;Choose a location&quot;,&quot;true&quot;,&quot;g0&quot;, &quot;countryselector_containerleftpar_transactionteaser_transparsys_countryselector_9a67&quot;)" id="" value="Go">
@@ -247,6 +248,32 @@
 </div></div>
 <a style="visibility: hidden;" name="crossrefpar_referenceparagraph_0"></a>
 <a style="visibility: hidden;" name="crossrefpar_componentseparator"></a><div class="section ghost">
+<div class="contentteaser section standardarticle">
+
+<!-- start contentteaser -->
+	<div class="module dhl content_teaser">
+
+<div>
+    <h2>
+       重要なお知らせ
+    </h2>
+
+
+    <div class="ct_image">
+
+       
+<img width="70" height="50" class="cq-dd-image shadow_img" title="" alt="" src="Images/information_key_70x50px.png">
+        
+
+    </div>
+
+    <div class="richtext">あなたのビジネスへのサービスの発表は、イベントのGETSの遅れないようにする<br><a href="#" class="arrowLink">東京電力システムの復元</a><br></div>
+
+</div>
+<div style="clear: both;"></div>
+
+</div>
+</div>
 </div>
 <a style="visibility: hidden;" name="crossrefpar_referenceparagraph_1"></a>
 <a style="visibility: hidden;" name="crossrefpar_componentseparator_0"></a>

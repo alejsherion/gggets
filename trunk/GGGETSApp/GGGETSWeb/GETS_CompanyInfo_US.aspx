@@ -95,7 +95,7 @@
                         
                     
                     <tr>
-                        <th rowspan="4">Head Company Address</th>
+                        <th rowspan="4">Head Company Add</th>
                         <th>〒286－0048<br></th>
                     </tr>
                     
@@ -215,8 +215,8 @@
     <form onsubmit="goTo(this.elements['country'].options[this.elements['country'].selectedIndex].value); return false;" method="get" action="#" id="countrylistform_crossrefpar_countryselector" name="countrylistform_crossrefpar_countryselector">
         <fieldset>
             <legend>GETS全球</legend>
-            <p>Set new industry standards</p>
-            <p>Brilliant creative industries</p>
+            <p>GETS Express</p>
+            <p>Goods through the global</p>
             <div class="clearAll"></div>
         </fieldset>
     </form>

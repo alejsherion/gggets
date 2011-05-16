@@ -99,7 +99,7 @@
                         
                     
                     <tr>
-                        <th rowspan="4">Head Company Address</th>
+                        <th rowspan="4">Head Company Add</th>
                         <th>〒286－0048<br></th>
                     </tr>
                     
@@ -181,7 +181,7 @@
                         <th width="50%" axis="length" scope="col">GETS CO.,LTD.</th>
                     </tr>
                     <tr>
-                        <th width="50%" axis="length" scope="col">Address: Chang Shou Road, Shanghai, Room 1901, No. 1, Lane 118</th>
+                        <th width="50%" axis="length" scope="col">Add: Chang Shou Road, Shanghai, Room 1902, No. 1, Lane 181</th>
                     </tr>   
                     <tr>
                         <th width="50%" axis="length" scope="col">TEL：021-5252-0098</th>
@@ -193,7 +193,7 @@
                         <th width="50%" axis="length" scope="col">GETS CO.,LTD.Customs Department</th>
                     </tr>
                     <tr>
-                        <th width="50%" axis="length" scope="col">Address: 5 Road 600, Shanghai Pudong Haitian express declaration Centre Airport C25 library</th>
+                        <th width="50%" axis="length" scope="col">Add: 5 Road 600, Shanghai Pudong Haitian express declaration Centre Airport C25 library</th>
                     </tr>
                     <tr>
                         <th width="50%" axis="length" scope="col">TEL：021-</th>
@@ -205,7 +205,7 @@
                         <th width="50%" axis="length" scope="col">GETS CO.,LTD. Hongqiao Airport Operations</th>
                     </tr>
                     <tr>
-                        <th width="50%" axis="length" scope="col">Address: 415, Minhang District, Shanghai Huqingping</th>
+                        <th width="50%" axis="length" scope="col">Add: 415, Minhang District, Shanghai Huqingping</th>
                     </tr>
                     <tr>
                         <th width="50%" axis="length" scope="col">TEL：021-6420-5797</th>
@@ -218,7 +218,7 @@
                         <th width="50%" axis="length" scope="col">Japan Head Office</th>
                     </tr>
                     <tr>
-                        <th width="50%" axis="length" scope="col">Address: Narita City, Chiba Prefecture, Public Jin Du 2-34-4 </th>
+                        <th width="50%" axis="length" scope="col">Add: Narita City, Chiba Prefecture, Public Jin Du 2-34-4 </th>
                     </tr>
                     <tr>
                         <th width="50%" axis="length" scope="col">TEL：04-7626-3898</th>
@@ -283,8 +283,8 @@
     <form onsubmit="goTo(this.elements['country'].options[this.elements['country'].selectedIndex].value); return false;" method="get" action="#" id="countrylistform_crossrefpar_countryselector" name="countrylistform_crossrefpar_countryselector">
         <fieldset>
             <legend>GETS全球</legend>
-            <p>Set new industry standards</p>
-            <p>Brilliant creative industries</p>
+            <p>GETS Express</p>
+            <p>Goods through the global</p>
             <div class="clearAll"></div>
         </fieldset>
     </form>
