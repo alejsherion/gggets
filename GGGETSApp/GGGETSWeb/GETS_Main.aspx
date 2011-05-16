@@ -54,7 +54,7 @@
                             <a name="contentleftpar_codeinclusion" style="visibility: hidden;"></a><a name="contentleftpar_referenceparagraph"
                                 style="visibility: hidden;"></a>
                             <div class="section reference parbase referenceparagraph">
-                                <div style="display: inline;" class="cq-dd-paragraph">
+                                <%--<div style="display: inline;" class="cq-dd-paragraph">
                                     <div class="contentteaser standardarticle">
                                         <!-- start contentteaser -->
                                         <div class="module dhl content_teaser">
@@ -76,7 +76,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div>--%>
                             </div>
                         </div>
                     </div>
@@ -123,7 +123,7 @@
 <div class="contentteaser section standardarticle">
 
 <!-- start contentteaser -->
-	<div class="module dhl content_teaser">
+	<%--<div class="module dhl content_teaser">
 
 <div>
     <h2>
@@ -144,7 +144,29 @@
 </div>
 <div style="clear: both;"></div>
 
-</div>
+</div>--%>
+                                    <div class="contentteaser standardarticle">
+                                        <!-- start contentteaser -->
+                                        <div class="module dhl content_teaser">
+                                            <div>
+                                                <h2>
+                                                    公司新闻</h2>
+                                                <div class="ct_image">
+                                                    <a href="#" title=""
+                                                        target="_self">
+                                                        <img src="Images/1000_desc_70x50.jpg" alt="" title="" class="cq-dd-image shadow_img"
+                                                            height="50" width="70">
+                                                    </a>
+                                                </div>
+                                                <div class="richtext">
+                                                    GETS对所选行业的专注，代表着客户能受惠于与我们的专家合作；所涉领域不仅包括物流，亦涵盖客户所处的特定市场。凭借我们行业的解决方案，提供客户竞争优势。<br>
+                                                   </div>
+                                            </div>
+                                            <div style="clear: both;">
+                                            </div>
+                                        </div>
+                                    </div>
+
 </div>
                     </div>
                     <div class="clearAll">
@@ -247,6 +269,32 @@
 </div></div>
 <a style="visibility: hidden;" name="crossrefpar_referenceparagraph_0"></a>
 <a style="visibility: hidden;" name="crossrefpar_componentseparator"></a><div class="section ghost">
+<div class="contentteaser section standardarticle">
+
+<!-- start contentteaser -->
+	<div class="module dhl content_teaser">
+
+<div>
+    <h2>
+       重要通告
+    </h2>
+
+
+    <div class="ct_image">
+
+       
+<img width="70" height="50" class="cq-dd-image shadow_img" title="" alt="" src="Images/information_key_70x50px.png">
+        
+
+    </div>
+
+    <div class="richtext">服务公告使您随时了解GETS业务的事件<br><a href="#" class="arrowLink">东京电力系统恢复工作</a><br></div>
+
+</div>
+<div style="clear: both;"></div>
+
+</div>
+</div>
 </div>
 <a style="visibility: hidden;" name="crossrefpar_referenceparagraph_1"></a>
 <a style="visibility: hidden;" name="crossrefpar_componentseparator_0"></a>

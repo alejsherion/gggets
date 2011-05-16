@@ -55,27 +55,7 @@
                                 style="visibility: hidden;"></a>
                             <div class="section reference parbase referenceparagraph">
                                 <div style="display: inline;" class="cq-dd-paragraph">
-                                    <div class="contentteaser standardarticle">
-                                        <!-- start contentteaser -->
-                                        <div class="module dhl content_teaser">
-                                            <div>
-                                                <h2>
-                                                    Company News</h2>
-                                                <div class="ct_image">
-                                                    <a href="#" title=""
-                                                        target="_self">
-                                                        <img src="Images/1000_desc_70x50.jpg" alt="" title="" class="cq-dd-image shadow_img"
-                                                            height="50" width="70">
-                                                    </a>
-                                                </div>
-                                                <div class="richtext">
-                                                    GETS focus on selected industries, representing clients benefit from our experts; areas covered include not only logistics, but also covers customers in a specific market. With our industry-leading solutions that provide customers a real competitive advantage.<br>
-                                                   </div>
-                                            </div>
-                                            <div style="clear: both;">
-                                            </div>
-                                        </div>
-                                    </div>
+                                    
                                 </div>
                             </div>
                         </div>
@@ -120,32 +100,27 @@
         <div class="clearAll"></div>
     </div>
 </div>
-<div class="contentteaser section standardarticle">
-
-<!-- start contentteaser -->
-	<div class="module dhl content_teaser">
-
-<div>
-    <h2>
-       Important Notice
-    </h2>
-
-
-    <div class="ct_image">
-
-       
-<img width="70" height="50" class="cq-dd-image shadow_img" title="" alt="" src="Images/information_key_70x50px.png">
-        
-
-    </div>
-
-    <div class="richtext">Service announcements to your business to keep abreast of events GETS<br><a href="#" class="arrowLink">Tokyo Electric Power system restoration</a><br></div>
-
-</div>
-<div style="clear: both;"></div>
-
-</div>
-</div>
+<div class="contentteaser standardarticle">
+                                        <!-- start contentteaser -->
+                                        <div class="module dhl content_teaser">
+                                            <div>
+                                                <h2>
+                                                    Company News</h2>
+                                                <div class="ct_image">
+                                                    <a href="#" title=""
+                                                        target="_self">
+                                                        <img src="Images/1000_desc_70x50.jpg" alt="" title="" class="cq-dd-image shadow_img"
+                                                            height="50" width="70">
+                                                    </a>
+                                                </div>
+                                                <div class="richtext">
+                                                    GETS focus on selected industries, representing clients benefit from our experts; areas covered include not only logistics, but also covers customers in a specific market. With our industry-leading solutions that provide customers a real competitive advantage.<br>
+                                                   </div>
+                                            </div>
+                                            <div style="clear: both;">
+                                            </div>
+                                        </div>
+                                    </div>
                     </div>
                     <div class="clearAll">
                         &nbsp;</div>
@@ -208,11 +183,11 @@
 <div class="error" id="countryselector_containerleftpar_transactionteaser_transparsys_countryselector_9a67" style="display: none;">
 </div>
         
-<label for="worldwide">Username</label>&nbsp;&nbsp;&nbsp;
+<label for="worldwide">Code&nbsp;</label>
 <input />
 <br/> 
 <br/>      
-<label for="country">Password</label>&nbsp;&nbsp;&nbsp;
+<label for="country">Pwd&nbsp;</label>
 <input />
                       
 <input type="submit" class="go" onclick="javascript:return CheckCountrySelector(&quot;countrylistform_containerleftpar_transactionteaser_transparsys_countryselector_9a67&quot; ,&quot;Choose a location&quot;,&quot;true&quot;,&quot;g0&quot;, &quot;countryselector_containerleftpar_transactionteaser_transparsys_countryselector_9a67&quot;)" id="" value="Go">
@@ -247,6 +222,32 @@
 </div></div>
 <a style="visibility: hidden;" name="crossrefpar_referenceparagraph_0"></a>
 <a style="visibility: hidden;" name="crossrefpar_componentseparator"></a><div class="section ghost">
+<div class="contentteaser section standardarticle">
+
+<!-- start contentteaser -->
+	<div class="module dhl content_teaser">
+
+<div>
+    <h2>
+       Important Notice
+    </h2>
+
+
+    <div class="ct_image">
+
+       
+<img width="70" height="50" class="cq-dd-image shadow_img" title="" alt="" src="Images/information_key_70x50px.png">
+        
+
+    </div>
+
+    <div class="richtext">Service announcements to your business to keep abreast of events GETS<br><a href="#" class="arrowLink">Tokyo Electric Power system restoration</a><br></div>
+
+</div>
+<div style="clear: both;"></div>
+
+</div>
+</div>
 </div>
 <a style="visibility: hidden;" name="crossrefpar_referenceparagraph_1"></a>
 <a style="visibility: hidden;" name="crossrefpar_componentseparator_0"></a>
