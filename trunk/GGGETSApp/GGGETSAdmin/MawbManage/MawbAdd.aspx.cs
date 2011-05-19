@@ -4,9 +4,12 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using DataBusDomain.Service;
 using ETS.GGGETSApp.Domain.Application.Entities;
 using Application.GGETS;
 using System.Text.RegularExpressions;
+using Infrastructure;
+
 namespace GGGETSAdmin.MawbManage
 {
     public partial class MawbAdd : System.Web.UI.Page
@@ -20,6 +23,22 @@ namespace GGGETSAdmin.MawbManage
         private Package package;
         private DateTime time = DateTime.Now;
         public int n = 1;
+
+        #region 睿策 IOC BLOCK
+        public ILogisticsService LogisticsService
+        {
+            get
+            {
+                if (_logisticsService == null)
+                {
+                    _logisticsService = ObjectFactory.NewIocInstance<ILogisticsService>();
+                }
+                return _logisticsService;
+            }
+        }
+        ILogisticsService _logisticsService;
+        #endregion
+
         protected MawbAdd()
         { }
         public MawbAdd(IMAWBManagementService mawbservice, IPackageManagementService packageservice, IHAWBManagementService hawbservicr, ISysUserManagementService SysUserManagementService)
@@ -200,21 +219,32 @@ namespace GGGETSAdmin.MawbManage
                     mawb.To = txt_To.Text.Trim().ToUpper();
                     mawb.CreateTime = DateTime.Parse(txt_CreateTime.Text.Trim());
                     mawb.Operator = "ceshi";
-                    _mawbservice.AddMAWB(mawb);
+                    try
+                    {
+                        //todo 睿策操作,待参数确认后需要再次修改
+                        LogisticsService.PackPackageToMAWB(mawb, Guid.NewGuid(), "test", DateTime.Now);
 
-                    ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('添加成功!')", true);
-                    Session["mawb"] = null;
-                    Txt_MAWBBarCode.Text = string.Empty;
-                    txt_FLTNo.Text = string.Empty;
-                    txt_CreateTime.Text = DateTime.Now.ToString("yyyy-MM-dd HH:mm");
-                    txt_From.Text = string.Empty;
-                    txt_To.Text = string.Empty;
-                    txt_Pice.Text = string.Empty;
-                    Txt_TotalWeight.Text = string.Empty;
-                    txt_TotalVolume.Text = string.Empty;
-                    gv_Bag.DataSource = null;
-                    gv_Bag.DataBind();
-                    btn_Close.Visible = true;
+                        _mawbservice.AddMAWB(mawb);
+
+                        ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('添加成功!')", true);
+                        Session["mawb"] = null;
+                        Txt_MAWBBarCode.Text = string.Empty;
+                        txt_FLTNo.Text = string.Empty;
+                        txt_CreateTime.Text = DateTime.Now.ToString("yyyy-MM-dd HH:mm");
+                        txt_From.Text = string.Empty;
+                        txt_To.Text = string.Empty;
+                        txt_Pice.Text = string.Empty;
+                        Txt_TotalWeight.Text = string.Empty;
+                        txt_TotalVolume.Text = string.Empty;
+                        gv_Bag.DataSource = null;
+                        gv_Bag.DataBind();
+                        btn_Close.Visible = true;
+                    }
+                    catch(Exception ex)
+                    {
+                        ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "",
+                                                            "alert('" + ex.Message + "')", true);
+                    }
                 }
                 else
                 {

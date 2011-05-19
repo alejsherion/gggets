@@ -1,12 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Transactions;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using DataBusDomain.Service;
 using ETS.GGGETSApp.Domain.Application.Entities;
 using Application.GGETS;
 using System.Text.RegularExpressions;
+using Infrastructure;
 
 namespace GGGETSAdmin.PackageManage
 {
@@ -21,6 +24,22 @@ namespace GGGETSAdmin.PackageManage
         private IHAWBManagementService _hawbservice;
         private static IRegionCodeManagementService _regionservice;
         private ISysUserManagementService _SysUserManagementService;
+
+        #region 睿策 IOC BLOCK
+        public ILogisticsService LogisticsService
+        {
+            get
+            {
+                if (_logisticsService == null)
+                {
+                    _logisticsService = ObjectFactory.NewIocInstance<ILogisticsService>();
+                }
+                return _logisticsService;
+            }
+        }
+        ILogisticsService _logisticsService;
+        #endregion
+
         protected packageAdd()
         { }
         public packageAdd(IPackageManagementService packageservice, IHAWBManagementService hawbservice, IRegionCodeManagementService regionservice, ISysUserManagementService SysUserManagementService)
@@ -205,17 +224,28 @@ namespace GGGETSAdmin.PackageManage
                             package.DestinationRegionCode = Txt_DestinationRegionCode.Text.Trim().ToUpper();
                             package.OriginalRegionCode = Txt_OriginalRegionCode.Text.Trim().ToUpper();
                             package.Operator = "ceshi";
-                            _packageservice.AddPackage(package);
-                            ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('添加成功!')", true);
-                            Session["package"] = null;
-                            Txt_BagBarCode.Text = string.Empty;
-                            txt_CreateTime.Text = DateTime.Now.ToString("yyyy-MM-dd HH:mm");
-                            Txt_OriginalRegionCode.Text = string.Empty;
-                            Txt_DestinationRegionCode.Text = string.Empty;
-                            txt_Pice.Text = string.Empty;
-                            Txt_TotalWeight.Text = string.Empty;
-                            gv_HAWB.DataSource = null;
-                            gv_HAWB.DataBind();
+                            try
+                            {
+                                //todo 睿策操作,待参数确认后需要再次修改
+                                LogisticsService.PackHAWBToPackage(package, Guid.NewGuid(), "AAA", DateTime.Now);
+                                //执行GETS添加包裹和睿策添加包裹方法
+                                _packageservice.AddPackage(package);
+                                
+                                ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('添加成功!')", true);
+                                Session["package"] = null;
+                                Txt_BagBarCode.Text = string.Empty;
+                                txt_CreateTime.Text = DateTime.Now.ToString("yyyy-MM-dd HH:mm");
+                                Txt_OriginalRegionCode.Text = string.Empty;
+                                Txt_DestinationRegionCode.Text = string.Empty;
+                                txt_Pice.Text = string.Empty;
+                                Txt_TotalWeight.Text = string.Empty;
+                                gv_HAWB.DataSource = null;
+                                gv_HAWB.DataBind();
+                            }
+                            catch(Exception ex)
+                            {
+                                ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('"+ex.Message+"')", true);
+                            }
                         }
 
                     }

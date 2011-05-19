@@ -1800,7 +1800,7 @@
     </Options>
     <!-- Diagram content (shape and connector positions) -->
     <Diagrams>
-      <Diagram Name="GGGETSAppDataModel" ZoomLevel="42">
+      <Diagram Name="GGGETSAppDataModel" ZoomLevel="72">
         <EntityTypeShape EntityType="MYGGGETSModel.AddressBook" Width="1.5" PointX="7.5" PointY="18.875" Height="4.6443082682291674" IsExpanded="true" />
         <EntityTypeShape EntityType="MYGGGETSModel.Company" Width="1.5" PointX="0.75" PointY="10.875" Height="3.6892097981770817" IsExpanded="true" />
         <EntityTypeShape EntityType="MYGGGETSModel.CountryCode" Width="1.5" PointX="5.75" PointY="4.75" Height="1.5879931640624996" IsExpanded="true" />
