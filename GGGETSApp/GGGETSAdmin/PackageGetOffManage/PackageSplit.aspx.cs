@@ -15,12 +15,29 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Xml.Linq;
 using Application.GGETS;
+using DataBusDomain.Service;
 using ETS.GGGETSApp.Domain.Application.Entities;
+using Infrastructure;
 
 namespace GGGETSAdmin.PackageGetOffManage
 {
     public partial class PackageSplit : System.Web.UI.Page
     {
+        #region 睿策 IOC BLOCK
+        public ILogisticsService LogisticsService
+        {
+            get
+            {
+                if (_logisticsService == null)
+                {
+                    _logisticsService = ObjectFactory.NewIocInstance<ILogisticsService>();
+                }
+                return _logisticsService;
+            }
+        }
+        ILogisticsService _logisticsService;
+        #endregion
+
         //保存包裹中运单编号
         public IDictionary BarCodeList
         {
@@ -170,6 +187,10 @@ namespace GGGETSAdmin.PackageGetOffManage
                 int count = _spService.UseUseBatchUpdateHAWBPackageState(xmlStr);
                 if(count==1)
                 {
+                    Guid pid = _packageService.FindPackageByBarcode(txtPackageCode.Text.Trim()).PID;
+                    //todo 调用睿策，待参数确定后还需要修改
+                    LogisticsService.UnpackPackageToHAWB(pid, Guid.NewGuid(), "test", DateTime.Now);
+
                     ScriptManager.RegisterStartupScript(this, GetType(), "", "alert('操作成功!');", true);
                     return;
                 }
