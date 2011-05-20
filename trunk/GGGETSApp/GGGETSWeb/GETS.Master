@@ -16,7 +16,7 @@
     <style type="text/css">
 /* common styling */
 .navigation_main {font-family: arial, sans-serif; position:relative; margin:0; font-size:11px;}
-.navigation_main ul li a, .navigation_main ul li a:visited {display:block; text-decoration:none; color:#000;width:104px; height:20px; text-align:center; color:#E70012; background:#FFF100; line-height:20px; font-size:11px; overflow:hidden; font-weight:bold;}
+.navigation_main ul li a, .navigation_main ul li a:hover {display:block; text-decoration:none; color:#000;width:104px; height:20px; text-align:center; color:#E70012; background:#FFF100; line-height:20px; font-size:11px; overflow:hidden; font-weight:bold;}
 .navigation_main ul li a.demo, .navigation_main ul li a.demo:link, .navigation_main ul li a.demo:visited{ background:url("../Images/arrow_navi.gif") no-repeat scroll 0.3em 0.5em #FFF100; }
 .navigation_main ul {padding:0; margin:0;list-style-type: none; }
 .navigation_main ul li {float:left; margin-right:1px; position:relative;}
@@ -253,7 +253,7 @@
             <!--menu-->
             <div class="navigation_main" style="display: block; padding:0;">
                 <ul>
-                     <li>
+                     <li runat="server" id="testLI">
                         <asp:LinkButton ID="lbAbout" runat="server" CssClass="nav_top" meta:resourcekey="lbAboutResource1"
                             onclick="lbAbout_Click">关于我们</asp:LinkButton>
                     <ul>
