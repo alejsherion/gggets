@@ -180,7 +180,7 @@
                 <tbody>
                     <tr>
                         <th width="30%" axis="length" scope="col" rowspan="14">中国</th>
-                        <th width="50%" axis="length" scope="col">盖世国际物流（上海）有限公司</th>
+                        <th width="50%" axis="length" scope="col">GETS株式会社</th>
                     </tr>
                     <tr>
                         <th width="50%" axis="length" scope="col">住所：上海市长寿路181弄1号1902室</th>
@@ -195,7 +195,7 @@
                         <th width="50%" axis="length" scope="col">&nbsp;</th>
                     </tr>
                     <tr>
-                        <th width="50%" axis="length" scope="col">盖世国际物流（上海）有限公司 通関部</th>
+                        <th width="50%" axis="length" scope="col">GETS株式会社 通関部</th>
                     </tr>
                     <tr>
                         <th width="50%" axis="length" scope="col">住所：上海市海天5路600号浦东机场快件报关中心C25库</th>
@@ -210,7 +210,7 @@
                         <th width="50%" axis="length" scope="col">&nbsp;</th>
                     </tr>
                     <tr>
-                        <th width="50%" axis="length" scope="col">盖世国际物流（上海）有限公司 虹橋空港操作部</th>
+                        <th width="50%" axis="length" scope="col">GETS株式会社 虹橋空港操作部</th>
                     </tr>
                     <tr>
                         <th width="50%" axis="length" scope="col">住所：上海市闵行区沪青平公路415号</th>
