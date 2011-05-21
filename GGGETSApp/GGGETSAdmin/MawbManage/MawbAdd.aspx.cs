@@ -218,11 +218,11 @@ namespace GGGETSAdmin.MawbManage
                     mawb.From = txt_From.Text.Trim().ToUpper();
                     mawb.To = txt_To.Text.Trim().ToUpper();
                     mawb.CreateTime = DateTime.Parse(txt_CreateTime.Text.Trim());
-                    mawb.Operator = "ceshi";
+                    mawb.Operator = _SysUserManagementService.GetUserById((Guid)Session["UserID"]).LoginName;
                     try
                     {
-                        //todo 睿策操作,待参数确认后需要再次修改
-                        LogisticsService.PackPackageToMAWB(mawb, Guid.NewGuid(), "test", DateTime.Now);
+                        //todo 睿策操作,location参数不确认
+                        LogisticsService.PackPackageToMAWB(mawb, (Guid)Session["UserID"], "undefine", DateTime.Now);
 
                         _mawbservice.AddMAWB(mawb);
 

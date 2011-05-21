@@ -223,11 +223,12 @@ namespace GGGETSAdmin.PackageManage
                             package.UpdateTime = DateTime.Now;
                             package.DestinationRegionCode = Txt_DestinationRegionCode.Text.Trim().ToUpper();
                             package.OriginalRegionCode = Txt_OriginalRegionCode.Text.Trim().ToUpper();
-                            package.Operator = "ceshi";
+
+                            package.Operator = _SysUserManagementService.GetUserById((Guid) Session["UserID"]).LoginName;
                             try
                             {
-                                //todo 睿策操作,待参数确认后需要再次修改
-                                LogisticsService.PackHAWBToPackage(package, Guid.NewGuid(), "AAA", DateTime.Now);
+                                //todo 睿策操作,location参数不确认
+                                LogisticsService.PackHAWBToPackage(package, (Guid)Session["UserID"], "undefine", DateTime.Now);
                                 //执行GETS添加包裹和睿策添加包裹方法
                                 _packageservice.AddPackage(package);
                                 
