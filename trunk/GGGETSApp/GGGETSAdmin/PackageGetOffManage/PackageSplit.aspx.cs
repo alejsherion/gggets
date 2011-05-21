@@ -189,7 +189,7 @@ namespace GGGETSAdmin.PackageGetOffManage
                 {
                     Guid pid = _packageService.FindPackageByBarcode(txtPackageCode.Text.Trim()).PID;
                     //todo 调用睿策，待参数确定后还需要修改
-                    LogisticsService.UnpackPackageToHAWB(pid, Guid.NewGuid(), "test", DateTime.Now);
+                    LogisticsService.UnpackPackageToHAWB(pid, (Guid)Session["UserID"], "undefine", DateTime.Now);
 
                     ScriptManager.RegisterStartupScript(this, GetType(), "", "alert('操作成功!');", true);
                     return;

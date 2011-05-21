@@ -28,6 +28,7 @@ namespace GGGETSAdmin.HAWBManage
         private IDepartmentManagementService _departmentservice;
         private IAddressBookManagementService _addressbookservice;
         private ISysUserManagementService _sysUserManagementService;
+
         protected HAWBAdd()
         { }
         public HAWBAdd(IHAWBManagementService hawbService, ICountryCodeManagementService countryservice, IRegionCodeManagementService regionservice, ICompanyManagementService companyservice, IDepartmentManagementService departmentservice, IAddressBookManagementService addressbookservice, ISysUserManagementService sysUserManagementService)

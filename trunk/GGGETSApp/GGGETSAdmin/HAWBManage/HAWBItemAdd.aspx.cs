@@ -4,10 +4,12 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using DataBusDomain.Service;
 using ETS.GGGETSApp.Domain.Application.Entities;
 using Application.GGETS;
 using System.Text.RegularExpressions;
 using System.Data;
+using Infrastructure;
 
 namespace GGGETSAdmin.HAWBManage
 {
@@ -354,7 +356,9 @@ namespace GGGETSAdmin.HAWBManage
             }
             else
             {
+                //our operation
                 _hawbService.AddHAWB(hawb);
+
                 Response.Write("<script>alert('添加成功！');location='HAWBAdd.aspx'</script>");
                 //Session["HAWB"] = null;
                 Session.Remove("HAWB");
