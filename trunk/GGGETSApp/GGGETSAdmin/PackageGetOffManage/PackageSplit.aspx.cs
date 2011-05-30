@@ -270,5 +270,27 @@ namespace GGGETSAdmin.PackageGetOffManage
             }
         }
         #endregion
+
+        #region Public Block
+        public string ChangeStatus(string status)
+        {
+            string message = "";
+            if (string.IsNullOrEmpty(status))
+            {
+                message = "WO";
+                return message;
+            }
+            switch(status.ToLower())
+            {
+                case "c":
+                    message = "CR";
+                    break;
+                default:
+                    message = "HC";
+                    break;
+            }
+            return message;
+        }
+        #endregion
     }
 }
