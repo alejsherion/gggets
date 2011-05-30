@@ -72,7 +72,7 @@
                             </telerik:GridTemplateColumn>
                             <telerik:GridTemplateColumn HeaderText="状态">
                                 <ItemTemplate>
-                                    <asp:Label runat="server" Text='<%# Eval("Status") %>'></asp:Label>
+                                    <asp:Label runat="server" Text='<%# ChangeStatus(Convert.ToString(Eval("CustomsClearanceState"))) %>'></asp:Label>
                                 </ItemTemplate>
                             </telerik:GridTemplateColumn>
                             <telerik:GridTemplateColumn HeaderText="报关状态">
