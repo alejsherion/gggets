@@ -314,6 +314,8 @@
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
+    <Content Include="WebService\GETSWebService.asmx" />
+    <Content Include="WebService\WebForm1.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Account\AddUser.aspx.cs">
@@ -405,8 +407,10 @@
     <Compile Include="Common\CookiesHelp.cs" />
     <Compile Include="Common\DataBindHelper .cs" />
     <Compile Include="Common\DataConversion .cs" />
+    <Compile Include="Common\DynamicJson.cs" />
     <Compile Include="Common\NPOIHelper.cs" />
     <Compile Include="Common\OleDbAccessHelper.cs" />
+    <Compile Include="Common\Utility.cs" />
     <Compile Include="CountryZiMaManage\TwoZiMaAdd.aspx.cs">
       <DependentUpon>TwoZiMaAdd.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -889,6 +893,17 @@
     <Compile Include="TopMenu.ascx.designer.cs">
       <DependentUpon>TopMenu.ascx</DependentUpon>
     </Compile>
+    <Compile Include="WebService\GETSWebService.asmx.cs">
+      <DependentUpon>GETSWebService.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="WebService\WebForm1.aspx.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebService\WebForm1.aspx.designer.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+    </Compile>
     <Compile Include="xmlHelp.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -911,6 +926,10 @@
       <Project>{5A3A2291-4220-4BDC-94C0-F48AB18ED0BD}</Project>
       <Name>Domain.Core.Entities</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Domain.Core\Domain.Core.csproj">
+      <Project>{D7E981BB-19E7-4D85-A24B-D4295BAF87CD}</Project>
+      <Name>Domain.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Domain.Entities\Domain.GGGETS.Entities.csproj">
       <Project>{6F82F34C-72F8-4C1F-9B41-2EE88C54AB01}</Project>
       <Name>Domain.GGGETS.Entities</Name>
@@ -922,6 +941,18 @@
     <ProjectReference Include="..\Infrastructure.CrossCutting.IoC\Infrastructure.CrossCutting.IoC.csproj">
       <Project>{59814C32-5A3B-4AEE-94FA-502EA57CDF70}</Project>
       <Name>Infrastructure.CrossCutting.IoC</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Infrastructure.CrossCutting\Infrastructure.CrossCutting.csproj">
+      <Project>{74F0E6EA-1810-4088-B4C5-3941A739D640}</Project>
+      <Name>Infrastructure.CrossCutting</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Infrastructure.Data.Core\Infrastructure.Data.Core.csproj">
+      <Project>{98150D03-B191-476D-B192-B5B755E26E8E}</Project>
+      <Name>Infrastructure.Data.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Infrastructure.Data.Persistence\Infrastructure.Data.Persistence.csproj">
+      <Project>{F0CA02B9-6921-427D-85CB-A164C4939E82}</Project>
+      <Name>Infrastructure.Data.Persistence</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

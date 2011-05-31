@@ -9,6 +9,7 @@
 using System;
 using System.Linq.Expressions;
 using ETS.GGGETSApp.Domain.Application.Entities;
+using ETS.GGGETSApp.Infrastructure.CrossCutting.IoC;
 using ETS.GGGETSApp.Infrastructure.CrossCutting.Logging;
 using ETS.GGGETSApp.Infrastructure.Data.Persistence.Repositories;
 using ETS.GGGETSApp.Infrastructure.Data.Persistence.UnitOfWork;
@@ -23,7 +24,7 @@ namespace Application.GGETS.Tests
     /// HAWBManagementServiceTest 的摘要说明
     /// </summary>
     [TestClass]
-    public class HAWBManagementServiceTest:RepositoryTestsBase<HAWB>
+    public class HAWBManagementServiceTest
     {
         static IHAWBManagementService _HAWBManagementService;//BLL操作类返回
         public HAWBManagementServiceTest()
@@ -36,6 +37,27 @@ namespace Application.GGETS.Tests
             UserRepository UserRepository = new UserRepository(context, traceManager);
 
             _HAWBManagementService = new HAWBManagementService(HAWBRepository, HAWBItemRepository, HAWBBoxRepository, UserRepository);
+        }
+
+        /// <summary>
+        /// Get Active UnitOfWork for testing
+        /// </summary>
+        /// <param name="initializeContainer">True if unit of work is initialized</param>
+        /// <returns>Active unit of work for testing</returns>
+        public IGGGETSAppUnitOfWork GetUnitOfWork(bool initializeContainer = true)
+        {
+            // Get unit of work specified in unity configuration
+            // Set active unit of work for 
+            // testing with fake or real unit of work in application configuration file 
+            // "defaultIoCContainer" setting
+
+            return IoCFactory.Instance.CurrentContainer.Resolve<IGGGETSAppUnitOfWork>();
+        }
+        public ITraceManager GetTraceManager()
+        {
+            //Get configured trace manager
+
+            return IoCFactory.Instance.CurrentContainer.Resolve<ITraceManager>();
         }
 
         private TestContext testContextInstance;
@@ -417,14 +439,14 @@ namespace Application.GGETS.Tests
         }
         #endregion
 
-        public override Expression<Func<HAWB, bool>> FilterExpression
-        {
-            get { throw new NotImplementedException(); }
-        }
+        //public override Expression<Func<HAWB, bool>> FilterExpression
+        //{
+        //    get { throw new NotImplementedException(); }
+        //}
 
-        public override Expression<Func<HAWB, int>> OrderByExpression
-        {
-            get { throw new NotImplementedException(); }
-        }
+        //public override Expression<Func<HAWB, int>> OrderByExpression
+        //{
+        //    get { throw new NotImplementedException(); }
+        //}
     }
 }
