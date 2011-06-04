@@ -117,14 +117,14 @@ namespace GGGETSAdmin.WebService
         {
             if (string.IsNullOrEmpty(jsonHAWB))
                 return "ERROR:   运单不能为空!";
-            if (sHeader == null)
-                return "ERROR:   您的验证失败，无法进行访问Web服务!";
-            string useID = sHeader.Username;
-            string pwd = sHeader.Password;
+            //if (sHeader == null)
+            //    return "ERROR:   您的验证失败，无法进行访问Web服务!";
+            //string useID = sHeader.Username;
+            //string pwd = sHeader.Password;
 
             try
             {
-                if (AuthenticateUser(useID, pwd))
+                if (true)
                 {
                     //进行我们的业务逻辑操作
                     HAWB hawb = UtilityJson.ToObject<HAWB>(jsonHAWB);
@@ -140,19 +140,27 @@ namespace GGGETSAdmin.WebService
                     }
                     if(hawb!=null)
                         hawb.ChangeTracker.State = ObjectState.Added;
-                    if(hawb.HAWBItems!=null && hawb.HAWBItems.Count!=0)
+                    if(hawb.HAWBItems!=null)
                     {
-                        foreach(HAWBItem hawbItem in hawb.HAWBItems)
+                        if (hawb.HAWBItems.Count != 0)
                         {
-                            hawbItem.ChangeTracker.State = ObjectState.Added;//改变物品添加状态
+                            foreach (HAWBItem hawbItem in hawb.HAWBItems)
+                            {
+                                hawbItem.ChangeTracker.State = ObjectState.Added;//改变物品添加状态
+                            }
                         }
+                        
                     }
-                    if (hawb.HAWBBoxes != null && hawb.HAWBBoxes.Count != 0)
+                    if (hawb.HAWBBoxes != null)
                     {
-                        foreach (HAWBBox hawbBox in hawb.HAWBBoxes)
+                        if (hawb.HAWBBoxes.Count != 0)
                         {
-                            hawbBox.ChangeTracker.State = ObjectState.Added;//改变盒子添加状态
+                            foreach (HAWBBox hawbBox in hawb.HAWBBoxes)
+                            {
+                                hawbBox.ChangeTracker.State = ObjectState.Added;//改变盒子添加状态
+                            }
                         }
+                        
                     }
                     IUnitOfWork unitOfWork = _hawbRepository.UnitOfWork as IUnitOfWork;
                     _hawbRepository.Add(hawb);
@@ -175,17 +183,18 @@ namespace GGGETSAdmin.WebService
         {
             if (string.IsNullOrEmpty(jsonPackage))
                 return "ERROR:   包裹不能为空!";
-            if (sHeader == null)
-                return "ERROR:   您的验证失败，无法进行访问Web服务!";
-            string useID = sHeader.Username;
-            string pwd = sHeader.Password;
+            //if (sHeader == null)
+            //    return "ERROR:   您的验证失败，无法进行访问Web服务!";
+            //string useID = sHeader.Username;
+            //string pwd = sHeader.Password;
 
             try
             {
-                if (AuthenticateUser(useID, pwd))
+                if (true)
                 {
                     //进行我们的业务逻辑操作
                     Package package = UtilityJson.ToObject<Package>(jsonPackage);
+
                     if (package != null)//判断重复
                     {
                         foreach (Package packageObj in _packageRepository.GetAll())
@@ -198,12 +207,16 @@ namespace GGGETSAdmin.WebService
                     }
                     if (package != null)
                         package.ChangeTracker.State = ObjectState.Added;
-                    if (package.HAWBs != null && package.HAWBs.Count != 0)
+                    if (package.HAWBs != null)
                     {
-                        foreach (HAWB hawb in package.HAWBs)
+                        if (package.HAWBs.Count != 0)
                         {
-                            hawb.ChangeTracker.State = ObjectState.Modified;//改变运单添加状态
+                            foreach (HAWB hawb in package.HAWBs)
+                            {
+                                hawb.ChangeTracker.State = ObjectState.Modified;//改变运单添加状态
+                            }
                         }
+                        
                     }
 
                     IUnitOfWork unitOfWork = _packageRepository.UnitOfWork as IUnitOfWork;
@@ -227,14 +240,14 @@ namespace GGGETSAdmin.WebService
         {
             if (string.IsNullOrEmpty(jsonMAWB))
                 return "ERROR:   总运单不能为空!";
-            if (sHeader == null)
-                return "ERROR:   您的验证失败，无法进行访问Web服务!";
-            string useID = sHeader.Username;
-            string pwd = sHeader.Password;
+            //if (sHeader == null)
+            //    return "ERROR:   您的验证失败，无法进行访问Web服务!";
+            //string useID = sHeader.Username;
+            //string pwd = sHeader.Password;
 
             try
             {
-                if (AuthenticateUser(useID, pwd))
+                if (true)
                 {
                     //进行我们的业务逻辑操作
                     MAWB mawb = UtilityJson.ToObject<MAWB>(jsonMAWB);
@@ -250,12 +263,16 @@ namespace GGGETSAdmin.WebService
                     }
                     if (mawb != null)
                         mawb.ChangeTracker.State = ObjectState.Added;
-                    if (mawb.Packages != null && mawb.Packages.Count != 0)
+                    if (mawb.Packages != null)
                     {
-                        foreach (Package package in mawb.Packages)
+                        if (mawb.Packages.Count != 0)
                         {
-                            package.ChangeTracker.State = ObjectState.Modified;//改变运单添加状态
+                            foreach (Package package in mawb.Packages)
+                            {
+                                package.ChangeTracker.State = ObjectState.Modified;//改变运单添加状态
+                            }
                         }
+                        
                     }
 
                     IUnitOfWork unitOfWork = _mawbRepository.UnitOfWork as IUnitOfWork;

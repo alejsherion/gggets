@@ -9,6 +9,7 @@ using DataBusDomain.Service;
 using ETS.GGGETSApp.Domain.Application.Entities;
 using Application.GGETS;
 using System.Text.RegularExpressions;
+using GGGETSAdmin.Common;
 using Infrastructure;
 
 namespace GGGETSAdmin.PackageManage
@@ -231,6 +232,12 @@ namespace GGGETSAdmin.PackageManage
                                 LogisticsService.PackHAWBToPackage(package, (Guid)Session["UserID"], "undefine", DateTime.Now);
                                 //执行GETS添加包裹和睿策添加包裹方法
                                 _packageservice.AddPackage(package);
+                                //webserivce
+                                string jsonStr = UtilityJson.ToJson(package);
+                                string url = "http://localhost/GETSB/WebService/GETSWebService.asmx";
+                                string[] args = new string[1];
+                                args[0] = jsonStr;
+                                object result = WebServiceHelper.InvokeWebService(url, "AddPACKAGE", args);
                                 
                                 ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('添加成功!')", true);
                                 Session["package"] = null;

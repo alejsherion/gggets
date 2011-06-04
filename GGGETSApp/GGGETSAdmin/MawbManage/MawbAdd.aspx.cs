@@ -8,6 +8,7 @@ using DataBusDomain.Service;
 using ETS.GGGETSApp.Domain.Application.Entities;
 using Application.GGETS;
 using System.Text.RegularExpressions;
+using GGGETSAdmin.Common;
 using Infrastructure;
 
 namespace GGGETSAdmin.MawbManage
@@ -225,6 +226,13 @@ namespace GGGETSAdmin.MawbManage
                         LogisticsService.PackPackageToMAWB(mawb, (Guid)Session["UserID"], "undefine", DateTime.Now);
 
                         _mawbservice.AddMAWB(mawb);
+
+                        //webserivce
+                        string jsonStr = UtilityJson.ToJson(mawb);
+                        string url = "http://localhost/GETSB/WebService/GETSWebService.asmx";
+                        string[] args = new string[1];
+                        args[0] = jsonStr;
+                        object result = WebServiceHelper.InvokeWebService(url, "AddMAWB", args);
 
                         ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('添加成功!')", true);
                         Session["mawb"] = null;

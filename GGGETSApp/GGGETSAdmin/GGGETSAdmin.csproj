@@ -411,6 +411,7 @@
     <Compile Include="Common\NPOIHelper.cs" />
     <Compile Include="Common\OleDbAccessHelper.cs" />
     <Compile Include="Common\Utility.cs" />
+    <Compile Include="Common\WebServiceHelper.cs" />
     <Compile Include="CountryZiMaManage\TwoZiMaAdd.aspx.cs">
       <DependentUpon>TwoZiMaAdd.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
