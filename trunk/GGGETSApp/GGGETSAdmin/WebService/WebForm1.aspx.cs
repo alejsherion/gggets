@@ -25,14 +25,21 @@ namespace GGGETSAdmin.WebService
         }
         protected void Page_Load(object sender, EventArgs e)
         {
-            //HAWB hawb = _hawbservice.FindHAWBByBarCode("HAWB001");
+            //HAWB hawb = _hawbservice.FindHAWBByBarCode("QQ");
             //string jsonStr = UtilityJson.ToJson(hawb);
 
-            //Package p = _packageservice.FindPackageByBarcode("PPPP");
-            //string jsonStr2 = UtilityJson.ToJson(p);
+            Package p = _packageservice.FindPackageByBarcode("PPPP");
+            string jsonStr2 = UtilityJson.ToJson(p);
 
-            MAWB mawb = _mawbservice.FindMAWBByBarcode("MAWB007");
-            string jsonStr3 = UtilityJson.ToJson(mawb);
+            //MAWB mawb = _mawbservice.FindMAWBByBarcode("MAWB007");
+            //string jsonStr3 = UtilityJson.ToJson(mawb);
+
+            //string jsonStr = UtilityJson.ToJson(hawb);
+            Package package = UtilityJson.ToObject<Package>(jsonStr2);
+            string url = "http://localhost/GETSB/WebService/GETSWebService.asmx";
+            string[] args = new string[1];
+            args[0] = jsonStr2;
+            object result = WebServiceHelper.InvokeWebService(url, "AddPACKAGE", args);
         }
     }
 }
