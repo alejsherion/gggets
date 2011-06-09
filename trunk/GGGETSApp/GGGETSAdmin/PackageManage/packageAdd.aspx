@@ -70,6 +70,8 @@
                         <td>
                             <asp:Button ID="btn_Save" runat="server" CssClass="InputBtn" Text="保 存" OnClick="btn_Save_Click"
                                 TabIndex="5" UseSubmitBehavior="false" />
+                            <asp:Button ID="btnTB" runat="server" CssClass="InputBtn" Text="同 步"
+                        TabIndex="5" UseSubmitBehavior="false" onclick="btnTB_Click" />
                         </td>
                         <td>
                             <asp:Button ID="btn_SaveAndClose" runat="server" CssClass="InputBtn" Text="保存并锁定"

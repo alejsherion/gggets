@@ -8,6 +8,7 @@
 //************************************************************************
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.IO;
 using System.Linq;
 using System.Runtime.Serialization.Json;
@@ -213,7 +214,7 @@ namespace GGGETSAdmin.WebService
                         {
                             foreach (HAWB hawb in package.HAWBs)
                             {
-                                hawb.ChangeTracker.State = ObjectState.Modified;//改变运单添加状态
+                                hawb.ChangeTracker.State = ObjectState.Added;//改变运单添加状态
                             }
                         }
                         

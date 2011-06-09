@@ -227,26 +227,19 @@ namespace GGGETSAdmin.MawbManage
 
                         _mawbservice.AddMAWB(mawb);
 
-                        //webserivce
-                        string jsonStr = UtilityJson.ToJson(mawb);
-                        string url = "http://localhost/GETSB/WebService/GETSWebService.asmx";
-                        string[] args = new string[1];
-                        args[0] = jsonStr;
-                        object result = WebServiceHelper.InvokeWebService(url, "AddMAWB", args);
-
                         ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('添加成功!')", true);
-                        Session["mawb"] = null;
-                        Txt_MAWBBarCode.Text = string.Empty;
-                        txt_FLTNo.Text = string.Empty;
-                        txt_CreateTime.Text = DateTime.Now.ToString("yyyy-MM-dd HH:mm");
-                        txt_From.Text = string.Empty;
-                        txt_To.Text = string.Empty;
-                        txt_Pice.Text = string.Empty;
-                        Txt_TotalWeight.Text = string.Empty;
-                        txt_TotalVolume.Text = string.Empty;
-                        gv_Bag.DataSource = null;
-                        gv_Bag.DataBind();
-                        btn_Close.Visible = true;
+                        //Session["mawb"] = null;
+                        //Txt_MAWBBarCode.Text = string.Empty;
+                        //txt_FLTNo.Text = string.Empty;
+                        //txt_CreateTime.Text = DateTime.Now.ToString("yyyy-MM-dd HH:mm");
+                        //txt_From.Text = string.Empty;
+                        //txt_To.Text = string.Empty;
+                        //txt_Pice.Text = string.Empty;
+                        //Txt_TotalWeight.Text = string.Empty;
+                        //txt_TotalVolume.Text = string.Empty;
+                        //gv_Bag.DataSource = null;
+                        //gv_Bag.DataBind();
+                        //btn_Close.Visible = true;
                     }
                     catch(Exception ex)
                     {
@@ -335,7 +328,51 @@ namespace GGGETSAdmin.MawbManage
                 txt_FLTNo.Focus();
             }
         }
-       
 
+        /// <summary>
+        /// VMA->VMB的传输
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void btnTB_Click(object sender, EventArgs e)
+        {
+            if(Session["mawb"]!=null)
+            {
+                //webserivce
+                string jsonStr = UtilityJson.ToJson(Session["mawb"]);
+                string url = "http://localhost/GETSB/WebService/GETSWebService.asmx";
+                string[] args = new string[1];
+                args[0] = jsonStr;
+                try
+                {
+                    object result = WebServiceHelper.InvokeWebService(url, "AddMAWB", args);
+
+                    ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('" + result + "')",
+                                                        true);
+                }
+                catch(Exception ex)
+                {
+                    throw new Exception(ex.Message);
+                }
+                
+                Session["mawb"] = null;
+                Txt_MAWBBarCode.Text = string.Empty;
+                txt_FLTNo.Text = string.Empty;
+                txt_CreateTime.Text = DateTime.Now.ToString("yyyy-MM-dd HH:mm");
+                txt_From.Text = string.Empty;
+                txt_To.Text = string.Empty;
+                txt_Pice.Text = string.Empty;
+                Txt_TotalWeight.Text = string.Empty;
+                txt_TotalVolume.Text = string.Empty;
+                gv_Bag.DataSource = null;
+                gv_Bag.DataBind();
+                btn_Close.Visible = true;
+            }
+            else
+            {
+                ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('数据丢失，请重新操作!')",
+                                                        true);
+            }
+        }
     }
 }
