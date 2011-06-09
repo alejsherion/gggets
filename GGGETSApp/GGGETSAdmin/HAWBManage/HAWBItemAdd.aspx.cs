@@ -360,13 +360,6 @@ namespace GGGETSAdmin.HAWBManage
                 //our operation
                 _hawbService.AddHAWB(hawb);
 
-                //webserivce
-                string jsonStr = UtilityJson.ToJson(hawb);
-                string url = "http://localhost/GETSB/WebService/GETSWebService.asmx";
-                string[] args = new string[1];
-                args[0] = jsonStr;
-                object result = WebServiceHelper.InvokeWebService(url, "AddHAWB", args);
-
                 Response.Write("<script>alert('添加成功！');location='HAWBAdd.aspx'</script>");
                 //Session["HAWB"] = null;
                 Session.Remove("HAWB");

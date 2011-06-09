@@ -232,23 +232,17 @@ namespace GGGETSAdmin.PackageManage
                                 LogisticsService.PackHAWBToPackage(package, (Guid)Session["UserID"], "undefine", DateTime.Now);
                                 //执行GETS添加包裹和睿策添加包裹方法
                                 _packageservice.AddPackage(package);
-                                //webserivce
-                                string jsonStr = UtilityJson.ToJson(package);
-                                string url = "http://localhost/GETSB/WebService/GETSWebService.asmx";
-                                string[] args = new string[1];
-                                args[0] = jsonStr;
-                                object result = WebServiceHelper.InvokeWebService(url, "AddPACKAGE", args);
                                 
                                 ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('添加成功!')", true);
-                                Session["package"] = null;
-                                Txt_BagBarCode.Text = string.Empty;
-                                txt_CreateTime.Text = DateTime.Now.ToString("yyyy-MM-dd HH:mm");
-                                Txt_OriginalRegionCode.Text = string.Empty;
-                                Txt_DestinationRegionCode.Text = string.Empty;
-                                txt_Pice.Text = string.Empty;
-                                Txt_TotalWeight.Text = string.Empty;
-                                gv_HAWB.DataSource = null;
-                                gv_HAWB.DataBind();
+                                //Session["package"] = null;
+                                //Txt_BagBarCode.Text = string.Empty;
+                                //txt_CreateTime.Text = DateTime.Now.ToString("yyyy-MM-dd HH:mm");
+                                //Txt_OriginalRegionCode.Text = string.Empty;
+                                //Txt_DestinationRegionCode.Text = string.Empty;
+                                //txt_Pice.Text = string.Empty;
+                                //Txt_TotalWeight.Text = string.Empty;
+                                //gv_HAWB.DataSource = null;
+                                //gv_HAWB.DataBind();
                             }
                             catch(Exception ex)
                             {
@@ -446,6 +440,46 @@ namespace GGGETSAdmin.PackageManage
         protected void Txt_DestinationRegionCode_TextChanged(object sender, EventArgs e)
         {
             Region();
+        }
+
+        /// <summary>
+        /// 将本地VM同步到另外一个VM中
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void btnTB_Click(object sender, EventArgs e)
+        {
+            if(Session["package"]!=null)
+            {
+                //webserivce
+                string jsonStr = UtilityJson.ToJson(Session["package"]);
+                string url = "http://localhost/GETSB/WebService/GETSWebService.asmx";
+                string[] args = new string[1];
+                args[0] = jsonStr;
+                try
+                {
+                    object result = WebServiceHelper.InvokeWebService(url, "AddPACKAGE", args);
+                    ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('" + result + "')", true);
+                }
+                catch(Exception ex)
+                {
+                    throw new Exception(ex.Message);
+                }
+
+                Session["package"] = null;
+                Txt_BagBarCode.Text = string.Empty;
+                txt_CreateTime.Text = DateTime.Now.ToString("yyyy-MM-dd HH:mm");
+                Txt_OriginalRegionCode.Text = string.Empty;
+                Txt_DestinationRegionCode.Text = string.Empty;
+                txt_Pice.Text = string.Empty;
+                Txt_TotalWeight.Text = string.Empty;
+                gv_HAWB.DataSource = null;
+                gv_HAWB.DataBind();
+            }
+            else
+            {
+                ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('数据丢失,请重新操作！')", true);
+            }
         }
     }
 }
