@@ -12,6 +12,7 @@ using ETS.GGGETSApp.Infrastructure.CrossCutting.Logging;
 using Domain.GGGETS;
 using ETS.GGGETSApp.Infrastructure.Data.Persistence.Repositories;
 using Application.GGETS;
+using DataBusDomain.Service;
 
 
 
@@ -116,6 +117,8 @@ namespace ETS.GGGETSApp.Infrastructure.CrossCutting.IoC.Unity
             container.RegisterType<IAppModuleManagementService, AppModuleManagementService>(new TransientLifetimeManager());
             container.RegisterType<IOrganizationManagementService, OrganizationManagementService>(new TransientLifetimeManager());
             container.RegisterType<ISPManagementService, SPManagementService>(new TransientLifetimeManager());
+            container.RegisterType<IDataBusService, DataBusService>(new TransientLifetimeManager());
+            container.RegisterType<ILogisticsService, LogisticsService>(new TransientLifetimeManager());
             //Register domain services mappings
             //container.RegisterType<IBankTransferDomainService, BankTransferDomainService>(new TransientLifetimeManager());
             

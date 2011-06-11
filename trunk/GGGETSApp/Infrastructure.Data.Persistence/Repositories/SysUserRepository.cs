@@ -103,8 +103,9 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Repositories
                 }
                 return SysUser.EmptyUid;
             }
-            catch
+            catch(Exception e)
             {
+                throw e;
                 return null;
             }
         }
