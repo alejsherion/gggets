@@ -25,8 +25,11 @@ namespace GGGETSAdmin.PackageManage
         private IHAWBManagementService _hawbservice;
         private static IRegionCodeManagementService _regionservice;
         private ISysUserManagementService _SysUserManagementService;
+        private IDataBusService _dataBusService;
 
         #region 睿策 IOC BLOCK
+      
+      
         public ILogisticsService LogisticsService
         {
             get
@@ -43,12 +46,13 @@ namespace GGGETSAdmin.PackageManage
 
         protected packageAdd()
         { }
-        public packageAdd(IPackageManagementService packageservice, IHAWBManagementService hawbservice, IRegionCodeManagementService regionservice, ISysUserManagementService SysUserManagementService)
+        public packageAdd(IPackageManagementService packageservice, IHAWBManagementService hawbservice, IRegionCodeManagementService regionservice, ISysUserManagementService SysUserManagementService,IDataBusService dataBusService)
         {
             _packageservice=packageservice;
             _hawbservice = hawbservice;
             _regionservice = regionservice;
             _SysUserManagementService = SysUserManagementService;
+            _dataBusService = dataBusService;
         }
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -453,7 +457,11 @@ namespace GGGETSAdmin.PackageManage
             {
                 //webserivce
                 string jsonStr = UtilityJson.ToJson(Session["package"]);
-                string url = "http://localhost/GETSB/WebService/GETSWebService.asmx";
+                var appID = new Guid("48240b6b-1c67-4587-a091-e198b2e2449e");
+                var app = _dataBusService.GetNextDeliverApp(appID, "TYO");
+                string url = app.URL+"WebService/GETSWebService.asmx";
+                
+                //string url = "http://localhost/GETSB/WebService/GETSWebService.asmx";
                 string[] args = new string[1];
                 args[0] = jsonStr;
                 try
