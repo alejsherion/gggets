@@ -54,7 +54,8 @@
                 </table>
                 <div style="height: 350px; overflow-x: auto; overflow-y: auto;">
                     <asp:GridView ID="gv_HAWB" runat="server" CssClass="DataView" AutoGenerateColumns="False"
-                        PageSize="36" onrowcommand="gv_HAWB_RowCommand">
+                        PageSize="36" onrowcommand="gv_HAWB_RowCommand" 
+                        onrowdatabound="gv_HAWB_RowDataBound">
                         <Columns>
                             <asp:TemplateField HeaderText="行号">
                                 <ItemTemplate>
@@ -69,6 +70,8 @@
                                         Text='<%# Eval("BarCode") %>'></asp:LinkButton>
                                 </ItemTemplate>
                                 <ControlStyle Width="120px" />
+                                <controlstyle width="120px" />
+                                <controlstyle width="120px" />
                                 <HeaderStyle HorizontalAlign="Center" />
                                 <ItemStyle HorizontalAlign="Center" />
                             </asp:TemplateField>
@@ -115,6 +118,12 @@
                         <asp:CheckBox ID="chkId" runat="server" />
                     </ItemTemplate>
                 </asp:TemplateField>--%>
+                            <asp:TemplateField HeaderText="操 作">
+                                <ItemTemplate>
+                                    <asp:Button runat="server" Text="提 交" CssClass="InputBtn" ID="btnSubmit" 
+                                        CommandArgument='<%# Eval("BarCode") %>' onclick="btnSubmit_Click"></asp:Button>
+                                </ItemTemplate>
+                            </asp:TemplateField>
                         </Columns>
                     </asp:GridView>
                 </div>

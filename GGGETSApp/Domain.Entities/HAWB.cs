@@ -16,7 +16,7 @@ using System.Globalization;
 using System.Runtime.Serialization;
 
 #pragma warning disable 1591 // this is for supress no xml comments in public members warnings 
-using System.Xml.Serialization;
+
 using ETS.GGGETSApp.Domain.Core.Entities;
 
 namespace ETS.GGGETSApp.Domain.Application.Entities

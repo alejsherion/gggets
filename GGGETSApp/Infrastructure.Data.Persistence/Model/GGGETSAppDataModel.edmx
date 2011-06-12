@@ -307,6 +307,7 @@
           <Property Name="TotalVolume" Type="decimal" Nullable="false" Precision="10" Scale="2" />
           <Property Name="Status" Type="int" Nullable="false" />
           <Property Name="ImportStatus" Type="int" />
+          <Property Name="IsSubmit" Type="char" MaxLength="1" />
         </EntityType>
         <EntityType Name="OrganizationChart">
           <Key>
@@ -335,6 +336,7 @@
           <Property Name="Operator" Type="nvarchar" Nullable="false" MaxLength="20" />
           <Property Name="Status" Type="int" Nullable="false" />
           <Property Name="IsMixed" Type="bit" Nullable="false" />
+          <Property Name="IsSubmit" Type="char" MaxLength="1" />
         </EntityType>
         <EntityType Name="Param">
           <Key>
@@ -992,6 +994,7 @@
           <Property Name="Status" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Packages" Relationship="MYGGGETSModel.FK_PACKAGE_REFERENCE_MAWB" FromRole="MAWB" ToRole="Package" />
           <Property Type="Int32" Name="ImportStatus" />
+          <Property Type="String" Name="IsSubmit" MaxLength="1" FixedLength="true" Unicode="false" />
         </EntityType>
         <EntityType Name="Package">
           <Key>
@@ -1011,6 +1014,7 @@
           <NavigationProperty Name="MAWB" Relationship="MYGGGETSModel.FK_PACKAGE_REFERENCE_MAWB" FromRole="Package" ToRole="MAWB" />
           <Property Type="String" Name="OriginalRegionCode" Nullable="false" MaxLength="3" FixedLength="true" Unicode="false" />
           <Property Type="String" Name="DestinationRegionCode" Nullable="false" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="IsSubmit" MaxLength="1" FixedLength="true" Unicode="false" />
         </EntityType>
         <EntityType Name="Param">
           <Key>
@@ -1561,7 +1565,8 @@
             <ScalarProperty Name="Remark" ColumnName="Remark" />
           </MappingFragment></EntityTypeMapping></EntitySetMapping>
           <EntitySetMapping Name="MAWB"><EntityTypeMapping TypeName="MYGGGETSModel.MAWB"><MappingFragment StoreEntitySet="MAWB">
-            <ScalarProperty Name="ImportStatus" ColumnName="ImportStatus" />
+            <ScalarProperty Name="IsSubmit" ColumnName="IsSubmit" />
+                <ScalarProperty Name="ImportStatus" ColumnName="ImportStatus" />
                 <ScalarProperty Name="MID" ColumnName="MID" />
             <ScalarProperty Name="BarCode" ColumnName="BarCode" />
             <ScalarProperty Name="From" ColumnName="From" />
@@ -1575,7 +1580,8 @@
             <ScalarProperty Name="Status" ColumnName="Status" />
           </MappingFragment></EntityTypeMapping></EntitySetMapping>
           <EntitySetMapping Name="Package"><EntityTypeMapping TypeName="MYGGGETSModel.Package"><MappingFragment StoreEntitySet="Package">
-            <ScalarProperty Name="DestinationRegionCode" ColumnName="DestinationRegionCode" />
+            <ScalarProperty Name="IsSubmit" ColumnName="IsSubmit" />
+                <ScalarProperty Name="DestinationRegionCode" ColumnName="DestinationRegionCode" />
                 <ScalarProperty Name="OriginalRegionCode" ColumnName="OriginalRegionCode" />
                 <ScalarProperty Name="PID" ColumnName="PID" />
             <ScalarProperty Name="MID" ColumnName="MID" />

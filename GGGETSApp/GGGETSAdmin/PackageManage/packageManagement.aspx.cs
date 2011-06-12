@@ -1,12 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using DataBusDomain.Service;
 using ETS.GGGETSApp.Domain.Application.Entities;
 using Application.GGETS;
 using System.Text.RegularExpressions;
+using GGGETSAdmin.Common;
 
 namespace GGGETSAdmin.PackageManage
 {
@@ -30,13 +33,15 @@ namespace GGGETSAdmin.PackageManage
         private IList<Package> listpackage;
         private static IRegionCodeManagementService _regionservice;
         private ISysUserManagementService _sysUserManagementService;
+        private IDataBusService _dataBusService;
         protected packageManagement()
         { }
-        public packageManagement(IPackageManagementService packageservice, IRegionCodeManagementService regionservice, ISysUserManagementService sysUserManagementService)
+        public packageManagement(IPackageManagementService packageservice, IRegionCodeManagementService regionservice, ISysUserManagementService sysUserManagementService, IDataBusService dataBusService)
         {
             _packageservice = packageservice;
             _regionservice = regionservice;
             _sysUserManagementService = sysUserManagementService;
+            _dataBusService = dataBusService;
         }
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -405,6 +410,75 @@ namespace GGGETSAdmin.PackageManage
                 bool privilege =(bool)Mpriviege[Privilege.修改.ToString()];
                 bool aprivilege = (bool)Mpriviege[Privilege.解锁.ToString()];
                 Response.Redirect("PackageDetails.aspx?BarCode=" + e.CommandArgument + "&Privilege=" + privilege + "&Privilege1="+aprivilege+"");
+            }
+        }
+
+        /// <summary>
+        /// 绑定JS事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void gv_HAWB_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            //首先获取需要绑定JS的控件
+            if(e.Row.RowType==DataControlRowType.DataRow)
+            {
+                ((Button)e.Row.FindControl("btnSubmit")).Attributes.Add("onclick", "return confirm('是否要提交?注：提交后的包裹信息将传输到下一级站点,请慎重!');");
+            }
+        }
+
+        /// <summary>
+        /// 提交包裹信息
+        /// 调用WS服务
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void btnSubmit_Click(object sender, EventArgs e)
+        {
+            //首先获取选中的包裹对象
+            string barcode = ((Button) sender).CommandArgument;
+            if(string.IsNullOrEmpty(barcode))
+            {
+                throw new Exception("该运单没有运单编号!");
+            }
+            else
+            {
+                Package package = _packageservice.FindPackageByBarcode(barcode);
+                if(package.IsSubmit.Equals("0"))
+                {
+                    string jsonStr = UtilityJson.ToJson(package);
+                    //var appID = new Guid("48240b6b-1c67-4587-a091-e198b2e2449e");
+                    var appID = Guid.Parse(ConfigurationManager.AppSettings["AppID"]);
+                    var app = _dataBusService.GetNextDeliverApp(appID, "TYO");
+                    string url = app.URL + "WebService/GETSWebService.asmx";
+
+                    //string url = "http://localhost/GETSB/WebService/GETSWebService.asmx";
+                    string[] args = new string[1];
+                    args[0] = jsonStr;
+                    try
+                    {
+                        object result = WebServiceHelper.InvokeWebService(url, "AddPACKAGE", args);
+                        if (result.Equals("SUCCESS:   操作已成功!"))
+                        {
+                            //改变包裹提交状态
+                            package.IsSubmit = "1";
+                            _packageservice.ModifyPackage(package);
+                            ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('" + result + "')", true);
+                        }
+                        else
+                        {
+                            ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('操作失败了!')", true);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        throw new Exception(ex.Message);
+                    }
+                }
+                else
+                {
+                    ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('请不要重复提交!')", true);
+                }
             }
         }
     }
