@@ -46,7 +46,7 @@
                 <div style="height: 350px; overflow-x: auto; overflow-y: auto;">
                     <asp:GridView ID="gv_HAWB" runat="server" CssClass="DataView" AutoGenerateColumns="False"
                         OnRowCommand="gv_HAWB_RowCommand" PageSize="36" 
-                        ondatabound="gv_HAWB_DataBound">
+                        ondatabound="gv_HAWB_DataBound" onrowdatabound="gv_HAWB_RowDataBound">
                         <Columns>
                             <asp:TemplateField HeaderText="行号">
                                 <ItemTemplate>
@@ -68,6 +68,7 @@
                                         Text='<%# Eval("BarCode") %>'></asp:LinkButton>
                                 </ItemTemplate>
                                 <ControlStyle Width="150px" />
+                                <controlstyle width="150px" />
                                 <HeaderStyle HorizontalAlign="Center" />
                                 <ItemStyle HorizontalAlign="Center" />
                             </asp:TemplateField>
@@ -95,6 +96,12 @@
                                 <ItemTemplate>
                                     <asp:LinkButton ID="lbtn_DeriveAccept" CommandArgument='<%# Eval("BarCode") %>' CommandName="DeriveAccept"
                                         runat="server" Text="导出承运清单"></asp:LinkButton>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:TemplateField HeaderText="操 作">
+                                <ItemTemplate>
+                                    <asp:Button runat="server" Text="提 交" CssClass="InputBtn" ID="btnSubmit" 
+                                        CommandArgument='<%# Eval("BarCode") %>' onclick="btnSubmit_Click"></asp:Button>
                                 </ItemTemplate>
                             </asp:TemplateField>
                         </Columns>

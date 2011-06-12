@@ -5456,6 +5456,30 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Model
         private Nullable<global::System.Int32> _ImportStatus;
         partial void OnImportStatusChanging(Nullable<global::System.Int32> value);
         partial void OnImportStatusChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String IsSubmit
+        {
+            get
+            {
+                return _IsSubmit;
+            }
+            set
+            {
+                OnIsSubmitChanging(value);
+                ReportPropertyChanging("IsSubmit");
+                _IsSubmit = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("IsSubmit");
+                OnIsSubmitChanged();
+            }
+        }
+        private global::System.String _IsSubmit;
+        partial void OnIsSubmitChanging(global::System.String value);
+        partial void OnIsSubmitChanged();
 
         #endregion
     
@@ -5995,6 +6019,30 @@ namespace ETS.GGGETSApp.Infrastructure.Data.Persistence.Model
         private global::System.String _DestinationRegionCode;
         partial void OnDestinationRegionCodeChanging(global::System.String value);
         partial void OnDestinationRegionCodeChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String IsSubmit
+        {
+            get
+            {
+                return _IsSubmit;
+            }
+            set
+            {
+                OnIsSubmitChanging(value);
+                ReportPropertyChanging("IsSubmit");
+                _IsSubmit = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("IsSubmit");
+                OnIsSubmitChanged();
+            }
+        }
+        private global::System.String _IsSubmit;
+        partial void OnIsSubmitChanging(global::System.String value);
+        partial void OnIsSubmitChanged();
 
         #endregion
     

@@ -224,6 +224,21 @@ namespace ETS.GGGETSApp.Domain.Application.Entities
             }
         }
         private string _destinationRegionCode;
+    
+        [DataMember]
+        public string IsSubmit
+        {
+            get { return _isSubmit; }
+            set
+            {
+                if (_isSubmit != value)
+                {
+                    _isSubmit = value;
+                    OnPropertyChanged("IsSubmit");
+                }
+            }
+        }
+        private string _isSubmit;
 
         #endregion
         #region Navigation Properties

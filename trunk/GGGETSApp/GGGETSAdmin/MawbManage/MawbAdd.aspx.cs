@@ -225,6 +225,7 @@ namespace GGGETSAdmin.MawbManage
                         //todo 睿策操作,location参数不确认
                         LogisticsService.PackPackageToMAWB(mawb, (Guid)Session["UserID"], "undefine", DateTime.Now);
 
+                        mawb.IsSubmit = "0";
                         _mawbservice.AddMAWB(mawb);
 
                         ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('添加成功!')", true);

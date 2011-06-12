@@ -42,7 +42,7 @@
                         <td class="FieldHeader" style="width:150px">
                             <asp:Label ID="lbl_Region" runat="server" Text="起/终三字码:"></asp:Label>
                         </td>
-                        <td style="width: 80px">
+                        <td style="width: 180px">
                             <asp:TextBox ID="Txt_OriginalRegionCode" runat="server" TabIndex="2" Width="50" 
                                 MaxLength="3" AutoPostBack="true" OnTextChanged="Txt_Region_TextChanged" Style="text-transform: uppercase" CssClass="TextBox"></asp:TextBox>
                                 -
@@ -71,7 +71,7 @@
                             <asp:Button ID="btn_Save" runat="server" CssClass="InputBtn" Text="保 存" OnClick="btn_Save_Click"
                                 TabIndex="5" UseSubmitBehavior="false" />
                             <asp:Button ID="btnTB" runat="server" CssClass="InputBtn" Text="同 步"
-                        TabIndex="5" UseSubmitBehavior="false" onclick="btnTB_Click" />
+                        TabIndex="5" UseSubmitBehavior="false" onclick="btnTB_Click" Visible="False" />
                         </td>
                         <td>
                             <asp:Button ID="btn_SaveAndClose" runat="server" CssClass="InputBtn" Text="保存并锁定"
