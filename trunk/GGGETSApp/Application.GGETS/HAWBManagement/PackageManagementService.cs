@@ -176,5 +176,15 @@ namespace Application.GGETS
 
             return _packageRepository.FindPackagesByMID(MID,pageIndex,pageCount);
         }
+
+        public void RemovePackage(string barCode)
+        {
+            if (barCode == null)
+                throw new ArgumentNullException("barCode is null");
+            IUnitOfWork unitOfWork = _packageRepository.UnitOfWork;
+            Package package = FindPackageByBarcode(barCode);
+            _packageRepository.Remove(package);
+            unitOfWork.Commit();
+        }
     }
 }

@@ -19,35 +19,37 @@ namespace GGGETSAdmin.MawbManage
         private IPackageManagementService _packageservice;
         private IHAWBManagementService _hawbservice;
         private ISysUserManagementService _SysUserManagementService;
+        private ILogisticsService _logisticsService;
         private static string RRegion = @"^[A-Za-z]";
         private MAWB mawb;
         private Package package;
         private DateTime time = DateTime.Now;
         public int n = 1;
 
-        #region 睿策 IOC BLOCK
-        public ILogisticsService LogisticsService
-        {
-            get
-            {
-                if (_logisticsService == null)
-                {
-                    _logisticsService = ObjectFactory.NewIocInstance<ILogisticsService>();
-                }
-                return _logisticsService;
-            }
-        }
-        ILogisticsService _logisticsService;
-        #endregion
+        //#region 睿策 IOC BLOCK
+        //public ILogisticsService LogisticsService
+        //{
+        //    get
+        //    {
+        //        if (_logisticsService == null)
+        //        {
+        //            _logisticsService = ObjectFactory.NewIocInstance<ILogisticsService>();
+        //        }
+        //        return _logisticsService;
+        //    }
+        //}
+        //ILogisticsService _logisticsService;
+        //#endregion
 
         protected MawbAdd()
         { }
-        public MawbAdd(IMAWBManagementService mawbservice, IPackageManagementService packageservice, IHAWBManagementService hawbservicr, ISysUserManagementService SysUserManagementService)
+        public MawbAdd(IMAWBManagementService mawbservice, IPackageManagementService packageservice, IHAWBManagementService hawbservicr, ISysUserManagementService SysUserManagementService, ILogisticsService logisticsService)
         {
             _mawbservice = mawbservice;
             _packageservice = packageservice;
             _hawbservice = hawbservicr;
             _SysUserManagementService = SysUserManagementService;
+            _logisticsService = logisticsService;
         }
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -223,24 +225,24 @@ namespace GGGETSAdmin.MawbManage
                     try
                     {
                         //todo 睿策操作,location参数不确认
-                        LogisticsService.PackPackageToMAWB(mawb, (Guid)Session["UserID"], "undefine", DateTime.Now);
+                        _logisticsService.PackPackageToMAWB(mawb, (Guid)Session["UserID"], "undefine", DateTime.Now);
 
                         mawb.IsSubmit = "0";
                         _mawbservice.AddMAWB(mawb);
 
                         ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('添加成功!')", true);
-                        //Session["mawb"] = null;
-                        //Txt_MAWBBarCode.Text = string.Empty;
-                        //txt_FLTNo.Text = string.Empty;
-                        //txt_CreateTime.Text = DateTime.Now.ToString("yyyy-MM-dd HH:mm");
-                        //txt_From.Text = string.Empty;
-                        //txt_To.Text = string.Empty;
-                        //txt_Pice.Text = string.Empty;
-                        //Txt_TotalWeight.Text = string.Empty;
-                        //txt_TotalVolume.Text = string.Empty;
-                        //gv_Bag.DataSource = null;
-                        //gv_Bag.DataBind();
-                        //btn_Close.Visible = true;
+                        Session["mawb"] = null;
+                        Txt_MAWBBarCode.Text = string.Empty;
+                        txt_FLTNo.Text = string.Empty;
+                        txt_CreateTime.Text = DateTime.Now.ToString("yyyy-MM-dd HH:mm");
+                        txt_From.Text = string.Empty;
+                        txt_To.Text = string.Empty;
+                        txt_Pice.Text = string.Empty;
+                        Txt_TotalWeight.Text = string.Empty;
+                        txt_TotalVolume.Text = string.Empty;
+                        gv_Bag.DataSource = null;
+                        gv_Bag.DataBind();
+                        btn_Close.Visible = true;
                     }
                     catch(Exception ex)
                     {
@@ -346,7 +348,7 @@ namespace GGGETSAdmin.MawbManage
                 args[0] = jsonStr;
                 try
                 {
-                    object result = WebServiceHelper.InvokeWebService(url, "AddMAWB", args);
+                    object result = WebServiceHelperOperation.InvokeWebService(url, "AddMAWB", args);
 
                     ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('" + result + "')",
                                                         true);
