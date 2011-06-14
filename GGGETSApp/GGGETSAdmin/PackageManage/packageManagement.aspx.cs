@@ -520,17 +520,17 @@ namespace GGGETSAdmin.PackageManage
                         if (package.IsSubmit.Equals("0"))
                         {
                             string jsonStr = UtilityJson.ToJson(package);
-                            //var appID = new Guid("48240b6b-1c67-4587-a091-e198b2e2449e");
-                            //var appID = Guid.Parse(ConfigurationManager.AppSettings["AppID"]);
-                            //if (string.IsNullOrEmpty(appID.ToString()))
-                            //{
-                            //    ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('未配置实例AppID')", true);
-                            //    return;
-                            //}
-                            //var app = _dataBusService.GetNextDeliverApp(appID, "TYO");
-                            //string url = app.URL + "WebService/GETSWebService.asmx";
+                           // var appID = new Guid("48240b6b-1c67-4587-a091-e198b2e2449e");
+                            var appID = Guid.Parse(ConfigurationManager.AppSettings["AppID"]);
+                            if (string.IsNullOrEmpty(appID.ToString()))
+                            {
+                                ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('未配置实例AppID')", true);
+                                return;
+                            }
+                            var app = _dataBusService.GetNextDeliverApp(appID, "TYO");
+                            string url = app.URL + "WebService/GETSWebService.asmx";
 
-                            string url = "http://localhost/GETSB/WebService/GETSWebService.asmx";
+                            //string url = "http://localhost/GETSB/WebService/GETSWebService.asmx";
                             string[] args = new string[1];
                             args[0] = jsonStr;
                             try
