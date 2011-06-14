@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
@@ -419,7 +420,7 @@ namespace GGGETSAdmin.MawbManage
                     args[0] = jsonStr;
                     try
                     {
-                        object result = WebServiceHelper.InvokeWebService(url, "AddMAWB", args);
+                        object result = WebServiceHelperOperation.InvokeWebService(url, "AddMAWB", args);
                         if (result.Equals("SUCCESS:   操作已成功!"))
                         {
                             //改变包裹提交状态
@@ -449,7 +450,87 @@ namespace GGGETSAdmin.MawbManage
             //首先获取需要绑定JS的控件
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
-                ((Button)e.Row.FindControl("btnSubmit")).Attributes.Add("onclick", "return confirm('是否要提交?注：提交后的包裹信息将传输到下一级站点,请慎重!');");
+                //((Button)e.Row.FindControl("btnSubmit")).Attributes.Add("onclick", "return confirm('是否要提交?注：提交后的包裹信息将传输到下一级站点,请慎重!');");
+            }
+        }
+
+        /// <summary>
+        /// 提 交
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void btnSubmit_Click1(object sender, EventArgs e)
+        {
+            ArrayList barcodeList = new ArrayList();
+            int rowCount = gv_HAWB.Rows.Count;
+            if (rowCount == 0)
+            {
+                ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('没有总运单可以提交!')", true);
+            }
+            else
+            {
+                foreach (GridViewRow gvRow in gv_HAWB.Rows)
+                {
+                    CheckBox selectCheckBox = ((CheckBox)gvRow.FindControl("ckSelect"));
+                    if (selectCheckBox.Checked)
+                    {
+                        barcodeList.Add(((LinkButton)gvRow.FindControl("lbtn_FLTNo")).CommandArgument);
+                    }
+                }
+
+                if (barcodeList == null || barcodeList.Count == 0)
+                {
+                    ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('请选择要提交的总运单!')", true);
+                }
+                else
+                {
+                    //实现批量提交
+                    foreach (string barcode in barcodeList)
+                    {
+                        MAWB mawb = _mawbService.FindMAWBByBarcode(barcode);
+                        if (mawb.IsSubmit.Equals("0"))
+                        {
+                            string jsonStr = UtilityJson.ToJson(mawb);
+                            //var appID = new Guid("48240b6b-1c67-4587-a091-e198b2e2449e");
+                            //var appID = Guid.Parse(ConfigurationManager.AppSettings["AppID"]);
+                            //if (string.IsNullOrEmpty(appID.ToString()))
+                            //{
+                            //    ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('未配置实例AppID')", true);
+                            //    return;
+                            //}
+                            //var app = _dataBusService.GetNextDeliverApp(appID, "TYO");
+                            //string url = app.URL + "WebService/GETSWebService.asmx";
+
+                            string url = "http://localhost/GETSB/WebService/GETSWebService.asmx";
+                            string[] args = new string[1];
+                            args[0] = jsonStr;
+                            try
+                            {
+                                object result = WebServiceHelperOperation.InvokeWebService(url, "AddMAWB", args);
+                                if (result.Equals("SUCCESS:   操作已成功!"))
+                                {
+                                    //改变包裹提交状态
+                                    mawb.IsSubmit = "1";
+                                    _mawbService.ModifyMAWB(mawb);
+                                    //ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('" + result + "')", true);
+                                }
+                                else
+                                {
+                                    ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('" + result + "')", true);
+                                }
+                            }
+                            catch (Exception ex)
+                            {
+                                throw new Exception(ex.Message);
+                            }
+                        }
+                        else
+                        {
+                            ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('请不要重复提交!')", true);
+                        }
+                    }
+                    ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('SUCCESS:   操作已成功!')", true);
+                }
             }
         }
     }

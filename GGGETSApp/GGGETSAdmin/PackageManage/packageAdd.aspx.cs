@@ -26,33 +26,35 @@ namespace GGGETSAdmin.PackageManage
         private static IRegionCodeManagementService _regionservice;
         private ISysUserManagementService _SysUserManagementService;
         private IDataBusService _dataBusService;
+        private ILogisticsService _logisticsService;
 
-        #region 睿策 IOC BLOCK
+        //#region 睿策 IOC BLOCK
       
       
-        public ILogisticsService LogisticsService
-        {
-            get
-            {
-                if (_logisticsService == null)
-                {
-                    _logisticsService = ObjectFactory.NewIocInstance<ILogisticsService>();
-                }
-                return _logisticsService;
-            }
-        }
-        ILogisticsService _logisticsService;
-        #endregion
+        ////public ILogisticsService LogisticsService
+        ////{
+        ////    get
+        ////    {
+        ////        if (_logisticsService == null)
+        ////        {
+        ////            _logisticsService = ObjectFactory.NewIocInstance<ILogisticsService>();
+        ////        }
+        ////        return _logisticsService;
+        ////    }
+        ////}
+        ////ILogisticsService _logisticsService;
+        //#endregion
 
         protected packageAdd()
         { }
-        public packageAdd(IPackageManagementService packageservice, IHAWBManagementService hawbservice, IRegionCodeManagementService regionservice, ISysUserManagementService SysUserManagementService,IDataBusService dataBusService)
+        public packageAdd(IPackageManagementService packageservice, IHAWBManagementService hawbservice, IRegionCodeManagementService regionservice, ISysUserManagementService SysUserManagementService, IDataBusService dataBusService, ILogisticsService logisticsService)
         {
             _packageservice=packageservice;
             _hawbservice = hawbservice;
             _regionservice = regionservice;
             _SysUserManagementService = SysUserManagementService;
             _dataBusService = dataBusService;
+            _logisticsService = logisticsService;
         }
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -233,20 +235,21 @@ namespace GGGETSAdmin.PackageManage
                             try
                             {
                                 //todo 睿策操作,location参数不确认
-                                LogisticsService.PackHAWBToPackage(package, (Guid)Session["UserID"], "undefine", DateTime.Now);
+                                _logisticsService.PackHAWBToPackage(package, (Guid)Session["UserID"], "undefine", DateTime.Now);
                                 //执行GETS添加包裹和睿策添加包裹方法
+                                package.IsSubmit = "0";
                                 _packageservice.AddPackage(package);
                                 
                                 ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('添加成功!')", true);
-                                //Session["package"] = null;
-                                //Txt_BagBarCode.Text = string.Empty;
-                                //txt_CreateTime.Text = DateTime.Now.ToString("yyyy-MM-dd HH:mm");
-                                //Txt_OriginalRegionCode.Text = string.Empty;
-                                //Txt_DestinationRegionCode.Text = string.Empty;
-                                //txt_Pice.Text = string.Empty;
-                                //Txt_TotalWeight.Text = string.Empty;
-                                //gv_HAWB.DataSource = null;
-                                //gv_HAWB.DataBind();
+                                Session["package"] = null;
+                                Txt_BagBarCode.Text = string.Empty;
+                                txt_CreateTime.Text = DateTime.Now.ToString("yyyy-MM-dd HH:mm");
+                                Txt_OriginalRegionCode.Text = string.Empty;
+                                Txt_DestinationRegionCode.Text = string.Empty;
+                                txt_Pice.Text = string.Empty;
+                                Txt_TotalWeight.Text = string.Empty;
+                                gv_HAWB.DataSource = null;
+                                gv_HAWB.DataBind();
                             }
                             catch(Exception ex)
                             {
@@ -466,7 +469,7 @@ namespace GGGETSAdmin.PackageManage
                 args[0] = jsonStr;
                 try
                 {
-                    object result = WebServiceHelper.InvokeWebService(url, "AddPACKAGE", args);
+                    object result = WebServiceHelperOperation.InvokeWebService(url, "AddPACKAGE", args);
                     ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('" + result + "')", true);
                 }
                 catch(Exception ex)

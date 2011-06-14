@@ -39,6 +39,8 @@
                             <td>
                                 <asp:Button ID="btn_Demand" TabIndex="4" runat="server" Text="查 询" CssClass="InputBtn"
                                     OnClick="btn_Demand_Click" />
+                                <asp:Button runat="server" Text="提 交" ID="btnSubmit" CssClass="InputBtn" 
+                                    onclick="btnSubmit_Click1"></asp:Button>
                             </td>
                         </tr>
                     </tbody>
@@ -48,6 +50,11 @@
                         OnRowCommand="gv_HAWB_RowCommand" PageSize="36" 
                         ondatabound="gv_HAWB_DataBound" onrowdatabound="gv_HAWB_RowDataBound">
                         <Columns>
+                            <asp:TemplateField HeaderText="请选择">
+                                <ItemTemplate>
+                                    <asp:CheckBox runat="server" ID="ckSelect"></asp:CheckBox>
+                                </ItemTemplate>
+                            </asp:TemplateField>
                             <asp:TemplateField HeaderText="行号">
                                 <ItemTemplate>
                                     <asp:Label ID="lbl_Number" runat="server" Text='<%# N() %>'></asp:Label>
@@ -68,6 +75,7 @@
                                         Text='<%# Eval("BarCode") %>'></asp:LinkButton>
                                 </ItemTemplate>
                                 <ControlStyle Width="150px" />
+                                <controlstyle width="150px" />
                                 <controlstyle width="150px" />
                                 <HeaderStyle HorizontalAlign="Center" />
                                 <ItemStyle HorizontalAlign="Center" />
@@ -98,12 +106,12 @@
                                         runat="server" Text="导出承运清单"></asp:LinkButton>
                                 </ItemTemplate>
                             </asp:TemplateField>
-                            <asp:TemplateField HeaderText="操 作">
+                        <%--    <asp:TemplateField HeaderText="操 作">
                                 <ItemTemplate>
                                     <asp:Button runat="server" Text="提 交" CssClass="InputBtn" ID="btnSubmit" 
                                         CommandArgument='<%# Eval("BarCode") %>' onclick="btnSubmit_Click"></asp:Button>
                                 </ItemTemplate>
-                            </asp:TemplateField>
+                            </asp:TemplateField>--%>
                         </Columns>
                     </asp:GridView>
                 </div>

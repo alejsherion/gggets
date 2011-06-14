@@ -59,6 +59,7 @@
     <Compile Include="CountryCodeManagementServiceTest.cs" />
     <Compile Include="DepartmentManagementServiceTest.cs" />
     <Compile Include="GenericRepositoryTestsBase.cs" />
+    <Compile Include="GETSWebServiceTest.cs" />
     <Compile Include="HAWBManagementServiceTest.cs" />
     <Compile Include="HSProductManagementServiceTest.cs" />
     <Compile Include="HSPropertyManagementServiceTest.cs" />
@@ -90,6 +91,10 @@
     <ProjectReference Include="..\Domain.GGGETS\Domain.GGGETS.csproj">
       <Project>{D97E400C-5C18-4414-9E53-6A660ED3395F}</Project>
       <Name>Domain.GGGETS</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GGGETSAdmin\GGGETSAdmin.csproj">
+      <Project>{E52B07FF-1164-4277-8100-2710CC6E9B46}</Project>
+      <Name>GGGETSAdmin</Name>
     </ProjectReference>
     <ProjectReference Include="..\Infrastructure.CrossCutting.IoC\Infrastructure.CrossCutting.IoC.csproj">
       <Project>{59814C32-5A3B-4AEE-94FA-502EA57CDF70}</Project>

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
@@ -423,7 +424,7 @@ namespace GGGETSAdmin.PackageManage
             //首先获取需要绑定JS的控件
             if(e.Row.RowType==DataControlRowType.DataRow)
             {
-                ((Button)e.Row.FindControl("btnSubmit")).Attributes.Add("onclick", "return confirm('是否要提交?注：提交后的包裹信息将传输到下一级站点,请慎重!');");
+                //((Button)e.Row.FindControl("btnSubmit")).Attributes.Add("onclick", "return confirm('是否要提交?注：提交后的包裹信息将传输到下一级站点,请慎重!');");
             }
         }
 
@@ -457,7 +458,7 @@ namespace GGGETSAdmin.PackageManage
                     args[0] = jsonStr;
                     try
                     {
-                        object result = WebServiceHelper.InvokeWebService(url, "AddPACKAGE", args);
+                        object result = WebServiceHelperOperation.InvokeWebService(url, "AddPACKAGE", args);
                         if (result.Equals("SUCCESS:   操作已成功!"))
                         {
                             //改变包裹提交状态
@@ -480,6 +481,107 @@ namespace GGGETSAdmin.PackageManage
                     ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('请不要重复提交!')", true);
                 }
             }
+        }
+
+        /// <summary>
+        /// 实现批量提交和单个提交效果
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void btnSubmit_Click1(object sender, EventArgs e)
+        {
+            ArrayList barcodeList = new ArrayList();
+            int rowCount = gv_HAWB.Rows.Count;
+            if (rowCount == 0)
+            {
+                ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('没有包裹可以提交!')", true);
+            }
+            else
+            {
+                foreach (GridViewRow gvRow in gv_HAWB.Rows)
+                {
+                    CheckBox selectCheckBox = ((CheckBox) gvRow.FindControl("ckSelect"));
+                    if(selectCheckBox.Checked)
+                    {
+                        barcodeList.Add(((LinkButton) gvRow.FindControl("lbtn_BagBarCoder")).CommandArgument);
+                    }
+                }
+
+                if (barcodeList==null || barcodeList.Count == 0)
+                {
+                    ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('请选择要提交的包裹!')", true);
+                }
+                else
+                {
+                    //实现批量提交
+                    foreach(string barcode in barcodeList)
+                    {
+                        Package package = _packageservice.FindPackageByBarcode(barcode);
+                        if (package.IsSubmit.Equals("0"))
+                        {
+                            string jsonStr = UtilityJson.ToJson(package);
+                            //var appID = new Guid("48240b6b-1c67-4587-a091-e198b2e2449e");
+                            //var appID = Guid.Parse(ConfigurationManager.AppSettings["AppID"]);
+                            //if (string.IsNullOrEmpty(appID.ToString()))
+                            //{
+                            //    ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('未配置实例AppID')", true);
+                            //    return;
+                            //}
+                            //var app = _dataBusService.GetNextDeliverApp(appID, "TYO");
+                            //string url = app.URL + "WebService/GETSWebService.asmx";
+
+                            string url = "http://localhost/GETSB/WebService/GETSWebService.asmx";
+                            string[] args = new string[1];
+                            args[0] = jsonStr;
+                            try
+                            {
+                                object result = WebServiceHelperOperation.InvokeWebService(url, "AddPACKAGE", args);
+                                if (result.Equals("SUCCESS:   操作已成功!"))
+                                {
+                                    //改变包裹提交状态
+                                    package.IsSubmit = "1";
+                                    _packageservice.ModifyPackage(package);
+                                    //ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('" + result + "')", true);
+                                }
+                                else
+                                {
+                                    ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('" + result + "')", true);
+                                }
+                            }
+                            catch (Exception ex)
+                            {
+                                throw new Exception(ex.Message);
+                            }
+                        }
+                        else
+                        {
+                            ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('请不要重复提交!')", true);
+                        }
+                    }
+                    ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('SUCCESS:   操作已成功!')", true);
+                }
+            }
+        }
+
+        /// <summary>
+        /// 拆包操作
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void btnSplitPackage_Click(object sender, EventArgs e)
+        {
+            string barcode = ((Button) sender).CommandArgument;
+            if(_packageservice.FindPackageByBarcode(barcode).IsSubmit=="1")
+            {
+                ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('该包裹已经推送，已不能进行拆包操作，否则将会造成数据不同步!')", true);
+            }
+            else
+            {
+                _packageservice.RemovePackage(barcode);
+                ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('拆包成功!')", true);
+                Band(PageIndex, PageCount);
+            }
+            
         }
     }
 }

@@ -11,13 +11,13 @@ using Microsoft.CSharp;
 
 namespace GGGETSAdmin.Common
 {
-    public class WebServiceHelper
+    public class WebServiceHelperOperation
     {
         #region InvokeWebService
         //动态调用web服务
         public static object InvokeWebService(string url, string methodname, object[] args)
         {
-            return WebServiceHelper.InvokeWebService(url, null, methodname, args);
+            return WebServiceHelperOperation.InvokeWebService(url, null, methodname, args);
         }
 
         public static object InvokeWebService(string url, string classname, string methodname, object[] args)
@@ -25,7 +25,7 @@ namespace GGGETSAdmin.Common
             string @namespace = "EnterpriseServerBase.WebService.DynamicWebCalling";
             if ((classname == null) || (classname == ""))
             {
-                classname = WebServiceHelper.GetWsClassName(url);
+                classname = WebServiceHelperOperation.GetWsClassName(url);
             }
 
             try

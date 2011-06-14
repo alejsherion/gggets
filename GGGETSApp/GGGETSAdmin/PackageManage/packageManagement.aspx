@@ -48,6 +48,8 @@
                             <td>
                                 <asp:Button ID="btn_Demand" TabIndex="5" runat="server" Text="查 询" CssClass="InputBtn"
                                     OnClick="btn_Demand_Click" />
+                                <asp:Button runat="server" Text="提 交" ID="btnSubmit" CssClass="InputBtn" 
+                                    onclick="btnSubmit_Click1"></asp:Button>
                             </td>
                         </tr>
                     </tbody>
@@ -55,8 +57,13 @@
                 <div style="height: 350px; overflow-x: auto; overflow-y: auto;">
                     <asp:GridView ID="gv_HAWB" runat="server" CssClass="DataView" AutoGenerateColumns="False"
                         PageSize="36" onrowcommand="gv_HAWB_RowCommand" 
-                        onrowdatabound="gv_HAWB_RowDataBound">
+                        onrowdatabound="gv_HAWB_RowDataBound" DataKeyNames="BarCode">
                         <Columns>
+                            <asp:TemplateField HeaderText="请选择">
+                                <ItemTemplate>
+                                    <asp:CheckBox runat="server" ID="ckSelect"></asp:CheckBox>
+                                </ItemTemplate>
+                            </asp:TemplateField>
                             <asp:TemplateField HeaderText="行号">
                                 <ItemTemplate>
                                     <asp:Label ID="lbl_Number" runat="server" Text='<%# N() %>'></asp:Label>
@@ -67,9 +74,12 @@
                             <asp:TemplateField HeaderText="包号">
                                 <ItemTemplate>
                                     <asp:LinkButton ID="lbtn_BagBarCoder" runat="server" CommandName="Eidt" CommandArgument='<%# Eval("BarCode") %>'
-                                        Text='<%# Eval("BarCode") %>'></asp:LinkButton>
+                                        Text='<%# Eval("BarCode") %>' ></asp:LinkButton>
                                 </ItemTemplate>
                                 <ControlStyle Width="120px" />
+                                <controlstyle width="120px" />
+                                <controlstyle width="120px" />
+                                <controlstyle width="120px" />
                                 <controlstyle width="120px" />
                                 <controlstyle width="120px" />
                                 <HeaderStyle HorizontalAlign="Center" />
@@ -120,8 +130,8 @@
                 </asp:TemplateField>--%>
                             <asp:TemplateField HeaderText="操 作">
                                 <ItemTemplate>
-                                    <asp:Button runat="server" Text="提 交" CssClass="InputBtn" ID="btnSubmit" 
-                                        CommandArgument='<%# Eval("BarCode") %>' onclick="btnSubmit_Click"></asp:Button>
+                                    <asp:Button runat="server" Text="拆 包" CssClass="InputBtn" ID="btnSplitPackage" 
+                                        CommandArgument='<%# Eval("BarCode") %>' onclick="btnSplitPackage_Click"></asp:Button>
                                 </ItemTemplate>
                             </asp:TemplateField>
                         </Columns>
@@ -138,6 +148,7 @@
                     <asp:TextBox ID="Txt_Jumpto" runat="server" Width="30" CssClass="TextBox" onblur="NumberCheck(this)"></asp:TextBox>
                     <asp:Button ID="btn_down" runat="server" Text="下一页" OnClick="btn_down_Click" CssClass="InputBtn" />&nbsp;&nbsp;&nbsp;&nbsp;
                     <asp:Button ID="btn_lastpage" runat="server" Text="末页" CssClass="InputBtn" OnClick="btn_lastpage_Click" />
+                    <asp:Button runat="server" Text="Button" ID="btnRefresh" Visible="False"></asp:Button>
                 </div>
             </div>
         </ContentTemplate>

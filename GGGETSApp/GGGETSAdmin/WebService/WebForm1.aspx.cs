@@ -28,7 +28,7 @@ namespace GGGETSAdmin.WebService
             //HAWB hawb = _hawbservice.FindHAWBByBarCode("QQ");
             //string jsonStr = UtilityJson.ToJson(hawb);
 
-            Package p = _packageservice.FindPackageByBarcode("PPPP");
+            Package p = _packageservice.FindPackageByBarcode("TESTPACKAGE007");
             string jsonStr2 = UtilityJson.ToJson(p);
 
             //MAWB mawb = _mawbservice.FindMAWBByBarcode("MAWB007");
@@ -36,10 +36,10 @@ namespace GGGETSAdmin.WebService
 
             //string jsonStr = UtilityJson.ToJson(hawb);
             Package package = UtilityJson.ToObject<Package>(jsonStr2);
-            string url = "http://localhost/GETSB/WebService/GETSWebService.asmx";
+            string url = "http://localhost:2150/GETSB/WebService/GETSWebService.asmx";
             string[] args = new string[1];
             args[0] = jsonStr2;
-            object result = WebServiceHelper.InvokeWebService(url, "AddPACKAGE", args);
+            object result = WebServiceHelperOperation.InvokeWebService(url, "AddPACKAGE", args);
         }
     }
 }
