@@ -113,77 +113,14 @@ namespace GGGETSAdmin.WebService
 
         #region WS Methods
 
-        [WebMethod(Description = "添加运单")]
-        public string AddHAWB(string jsonHAWB)
-        {
-            if (string.IsNullOrEmpty(jsonHAWB))
-                return "ERROR:   运单不能为空!";
-            //if (sHeader == null)
-            //    return "ERROR:   您的验证失败，无法进行访问Web服务!";
-            //string useID = sHeader.Username;
-            //string pwd = sHeader.Password;
-
-            try
-            {
-                if (true)
-                {
-                    //进行我们的业务逻辑操作
-                    HAWB hawb = UtilityJson.ToObject<HAWB>(jsonHAWB);
-                    if(hawb!=null)//判断重复
-                    {
-                        foreach(HAWB hawbObj in _hawbRepository.GetAll())
-                        {
-                            if(hawbObj.BarCode.Equals(hawb.BarCode))
-                            {
-                                return "ERROR:   请不要重复添加运单!";
-                            }
-                        }
-                    }
-                    if(hawb!=null)
-                        hawb.ChangeTracker.State = ObjectState.Added;
-                    if(hawb.HAWBItems!=null)
-                    {
-                        if (hawb.HAWBItems.Count != 0)
-                        {
-                            foreach (HAWBItem hawbItem in hawb.HAWBItems)
-                            {
-                                hawbItem.ChangeTracker.State = ObjectState.Added;//改变物品添加状态
-                            }
-                        }
-                        
-                    }
-                    if (hawb.HAWBBoxes != null)
-                    {
-                        if (hawb.HAWBBoxes.Count != 0)
-                        {
-                            foreach (HAWBBox hawbBox in hawb.HAWBBoxes)
-                            {
-                                hawbBox.ChangeTracker.State = ObjectState.Added;//改变盒子添加状态
-                            }
-                        }
-                        
-                    }
-                    IUnitOfWork unitOfWork = _hawbRepository.UnitOfWork as IUnitOfWork;
-                    _hawbRepository.Add(hawb);
-                    unitOfWork.Commit();
-                    return "SUCCESS:   操作已成功!";
-                }
-                else
-                {
-                    return "ERROR:   未能通过安全身份认证!";
-                }
-            }
-            catch(Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
-        }
-
         [WebMethod(Description = "添加包裹")]
         public string AddPACKAGE(string jsonPackage)
         {
             if (string.IsNullOrEmpty(jsonPackage))
-                return "ERROR:   包裹不能为空!";
+            {
+                string result = "1";//ERROR:   包裹不能为空!
+                return result;
+            } 
             //if (sHeader == null)
             //    return "ERROR:   您的验证失败，无法进行访问Web服务!";
             //string useID = sHeader.Username;
@@ -202,7 +139,8 @@ namespace GGGETSAdmin.WebService
                         {
                             if (packageObj.BarCode.Equals(package.BarCode))
                             {
-                                return "ERROR:   请不要重复添加包裹!";
+                                string result = "2";//ERROR:   请不要重复添加包裹!
+                                return result;
                             }
                         }
                     }
@@ -223,11 +161,11 @@ namespace GGGETSAdmin.WebService
                     IUnitOfWork unitOfWork = _packageRepository.UnitOfWork as IUnitOfWork;
                     _packageRepository.Add(package);
                     unitOfWork.Commit();
-                    return "SUCCESS:   操作已成功!";
+                    return "0";//SUCCESS:   操作已成功!
                 }
                 else
                 {
-                    return "ERROR:   未能通过安全身份认证!";
+                    return "3";//ERROR:   未能通过安全身份认证!
                 }
             }
             catch (Exception ex)
@@ -240,7 +178,10 @@ namespace GGGETSAdmin.WebService
         public string AddMAWB(string jsonMAWB)
         {
             if (string.IsNullOrEmpty(jsonMAWB))
-                return "ERROR:   总运单不能为空!";
+            {
+                string result = "3";//ERROR:   总运单不能为空!
+                return result;
+            } 
             //if (sHeader == null)
             //    return "ERROR:   您的验证失败，无法进行访问Web服务!";
             //string useID = sHeader.Username;
@@ -258,7 +199,8 @@ namespace GGGETSAdmin.WebService
                         {
                             if (mawbObj.BarCode.Equals(mawb.BarCode))
                             {
-                                return "ERROR:   请不要重复添加总运单!";
+                                string result = "4";//ERROR:   请不要重复添加总运单!
+                                return result;
                             }
                         }
                     }
@@ -279,11 +221,11 @@ namespace GGGETSAdmin.WebService
                     IUnitOfWork unitOfWork = _mawbRepository.UnitOfWork as IUnitOfWork;
                     _mawbRepository.Add(mawb);
                     unitOfWork.Commit();
-                    return "SUCCESS:   操作已成功!";
+                    return "0";//SUCCESS:   操作已成功!
                 }
                 else
                 {
-                    return "ERROR:   未能通过安全身份认证!";
+                    return "3";//ERROR:   未能通过安全身份认证!
                 }
             }
             catch (Exception ex)

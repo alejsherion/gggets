@@ -498,7 +498,7 @@ namespace GGGETSAdmin.MawbManage
                                 ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('未配置实例AppID')", true);
                                 return;
                             }
-                            var app = _dataBusService.GetNextDeliverApp(appID, "TYO");
+                            var app = _dataBusService.GetNextDeliverApp(appID, mawb.To);
                             string url = app.URL + "WebService/GETSWebService.asmx";
 
                             //string url = "http://localhost/GETSB/WebService/GETSWebService.asmx";
@@ -507,7 +507,7 @@ namespace GGGETSAdmin.MawbManage
                             try
                             {
                                 object result = WebServiceHelperOperation.InvokeWebService(url, "AddMAWB", args);
-                                if (result.Equals("SUCCESS:   操作已成功!"))
+                                if (result.Equals("0"))
                                 {
                                     //改变包裹提交状态
                                     mawb.IsSubmit = "1";
@@ -516,7 +516,7 @@ namespace GGGETSAdmin.MawbManage
                                 }
                                 else
                                 {
-                                    ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('" + result + "')", true);
+                                    ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('" + ReturnError(result.ToString()) + "')", true);
                                 }
                             }
                             catch (Exception ex)
@@ -532,6 +532,30 @@ namespace GGGETSAdmin.MawbManage
                     ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('SUCCESS:   操作已成功!')", true);
                 }
             }
+        }
+
+        private string ReturnError(string error)
+        {
+            string strResult = "";
+            switch (error.ToString())
+            {
+                case "1":
+                    strResult = Resources.ErrorResult._1;
+                    break;
+                case "2":
+                    strResult = Resources.ErrorResult._2;
+                    break;
+                case "3":
+                    strResult = Resources.ErrorResult._3;
+                    break;
+                case "4":
+                    strResult = Resources.ErrorResult._4;
+                    break;
+                default:
+                    strResult = Resources.ErrorResult._0;
+                    break;
+            }
+            return strResult;
         }
 
         /// <summary>

@@ -3,10 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
+using System.Reflection;
+using System.Resources;
+using System.Transactions;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using DataBusDomain.Service;
+using Domain.GGGETS;
 using ETS.GGGETSApp.Domain.Application.Entities;
 using Application.GGETS;
 using System.Text.RegularExpressions;
@@ -36,15 +40,17 @@ namespace GGGETSAdmin.PackageManage
         private ISysUserManagementService _sysUserManagementService;
         private IDataBusService _dataBusService;
         private ILogisticsService _logisticsService;
+        private IPackageRepository _packageRepository;
         protected packageManagement()
         { }
-        public packageManagement(IPackageManagementService packageservice, IRegionCodeManagementService regionservice, ISysUserManagementService sysUserManagementService, IDataBusService dataBusService, ILogisticsService logisticsService)
+        public packageManagement(IPackageManagementService packageservice, IRegionCodeManagementService regionservice, ISysUserManagementService sysUserManagementService, IDataBusService dataBusService, ILogisticsService logisticsService, IPackageRepository packageRepository)
         {
             _packageservice = packageservice;
             _regionservice = regionservice;
             _sysUserManagementService = sysUserManagementService;
             _dataBusService = dataBusService;
             _logisticsService = logisticsService;
+            _packageRepository = packageRepository;
         }
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -57,7 +63,7 @@ namespace GGGETSAdmin.PackageManage
                     if (!(bool)Mpriviege[Privilege.查询.ToString()])
                     {
                         btn_Demand.Enabled = false;
-                    }
+                    }                    
                     txt_UpCreateTime.Text = DateTime.Today.AddDays(-1).ToString("yyyy-MM-dd");
                     txt_ToCreateTime.Text = DateTime.Today.ToString("yyyy-MM-dd");
                 }
@@ -143,7 +149,7 @@ namespace GGGETSAdmin.PackageManage
             }
             if (Ok == true)
             {
-                listpackage = _packageservice.FindPackageByCondition(BarCode, beginTime, endTime, regionCode, pageIndex, pageCount, ref totalCount);
+                listpackage = _packageservice.FindPackageByCondition(BarCode, beginTime, endTime, regionCode,pageIndex,pageCount,ref totalCount);
                 ViewState["totalCount"] = totalCount;//返回总条数
                 if (listpackage.Count > 0)
                 {
@@ -249,7 +255,7 @@ namespace GGGETSAdmin.PackageManage
         /// <returns></returns>
         public int N()
         {
-            return n++;
+           return n++;
         }
         /// <summary>
         /// 
@@ -410,9 +416,12 @@ namespace GGGETSAdmin.PackageManage
             {
                 Guid id = (Guid)Session["UserID"];
                 ModulePrivilege Mpriviege = _sysUserManagementService.GetPrivilegeByUserid(id);
-                bool privilege = (bool)Mpriviege[Privilege.修改.ToString()];
-                bool aprivilege = (bool)Mpriviege[Privilege.解锁.ToString()];
-                Response.Redirect("PackageDetails.aspx?BarCode=" + e.CommandArgument + "&Privilege=" + privilege + "&Privilege1=" + aprivilege + "");
+                if (Mpriviege != null)
+                {
+                    bool privilege =(bool)Mpriviege[Privilege.修改.ToString()];
+                    bool aprivilege = (bool)Mpriviege[Privilege.解锁.ToString()];
+                    Response.Redirect("PackageDetails.aspx?BarCode=" + e.CommandArgument + "&Privilege=" + privilege + "&Privilege1="+aprivilege+"");
+                }
             }
         }
 
@@ -424,7 +433,7 @@ namespace GGGETSAdmin.PackageManage
         protected void gv_HAWB_RowDataBound(object sender, GridViewRowEventArgs e)
         {
             //首先获取需要绑定JS的控件
-            if (e.Row.RowType == DataControlRowType.DataRow)
+            if(e.Row.RowType==DataControlRowType.DataRow)
             {
                 //((Button)e.Row.FindControl("btnSubmit")).Attributes.Add("onclick", "return confirm('是否要提交?注：提交后的包裹信息将传输到下一级站点,请慎重!');");
 
@@ -468,7 +477,7 @@ namespace GGGETSAdmin.PackageManage
                         TransferWay = string.Format("{0} 发往 {1}", curApp.Name, app.Name)
                     };
                     _logisticsService.SetTrackFromTo(tft);
-                    ///string url = "http://localhost/GETSB/WebService/GETSWebService.asmx";
+                    //string url = "http://localhost/GETSB/WebService/GETSWebService.asmx";
                     string[] args = new string[1];
                     args[0] = jsonStr;
                     try
@@ -515,14 +524,14 @@ namespace GGGETSAdmin.PackageManage
             {
                 foreach (GridViewRow gvRow in gv_HAWB.Rows)
                 {
-                    CheckBox selectCheckBox = ((CheckBox)gvRow.FindControl("ckSelect"));
-                    if (selectCheckBox.Checked)
+                    CheckBox selectCheckBox = ((CheckBox) gvRow.FindControl("ckSelect"));
+                    if(selectCheckBox.Checked)
                     {
-                        barcodeList.Add(((LinkButton)gvRow.FindControl("lbtn_BagBarCoder")).CommandArgument);
+                        barcodeList.Add(((LinkButton) gvRow.FindControl("lbtn_BagBarCoder")).CommandArgument);
                     }
                 }
 
-                if (barcodeList == null || barcodeList.Count == 0)
+                if (barcodeList==null || barcodeList.Count == 0)
                 {
                     ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('请选择要提交的包裹!')", true);
                 }
@@ -542,16 +551,17 @@ namespace GGGETSAdmin.PackageManage
                                 ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('未配置实例AppID')", true);
                                 return;
                             }
-                            var app = _dataBusService.GetNextDeliverApp(appID, "TYO");
+                            var app = _dataBusService.GetNextDeliverApp(appID, package.DestinationRegionCode);
                             string url = app.URL + "WebService/GETSWebService.asmx";
-
+                         
                             //string url = "http://localhost/GETSB/WebService/GETSWebService.asmx";
                             string[] args = new string[1];
                             args[0] = jsonStr;
                             try
                             {
+
                                 object result = WebServiceHelperOperation.InvokeWebService(url, "AddPACKAGE", args);
-                                if (result.Equals("SUCCESS:   操作已成功!"))
+                                if (result.Equals("0"))
                                 {
                                     //改变包裹提交状态
                                     package.IsSubmit = "1";
@@ -560,7 +570,7 @@ namespace GGGETSAdmin.PackageManage
                                 }
                                 else
                                 {
-                                    ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('" + result + "')", true);
+                                    ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('" + ReturnError(result.ToString()) + "')", true);
                                 }
                             }
                             catch (Exception ex)
@@ -572,10 +582,34 @@ namespace GGGETSAdmin.PackageManage
                         {
                             ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('请不要重复提交!')", true);
                         }
-                    }
+                    }                   
                     ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('SUCCESS:   操作已成功!')", true);
                 }
             }
+        }
+
+        private string ReturnError(string error)
+        {
+            string strResult = "";
+            switch (error.ToString())
+            {
+                case "1":
+                    strResult = Resources.ErrorResult._1;
+                    break;
+                case "2":
+                    strResult = Resources.ErrorResult._2;
+                    break;
+                case "3":
+                    strResult = Resources.ErrorResult._3;
+                    break;
+                case "4":
+                    strResult = Resources.ErrorResult._4;
+                    break;
+                default:
+                    strResult = Resources.ErrorResult._0;
+                    break;
+            }
+            return strResult;
         }
 
         /// <summary>
@@ -585,8 +619,8 @@ namespace GGGETSAdmin.PackageManage
         /// <param name="e"></param>
         protected void btnSplitPackage_Click(object sender, EventArgs e)
         {
-            string barcode = ((Button)sender).CommandArgument;
-            if (_packageservice.FindPackageByBarcode(barcode).IsSubmit == "1")
+            string barcode = ((Button) sender).CommandArgument;
+            if(_packageservice.FindPackageByBarcode(barcode).IsSubmit=="1")
             {
                 ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('该包裹已经推送，已不能进行拆包操作，否则将会造成数据不同步!')", true);
             }
@@ -596,7 +630,7 @@ namespace GGGETSAdmin.PackageManage
                 ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('拆包成功!')", true);
                 Band(PageIndex, PageCount);
             }
-
+            
         }
 
         /// <summary>
