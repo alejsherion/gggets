@@ -52,7 +52,7 @@
                         <Columns>
                             <asp:TemplateField HeaderText="请选择">
                                 <ItemTemplate>
-                                    <asp:CheckBox runat="server" ID="ckSelect"></asp:CheckBox>
+                                    <asp:CheckBox runat="server" ID="ckSelect" Visible='<%# IsSubmitDisplay(Convert.ToString(Eval("IsSubmit"))) %>'></asp:CheckBox>
                                 </ItemTemplate>
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="行号">
@@ -77,6 +77,7 @@
                                 <ControlStyle Width="150px" />
                                 <controlstyle width="150px" />
                                 <controlstyle width="150px" />
+                                <controlstyle width="150px" />
                                 <HeaderStyle HorizontalAlign="Center" />
                                 <ItemStyle HorizontalAlign="Center" />
                             </asp:TemplateField>
@@ -90,6 +91,13 @@
                             <asp:TemplateField HeaderText="状态">
                                 <ItemTemplate>
                                     <asp:Label ID="lbl_Status" runat="server" Text='<%# Eval("Status").ToString().Replace("0","打开").Replace("1","关闭")%>'></asp:Label>
+                                </ItemTemplate>
+                                <HeaderStyle HorizontalAlign="Center" />
+                                <ItemStyle HorizontalAlign="Center" />
+                            </asp:TemplateField>
+                            <asp:TemplateField HeaderText="提交状态">
+                                <ItemTemplate>
+                                    <asp:Label ID="lblIsSubmit" runat="server" Text='<%# IsSubmitStr(Convert.ToString(Eval("IsSubmit"))) %>'></asp:Label>
                                 </ItemTemplate>
                                 <HeaderStyle HorizontalAlign="Center" />
                                 <ItemStyle HorizontalAlign="Center" />

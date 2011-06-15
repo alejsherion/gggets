@@ -61,7 +61,7 @@
                         <Columns>
                             <asp:TemplateField HeaderText="请选择">
                                 <ItemTemplate>
-                                    <asp:CheckBox runat="server" ID="ckSelect"></asp:CheckBox>
+                                    <asp:CheckBox runat="server" ID="ckSelect" Visible='<%# IsSubmitDisplay(Convert.ToString(Eval("IsSubmit"))) %>'></asp:CheckBox>
                                 </ItemTemplate>
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="行号">
@@ -77,6 +77,8 @@
                                         Text='<%# Eval("BarCode") %>' ></asp:LinkButton>
                                 </ItemTemplate>
                                 <ControlStyle Width="120px" />
+                                <controlstyle width="120px" />
+                                <controlstyle width="120px" />
                                 <controlstyle width="120px" />
                                 <controlstyle width="120px" />
                                 <controlstyle width="120px" />
@@ -128,6 +130,13 @@
                         <asp:CheckBox ID="chkId" runat="server" />
                     </ItemTemplate>
                 </asp:TemplateField>--%>
+                            <asp:TemplateField HeaderText="提交状态">
+                                <ItemTemplate>
+                                    <asp:Label ID="lblIsSubmit" runat="server" Text='<%# IsSubmitStr(Convert.ToString(Eval("IsSubmit"))) %>'></asp:Label>
+                                </ItemTemplate>
+                                <HeaderStyle HorizontalAlign="Center" />
+                                <ItemStyle HorizontalAlign="Center" />
+                            </asp:TemplateField>
                             <asp:TemplateField HeaderText="操 作">
                                 <ItemTemplate>
                                     <asp:Button runat="server" Text="拆 包" CssClass="InputBtn" ID="btnSplitPackage" 

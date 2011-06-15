@@ -425,6 +425,7 @@ namespace GGGETSAdmin.PackageManage
             if(e.Row.RowType==DataControlRowType.DataRow)
             {
                 //((Button)e.Row.FindControl("btnSubmit")).Attributes.Add("onclick", "return confirm('是否要提交?注：提交后的包裹信息将传输到下一级站点,请慎重!');");
+
             }
         }
 
@@ -520,7 +521,7 @@ namespace GGGETSAdmin.PackageManage
                         if (package.IsSubmit.Equals("0"))
                         {
                             string jsonStr = UtilityJson.ToJson(package);
-                           // var appID = new Guid("48240b6b-1c67-4587-a091-e198b2e2449e");
+                            //var appID = new Guid("48240b6b-1c67-4587-a091-e198b2e2449e");
                             var appID = Guid.Parse(ConfigurationManager.AppSettings["AppID"]);
                             if (string.IsNullOrEmpty(appID.ToString()))
                             {
@@ -582,6 +583,28 @@ namespace GGGETSAdmin.PackageManage
                 Band(PageIndex, PageCount);
             }
             
+        }
+
+        /// <summary>
+        /// 提交状态显示文字
+        /// </summary>
+        /// <returns></returns>
+        public string IsSubmitStr(string isSubmit)
+        {
+            if (isSubmit.Equals("0"))
+                return "未提交";
+            return "已提交";
+        }
+
+        /// <summary>
+        /// 如果未提交，则显示多选框；反之亦然
+        /// </summary>
+        /// <returns></returns>
+        public bool IsSubmitDisplay(string isSubmit)
+        {
+            if (isSubmit.Equals("0"))
+                return true;
+            return false;
         }
     }
 }
