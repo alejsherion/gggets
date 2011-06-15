@@ -533,5 +533,27 @@ namespace GGGETSAdmin.MawbManage
                 }
             }
         }
+
+        /// <summary>
+        /// 提交状态显示文字
+        /// </summary>
+        /// <returns></returns>
+        public string IsSubmitStr(string isSubmit)
+        {
+            if (isSubmit.Equals("0"))
+                return "未提交";
+            return "已提交";
+        }
+
+        /// <summary>
+        /// 如果未提交，则显示多选框；反之亦然
+        /// </summary>
+        /// <returns></returns>
+        public bool IsSubmitDisplay(string isSubmit)
+        {
+            if (isSubmit.Equals("0"))
+                return true;
+            return false;
+        }
     }
 }
