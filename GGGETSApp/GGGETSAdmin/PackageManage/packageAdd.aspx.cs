@@ -253,7 +253,8 @@ namespace GGGETSAdmin.PackageManage
                             }
                             catch(Exception ex)
                             {
-                                ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('"+ex.Message+"')", true);
+                                throw ex;
+                                //ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('"+ex.Message+"')", true);
                             }
                         }
 
