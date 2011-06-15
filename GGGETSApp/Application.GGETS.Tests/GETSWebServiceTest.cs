@@ -77,12 +77,12 @@ namespace Application.GGETS.Tests
         [TestMethod]
         public void AddPACKAGE()
         {
-            Package package = _packageManagementService.FindPackageByBarcode("TESTPACKAGEPACKAGE");
+            Package package = _packageManagementService.FindPackageByBarcode("JINGHUA");
             if (package.IsSubmit.Equals("0"))
             {
                 string jsonStr = UtilityJson.ToJson(package);
                 string url = WSURL;
-                string[] args = new string[1];
+                object[] args = new object[1];
                 args[0] = jsonStr;
                 object result = WebServiceHelperOperation.InvokeWebService(url, "AddPACKAGE", args);
             }

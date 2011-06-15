@@ -83,7 +83,7 @@
                                 </asp:TemplateField>
                                 <asp:TemplateField HeaderText="目的地三字码">
                                     <ItemTemplate>
-                                        <asp:Label ID="lbl_Weight" runat="server" Text='<%# Eval("RegionCode") %>'></asp:Label>
+                                        <asp:Label ID="lbl_Weight" runat="server" Text='<%# Eval("DestinationRegionCode") %>'></asp:Label>
                                     </ItemTemplate>
                                     <HeaderStyle HorizontalAlign="Center" />
                                     <ItemStyle HorizontalAlign="Center" />

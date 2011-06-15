@@ -49,15 +49,23 @@ namespace GGGETSAdmin.HAWBManage
                     if (Session["UserID"] != null)
                     {
                         Storage(hawb);
-                        if (!bool.Parse(Request.QueryString["Privilege"]))
+                        if (Request.QueryString["Privilege"]!=null)
                         {
-                            But_Update.Enabled = false;
+                            if (!bool.Parse(Request.QueryString["Privilege"]))
+                            {
+                                But_Update.Enabled = false;
+                            }
                         }
-                        if (!bool.Parse(Request.QueryString["Privilege1"]))
+                        
+                        if(Request.QueryString["Privilege1"]!=null)
                         {
-                            btn_DeriveAccept.Enabled = false;
-                            btn_DeriveSince.Enabled = false;
+                            if (!bool.Parse(Request.QueryString["Privilege1"]))
+                            {
+                                btn_DeriveAccept.Enabled = false;
+                                btn_DeriveSince.Enabled = false;
+                            }
                         }
+                        
                     }
                     else
                     {

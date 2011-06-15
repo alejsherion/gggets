@@ -213,6 +213,7 @@
     <Content Include="Index.aspx" />
     <Content Include="Login\AdminLogin.aspx" />
     <Content Include="Login\Login.aspx" />
+    <Content Include="Login\WebForm1.aspx" />
     <Content Include="MawbManage\MawbAdd.aspx" />
     <Content Include="MawbManage\MawbDetails.aspx" />
     <Content Include="MawbManage\MawbManagement.aspx" />
@@ -388,6 +389,11 @@
     <Compile Include="AddressBookManage\AddressBookModify.aspx.designer.cs">
       <DependentUpon>AddressBookModify.aspx</DependentUpon>
     </Compile>
+    <Compile Include="App_GlobalResources\ErrorResult.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ErrorResult.resx</DependentUpon>
+    </Compile>
     <Compile Include="App_GlobalResources\Resource11.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -542,6 +548,13 @@
     </Compile>
     <Compile Include="Login\Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Login\WebForm1.aspx.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Login\WebForm1.aspx.designer.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
     </Compile>
     <Compile Include="MawbManage\MawbAdd.aspx.cs">
       <DependentUpon>MawbAdd.aspx</DependentUpon>
@@ -988,6 +1001,10 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_GlobalResources\ErrorResult.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>ErrorResult.Designer.cs</LastGenOutput>
+    </Content>
     <EmbeddedResource Include="CustomsClearance\Report.rdlc" />
     <EmbeddedResource Include="CustomsClearance\Source\WayBillSource.rdlc" />
   </ItemGroup>
