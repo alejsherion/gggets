@@ -210,10 +210,15 @@
     <Content Include="Images\left_bg.jpg" />
     <Content Include="Images\login.jpg" />
     <Content Include="Images\Out.gif" />
+    <Content Include="Images\progressbar.gif" />
+    <Content Include="Images\progressbg_black.gif" />
+    <Content Include="Images\progressbg_green.gif" />
+    <Content Include="Images\progressbg_orange.gif" />
+    <Content Include="Images\progressbg_red.gif" />
+    <Content Include="Images\progressbg_yellow.gif" />
     <Content Include="Index.aspx" />
     <Content Include="Login\AdminLogin.aspx" />
     <Content Include="Login\Login.aspx" />
-    <Content Include="Login\WebForm1.aspx" />
     <Content Include="MawbManage\MawbAdd.aspx" />
     <Content Include="MawbManage\MawbDetails.aspx" />
     <Content Include="MawbManage\MawbManagement.aspx" />
@@ -273,6 +278,7 @@
     <Content Include="Scripts\jquery.cookie.js" />
     <Content Include="Scripts\jquery.cookie.min.js" />
     <Content Include="Scripts\jquery.cookie.pack.js" />
+    <Content Include="Scripts\jquery.progressbar.min.js" />
     <Content Include="Scripts\login.js" />
     <Content Include="Scripts\menu.js" />
     <Content Include="Scripts\style.css" />
@@ -548,13 +554,6 @@
     </Compile>
     <Compile Include="Login\Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Login\WebForm1.aspx.cs">
-      <DependentUpon>WebForm1.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Login\WebForm1.aspx.designer.cs">
-      <DependentUpon>WebForm1.aspx</DependentUpon>
     </Compile>
     <Compile Include="MawbManage\MawbAdd.aspx.cs">
       <DependentUpon>MawbAdd.aspx</DependentUpon>

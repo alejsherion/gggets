@@ -54,8 +54,8 @@ namespace GGGETSAdmin.MawbManage
         protected void Page_Load(object sender, EventArgs e)
         {
             txt_CreateTime.Text = time.ToString("yyyy-MM-dd HH:mm");
-            if (!IsPostBack)
-            {
+            //if (!IsPostBack)
+            //{
                 if (Session["UserID"] != null)
                 {
                     Guid id = (Guid)Session["UserID"];
@@ -77,7 +77,7 @@ namespace GGGETSAdmin.MawbManage
 
                 //txt_UpdateTime.Text = DateTime.Now.ToString("yyyy-MM-dd HH:mm");
 
-            }
+            //}
         }
         /// <summary>
         /// 总运单添加包裹

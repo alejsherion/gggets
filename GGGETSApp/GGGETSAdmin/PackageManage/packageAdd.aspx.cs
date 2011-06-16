@@ -60,8 +60,8 @@ namespace GGGETSAdmin.PackageManage
         {
             txt_CreateTime.Text = time.ToString("yyyy-MM-dd HH:mm");
             Txt_BagBarCode.Focus();
-            if (!IsPostBack)
-            {
+            //if (!IsPostBack)
+            //{
                 if (Session["UserID"] != null)
                 {
                     Guid id = (Guid)Session["UserID"];
@@ -79,7 +79,7 @@ namespace GGGETSAdmin.PackageManage
                 {
                     btn_Close.Visible = false;
                 }
-            }
+            //}
         }
         /// <summary>
         /// 包添加运单

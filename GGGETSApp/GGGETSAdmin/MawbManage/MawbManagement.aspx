@@ -6,7 +6,30 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <script src="../Scripts/jquery-1.4.1.min.js" type="text/javascript"></script>
+    <script src="../Scripts/jquery.progressbar.min.js" type="text/javascript"></script>
     <script src="../My97DatePicker/WdatePicker.js" type="text/javascript"></script>
+    <script>
+        function ScrollBegin() {
+            debugger;
+            var gridObj = document.getElementById("<%=gv_HAWB.ClientID %>");
+            if(gridObj!=null){
+                var inputs=document.getElementById("<%=gv_HAWB.ClientID %>").getElementsByTagName('input');
+                if (inputs != null) {
+                    for (i = 0; i < inputs.length; i++) {
+                        if (inputs[i].type == "checkbox" && inputs[i].checked) {
+                            $('#pb1').progressBar('10');
+                            break;
+                        }
+                    }   
+                } 
+            }  
+        }
+
+        function ScrollEnd() {
+            $('#pb1').progressBar('100');
+        }
+    </script>
     <cc1:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server">
     </cc1:ToolkitScriptManager>
     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
@@ -25,7 +48,7 @@
                             <td class="FieldHeader">
                                 <asp:Label ID="lbl_CreateTime" runat="server" Text="创建时间:"></asp:Label>
                             </td>
-                            <td style="width: 75px">
+                            <td style="width: 70px">
                                 <asp:TextBox ID="txt_UpCreateTime" TabIndex="2" runat="server" Width="75px" onfocusin="WdatePicker()"
                                     Style="text-transform: uppercase" CssClass="TextBox"></asp:TextBox>
                             </td>
@@ -33,14 +56,15 @@
                                 <asp:Label ID="lbl_Status" runat="server" Text="-"></asp:Label>
                             </td>
                             <td>
-                                <asp:TextBox ID="txt_ToCreateTime" TabIndex="3" runat="server" Width="75px" onfocusin="WdatePicker()"
+                                <asp:TextBox ID="txt_ToCreateTime" TabIndex="3" runat="server" Width="70px" onfocusin="WdatePicker()"
                                     Style="text-transform: uppercase" CssClass="TextBox"></asp:TextBox>
                             </td>
                             <td>
                                 <asp:Button ID="btn_Demand" TabIndex="4" runat="server" Text="查 询" CssClass="InputBtn"
                                     OnClick="btn_Demand_Click" />
                                 <asp:Button runat="server" Text="提 交" ID="btnSubmit" CssClass="InputBtn" 
-                                    onclick="btnSubmit_Click1"></asp:Button>
+                                    onclick="btnSubmit_Click1" OnClientClick="ScrollBegin()"></asp:Button>
+                                <span id="pb1" class="progressBar"></span>
                             </td>
                         </tr>
                     </tbody>
