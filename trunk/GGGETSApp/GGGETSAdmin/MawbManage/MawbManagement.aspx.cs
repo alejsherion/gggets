@@ -529,7 +529,10 @@ namespace GGGETSAdmin.MawbManage
                             ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('请不要重复提交!')", true);
                         }
                     }
-                    ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('SUCCESS:   操作已成功!')", true);
+                    //载入进度条
+                    ScriptManager.RegisterStartupScript(this, GetType(), "", "ScrollEnd();", true);
+                    Band(PageIndex, PageCount);
+                    //ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('SUCCESS:   操作已成功!')", true);
                 }
             }
         }

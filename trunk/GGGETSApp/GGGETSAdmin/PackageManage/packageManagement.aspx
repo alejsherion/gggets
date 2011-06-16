@@ -7,7 +7,29 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <script src="../Scripts/jquery-1.4.1.min.js" type="text/javascript"></script>
+    <script src="../Scripts/jquery.progressbar.min.js" type="text/javascript"></script>
     <script src="../My97DatePicker/WdatePicker.js" type="text/javascript"></script>
+    <script>
+        function ScrollBegin() {
+            var gridObj=document.getElementById("<%=gv_HAWB.ClientID %>");
+            if(gridObj!=null){
+                var inputs=document.getElementById("<%=gv_HAWB.ClientID %>").getElementsByTagName('input');
+                if (inputs != null) {
+                    for (i = 0; i < inputs.length; i++) {
+                        if (inputs[i].type == "checkbox" && inputs[i].checked) {
+                            $('#pb1').progressBar('10');
+                            break;
+                        }
+                    }   
+                } 
+            }  
+        }
+
+        function ScrollEnd() {
+            $('#pb1').progressBar('100');
+        }
+    </script>
     <asp:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server">
     </asp:ToolkitScriptManager>
     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
@@ -49,12 +71,13 @@
                                 <asp:Button ID="btn_Demand" TabIndex="5" runat="server" Text="查 询" CssClass="InputBtn"
                                     OnClick="btn_Demand_Click" />
                                 <asp:Button runat="server" Text="提 交" ID="btnSubmit" CssClass="InputBtn" 
-                                    onclick="btnSubmit_Click1"></asp:Button>
+                                    onclick="btnSubmit_Click1" OnClientClick="ScrollBegin()"></asp:Button>
+                                <span id="pb1" class="progressBar"></span>
                             </td>
                         </tr>
                     </tbody>
                 </table>
-                <div style="height: 350px; overflow-x: auto; overflow-y: auto;">
+                <div id="divGrid" style="height: 350px; overflow-x: auto; overflow-y: auto;">
                     <asp:GridView ID="gv_HAWB" runat="server" CssClass="DataView" AutoGenerateColumns="False"
                         PageSize="36" onrowcommand="gv_HAWB_RowCommand" 
                         onrowdatabound="gv_HAWB_RowDataBound" DataKeyNames="BarCode">

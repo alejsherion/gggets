@@ -47,13 +47,17 @@ namespace GGGETSAdmin.MawbManage
                         {
                             if (txt_Status.Text != "打开")
                             {
-                                if (!bool.Parse(Request.QueryString["Privilege1"]))
+                                if (Request.QueryString["Privilege1"]!=null)
                                 {
-                                    btn_Add.Enabled = false;
-                                    btn_Save.Enabled = false;
-                                    btn_SaveAndClose.Enabled = false;
-                                    btn_Close.Enabled = false;
+                                    if (!bool.Parse(Request.QueryString["Privilege1"]))
+                                    {
+                                        btn_Add.Enabled = false;
+                                        btn_Save.Enabled = false;
+                                        btn_SaveAndClose.Enabled = false;
+                                        btn_Close.Enabled = false;
+                                    }
                                 }
+                                
                             }
                         }
                     ViewState["UrlReferrer"] = Request.UrlReferrer;
