@@ -22,6 +22,7 @@ namespace GGGETSAdmin.MawbManage
         private ISysUserManagementService _sysUserManagementService;
         private IDataBusService _dataBusService;
         private IList<MAWB> listmawb;
+        private ILogisticsService _logisticsService;
         private readonly int PageCount = 35;//页面显示个数，固定不变。需要配置请修改此属性
         public int PageIndex //当期页码，会随着点击下一页，上一页进行动态变化
         {
@@ -35,12 +36,13 @@ namespace GGGETSAdmin.MawbManage
         private static string Rtime = @"^((((1[6-9]|[2-9]\d)\d{2})-(0?[13578]|1[02])-(0?[1-9]|[12]\d|3[01]))|(((1[6-9]|[2-9]\d)\d{2})-(0?[13456789]|1[012])-(0?[1-9]|[12]\d|30))|(((1[6-9]|[2-9]\d)\d{2})-0?2-(0?[1-9]|1\d|2[0-8]))|(((1[6-9]|[2-9]\d)(0[48]|[2468][048]|[13579][26])|((16|[2468][048]|[3579][26])00))-0?2-29))$";
         protected MawbManagement()
         { }
-        public MawbManagement(IMAWBManagementService mawbservice, IHAWBManagementService hawbservice, ISysUserManagementService sysUserManagementService, IDataBusService dataBusService)
+        public MawbManagement(IMAWBManagementService mawbservice, IHAWBManagementService hawbservice, ISysUserManagementService sysUserManagementService, IDataBusService dataBusService, ILogisticsService logisticsService)
         {
             _mawbService = mawbservice;
             _hawbService = hawbservice;
             _sysUserManagementService = sysUserManagementService;
             _dataBusService = dataBusService;
+            _logisticsService = logisticsService;
         }
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -390,61 +392,6 @@ namespace GGGETSAdmin.MawbManage
             }
         }
 
-        /// <summary>
-        /// 提交包裹信息
-        /// 调用WS服务
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        protected void btnSubmit_Click(object sender, EventArgs e)
-        {
-            //首先获取选中的包裹对象
-            string barcode = ((Button)sender).CommandArgument;
-            if (string.IsNullOrEmpty(barcode))
-            {
-                throw new Exception("该总运单没有总运单编号!");
-            }
-            else
-            {
-                MAWB mawb = _mawbService.FindMAWBByBarcode(barcode);
-                if (mawb.IsSubmit.Equals("0"))
-                {
-                    string jsonStr = UtilityJson.ToJson(mawb);
-                    //var appID = new Guid("48240b6b-1c67-4587-a091-e198b2e2449e");
-                    var appID = Guid.Parse(ConfigurationManager.AppSettings["AppID"]);
-                    var app = _dataBusService.GetNextDeliverApp(appID, "TYO");
-                    string url = app.URL + "WebService/GETSWebService.asmx";
-
-                    //string url = "http://localhost/GETSB/WebService/GETSWebService.asmx";
-                    string[] args = new string[1];
-                    args[0] = jsonStr;
-                    try
-                    {
-                        object result = WebServiceHelperOperation.InvokeWebService(url, "AddMAWB", args);
-                        if (result.Equals("SUCCESS:   操作已成功!"))
-                        {
-                            //改变包裹提交状态
-                            mawb.IsSubmit = "1";
-                            _mawbService.ModifyMAWB(mawb);
-                            ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('" + result + "')", true);
-                        }
-                        else
-                        {
-                            ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('操作失败了!')", true);
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        throw new Exception(ex.Message);
-                    }
-                }
-                else
-                {
-                    ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('请不要重复提交!')", true);
-                }
-            }
-        }
-
         protected void gv_HAWB_RowDataBound(object sender, GridViewRowEventArgs e)
         {
             //首先获取需要绑定JS的控件
@@ -499,6 +446,20 @@ namespace GGGETSAdmin.MawbManage
                                 return;
                             }
                             var app = _dataBusService.GetNextDeliverApp(appID, mawb.To);
+                            if (app == null)
+                            {
+                                ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('未配置实例App')", true);
+                                return;
+                            }
+                            else
+                            {
+                                if (string.IsNullOrEmpty(app.URL))
+                                {
+                                    ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('未配置实例App的URL')", true);
+                                    return;
+                                }
+                            }
+
                             string url = app.URL + "WebService/GETSWebService.asmx";
 
                             //string url = "http://localhost/GETSB/WebService/GETSWebService.asmx";
