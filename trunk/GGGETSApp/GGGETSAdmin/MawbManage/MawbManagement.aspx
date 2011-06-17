@@ -64,6 +64,7 @@
                                     OnClick="btn_Demand_Click" />
                                 <asp:Button runat="server" Text="提 交" ID="btnSubmit" CssClass="InputBtn" 
                                     onclick="btnSubmit_Click1" OnClientClick="ScrollBegin()"></asp:Button>
+                                <br />
                                 <span id="pb1" class="progressBar"></span>
                             </td>
                         </tr>

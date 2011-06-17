@@ -441,73 +441,6 @@ namespace GGGETSAdmin.PackageManage
         }
 
         /// <summary>
-        /// 提交包裹信息
-        /// 调用WS服务
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        protected void btnSubmit_Click(object sender, EventArgs e)
-        {
-            //首先获取选中的包裹对象
-            string barcode = ((Button) sender).CommandArgument;
-            if(string.IsNullOrEmpty(barcode))
-            {
-                throw new Exception("该运单没有运单编号!");
-            }
-            else
-            {
-                Package package = _packageservice.FindPackageByBarcode(barcode);
-                if(package.IsSubmit.Equals("0"))
-                {
-                    string jsonStr = UtilityJson.ToJson(package);
-                    //var appID = new Guid("48240b6b-1c67-4587-a091-e198b2e2449e");
-                    var appID = Guid.Parse(ConfigurationManager.AppSettings["AppID"]);
-                    var app = _dataBusService.GetNextDeliverApp(appID, package.DestinationRegionCode);
-                    //app.Type.Name.Equals(DataBusDomain.Model.AppType.
-                    var curApp = _dataBusService.GetApplicationByID(appID);
-                    string url = app.URL + "WebService/GETSWebService.asmx";
-                    DataBusDomain.DataObjects.TrackFromToDetial tft = new DataBusDomain.DataObjects.TrackFromToDetial
-                    {
-                        AppID = appID,
-                        Director = DataBusDomain.Model.Director.Lunach,
-                        FromID = appID,
-                        ToID = app.ID,
-                        Time = DateTime.Now,
-                        PackID = package.PID,
-                        TransferWay = string.Format("{0} 发往 {1}", curApp.Name, app.Name)
-                    };
-                    _logisticsService.SetTrackFromTo(tft);
-                    //string url = "http://localhost/GETSB/WebService/GETSWebService.asmx";
-                    string[] args = new string[1];
-                    args[0] = jsonStr;
-                    try
-                    {
-                        object result = WebServiceHelperOperation.InvokeWebService(url, "AddPACKAGE", args);
-                        if (result.Equals("SUCCESS:   操作已成功!"))
-                        {
-                            //改变包裹提交状态
-                            package.IsSubmit = "1";
-                            _packageservice.ModifyPackage(package);
-                            ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('" + result + "')", true);
-                        }
-                        else
-                        {
-                            ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('操作失败了!')", true);
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        throw new Exception(ex.Message);
-                    }
-                }
-                else
-                {
-                    ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('请不要重复提交!')", true);
-                }
-            }
-        }
-
-        /// <summary>
         /// 实现批量提交和单个提交效果
         /// </summary>
         /// <param name="sender"></param>
@@ -552,6 +485,32 @@ namespace GGGETSAdmin.PackageManage
                                 return;
                             }
                             var app = _dataBusService.GetNextDeliverApp(appID, package.DestinationRegionCode);
+                            if(app==null)
+                            {
+                                ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('未配置实例App')", true);
+                                return;
+                            }
+                            else
+                            {
+                                if(string.IsNullOrEmpty(app.URL))
+                                {
+                                    ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "", "alert('未配置实例App的URL')", true);
+                                    return;
+                                }
+                            }
+
+                            var curApp = _dataBusService.GetApplicationByID(appID);
+                            DataBusDomain.DataObjects.TrackFromToDetial tft = new DataBusDomain.DataObjects.TrackFromToDetial
+                            {
+                                AppID = appID,
+                                Director = DataBusDomain.Model.Director.Lunach,
+                                FromID = appID,
+                                ToID = app.ID,
+                                Time = DateTime.Now,
+                                PackID = package.PID,
+                                TransferWay = string.Format("{0} 发往 {1}", curApp.Name, app.Name)
+                            };
+                            _logisticsService.SetTrackFromTo(tft);
                             string url = app.URL + "WebService/GETSWebService.asmx";
                          
                             //string url = "http://localhost/GETSB/WebService/GETSWebService.asmx";
