@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="AddUser.aspx.cs" Inherits="GGGETSAdmin.Account.AddUser" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="AddUser.aspx.cs" Inherits="GGGETSAdmin.Account.AddUser" Theme="logisitc" %>
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc2" %>
 
@@ -29,7 +29,7 @@
                     </td>
                     <td align="left">
                         <asp:TextBox ID="txtLoginName" runat="server" style="text-transform:uppercase" 
-                            MaxLength="20"></asp:TextBox>
+                            MaxLength="20" CssClass="TextBox"></asp:TextBox>
                         <asp:RequiredFieldValidator ID="valrLoginName" runat="server" ErrorMessage="必填" ControlToValidate="txtLoginName">
                         </asp:RequiredFieldValidator>
                     </td>
@@ -40,7 +40,7 @@
                     </td>
                     <td align="left">
                         <asp:TextBox ID="txtPassword" runat="server" TextMode="Password" 
-                            MaxLength="100">
+                            MaxLength="100" CssClass="TextBox">
                            
                             </asp:TextBox>
                              <asp:RequiredFieldValidator ID="valrPassword" runat="server" ErrorMessage="必填" ControlToValidate="txtPassword">
@@ -53,7 +53,7 @@
                     </td>
                     <td align="left">
                         <asp:TextBox ID="txtConfirmPwd" runat="server" TextMode="Password" 
-                            MaxLength="100"></asp:TextBox>
+                            MaxLength="100" CssClass="TextBox"></asp:TextBox>
                         <asp:CompareValidator ID="valcConfirmPwd" runat="server" ControlToCompare="txtPassword"
                            ControlToValidate="txtConfirmPwd" 
                              ErrorMessage="密码不正确">
@@ -65,7 +65,7 @@
                         <asp:Label ID="lbl_RealName" runat="server" Text="真实姓名："></asp:Label>
                     </td>
                     <td align="left">
-                        <asp:TextBox ID="txtRealName" runat="server" MaxLength="50"></asp:TextBox>
+                        <asp:TextBox ID="txtRealName" runat="server" MaxLength="50" CssClass="TextBox"></asp:TextBox>
                          <asp:RequiredFieldValidator ID="valrRealName" runat="server" ErrorMessage="必填" ControlToValidate="txtRealName">
                         </asp:RequiredFieldValidator>
                     </td>
@@ -75,7 +75,7 @@
                         <asp:Label ID="lbl_Tel" runat="server" Text="联系电话："></asp:Label>
                     </td>
                     <td align="left">
-                        <asp:TextBox ID="txtPhone" runat="server" MaxLength="50"></asp:TextBox>
+                        <asp:TextBox ID="txtPhone" runat="server" MaxLength="50" CssClass="TextBox"></asp:TextBox>
                         <asp:RegularExpressionValidator ID="valePhone" runat="server" 
                                         ControlToValidate="txtPhone" ErrorMessage="联系电话格式不正确" 
                                         ValidationExpression="((\d{11})|^(\d{2,4}[-_－—]?)?\d{3,8}([-_－—]?\d{3,8})?([-_－—]?\d{1,7})?$)|(^0?1[35]\d{9}$)"></asp:RegularExpressionValidator>
@@ -86,7 +86,7 @@
                         <asp:Label ID="lbl_Email" runat="server" Text="邮箱："></asp:Label>
                     </td>
                     <td align="left">
-                        <asp:TextBox ID="txtEmail" runat="server" MaxLength="50"></asp:TextBox>
+                        <asp:TextBox ID="txtEmail" runat="server" MaxLength="50" CssClass="TextBox"></asp:TextBox>
                         <asp:RegularExpressionValidator ID="valeEmail" runat="server" 
                                         ControlToValidate="txtEmail" ErrorMessage="电子邮件格式不对" 
                                         
@@ -99,7 +99,7 @@
                     </td>
                     <td align="left">
                         <asp:TextBox ID="txtCountryCode" runat="server" MaxLength="2" 
-                            AutoPostBack="true" ontextchanged="txtCountryCode_TextChanged"></asp:TextBox>
+                            AutoPostBack="true" ontextchanged="txtCountryCode_TextChanged" CssClass="TextBox"></asp:TextBox>
                         <cc1:AutoCompleteExtraExtender runat="server" ID="autoCountry" ServiceMethod="GetCountryList"
                             TargetControlID="txtCountryCode" AsyncPostback="false" AutoPostback="true"
                             MinimumPrefixLength="1" CompletionSetCount="10" OnItemSelected="autoCountry_ItemSelected">
@@ -114,7 +114,7 @@
                     </td>
                     <td align="left">
                         <asp:TextBox ID="txtRegionCode" runat="server" 
-                            ontextchanged="txtRegionCode_TextChanged" AutoPostBack="true"></asp:TextBox>
+                            ontextchanged="txtRegionCode_TextChanged" AutoPostBack="true" CssClass="TextBox"></asp:TextBox>
                            <asp:RequiredFieldValidator ID="valeRegionCode" runat="server" ErrorMessage="必填" ControlToValidate="txtRegionCode">
                         </asp:RequiredFieldValidator>
                         <cc1:AutoCompleteExtraExtender runat="server" ID="autoRegion" ServiceMethod="GetRegionList"
@@ -157,9 +157,9 @@
     </div>
             <div>
         <asp:Button ID="btn_login" runat="server" Text="设 置" 
-            onclick="btn_login_Click" /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            onclick="btn_login_Click" CssClass="InputBtn" /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <asp:Button ID="btn_cancel" runat="server" Text="返 回" 
-            onclick="btn_cancel_Click" CausesValidation="false"/>
+            onclick="btn_cancel_Click" CausesValidation="false" CssClass="InputBtn"/>
     </div>
     </ContentTemplate>
     </asp:UpdatePanel>
