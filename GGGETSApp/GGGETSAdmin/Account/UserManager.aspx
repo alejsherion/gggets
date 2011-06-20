@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="UserManager.aspx.cs" Inherits="GGGETSAdmin.Account.UserManager" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="UserManager.aspx.cs" Inherits="GGGETSAdmin.Account.UserManager" Theme="logisitc" %>
 <%@ Register TagPrefix="asp" Namespace="AjaxControlToolkit" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -15,13 +15,13 @@
     <form id="form1" runat="server">
     <div align="center">
         <table class="DataView" width="98%" id="tbCondtion" runat="server">
-            <thead>
+        <%--    <thead>--%>
                 <tr class="Row">
                     <td class="FieldHeader" align="right">
                         <asp:Label ID="Country" runat="server" Text="邮件："></asp:Label>
                     </td>
                     <td align="left" style="width:80px">
-                        <asp:TextBox ID="txtEmail" runat="server" Width="120"></asp:TextBox>
+                        <asp:TextBox ID="txtEmail" runat="server" Width="120" CssClass="TextBox"></asp:TextBox>
                         <!-- 过滤，只能输入2个字母，其他特殊符号，中文，数字都过滤掉-->
                         <asp:RegularExpressionValidator ID="valeEmail" runat="server" 
                             ErrorMessage="邮件格式不对" ControlToValidate="txtEmail" 
@@ -31,7 +31,7 @@
                         <asp:Label ID="lbl_Region" runat="server" Text="联系电话："></asp:Label>
                     </td>
                     <td align="left" style="width:80px">
-                        <asp:TextBox ID="txtTel" runat="server" Width="150" style="text-transform:uppercase"></asp:TextBox>
+                        <asp:TextBox ID="txtTel" runat="server" Width="150" style="text-transform:uppercase" CssClass="TextBox"></asp:TextBox>
                         <!-- 过滤，只能输入3个字母，其他特殊符号，中文，数字都过滤掉-->
                        <asp:RegularExpressionValidator ID="valeTel" runat="server" 
                             ErrorMessage="电话格式不对" ControlToValidate="txtTel" 
@@ -42,7 +42,7 @@
                     </td>
                     <td align="left">
                         <asp:TextBox ID="txtLoginName" runat="server" Width="120" TabIndex="2" 
-                         style="text-transform:uppercase"  MaxLength="20"></asp:TextBox>
+                         style="text-transform:uppercase"  MaxLength="20" CssClass="TextBox"></asp:TextBox>
                     </td>
                 </tr>
                 <tr class="Row">
@@ -57,19 +57,19 @@
                     <td class="FieldHeader" align="right">
                         <asp:Label ID="lbl_CreateTime" runat="server" Text="创建时间："></asp:Label>                        
                     </td>
-                    <td align="left" colspan="3">
-                        <asp:TextBox ID="txtStartCreateTime" runat="server" Width="100" onClick="WdatePicker()" style="text-transform:uppercase"></asp:TextBox>-
-                        <asp:TextBox ID="txtEndCreateTime" runat="server" Width="100" onClick="WdatePicker()" style="text-transform:uppercase"></asp:TextBox></td>
-                </tr>
-                <tr align="center">
-                    <td align="center" colspan="6">
-                       <asp:Button ID="btnQuery" runat="server" Text="查 询" CssClass="bluebuttoncss" 
-                            Width="150px" onclick="btnQueryClick"  />&nbsp;
-                            <asp:Button ID="btnAdd" runat="server" Text="添 加" CssClass="bluebuttoncss" 
-                            Width="150px" onclick="btnAdd_Click"  />
+                    <td align="left">
+                        <asp:TextBox ID="txtStartCreateTime" runat="server" Width="100" onClick="WdatePicker()" style="text-transform:uppercase" CssClass="TextBox"></asp:TextBox>-
+                        <asp:TextBox ID="txtEndCreateTime" runat="server" Width="100" onClick="WdatePicker()" style="text-transform:uppercase" CssClass="TextBox"></asp:TextBox></td>
+                    <td class="FieldHeader">
+                        <asp:Button ID="btnQuery" runat="server" Text="查 询" CssClass="InputBtn" 
+                            Width="50px" onclick="btnQueryClick"/>
                     </td>
-                </tr>           
-            </thead>
+                    <td class="FieldHeader">
+                        <asp:Button ID="btnAdd" runat="server" Text="添 加" CssClass="InputBtn" 
+                            Width="50px" onclick="btnAdd_Click" />
+                    </td>
+                </tr>         
+            <%--</thead>--%>
         </table>
     </div>
     <div align="center">
